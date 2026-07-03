@@ -271,7 +271,7 @@ function storeCard(s) {
   return `<article class="store ${st.level}${s.demo ? " demo" : ""}">
     <div class="head"><span class="name">${esc(s.name)} ${s.demo ? '<span class="badge-demo">Demo</span>' : ""}</span>${statusPill(st)}</div>
     <div class="chips">${chipsHtml(s)}</div>
-    <div class="period">${esc(s.currentPeriod.label)}${s.priorPeriod ? " · vs " + esc(s.priorPeriod.label) : " · no prior baseline"}${twoDay ? ' <span class="flag" title="Only the first 2 days of the month — deltas swing widely on a sample this small">2-DAY SAMPLE</span>' : ""}</div>
+    <div class="period">${esc(s.currentPeriod.label)}${s.priorPeriod ? " · vs " + esc(s.priorPeriod.label) : " · no prior baseline"}${twoDay ? ' <span class="flag" title="Only the first 2 days of the month — deltas swing widely on a sample this small">2‑DAY SAMPLE</span>' : ""}</div>
     <div class="kpis">
       <div class="k"><div class="lbl">Good leads</div><div class="v">${fmtN(c.goodLeads)}</div>${p ? deltaHtml(c.goodLeads, p.goodLeads) : ""}</div>
       <div class="k"><div class="lbl">Sold</div><div class="v">${fmtN(c.sold)}</div>${p ? deltaHtml(c.sold, p.sold) : ""}</div>
