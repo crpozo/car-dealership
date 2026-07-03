@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dealer Performance Hub — Prototype</title>
+<title>PaceBoard — Dealer Performance Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
@@ -17,6 +17,7 @@
   --shadow:0 1px 2px rgba(25,29,51,.04),0 4px 16px rgba(25,29,51,.05);
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{margin:0;padding:0}
 body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.5}
 button{font-family:inherit}
@@ -30,7 +31,6 @@ svg.ic{width:19px;height:19px;flex:none;stroke:currentColor;fill:none;stroke-wid
 .logo{display:flex;align-items:center;gap:9px;padding:2px 8px 18px}
 .logo .pmark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--accent),#7C6CF0);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
 .logo .nm{font-size:17px;font-weight:800;letter-spacing:-.02em}.logo .nm span{color:var(--accent)}
-.logo .tag{font-size:9px;font-weight:800;letter-spacing:.12em;color:var(--lime-ink);background:var(--lime);border-radius:4px;padding:2.5px 6px}
 .ngroup{font-size:10.5px;font-weight:700;letter-spacing:.11em;color:var(--muted);text-transform:uppercase;padding:14px 10px 6px}
 .nav{appearance:none;border:0;background:none;display:flex;align-items:center;gap:10px;width:100%;text-align:left;font-size:13.5px;font-weight:600;color:#4A506A;border-radius:9px;padding:9px 10px;cursor:pointer}
 .nav:hover{background:var(--ground)}
@@ -41,9 +41,41 @@ svg.ic{width:19px;height:19px;flex:none;stroke:currentColor;fill:none;stroke-wid
 .searchwrap kbd{font-family:inherit;font-size:11px;font-weight:700;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1.5px 6px}
 .top .asof{margin-left:auto;font-size:12.5px;color:var(--muted);white-space:nowrap}
 .top .asof b{color:var(--ink)}
-.iconbtn{appearance:none;border:1px solid var(--line);background:var(--card);color:#4A506A;width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none}
+.iconbtn{appearance:none;border:1px solid var(--line);background:var(--card);color:#4A506A;width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none;position:relative}
 .iconbtn:hover{background:var(--ground)}
 .iconbtn.avatar{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.bdg{position:absolute;top:-5px;right:-5px;min-width:17px;height:17px;border-radius:99px;background:var(--risk);color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 4px;border:2px solid #fff}
+.pop{position:absolute;top:54px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 44px rgba(25,29,51,.16);width:min(350px,calc(100vw - 28px));z-index:60;overflow:hidden}
+#bell-pop{right:72px}
+#user-pop{right:24px}
+.pop .phead{display:flex;align-items:center;gap:10px;padding:12px 15px;border-bottom:1px solid var(--line-soft);font-weight:800;font-size:13.5px}
+.pop .phead .mini{margin-left:auto;appearance:none;border:0;background:none;color:var(--accent);font-size:12px;font-weight:700;cursor:pointer;padding:0}
+.pop .phead .mini:hover{text-decoration:underline}
+.pitem{display:block;width:100%;text-align:left;appearance:none;border:0;background:none;padding:11px 15px;cursor:pointer;border-bottom:1px solid var(--line-soft);font:inherit}
+.pitem:last-child{border-bottom:0}
+.pitem:hover{background:var(--accent-softer)}
+.pitem .pt{font-size:13px;font-weight:700;display:flex;align-items:center;gap:7px}
+.pitem .pt .sdot{width:7px;height:7px;border-radius:99px;flex:none}
+.pitem .pt .sdot.risk{background:var(--risk)} .pitem .pt .sdot.watch{background:#D99A06} .pitem .pt .sdot.good{background:var(--good)}
+.pitem .pd{font-size:12px;color:var(--muted);margin-top:2px}
+.pitem.read{opacity:.55}
+.pop .pempty{padding:18px 15px;font-size:12.5px;color:var(--muted);text-align:center}
+.pop .pver{padding:10px 15px;font-size:11.5px;color:var(--muted);border-top:1px solid var(--line-soft)}
+.pop .pname{font-weight:800;font-size:14px;padding:13px 15px 0}
+.pop .prole{font-size:12px;color:var(--muted);padding:0 15px 11px;border-bottom:1px solid var(--line-soft)}
+.datewrap{position:relative}
+.datewrap .pop{top:calc(100% + 8px);right:0}
+.datechip{cursor:pointer;font-family:inherit}
+.datechip:hover{background:var(--ground)}
+.toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,10px);background:var(--ink);color:#fff;font-size:13.5px;font-weight:600;padding:11px 20px;border-radius:11px;box-shadow:0 10px 30px rgba(25,29,51,.3);z-index:99;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.btn.ghost:hover{background:var(--ground)}
+.actions-row{display:flex;gap:10px;margin:2px 0 30px}
+.kv input[type=number]{width:76px;font:inherit;font-weight:700;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 9px;text-align:right;font-variant-numeric:tabular-nums}
+.kv select{font:inherit;font-weight:700;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 9px;background:#fff}
+.kv .v{display:flex;align-items:center;gap:8px}
+.kv .unit{color:var(--muted);font-weight:600}
 .maincol{flex:1;min-width:0;display:flex;flex-direction:column}
 .content{padding:26px;max-width:1280px;width:100%;margin:0 auto}
 
@@ -234,7 +266,6 @@ details.extra .tblwrap{border:1px solid var(--line-soft);border-radius:10px;marg
     <div class="logo">
       <span class="pmark">P</span>
       <span class="nm">Pace<span>Board</span></span>
-      <span class="tag">PROTOTYPE</span>
     </div>
     <div class="ngroup">General</div>
     <button class="nav" data-view="overview"><svg class="ic" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.6"/></svg>Store overview</button>
@@ -251,8 +282,16 @@ details.extra .tblwrap{border:1px solid var(--line-soft);border-radius:10px;marg
         <kbd id="g-kbd">⌘F</kbd>
       </div>
       <div class="asof" id="asof"></div>
-      <button class="iconbtn" title="Notifications — nothing new" aria-label="Notifications"><svg class="ic" viewBox="0 0 24 24"><path d="M18 9.5a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10 19a2.2 2.2 0 0 0 4 0"/></svg></button>
-      <button class="iconbtn avatar" title="Signed in as Scott (prototype)" aria-label="Account"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg></button>
+      <button class="iconbtn" id="bell-btn" aria-label="Notifications" aria-haspopup="true" aria-expanded="false"><svg class="ic" viewBox="0 0 24 24"><path d="M18 9.5a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10 19a2.2 2.2 0 0 0 4 0"/></svg><span class="bdg" id="bell-bdg" hidden></span></button>
+      <button class="iconbtn avatar" id="user-btn" aria-label="Account menu" aria-haspopup="true" aria-expanded="false"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg></button>
+      <div class="pop" id="bell-pop" hidden></div>
+      <div class="pop" id="user-pop" hidden>
+        <div class="pname">Scott McDonald</div>
+        <div class="prole">Group administrator · all stores</div>
+        <button class="pitem" data-goto="#/settings"><span class="pt">Settings</span><span class="pd">Status thresholds, demo stores, number format</span></button>
+        <button class="pitem" data-goto="#/help"><span class="pt">Help &amp; docs</span><span class="pd">How the numbers are built</span></button>
+        <div class="pver">PaceBoard · data as of Jun 22 &amp; Jul 2, 2026</div>
+      </div>
     </header>
     <main class="content" id="app"></main>
     <div id="live-status" role="status" class="sr-only"></div>
@@ -262,12 +301,27 @@ details.extra .tblwrap{border:1px solid var(--line-soft);border-radius:10px;marg
 <script>
 const DATA = __DATA_JSON__;
 
+/* ---------------- user settings (persisted in this browser) ---------------- */
+const DEFAULT_SETTINGS = { riskDrop: 25, watchDrop: 10, benchClosing: 25, benchShown: 70, repShown: 70, demoDefault: false, locale: "en-US" };
+function loadSettings() {
+  try { return { ...DEFAULT_SETTINGS, ...JSON.parse(localStorage.getItem("paceboard.settings.v1") || "{}") }; }
+  catch (e) { return { ...DEFAULT_SETTINGS }; }
+}
+let SETTINGS = loadSettings();
+function persistSettings() { try { localStorage.setItem("paceboard.settings.v1", JSON.stringify(SETTINGS)); } catch (e) { /* private mode */ } }
+function loadReadAlerts() {
+  try { return new Set(JSON.parse(localStorage.getItem("paceboard.readAlerts.v1") || "[]")); }
+  catch (e) { return new Set(); }
+}
+const readAlerts = loadReadAlerts();
+function persistReadAlerts() { try { localStorage.setItem("paceboard.readAlerts.v1", JSON.stringify([...readAlerts])); } catch (e) { /* private mode */ } }
+
 /* ---------------- helpers ---------------- */
 const $ = (s, el) => (el || document).querySelector(s);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const fmtN = v => {
   if (v == null) return "—";
-  return Number.isInteger(v) ? v.toLocaleString("en-US") : v.toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  return Number.isInteger(v) ? v.toLocaleString(SETTINGS.locale) : v.toLocaleString(SETTINGS.locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 };
 const fmtPct = (v, dash) => (v == null || (dash && !v)) ? "—" : (v * 100).toFixed(1).replace(/\.0$/, "") + "%";
 const deltaPct = (cur, prior) => (prior == null || prior === 0) ? null : (cur - prior) / prior * 100;
@@ -295,8 +349,8 @@ function storeStatus(s) {
   const c = s.kpiCurrent.total, p = s.kpiPrior && s.kpiPrior.total;
   if (p) {
     const dl = deltaPct(c.goodLeads, p.goodLeads), ds = deltaPct(c.sold, p.sold);
-    const badL = dl != null && dl <= -25, badS = ds != null && ds <= -25;
-    const softL = dl != null && dl <= -10, softS = ds != null && ds <= -10;
+    const badL = dl != null && dl <= -SETTINGS.riskDrop, badS = ds != null && ds <= -SETTINGS.riskDrop;
+    const softL = dl != null && dl <= -SETTINGS.watchDrop, softS = ds != null && ds <= -SETTINGS.watchDrop;
     const why = `Leads ${dl == null ? "n/a" : (dl > 0 ? "+" : "") + dl.toFixed(0) + "%"}, sold ${ds == null ? "n/a" : (ds > 0 ? "+" : "") + ds.toFixed(0) + "%"} vs same days last month`;
     if (badL && badS) return { level: "risk", label: "At risk", why };
     if (badL || badS || softL || softS) return { level: "watch", label: "Watch", why };
@@ -304,8 +358,8 @@ function storeStatus(s) {
   }
   const closing = c.goodLeads ? c.sold / c.goodLeads : 0;
   const shown = s.salesTeamTotals ? s.salesTeamTotals.shownPct : null;
-  const okClose = closing >= 0.25, okShown = shown == null || shown >= 0.7;
-  const why = `No prior-month baseline — benchmarked: closing ${(closing * 100).toFixed(0)}% (target 25%)` + (shown != null ? `, appt-shown ${(shown * 100).toFixed(0)}% (target 70%)` : "");
+  const okClose = closing >= SETTINGS.benchClosing / 100, okShown = shown == null || shown >= SETTINGS.benchShown / 100;
+  const why = `No prior-month baseline — benchmarked: closing ${(closing * 100).toFixed(0)}% (target ${SETTINGS.benchClosing}%)` + (shown != null ? `, appt-shown ${(shown * 100).toFixed(0)}% (target ${SETTINGS.benchShown}%)` : "");
   if (okClose && okShown) return { level: "good", label: "On pace", why };
   if (okClose || okShown) return { level: "watch", label: "Watch", why };
   return { level: "risk", label: "At risk", why };
@@ -313,7 +367,7 @@ function storeStatus(s) {
 const statusPill = st => `<span class="pill ${st.level}" title="${esc(st.why)}">${st.label}</span>`;
 
 /* ---------------- state ---------------- */
-const state = { crm: "all", tool: "all", status: "all", q: "", demo: false, sort: "status" };
+const state = { crm: "all", tool: "all", status: "all", q: "", demo: SETTINGS.demoDefault, sort: "status" };
 const teamSort = { key: "sold", dir: -1 };
 
 function visibleStores() {
@@ -388,7 +442,14 @@ function renderOverview(el) {
   <div class="pagehead">
     <div><h1>Store overview</h1><p class="sub">Month-to-date pace across your live stores</p></div>
     <div class="actions">
-      <span class="datechip" title="Fixed to the report exports provided (run Jun 22 &amp; Jul 2, 2026)">${ICONS.cal} Jun 22 – Jul 2, 2026</span>
+      <span class="datewrap">
+        <button class="datechip" id="datechip" aria-haspopup="true" aria-expanded="false">${ICONS.cal} Jun 22 – Jul 2, 2026</button>
+        <div class="pop" id="date-pop" hidden>
+          <div class="phead">Data windows</div>
+          ${DATA.stores.filter(x => !x.demo).map(x => `<div class="pitem" style="cursor:default"><span class="pt">${esc(x.name)}</span><span class="pd">${esc(x.currentPeriod.label)}${x.priorPeriod ? " · vs " + esc(x.priorPeriod.label) : ""} · exported ${esc(x.currentPeriod.exported)}</span></div>`).join("")}
+          <div class="pver">Windows update automatically as new scheduled exports arrive.</div>
+        </div>
+      </span>
       <button class="btn primary" id="export">${ICONS.dl} Export CSV</button>
     </div>
   </div>
@@ -422,7 +483,7 @@ function renderOverview(el) {
       <thead><tr><th>Store</th><th class="left">Status</th><th class="num">Good leads</th><th class="num">Sold</th><th class="num">Appts shown</th><th class="num">Closing</th><th class="num">Lead sources</th><th class="num" aria-label="Open"></th></tr></thead>
       <tbody id="ov-rows"></tbody>
     </table></div>
-    <p class="legend">Status — MTD vs. the same days of last month; ▼ 25%+ on good leads <em>and</em> sold = at risk. Stores without a baseline are benchmarked on closing ≥ 25% and appt-shown ≥ 70%. Totals reflect current filters; each store’s reason is on its detail page.</p>
+    <p class="legend">Status — MTD vs. the same days of last month; ▼ ${SETTINGS.riskDrop}%+ on good leads <em>and</em> sold = at risk. Stores without a baseline are benchmarked on closing ≥ ${SETTINGS.benchClosing}% and appt-shown ≥ ${SETTINGS.benchShown}%. Totals reflect current filters; each store’s reason is on its detail page. Thresholds are editable in <a class="plain" href="#/settings">Settings</a>.</p>
   </div>`;
   $("#f-crm", el).onchange = e => { state.crm = e.target.value; updateOverview(el); };
   $("#f-tool", el).onchange = e => { state.tool = e.target.value; updateOverview(el); };
@@ -430,6 +491,7 @@ function renderOverview(el) {
   $("#f-sort", el).onchange = e => { state.sort = e.target.value; updateOverview(el); };
   $("#f-demo", el).onchange = e => { state.demo = e.target.checked; updateOverview(el); };
   $("#export", el).onclick = exportCsv;
+  $("#datechip", el).onclick = e => { e.stopPropagation(); togglePop("date-pop", e.currentTarget); };
   updateOverview(el);
 }
 function refreshFilterOptions(el) {
@@ -561,7 +623,7 @@ function teamTable(s) {
   const rows = team.map(r => {
     const noOut = !r.calls && !r.emails && !r.texts;
     const shown = r.apptsScheduled ? r.shownPct : null;
-    const sp = shown == null ? `<span class="shown-pill na">—</span>` : `<span class="shown-pill ${shown >= .7 ? "good" : "warn"}">${fmtPct(shown)}</span>`;
+    const sp = shown == null ? `<span class="shown-pill na">—</span>` : `<span class="shown-pill ${shown >= SETTINGS.repShown / 100 ? "good" : "warn"}">${fmtPct(shown)}</span>`;
     const mat = matCols.map(c => `<td class="num">${r.matador ? fmtN(val(r, c.k)) : "—"}</td>`).join("");
     return `<tr>
       <td class="name">${esc(r.name)}${noOut ? '<span class="rowflag">NO OUTBOUND</span>' : ""}</td>
@@ -584,7 +646,7 @@ function teamTable(s) {
       <tbody>${rows}</tbody><tfoot>${foot}</tfoot>
     </table></div>
     <div class="footnotes">
-      <p>Click a column to sort. Shown % is green at ≥ 70%. “NO OUTBOUND” = zero calls, emails and texts logged this period. CRM house accounts (e.g. store-level users) are excluded.</p>
+      <p>Click a column to sort. Shown % is green at ≥ ${SETTINGS.repShown}%. “NO OUTBOUND” = zero calls, emails and texts logged this period. CRM house accounts (e.g. store-level users) are excluded.</p>
       ${hasMat ? "<p>Sold counts can be fractional (split deals) and use this report’s sold statuses, so totals may differ slightly from the KPI table above.</p>" : ""}
     </div>${matOther}`;
 }
@@ -675,50 +737,144 @@ function renderSources(el) {
     <div class="step"><div class="n">Step 3 · Publish</div><div class="t">Dashboard refresh</div><div class="d">Group overview for the consulting team; per-store login shows a dealership only its own numbers.</div></div>
     <div class="step"><div class="n">Next · APIs</div><div class="t">Replace email with APIs</div><div class="d">VinSolutions, Tekion and Momentum API access is in progress — that removes the email hop and enables intraday refresh.</div></div>
   </div>
-  <p class="pagefoot">Prototype data: VinSolutions “Enterprise Performance” exports (run Jun 22 &amp; Jul 2, 2026) for Vern Eide Honda, 777 Nissan and Armstrong Subaru, plus the Matador MTD user report for Vern Eide Honda. Demo stores are illustrative.</p>`;
+  <p class="pagefoot">Currently loaded: VinSolutions “Enterprise Performance” exports (run Jun 22 &amp; Jul 2, 2026) for Vern Eide Honda, 777 Nissan and Armstrong Subaru, plus the Matador MTD user report for Vern Eide Honda. Demo stores are illustrative.</p>`;
 }
 
 /* ---------------- settings & help ---------------- */
 function renderSettings(el) {
   el.innerHTML = `
-  <div class="pagehead"><div><h1>Settings</h1><p class="sub">Status model & display defaults — fixed in this prototype, configurable in the real build</p></div></div>
+  <div class="pagehead"><div><h1>Settings</h1><p class="sub">Changes apply immediately across the dashboard and are saved in this browser.</p></div></div>
   <div class="panel"><div class="panel-head"><h2 class="ttl">Status thresholds</h2></div>
     <div class="panel-body">
-      <div class="kv"><span class="k">At risk</span><span class="v">good leads ▼ 25%+ and sold ▼ 25%+ vs same days last month</span></div>
-      <div class="kv"><span class="k">Watch</span><span class="v">good leads or sold ▼ 10%+ vs same days last month</span></div>
-      <div class="kv"><span class="k">On pace</span><span class="v">everything else</span></div>
-      <div class="kv"><span class="k">No-baseline benchmark</span><span class="v">closing ≥ 25% · appt-shown ≥ 70%</span></div>
-      <div class="kv"><span class="k">Shown % target (reps)</span><span class="v">≥ 70%</span></div>
+      <div class="kv"><span class="k">At risk</span><span class="v"><span class="unit">good leads <em>and</em> sold both ▼</span><input type="number" id="set-risk" min="1" max="95" step="1" value="${SETTINGS.riskDrop}" aria-label="At-risk drop percent"><span class="unit">%+ vs same days last month</span></span></div>
+      <div class="kv"><span class="k">Watch</span><span class="v"><span class="unit">good leads or sold ▼</span><input type="number" id="set-watch" min="1" max="95" step="1" value="${SETTINGS.watchDrop}" aria-label="Watch drop percent"><span class="unit">%+ vs same days last month</span></span></div>
+      <div class="kv"><span class="k">On pace</span><span class="v"><span class="unit">everything else</span></span></div>
+      <div class="kv"><span class="k">No-baseline benchmark</span><span class="v"><span class="unit">closing ≥</span><input type="number" id="set-closing" min="1" max="95" step="1" value="${SETTINGS.benchClosing}" aria-label="Closing rate target percent"><span class="unit">% · appt-shown ≥</span><input type="number" id="set-shown" min="1" max="100" step="1" value="${SETTINGS.benchShown}" aria-label="Appointment shown target percent"><span class="unit">%</span></span></div>
+      <div class="kv"><span class="k">Shown % target (reps)</span><span class="v"><span class="unit">≥</span><input type="number" id="set-repshown" min="1" max="100" step="1" value="${SETTINGS.repShown}" aria-label="Rep shown percent target"><span class="unit">%</span></span></div>
     </div>
   </div>
   <div class="panel"><div class="panel-head"><h2 class="ttl">Display</h2></div>
     <div class="panel-body">
-      <div class="kv"><span class="k">Demo stores</span><span class="v">hidden by default · toggle on the overview</span></div>
-      <div class="kv"><span class="k">Number format / locale</span><span class="v">en-US</span></div>
-      <div class="kv"><span class="k">Data window</span><span class="v">fixed to the provided exports (Jun 22 &amp; Jul 2, 2026)</span></div>
+      <div class="kv"><span class="k">Demo stores</span><span class="v"><label class="switch"><input type="checkbox" id="set-demo"${SETTINGS.demoDefault ? " checked" : ""}><span class="track"></span><span>show by default</span></label></span></div>
+      <div class="kv"><span class="k">Number format / locale</span><span class="v"><select id="set-locale" aria-label="Number locale">${["en-US", "es-EC", "de-DE"].map(l => `<option${SETTINGS.locale === l ? " selected" : ""}>${l}</option>`).join("")}</select></span></div>
+      <div class="kv"><span class="k">Data window</span><span class="v"><span class="unit">set by the loaded report exports — currently Jun 22 &amp; Jul 2, 2026</span></span></div>
     </div>
+  </div>
+  <div class="actions-row">
+    <button class="btn primary" id="set-save">Save changes</button>
+    <button class="btn ghost" id="set-reset">Reset to defaults</button>
   </div>`;
+  const readNum = (id, lo, hi, fallback) => {
+    const v = parseInt($(id, el).value, 10);
+    return Number.isFinite(v) ? Math.min(hi, Math.max(lo, v)) : fallback;
+  };
+  $("#set-save", el).onclick = () => {
+    SETTINGS.riskDrop = readNum("#set-risk", 1, 95, DEFAULT_SETTINGS.riskDrop);
+    SETTINGS.watchDrop = readNum("#set-watch", 1, 95, DEFAULT_SETTINGS.watchDrop);
+    SETTINGS.benchClosing = readNum("#set-closing", 1, 95, DEFAULT_SETTINGS.benchClosing);
+    SETTINGS.benchShown = readNum("#set-shown", 1, 100, DEFAULT_SETTINGS.benchShown);
+    SETTINGS.repShown = readNum("#set-repshown", 1, 100, DEFAULT_SETTINGS.repShown);
+    SETTINGS.demoDefault = $("#set-demo", el).checked;
+    SETTINGS.locale = $("#set-locale", el).value;
+    state.demo = SETTINGS.demoDefault;
+    persistSettings();
+    updateBell();
+    renderSettings(el);
+    toast("Settings saved — statuses recalculated");
+  };
+  $("#set-reset", el).onclick = () => {
+    SETTINGS = { ...DEFAULT_SETTINGS };
+    state.demo = SETTINGS.demoDefault;
+    persistSettings();
+    updateBell();
+    renderSettings(el);
+    toast("Settings reset to defaults");
+  };
 }
 function renderHelp(el) {
   el.innerHTML = `
   <div class="pagehead"><div><h1>Help</h1><p class="sub">What you’re looking at, in 60 seconds</p></div></div>
   <div class="panel"><div class="panel-body prose">
     <h2 style="margin-top:0">What is this?</h2>
-    <p>A prototype that rolls every dealership client into one pace view. Each store’s CRM export (VinSolutions today; Tekion, DriveCentric and Momentum next) is parsed into one schema, so stores compare apples to apples no matter which system they run.</p>
+    <p>PaceBoard rolls every dealership client into one pace view. Each store’s CRM export (VinSolutions today; Tekion, DriveCentric and Momentum next) is parsed into one schema, so stores compare apples to apples no matter which system they run.</p>
     <h2>MTD KPI comparison</h2>
     <p>Current month-to-date vs <strong>the same days of last month</strong> — e.g. Jul 1–2 vs Jun 1–2 — so early-month numbers aren’t compared against a full month. Early samples are flagged (2‑day sample).</p>
     <h2>Salesperson activity</h2>
     <p>Per-rep leads, sold, appointments and outbound (calls / emails / texts) from the CRM, with Matador AI messaging merged per rep where the store uses it.</p>
     <h2>Reading the status pill</h2>
-    <p><span class="pill good">On pace</span> holding or growing · <span class="pill watch">Watch</span> one metric slipping · <span class="pill risk">At risk</span> leads <em>and</em> sold down 25%+. The exact reason is printed on each store’s page.</p>
+    <p><span class="pill good">On pace</span> holding or growing · <span class="pill watch">Watch</span> one metric slipping ≥ ${SETTINGS.watchDrop}% · <span class="pill risk">At risk</span> leads <em>and</em> sold down ${SETTINGS.riskDrop}%+. The exact reason is printed on each store’s page, and the thresholds are editable in <a class="plain" href="#/settings">Settings</a>.</p>
     <h2>Questions?</h2>
-    <p>Ping Carlos — this prototype is built from the Jun 22 / Jul 2 report exports; the production version refreshes automatically from scheduled emails and, once granted, CRM APIs.</p>
+    <p>Ping Carlos — data comes from the scheduled report exports (currently Jun 22 &amp; Jul 2, 2026) and refreshes as new exports land; direct API connections for VinSolutions, Tekion and Momentum are in progress.</p>
   </div></div>`;
 }
+
+/* ---------------- notifications, menus, toast ---------------- */
+function toast(msg) {
+  let t = $("#toast");
+  if (!t) { t = document.createElement("div"); t.id = "toast"; t.className = "toast"; t.setAttribute("role", "status"); document.body.appendChild(t); }
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => t.classList.remove("show"), 2600);
+}
+function buildAlerts() {
+  const alerts = [];
+  DATA.stores.filter(s => !s.demo).forEach(s => {
+    const st = storeStatus(s);
+    if (st.level !== "good") alerts.push({ id: `st:${s.id}:${st.level}`, level: st.level, ttl: `${s.name} is ${st.level === "risk" ? "at risk" : "on watch"}`, d: st.why, href: "#/store/" + s.id });
+  });
+  DATA.stores.filter(s => s.salesTeam && !isTwoDay(s)).forEach(s => {
+    s.salesTeam.filter(r => r.apptsScheduled >= 5 && r.shownPct < SETTINGS.repShown / 100).forEach(r => {
+      alerts.push({ id: `rep:${s.id}:${r.name}`, level: "watch", ttl: `${r.name} is below the shown target`, d: `${(r.shownPct * 100).toFixed(0)}% of ${r.apptsScheduled} appointments showed — ${s.name}`, href: "#/store/" + s.id });
+    });
+  });
+  alerts.push({ id: "int:matador", level: "watch", ttl: "Matador report needs a manual download", d: "No scheduled email available yet — pull it from the Users tab to refresh Vern Eide Honda.", href: "#/sources" });
+  return alerts;
+}
+function updateBell() {
+  const alerts = buildAlerts();
+  const unread = alerts.filter(a => !readAlerts.has(a.id)).length;
+  const bdg = $("#bell-bdg");
+  bdg.hidden = unread === 0;
+  bdg.textContent = unread;
+  $("#bell-btn").setAttribute("aria-label", unread ? `Notifications — ${unread} unread` : "Notifications");
+  $("#bell-pop").innerHTML = `
+    <div class="phead">Notifications${unread ? ` · ${unread} new` : ""}<button class="mini" id="bell-readall" type="button">Mark all read</button></div>
+    ${alerts.length ? alerts.map(a => `<button class="pitem${readAlerts.has(a.id) ? " read" : ""}" type="button" data-alert="${esc(a.id)}" data-goto="${esc(a.href)}"><span class="pt"><span class="sdot ${a.level}"></span>${esc(a.ttl)}</span><span class="pd">${esc(a.d)}</span></button>`).join("") : '<div class="pempty">All clear — nothing needs attention.</div>'}`;
+  $("#bell-readall").onclick = e => {
+    e.stopPropagation();
+    alerts.forEach(a => readAlerts.add(a.id));
+    persistReadAlerts();
+    updateBell();
+  };
+  $("#bell-pop").querySelectorAll(".pitem[data-alert]").forEach(b => b.onclick = () => {
+    readAlerts.add(b.dataset.alert);
+    persistReadAlerts();
+    closePops();
+    location.hash = b.dataset.goto;
+    updateBell();
+  });
+}
+function closePops() {
+  document.querySelectorAll(".pop").forEach(p => p.hidden = true);
+  document.querySelectorAll("[aria-haspopup]").forEach(b => b.setAttribute("aria-expanded", "false"));
+}
+function togglePop(id, btn) {
+  const pop = document.getElementById(id);
+  const willOpen = pop.hidden;
+  closePops();
+  if (willOpen) { pop.hidden = false; if (btn) btn.setAttribute("aria-expanded", "true"); }
+}
+$("#bell-btn").onclick = e => { e.stopPropagation(); togglePop("bell-pop", e.currentTarget); };
+$("#user-btn").onclick = e => { e.stopPropagation(); togglePop("user-pop", e.currentTarget); };
+$("#user-pop").querySelectorAll(".pitem[data-goto]").forEach(b => b.onclick = () => { closePops(); location.hash = b.dataset.goto; });
+document.addEventListener("click", e => { if (!e.target.closest(".pop") && !e.target.closest("[aria-haspopup]")) closePops(); });
+window.addEventListener("keydown", e => { if (e.key === "Escape") closePops(); });
 
 /* ---------------- router ---------------- */
 function render() {
   const el = $("#app");
+  closePops();
   const h = location.hash || "#/overview";
   const storeM = h.match(/^#\/store\/(.+)$/);
   const view = storeM ? "store" : (h === "#/sources" ? "sources" : h === "#/settings" ? "settings" : h === "#/help" ? "help" : "overview");
@@ -754,5 +910,6 @@ window.addEventListener("keydown", e => {
   if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "f") { e.preventDefault(); gq.focus(); gq.select(); }
 });
 window.addEventListener("hashchange", render);
+updateBell();
 render();
 </script>
