@@ -234,65 +234,10 @@ data = {
     ],
 }
 
-# ---- demo stores (clearly flagged) to preview the multi-CRM rollout ----
-def demo_kpi(leads, sold, contact, apptset, shown, mix):
-    return {
-        "total": {"goodLeads": leads, "sold": sold, "contactPct": contact, "apptSetOfContactedPct": apptset, "apptsShown": shown},
-        "byLeadType": [
-            {"leadType": lt, "metrics": {"goodLeads": l, "sold": s, "contactPct": c, "apptSetOfContactedPct": a, "apptsShown": sh}, "byInventory": []}
-            for (lt, l, s, c, a, sh) in mix
-        ],
-    }
-
-data["stores"] += [
-    {
-        "id": "demo-summit-toyota", "name": "Summit Toyota", "demo": True,
-        "crm": "Tekion", "tools": ["Covideo"], "location": "Demo data",
-        "currentPeriod": {"label": "Jun 1–22, 2026 (MTD)", "exported": "—"},
-        "priorPeriod": {"label": "May 1–22, 2026 (same days)"},
-        "kpiCurrent": demo_kpi(412, 118, 0.64, 0.41, 96, [
-            ("Internet", 180, 31, 0.64, 0.38, 34), ("Phone", 84, 27, 0, 0.55, 30),
-            ("Walk-in", 118, 51, 0, 0.24, 24), ("PreviousCustomer", 30, 9, 0, 0.27, 8)]),
-        "kpiPrior": demo_kpi(390, 104, 0.58, 0.37, 84, [
-            ("Internet", 171, 26, 0.58, 0.35, 30), ("Phone", 80, 24, 0, 0.51, 26),
-            ("Walk-in", 111, 46, 0, 0.22, 21), ("PreviousCustomer", 28, 8, 0, 0.25, 7)]),
-        "salesTeam": None, "salesTeamTotals": None, "salesTeamPeriod": None, "matadorOther": [],
-        "notes": "DEMO store — illustrative data only, shows how a Tekion-based store plugs into the same dashboard.",
-    },
-    {
-        "id": "demo-riverbend-cdjr", "name": "Riverbend CDJR", "demo": True,
-        "crm": "DriveCentric", "tools": ["Matador"], "location": "Demo data",
-        "currentPeriod": {"label": "Jun 1–22, 2026 (MTD)", "exported": "—"},
-        "priorPeriod": {"label": "May 1–22, 2026 (same days)"},
-        "kpiCurrent": demo_kpi(298, 61, 0.51, 0.29, 48, [
-            ("Internet", 152, 18, 0.51, 0.27, 20), ("Phone", 55, 14, 0, 0.42, 14),
-            ("Walk-in", 74, 24, 0, 0.2, 11), ("Referral", 17, 5, 0, 0.3, 3)]),
-        "kpiPrior": demo_kpi(340, 79, 0.57, 0.34, 61, [
-            ("Internet", 170, 24, 0.57, 0.31, 26), ("Phone", 62, 18, 0, 0.47, 18),
-            ("Walk-in", 88, 31, 0, 0.24, 14), ("Referral", 20, 6, 0, 0.33, 3)]),
-        "salesTeam": None, "salesTeamTotals": None, "salesTeamPeriod": None, "matadorOther": [],
-        "notes": "DEMO store — illustrative data only (DriveCentric CRM + Matador).",
-    },
-    {
-        "id": "demo-lakeside-ford", "name": "Lakeside Ford", "demo": True,
-        "crm": "Momentum", "tools": ["Matador", "Covideo"], "location": "Demo data",
-        "currentPeriod": {"label": "Jun 1–22, 2026 (MTD)", "exported": "—"},
-        "priorPeriod": {"label": "May 1–22, 2026 (same days)"},
-        "kpiCurrent": demo_kpi(355, 97, 0.68, 0.44, 88, [
-            ("Internet", 168, 29, 0.68, 0.41, 36), ("Phone", 71, 25, 0, 0.6, 26),
-            ("Walk-in", 92, 36, 0, 0.28, 20), ("PreviousCustomer", 24, 7, 0, 0.29, 6)]),
-        "kpiPrior": demo_kpi(348, 92, 0.66, 0.45, 86, [
-            ("Internet", 165, 28, 0.66, 0.42, 35), ("Phone", 70, 24, 0, 0.6, 25),
-            ("Walk-in", 90, 34, 0, 0.28, 20), ("PreviousCustomer", 23, 6, 0, 0.3, 6)]),
-        "salesTeam": None, "salesTeamTotals": None, "salesTeamPeriod": None, "matadorOther": [],
-        "notes": "DEMO store — illustrative data only (Momentum CRM + Matador + Covideo).",
-    },
-]
-
 with open(OUT, "w") as f:
     json.dump(data, f, indent=1)
 print("wrote", OUT)
 # quick sanity summary
 for s in data["stores"]:
     kc = s["kpiCurrent"]["total"]
-    print(f'{s["name"]:22} demo={s["demo"]} leads={kc["goodLeads"]} sold={kc["sold"]} shown={kc["apptsShown"]} team={len(s["salesTeam"]) if s["salesTeam"] else 0} lts={[b["leadType"] for b in s["kpiCurrent"]["byLeadType"]]}')
+    print(f'{s["name"]:22} leads={kc["goodLeads"]} sold={kc["sold"]} shown={kc["apptsShown"]} team={len(s["salesTeam"]) if s["salesTeam"] else 0} lts={[b["leadType"] for b in s["kpiCurrent"]["byLeadType"]]}')
