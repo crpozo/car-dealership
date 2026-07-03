@@ -1,0 +1,561 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dealer Performance Hub — Prototype</title>
+<style>
+:root{
+  --ink:#1B262B; --muted:#5C6E73; --faint:#8CA0A5; --line:#DCE4E4; --line-soft:#E8EEEE;
+  --ground:#EFF3F2; --card:#FFFFFF;
+  --accent:#0F6672; --accent-deep:#0B4A53; --accent-band:#0D3B42; --accent-soft:#E3EFF0;
+  --good:#1E7D48; --good-bg:#E3F2E8; --warn:#96660A; --warn-bg:#F7EED6; --risk:#B2352A; --risk-bg:#F9E7E4;
+  --demo:#66558F; --demo-bg:#EFEAF7;
+  --c-internet:#22677A; --c-phone:#4E7FA0; --c-walkin:#C29A4B; --c-prev:#7E6B9E; --c-referral:#5E8D6A; --c-other:#93A1A5;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.45}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+
+/* ---------- app bar ---------- */
+.appbar{background:var(--accent-band);color:#EAF4F5}
+.appbar-in{max-width:1180px;margin:0 auto;padding:14px 24px 0;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:flex-end}
+.brand{display:flex;align-items:baseline;gap:10px;padding-bottom:12px}
+.brand .mark{font-size:19px;font-weight:800;letter-spacing:.02em;color:#fff}
+.brand .mark span{color:#7FB6BD;font-weight:600}
+.brand .tag{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#0D3B42;background:#CBDF66;border-radius:3px;padding:2px 6px;transform:translateY(-1px)}
+.appbar .asof{margin-left:auto;padding-bottom:12px;font-size:12px;color:#9FC2C7}
+.tabs{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;gap:2px}
+.tab{appearance:none;border:0;background:transparent;color:#B9D3D6;font-size:13.5px;font-weight:600;padding:9px 14px;cursor:pointer;border-radius:6px 6px 0 0}
+.tab:hover{color:#fff;background:rgba(255,255,255,.07)}
+.tab.active{background:var(--ground);color:var(--accent-deep)}
+
+.wrap{max-width:1180px;margin:0 auto;padding:20px 24px 56px}
+
+/* ---------- generic ---------- */
+h2{font-size:16px;font-weight:700;margin:26px 0 10px;text-wrap:balance}
+h2 .sub{font-weight:400;color:var(--muted);font-size:13px;margin-left:8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px}
+.num{font-variant-numeric:tabular-nums;text-align:right}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;border:1px solid var(--line);color:var(--muted);border-radius:99px;padding:2px 8px;background:#fff}
+.chip .dot{width:6px;height:6px;border-radius:99px;background:var(--faint)}
+.chip.crm .dot{background:var(--accent)}
+.chip.tool .dot{background:var(--c-walkin)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;border-radius:99px;padding:3px 10px;white-space:nowrap}
+.pill::before{content:"";width:7px;height:7px;border-radius:99px;background:currentColor}
+.pill.good{color:var(--good);background:var(--good-bg)}
+.pill.watch{color:var(--warn);background:var(--warn-bg)}
+.pill.risk{color:var(--risk);background:var(--risk-bg)}
+.badge-demo{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--demo);background:var(--demo-bg);border-radius:3px;padding:2px 6px;vertical-align:2px}
+.delta{font-size:11.5px;font-weight:700;white-space:nowrap}
+.delta.up{color:var(--good)} .delta.down{color:var(--risk)} .delta.flat{color:var(--faint)}
+.note{font-size:12px;color:var(--muted)}
+a.plain{color:var(--accent);font-weight:600;text-decoration:none}
+a.plain:hover{text-decoration:underline}
+
+/* ---------- summary strip ---------- */
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:4px 0 18px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.stat .lbl{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.stat .val{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:2px}
+.stat .val.risk{color:var(--risk)}
+.stat .aux{font-size:11.5px;color:var(--muted)}
+
+/* ---------- filter bar ---------- */
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 14px}
+.filters label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;display:flex;align-items:center;gap:6px}
+.filters select,.filters input[type=search]{font-family:inherit;font-size:13px;color:var(--ink);border:1px solid var(--line);border-radius:6px;background:#fff;padding:6px 8px}
+.filters input[type=search]{width:190px}
+.filters .demo-toggle{font-size:12.5px;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:6px;text-transform:none;letter-spacing:0;margin-left:auto}
+.legend{font-size:11.5px;color:var(--muted);margin:-6px 0 14px}
+.legend .pill{font-size:10.5px;padding:1px 8px;margin:0 2px}
+
+/* ---------- store cards ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.store{position:relative;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--faint);border-radius:8px;padding:14px 16px 12px;display:flex;flex-direction:column;gap:9px}
+.store.good{border-left-color:var(--good)} .store.watch{border-left-color:var(--warn)} .store.risk{border-left-color:var(--risk)}
+.store.demo{border-style:solid;background:linear-gradient(0deg,#FDFCFF,#FDFCFF)}
+.store .head{display:flex;align-items:flex-start;gap:8px}
+.store .name{font-size:15.5px;font-weight:750;letter-spacing:-.01em}
+.store .head .pill{margin-left:auto}
+.store .chips{display:flex;flex-wrap:wrap;gap:5px}
+.store .period{font-size:11.5px;color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;border-top:1px solid var(--line-soft);padding-top:9px}
+.kpis .k .lbl{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.kpis .k .v{font-size:17px;font-weight:800;font-variant-numeric:tabular-nums}
+.mix{margin-top:2px}
+.mixbar{display:flex;height:8px;border-radius:4px;overflow:hidden;background:var(--line-soft)}
+.mixbar i{display:block;height:100%}
+.mixkey{display:flex;flex-wrap:wrap;gap:2px 10px;margin-top:5px;font-size:10.5px;color:var(--muted)}
+.mixkey b{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.store .foot{display:flex;align-items:center;margin-top:2px}
+.store .open{margin-left:auto;appearance:none;border:0;background:none;color:var(--accent);font-size:12.5px;font-weight:700;cursor:pointer;padding:2px 0}
+.store .open:hover{text-decoration:underline}
+.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;background:#fff}
+
+/* ---------- detail ---------- */
+.crumb{font-size:12.5px;margin-bottom:12px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.crumb select{font-family:inherit;font-size:12.5px;border:1px solid var(--line);border-radius:6px;padding:4px 6px;background:#fff}
+.dhead{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.dhead h1{font-size:22px;font-weight:800;margin:0;letter-spacing:-.015em}
+.dhead .pill{transform:translateY(1px)}
+.dmeta{margin-top:6px;font-size:12.5px;color:var(--muted)}
+.banner{margin:12px 0 0;padding:8px 12px;border-radius:6px;font-size:12.5px}
+.banner.demo{background:var(--demo-bg);color:var(--demo);font-weight:600}
+.banner.info{background:var(--accent-soft);color:var(--accent-deep)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:16px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:11px 13px}
+.tile .lbl{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tile .v{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:1px}
+.tile .vs{font-size:11.5px;color:var(--muted)}
+
+/* ---------- tables ---------- */
+.tblwrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:7px 12px;white-space:nowrap}
+thead th{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);text-align:right;background:#FAFCFC}
+thead th:first-child{text-align:left}
+thead tr.groups th{border-bottom:0;padding-bottom:0;color:var(--accent-deep);text-align:center}
+thead tr.groups th:first-child{text-align:left}
+tbody td{border-bottom:1px solid var(--line-soft)}
+tbody tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right}
+td.name{font-weight:600}
+tr.lvl1 td.name{font-weight:700}
+tr.sub td{background:#FAFBFB;font-size:12.5px}
+tr.sub td.name{padding-left:30px;font-weight:500;color:var(--muted)}
+tr.sub2 td{background:#F5F8F8;font-size:12px}
+tr.sub2 td.name{padding-left:48px;font-weight:500;color:var(--muted)}
+tfoot td{border-top:2px solid var(--line);font-weight:800;background:#FAFCFC}
+.tgl{appearance:none;border:0;background:none;cursor:pointer;font:inherit;font-weight:inherit;color:inherit;padding:0;display:inline-flex;align-items:center;gap:6px}
+.tgl .chev{display:inline-block;width:0;height:0;border-left:5px solid var(--faint);border-top:4px solid transparent;border-bottom:4px solid transparent;transition:transform .12s}
+.tgl[aria-expanded=true] .chev{transform:rotate(90deg)}
+th.sortable{cursor:pointer;user-select:none;padding:0}
+th.sortable:hover{color:var(--accent-deep)}
+th.sortable .arr{font-size:9px;margin-left:3px}
+.sorth{appearance:none;background:none;border:0;font:inherit;color:inherit;cursor:pointer;padding:7px 12px;width:100%;text-align:inherit;text-transform:inherit;letter-spacing:inherit}
+.bar{display:inline-block;height:7px;border-radius:3px;background:var(--accent);opacity:.75;vertical-align:1px;margin-right:7px}
+.flag{font-size:10px;font-weight:700;color:var(--warn);background:var(--warn-bg);border-radius:3px;padding:1px 5px;margin-left:7px;letter-spacing:.03em;white-space:nowrap;display:inline-block}
+.shown-pill{display:inline-block;min-width:52px;text-align:right;font-weight:700;border-radius:4px;padding:1px 6px}
+.shown-pill.good{color:var(--good);background:var(--good-bg)}
+.shown-pill.warn{color:var(--warn);background:var(--warn-bg)}
+.shown-pill.na{color:var(--faint)}
+details.extra{margin-top:10px}
+details.extra summary{cursor:pointer;font-size:12.5px;font-weight:700;color:var(--accent-deep)}
+.footnotes{margin-top:8px;font-size:11.5px;color:var(--muted)}
+.footnotes p{margin:3px 0}
+
+/* ---------- sources ---------- */
+.src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.src{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.src .top{display:flex;align-items:baseline;gap:8px}
+.src .nm{font-size:15px;font-weight:750}
+.src .ty{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
+.src .cov{font-size:12px;color:var(--muted);margin:2px 0 8px}
+.src .chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
+.chip.ok{color:var(--good);border-color:#BFDCC9}.chip.ok .dot{background:var(--good)}
+.chip.pend{color:var(--warn);border-color:#E4D2A8}.chip.pend .dot{background:var(--warn)}
+.chip.no{color:var(--risk);border-color:#E7C2BC}.chip.no .dot{background:var(--risk)}
+.chip.unk{color:var(--muted)}
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:6px}
+.flow .step{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.flow .n{font-size:10.5px;font-weight:800;letter-spacing:.1em;color:var(--accent);text-transform:uppercase}
+.flow .t{font-weight:700;margin:3px 0 2px}
+.flow .d{font-size:12px;color:var(--muted)}
+
+.pagefoot{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted)}
+@media (max-width:640px){
+  .wrap{padding:16px 14px 48px}
+  .appbar-in,.tabs{padding-left:14px;padding-right:14px}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .filters .demo-toggle{margin-left:0}
+}
+</style>
+
+<header class="appbar">
+  <div class="appbar-in">
+    <div class="brand">
+      <span class="mark">Pace<span>Board</span></span>
+      <span class="tag">Prototype</span>
+    </div>
+    <div class="asof" id="asof"></div>
+  </div>
+  <nav class="tabs" id="tabs" aria-label="Views">
+    <button class="tab" data-view="overview">Store overview</button>
+    <button class="tab" data-view="sources">Data sources</button>
+  </nav>
+</header>
+<main class="wrap" id="app" aria-live="polite"></main>
+
+<script>
+const DATA = __DATA_JSON__;
+
+/* ---------------- helpers ---------------- */
+const $ = (s, el) => (el || document).querySelector(s);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fmtN = v => {
+  if (v == null) return "—";
+  return Number.isInteger(v) ? v.toLocaleString("en-US") : v.toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+};
+const fmtPct = (v, dash) => (v == null || (dash && !v)) ? "—" : (v * 100).toFixed(1).replace(/\.0$/, "") + "%";
+const deltaPct = (cur, prior) => (prior == null || prior === 0) ? null : (cur - prior) / prior * 100;
+function deltaHtml(cur, prior) {
+  if (prior == null) return "";
+  const d = deltaPct(cur, prior);
+  if (d == null) return cur > 0 ? '<span class="delta up">new</span>' : '<span class="delta flat">±0%</span>';
+  const cls = d > 0.5 ? "up" : d < -0.5 ? "down" : "flat";
+  const sym = d > 0.5 ? "▲" : d < -0.5 ? "▼" : "•";
+  return `<span class="delta ${cls}">${sym} ${Math.abs(d) >= 100 ? Math.round(Math.abs(d)) : Math.abs(d).toFixed(1).replace(/\.0$/, "")}%</span>`;
+}
+const MIX_COLORS = { "Internet": "var(--c-internet)", "Phone": "var(--c-phone)", "Walk-in": "var(--c-walkin)", "PreviousCustomer": "var(--c-prev)", "Referral": "var(--c-referral)" };
+const mixColor = lt => MIX_COLORS[lt] || "var(--c-other)";
+const ltLabel = lt => lt === "PreviousCustomer" ? "Prev. customer" : lt;
+
+/* ---------------- status model ---------------- */
+function storeStatus(s) {
+  const c = s.kpiCurrent.total, p = s.kpiPrior && s.kpiPrior.total;
+  if (p) {
+    const dl = deltaPct(c.goodLeads, p.goodLeads), ds = deltaPct(c.sold, p.sold);
+    const badL = dl != null && dl <= -25, badS = ds != null && ds <= -25;
+    const softL = dl != null && dl <= -10, softS = ds != null && ds <= -10;
+    const why = `Leads ${dl == null ? "n/a" : (dl > 0 ? "+" : "") + dl.toFixed(0) + "%"}, sold ${ds == null ? "n/a" : (ds > 0 ? "+" : "") + ds.toFixed(0) + "%"} vs same days last month`;
+    if (badL && badS) return { level: "risk", label: "At risk", why };
+    if (badL || badS || softL || softS) return { level: "watch", label: "Watch", why };
+    return { level: "good", label: "On pace", why };
+  }
+  const closing = c.goodLeads ? c.sold / c.goodLeads : 0;
+  const shown = s.salesTeamTotals ? s.salesTeamTotals.shownPct : null;
+  const okClose = closing >= 0.25, okShown = shown == null || shown >= 0.7;
+  const why = `No prior-month baseline — benchmarked: closing ${(closing * 100).toFixed(0)}% (target 25%)` + (shown != null ? `, appt-shown ${(shown * 100).toFixed(0)}% (target 70%)` : "");
+  if (okClose && okShown) return { level: "good", label: "On pace", why };
+  if (okClose || okShown) return { level: "watch", label: "Watch", why };
+  return { level: "risk", label: "At risk", why };
+}
+const statusPill = st => `<span class="pill ${st.level}" title="${esc(st.why)}">${st.label}</span>`;
+
+/* ---------------- state ---------------- */
+const state = { crm: "all", tool: "all", status: "all", q: "", demo: false, sort: "status" };
+const teamSort = { key: "sold", dir: -1 };
+
+function visibleStores() {
+  return DATA.stores.filter(s => {
+    if (!state.demo && s.demo) return false;
+    if (state.crm !== "all" && s.crm !== state.crm) return false;
+    if (state.tool !== "all" && !(s.tools || []).includes(state.tool)) return false;
+    if (state.status !== "all" && storeStatus(s).level !== state.status) return false;
+    if (state.q && !s.name.toLowerCase().includes(state.q.toLowerCase())) return false;
+    return true;
+  });
+}
+
+/* ---------------- overview ---------------- */
+function chipsHtml(s) {
+  let h = `<span class="chip crm"><span class="dot"></span>${esc(s.crm)}</span>`;
+  (s.tools || []).forEach(t => h += `<span class="chip tool"><span class="dot"></span>${esc(t)}</span>`);
+  return h;
+}
+function mixHtml(s) {
+  const rows = s.kpiCurrent.byLeadType.filter(b => b.metrics.goodLeads > 0);
+  const tot = rows.reduce((a, b) => a + b.metrics.goodLeads, 0);
+  if (!tot) return "";
+  const seg = rows.map(b => `<i style="width:${(b.metrics.goodLeads / tot * 100).toFixed(2)}%;background:${mixColor(b.leadType)}" title="${esc(ltLabel(b.leadType))}: ${b.metrics.goodLeads} leads (${(b.metrics.goodLeads / tot * 100).toFixed(0)}%)"></i>`).join("");
+  const key = rows.map(b => `<span><b style="background:${mixColor(b.leadType)}"></b>${esc(ltLabel(b.leadType))}</span>`).join("");
+  return `<div class="mix"><div class="mixbar" role="img" aria-label="Lead mix by source">${seg}</div><div class="mixkey">${key}</div></div>`;
+}
+function storeCard(s) {
+  const st = storeStatus(s);
+  const c = s.kpiCurrent.total, p = s.kpiPrior && s.kpiPrior.total;
+  const closing = c.goodLeads ? c.sold / c.goodLeads : null;
+  const twoDay = /Jul 1–2/.test(s.currentPeriod.label) && !s.demo;
+  return `<article class="store ${st.level}${s.demo ? " demo" : ""}">
+    <div class="head"><span class="name">${esc(s.name)} ${s.demo ? '<span class="badge-demo">Demo</span>' : ""}</span>${statusPill(st)}</div>
+    <div class="chips">${chipsHtml(s)}</div>
+    <div class="period">${esc(s.currentPeriod.label)}${s.priorPeriod ? " · vs " + esc(s.priorPeriod.label) : " · no prior baseline"}${twoDay ? ' <span class="flag" title="Only the first 2 days of the month — deltas swing widely on a sample this small">2-DAY SAMPLE</span>' : ""}</div>
+    <div class="kpis">
+      <div class="k"><div class="lbl">Good leads</div><div class="v">${fmtN(c.goodLeads)}</div>${p ? deltaHtml(c.goodLeads, p.goodLeads) : ""}</div>
+      <div class="k"><div class="lbl">Sold</div><div class="v">${fmtN(c.sold)}</div>${p ? deltaHtml(c.sold, p.sold) : ""}</div>
+      <div class="k"><div class="lbl">Appts shown</div><div class="v">${fmtN(c.apptsShown)}</div>${p ? deltaHtml(c.apptsShown, p.apptsShown) : ""}</div>
+      <div class="k"><div class="lbl">Closing</div><div class="v">${closing == null ? "—" : fmtPct(closing)}</div></div>
+    </div>
+    ${mixHtml(s)}
+    <div class="foot"><button class="open" data-store="${esc(s.id)}">Open store →</button></div>
+  </article>`;
+}
+function renderOverview(el) {
+  el.innerHTML = `
+  <div id="ov-strip"></div>
+  <div class="filters" role="search">
+    <label>CRM <select id="f-crm">
+      <option value="all">All</option>${[...new Set(DATA.stores.map(s => s.crm))].map(c => `<option${state.crm === c ? " selected" : ""}>${esc(c)}</option>`).join("")}
+    </select></label>
+    <label>Tool <select id="f-tool">
+      <option value="all">All</option>${[...new Set(DATA.stores.flatMap(s => s.tools || []))].map(t => `<option${state.tool === t ? " selected" : ""}>${esc(t)}</option>`).join("")}
+    </select></label>
+    <label>Status <select id="f-status">
+      <option value="all">All</option>
+      <option value="risk"${state.status === "risk" ? " selected" : ""}>At risk</option>
+      <option value="watch"${state.status === "watch" ? " selected" : ""}>Watch</option>
+      <option value="good"${state.status === "good" ? " selected" : ""}>On pace</option>
+    </select></label>
+    <label>Sort <select id="f-sort">
+      <option value="status"${state.sort === "status" ? " selected" : ""}>Needs attention first</option>
+      <option value="name"${state.sort === "name" ? " selected" : ""}>Store name</option>
+      <option value="leads"${state.sort === "leads" ? " selected" : ""}>Most leads</option>
+      <option value="sold"${state.sort === "sold" ? " selected" : ""}>Most sold</option>
+    </select></label>
+    <input type="search" id="f-q" placeholder="Search stores…" value="${esc(state.q)}" aria-label="Search stores">
+    <label class="demo-toggle"><input type="checkbox" id="f-demo"${state.demo ? " checked" : ""}> Include demo stores (fictional)</label>
+  </div>
+  <p class="legend">Status: <span class="pill good">On pace</span> <span class="pill watch">Watch</span> <span class="pill risk">At risk</span> — from MTD vs the same days of last month (▼25%+ on leads <em>and</em> sold = at risk); stores without a baseline are benchmarked on closing ≥ 25% and appt-shown ≥ 70%. Totals reflect current filters. Each store's reason is shown on its detail page.</p>
+  <div id="ov-results"></div>`;
+  $("#f-crm", el).onchange = e => { state.crm = e.target.value; updateOverview(el); };
+  $("#f-tool", el).onchange = e => { state.tool = e.target.value; updateOverview(el); };
+  $("#f-status", el).onchange = e => { state.status = e.target.value; updateOverview(el); };
+  $("#f-sort", el).onchange = e => { state.sort = e.target.value; updateOverview(el); };
+  $("#f-q", el).oninput = e => { state.q = e.target.value; updateOverview(el); };
+  $("#f-demo", el).onchange = e => { state.demo = e.target.checked; updateOverview(el); };
+  updateOverview(el);
+}
+function updateOverview(el) {
+  const vis = visibleStores();
+  const sorters = {
+    status: (a, b) => ({ risk: 0, watch: 1, good: 2 }[storeStatus(a).level] - { risk: 0, watch: 1, good: 2 }[storeStatus(b).level]) || a.name.localeCompare(b.name),
+    name: (a, b) => a.name.localeCompare(b.name),
+    leads: (a, b) => b.kpiCurrent.total.goodLeads - a.kpiCurrent.total.goodLeads,
+    sold: (a, b) => b.kpiCurrent.total.sold - a.kpiCurrent.total.sold,
+  };
+  vis.sort(sorters[state.sort] || sorters.status);
+  const tot = vis.reduce((a, s) => { const c = s.kpiCurrent.total; a.leads += c.goodLeads; a.sold += c.sold; a.shown += c.apptsShown; return a; }, { leads: 0, sold: 0, shown: 0 });
+  const atRisk = vis.filter(s => storeStatus(s).level === "risk").length;
+  const watch = vis.filter(s => storeStatus(s).level === "watch").length;
+  const demoN = vis.filter(s => s.demo).length;
+  const demoWarn = demoN ? `<div class="aux" style="color:var(--demo);font-weight:600">includes ${demoN} fictional demo store${demoN > 1 ? "s" : ""}</div>` : "";
+  $("#ov-strip", el).innerHTML = `<div class="strip">
+    <div class="stat"><div class="lbl">Stores shown</div><div class="val">${vis.length}</div><div class="aux">${DATA.stores.filter(x => !x.demo).length} live · ${DATA.stores.filter(x => x.demo).length} demo${state.demo ? "" : " (hidden)"}</div></div>
+    <div class="stat"><div class="lbl">Good leads · MTD</div><div class="val">${fmtN(tot.leads)}</div><div class="aux">each store's own MTD window</div>${demoWarn}</div>
+    <div class="stat"><div class="lbl">Sold · MTD</div><div class="val">${fmtN(tot.sold)}</div>${demoWarn}</div>
+    <div class="stat"><div class="lbl">Appts shown · MTD</div><div class="val">${fmtN(tot.shown)}</div>${demoWarn}</div>
+    <div class="stat"><div class="lbl">Avg closing rate</div><div class="val">${tot.leads ? fmtPct(tot.sold / tot.leads) : "—"}</div><div class="aux">sold ÷ good leads</div></div>
+    <div class="stat"><div class="lbl">Needs attention</div><div class="val ${atRisk ? "risk" : ""}">${atRisk + watch}</div><div class="aux">${atRisk} at risk · ${watch} watch</div></div>
+  </div>`;
+  $("#ov-results", el).innerHTML = vis.length ? `<div class="grid">${vis.map(storeCard).join("")}</div>` : `<div class="empty">No stores match the current filters.</div>`;
+  el.querySelectorAll(".open").forEach(b => b.onclick = () => { location.hash = "#/store/" + b.dataset.store; });
+}
+
+/* ---------------- store detail ---------------- */
+function metricCols(m, pm, opts) {
+  const o = opts || {};
+  const prev = k => !o.hasPrior ? "" : pm
+    ? `<td class="num">${fmtN(pm[k])}</td><td class="num">${deltaHtml(m[k], pm[k]) || "—"}</td>`
+    : '<td class="num">—</td><td class="num">—</td>';
+  return `
+    <td class="num">${fmtN(m.goodLeads)}</td>${prev("goodLeads")}
+    <td class="num">${fmtN(m.sold)}</td>${prev("sold")}
+    <td class="num">${fmtN(m.apptsShown)}</td>${prev("apptsShown")}
+    <td class="num">${o.contactNA ? "—" : fmtPct(m.contactPct, true)}</td>
+    <td class="num">${fmtPct(m.apptSetOfContactedPct, true)}</td>`;
+}
+function kpiTable(s) {
+  const cur = s.kpiCurrent, pri = s.kpiPrior;
+  const priByLt = {}; if (pri) pri.byLeadType.forEach(b => priByLt[b.leadType] = b);
+  const ltNames = [...new Set([...cur.byLeadType.map(b => b.leadType), ...(pri ? pri.byLeadType.map(b => b.leadType) : [])])];
+  const grp = pri ? 3 : 1;
+  let rows = "";
+  ltNames.forEach((lt, i) => {
+    const cb = cur.byLeadType.find(b => b.leadType === lt) || { leadType: lt, metrics: { goodLeads: 0, sold: 0, apptsShown: 0, contactPct: 0, apptSetOfContactedPct: 0 }, byInventory: [] };
+    const pb = priByLt[lt];
+    const hasKids = cb.byInventory && cb.byInventory.length;
+    const naC = lt !== "Internet";
+    rows += `<tr class="lvl1" data-row="lt${i}">
+      <td class="name">${hasKids ? `<button class="tgl" aria-expanded="false" data-tgl="lt${i}"><span class="chev"></span>${esc(ltLabel(lt))}</button>` : esc(ltLabel(lt))}</td>
+      ${metricCols(cb.metrics, pb && pb.metrics, { contactNA: naC && !cb.metrics.contactPct, hasPrior: !!pri })}</tr>`;
+    (cb.byInventory || []).forEach((inv, j) => {
+      const pinv = pb && pb.byInventory ? pb.byInventory.find(x => x.inventoryType === inv.inventoryType) : null;
+      const hasMakes = inv.byMake && inv.byMake.length;
+      rows += `<tr class="sub" data-parent="lt${i}" data-row="lt${i}i${j}" hidden>
+        <td class="name">${hasMakes ? `<button class="tgl" aria-expanded="false" data-tgl="lt${i}i${j}"><span class="chev"></span>${esc(inv.inventoryType)}</button>` : esc(inv.inventoryType)}</td>
+        ${metricCols(inv.metrics, pinv && pinv.metrics, { contactNA: naC && !inv.metrics.contactPct, hasPrior: !!pri })}</tr>`;
+      (inv.byMake || []).forEach(mk => {
+        rows += `<tr class="sub2" data-parent="lt${i}i${j}" hidden>
+          <td class="name">${esc(mk.make)}</td>${metricCols(mk.metrics, null, { contactNA: naC && !mk.metrics.contactPct, hasPrior: !!pri })}</tr>`;
+      });
+    });
+  });
+  const groups = pri
+    ? `<tr class="groups"><th></th><th colspan="3">Good leads</th><th colspan="3">Sold</th><th colspan="3">Appts shown</th><th colspan="2">Current rates</th></tr>`
+    : "";
+  const sub = pri
+    ? `<tr><th>Lead type</th><th class="num">Cur</th><th class="num">Prev</th><th class="num">Δ</th><th class="num">Cur</th><th class="num">Prev</th><th class="num">Δ</th><th class="num">Cur</th><th class="num">Prev</th><th class="num">Δ</th><th class="num">Contact %</th><th class="num">Appt set %</th></tr>`
+    : `<tr><th>Lead type</th><th class="num">Good leads</th><th class="num">Sold</th><th class="num">Appts shown</th><th class="num">Contact %</th><th class="num">Appt set %</th></tr>`;
+  const foot = `<tr>
+    <td class="name">All lead types</td>
+    ${metricCols(cur.total, pri && pri.total, { hasPrior: !!pri })}</tr>`;
+  return `<div class="tblwrap"><table>
+    <thead>${groups}${sub}</thead>
+    <tbody>${rows}</tbody>
+    <tfoot>${foot}</tfoot>
+  </table></div>
+  <div class="footnotes">
+    <p>“Contact %” is the CRM’s internet actual-contact rate${s.crm === "VinSolutions" ? " (VinSolutions: <em>Internet Actual Contact %</em>)" : ""} — it only applies to internet leads. “Appt set %” is the appointments-set share of contacted leads and can exceed 100% when more appointments are set than leads contacted in the window.</p>
+  </div>`;
+}
+function teamTable(s) {
+  if (!s.salesTeam) return `<h2>Salesperson activity</h2>
+    <div class="empty">${s.demo ? "Demo store — salesperson-level data isn’t included in the demo." : "No salesperson activity report was provided for this store yet — schedule the daily rep-level export to light this section up."}</div>`;
+  const hasMat = s.salesTeam.some(r => r.matador);
+  const cols = [
+    { k: "name", lbl: "Salesperson", num: false },
+    { k: "goodLeads", lbl: "Good leads" }, { k: "sold", lbl: "Sold" },
+    { k: "apptsScheduled", lbl: "Appts set" }, { k: "apptsShown", lbl: "Appts shown" },
+    { k: "shownPct", lbl: "Shown %" }, { k: "calls", lbl: "Calls" },
+    { k: "emails", lbl: "Emails" }, { k: "texts", lbl: "Texts" },
+  ];
+  const matCols = hasMat ? [{ k: "m_messagesSent", lbl: "Msgs" }, { k: "m_videosSent", lbl: "Videos" }, { k: "m_clientsMessaged", lbl: "Clients msgd" }] : [];
+  const val = (r, k) => k.startsWith("m_") ? (r.matador ? r.matador[k.slice(2)] : null) : r[k];
+  let team = [...s.salesTeam];
+  const key = teamSort.key;
+  team.sort((a, b) => {
+    if (key === "name") return teamSort.dir * a.name.localeCompare(b.name);
+    return teamSort.dir * ((val(a, key) == null ? -1 : val(a, key)) - (val(b, key) == null ? -1 : val(b, key)));
+  });
+  const maxCalls = Math.max(1, ...team.map(r => r.calls));
+  const head = [...cols, ...matCols].map(c => {
+    const active = teamSort.key === c.k;
+    return `<th class="sortable${c.num === false ? "" : " num"}" aria-sort="${active ? (teamSort.dir === 1 ? "ascending" : "descending") : "none"}"><button type="button" class="sorth" data-sort="${c.k}">${c.lbl}${active ? `<span class="arr">${teamSort.dir === 1 ? "▲" : "▼"}</span>` : ""}</button></th>`;
+  }).join("");
+  const rows = team.map(r => {
+    const noOut = !r.calls && !r.emails && !r.texts;
+    const shown = r.apptsScheduled ? r.shownPct : null;
+    const sp = shown == null ? `<span class="shown-pill na">—</span>` : `<span class="shown-pill ${shown >= .7 ? "good" : "warn"}">${fmtPct(shown)}</span>`;
+    const mat = matCols.map(c => `<td class="num">${r.matador ? fmtN(val(r, c.k)) : "—"}</td>`).join("");
+    return `<tr>
+      <td class="name">${esc(r.name)}${noOut ? '<span class="flag">NO OUTBOUND</span>' : ""}</td>
+      <td class="num">${fmtN(r.goodLeads)}</td><td class="num">${fmtN(r.sold)}</td>
+      <td class="num">${fmtN(r.apptsScheduled)}</td><td class="num">${fmtN(r.apptsShown)}</td>
+      <td class="num">${sp}</td>
+      <td class="num"><span class="bar" style="width:${Math.round(r.calls / maxCalls * 60)}px"></span>${fmtN(r.calls)}</td>
+      <td class="num">${fmtN(r.emails)}</td><td class="num">${fmtN(r.texts)}</td>${mat}</tr>`;
+  }).join("");
+  const t = s.salesTeamTotals;
+  const foot = t ? `<tr><td class="name">TEAM TOTAL</td><td class="num">${fmtN(t.goodLeads)}</td><td class="num">${fmtN(t.sold)}</td><td class="num">${fmtN(t.apptsScheduled)}</td><td class="num">${fmtN(t.apptsShown)}</td><td class="num">${fmtPct(t.shownPct)}</td><td class="num">${fmtN(t.calls)}</td><td class="num">${fmtN(t.emails)}</td><td class="num">${fmtN(t.texts)}</td>${matCols.map(() => '<td class="num"></td>').join("")}</tr>` : "";
+  const matOther = (s.matadorOther && s.matadorOther.length) ? `
+    <details class="extra"><summary>Matador users not on the sales report (${s.matadorOther.length}) — managers, BDC &amp; admins</summary>
+    <div class="tblwrap" style="margin-top:8px"><table>
+      <thead><tr><th>User</th><th>Role</th><th class="num">Msgs sent</th><th class="num">Videos</th><th class="num">Clients msgd</th><th class="num">Assigned</th><th class="num">Last activity</th></tr></thead>
+      <tbody>${s.matadorOther.map(m => `<tr><td class="name">${esc(m.name)}</td><td>${esc(m.role)}</td><td class="num">${fmtN(m.messagesSent)}</td><td class="num">${fmtN(m.videosSent)}</td><td class="num">${fmtN(m.clientsMessaged)}</td><td class="num">${fmtN(m.assignedClients)}</td><td class="num">${esc(m.lastActivity)}</td></tr>`).join("")}</tbody>
+    </table></div></details>` : "";
+  return `<h2>Salesperson activity <span class="sub">${esc(s.salesTeamPeriod || "")}${hasMat ? " · CRM + Matador merged by rep" : ""}</span></h2>
+    <div class="tblwrap"><table id="team-tbl">
+      <thead>${hasMat ? `<tr class="groups"><th colspan="9">CRM (${esc(s.crm)})</th><th colspan="3">Matador AI</th></tr>` : ""}<tr>${head}</tr></thead>
+      <tbody>${rows}</tbody><tfoot>${foot}</tfoot>
+    </table></div>
+    <div class="footnotes">
+      <p>Click a column to sort. Shown % is green at ≥ 70%. “NO OUTBOUND” = zero calls, emails and texts logged this period. CRM house accounts (e.g. store-level users) are excluded.</p>
+      ${hasMat ? "<p>Sold counts can be fractional (split deals) and use this report’s sold statuses, so totals may differ slightly from the KPI table above.</p>" : ""}
+    </div>${matOther}`;
+}
+function renderStore(el, id) {
+  const s = DATA.stores.find(x => x.id === id);
+  if (!s) { el.innerHTML = `<p>Store not found. <a class="plain" href="#/overview">Back to overview</a></p>`; return; }
+  const st = storeStatus(s);
+  const c = s.kpiCurrent.total, p = s.kpiPrior && s.kpiPrior.total;
+  const closing = c.goodLeads ? c.sold / c.goodLeads : null, pClosing = p && p.goodLeads ? p.sold / p.goodLeads : null;
+  const twoDay = /Jul 1–2/.test(s.currentPeriod.label);
+  const tiles = [
+    { lbl: "Good leads", v: fmtN(c.goodLeads), pv: p && fmtN(p.goodLeads), d: p && deltaHtml(c.goodLeads, p.goodLeads) },
+    { lbl: "Sold", v: fmtN(c.sold), pv: p && fmtN(p.sold), d: p && deltaHtml(c.sold, p.sold) },
+    { lbl: "Closing rate", v: closing == null ? "—" : fmtPct(closing), pv: pClosing != null ? fmtPct(pClosing) : null, d: null },
+    { lbl: "Internet contact %", v: fmtPct(c.contactPct, true), pv: p && fmtPct(p.contactPct, true), d: null },
+    { lbl: "Appt set of contacted", v: fmtPct(c.apptSetOfContactedPct, true), pv: p && fmtPct(p.apptSetOfContactedPct, true), d: null },
+    { lbl: "Appts shown", v: fmtN(c.apptsShown), pv: p && fmtN(p.apptsShown), d: p && deltaHtml(c.apptsShown, p.apptsShown) },
+  ];
+  el.innerHTML = `
+    <nav class="crumb"><a class="plain" href="#/overview">← All stores</a>
+      <label>Switch store <select id="d-switch">${DATA.stores.map(x => `<option value="${esc(x.id)}"${x.id === s.id ? " selected" : ""}>${esc(x.name)}${x.demo ? " (demo)" : ""}</option>`).join("")}</select></label>
+    </nav>
+    <header>
+      <div class="dhead"><h1>${esc(s.name)}</h1>${s.demo ? '<span class="badge-demo">Demo</span>' : ""}${statusPill(st)}</div>
+      <div class="dmeta">${chipsHtml(s)} &nbsp; ${esc(s.currentPeriod.label)}${s.priorPeriod ? " · compared with " + esc(s.priorPeriod.label) : ""}</div>
+      <div class="dmeta">Status: <strong>${st.label}</strong> — ${esc(st.why)}</div>
+      ${s.demo ? `<div class="banner demo">Demo store — illustrative numbers only, to preview how a ${esc(s.crm)}-based client plugs into the same dashboard.</div>` : ""}
+      ${twoDay && !s.demo ? `<div class="banner info">Early-month sample: this comparison covers only the first 2 days of the month, so percentages swing widely.</div>` : ""}
+    </header>
+    <div class="tiles">${tiles.map(t => `<div class="tile"><div class="lbl">${t.lbl}</div><div class="v">${t.v}</div>${t.pv ? `<div class="vs">prev ${t.pv} ${t.d || ""}</div>` : ""}</div>`).join("")}</div>
+    <h2>MTD KPI comparison <span class="sub">${p ? "current vs same days last month, by lead type" : "current period by lead type — no prior baseline provided"}</span></h2>
+    ${kpiTable(s)}
+    <div id="team-sec">${teamTable(s)}</div>
+    <p class="pagefoot">${esc(s.notes || "")}</p>`;
+  $("#d-switch", el).onchange = e => { location.hash = "#/store/" + e.target.value; };
+  el.querySelectorAll(".tgl").forEach(b => b.onclick = () => {
+    const id = b.dataset.tgl, open = b.getAttribute("aria-expanded") === "true";
+    b.setAttribute("aria-expanded", String(!open));
+    el.querySelectorAll(`[data-parent="${id}"]`).forEach(tr => {
+      if (open) { // collapse: also collapse grandchildren
+        tr.hidden = true;
+        const btn = tr.querySelector(".tgl");
+        if (btn) { btn.setAttribute("aria-expanded", "false"); el.querySelectorAll(`[data-parent="${btn.dataset.tgl}"]`).forEach(x => x.hidden = true); }
+      } else tr.hidden = false;
+    });
+  });
+  function bindTeamSort() {
+    el.querySelectorAll("#team-sec .sorth").forEach(b => b.onclick = () => {
+      const k = b.dataset.sort;
+      if (teamSort.key === k) teamSort.dir *= -1; else { teamSort.key = k; teamSort.dir = k === "name" ? 1 : -1; }
+      const det = $("#team-sec details.extra", el);
+      const wasOpen = det && det.open;
+      $("#team-sec", el).innerHTML = teamTable(s);
+      const det2 = $("#team-sec details.extra", el);
+      if (det2 && wasOpen) det2.open = true;
+      bindTeamSort();
+    });
+  }
+  bindTeamSort();
+}
+
+/* ---------------- sources ---------------- */
+function renderSources(el) {
+  const apiChip = a => a === "available" ? '<span class="chip ok"><span class="dot"></span>API available</span>'
+    : a === "requested" ? '<span class="chip pend"><span class="dot"></span>API access requested</span>'
+    : '<span class="chip unk"><span class="dot"></span>API unknown</span>';
+  const mailChip = m => m ? '<span class="chip ok"><span class="dot"></span>Daily email export</span>' : '<span class="chip no"><span class="dot"></span>Manual download only</span>';
+  el.innerHTML = `
+  <h2 style="margin-top:4px">Where the numbers come from <span class="sub">per-system ingestion status across the client base</span></h2>
+  <div class="src-grid">${DATA.integrations.map(i => `
+    <div class="src">
+      <div class="top"><span class="nm">${esc(i.name)}</span><span class="ty">${esc(i.type)}</span></div>
+      <div class="cov">${esc(i.coverage)}</div>
+      <div class="chips">${apiChip(i.api)}${mailChip(i.scheduledEmail)}</div>
+      <div class="note">${esc(i.note)}</div>
+    </div>`).join("")}</div>
+  <h2>How data flows today</h2>
+  <div class="flow">
+    <div class="step"><div class="n">Step 1 · Collect</div><div class="t">Scheduled report emails</div><div class="d">Each CRM emails its Enterprise Performance / activity export daily. Matador is still a manual CSV from the Users tab.</div></div>
+    <div class="step"><div class="n">Step 2 · Normalize</div><div class="t">Parse into one schema</div><div class="d">Store, period, lead type, inventory, salesperson — every source lands in the same shape, so stores on different CRMs compare apples to apples.</div></div>
+    <div class="step"><div class="n">Step 3 · Publish</div><div class="t">Dashboard refresh</div><div class="d">Group overview for the consulting team; per-store login shows a dealership only its own numbers.</div></div>
+    <div class="step"><div class="n">Next · APIs</div><div class="t">Replace email with APIs</div><div class="d">VinSolutions, Tekion and Momentum API access is in progress — that removes the email hop and enables intraday refresh.</div></div>
+  </div>
+  <p class="pagefoot">Prototype data: VinSolutions “Enterprise Performance” exports (run Jun 22 &amp; Jul 2, 2026) for Vern Eide Honda, 777 Nissan and Armstrong Subaru, plus the Matador MTD user report for Vern Eide Honda. Demo stores are illustrative.</p>`;
+}
+
+/* ---------------- router ---------------- */
+function render() {
+  const el = $("#app");
+  const h = location.hash || "#/overview";
+  const storeM = h.match(/^#\/store\/(.+)$/);
+  const view = storeM ? "store" : (h === "#/sources" ? "sources" : "overview");
+  document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.view === view || (view === "store" && t.dataset.view === "overview")));
+  if (view === "store") {
+    let sid = storeM[1];
+    try { sid = decodeURIComponent(sid); } catch (e) { /* malformed escape — fall through to "store not found" */ }
+    renderStore(el, sid);
+  }
+  else if (view === "sources") renderSources(el);
+  else renderOverview(el);
+  window.scrollTo(0, 0);
+}
+document.querySelectorAll(".tab").forEach(t => t.onclick = () => { location.hash = "#/" + t.dataset.view; });
+$("#asof").textContent = "Data as of Jun 22 & Jul 2, 2026 · " + DATA.stores.filter(s => !s.demo).length + " live stores";
+window.addEventListener("hashchange", render);
+render();
+</script>

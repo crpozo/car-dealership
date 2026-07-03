@@ -1,0 +1,2837 @@
+{
+ "generatedAt": "2026-07-03",
+ "stores": [
+  {
+   "id": "vern-eide-honda",
+   "name": "Vern Eide Honda",
+   "demo": false,
+   "crm": "VinSolutions",
+   "tools": [
+    "Matador"
+   ],
+   "location": "Sioux Falls, SD",
+   "currentPeriod": {
+    "label": "Jun 1\u201322, 2026 (MTD)",
+    "exported": "Jun 22, 2026"
+   },
+   "priorPeriod": null,
+   "kpiCurrent": {
+    "total": {
+     "goodLeads": 568,
+     "sold": 214,
+     "contactPct": 0.6302,
+     "apptSetOfContactedPct": 0.3863,
+     "apptsShown": 171
+    },
+    "byLeadType": [
+     {
+      "leadType": "Import",
+      "metrics": {
+       "goodLeads": 0,
+       "sold": 0,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0,
+       "apptsShown": 1
+      },
+      "byInventory": [
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 0,
+         "sold": 0,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0,
+         "apptsShown": 1
+        },
+        "byMake": [
+         {
+          "make": "Titan",
+          "metrics": {
+           "goodLeads": 0,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 1,
+           "apptsShown": 1
+          }
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "leadType": "Internet",
+      "metrics": {
+       "goodLeads": 192,
+       "sold": 33,
+       "contactPct": 0.6302,
+       "apptSetOfContactedPct": 0.4132,
+       "apptsShown": 45
+      },
+      "byInventory": [
+       {
+        "inventoryType": "Certified",
+        "metrics": {
+         "goodLeads": 26,
+         "sold": 0,
+         "contactPct": 0.6923,
+         "apptSetOfContactedPct": 0.3333,
+         "apptsShown": 4
+        },
+        "byMake": [
+         {
+          "make": "Honda",
+          "metrics": {
+           "goodLeads": 26,
+           "sold": 0,
+           "contactPct": 0.6923,
+           "apptSetOfContactedPct": 0.3333,
+           "apptsShown": 4
+          }
+         }
+        ]
+       },
+       {
+        "inventoryType": "New",
+        "metrics": {
+         "goodLeads": 57,
+         "sold": 13,
+         "contactPct": 0.6491,
+         "apptSetOfContactedPct": 0.4865,
+         "apptsShown": 16
+        },
+        "byMake": [
+         {
+          "make": "Honda",
+          "metrics": {
+           "goodLeads": 56,
+           "sold": 13,
+           "contactPct": 0.6607,
+           "apptSetOfContactedPct": 0.4595,
+           "apptsShown": 15
+          }
+         },
+         {
+          "make": "Mitsubishi",
+          "metrics": {
+           "goodLeads": 0,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 1,
+           "apptsShown": 1
+          }
+         },
+         {
+          "make": "Unknown Make",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         }
+        ]
+       },
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 109,
+         "sold": 20,
+         "contactPct": 0.6055,
+         "apptSetOfContactedPct": 0.3939,
+         "apptsShown": 25
+        },
+        "byMake": [
+         {
+          "make": "BMW",
+          "metrics": {
+           "goodLeads": 3,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Buick",
+          "metrics": {
+           "goodLeads": 4,
+           "sold": 0,
+           "contactPct": 0.5,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Chevrolet",
+          "metrics": {
+           "goodLeads": 5,
+           "sold": 2,
+           "contactPct": 0.8,
+           "apptSetOfContactedPct": 0.5,
+           "apptsShown": 1
+          }
+         },
+         {
+          "make": "Dodge",
+          "metrics": {
+           "goodLeads": 4,
+           "sold": 0,
+           "contactPct": 1,
+           "apptSetOfContactedPct": 0.25,
+           "apptsShown": 1
+          }
+         },
+         {
+          "make": "Ford",
+          "metrics": {
+           "goodLeads": 13,
+           "sold": 4,
+           "contactPct": 0.6923,
+           "apptSetOfContactedPct": 0.5556,
+           "apptsShown": 5
+          }
+         },
+         {
+          "make": "GMC",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Honda",
+          "metrics": {
+           "goodLeads": 27,
+           "sold": 13,
+           "contactPct": 0.7778,
+           "apptSetOfContactedPct": 0.6667,
+           "apptsShown": 15
+          }
+         },
+         {
+          "make": "Hyundai",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Jeep",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Kia",
+          "metrics": {
+           "goodLeads": 3,
+           "sold": 0,
+           "contactPct": 0.3333,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Lincoln",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 0,
+           "contactPct": 1,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Mazda",
+          "metrics": {
+           "goodLeads": 2,
+           "sold": 0,
+           "contactPct": 0.5,
+           "apptSetOfContactedPct": 1,
+           "apptsShown": 1
+          }
+         },
+         {
+          "make": "Mitsubishi",
+          "metrics": {
+           "goodLeads": 3,
+           "sold": 0,
+           "contactPct": 1,
+           "apptSetOfContactedPct": 0.3333,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Nissan",
+          "metrics": {
+           "goodLeads": 4,
+           "sold": 0,
+           "contactPct": 0.25,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Ram",
+          "metrics": {
+           "goodLeads": 2,
+           "sold": 0,
+           "contactPct": 1,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Subaru",
+          "metrics": {
+           "goodLeads": 0,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Toyota",
+          "metrics": {
+           "goodLeads": 3,
+           "sold": 1,
+           "contactPct": 0.3333,
+           "apptSetOfContactedPct": 1,
+           "apptsShown": 1
+          }
+         },
+         {
+          "make": "Unknown Make",
+          "metrics": {
+           "goodLeads": 32,
+           "sold": 0,
+           "contactPct": 0.5,
+           "apptSetOfContactedPct": 0.0625,
+           "apptsShown": 1
+          }
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "leadType": "Phone",
+      "metrics": {
+       "goodLeads": 108,
+       "sold": 48,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.6667,
+       "apptsShown": 62
+      },
+      "byInventory": [
+       {
+        "inventoryType": "Certified",
+        "metrics": {
+         "goodLeads": 14,
+         "sold": 1,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0.2143,
+         "apptsShown": 2
+        },
+        "byMake": [
+         {
+          "make": "Honda",
+          "metrics": {
+           "goodLeads": 14,
+           "sold": 1,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.2143,
+           "apptsShown": 2
+          }
+         }
+        ]
+       },
+       {
+        "inventoryType": "New",
+        "metrics": {
+         "goodLeads": 53,
+         "sold": 28,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0.7925,
+         "apptsShown": 40
+        },
+        "byMake": [
+         {
+          "make": "Honda",
+          "metrics": {
+           "goodLeads": 51,
+           "sold": 28,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.7843,
+           "apptsShown": 38
+          }
+         },
+         {
+          "make": "Unknown Make",
+          "metrics": {
+           "goodLeads": 2,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 1,
+           "apptsShown": 2
+          }
+         }
+        ]
+       },
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 41,
+         "sold": 19,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0.6585,
+         "apptsShown": 20
+        },
+        "byMake": [
+         {
+          "make": "Acura",
+          "metrics": {
+           "goodLeads": 3,
+           "sold": 1,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.3333,
+           "apptsShown": 1
+          }
+         },
+         {
+          "make": "Audi",
+          "metrics": {
+           "goodLeads": 2,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Buick",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 1,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Chevrolet",
+          "metrics": {
+           "goodLeads": 4,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.5,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Ford",
+          "metrics": {
+           "goodLeads": 5,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.2,
+           "apptsShown": 1
+          }
+         },
+         {
+          "make": "GMC",
+          "metrics": {
+           "goodLeads": 2,
+           "sold": 1,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 1,
+           "apptsShown": 2
+          }
+         },
+         {
+          "make": "Honda",
+          "metrics": {
+           "goodLeads": 17,
+           "sold": 15,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.7647,
+           "apptsShown": 12
+          }
+         },
+         {
+          "make": "Jeep",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 2,
+           "apptsShown": 1
+          }
+         },
+         {
+          "make": "Nissan",
+          "metrics": {
+           "goodLeads": 2,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.5,
+           "apptsShown": 1
+          }
+         },
+         {
+          "make": "Ram",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 1,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 2,
+           "apptsShown": 2
+          }
+         },
+         {
+          "make": "Toyota",
+          "metrics": {
+           "goodLeads": 3,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 1,
+           "apptsShown": 0
+          }
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "leadType": "PreviousCustomer",
+      "metrics": {
+       "goodLeads": 39,
+       "sold": 23,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.2564,
+       "apptsShown": 10
+      },
+      "byInventory": [
+       {
+        "inventoryType": "Certified",
+        "metrics": {
+         "goodLeads": 1,
+         "sold": 0,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0,
+         "apptsShown": 0
+        },
+        "byMake": [
+         {
+          "make": "Honda",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         }
+        ]
+       },
+       {
+        "inventoryType": "New",
+        "metrics": {
+         "goodLeads": 25,
+         "sold": 14,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0.24,
+         "apptsShown": 6
+        },
+        "byMake": [
+         {
+          "make": "Honda",
+          "metrics": {
+           "goodLeads": 25,
+           "sold": 14,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.24,
+           "apptsShown": 6
+          }
+         }
+        ]
+       },
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 13,
+         "sold": 9,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0.3077,
+         "apptsShown": 4
+        },
+        "byMake": [
+         {
+          "make": "Buick",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 1,
+           "apptsShown": 1
+          }
+         },
+         {
+          "make": "Chevrolet",
+          "metrics": {
+           "goodLeads": 2,
+           "sold": 1,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Ford",
+          "metrics": {
+           "goodLeads": 2,
+           "sold": 2,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.5,
+           "apptsShown": 1
+          }
+         },
+         {
+          "make": "Honda",
+          "metrics": {
+           "goodLeads": 7,
+           "sold": 5,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.2857,
+           "apptsShown": 2
+          }
+         },
+         {
+          "make": "Toyota",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 1,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "leadType": "Referral",
+      "metrics": {
+       "goodLeads": 6,
+       "sold": 4,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.3333,
+       "apptsShown": 2
+      },
+      "byInventory": [
+       {
+        "inventoryType": "Certified",
+        "metrics": {
+         "goodLeads": 0,
+         "sold": 0,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0,
+         "apptsShown": 0
+        },
+        "byMake": [
+         {
+          "make": "Honda",
+          "metrics": {
+           "goodLeads": 0,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         }
+        ]
+       },
+       {
+        "inventoryType": "New",
+        "metrics": {
+         "goodLeads": 3,
+         "sold": 3,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0.3333,
+         "apptsShown": 1
+        },
+        "byMake": [
+         {
+          "make": "Honda",
+          "metrics": {
+           "goodLeads": 3,
+           "sold": 3,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.3333,
+           "apptsShown": 1
+          }
+         }
+        ]
+       },
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 3,
+         "sold": 1,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0.3333,
+         "apptsShown": 1
+        },
+        "byMake": [
+         {
+          "make": "Acura",
+          "metrics": {
+           "goodLeads": 0,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Buick",
+          "metrics": {
+           "goodLeads": 0,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Dodge",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Ford",
+          "metrics": {
+           "goodLeads": 0,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "GMC",
+          "metrics": {
+           "goodLeads": 0,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Honda",
+          "metrics": {
+           "goodLeads": 2,
+           "sold": 1,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.5,
+           "apptsShown": 1
+          }
+         },
+         {
+          "make": "Nissan",
+          "metrics": {
+           "goodLeads": 0,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Ram",
+          "metrics": {
+           "goodLeads": 0,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "leadType": "Walk-in",
+      "metrics": {
+       "goodLeads": 223,
+       "sold": 106,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.2556,
+       "apptsShown": 51
+      },
+      "byInventory": [
+       {
+        "inventoryType": "Certified",
+        "metrics": {
+         "goodLeads": 24,
+         "sold": 0,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0.125,
+         "apptsShown": 3
+        },
+        "byMake": [
+         {
+          "make": "Honda",
+          "metrics": {
+           "goodLeads": 24,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.125,
+           "apptsShown": 3
+          }
+         }
+        ]
+       },
+       {
+        "inventoryType": "New",
+        "metrics": {
+         "goodLeads": 118,
+         "sold": 54,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0.2627,
+         "apptsShown": 28
+        },
+        "byMake": [
+         {
+          "make": "Honda",
+          "metrics": {
+           "goodLeads": 115,
+           "sold": 54,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.2696,
+           "apptsShown": 28
+          }
+         },
+         {
+          "make": "Unknown Make",
+          "metrics": {
+           "goodLeads": 3,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         }
+        ]
+       },
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 81,
+         "sold": 52,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0.284,
+         "apptsShown": 20
+        },
+        "byMake": [
+         {
+          "make": "Acura",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 1,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Audi",
+          "metrics": {
+           "goodLeads": 0,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 1,
+           "apptsShown": 1
+          }
+         },
+         {
+          "make": "BMW",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 1,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Buick",
+          "metrics": {
+           "goodLeads": 3,
+           "sold": 3,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.6667,
+           "apptsShown": 2
+          }
+         },
+         {
+          "make": "Chevrolet",
+          "metrics": {
+           "goodLeads": 7,
+           "sold": 3,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.1429,
+           "apptsShown": 1
+          }
+         },
+         {
+          "make": "Chrysler",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Ford",
+          "metrics": {
+           "goodLeads": 9,
+           "sold": 1,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "GMC",
+          "metrics": {
+           "goodLeads": 2,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 1,
+           "apptsShown": 1
+          }
+         },
+         {
+          "make": "Honda",
+          "metrics": {
+           "goodLeads": 38,
+           "sold": 36,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.3421,
+           "apptsShown": 12
+          }
+         },
+         {
+          "make": "LINCOLN",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 1,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Mazda",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 1,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Mercedes-Benz",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Mitsubishi",
+          "metrics": {
+           "goodLeads": 4,
+           "sold": 3,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.5,
+           "apptsShown": 2
+          }
+         },
+         {
+          "make": "Nissan",
+          "metrics": {
+           "goodLeads": 3,
+           "sold": 1,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0.3333,
+           "apptsShown": 1
+          }
+         },
+         {
+          "make": "Ram",
+          "metrics": {
+           "goodLeads": 3,
+           "sold": 0,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Subaru",
+          "metrics": {
+           "goodLeads": 1,
+           "sold": 1,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         },
+         {
+          "make": "Toyota",
+          "metrics": {
+           "goodLeads": 5,
+           "sold": 1,
+           "contactPct": 0,
+           "apptSetOfContactedPct": 0,
+           "apptsShown": 0
+          }
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "kpiPrior": null,
+   "salesTeam": [
+    {
+     "name": "Blake Anderson",
+     "goodLeads": 21,
+     "sold": 7.5,
+     "apptsScheduled": 11,
+     "apptsShown": 9,
+     "shownPct": 0.8182,
+     "calls": 142,
+     "emails": 12,
+     "texts": 14,
+     "matador": {
+      "messagesSent": 155,
+      "videosSent": 0,
+      "clientsMessaged": 63,
+      "assignedClients": 41,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Brandt Adamski",
+     "goodLeads": 13,
+     "sold": 7.5,
+     "apptsScheduled": 8,
+     "apptsShown": 8,
+     "shownPct": 1,
+     "calls": 148,
+     "emails": 8,
+     "texts": 4,
+     "matador": {
+      "messagesSent": 73,
+      "videosSent": 0,
+      "clientsMessaged": 48,
+      "assignedClients": 29,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Cade Clayberg",
+     "goodLeads": 25,
+     "sold": 4.5,
+     "apptsScheduled": 3,
+     "apptsShown": 3,
+     "shownPct": 1,
+     "calls": 84,
+     "emails": 2,
+     "texts": 1,
+     "matador": {
+      "messagesSent": 239,
+      "videosSent": 0,
+      "clientsMessaged": 72,
+      "assignedClients": 30,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Carlos Melgoza",
+     "goodLeads": 26,
+     "sold": 8,
+     "apptsScheduled": 4,
+     "apptsShown": 4,
+     "shownPct": 1,
+     "calls": 93,
+     "emails": 10,
+     "texts": 19,
+     "matador": {
+      "messagesSent": 25,
+      "videosSent": 0,
+      "clientsMessaged": 19,
+      "assignedClients": 27,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Courtney Snoozy",
+     "goodLeads": 25,
+     "sold": 8.5,
+     "apptsScheduled": 7,
+     "apptsShown": 6,
+     "shownPct": 0.8571,
+     "calls": 210,
+     "emails": 7,
+     "texts": 0,
+     "matador": {
+      "messagesSent": 121,
+      "videosSent": 2,
+      "clientsMessaged": 81,
+      "assignedClients": 62,
+      "apptsCreated": 2,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Emerson Otten",
+     "goodLeads": 19,
+     "sold": 8.5,
+     "apptsScheduled": 12,
+     "apptsShown": 8,
+     "shownPct": 0.6667,
+     "calls": 148,
+     "emails": 0,
+     "texts": 0,
+     "matador": {
+      "messagesSent": 128,
+      "videosSent": 0,
+      "clientsMessaged": 72,
+      "assignedClients": 27,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Emir Kantarevic",
+     "goodLeads": 33,
+     "sold": 12,
+     "apptsScheduled": 7,
+     "apptsShown": 6,
+     "shownPct": 0.8571,
+     "calls": 140,
+     "emails": 6,
+     "texts": 0,
+     "matador": {
+      "messagesSent": 17,
+      "videosSent": 0,
+      "clientsMessaged": 11,
+      "assignedClients": 50,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Gordy Anderson",
+     "goodLeads": 13,
+     "sold": 8,
+     "apptsScheduled": 0,
+     "apptsShown": 0,
+     "shownPct": 0,
+     "calls": 282,
+     "emails": 97,
+     "texts": 0,
+     "matador": {
+      "messagesSent": 0,
+      "videosSent": 0,
+      "clientsMessaged": 0,
+      "assignedClients": 28,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-16"
+     }
+    },
+    {
+     "name": "Hunter Otten",
+     "goodLeads": 21,
+     "sold": 9.5,
+     "apptsScheduled": 3,
+     "apptsShown": 3,
+     "shownPct": 1,
+     "calls": 114,
+     "emails": 2,
+     "texts": 0,
+     "matador": {
+      "messagesSent": 57,
+      "videosSent": 0,
+      "clientsMessaged": 41,
+      "assignedClients": 42,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Istvan Szabadi",
+     "goodLeads": 65,
+     "sold": 6,
+     "apptsScheduled": 10,
+     "apptsShown": 8,
+     "shownPct": 0.8,
+     "calls": 542,
+     "emails": 122,
+     "texts": 0,
+     "matador": {
+      "messagesSent": 469,
+      "videosSent": 0,
+      "clientsMessaged": 178,
+      "assignedClients": 94,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Jacob Larson",
+     "goodLeads": 51,
+     "sold": 4,
+     "apptsScheduled": 6,
+     "apptsShown": 5,
+     "shownPct": 0.8333,
+     "calls": 367,
+     "emails": 133,
+     "texts": 2,
+     "matador": {
+      "messagesSent": 319,
+      "videosSent": 0,
+      "clientsMessaged": 126,
+      "assignedClients": 67,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Jared Fields",
+     "goodLeads": 21,
+     "sold": 8,
+     "apptsScheduled": 11,
+     "apptsShown": 11,
+     "shownPct": 1,
+     "calls": 138,
+     "emails": 8,
+     "texts": 2,
+     "matador": {
+      "messagesSent": 14,
+      "videosSent": 0,
+      "clientsMessaged": 8,
+      "assignedClients": 50,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Jill Baier",
+     "goodLeads": 32,
+     "sold": 8,
+     "apptsScheduled": 7,
+     "apptsShown": 7,
+     "shownPct": 1,
+     "calls": 14,
+     "emails": 16,
+     "texts": 1,
+     "matador": {
+      "messagesSent": 107,
+      "videosSent": 0,
+      "clientsMessaged": 73,
+      "assignedClients": 46,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Jordan Konda",
+     "goodLeads": 60,
+     "sold": 10,
+     "apptsScheduled": 13,
+     "apptsShown": 9,
+     "shownPct": 0.6923,
+     "calls": 378,
+     "emails": 108,
+     "texts": 7,
+     "matador": {
+      "messagesSent": 645,
+      "videosSent": 1,
+      "clientsMessaged": 168,
+      "assignedClients": 101,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Josh Cooper",
+     "goodLeads": 33,
+     "sold": 11,
+     "apptsScheduled": 13,
+     "apptsShown": 11,
+     "shownPct": 0.8462,
+     "calls": 177,
+     "emails": 21,
+     "texts": 1,
+     "matador": {
+      "messagesSent": 106,
+      "videosSent": 0,
+      "clientsMessaged": 54,
+      "assignedClients": 51,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Justin Dziobecki",
+     "goodLeads": 12,
+     "sold": 6.5,
+     "apptsScheduled": 3,
+     "apptsShown": 3,
+     "shownPct": 1,
+     "calls": 73,
+     "emails": 6,
+     "texts": 0,
+     "matador": {
+      "messagesSent": 121,
+      "videosSent": 0,
+      "clientsMessaged": 50,
+      "assignedClients": 27,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Karen Heege",
+     "goodLeads": 17,
+     "sold": 4.5,
+     "apptsScheduled": 5,
+     "apptsShown": 5,
+     "shownPct": 1,
+     "calls": 99,
+     "emails": 2,
+     "texts": 1,
+     "matador": {
+      "messagesSent": 13,
+      "videosSent": 0,
+      "clientsMessaged": 11,
+      "assignedClients": 38,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-21"
+     }
+    },
+    {
+     "name": "Marco Jauregui",
+     "goodLeads": 19,
+     "sold": 8,
+     "apptsScheduled": 9,
+     "apptsShown": 9,
+     "shownPct": 1,
+     "calls": 73,
+     "emails": 6,
+     "texts": 1,
+     "matador": {
+      "messagesSent": 26,
+      "videosSent": 0,
+      "clientsMessaged": 22,
+      "assignedClients": 27,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-20"
+     }
+    },
+    {
+     "name": "Noah Stoebner",
+     "goodLeads": 21,
+     "sold": 4.5,
+     "apptsScheduled": 13,
+     "apptsShown": 10,
+     "shownPct": 0.7692,
+     "calls": 67,
+     "emails": 2,
+     "texts": 0,
+     "matador": {
+      "messagesSent": 81,
+      "videosSent": 7,
+      "clientsMessaged": 37,
+      "assignedClients": 28,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Nolan Hoback",
+     "goodLeads": 17,
+     "sold": 5,
+     "apptsScheduled": 7,
+     "apptsShown": 6,
+     "shownPct": 0.8571,
+     "calls": 102,
+     "emails": 10,
+     "texts": 0,
+     "matador": {
+      "messagesSent": 0,
+      "videosSent": 0,
+      "clientsMessaged": 0,
+      "assignedClients": 24,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Randy Finch",
+     "goodLeads": 6,
+     "sold": 5.5,
+     "apptsScheduled": 2,
+     "apptsShown": 2,
+     "shownPct": 1,
+     "calls": 118,
+     "emails": 28,
+     "texts": 13,
+     "matador": {
+      "messagesSent": 4,
+      "videosSent": 0,
+      "clientsMessaged": 4,
+      "assignedClients": 36,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Tony Jensen",
+     "goodLeads": 31,
+     "sold": 13.5,
+     "apptsScheduled": 9,
+     "apptsShown": 9,
+     "shownPct": 1,
+     "calls": 93,
+     "emails": 3,
+     "texts": 0,
+     "matador": {
+      "messagesSent": 26,
+      "videosSent": 0,
+      "clientsMessaged": 18,
+      "assignedClients": 40,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    },
+    {
+     "name": "Zachary Schroeder",
+     "goodLeads": 72,
+     "sold": 13,
+     "apptsScheduled": 20,
+     "apptsShown": 15,
+     "shownPct": 0.75,
+     "calls": 288,
+     "emails": 131,
+     "texts": 53,
+     "matador": {
+      "messagesSent": 458,
+      "videosSent": 0,
+      "clientsMessaged": 97,
+      "assignedClients": 92,
+      "apptsCreated": 0,
+      "lastActivity": "2026-06-22"
+     }
+    }
+   ],
+   "salesTeamTotals": {
+    "name": "TOTAL",
+    "goodLeads": 653,
+    "sold": 181.5,
+    "apptsScheduled": 183,
+    "apptsShown": 157,
+    "shownPct": 0.8579,
+    "calls": 3890,
+    "emails": 740,
+    "texts": 119
+   },
+   "salesTeamPeriod": "Jun 1\u201322, 2026 (MTD)",
+   "matadorOther": [
+    {
+     "name": "Steve Eggebraaten",
+     "role": "Admin",
+     "lastActivity": "2026-06-22",
+     "apptsCreated": 0,
+     "videosSent": 0,
+     "messagesSent": 73,
+     "reviewInvites": 0,
+     "clientsMessaged": 54,
+     "assignedClients": 319
+    },
+    {
+     "name": "Alec Skidmore",
+     "role": "Support Agent",
+     "lastActivity": "2026-06-22",
+     "apptsCreated": 0,
+     "videosSent": 0,
+     "messagesSent": 59,
+     "reviewInvites": 0,
+     "clientsMessaged": 46,
+     "assignedClients": 36
+    },
+    {
+     "name": "Ronnie Stovall",
+     "role": "Manager",
+     "lastActivity": "2026-06-22",
+     "apptsCreated": 0,
+     "videosSent": 0,
+     "messagesSent": 38,
+     "reviewInvites": 0,
+     "clientsMessaged": 35,
+     "assignedClients": 114
+    },
+    {
+     "name": "Alex Wiese",
+     "role": "Admin",
+     "lastActivity": "2026-06-22",
+     "apptsCreated": 0,
+     "videosSent": 0,
+     "messagesSent": 11,
+     "reviewInvites": 0,
+     "clientsMessaged": 9,
+     "assignedClients": 211
+    },
+    {
+     "name": "Scott Mcdonald",
+     "role": "Admin",
+     "lastActivity": "2026-06-22",
+     "apptsCreated": 0,
+     "videosSent": 1,
+     "messagesSent": 9,
+     "reviewInvites": 0,
+     "clientsMessaged": 9,
+     "assignedClients": 3
+    },
+    {
+     "name": "Clint Otten",
+     "role": "Admin",
+     "lastActivity": "2026-06-22",
+     "apptsCreated": 0,
+     "videosSent": 0,
+     "messagesSent": 9,
+     "reviewInvites": 0,
+     "clientsMessaged": 8,
+     "assignedClients": 467
+    },
+    {
+     "name": "Peter Dappen",
+     "role": "Admin",
+     "lastActivity": "2026-06-22",
+     "apptsCreated": 0,
+     "videosSent": 0,
+     "messagesSent": 7,
+     "reviewInvites": 0,
+     "clientsMessaged": 7,
+     "assignedClients": 68
+    },
+    {
+     "name": "Jake Denomme",
+     "role": "Support Agent",
+     "lastActivity": "2026-06-22",
+     "apptsCreated": 0,
+     "videosSent": 0,
+     "messagesSent": 2,
+     "reviewInvites": 0,
+     "clientsMessaged": 1,
+     "assignedClients": 1
+    },
+    {
+     "name": "Justin Johnson",
+     "role": "Manager",
+     "lastActivity": "2026-06-09",
+     "apptsCreated": 0,
+     "videosSent": 0,
+     "messagesSent": 1,
+     "reviewInvites": 0,
+     "clientsMessaged": 1,
+     "assignedClients": 0
+    },
+    {
+     "name": "Noah Eggebraaten",
+     "role": "Support Agent",
+     "lastActivity": "2026-06-22",
+     "apptsCreated": 0,
+     "videosSent": 0,
+     "messagesSent": 1,
+     "reviewInvites": 0,
+     "clientsMessaged": 1,
+     "assignedClients": 1
+    },
+    {
+     "name": "Mariella Lurch",
+     "role": "Manager",
+     "lastActivity": "2025-06-27",
+     "apptsCreated": 0,
+     "videosSent": 0,
+     "messagesSent": 0,
+     "reviewInvites": 0,
+     "clientsMessaged": 0,
+     "assignedClients": 4
+    },
+    {
+     "name": "Nick Hoyt",
+     "role": "Manager",
+     "lastActivity": "2026-06-01",
+     "apptsCreated": 0,
+     "videosSent": 0,
+     "messagesSent": 0,
+     "reviewInvites": 0,
+     "clientsMessaged": 0,
+     "assignedClients": 2
+    },
+    {
+     "name": "Blake Bakker",
+     "role": "Support Agent",
+     "lastActivity": "2025-12-15",
+     "apptsCreated": 0,
+     "videosSent": 0,
+     "messagesSent": 0,
+     "reviewInvites": 0,
+     "clientsMessaged": 0,
+     "assignedClients": 2
+    },
+    {
+     "name": "Tim Stroup",
+     "role": "Support Agent",
+     "lastActivity": "2025-08-20",
+     "apptsCreated": 0,
+     "videosSent": 0,
+     "messagesSent": 0,
+     "reviewInvites": 0,
+     "clientsMessaged": 0,
+     "assignedClients": 6
+    },
+    {
+     "name": "Damon Olson",
+     "role": "Admin",
+     "lastActivity": "2026-05-08",
+     "apptsCreated": 0,
+     "videosSent": 0,
+     "messagesSent": 0,
+     "reviewInvites": 0,
+     "clientsMessaged": 0,
+     "assignedClients": 17
+    },
+    {
+     "name": "Ashley Mitchell",
+     "role": "Support Agent",
+     "lastActivity": "2026-02-25",
+     "apptsCreated": 0,
+     "videosSent": 0,
+     "messagesSent": 0,
+     "reviewInvites": 0,
+     "clientsMessaged": 0,
+     "assignedClients": 3
+    },
+    {
+     "name": "Leah Dejong",
+     "role": "Support Agent",
+     "lastActivity": "2026-06-20",
+     "apptsCreated": 0,
+     "videosSent": 0,
+     "messagesSent": 0,
+     "reviewInvites": 0,
+     "clientsMessaged": 0,
+     "assignedClients": 4
+    },
+    {
+     "name": "Amin Black",
+     "role": "Support Agent",
+     "lastActivity": "2026-06-22",
+     "apptsCreated": 0,
+     "videosSent": 0,
+     "messagesSent": 0,
+     "reviewInvites": 0,
+     "clientsMessaged": 0,
+     "assignedClients": 2
+    }
+   ],
+   "notes": "Source: VinSolutions Enterprise Performance exports + Matador Users report, exported Jun 22, 2026. No prior-month baseline file was provided for this store."
+  },
+  {
+   "id": "777-nissan",
+   "name": "777 Nissan",
+   "demo": false,
+   "crm": "VinSolutions",
+   "tools": [],
+   "location": "\u2014",
+   "currentPeriod": {
+    "label": "Jul 1\u20132, 2026 (MTD)",
+    "exported": "Jul 2, 2026"
+   },
+   "priorPeriod": {
+    "label": "Jun 1\u20132, 2026 (same days)"
+   },
+   "kpiCurrent": {
+    "total": {
+     "goodLeads": 31,
+     "sold": 2,
+     "contactPct": 0.2308,
+     "apptSetOfContactedPct": 1.5455,
+     "apptsShown": 1
+    },
+    "byLeadType": [
+     {
+      "leadType": "Internet",
+      "metrics": {
+       "goodLeads": 26,
+       "sold": 0,
+       "contactPct": 0.2308,
+       "apptSetOfContactedPct": 2.5,
+       "apptsShown": 1
+      },
+      "byInventory": [
+       {
+        "inventoryType": "New",
+        "metrics": {
+         "goodLeads": 8,
+         "sold": 0,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 2,
+         "apptsShown": 0
+        }
+       },
+       {
+        "inventoryType": "Unknown",
+        "metrics": {
+         "goodLeads": 7,
+         "sold": 0,
+         "contactPct": 0.4286,
+         "apptSetOfContactedPct": 0.6667,
+         "apptsShown": 0
+        }
+       },
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 11,
+         "sold": 0,
+         "contactPct": 0.2727,
+         "apptSetOfContactedPct": 3.6667,
+         "apptsShown": 1
+        }
+       }
+      ]
+     },
+     {
+      "leadType": "Phone",
+      "metrics": {
+       "goodLeads": 4,
+       "sold": 0,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.5,
+       "apptsShown": 0
+      },
+      "byInventory": [
+       {
+        "inventoryType": "Unknown",
+        "metrics": {
+         "goodLeads": 3,
+         "sold": 0,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0.6667,
+         "apptsShown": 0
+        }
+       },
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 1,
+         "sold": 0,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0,
+         "apptsShown": 0
+        }
+       }
+      ]
+     },
+     {
+      "leadType": "Referral",
+      "metrics": {
+       "goodLeads": 0,
+       "sold": 1,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0,
+       "apptsShown": 0
+      },
+      "byInventory": [
+       {
+        "inventoryType": "New",
+        "metrics": {
+         "goodLeads": 0,
+         "sold": 1,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0,
+         "apptsShown": 0
+        }
+       },
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 0,
+         "sold": 0,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0,
+         "apptsShown": 0
+        }
+       }
+      ]
+     },
+     {
+      "leadType": "Walk-in",
+      "metrics": {
+       "goodLeads": 1,
+       "sold": 1,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0,
+       "apptsShown": 0
+      },
+      "byInventory": [
+       {
+        "inventoryType": "New",
+        "metrics": {
+         "goodLeads": 0,
+         "sold": 0,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0,
+         "apptsShown": 0
+        }
+       },
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 1,
+         "sold": 1,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0,
+         "apptsShown": 0
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "kpiPrior": {
+    "total": {
+     "goodLeads": 46,
+     "sold": 6,
+     "contactPct": 0.9,
+     "apptSetOfContactedPct": 0.7907,
+     "apptsShown": 15
+    },
+    "byLeadType": [
+     {
+      "leadType": "Internet",
+      "metrics": {
+       "goodLeads": 30,
+       "sold": 1,
+       "contactPct": 0.9,
+       "apptSetOfContactedPct": 0.8148,
+       "apptsShown": 8
+      },
+      "byInventory": [
+       {
+        "inventoryType": "New",
+        "metrics": {
+         "goodLeads": 15,
+         "sold": 0,
+         "contactPct": 0.8667,
+         "apptSetOfContactedPct": 0.4615,
+         "apptsShown": 3
+        }
+       },
+       {
+        "inventoryType": "Unknown",
+        "metrics": {
+         "goodLeads": 1,
+         "sold": 0,
+         "contactPct": 1,
+         "apptSetOfContactedPct": 0,
+         "apptsShown": 0
+        }
+       },
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 14,
+         "sold": 1,
+         "contactPct": 0.9286,
+         "apptSetOfContactedPct": 1.2308,
+         "apptsShown": 5
+        }
+       }
+      ]
+     },
+     {
+      "leadType": "Phone",
+      "metrics": {
+       "goodLeads": 6,
+       "sold": 2,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 1,
+       "apptsShown": 4
+      },
+      "byInventory": [
+       {
+        "inventoryType": "Unknown",
+        "metrics": {
+         "goodLeads": 2,
+         "sold": 0,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0,
+         "apptsShown": 0
+        }
+       },
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 4,
+         "sold": 2,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 1.5,
+         "apptsShown": 4
+        }
+       }
+      ]
+     },
+     {
+      "leadType": "PreviousCustomer",
+      "metrics": {
+       "goodLeads": 2,
+       "sold": 1,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0,
+       "apptsShown": 0
+      },
+      "byInventory": [
+       {
+        "inventoryType": "New",
+        "metrics": {
+         "goodLeads": 2,
+         "sold": 1,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0,
+         "apptsShown": 0
+        }
+       }
+      ]
+     },
+     {
+      "leadType": "Referral",
+      "metrics": {
+       "goodLeads": 3,
+       "sold": 0,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 1,
+       "apptsShown": 0
+      },
+      "byInventory": [
+       {
+        "inventoryType": "Unknown",
+        "metrics": {
+         "goodLeads": 3,
+         "sold": 0,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 1,
+         "apptsShown": 0
+        }
+       },
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 0,
+         "sold": 0,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0,
+         "apptsShown": 0
+        }
+       }
+      ]
+     },
+     {
+      "leadType": "Walk-in",
+      "metrics": {
+       "goodLeads": 5,
+       "sold": 2,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.6,
+       "apptsShown": 3
+      },
+      "byInventory": [
+       {
+        "inventoryType": "New",
+        "metrics": {
+         "goodLeads": 1,
+         "sold": 1,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 1,
+         "apptsShown": 1
+        }
+       },
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 4,
+         "sold": 1,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0.5,
+         "apptsShown": 2
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "salesTeam": [
+    {
+     "name": "Aaron Anderson",
+     "goodLeads": 2,
+     "sold": 0,
+     "apptsScheduled": 4,
+     "apptsShown": 0,
+     "shownPct": 0,
+     "calls": 0,
+     "emails": 0,
+     "texts": 0
+    },
+    {
+     "name": "Abdiel De La Cruz",
+     "goodLeads": 0,
+     "sold": 0,
+     "apptsScheduled": 1,
+     "apptsShown": 0,
+     "shownPct": 0,
+     "calls": 1,
+     "emails": 0,
+     "texts": 0
+    },
+    {
+     "name": "Amin Eshaq",
+     "goodLeads": 9,
+     "sold": 0,
+     "apptsScheduled": 3,
+     "apptsShown": 0,
+     "shownPct": 0,
+     "calls": 10,
+     "emails": 17,
+     "texts": 10
+    },
+    {
+     "name": "Brian Oliva",
+     "goodLeads": 0,
+     "sold": 0,
+     "apptsScheduled": 1,
+     "apptsShown": 0,
+     "shownPct": 0,
+     "calls": 13,
+     "emails": 0,
+     "texts": 13
+    },
+    {
+     "name": "Gabrielle Bethel",
+     "goodLeads": 6,
+     "sold": 0,
+     "apptsScheduled": 5,
+     "apptsShown": 0,
+     "shownPct": 0,
+     "calls": 15,
+     "emails": 8,
+     "texts": 4
+    },
+    {
+     "name": "Jacob Jax",
+     "goodLeads": 1,
+     "sold": 0,
+     "apptsScheduled": 3,
+     "apptsShown": 1,
+     "shownPct": 0.3333,
+     "calls": 8,
+     "emails": 2,
+     "texts": 9
+    },
+    {
+     "name": "Jeremy Crudup",
+     "goodLeads": 0,
+     "sold": 0,
+     "apptsScheduled": 2,
+     "apptsShown": 0,
+     "shownPct": 0,
+     "calls": 0,
+     "emails": 0,
+     "texts": 0
+    },
+    {
+     "name": "Jose Bonilla",
+     "goodLeads": 0,
+     "sold": 0,
+     "apptsScheduled": 2,
+     "apptsShown": 0,
+     "shownPct": 0,
+     "calls": 0,
+     "emails": 0,
+     "texts": 0
+    },
+    {
+     "name": "Kameron Stan",
+     "goodLeads": 2,
+     "sold": 0,
+     "apptsScheduled": 0,
+     "apptsShown": 0,
+     "shownPct": 0,
+     "calls": 0,
+     "emails": 0,
+     "texts": 0
+    },
+    {
+     "name": "Kobe Standefer",
+     "goodLeads": 7,
+     "sold": 2,
+     "apptsScheduled": 4,
+     "apptsShown": 0,
+     "shownPct": 0,
+     "calls": 8,
+     "emails": 4,
+     "texts": 30
+    },
+    {
+     "name": "Nicholas Wells",
+     "goodLeads": 0,
+     "sold": 0,
+     "apptsScheduled": 2,
+     "apptsShown": 0,
+     "shownPct": 0,
+     "calls": 1,
+     "emails": 1,
+     "texts": 3
+    },
+    {
+     "name": "Patrick Beckner",
+     "goodLeads": 4,
+     "sold": 0,
+     "apptsScheduled": 7,
+     "apptsShown": 0,
+     "shownPct": 0,
+     "calls": 0,
+     "emails": 0,
+     "texts": 0
+    },
+    {
+     "name": "Timothy Rucks",
+     "goodLeads": 0,
+     "sold": 0,
+     "apptsScheduled": 1,
+     "apptsShown": 0,
+     "shownPct": 0,
+     "calls": 0,
+     "emails": 0,
+     "texts": 0
+    }
+   ],
+   "salesTeamTotals": {
+    "name": "TOTAL",
+    "goodLeads": 31,
+    "sold": 2,
+    "apptsScheduled": 35,
+    "apptsShown": 1,
+    "shownPct": 0.0286,
+    "calls": 56,
+    "emails": 32,
+    "texts": 69
+   },
+   "salesTeamPeriod": "Jul 1\u20132, 2026 (MTD)",
+   "matadorOther": [],
+   "notes": "MTD KPI Comparison: current month-to-date (Jul 1\u20132) vs the same days of the previous month (Jun 1\u20132). Exported Jul 2, 2026."
+  },
+  {
+   "id": "armstrong-subaru",
+   "name": "Armstrong Subaru",
+   "demo": false,
+   "crm": "VinSolutions",
+   "tools": [],
+   "location": "\u2014",
+   "currentPeriod": {
+    "label": "Jul 1\u20132, 2026 (MTD)",
+    "exported": "Jul 2, 2026"
+   },
+   "priorPeriod": {
+    "label": "Jun 1\u20132, 2026 (same days)"
+   },
+   "kpiCurrent": {
+    "total": {
+     "goodLeads": 11,
+     "sold": 1,
+     "contactPct": 0.3333,
+     "apptSetOfContactedPct": 0.4,
+     "apptsShown": 1,
+     "apptSetPct": 0.1818
+    },
+    "byLeadType": [
+     {
+      "leadType": "Internet",
+      "metrics": {
+       "goodLeads": 9,
+       "sold": 1,
+       "contactPct": 0.3333,
+       "apptSetOfContactedPct": 0.3333,
+       "apptsShown": 1,
+       "apptSetPct": 0.1111
+      },
+      "byInventory": [
+       {
+        "inventoryType": "Certified",
+        "metrics": {
+         "goodLeads": 1,
+         "sold": 0,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0,
+         "apptsShown": 0,
+         "apptSetPct": 0
+        }
+       },
+       {
+        "inventoryType": "New",
+        "metrics": {
+         "goodLeads": 4,
+         "sold": 0,
+         "contactPct": 0.25,
+         "apptSetOfContactedPct": 0,
+         "apptsShown": 0,
+         "apptSetPct": 0
+        }
+       },
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 4,
+         "sold": 1,
+         "contactPct": 0.5,
+         "apptSetOfContactedPct": 0.5,
+         "apptsShown": 1,
+         "apptSetPct": 0.25
+        }
+       }
+      ]
+     },
+     {
+      "leadType": "Walk-in",
+      "metrics": {
+       "goodLeads": 2,
+       "sold": 0,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.5,
+       "apptsShown": 0,
+       "apptSetPct": 0.5
+      },
+      "byInventory": [
+       {
+        "inventoryType": "Unknown",
+        "metrics": {
+         "goodLeads": 1,
+         "sold": 0,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0,
+         "apptsShown": 0,
+         "apptSetPct": 0
+        }
+       },
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 1,
+         "sold": 0,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 1,
+         "apptsShown": 0,
+         "apptSetPct": 1
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "kpiPrior": {
+    "total": {
+     "goodLeads": 21,
+     "sold": 1,
+     "contactPct": 0.4286,
+     "apptSetOfContactedPct": 0.4615,
+     "apptsShown": 6,
+     "apptSetPct": 0.2857
+    },
+    "byLeadType": [
+     {
+      "leadType": "Walk-in",
+      "metrics": {
+       "goodLeads": 2,
+       "sold": 0,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0,
+       "apptsShown": 0,
+       "apptSetPct": 0
+      },
+      "byInventory": [
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 2,
+         "sold": 0,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0,
+         "apptsShown": 0,
+         "apptSetPct": 0
+        }
+       }
+      ]
+     },
+     {
+      "leadType": "Internet",
+      "metrics": {
+       "goodLeads": 14,
+       "sold": 0,
+       "contactPct": 0.4286,
+       "apptSetOfContactedPct": 0.6667,
+       "apptsShown": 4,
+       "apptSetPct": 0.2857
+      },
+      "byInventory": [
+       {
+        "inventoryType": "New",
+        "metrics": {
+         "goodLeads": 6,
+         "sold": 0,
+         "contactPct": 0.3333,
+         "apptSetOfContactedPct": 0,
+         "apptsShown": 0,
+         "apptSetPct": 0
+        }
+       },
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 8,
+         "sold": 0,
+         "contactPct": 0.5,
+         "apptSetOfContactedPct": 1,
+         "apptsShown": 4,
+         "apptSetPct": 0.5
+        }
+       }
+      ]
+     },
+     {
+      "leadType": "Phone",
+      "metrics": {
+       "goodLeads": 5,
+       "sold": 1,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.4,
+       "apptsShown": 2,
+       "apptSetPct": 0.4
+      },
+      "byInventory": [
+       {
+        "inventoryType": "Used",
+        "metrics": {
+         "goodLeads": 5,
+         "sold": 1,
+         "contactPct": 0,
+         "apptSetOfContactedPct": 0.4,
+         "apptsShown": 2,
+         "apptSetPct": 0.4
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "salesTeam": null,
+   "salesTeamTotals": null,
+   "salesTeamPeriod": null,
+   "matadorOther": [],
+   "notes": "MTD KPI Comparison: Jul 1\u20132 vs Jun 1\u20132. No salesperson activity report was provided for this store."
+  },
+  {
+   "id": "demo-summit-toyota",
+   "name": "Summit Toyota",
+   "demo": true,
+   "crm": "Tekion",
+   "tools": [
+    "Covideo"
+   ],
+   "location": "Demo data",
+   "currentPeriod": {
+    "label": "Jun 1\u201322, 2026 (MTD)",
+    "exported": "\u2014"
+   },
+   "priorPeriod": {
+    "label": "May 1\u201322, 2026 (same days)"
+   },
+   "kpiCurrent": {
+    "total": {
+     "goodLeads": 412,
+     "sold": 118,
+     "contactPct": 0.64,
+     "apptSetOfContactedPct": 0.41,
+     "apptsShown": 96
+    },
+    "byLeadType": [
+     {
+      "leadType": "Internet",
+      "metrics": {
+       "goodLeads": 180,
+       "sold": 31,
+       "contactPct": 0.64,
+       "apptSetOfContactedPct": 0.38,
+       "apptsShown": 34
+      },
+      "byInventory": []
+     },
+     {
+      "leadType": "Phone",
+      "metrics": {
+       "goodLeads": 84,
+       "sold": 27,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.55,
+       "apptsShown": 30
+      },
+      "byInventory": []
+     },
+     {
+      "leadType": "Walk-in",
+      "metrics": {
+       "goodLeads": 118,
+       "sold": 51,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.24,
+       "apptsShown": 24
+      },
+      "byInventory": []
+     },
+     {
+      "leadType": "PreviousCustomer",
+      "metrics": {
+       "goodLeads": 30,
+       "sold": 9,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.27,
+       "apptsShown": 8
+      },
+      "byInventory": []
+     }
+    ]
+   },
+   "kpiPrior": {
+    "total": {
+     "goodLeads": 390,
+     "sold": 104,
+     "contactPct": 0.58,
+     "apptSetOfContactedPct": 0.37,
+     "apptsShown": 84
+    },
+    "byLeadType": [
+     {
+      "leadType": "Internet",
+      "metrics": {
+       "goodLeads": 171,
+       "sold": 26,
+       "contactPct": 0.58,
+       "apptSetOfContactedPct": 0.35,
+       "apptsShown": 30
+      },
+      "byInventory": []
+     },
+     {
+      "leadType": "Phone",
+      "metrics": {
+       "goodLeads": 80,
+       "sold": 24,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.51,
+       "apptsShown": 26
+      },
+      "byInventory": []
+     },
+     {
+      "leadType": "Walk-in",
+      "metrics": {
+       "goodLeads": 111,
+       "sold": 46,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.22,
+       "apptsShown": 21
+      },
+      "byInventory": []
+     },
+     {
+      "leadType": "PreviousCustomer",
+      "metrics": {
+       "goodLeads": 28,
+       "sold": 8,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.25,
+       "apptsShown": 7
+      },
+      "byInventory": []
+     }
+    ]
+   },
+   "salesTeam": null,
+   "salesTeamTotals": null,
+   "salesTeamPeriod": null,
+   "matadorOther": [],
+   "notes": "DEMO store \u2014 illustrative data only, shows how a Tekion-based store plugs into the same dashboard."
+  },
+  {
+   "id": "demo-riverbend-cdjr",
+   "name": "Riverbend CDJR",
+   "demo": true,
+   "crm": "DriveCentric",
+   "tools": [
+    "Matador"
+   ],
+   "location": "Demo data",
+   "currentPeriod": {
+    "label": "Jun 1\u201322, 2026 (MTD)",
+    "exported": "\u2014"
+   },
+   "priorPeriod": {
+    "label": "May 1\u201322, 2026 (same days)"
+   },
+   "kpiCurrent": {
+    "total": {
+     "goodLeads": 298,
+     "sold": 61,
+     "contactPct": 0.51,
+     "apptSetOfContactedPct": 0.29,
+     "apptsShown": 48
+    },
+    "byLeadType": [
+     {
+      "leadType": "Internet",
+      "metrics": {
+       "goodLeads": 152,
+       "sold": 18,
+       "contactPct": 0.51,
+       "apptSetOfContactedPct": 0.27,
+       "apptsShown": 20
+      },
+      "byInventory": []
+     },
+     {
+      "leadType": "Phone",
+      "metrics": {
+       "goodLeads": 55,
+       "sold": 14,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.42,
+       "apptsShown": 14
+      },
+      "byInventory": []
+     },
+     {
+      "leadType": "Walk-in",
+      "metrics": {
+       "goodLeads": 74,
+       "sold": 24,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.2,
+       "apptsShown": 11
+      },
+      "byInventory": []
+     },
+     {
+      "leadType": "Referral",
+      "metrics": {
+       "goodLeads": 17,
+       "sold": 5,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.3,
+       "apptsShown": 3
+      },
+      "byInventory": []
+     }
+    ]
+   },
+   "kpiPrior": {
+    "total": {
+     "goodLeads": 340,
+     "sold": 79,
+     "contactPct": 0.57,
+     "apptSetOfContactedPct": 0.34,
+     "apptsShown": 61
+    },
+    "byLeadType": [
+     {
+      "leadType": "Internet",
+      "metrics": {
+       "goodLeads": 170,
+       "sold": 24,
+       "contactPct": 0.57,
+       "apptSetOfContactedPct": 0.31,
+       "apptsShown": 26
+      },
+      "byInventory": []
+     },
+     {
+      "leadType": "Phone",
+      "metrics": {
+       "goodLeads": 62,
+       "sold": 18,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.47,
+       "apptsShown": 18
+      },
+      "byInventory": []
+     },
+     {
+      "leadType": "Walk-in",
+      "metrics": {
+       "goodLeads": 88,
+       "sold": 31,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.24,
+       "apptsShown": 14
+      },
+      "byInventory": []
+     },
+     {
+      "leadType": "Referral",
+      "metrics": {
+       "goodLeads": 20,
+       "sold": 6,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.33,
+       "apptsShown": 3
+      },
+      "byInventory": []
+     }
+    ]
+   },
+   "salesTeam": null,
+   "salesTeamTotals": null,
+   "salesTeamPeriod": null,
+   "matadorOther": [],
+   "notes": "DEMO store \u2014 illustrative data only (DriveCentric CRM + Matador)."
+  },
+  {
+   "id": "demo-lakeside-ford",
+   "name": "Lakeside Ford",
+   "demo": true,
+   "crm": "Momentum",
+   "tools": [
+    "Matador",
+    "Covideo"
+   ],
+   "location": "Demo data",
+   "currentPeriod": {
+    "label": "Jun 1\u201322, 2026 (MTD)",
+    "exported": "\u2014"
+   },
+   "priorPeriod": {
+    "label": "May 1\u201322, 2026 (same days)"
+   },
+   "kpiCurrent": {
+    "total": {
+     "goodLeads": 355,
+     "sold": 97,
+     "contactPct": 0.68,
+     "apptSetOfContactedPct": 0.44,
+     "apptsShown": 88
+    },
+    "byLeadType": [
+     {
+      "leadType": "Internet",
+      "metrics": {
+       "goodLeads": 168,
+       "sold": 29,
+       "contactPct": 0.68,
+       "apptSetOfContactedPct": 0.41,
+       "apptsShown": 36
+      },
+      "byInventory": []
+     },
+     {
+      "leadType": "Phone",
+      "metrics": {
+       "goodLeads": 71,
+       "sold": 25,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.6,
+       "apptsShown": 26
+      },
+      "byInventory": []
+     },
+     {
+      "leadType": "Walk-in",
+      "metrics": {
+       "goodLeads": 92,
+       "sold": 36,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.28,
+       "apptsShown": 20
+      },
+      "byInventory": []
+     },
+     {
+      "leadType": "PreviousCustomer",
+      "metrics": {
+       "goodLeads": 24,
+       "sold": 7,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.29,
+       "apptsShown": 6
+      },
+      "byInventory": []
+     }
+    ]
+   },
+   "kpiPrior": {
+    "total": {
+     "goodLeads": 348,
+     "sold": 92,
+     "contactPct": 0.66,
+     "apptSetOfContactedPct": 0.45,
+     "apptsShown": 86
+    },
+    "byLeadType": [
+     {
+      "leadType": "Internet",
+      "metrics": {
+       "goodLeads": 165,
+       "sold": 28,
+       "contactPct": 0.66,
+       "apptSetOfContactedPct": 0.42,
+       "apptsShown": 35
+      },
+      "byInventory": []
+     },
+     {
+      "leadType": "Phone",
+      "metrics": {
+       "goodLeads": 70,
+       "sold": 24,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.6,
+       "apptsShown": 25
+      },
+      "byInventory": []
+     },
+     {
+      "leadType": "Walk-in",
+      "metrics": {
+       "goodLeads": 90,
+       "sold": 34,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.28,
+       "apptsShown": 20
+      },
+      "byInventory": []
+     },
+     {
+      "leadType": "PreviousCustomer",
+      "metrics": {
+       "goodLeads": 23,
+       "sold": 6,
+       "contactPct": 0,
+       "apptSetOfContactedPct": 0.3,
+       "apptsShown": 6
+      },
+      "byInventory": []
+     }
+    ]
+   },
+   "salesTeam": null,
+   "salesTeamTotals": null,
+   "salesTeamPeriod": null,
+   "matadorOther": [],
+   "notes": "DEMO store \u2014 illustrative data only (Momentum CRM + Matador + Covideo)."
+  }
+ ],
+ "integrations": [
+  {
+   "name": "VinSolutions",
+   "type": "CRM",
+   "coverage": "Majority of stores",
+   "api": "requested",
+   "scheduledEmail": true,
+   "note": "Existing reports can be scheduled to be emailed daily. API access has been requested."
+  },
+  {
+   "name": "Tekion",
+   "type": "CRM",
+   "coverage": "Some stores",
+   "api": "requested",
+   "scheduledEmail": true,
+   "note": "Has an API \u2014 access inquiry in progress. Reports can be scheduled via email."
+  },
+  {
+   "name": "DriveCentric",
+   "type": "CRM",
+   "coverage": "Some stores",
+   "api": "unknown",
+   "scheduledEmail": true,
+   "note": "API availability unconfirmed. Reports can be scheduled."
+  },
+  {
+   "name": "Momentum",
+   "type": "CRM",
+   "coverage": "Some stores",
+   "api": "requested",
+   "scheduledEmail": true,
+   "note": "Has an API \u2014 asking about access. Reports can be scheduled."
+  },
+  {
+   "name": "Matador",
+   "type": "AI messaging",
+   "coverage": "~50% of stores",
+   "api": "unknown",
+   "scheduledEmail": false,
+   "note": "Activity report is downloaded manually from the dashboard Users tab. Scheduled email not available today."
+  },
+  {
+   "name": "Covideo",
+   "type": "Video outreach",
+   "coverage": "Some stores",
+   "api": "unknown",
+   "scheduledEmail": true,
+   "note": "Activity reporting can be scheduled via email."
+  }
+ ]
+}
