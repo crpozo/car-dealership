@@ -1,192 +1,263 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dealer Performance Hub — Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#1B262B; --muted:#5C6E73; --faint:#8CA0A5; --line:#DCE4E4; --line-soft:#E8EEEE;
-  --ground:#EFF3F2; --card:#FFFFFF;
-  --accent:#0F6672; --accent-deep:#0B4A53; --accent-band:#0D3B42; --accent-soft:#E3EFF0;
-  --good:#1E7D48; --good-bg:#E3F2E8; --warn:#96660A; --warn-bg:#F7EED6; --risk:#B2352A; --risk-bg:#F9E7E4;
-  --demo:#66558F; --demo-bg:#EFEAF7;
-  --c-internet:#22677A; --c-phone:#4E7FA0; --c-walkin:#C29A4B; --c-prev:#7E6B9E; --c-referral:#5E8D6A; --c-other:#93A1A5;
-  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --ink:#191D33; --muted:#6B7186; --faint:#A9AFC2; --line:#E7E9F2; --line-soft:#F0F2F8;
+  --ground:#F7F8FB; --card:#FFFFFF;
+  --accent:#4F46E5; --accent-deep:#3B34C4; --accent-soft:#EEF0FE; --accent-softer:#F5F6FF;
+  --lime:#D9F26E; --lime-ink:#3A4310;
+  --good:#1F9D5B; --good-bg:#E6F6EE; --warn:#8A5A00; --warn-bg:#FFF3D3; --risk:#E5484D; --risk-bg:#FDEBEC;
+  --demo:#7C5CD6; --demo-bg:#F1EBFE;
+  --c-internet:#4F46E5; --c-phone:#74A4F5; --c-walkin:#3BC98A; --c-prev:#A78BFA; --c-referral:#F5B63F; --c-other:#C3C9D9;
+  --sans:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --shadow:0 1px 2px rgba(25,29,51,.04),0 4px 16px rgba(25,29,51,.05);
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.45}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.5}
 button{font-family:inherit}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+svg.ic{width:19px;height:19px;flex:none;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
 
-/* ---------- app bar ---------- */
-.appbar{background:var(--accent-band);color:#EAF4F5}
-.appbar-in{max-width:1180px;margin:0 auto;padding:14px 24px 0;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:flex-end}
-.brand{display:flex;align-items:baseline;gap:10px;padding-bottom:12px}
-.brand .mark{font-size:19px;font-weight:800;letter-spacing:.02em;color:#fff}
-.brand .mark span{color:#7FB6BD;font-weight:600}
-.brand .tag{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#0D3B42;background:#CBDF66;border-radius:3px;padding:2px 6px;transform:translateY(-1px)}
-.appbar .asof{margin-left:auto;padding-bottom:12px;font-size:12px;color:#9FC2C7}
-.tabs{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;gap:2px}
-.tab{appearance:none;border:0;background:transparent;color:#B9D3D6;font-size:13.5px;font-weight:600;padding:9px 14px;cursor:pointer;border-radius:6px 6px 0 0}
-.tab:hover{color:#fff;background:rgba(255,255,255,.07)}
-.tab.active{background:var(--ground);color:var(--accent-deep)}
+/* ---------- shell ---------- */
+.shell{display:flex;min-height:100vh}
+.side{width:236px;flex:none;background:var(--card);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:2px;position:sticky;top:0;height:100vh}
+.logo{display:flex;align-items:center;gap:9px;padding:2px 8px 18px}
+.logo .pmark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--accent),#7C6CF0);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+.logo .nm{font-size:17px;font-weight:800;letter-spacing:-.02em}.logo .nm span{color:var(--accent)}
+.logo .tag{font-size:9px;font-weight:800;letter-spacing:.12em;color:var(--lime-ink);background:var(--lime);border-radius:4px;padding:2.5px 6px}
+.ngroup{font-size:10.5px;font-weight:700;letter-spacing:.11em;color:var(--muted);text-transform:uppercase;padding:14px 10px 6px}
+.nav{appearance:none;border:0;background:none;display:flex;align-items:center;gap:10px;width:100%;text-align:left;font-size:13.5px;font-weight:600;color:#4A506A;border-radius:9px;padding:9px 10px;cursor:pointer}
+.nav:hover{background:var(--ground)}
+.nav.active{background:var(--accent-soft);color:var(--accent)}
+.top{display:flex;align-items:center;gap:14px;background:var(--card);border-bottom:1px solid var(--line);padding:10px 26px;position:sticky;top:0;z-index:20}
+.searchwrap{display:flex;align-items:center;gap:8px;background:var(--ground);border:1px solid var(--line);border-radius:10px;padding:8px 12px;width:min(420px,100%);color:var(--muted)}
+.searchwrap input{border:0;background:none;outline:none;font:inherit;color:var(--ink);flex:1;min-width:0}
+.searchwrap kbd{font-family:inherit;font-size:11px;font-weight:700;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1.5px 6px}
+.top .asof{margin-left:auto;font-size:12.5px;color:var(--muted);white-space:nowrap}
+.top .asof b{color:var(--ink)}
+.iconbtn{appearance:none;border:1px solid var(--line);background:var(--card);color:#4A506A;width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none}
+.iconbtn:hover{background:var(--ground)}
+.iconbtn.avatar{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.maincol{flex:1;min-width:0;display:flex;flex-direction:column}
+.content{padding:26px;max-width:1280px;width:100%;margin:0 auto}
 
-.wrap{max-width:1180px;margin:0 auto;padding:20px 24px 56px}
+/* ---------- page head ---------- */
+.pagehead{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.pagehead h1{font-size:26px;font-weight:800;letter-spacing:-.025em;margin:0}
+.pagehead h2{font-size:18px;font-weight:800;letter-spacing:-.02em;margin:0}
+.sr-only{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+.pagehead .sub{margin:3px 0 0;color:var(--muted);font-size:13.5px}
+.pagehead .actions{margin-left:auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.datechip{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#4A506A;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8.5px 13px}
+.btn{appearance:none;border:0;display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;border-radius:10px;padding:9.5px 16px;cursor:pointer}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.primary:hover{background:var(--accent-deep)}
+.crumb{font-size:13px;margin-bottom:10px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+a.plain{color:var(--accent);font-weight:700;text-decoration:none}
+a.plain:hover{text-decoration:underline}
+.crumb select{font-family:inherit;font-size:12.5px;border:1px solid var(--line);border-radius:8px;padding:5px 8px;background:#fff;color:var(--ink)}
 
-/* ---------- generic ---------- */
-h2{font-size:16px;font-weight:700;margin:26px 0 10px;text-wrap:balance}
-h2 .sub{font-weight:400;color:var(--muted);font-size:13px;margin-left:8px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:8px}
-.num{font-variant-numeric:tabular-nums;text-align:right}
-.chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;border:1px solid var(--line);color:var(--muted);border-radius:99px;padding:2px 8px;background:#fff}
+/* ---------- stat cards ---------- */
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:14px;margin-bottom:20px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow)}
+.stat .hd{display:flex;align-items:center;gap:10px}
+.stat .icotile{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex:none}
+.stat .icotile svg.ic{width:18px;height:18px}
+.ico-purple{background:var(--accent-soft);color:var(--accent)}
+.ico-blue{background:#E8F1FE;color:#2A6DD9}
+.ico-green{background:var(--good-bg);color:var(--good)}
+.ico-red{background:var(--risk-bg);color:var(--risk)}
+.stat .lbl{font-size:13px;font-weight:600;color:#4A506A}
+.stat .val{font-size:30px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin-top:8px}
+.stat .val.risk{color:var(--risk)}
+.stat .aux{font-size:12px;color:var(--muted);margin-top:1px}
+.stat .aux.demo-warn{color:var(--demo);font-weight:600}
+
+/* ---------- panel ---------- */
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);margin-bottom:20px}
+.panel-head{display:flex;align-items:center;gap:8px 14px;flex-wrap:wrap;padding:15px 20px;border-bottom:1px solid var(--line-soft)}
+.panel-head .ttl{font-size:16px;font-weight:800;letter-spacing:-.01em;margin:0}
+.panel-head .ttl .sub{font-weight:500;color:var(--muted);font-size:12.5px;margin-left:8px;letter-spacing:0}
+.panel-head .count{font-size:12.5px;color:var(--muted)}
+.panel-head .filters{margin-left:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.flabel{font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:flex;align-items:center;gap:7px}
+.flabel select{font-family:inherit;font-size:13px;font-weight:600;color:var(--ink);border:1px solid var(--line);border-radius:9px;background:#fff;padding:6.5px 8px;letter-spacing:0;text-transform:none}
+.panel-body{padding:18px 20px}
+.legend{font-size:12px;color:var(--muted);margin:0;padding:13px 20px;border-top:1px solid var(--line-soft)}
+
+/* switch */
+.switch{display:inline-flex;align-items:center;gap:9px;cursor:pointer;font-size:13px;font-weight:600;color:#4A506A;user-select:none}
+.switch em{font-style:normal;color:var(--muted);font-weight:500}
+.switch input{position:absolute;opacity:0;width:1px;height:1px}
+.switch .track{width:38px;height:22px;border-radius:99px;background:#D9DDEA;border:1px solid #767E97;position:relative;transition:background .15s,border-color .15s;flex:none}
+.switch .track::after{content:"";position:absolute;top:1.5px;left:1.5px;width:17px;height:17px;border-radius:99px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .15s}
+.switch input:checked + .track{background:var(--accent);border-color:var(--accent)}
+.switch input:checked + .track::after{transform:translateX(16px)}
+.switch input:focus-visible + .track{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ---------- chips & pills ---------- */
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;border:1px solid var(--line);color:#4A506A;border-radius:99px;padding:2.5px 9px;background:#fff}
 .chip .dot{width:6px;height:6px;border-radius:99px;background:var(--faint)}
-.chip.crm .dot{background:var(--accent)}
-.chip.tool .dot{background:var(--c-walkin)}
-.pill{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;border-radius:99px;padding:3px 10px;white-space:nowrap}
+.chip.crm .dot{background:var(--good)}
+.chip.tool .dot{background:var(--c-referral)}
+.chip.ok{color:var(--good);border-color:#BCE4CE}.chip.ok .dot{background:var(--good)}
+.chip.pend{color:var(--warn);border-color:#EBD9A0}.chip.pend .dot{background:var(--warn)}
+.chip.no{color:var(--risk);border-color:#F3C1C3}.chip.no .dot{background:var(--risk)}
+.chip.unk{color:var(--muted)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;border-radius:99px;padding:4px 11px;white-space:nowrap}
 .pill::before{content:"";width:7px;height:7px;border-radius:99px;background:currentColor}
 .pill.good{color:var(--good);background:var(--good-bg)}
 .pill.watch{color:var(--warn);background:var(--warn-bg)}
 .pill.risk{color:var(--risk);background:var(--risk-bg)}
-.badge-demo{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--demo);background:var(--demo-bg);border-radius:3px;padding:2px 6px;vertical-align:2px}
+.badge-demo{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.09em;color:var(--demo);background:var(--demo-bg);border-radius:5px;padding:2px 7px;vertical-align:2px}
+.flag{font-size:10px;font-weight:800;letter-spacing:.06em;border-radius:5px;padding:2px 7px;white-space:nowrap;display:inline-block}
+.flag.warn{color:#8A5A00;background:var(--warn-bg)}
+.flag.gray{color:var(--muted);background:var(--line-soft)}
 .delta{font-size:11.5px;font-weight:700;white-space:nowrap}
-.delta.up{color:var(--good)} .delta.down{color:var(--risk)} .delta.flat{color:var(--faint)}
+.delta.up{color:#177A47} .delta.down{color:#C7353B} .delta.flat{color:var(--muted)}
 .note{font-size:12px;color:var(--muted)}
-a.plain{color:var(--accent);font-weight:600;text-decoration:none}
-a.plain:hover{text-decoration:underline}
 
-/* ---------- summary strip ---------- */
-.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:4px 0 18px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
-.stat .lbl{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
-.stat .val{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:2px}
-.stat .val.risk{color:var(--risk)}
-.stat .aux{font-size:11.5px;color:var(--muted)}
-
-/* ---------- filter bar ---------- */
-.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 14px}
-.filters label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;display:flex;align-items:center;gap:6px}
-.filters select,.filters input[type=search]{font-family:inherit;font-size:13px;color:var(--ink);border:1px solid var(--line);border-radius:6px;background:#fff;padding:6px 8px}
-.filters input[type=search]{width:190px}
-.filters .demo-toggle{font-size:12.5px;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:6px;text-transform:none;letter-spacing:0;margin-left:auto}
-.legend{font-size:11.5px;color:var(--muted);margin:-6px 0 14px}
-.legend .pill{font-size:10.5px;padding:1px 8px;margin:0 2px}
-
-/* ---------- store cards ---------- */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
-.store{position:relative;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--faint);border-radius:8px;padding:14px 16px 12px;display:flex;flex-direction:column;gap:9px}
-.store.good{border-left-color:var(--good)} .store.watch{border-left-color:var(--warn)} .store.risk{border-left-color:var(--risk)}
-.store.demo{border-style:solid;background:linear-gradient(0deg,#FDFCFF,#FDFCFF)}
-.store .head{display:flex;align-items:flex-start;gap:8px}
-.store .name{font-size:15.5px;font-weight:750;letter-spacing:-.01em}
-.store .head .pill{margin-left:auto}
-.store .chips{display:flex;flex-wrap:wrap;gap:5px}
-.store .period{font-size:11.5px;color:var(--muted)}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;border-top:1px solid var(--line-soft);padding-top:9px}
-.kpis .k .lbl{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
-.kpis .k .v{font-size:17px;font-weight:800;font-variant-numeric:tabular-nums}
-.mix{margin-top:2px}
-.mixbar{display:flex;height:8px;border-radius:4px;overflow:hidden;background:var(--line-soft)}
-.mixbar i{display:block;height:100%}
-.mixkey{display:flex;flex-wrap:wrap;gap:2px 10px;margin-top:5px;font-size:10.5px;color:var(--muted)}
-.mixkey b{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;vertical-align:-1px}
-.store .foot{display:flex;align-items:center;margin-top:2px}
-.store .open{margin-left:auto;appearance:none;border:0;background:none;color:var(--accent);font-size:12.5px;font-weight:700;cursor:pointer;padding:2px 0}
-.store .open:hover{text-decoration:underline}
-.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;background:#fff}
-
-/* ---------- detail ---------- */
-.crumb{font-size:12.5px;margin-bottom:12px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.crumb select{font-family:inherit;font-size:12.5px;border:1px solid var(--line);border-radius:6px;padding:4px 6px;background:#fff}
-.dhead{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
-.dhead h1{font-size:22px;font-weight:800;margin:0;letter-spacing:-.015em}
-.dhead .pill{transform:translateY(1px)}
-.dmeta{margin-top:6px;font-size:12.5px;color:var(--muted)}
-.banner{margin:12px 0 0;padding:8px 12px;border-radius:6px;font-size:12.5px}
-.banner.demo{background:var(--demo-bg);color:var(--demo);font-weight:600}
-.banner.info{background:var(--accent-soft);color:var(--accent-deep)}
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:16px}
-.tile{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:11px 13px}
-.tile .lbl{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.tile .v{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:1px}
-.tile .vs{font-size:11.5px;color:var(--muted)}
-
-/* ---------- tables ---------- */
-.tblwrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:8px}
-table{border-collapse:collapse;width:100%;font-size:13px}
-th,td{padding:7px 12px;white-space:nowrap}
-thead th{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);text-align:right;background:#FAFCFC}
+/* ---------- stores table ---------- */
+.tblwrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:9px 14px;white-space:nowrap}
+thead th{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);text-align:right}
 thead th:first-child{text-align:left}
-thead tr.groups th{border-bottom:0;padding-bottom:0;color:var(--accent-deep);text-align:center}
-thead tr.groups th:first-child{text-align:left}
+th.left{text-align:left}
 tbody td{border-bottom:1px solid var(--line-soft)}
 tbody tr:last-child td{border-bottom:0}
-td.num,th.num{text-align:right}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.stores-tbl th:first-child,.stores-tbl td:first-child{padding-left:20px}
+.stores-tbl th:last-child,.stores-tbl td:last-child{padding-right:20px}
+.stores-tbl tbody tr.srow{cursor:pointer}
+.stores-tbl tbody tr.srow:hover td{background:var(--accent-softer)}
+.stores-tbl td{padding-top:14px;padding-bottom:14px;vertical-align:middle}
+.sname{font-size:15px;font-weight:800;letter-spacing:-.01em}
+.smeta{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:5px}
+.speriod{font-size:12px;color:var(--muted)}
+.sflags{margin-top:6px;display:flex;gap:6px}
+.cellv .v{font-size:15.5px;font-weight:800;font-variant-numeric:tabular-nums}
+.cellv .delta{display:block;margin-top:1px}
+.mixbar{display:flex;height:8px;border-radius:99px;overflow:hidden;background:var(--line-soft);width:190px}
+.mixbar i{display:block;height:100%}
+.gobtn{appearance:none;border:1px solid var(--line);background:var(--card);color:#4A506A;width:32px;height:32px;border-radius:99px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.gobtn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.empty{padding:26px;text-align:center;color:var(--muted)}
+
+/* ---------- detail tables ---------- */
+thead tr.groups th{border-bottom:0;padding-bottom:0;color:var(--accent);text-align:center}
+thead tr.groups th:first-child{text-align:left}
 td.name{font-weight:600}
 tr.lvl1 td.name{font-weight:700}
-tr.sub td{background:#FAFBFB;font-size:12.5px}
-tr.sub td.name{padding-left:30px;font-weight:500;color:var(--muted)}
-tr.sub2 td{background:#F5F8F8;font-size:12px}
-tr.sub2 td.name{padding-left:48px;font-weight:500;color:var(--muted)}
-tfoot td{border-top:2px solid var(--line);font-weight:800;background:#FAFCFC}
+tr.sub td{background:#FAFBFE;font-size:12.5px}
+tr.sub td.name{padding-left:32px;font-weight:500;color:var(--muted)}
+tr.sub2 td{background:#F5F7FC;font-size:12px}
+tr.sub2 td.name{padding-left:50px;font-weight:500;color:var(--muted)}
+tfoot td{border-top:2px solid var(--line);font-weight:800;background:#FAFBFE}
 .tgl{appearance:none;border:0;background:none;cursor:pointer;font:inherit;font-weight:inherit;color:inherit;padding:0;display:inline-flex;align-items:center;gap:6px}
 .tgl .chev{display:inline-block;width:0;height:0;border-left:5px solid var(--faint);border-top:4px solid transparent;border-bottom:4px solid transparent;transition:transform .12s}
 .tgl[aria-expanded=true] .chev{transform:rotate(90deg)}
 th.sortable{cursor:pointer;user-select:none;padding:0}
-th.sortable:hover{color:var(--accent-deep)}
+th.sortable:hover{color:var(--accent)}
 th.sortable .arr{font-size:9px;margin-left:3px}
-.sorth{appearance:none;background:none;border:0;font:inherit;color:inherit;cursor:pointer;padding:7px 12px;width:100%;text-align:inherit;text-transform:inherit;letter-spacing:inherit}
-.bar{display:inline-block;height:7px;border-radius:3px;background:var(--accent);opacity:.75;vertical-align:1px;margin-right:7px}
-.flag{font-size:10px;font-weight:700;color:var(--warn);background:var(--warn-bg);border-radius:3px;padding:1px 5px;margin-left:7px;letter-spacing:.03em;white-space:nowrap;display:inline-block}
-.shown-pill{display:inline-block;min-width:52px;text-align:right;font-weight:700;border-radius:4px;padding:1px 6px}
+.sorth{appearance:none;background:none;border:0;font:inherit;color:inherit;cursor:pointer;padding:9px 14px;width:100%;text-align:inherit;text-transform:inherit;letter-spacing:inherit}
+.bar{display:inline-block;height:7px;border-radius:3px;background:var(--accent);opacity:.55;vertical-align:1px;margin-right:7px}
+.rowflag{font-size:10px;font-weight:800;color:#8A5A00;background:var(--warn-bg);border-radius:4px;padding:1px 6px;margin-left:7px;letter-spacing:.04em;white-space:nowrap}
+.shown-pill{display:inline-block;min-width:52px;text-align:right;font-weight:700;border-radius:6px;padding:1px 7px}
 .shown-pill.good{color:var(--good);background:var(--good-bg)}
 .shown-pill.warn{color:var(--warn);background:var(--warn-bg)}
-.shown-pill.na{color:var(--faint)}
-details.extra{margin-top:10px}
-details.extra summary{cursor:pointer;font-size:12.5px;font-weight:700;color:var(--accent-deep)}
-.footnotes{margin-top:8px;font-size:11.5px;color:var(--muted)}
+.shown-pill.na{color:var(--muted)}
+details.extra{margin:10px 20px 16px}
+details.extra summary{cursor:pointer;font-size:12.5px;font-weight:700;color:var(--accent)}
+details.extra .tblwrap{border:1px solid var(--line-soft);border-radius:10px;margin-top:8px}
+.footnotes{font-size:12px;color:var(--muted);padding:12px 20px;border-top:1px solid var(--line-soft)}
 .footnotes p{margin:3px 0}
 
-/* ---------- sources ---------- */
-.src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
-.src{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
-.src .top{display:flex;align-items:baseline;gap:8px}
-.src .nm{font-size:15px;font-weight:750}
-.src .ty{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
-.src .cov{font-size:12px;color:var(--muted);margin:2px 0 8px}
-.src .chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
-.chip.ok{color:var(--good);border-color:#BFDCC9}.chip.ok .dot{background:var(--good)}
-.chip.pend{color:var(--warn);border-color:#E4D2A8}.chip.pend .dot{background:var(--warn)}
-.chip.no{color:var(--risk);border-color:#E7C2BC}.chip.no .dot{background:var(--risk)}
-.chip.unk{color:var(--muted)}
-.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:6px}
-.flow .step{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
-.flow .n{font-size:10.5px;font-weight:800;letter-spacing:.1em;color:var(--accent);text-transform:uppercase}
-.flow .t{font-weight:700;margin:3px 0 2px}
-.flow .d{font-size:12px;color:var(--muted)}
+/* ---------- detail header ---------- */
+.dhead{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.dhead h1{font-size:26px;font-weight:800;letter-spacing:-.025em;margin:0}
+.dmeta{margin-top:7px;font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.banner{margin:14px 0 0;padding:10px 14px;border-radius:10px;font-size:12.5px;font-weight:500}
+.banner.demo{background:var(--demo-bg);color:var(--demo);font-weight:600}
+.banner.info{background:var(--accent-soft);color:var(--accent-deep)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:18px 0 20px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow)}
+.tile .lbl{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.tile .v{font-size:24px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin-top:3px}
+.tile .vs{font-size:12px;color:var(--muted);margin-top:1px}
+.pagefoot{margin:6px 2px 30px;font-size:12px;color:var(--muted)}
 
-.pagefoot{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted)}
-@media (max-width:640px){
-  .wrap{padding:16px 14px 48px}
-  .appbar-in,.tabs{padding-left:14px;padding-right:14px}
-  .kpis{grid-template-columns:repeat(2,1fr)}
-  .filters .demo-toggle{margin-left:0}
+/* ---------- sources / settings / help ---------- */
+.src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px;margin-bottom:20px}
+.src{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px 19px;box-shadow:var(--shadow)}
+.src .topline{display:flex;align-items:baseline;gap:9px}
+.src .nm{font-size:15.5px;font-weight:800}
+.src .ty{font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.src .cov{font-size:12.5px;color:var(--muted);margin:3px 0 10px}
+.src .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.flow .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px 17px;box-shadow:var(--shadow)}
+.flow .n{font-size:10.5px;font-weight:800;letter-spacing:.1em;color:var(--accent);text-transform:uppercase}
+.flow .t{font-weight:800;margin:4px 0 3px}
+.flow .d{font-size:12.5px;color:var(--muted)}
+.prose{max-width:720px;font-size:13.5px}
+.prose h2{font-size:14px;font-weight:800;margin:18px 0 6px}
+.prose p,.prose li{color:#3E445C}
+.kv{display:flex;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px solid var(--line-soft);font-size:13.5px}
+.kv:last-child{border-bottom:0}
+.kv .k{color:#4A506A;font-weight:600}
+.kv .v{font-weight:700;font-variant-numeric:tabular-nums}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .searchwrap input,.flabel select,.crumb select{font-size:16px}
+  .shell{flex-direction:column}
+  .side{width:100%;height:auto;position:static;flex-direction:row;align-items:center;flex-wrap:wrap;gap:4px;padding:10px 14px;border-right:0;border-bottom:1px solid var(--line)}
+  .logo{padding:0 8px 0 0}
+  .ngroup{display:none}
+  .nav{width:auto;padding:7px 11px}
+  .top{padding:10px 14px;flex-wrap:wrap}
+  .top .asof{display:none}
+  .content{padding:16px 14px}
+  .mixbar{width:120px}
 }
 </style>
 
-<header class="appbar">
-  <div class="appbar-in">
-    <div class="brand">
-      <span class="mark">Pace<span>Board</span></span>
-      <span class="tag">Prototype</span>
+<div class="shell">
+  <aside class="side">
+    <div class="logo">
+      <span class="pmark">P</span>
+      <span class="nm">Pace<span>Board</span></span>
+      <span class="tag">PROTOTYPE</span>
     </div>
-    <div class="asof" id="asof"></div>
+    <div class="ngroup">General</div>
+    <button class="nav" data-view="overview"><svg class="ic" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.6"/></svg>Store overview</button>
+    <button class="nav" data-view="sources"><svg class="ic" viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v13c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-13"/><path d="M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3"/></svg>Data sources</button>
+    <div class="ngroup">Support</div>
+    <button class="nav" data-view="settings"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M19.2 12a7.2 7.2 0 0 0-.14-1.4l2.1-1.63-2-3.46-2.48 1a7.3 7.3 0 0 0-2.42-1.4L13.9 2.5h-3.8l-.36 2.6a7.3 7.3 0 0 0-2.42 1.41l-2.48-1-2 3.46 2.1 1.63a7.2 7.2 0 0 0 0 2.8l-2.1 1.63 2 3.46 2.48-1a7.3 7.3 0 0 0 2.42 1.4l.36 2.61h3.8l.36-2.6a7.3 7.3 0 0 0 2.42-1.41l2.48 1 2-3.46-2.1-1.63c.1-.45.14-.92.14-1.4Z"/></svg>Settings</button>
+    <button class="nav" data-view="help"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.4 9.2a2.7 2.7 0 0 1 5.25.9c0 1.8-2.65 2.2-2.65 3.6"/><circle cx="12" cy="16.9" r=".4" fill="currentColor" stroke="none"/></svg>Help</button>
+  </aside>
+  <div class="maincol">
+    <header class="top">
+      <div class="searchwrap">
+        <svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.4-4.4"/></svg>
+        <input id="g-q" type="search" placeholder="Search stores…" aria-label="Search stores">
+        <kbd id="g-kbd">⌘F</kbd>
+      </div>
+      <div class="asof" id="asof"></div>
+      <button class="iconbtn" title="Notifications — nothing new" aria-label="Notifications"><svg class="ic" viewBox="0 0 24 24"><path d="M18 9.5a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"/><path d="M10 19a2.2 2.2 0 0 0 4 0"/></svg></button>
+      <button class="iconbtn avatar" title="Signed in as Scott (prototype)" aria-label="Account"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg></button>
+    </header>
+    <main class="content" id="app"></main>
+    <div id="live-status" role="status" class="sr-only"></div>
   </div>
-  <nav class="tabs" id="tabs" aria-label="Views">
-    <button class="tab" data-view="overview">Store overview</button>
-    <button class="tab" data-view="sources">Data sources</button>
-  </nav>
-</header>
-<main class="wrap" id="app" aria-live="polite"></main>
+</div>
 
 <script>
 const DATA = __DATA_JSON__;
@@ -211,6 +282,13 @@ function deltaHtml(cur, prior) {
 const MIX_COLORS = { "Internet": "var(--c-internet)", "Phone": "var(--c-phone)", "Walk-in": "var(--c-walkin)", "PreviousCustomer": "var(--c-prev)", "Referral": "var(--c-referral)" };
 const mixColor = lt => MIX_COLORS[lt] || "var(--c-other)";
 const ltLabel = lt => lt === "PreviousCustomer" ? "Prev. customer" : lt;
+const shortPeriod = s => {
+  let cur = s.currentPeriod.label.replace(", 2026", "").replace(" (MTD)", " (MTD)");
+  if (!s.priorPeriod) return cur;
+  const pri = s.priorPeriod.label.replace(", 2026", "").replace(" (same days)", "");
+  return `${cur} · vs ${pri}`;
+};
+const isTwoDay = s => /Jul 1–2/.test(s.currentPeriod.label) && !s.demo;
 
 /* ---------------- status model ---------------- */
 function storeStatus(s) {
@@ -248,8 +326,15 @@ function visibleStores() {
     return true;
   });
 }
+const STORE_SORTERS = {
+  status: (a, b) => ({ risk: 0, watch: 1, good: 2 }[storeStatus(a).level] - { risk: 0, watch: 1, good: 2 }[storeStatus(b).level]) || a.name.localeCompare(b.name),
+  name: (a, b) => a.name.localeCompare(b.name),
+  leads: (a, b) => b.kpiCurrent.total.goodLeads - a.kpiCurrent.total.goodLeads,
+  sold: (a, b) => b.kpiCurrent.total.sold - a.kpiCurrent.total.sold,
+};
+const sortedVisibleStores = () => visibleStores().sort(STORE_SORTERS[state.sort] || STORE_SORTERS.status);
 
-/* ---------------- overview ---------------- */
+/* ---------------- shared bits ---------------- */
 function chipsHtml(s) {
   let h = `<span class="chip crm"><span class="dot"></span>${esc(s.crm)}</span>`;
   (s.tools || []).forEach(t => h += `<span class="chip tool"><span class="dot"></span>${esc(t)}</span>`);
@@ -260,87 +345,138 @@ function mixHtml(s) {
   const tot = rows.reduce((a, b) => a + b.metrics.goodLeads, 0);
   if (!tot) return "";
   const seg = rows.map(b => `<i style="width:${(b.metrics.goodLeads / tot * 100).toFixed(2)}%;background:${mixColor(b.leadType)}" title="${esc(ltLabel(b.leadType))}: ${b.metrics.goodLeads} leads (${(b.metrics.goodLeads / tot * 100).toFixed(0)}%)"></i>`).join("");
-  const key = rows.map(b => `<span><b style="background:${mixColor(b.leadType)}"></b>${esc(ltLabel(b.leadType))}</span>`).join("");
-  return `<div class="mix"><div class="mixbar" role="img" aria-label="Lead mix by source">${seg}</div><div class="mixkey">${key}</div></div>`;
+  const label = "Lead mix: " + rows.map(b => `${ltLabel(b.leadType)} ${(b.metrics.goodLeads / tot * 100).toFixed(0)}%`).join(", ");
+  return `<div class="mixbar" role="img" aria-label="${esc(label)}">${seg}</div>`;
 }
-function storeCard(s) {
+
+/* ---------------- overview ---------------- */
+const ICONS = {
+  leads: '<svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2"/><path d="M2.8 19.5a6.2 6.2 0 0 1 12.4 0"/><circle cx="17" cy="9.5" r="2.6"/><path d="M16 15.6a5.4 5.4 0 0 1 5.2 4"/></svg>',
+  sold: '<svg class="ic" viewBox="0 0 24 24"><path d="m20.6 13.3-7.4 7.4a1.8 1.8 0 0 1-2.5 0l-7-7a1.8 1.8 0 0 1-.5-1.2V4.6c0-1 .8-1.8 1.8-1.8h7.9c.5 0 .9.2 1.2.5l7 7a1.8 1.8 0 0 1 0 2.5Z"/><circle cx="8.3" cy="8.3" r="1.1" fill="currentColor" stroke="none"/></svg>',
+  appts: '<svg class="ic" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="16" rx="2.5"/><path d="M8 2.8v4M16 2.8v4M3.5 10.5h17"/><path d="m9.3 15.6 1.9 1.9 3.6-3.6"/></svg>',
+  pct: '<svg class="ic" viewBox="0 0 24 24"><path d="M18.5 5.5 5.5 18.5"/><circle cx="7.5" cy="7.5" r="2.4"/><circle cx="16.5" cy="16.5" r="2.4"/></svg>',
+  alert: '<svg class="ic" viewBox="0 0 24 24"><path d="M10.4 4.2 2.9 17.4A1.8 1.8 0 0 0 4.5 20h15a1.8 1.8 0 0 0 1.6-2.6L13.6 4.2a1.8 1.8 0 0 0-3.2 0Z"/><path d="M12 9.5v4.2"/><circle cx="12" cy="16.8" r=".4" fill="currentColor" stroke="none"/></svg>',
+  cal: '<svg class="ic" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="16" rx="2.5"/><path d="M8 2.8v4M16 2.8v4M3.5 10.5h17"/></svg>',
+  dl: '<svg class="ic" viewBox="0 0 24 24"><path d="M12 3.5v11M7.5 10.5l4.5 4.5 4.5-4.5"/><path d="M4 20.5h16"/></svg>',
+  arrow: '<svg class="ic" viewBox="0 0 24 24"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg>',
+};
+function storeRow(s) {
   const st = storeStatus(s);
   const c = s.kpiCurrent.total, p = s.kpiPrior && s.kpiPrior.total;
   const closing = c.goodLeads ? c.sold / c.goodLeads : null;
-  const twoDay = /Jul 1–2/.test(s.currentPeriod.label) && !s.demo;
-  return `<article class="store ${st.level}${s.demo ? " demo" : ""}">
-    <div class="head"><span class="name">${esc(s.name)} ${s.demo ? '<span class="badge-demo">Demo</span>' : ""}</span>${statusPill(st)}</div>
-    <div class="chips">${chipsHtml(s)}</div>
-    <div class="period">${esc(s.currentPeriod.label)}${s.priorPeriod ? " · vs " + esc(s.priorPeriod.label) : " · no prior baseline"}${twoDay ? ' <span class="flag" title="Only the first 2 days of the month — deltas swing widely on a sample this small">2‑DAY SAMPLE</span>' : ""}</div>
-    <div class="kpis">
-      <div class="k"><div class="lbl">Good leads</div><div class="v">${fmtN(c.goodLeads)}</div>${p ? deltaHtml(c.goodLeads, p.goodLeads) : ""}</div>
-      <div class="k"><div class="lbl">Sold</div><div class="v">${fmtN(c.sold)}</div>${p ? deltaHtml(c.sold, p.sold) : ""}</div>
-      <div class="k"><div class="lbl">Appts shown</div><div class="v">${fmtN(c.apptsShown)}</div>${p ? deltaHtml(c.apptsShown, p.apptsShown) : ""}</div>
-      <div class="k"><div class="lbl">Closing</div><div class="v">${closing == null ? "—" : fmtPct(closing)}</div></div>
-    </div>
-    ${mixHtml(s)}
-    <div class="foot"><button class="open" data-store="${esc(s.id)}">Open store →</button></div>
-  </article>`;
+  const flags = [];
+  if (isTwoDay(s)) flags.push('<span class="flag warn" title="Only the first 2 days of the month — deltas swing widely on a sample this small">2‑DAY SAMPLE</span>');
+  if (!s.priorPeriod) flags.push('<span class="flag gray" title="No prior-month report was provided — status uses benchmarks instead of deltas">NO BASELINE</span>');
+  const numCell = (v, cur, pri) => `<td class="num cellv"><div class="v">${v}</div>${p ? deltaHtml(cur, pri) : ""}</td>`;
+  return `<tr class="srow" data-store="${esc(s.id)}">
+    <td>
+      <div class="sname">${esc(s.name)} ${s.demo ? '<span class="badge-demo">DEMO</span>' : ""}</div>
+      <div class="smeta">${chipsHtml(s)}<span class="speriod">${esc(shortPeriod(s))}</span></div>
+      ${flags.length ? `<div class="sflags">${flags.join("")}</div>` : ""}
+    </td>
+    <td>${statusPill(st)}</td>
+    ${numCell(fmtN(c.goodLeads), c.goodLeads, p && p.goodLeads)}
+    ${numCell(fmtN(c.sold), c.sold, p && p.sold)}
+    ${numCell(fmtN(c.apptsShown), c.apptsShown, p && p.apptsShown)}
+    <td class="num cellv"><div class="v">${closing == null ? "—" : fmtPct(closing)}</div></td>
+    <td class="num">${mixHtml(s)}</td>
+    <td class="num"><button class="gobtn" data-store="${esc(s.id)}" aria-label="Open ${esc(s.name)}">${ICONS.arrow}</button></td>
+  </tr>`;
 }
 function renderOverview(el) {
   el.innerHTML = `
-  <div id="ov-strip"></div>
-  <div class="filters" role="search">
-    <label>CRM <select id="f-crm">
-      <option value="all">All</option>${[...new Set(DATA.stores.map(s => s.crm))].map(c => `<option${state.crm === c ? " selected" : ""}>${esc(c)}</option>`).join("")}
-    </select></label>
-    <label>Tool <select id="f-tool">
-      <option value="all">All</option>${[...new Set(DATA.stores.flatMap(s => s.tools || []))].map(t => `<option${state.tool === t ? " selected" : ""}>${esc(t)}</option>`).join("")}
-    </select></label>
-    <label>Status <select id="f-status">
-      <option value="all">All</option>
-      <option value="risk"${state.status === "risk" ? " selected" : ""}>At risk</option>
-      <option value="watch"${state.status === "watch" ? " selected" : ""}>Watch</option>
-      <option value="good"${state.status === "good" ? " selected" : ""}>On pace</option>
-    </select></label>
-    <label>Sort <select id="f-sort">
-      <option value="status"${state.sort === "status" ? " selected" : ""}>Needs attention first</option>
-      <option value="name"${state.sort === "name" ? " selected" : ""}>Store name</option>
-      <option value="leads"${state.sort === "leads" ? " selected" : ""}>Most leads</option>
-      <option value="sold"${state.sort === "sold" ? " selected" : ""}>Most sold</option>
-    </select></label>
-    <input type="search" id="f-q" placeholder="Search stores…" value="${esc(state.q)}" aria-label="Search stores">
-    <label class="demo-toggle"><input type="checkbox" id="f-demo"${state.demo ? " checked" : ""}> Include demo stores (fictional)</label>
+  <div class="pagehead">
+    <div><h1>Store overview</h1><p class="sub">Month-to-date pace across your live stores</p></div>
+    <div class="actions">
+      <span class="datechip" title="Fixed to the report exports provided (run Jun 22 &amp; Jul 2, 2026)">${ICONS.cal} Jun 22 – Jul 2, 2026</span>
+      <button class="btn primary" id="export">${ICONS.dl} Export CSV</button>
+    </div>
   </div>
-  <p class="legend">Status: <span class="pill good">On pace</span> <span class="pill watch">Watch</span> <span class="pill risk">At risk</span> — from MTD vs the same days of last month (▼25%+ on leads <em>and</em> sold = at risk); stores without a baseline are benchmarked on closing ≥ 25% and appt-shown ≥ 70%. Totals reflect current filters. Each store's reason is shown on its detail page.</p>
-  <div id="ov-results"></div>`;
+  <div id="ov-strip"></div>
+  <div class="panel">
+    <div class="panel-head">
+      <h2 class="ttl">Stores</h2><span class="count" id="ov-count"></span>
+      <div class="filters">
+        <label class="flabel">CRM <select id="f-crm">
+          <option value="all">All</option>${[...new Set(DATA.stores.map(s => s.crm))].map(c => `<option${state.crm === c ? " selected" : ""}>${esc(c)}</option>`).join("")}
+        </select></label>
+        <label class="flabel">Tool <select id="f-tool">
+          <option value="all">All</option>${[...new Set(DATA.stores.flatMap(s => s.tools || []))].map(t => `<option${state.tool === t ? " selected" : ""}>${esc(t)}</option>`).join("")}
+        </select></label>
+        <label class="flabel">Status <select id="f-status">
+          <option value="all">All</option>
+          <option value="risk"${state.status === "risk" ? " selected" : ""}>At risk</option>
+          <option value="watch"${state.status === "watch" ? " selected" : ""}>Watch</option>
+          <option value="good"${state.status === "good" ? " selected" : ""}>On pace</option>
+        </select></label>
+        <label class="flabel">Sort <select id="f-sort">
+          <option value="status"${state.sort === "status" ? " selected" : ""}>Needs attention first</option>
+          <option value="name"${state.sort === "name" ? " selected" : ""}>Store name</option>
+          <option value="leads"${state.sort === "leads" ? " selected" : ""}>Most leads</option>
+          <option value="sold"${state.sort === "sold" ? " selected" : ""}>Most sold</option>
+        </select></label>
+        <label class="switch"><input type="checkbox" id="f-demo"${state.demo ? " checked" : ""}><span class="track"></span><span>Include demo stores <em>(fictional)</em></span></label>
+      </div>
+    </div>
+    <div class="tblwrap"><table class="stores-tbl">
+      <thead><tr><th>Store</th><th class="left">Status</th><th class="num">Good leads</th><th class="num">Sold</th><th class="num">Appts shown</th><th class="num">Closing</th><th class="num">Lead sources</th><th class="num" aria-label="Open"></th></tr></thead>
+      <tbody id="ov-rows"></tbody>
+    </table></div>
+    <p class="legend">Status — MTD vs. the same days of last month; ▼ 25%+ on good leads <em>and</em> sold = at risk. Stores without a baseline are benchmarked on closing ≥ 25% and appt-shown ≥ 70%. Totals reflect current filters; each store’s reason is on its detail page.</p>
+  </div>`;
   $("#f-crm", el).onchange = e => { state.crm = e.target.value; updateOverview(el); };
   $("#f-tool", el).onchange = e => { state.tool = e.target.value; updateOverview(el); };
   $("#f-status", el).onchange = e => { state.status = e.target.value; updateOverview(el); };
   $("#f-sort", el).onchange = e => { state.sort = e.target.value; updateOverview(el); };
-  $("#f-q", el).oninput = e => { state.q = e.target.value; updateOverview(el); };
   $("#f-demo", el).onchange = e => { state.demo = e.target.checked; updateOverview(el); };
+  $("#export", el).onclick = exportCsv;
   updateOverview(el);
 }
+function refreshFilterOptions(el) {
+  const eligible = DATA.stores.filter(s => state.demo || !s.demo);
+  const crms = [...new Set(eligible.map(s => s.crm))];
+  if (state.crm !== "all" && !crms.includes(state.crm)) state.crm = "all";
+  $("#f-crm", el).innerHTML = `<option value="all">All</option>` + crms.map(c => `<option${state.crm === c ? " selected" : ""}>${esc(c)}</option>`).join("");
+  const tools = [...new Set(eligible.flatMap(s => s.tools || []))];
+  if (state.tool !== "all" && !tools.includes(state.tool)) state.tool = "all";
+  $("#f-tool", el).innerHTML = `<option value="all">All</option>` + tools.map(t => `<option${state.tool === t ? " selected" : ""}>${esc(t)}</option>`).join("");
+}
 function updateOverview(el) {
-  const vis = visibleStores();
-  const sorters = {
-    status: (a, b) => ({ risk: 0, watch: 1, good: 2 }[storeStatus(a).level] - { risk: 0, watch: 1, good: 2 }[storeStatus(b).level]) || a.name.localeCompare(b.name),
-    name: (a, b) => a.name.localeCompare(b.name),
-    leads: (a, b) => b.kpiCurrent.total.goodLeads - a.kpiCurrent.total.goodLeads,
-    sold: (a, b) => b.kpiCurrent.total.sold - a.kpiCurrent.total.sold,
-  };
-  vis.sort(sorters[state.sort] || sorters.status);
+  refreshFilterOptions(el);
+  const vis = sortedVisibleStores();
   const tot = vis.reduce((a, s) => { const c = s.kpiCurrent.total; a.leads += c.goodLeads; a.sold += c.sold; a.shown += c.apptsShown; return a; }, { leads: 0, sold: 0, shown: 0 });
   const atRisk = vis.filter(s => storeStatus(s).level === "risk").length;
   const watch = vis.filter(s => storeStatus(s).level === "watch").length;
   const demoN = vis.filter(s => s.demo).length;
-  const demoWarn = demoN ? `<div class="aux" style="color:var(--demo);font-weight:600">includes ${demoN} fictional demo store${demoN > 1 ? "s" : ""}</div>` : "";
+  const demoWarn = demoN ? `<div class="aux demo-warn">includes ${demoN} fictional demo store${demoN > 1 ? "s" : ""}</div>` : "";
+  const stat = (ico, cls, lbl, val, aux, valCls) => `<div class="stat"><div class="hd"><span class="icotile ${cls}">${ico}</span><span class="lbl">${lbl}</span></div><div class="val ${valCls || ""}">${val}</div>${aux}</div>`;
   $("#ov-strip", el).innerHTML = `<div class="strip">
-    <div class="stat"><div class="lbl">Stores shown</div><div class="val">${vis.length}</div><div class="aux">${DATA.stores.filter(x => !x.demo).length} live · ${DATA.stores.filter(x => x.demo).length} demo${state.demo ? "" : " (hidden)"}</div></div>
-    <div class="stat"><div class="lbl">Good leads · MTD</div><div class="val">${fmtN(tot.leads)}</div><div class="aux">each store's own MTD window</div>${demoWarn}</div>
-    <div class="stat"><div class="lbl">Sold · MTD</div><div class="val">${fmtN(tot.sold)}</div>${demoWarn}</div>
-    <div class="stat"><div class="lbl">Appts shown · MTD</div><div class="val">${fmtN(tot.shown)}</div>${demoWarn}</div>
-    <div class="stat"><div class="lbl">Avg closing rate</div><div class="val">${tot.leads ? fmtPct(tot.sold / tot.leads) : "—"}</div><div class="aux">sold ÷ good leads</div></div>
-    <div class="stat"><div class="lbl">Needs attention</div><div class="val ${atRisk ? "risk" : ""}">${atRisk + watch}</div><div class="aux">${atRisk} at risk · ${watch} watch</div></div>
+    ${stat(ICONS.leads, "ico-purple", "Good leads · MTD", fmtN(tot.leads), `<div class="aux">each store’s own MTD window</div>${demoWarn}`)}
+    ${stat(ICONS.sold, "ico-blue", "Sold · MTD", fmtN(tot.sold), `<div class="aux">across ${vis.length} store${vis.length === 1 ? "" : "s"} shown</div>${demoWarn}`)}
+    ${stat(ICONS.appts, "ico-green", "Appts shown · MTD", fmtN(tot.shown), `<div class="aux">appointments that showed</div>${demoWarn}`)}
+    ${stat(ICONS.pct, "ico-purple", "Avg closing rate", tot.leads ? fmtPct(tot.sold / tot.leads) : "—", '<div class="aux">sold ÷ good leads</div>')}
+    ${stat(ICONS.alert, "ico-red", "Needs attention", atRisk + watch, `<div class="aux">${atRisk} at risk · ${watch} watch</div>`, atRisk ? "risk" : "")}
   </div>`;
-  $("#ov-results", el).innerHTML = vis.length ? `<div class="grid">${vis.map(storeCard).join("")}</div>` : `<div class="empty">No stores match the current filters.</div>`;
-  el.querySelectorAll(".open").forEach(b => b.onclick = () => { location.hash = "#/store/" + b.dataset.store; });
+  $("#ov-count", el).textContent = `${vis.length} shown · ${DATA.stores.filter(x => x.demo).length} demo ${state.demo ? "included" : "hidden"}`;
+  $("#ov-rows", el).innerHTML = vis.length ? vis.map(storeRow).join("") : `<tr><td colspan="8"><div class="empty">No stores match the current filters.</div></td></tr>`;
+  el.querySelectorAll("#ov-rows tr[data-store]").forEach(tr => tr.onclick = () => { location.hash = "#/store/" + tr.dataset.store; });
+  $("#live-status").textContent = `${vis.length} store${vis.length === 1 ? "" : "s"} shown`;
+}
+function exportCsv() {
+  const rows = [["Store", "CRM", "Tools", "Period", "Status", "Good leads", "Leads delta %", "Sold", "Sold delta %", "Appts shown", "Closing %"]];
+  sortedVisibleStores().forEach(s => {
+    const st = storeStatus(s), c = s.kpiCurrent.total, p = s.kpiPrior && s.kpiPrior.total;
+    const d = (cur, pri) => { const x = p ? deltaPct(cur, pri) : null; return x == null ? "" : x.toFixed(1); };
+    rows.push([s.name + (s.demo ? " (DEMO)" : ""), s.crm, (s.tools || []).join(" + "), shortPeriod(s), st.label,
+      c.goodLeads, d(c.goodLeads, p && p.goodLeads), c.sold, d(c.sold, p && p.sold), c.apptsShown,
+      c.goodLeads ? (c.sold / c.goodLeads * 100).toFixed(1) : ""]);
+  });
+  const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(",")).join("\r\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8" }));
+  a.download = "paceboard-stores.csv";
+  a.click();
+  URL.revokeObjectURL(a.href);
 }
 
 /* ---------------- store detail ---------------- */
@@ -360,7 +496,6 @@ function kpiTable(s) {
   const cur = s.kpiCurrent, pri = s.kpiPrior;
   const priByLt = {}; if (pri) pri.byLeadType.forEach(b => priByLt[b.leadType] = b);
   const ltNames = [...new Set([...cur.byLeadType.map(b => b.leadType), ...(pri ? pri.byLeadType.map(b => b.leadType) : [])])];
-  const grp = pri ? 3 : 1;
   let rows = "";
   ltNames.forEach((lt, i) => {
     const cb = cur.byLeadType.find(b => b.leadType === lt) || { leadType: lt, metrics: { goodLeads: 0, sold: 0, apptsShown: 0, contactPct: 0, apptSetOfContactedPct: 0 }, byInventory: [] };
@@ -401,8 +536,7 @@ function kpiTable(s) {
   </div>`;
 }
 function teamTable(s) {
-  if (!s.salesTeam) return `<h2>Salesperson activity</h2>
-    <div class="empty">${s.demo ? "Demo store — salesperson-level data isn’t included in the demo." : "No salesperson activity report was provided for this store yet — schedule the daily rep-level export to light this section up."}</div>`;
+  if (!s.salesTeam) return `<div class="panel-body"><div class="empty">${s.demo ? "Demo store — salesperson-level data isn’t included in the demo." : "No salesperson activity report was provided for this store yet — schedule the daily rep-level export to light this section up."}</div></div>`;
   const hasMat = s.salesTeam.some(r => r.matador);
   const cols = [
     { k: "name", lbl: "Salesperson", num: false },
@@ -430,7 +564,7 @@ function teamTable(s) {
     const sp = shown == null ? `<span class="shown-pill na">—</span>` : `<span class="shown-pill ${shown >= .7 ? "good" : "warn"}">${fmtPct(shown)}</span>`;
     const mat = matCols.map(c => `<td class="num">${r.matador ? fmtN(val(r, c.k)) : "—"}</td>`).join("");
     return `<tr>
-      <td class="name">${esc(r.name)}${noOut ? '<span class="flag">NO OUTBOUND</span>' : ""}</td>
+      <td class="name">${esc(r.name)}${noOut ? '<span class="rowflag">NO OUTBOUND</span>' : ""}</td>
       <td class="num">${fmtN(r.goodLeads)}</td><td class="num">${fmtN(r.sold)}</td>
       <td class="num">${fmtN(r.apptsScheduled)}</td><td class="num">${fmtN(r.apptsShown)}</td>
       <td class="num">${sp}</td>
@@ -441,12 +575,11 @@ function teamTable(s) {
   const foot = t ? `<tr><td class="name">TEAM TOTAL</td><td class="num">${fmtN(t.goodLeads)}</td><td class="num">${fmtN(t.sold)}</td><td class="num">${fmtN(t.apptsScheduled)}</td><td class="num">${fmtN(t.apptsShown)}</td><td class="num">${fmtPct(t.shownPct)}</td><td class="num">${fmtN(t.calls)}</td><td class="num">${fmtN(t.emails)}</td><td class="num">${fmtN(t.texts)}</td>${matCols.map(() => '<td class="num"></td>').join("")}</tr>` : "";
   const matOther = (s.matadorOther && s.matadorOther.length) ? `
     <details class="extra"><summary>Matador users not on the sales report (${s.matadorOther.length}) — managers, BDC &amp; admins</summary>
-    <div class="tblwrap" style="margin-top:8px"><table>
-      <thead><tr><th>User</th><th>Role</th><th class="num">Msgs sent</th><th class="num">Videos</th><th class="num">Clients msgd</th><th class="num">Assigned</th><th class="num">Last activity</th></tr></thead>
+    <div class="tblwrap"><table>
+      <thead><tr><th>User</th><th class="left">Role</th><th class="num">Msgs sent</th><th class="num">Videos</th><th class="num">Clients msgd</th><th class="num">Assigned</th><th class="num">Last activity</th></tr></thead>
       <tbody>${s.matadorOther.map(m => `<tr><td class="name">${esc(m.name)}</td><td>${esc(m.role)}</td><td class="num">${fmtN(m.messagesSent)}</td><td class="num">${fmtN(m.videosSent)}</td><td class="num">${fmtN(m.clientsMessaged)}</td><td class="num">${fmtN(m.assignedClients)}</td><td class="num">${esc(m.lastActivity)}</td></tr>`).join("")}</tbody>
     </table></div></details>` : "";
-  return `<h2>Salesperson activity <span class="sub">${esc(s.salesTeamPeriod || "")}${hasMat ? " · CRM + Matador merged by rep" : ""}</span></h2>
-    <div class="tblwrap"><table id="team-tbl">
+  return `<div class="tblwrap"><table id="team-tbl">
       <thead>${hasMat ? `<tr class="groups"><th colspan="9">CRM (${esc(s.crm)})</th><th colspan="3">Matador AI</th></tr>` : ""}<tr>${head}</tr></thead>
       <tbody>${rows}</tbody><tfoot>${foot}</tfoot>
     </table></div>
@@ -457,11 +590,11 @@ function teamTable(s) {
 }
 function renderStore(el, id) {
   const s = DATA.stores.find(x => x.id === id);
-  if (!s) { el.innerHTML = `<p>Store not found. <a class="plain" href="#/overview">Back to overview</a></p>`; return; }
+  if (!s) { el.innerHTML = `<div class="panel"><div class="panel-body"><p>Store not found. <a class="plain" href="#/overview">Back to overview</a></p></div></div>`; return; }
   const st = storeStatus(s);
   const c = s.kpiCurrent.total, p = s.kpiPrior && s.kpiPrior.total;
   const closing = c.goodLeads ? c.sold / c.goodLeads : null, pClosing = p && p.goodLeads ? p.sold / p.goodLeads : null;
-  const twoDay = /Jul 1–2/.test(s.currentPeriod.label);
+  const twoDay = isTwoDay(s);
   const tiles = [
     { lbl: "Good leads", v: fmtN(c.goodLeads), pv: p && fmtN(p.goodLeads), d: p && deltaHtml(c.goodLeads, p.goodLeads) },
     { lbl: "Sold", v: fmtN(c.sold), pv: p && fmtN(p.sold), d: p && deltaHtml(c.sold, p.sold) },
@@ -472,26 +605,31 @@ function renderStore(el, id) {
   ];
   el.innerHTML = `
     <nav class="crumb"><a class="plain" href="#/overview">← All stores</a>
-      <label>Switch store <select id="d-switch">${DATA.stores.map(x => `<option value="${esc(x.id)}"${x.id === s.id ? " selected" : ""}>${esc(x.name)}${x.demo ? " (demo)" : ""}</option>`).join("")}</select></label>
+      <label class="flabel">Switch store <select id="d-switch">${DATA.stores.map(x => `<option value="${esc(x.id)}"${x.id === s.id ? " selected" : ""}>${esc(x.name)}${x.demo ? " (demo)" : ""}</option>`).join("")}</select></label>
     </nav>
     <header>
-      <div class="dhead"><h1>${esc(s.name)}</h1>${s.demo ? '<span class="badge-demo">Demo</span>' : ""}${statusPill(st)}</div>
-      <div class="dmeta">${chipsHtml(s)} &nbsp; ${esc(s.currentPeriod.label)}${s.priorPeriod ? " · compared with " + esc(s.priorPeriod.label) : ""}</div>
+      <div class="dhead"><h1>${esc(s.name)}</h1>${s.demo ? '<span class="badge-demo">DEMO</span>' : ""}${statusPill(st)}</div>
+      <div class="dmeta">${chipsHtml(s)}<span>${esc(s.currentPeriod.label)}${s.priorPeriod ? " · compared with " + esc(s.priorPeriod.label) : ""}</span></div>
       <div class="dmeta">Status: <strong>${st.label}</strong> — ${esc(st.why)}</div>
       ${s.demo ? `<div class="banner demo">Demo store — illustrative numbers only, to preview how a ${esc(s.crm)}-based client plugs into the same dashboard.</div>` : ""}
-      ${twoDay && !s.demo ? `<div class="banner info">Early-month sample: this comparison covers only the first 2 days of the month, so percentages swing widely.</div>` : ""}
+      ${twoDay ? `<div class="banner info">Early-month sample: this comparison covers only the first 2 days of the month, so percentages swing widely.</div>` : ""}
     </header>
     <div class="tiles">${tiles.map(t => `<div class="tile"><div class="lbl">${t.lbl}</div><div class="v">${t.v}</div>${t.pv ? `<div class="vs">prev ${t.pv} ${t.d || ""}</div>` : ""}</div>`).join("")}</div>
-    <h2>MTD KPI comparison <span class="sub">${p ? "current vs same days last month, by lead type" : "current period by lead type — no prior baseline provided"}</span></h2>
-    ${kpiTable(s)}
-    <div id="team-sec">${teamTable(s)}</div>
+    <div class="panel">
+      <div class="panel-head"><h2 class="ttl">MTD KPI comparison <span class="sub">${p ? "current vs same days last month, by lead type" : "current period by lead type — no prior baseline provided"}</span></h2></div>
+      ${kpiTable(s)}
+    </div>
+    <div class="panel" id="team-panel">
+      <div class="panel-head"><h2 class="ttl">Salesperson activity <span class="sub">${esc(s.salesTeamPeriod || "")}${s.salesTeam && s.salesTeam.some(r => r.matador) ? " · CRM + Matador merged by rep" : ""}</span></h2></div>
+      <div id="team-sec">${teamTable(s)}</div>
+    </div>
     <p class="pagefoot">${esc(s.notes || "")}</p>`;
   $("#d-switch", el).onchange = e => { location.hash = "#/store/" + e.target.value; };
   el.querySelectorAll(".tgl").forEach(b => b.onclick = () => {
-    const id = b.dataset.tgl, open = b.getAttribute("aria-expanded") === "true";
+    const tid = b.dataset.tgl, open = b.getAttribute("aria-expanded") === "true";
     b.setAttribute("aria-expanded", String(!open));
-    el.querySelectorAll(`[data-parent="${id}"]`).forEach(tr => {
-      if (open) { // collapse: also collapse grandchildren
+    el.querySelectorAll(`[data-parent="${tid}"]`).forEach(tr => {
+      if (open) {
         tr.hidden = true;
         const btn = tr.querySelector(".tgl");
         if (btn) { btn.setAttribute("aria-expanded", "false"); el.querySelectorAll(`[data-parent="${btn.dataset.tgl}"]`).forEach(x => x.hidden = true); }
@@ -520,15 +658,17 @@ function renderSources(el) {
     : '<span class="chip unk"><span class="dot"></span>API unknown</span>';
   const mailChip = m => m ? '<span class="chip ok"><span class="dot"></span>Daily email export</span>' : '<span class="chip no"><span class="dot"></span>Manual download only</span>';
   el.innerHTML = `
-  <h2 style="margin-top:4px">Where the numbers come from <span class="sub">per-system ingestion status across the client base</span></h2>
+  <div class="pagehead">
+    <div><h1>Data sources</h1><p class="sub">Per-system ingestion status across the client base</p></div>
+  </div>
   <div class="src-grid">${DATA.integrations.map(i => `
     <div class="src">
-      <div class="top"><span class="nm">${esc(i.name)}</span><span class="ty">${esc(i.type)}</span></div>
+      <div class="topline"><span class="nm">${esc(i.name)}</span><span class="ty">${esc(i.type)}</span></div>
       <div class="cov">${esc(i.coverage)}</div>
       <div class="chips">${apiChip(i.api)}${mailChip(i.scheduledEmail)}</div>
       <div class="note">${esc(i.note)}</div>
     </div>`).join("")}</div>
-  <h2>How data flows today</h2>
+  <div class="pagehead" style="margin-top:6px"><div><h2>How data flows today</h2></div></div>
   <div class="flow">
     <div class="step"><div class="n">Step 1 · Collect</div><div class="t">Scheduled report emails</div><div class="d">Each CRM emails its Enterprise Performance / activity export daily. Matador is still a manual CSV from the Users tab.</div></div>
     <div class="step"><div class="n">Step 2 · Normalize</div><div class="t">Parse into one schema</div><div class="d">Store, period, lead type, inventory, salesperson — every source lands in the same shape, so stores on different CRMs compare apples to apples.</div></div>
@@ -538,24 +678,81 @@ function renderSources(el) {
   <p class="pagefoot">Prototype data: VinSolutions “Enterprise Performance” exports (run Jun 22 &amp; Jul 2, 2026) for Vern Eide Honda, 777 Nissan and Armstrong Subaru, plus the Matador MTD user report for Vern Eide Honda. Demo stores are illustrative.</p>`;
 }
 
+/* ---------------- settings & help ---------------- */
+function renderSettings(el) {
+  el.innerHTML = `
+  <div class="pagehead"><div><h1>Settings</h1><p class="sub">Status model & display defaults — fixed in this prototype, configurable in the real build</p></div></div>
+  <div class="panel"><div class="panel-head"><h2 class="ttl">Status thresholds</h2></div>
+    <div class="panel-body">
+      <div class="kv"><span class="k">At risk</span><span class="v">good leads ▼ 25%+ and sold ▼ 25%+ vs same days last month</span></div>
+      <div class="kv"><span class="k">Watch</span><span class="v">good leads or sold ▼ 10%+ vs same days last month</span></div>
+      <div class="kv"><span class="k">On pace</span><span class="v">everything else</span></div>
+      <div class="kv"><span class="k">No-baseline benchmark</span><span class="v">closing ≥ 25% · appt-shown ≥ 70%</span></div>
+      <div class="kv"><span class="k">Shown % target (reps)</span><span class="v">≥ 70%</span></div>
+    </div>
+  </div>
+  <div class="panel"><div class="panel-head"><h2 class="ttl">Display</h2></div>
+    <div class="panel-body">
+      <div class="kv"><span class="k">Demo stores</span><span class="v">hidden by default · toggle on the overview</span></div>
+      <div class="kv"><span class="k">Number format / locale</span><span class="v">en-US</span></div>
+      <div class="kv"><span class="k">Data window</span><span class="v">fixed to the provided exports (Jun 22 &amp; Jul 2, 2026)</span></div>
+    </div>
+  </div>`;
+}
+function renderHelp(el) {
+  el.innerHTML = `
+  <div class="pagehead"><div><h1>Help</h1><p class="sub">What you’re looking at, in 60 seconds</p></div></div>
+  <div class="panel"><div class="panel-body prose">
+    <h2 style="margin-top:0">What is this?</h2>
+    <p>A prototype that rolls every dealership client into one pace view. Each store’s CRM export (VinSolutions today; Tekion, DriveCentric and Momentum next) is parsed into one schema, so stores compare apples to apples no matter which system they run.</p>
+    <h2>MTD KPI comparison</h2>
+    <p>Current month-to-date vs <strong>the same days of last month</strong> — e.g. Jul 1–2 vs Jun 1–2 — so early-month numbers aren’t compared against a full month. Early samples are flagged (2‑day sample).</p>
+    <h2>Salesperson activity</h2>
+    <p>Per-rep leads, sold, appointments and outbound (calls / emails / texts) from the CRM, with Matador AI messaging merged per rep where the store uses it.</p>
+    <h2>Reading the status pill</h2>
+    <p><span class="pill good">On pace</span> holding or growing · <span class="pill watch">Watch</span> one metric slipping · <span class="pill risk">At risk</span> leads <em>and</em> sold down 25%+. The exact reason is printed on each store’s page.</p>
+    <h2>Questions?</h2>
+    <p>Ping Carlos — this prototype is built from the Jun 22 / Jul 2 report exports; the production version refreshes automatically from scheduled emails and, once granted, CRM APIs.</p>
+  </div></div>`;
+}
+
 /* ---------------- router ---------------- */
 function render() {
   const el = $("#app");
   const h = location.hash || "#/overview";
   const storeM = h.match(/^#\/store\/(.+)$/);
-  const view = storeM ? "store" : (h === "#/sources" ? "sources" : "overview");
-  document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.view === view || (view === "store" && t.dataset.view === "overview")));
+  const view = storeM ? "store" : (h === "#/sources" ? "sources" : h === "#/settings" ? "settings" : h === "#/help" ? "help" : "overview");
+  document.querySelectorAll(".nav").forEach(t => {
+    const on = t.dataset.view === view || (view === "store" && t.dataset.view === "overview");
+    t.classList.toggle("active", on);
+    if (on) t.setAttribute("aria-current", "page"); else t.removeAttribute("aria-current");
+  });
   if (view === "store") {
     let sid = storeM[1];
-    try { sid = decodeURIComponent(sid); } catch (e) { /* malformed escape — fall through to "store not found" */ }
+    try { sid = decodeURIComponent(sid); } catch (e) { /* malformed escape — falls through to "store not found" */ }
     renderStore(el, sid);
+    const st = DATA.stores.find(x => x.id === sid);
+    $("#live-status").textContent = st ? st.name : "Store not found";
   }
-  else if (view === "sources") renderSources(el);
-  else renderOverview(el);
+  else if (view === "sources") { renderSources(el); $("#live-status").textContent = "Data sources"; }
+  else if (view === "settings") { renderSettings(el); $("#live-status").textContent = "Settings"; }
+  else if (view === "help") { renderHelp(el); $("#live-status").textContent = "Help"; }
+  else renderOverview(el); // updateOverview announces the store count
   window.scrollTo(0, 0);
 }
-document.querySelectorAll(".tab").forEach(t => t.onclick = () => { location.hash = "#/" + t.dataset.view; });
-$("#asof").textContent = "Data as of Jun 22 & Jul 2, 2026 · " + DATA.stores.filter(s => !s.demo).length + " live stores";
+document.querySelectorAll(".nav").forEach(t => t.onclick = () => { location.hash = "#/" + t.dataset.view; });
+$("#asof").innerHTML = `Data as of Jun 22 &amp; Jul 2, 2026 · <b>${DATA.stores.filter(s => !s.demo).length} live stores</b>`;
+const gq = $("#g-q");
+$("#g-kbd").textContent = /Mac|iP(hone|ad|od)/.test((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "") ? "⌘F" : "Ctrl F";
+gq.addEventListener("input", () => {
+  state.q = gq.value;
+  if (!(location.hash || "#/overview").match(/overview|^#?$/)) location.hash = "#/overview";
+  const el = $("#app");
+  if ($("#ov-rows", el)) updateOverview(el); else renderOverview(el);
+});
+window.addEventListener("keydown", e => {
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "f") { e.preventDefault(); gq.focus(); gq.select(); }
+});
 window.addEventListener("hashchange", render);
 render();
 </script>
