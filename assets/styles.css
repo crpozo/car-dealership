@@ -307,6 +307,7 @@ main:focus { outline: none; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 12px;
+  align-items: start;
 }
 
 .store-card {
@@ -320,12 +321,48 @@ main:focus { outline: none; }
   color: inherit;
 }
 .store-card:hover { border-color: var(--accent); transform: translateY(-1px); }
-.store-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-.store-card-name { font-weight: 700; font-size: 16px; }
+.store-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.store-card-title { display: flex; flex-direction: column; min-width: 0; }
+
+/* Eyebrow + accent title + chevron: makes it unmistakable that each card is a
+   store you can open, and separates the card's title from the stat labels
+   underneath it, which were competing for the same visual weight. */
+.store-card-kicker {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.store-card-name {
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -.01em;
+  color: var(--accent);
+}
+.store-card-name::after {
+  content: " \2192";
+  display: inline-block;
+  font-weight: 700;
+  transition: transform .12s ease;
+}
+.store-card:hover .store-card-name::after { transform: translateX(3px); }
+.store-card.no-data .store-card-name { color: var(--muted); }
 .store-card-loc { font-size: 12px; color: var(--faint); }
-.store-card-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 12px; }
+.store-card-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 14px; margin-top: 14px; }
 .store-card-foot { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line-soft); font-size: 12px; color: var(--muted); }
-.store-card-empty { color: var(--muted); font-size: 13px; margin-top: 10px; }
+/* An empty store card carries one sentence, so it must not reserve a full card's
+   worth of dead space next to the populated ones. */
+.store-card.no-data { align-self: start; opacity: .82; }
+.store-card.no-data:hover { opacity: 1; }
+.store-card-empty { color: var(--muted); font-size: 13px; margin-top: 12px; line-height: 1.4; }
 
 .scs { min-width: 0; }
 .scs-l {

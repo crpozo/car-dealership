@@ -132,6 +132,31 @@
     return "No report snapshot covers " + rangeLabel(range) + " for this store.";
   }
 
+  var MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  function prettyMonth(key) {
+    var m = /^(\d{4})-(\d{2})$/.exec(String(key || ""));
+    if (!m) return String(key || "");
+    return MONTH_NAMES[Number(m[2]) - 1] + " " + m[1];
+  }
+
+  /* An empty store card is useless if it only says "no data". Say which months the
+     store DOES have, so the reader knows to change the timeframe rather than
+     assuming the store is dead or that we simply failed to load it. */
+  function whereDataIs(storeId, range) {
+    var months = [];
+    try {
+      var cov = C().coverage(storeId);
+      months = (cov && cov.months) || [];
+    } catch (e) { months = []; }
+    if (!months.length) return "No reports loaded for this store at all.";
+    var pretty = months.map(prettyMonth);
+    var list = pretty.length === 1
+      ? pretty[0]
+      : pretty.slice(0, -1).join(", ") + " and " + pretty[pretty.length - 1];
+    return "No reports in this range — this store only has " + list + ".";
+  }
+
   function coverageAsOf(sm) {
     var cov = sm && sm.coverage;
     if (!cov) return "";
@@ -508,9 +533,9 @@
         var href = "#/store/" + encodeURIComponent(s.id);
         if (!hasData(sm)) {
           return '<a class="store-card no-data" href="' + esc(href) + '">' +
-            '<div class="store-card-head"><span class="store-card-name">' + esc(s.name) + "</span>" +
+            '<div class="store-card-head"><span class="store-card-title">' + '<span class="store-card-kicker">Store</span>' + '<span class="store-card-name">' + esc(s.name) + "</span></span>" +
             (s.crm ? '<span class="chip crm">' + esc(s.crm) + "</span>" : "") + "</div>" +
-            '<div class="store-card-empty">' + na(noCoverageReason(range)) + " no data for this range</div></a>";
+            '<div class="store-card-empty">' + esc(whereDataIs(s.id, range)) + "</div></a>";
         }
         var net = sm.internet || null;
         var closing = net ? c.rate(net.sold, net.goodLeads) : null;
@@ -526,7 +551,7 @@
         ];
         var asOf = coverageAsOf(sm);
         return '<a class="store-card" href="' + esc(href) + '">' +
-          '<div class="store-card-head"><span class="store-card-name">' + esc(s.name) + "</span>" +
+          '<div class="store-card-head"><span class="store-card-title">' + '<span class="store-card-kicker">Store</span>' + '<span class="store-card-name">' + esc(s.name) + "</span></span>" +
           (s.crm ? '<span class="chip crm">' + esc(s.crm) + "</span>" : "") +
           ((s.tools || []).map(function (t) { return '<span class="chip tool">' + esc(t) + "</span>"; }).join("")) +
           "</div>" +
