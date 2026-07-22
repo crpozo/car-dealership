@@ -25,6 +25,13 @@
     for (var i = 0; i < list.length; i++) if (String(list[i].id) === String(id)) return list[i];
     return null;
   }
+  /* Activity and Internet render one section per store; pass a storeId to scope
+     them to a single store for its detail page. */
+  function scopedStores(storeId) {
+    if (!storeId) return STORES();
+    var s = storeById(storeId);
+    return s ? [s] : [];
+  }
 
   function esc(s) {
     if (s === null || s === undefined) return "";
@@ -313,6 +320,20 @@
       "</header>";
   }
 
+  /* Breadcrumb trail. Last entry is the current page: rendered as plain text with
+     aria-current, not a link back to where the reader already is. */
+  function breadcrumbs(trail) {
+    var items = (trail || []).filter(Boolean).map(function (c, i, arr) {
+      var last = i === arr.length - 1;
+      var label = esc(c.label);
+      return "<li>" + (last || !c.href
+        ? '<span aria-current="page">' + label + "</span>"
+        : '<a href="' + esc(c.href) + '">' + label + "</a>") + "</li>";
+    });
+    if (!items.length) return "";
+    return '<nav class="crumbs" aria-label="Breadcrumb"><ol>' + items.join("") + "</ol></nav>";
+  }
+
   function emptyState(title, msg) {
     return '<div class="empty"><strong>' + esc(title) + "</strong>" +
       (msg ? "<p>" + esc(msg) + "</p>" : "") + "</div>";
@@ -523,6 +544,8 @@
         headlineTiles(all, range, null, null) +
         '<h2 class="section-title">Stores</h2>' +
         '<div class="store-cards">' + cards + "</div>" +
+        '<h2 class="section-title">Store detail <span class="section-sub">click a row to open the store</span></h2>' +
+        storesTableBlock(range) +
         footnotes([
           "Engagement target " + fmtPct(engagementTarget(), 0) + "; appts set of contacted target " + fmtPct(apptTarget(), 0) + ".",
           "Every figure is aggregated from the counts in the VinSolutions exports; percentages are recomputed from those counts, never averaged."
@@ -537,16 +560,12 @@
      1 Total opportunities · 2 Good leads (internet) · 3 Engagement % ·
      4 Appts set of contacted % · 5 Internet sold closing % · 6 Total sold ·
      7 DMS Sold · 8 Sales goal + pace */
-  function storesPage(range) {
-    return guard(function () {
+  /* The store table lives on the Overview (the main dashboard) — extracted so the
+     standalone #/stores route and the Overview render exactly the same thing. */
+  function storesTableBlock(range) {
       var c = C();
       var list = STORES();
-      var head = pageHead("Stores", rangeLabel(range));
-
-      if (!list.length) {
-        return '<section class="page" id="page-stores">' + head + coverageBanner(range) +
-          emptyState("No stores loaded", "assets/data.js contains no stores.") + "</section>";
-      }
+      if (!list.length) return emptyState("No stores loaded", "assets/data.js contains no stores.");
 
       var header =
         "<thead><tr>" +
@@ -595,19 +614,81 @@
           "</tr>";
       }).join("");
 
-      return '<section class="page" id="page-stores">' + head + coverageBanner(range) +
-        tableWrap(header + "<tbody>" + rows + "</tbody>", "stores-tbl") +
+      return tableWrap(header + "<tbody>" + rows + "</tbody>", "stores-tbl") +
         footnotes([
-          "Click any row to open the store.",
+          "Click any row to open that store — its salesperson activity and internet performance live inside it.",
           "“DMS Sold” and “Total sold” are the same figure — Sold in Time Frame from the CRM export — so they are shown once, as Total sold (DMS). If a separate DMS extract is ever wired in, this splits into two columns.",
           "Sales goals are not part of the reports: they are entered here and stored in this browser only. A store with no goal shows \"no goal\" and is never marked red.",
           paceFootnote()
-        ]) +
-        "</section>";
+        ]);
+  }
+
+  function storesPage(range) {
+    return guard(function () {
+      return '<section class="page" id="page-stores">' +
+        pageHead("Stores", rangeLabel(range)) + coverageBanner(range) +
+        storesTableBlock(range) + "</section>";
     });
   }
 
   /* ======================================================== 3. STORE DETAIL */
+
+  /* Tabs belong to a store, not to the whole app: at the top level the reader has
+     one dashboard, and only once they've picked a store does "activity" or
+     "internet performance" mean anything specific. */
+  var STORE_TABS = [
+    { id: "performance", label: "Performance", suffix: "" },
+    { id: "activity", label: "Salesperson activity", suffix: "/activity" },
+    { id: "internet", label: "Internet performance", suffix: "/internet" }
+  ];
+
+  function storeTabs(storeId, active) {
+    var base = "#/store/" + encodeURIComponent(storeId);
+    return '<nav class="subnav" aria-label="Store sections">' + STORE_TABS.map(function (t) {
+      var on = t.id === active;
+      return '<a href="' + esc(base + t.suffix) + '"' + (on ? ' class="on" aria-current="page"' : "") +
+        ">" + esc(t.label) + "</a>";
+    }).join("") + "</nav>";
+  }
+
+  /* Shared chrome for every store page: breadcrumbs, title, meta, tabs. */
+  function storeShell(storeId, range, active, body) {
+    var store = storeById(storeId);
+    if (!store) {
+      return '<section class="page">' + pageHead("Store not found") +
+        emptyState("Unknown store", 'No store with id "' + storeId + '" is loaded.') + "</section>";
+    }
+    var sm = storeMetrics(store.id, range);
+    var meta = '<div class="store-meta">' +
+      (store.crm ? '<span class="chip crm">' + esc(store.crm) + "</span>" : "") +
+      (store.tools || []).map(function (t) { return '<span class="chip tool">' + esc(t) + "</span>"; }).join("") +
+      (coverageAsOf(sm) ? '<span class="asof">' + esc(coverageAsOf(sm)) + "</span>" : "") +
+      "</div>";
+    return '<section class="page" id="page-store">' +
+      breadcrumbs([{ label: "Overview", href: "#/overview" }, { label: store.name }]) +
+      pageHead(store.name, rangeLabel(range) + (store.location ? " · " + store.location : "")) +
+      meta +
+      storeTabs(store.id, active) +
+      coverageBanner(range, [store.id]) +
+      body(store, sm) +
+      "</section>";
+  }
+
+  function storeActivity(storeId, range) {
+    return guard(function () {
+      return storeShell(storeId, range, "activity", function () {
+        return activity(range, storeId);
+      });
+    });
+  }
+
+  function storeInternet(storeId, range) {
+    return guard(function () {
+      return storeShell(storeId, range, "internet", function () {
+        return internet(range, storeId);
+      });
+    });
+  }
 
   function storeDetail(storeId, range) {
     return guard(function () {
@@ -701,15 +782,13 @@
         (coverageAsOf(sm) ? '<span class="asof">' + esc(coverageAsOf(sm)) + "</span>" : "") +
         "</div>";
 
-      return '<section class="page" id="page-store">' +
-        head + storeMeta + coverageBanner(range, [storeId]) +
-        headlineTiles(sm, range, totalCmp, netCmp) +
-        '<h2 class="section-title">Lead types <span class="section-sub">' +
-        esc(prior ? "MTD vs " + compareLabel : "MTD") + "</span></h2>" +
-        table +
-        footnotes(notes) +
-        '<p class="backlink"><a href="#/stores">← All stores</a></p>' +
-        "</section>";
+      return storeShell(storeId, range, "performance", function () {
+        return headlineTiles(sm, range, totalCmp, netCmp) +
+          '<h2 class="section-title">Lead types <span class="section-sub">' +
+          esc(prior ? "MTD vs " + compareLabel : "MTD") + "</span></h2>" +
+          table +
+          footnotes(notes);
+      });
     });
   }
 
@@ -718,11 +797,12 @@
   /* Column order dictated by the client:
      1 Total opportunities · 2 Internet leads · 3 Calls · 4 Emails · 5 Texts ·
      6 Appts set · 7 Shown % · 8 Internet sold · 9 Total sold (last) */
-  function activity(range) {
+  function activity(range, storeId) {
     return guard(function () {
       var c = C();
-      var list = STORES();
-      var head = pageHead("Salesperson activity", rangeLabel(range));
+      var list = scopedStores(storeId);
+      var scoped = !!storeId;
+      var head = scoped ? "" : pageHead("Salesperson activity", rangeLabel(range));
       var noInternetSplit = "The salesperson report is not broken out by lead type, so internet figures are not available per rep.";
 
       var sections = list.map(function (s) {
@@ -798,7 +878,7 @@
         sections = emptyState("No stores loaded", "assets/data.js contains no stores.");
       }
 
-      return '<section class="page" id="page-activity">' + head + coverageBanner(range) + sections +
+      return '<section class="page" id="page-activity">' + head + (scoped ? "" : coverageBanner(range)) + sections +
         footnotes([
           "CRM house accounts (any user whose name contains \"team\" or \"house\") are excluded — they are not people.",
           "Calls, Emails and Texts are coloured against the store's own per-rep average for the same range. No outbound-activity quota exists in the reports, so nothing here is compared to an invented target.",
@@ -813,14 +893,15 @@
   /* Column order dictated by the client:
      Good leads · Engagement % · Appts set % · Appts shown % · Calls · Texts ·
      Emails · Internet sold · Internet closing % */
-  function internet(range) {
+  function internet(range, storeId) {
     return guard(function () {
       var c = C();
-      var list = STORES();
-      var head = pageHead("Internet performance", rangeLabel(range));
+      var list = scopedStores(storeId);
+      var scoped = !!storeId;
+      var head = scoped ? "" : pageHead("Internet performance", rangeLabel(range));
 
       if (!list.length) {
-        return '<section class="page" id="page-internet">' + head + coverageBanner(range) +
+        return '<section class="page" id="page-internet">' + head + (scoped ? "" : coverageBanner(range)) +
           emptyState("No stores loaded", "assets/data.js contains no stores.") + "</section>";
       }
 
@@ -888,7 +969,7 @@
           "</tr>";
       }).join("");
 
-      return '<section class="page" id="page-internet">' + head + coverageBanner(range) +
+      return '<section class="page" id="page-internet">' + head + (scoped ? "" : coverageBanner(range)) +
         tableWrap(header + "<tbody>" + rows + "</tbody>", "internet-tbl") +
         footnotes([
           "Engagement % and Appts set % are coloured against their targets (" +
@@ -1008,6 +1089,8 @@
     overview: overview,
     stores: storesPage,
     storeDetail: storeDetail,
+    storeActivity: storeActivity,
+    storeInternet: storeInternet,
     activity: activity,
     internet: internet,
     sources: sources

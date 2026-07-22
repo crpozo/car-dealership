@@ -5,18 +5,22 @@ team, with per-store drill-down and real timeframe filtering.
 
 Live: https://crpozo.github.io/car-dealership/
 
-## Pages
+## Navigation
 
-Each table lives on its own route so nothing collapses into one giant page.
+There is **one** dashboard at the top level. Tabs exist only inside a store, because
+"salesperson activity" and "internet performance" only mean something once you have
+picked a store — a global tab bar had nothing meaningful to switch between.
 
 | Route | What it shows |
 |---|---|
-| `#/overview` | Headline metrics across all stores + a clickable card per store |
-| `#/stores` | Store table: total opportunities · internet leads · engagement % · appts set of contacted % · internet closing % · total sold (DMS) · sales goal + pace |
-| `#/store/<id>` | Store drill-down: same headline metrics, plus lead-type table (opportunities · contact · appts · shown · sold), MTD vs the same period last month |
-| `#/activity` | Salesperson activity: opportunities · internet leads · calls · emails · texts · appts set · shown % · internet sold · total sold |
-| `#/internet` | Internet performance: good leads · engagement % · appts set % · appts shown % · calls · texts · emails · internet sold · internet closing % |
-| `#/sources` | Ingestion status per CRM/tool and exactly which stores, months and run dates are loaded |
+| `#/overview` | **The dashboard.** Headline metrics across all stores, a card per store, and the store table: total opportunities · internet leads · engagement % · appts set of contacted % · internet closing % · total sold (DMS) · sales goal + pace. Click any card or row to open that store. |
+| `#/store/<id>` | Store → **Performance**: the store's headline metrics plus the lead-type table (opportunities · contact · appts · shown · sold), MTD vs the same period last month |
+| `#/store/<id>/activity` | Store → **Salesperson activity**: opportunities · internet leads · calls · emails · texts · appts set · shown % · internet sold · total sold |
+| `#/store/<id>/internet` | Store → **Internet performance**: good leads · engagement % · appts set % · appts shown % · calls · texts · emails · internet sold · internet closing % |
+
+Breadcrumbs (`Overview / <store>`) get you back. `#/stores` still redirects to the
+overview so older links keep working, and `Pages.activity(range)` / `Pages.internet(range)`
+still render the cross-store versions if a global view is ever wanted again.
 
 ## Timeframe filtering
 

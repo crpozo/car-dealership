@@ -13,11 +13,11 @@
     overview: function (range) { return Pages.overview(range); },
     stores: function (range) { return Pages.stores(range); },
     activity: function (range) { return Pages.activity(range); },
-    internet: function (range) { return Pages.internet(range); },
-    sources: function (range) { return Pages.sources(range); }
+    internet: function (range) { return Pages.internet(range); }
   };
 
   var view, tfSelect, tfCustom, tfStart, tfEnd, tfResolved;
+  var lastRouteKey = null;
 
   function esc(s) {
     return String(s == null ? "" : s)
@@ -31,7 +31,17 @@
     var raw = (global.location.hash || "").replace(/^#\/?/, "");
     var parts = raw.split("/").filter(Boolean);
     if (!parts.length) return { name: "overview" };
-    if (parts[0] === "store") return { name: "store", id: decodeURIComponent(parts[1] || "") };
+    if (parts[0] === "store") {
+      return {
+        name: "store",
+        id: decodeURIComponent(parts[1] || ""),
+        // #/store/<id>, #/store/<id>/activity, #/store/<id>/internet
+        tab: parts[2] || "performance"
+      };
+    }
+    // The stores table now lives on the Overview; keep the old route as an alias
+    // so existing links and bookmarks still land somewhere sensible.
+    if (parts[0] === "stores") return { name: "overview" };
     if (ROUTES[parts[0]]) return { name: parts[0] };
     return { name: "unknown", raw: raw };
   }
@@ -57,9 +67,15 @@
 
     try {
       if (route.name === "store") {
-        html = Core.store(route.id)
-          ? Pages.storeDetail(route.id, range)
-          : notFound("Unknown store", 'No store with id "' + route.id + '" is loaded.');
+        if (!Core.store(route.id)) {
+          html = notFound("Unknown store", 'No store with id "' + route.id + '" is loaded.');
+        } else if (route.tab === "activity") {
+          html = Pages.storeActivity(route.id, range);
+        } else if (route.tab === "internet") {
+          html = Pages.storeInternet(route.id, range);
+        } else {
+          html = Pages.storeDetail(route.id, range);
+        }
       } else if (ROUTES[route.name]) {
         html = ROUTES[route.name](range);
       } else {
@@ -73,19 +89,27 @@
     view.innerHTML = html;
     syncNav(route);
     syncTimeframeReadout(range);
-    view.focus();
+
+    // Move focus for keyboard/screen-reader users, but preventScroll — a plain
+    // focus() scrolls <main> into view, which pushes the header and nav off the
+    // top of the window on the taller pages.
+    try { view.focus({ preventScroll: true }); } catch (e) { /* older browsers */ }
+    if (routeKey(route) !== lastRouteKey) {
+      lastRouteKey = routeKey(route);
+      global.scrollTo(0, 0);
+    }
   }
 
+  function routeKey(route) {
+    return route.name === "store" ? "store/" + route.id + "/" + route.tab : route.name;
+  }
+
+  /* There is no global tab bar any more — Overview is the dashboard and the only
+     tabs live inside a store (rendered by pages.js). All this does is light the
+     brand link when we are at the top level. */
   function syncNav(route) {
-    var links = document.querySelectorAll(".mainnav a");
-    // a store detail page is reached from Overview/Stores, so keep Stores lit
-    var active = route.name === "store" ? "stores" : route.name;
-    for (var i = 0; i < links.length; i++) {
-      var on = links[i].getAttribute("data-route") === active;
-      links[i].classList.toggle("on", on);
-      if (on) links[i].setAttribute("aria-current", "page");
-      else links[i].removeAttribute("aria-current");
-    }
+    var brand = document.querySelector(".brand-link");
+    if (brand) brand.classList.toggle("on", route.name === "overview");
   }
 
   /* -------------------------------------------------------------- timeframe */

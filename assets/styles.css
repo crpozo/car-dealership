@@ -86,7 +86,15 @@ code { font-family: var(--mono); font-size: .9em; }
   border-bottom: 1px solid var(--line);
 }
 
-.brand { display: flex; align-items: center; gap: 10px; margin-right: auto; }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: auto;
+  text-decoration: none;
+  color: inherit;
+}
+.brand-link:hover .brand-name { color: var(--accent); }
 
 .brand-mark {
   display: grid;
@@ -161,6 +169,27 @@ a:focus-visible {
 .mainnav a:hover { color: var(--ink); }
 .mainnav a.on { color: var(--accent); border-bottom-color: var(--accent); }
 
+/* Store-scoped tabs. These are the only tabs in the app — the top level is a
+   single dashboard, so a global tab bar had nothing meaningful to switch between. */
+.subnav {
+  display: flex;
+  gap: 2px;
+  margin: 14px 0 18px;
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+}
+.subnav a {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+.subnav a:hover { color: var(--ink); }
+.subnav a.on { color: var(--accent); border-bottom-color: var(--accent); }
+
 /* ---------------------------------------------------------------- settings */
 
 .settings {
@@ -216,6 +245,24 @@ main:focus { outline: none; }
 
 .backlink { font-size: 13px; font-weight: 600; text-decoration: none; }
 .backlink:hover { text-decoration: underline; }
+
+.crumbs { margin-bottom: 10px; }
+.crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+}
+.crumbs li { display: flex; align-items: center; gap: 6px; }
+/* separator on every crumb except the first */
+.crumbs li + li::before { content: "/"; color: var(--faint); }
+.crumbs a { color: var(--muted); text-decoration: none; font-weight: 600; }
+.crumbs a:hover { color: var(--accent); text-decoration: underline; }
+.crumbs [aria-current="page"] { color: var(--ink); font-weight: 700; }
 
 /* ------------------------------------------------------------------- tiles */
 

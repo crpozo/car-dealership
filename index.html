@@ -12,10 +12,10 @@
 <body>
 
 <header class="topbar">
-  <div class="brand">
+  <a class="brand brand-link" href="#/overview">
     <span class="brand-mark" aria-hidden="true">IC</span>
     <span class="brand-name">The Internet Coaches Dashboard</span>
-  </div>
+  </a>
 
   <div class="tf" role="group" aria-label="Timeframe">
     <label class="tf-label" for="tf-select">Timeframe</label>
@@ -30,14 +30,6 @@
 
   <button type="button" id="settings-toggle" class="ghost-btn" aria-expanded="false" aria-controls="settings-panel">Settings</button>
 </header>
-
-<nav class="mainnav" aria-label="Sections">
-  <a href="#/overview" data-route="overview">Overview</a>
-  <a href="#/stores" data-route="stores">Stores</a>
-  <a href="#/activity" data-route="activity">Salesperson activity</a>
-  <a href="#/internet" data-route="internet">Internet performance</a>
-  <a href="#/sources" data-route="sources">Data sources</a>
-</nav>
 
 <section id="settings-panel" class="settings" hidden>
   <h2>Settings</h2>
