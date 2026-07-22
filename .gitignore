@@ -1,0 +1,4 @@
+# Extracted report exports pulled out of the Takeout mbox — client data, kept local.
+pipeline/.cache/
+__pycache__/
+*.pyc

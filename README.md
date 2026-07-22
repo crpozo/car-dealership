@@ -1,28 +1,111 @@
 # The Internet Coaches Dashboard
 
-Single-file dashboard that rolls up car-dealership client performance for the Internet Coaches team, with per-store drill-down.
+Multi-page dashboard rolling up car-dealership client performance for the Internet Coaches
+team, with per-store drill-down and real timeframe filtering.
 
 Live: https://crpozo.github.io/car-dealership/
 
-## Features
+## Pages
 
-- **Store overview** — every client store with status (On pace / Watch / At risk), MTD KPIs vs the same days of last month, lead-source mix; filter by CRM, tool and status; global search (⌘F / Ctrl F); Export CSV of the current view.
-- **Store detail** — MTD KPI comparison by lead type (drill into inventory type and vehicle make) plus the salesperson activity table, with Matador AI activity merged per rep where available.
-- **Notifications** — the bell surfaces stores at risk / on watch, reps below the shown target, and data-source gaps; read state persists in the browser.
-- **Settings** — status-model thresholds (at-risk / watch drops, no-baseline benchmarks, rep shown target) and number locale are editable and persist in `localStorage`.
-- **Data sources** — ingestion status for each CRM/tool (VinSolutions, Tekion, DriveCentric, Momentum, Matador, Covideo).
+Each table lives on its own route so nothing collapses into one giant page.
+
+| Route | What it shows |
+|---|---|
+| `#/overview` | Headline metrics across all stores + a clickable card per store |
+| `#/stores` | Store table: total opportunities · internet leads · engagement % · appts set of contacted % · internet closing % · total sold (DMS) · sales goal + pace |
+| `#/store/<id>` | Store drill-down: same headline metrics, plus lead-type table (opportunities · contact · appts · shown · sold), MTD vs the same period last month |
+| `#/activity` | Salesperson activity: opportunities · internet leads · calls · emails · texts · appts set · shown % · internet sold · total sold |
+| `#/internet` | Internet performance: good leads · engagement % · appts set % · appts shown % · calls · texts · emails · internet sold · internet closing % |
+| `#/sources` | Ingestion status per CRM/tool and exactly which stores, months and run dates are loaded |
+
+## Timeframe filtering
+
+The header control applies to every page: Today · Yesterday · This week · This month (MTD) ·
+Last month · This year · Custom range. The selection persists in `localStorage`.
+
+This works because the CRM exports are **cumulative month-to-date snapshots** run daily.
+Sorting a store's snapshots by run date and differencing consecutive ones yields per-day
+values, which are then summed for any requested range. Whole-month ranges use the cumulative
+snapshot directly rather than re-summing days.
+
+Presets are anchored to the **newest snapshot in the data**, not the wall clock, so they
+never resolve to an empty range. When a range is wider than the reports covering it, a
+banner says so — a partial period is never presented as a complete one.
+
+## Metrics
+
+| Metric | Definition |
+|---|---|
+| Total opportunities | Good Leads, all lead types (store TOTAL row) |
+| Good internet leads | Good Leads where Lead Type = Internet |
+| Engagement % | Internet Actual Contact % — target **80%** |
+| Appts set of contacted % | Appts set ÷ contacted — target **40%**, can legitimately exceed 100% |
+| Internet closing rate | Internet Sold in Time Frame ÷ internet Good Leads |
+| Total sold (DMS) | Sold in Time Frame, all lead types |
+
+Conditional colours: green at/above target, amber within 15% below, red further below.
+Colour is never the only signal — every coloured cell also carries an arrow glyph.
+
+**Referral and PreviousCustomer** are deliberately not shown as lead-type rows, but their
+Good Leads and Sold still count in the store TOTAL. At 777 Nissan those two sources carry
+only 10 leads but 4 sales, so dropping them entirely would lose real revenue.
+
+**Engagement is internet-scoped everywhere.** VinSolutions reports `Internet Actual Contact %`
+for internet leads only — it writes a literal 0 on Phone/Walk-in/Referral/PreviousCustomer
+rows and copies the internet rate onto the store TOTAL row. The pipeline therefore rebases
+the total's contacted count onto internet good leads; multiplying the internet rate by
+all-lead-type leads would invent contacts that were never reported.
+
+## Pace
+
+Pace answers "should they be here yet, given how much of the month has been worked?"
+
+```
+elapsedFraction = NETWORKDAYS(monthStart, asOf) / NETWORKDAYS(monthStart, monthEnd)
+expected        = monthlySalesGoal * elapsedFraction
+```
+
+Saturdays count as working days by default (dealerships work them); toggle in Settings.
+There is no holiday calendar, so a dealership holiday reads as a worked day.
+
+For ranges shorter than a month the monthly goal is **pro-rated to the working days inside
+the selected range** — judging a single day against a whole month's target would paint every
+store red.
+
+Sales goals are not present in the CRM exports. They are entered in Settings and stored in
+the browser only; a store with no goal shows "no goal" and is never marked red.
 
 ## Data
 
-Currently loaded: VinSolutions "Enterprise Performance" exports (run Jun 22 & Jul 2, 2026) for Vern Eide Honda, 777 Nissan and Armstrong Subaru, plus the Matador MTD user report for Vern Eide Honda. Only real client data is shown.
+Source: VinSolutions "Enterprise Performance" exports, emailed daily by
+`reportscheduler@motosnap.com`, plus a Matador Users activity CSV.
+
+Currently loaded: **116 snapshots** — 114 from the mailbox (777 Nissan and Armstrong Subaru,
+daily Jul 1–22 2026) plus 2 from a manual Vern Eide Honda export (Jun 22 2026).
+
+Known gaps, surfaced in the UI rather than hidden:
+- Vern Eide Honda is not on the scheduled-report list — only the one June export exists.
+- Armstrong Subaru's salesperson report is scheduled on a **fixed Jul 1–15 custom date
+  range** instead of MTD, so its activity page covers Jul 1–15 only. Worth fixing in
+  VinSolutions.
+- The per-user report has no internet/non-internet split, so per-rep "Internet leads" and
+  "Internet sold" render "—" rather than a guess.
 
 ## Rebuilding after new report exports
 
-`index.html` is generated — don't edit it by hand:
+`assets/data.js` is generated — don't edit it by hand.
 
-```
-python3 pipeline/extract.py   # parse the report exports → pipeline/data.json
-python3 pipeline/build.py     # inject data.json into pipeline/template.html → index.html
+```bash
+python3 pipeline/ingest.py ~/Desktop/Scott   # exports -> pipeline/data.json
+python3 pipeline/build.py                    # data.json -> assets/data.js
 ```
 
-`extract.py` expects the raw report exports locally (path at the top of the file); the raw exports are intentionally not committed. Push to `main` deploys via GitHub Pages.
+`ingest.py` walks a directory recursively and accepts loose `.xlsx`, a Google Takeout `.zip`,
+a `.mbox` mail export (it pulls the attachments out itself) and Matador `.csv`. Every
+workbook is classified from its **Filters** sheet — dealer, date range, run date and summary
+level — never from the filename or email subject, and duplicate sends are de-duplicated.
+Raw exports are intentionally not committed.
+
+Run the logic tests by opening `assets/core.test.html` in a browser (106 assertions).
+
+Push to `main` deploys via GitHub Pages.

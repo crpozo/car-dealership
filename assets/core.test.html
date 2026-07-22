@@ -1,0 +1,838 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Core self-tests</title>
+<style>
+  body{font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       margin:0;padding:24px 28px;color:#191D33;background:#F7F8FB}
+  h1{font-size:20px;margin:0 0 4px}
+  .sub{color:#6B7186;margin:0 0 18px}
+  .banner{border-radius:10px;padding:12px 14px;font-weight:700;margin:0 0 18px}
+  .banner.pass{background:#E6F6EE;color:#12633A}
+  .banner.fail{background:#FDEBEC;color:#B02024}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.09em;color:#6B7186;margin:22px 0 8px}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid #E7E9F2;border-radius:10px;overflow:hidden}
+  td{border-top:1px solid #F0F2F8;padding:6px 10px;vertical-align:top}
+  tr:first-child td{border-top:0}
+  td.s{width:64px;font-weight:700;font-size:11px;letter-spacing:.06em}
+  .PASS{color:#1F9D5B}.FAIL{color:#E5484D}.SKIP{color:#A9AFC2}
+  td.d{color:#6B7186;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;white-space:pre-wrap}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  #json{display:none}
+</style>
+
+<h1>Core self-tests</h1>
+<p class="sub">Assertions against <code>assets/core.js</code>. Runs against real <code>assets/data.js</code>
+when it is present; otherwise the data-driven section is skipped and the logic sections run on small
+inline fixtures. Fixtures below are synthetic test inputs only — they are never rendered in the dashboard.</p>
+
+<div id="banner" class="banner">running…</div>
+<div id="out"></div>
+<pre id="json"></pre>
+
+<script src="data.js"></script>
+<script src="core.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ------------------------------------------------------------------ *
+   * tiny harness
+   * ------------------------------------------------------------------ */
+  var RESULTS = [];
+  var section = '';
+
+  function sec(name) { section = name; }
+
+  function record(status, name, detail) {
+    RESULTS.push({ section: section, status: status, name: name, detail: detail || '' });
+  }
+
+  function test(name, fn) {
+    try { fn(); record('PASS', name); }
+    catch (e) { record('FAIL', name, (e && e.message) || String(e)); }
+  }
+
+  function skip(name, why) { record('SKIP', name, why || ''); }
+
+  function show(v) {
+    if (v === null) return 'null';
+    if (v === undefined) return 'undefined';
+    if (typeof v === 'number' && !isFinite(v)) return String(v);
+    if (typeof v === 'object') { try { return JSON.stringify(v); } catch (e) { return String(v); } }
+    return String(v);
+  }
+
+  function ok(cond, msg) { if (!cond) throw new Error(msg || 'expected truthy'); }
+
+  function eq(actual, expected, msg) {
+    if (actual !== expected) {
+      throw new Error((msg ? msg + ': ' : '') + 'expected ' + show(expected) + ', got ' + show(actual));
+    }
+  }
+
+  function near(actual, expected, tol, msg) {
+    tol = tol === undefined ? 1e-9 : tol;
+    if (actual === null || expected === null || Math.abs(actual - expected) > tol) {
+      throw new Error((msg ? msg + ': ' : '') + 'expected ~' + show(expected) + ', got ' + show(actual));
+    }
+  }
+
+  var Core = (typeof window !== 'undefined' ? window : global).Core;
+  if (!Core) {
+    record('FAIL', 'core.js loaded', 'window.Core is undefined');
+    return finish();
+  }
+
+  // Do not clobber the user's real settings while testing.
+  var savedRaw = null, hasLS = false;
+  try {
+    if (typeof localStorage !== 'undefined' && localStorage) {
+      hasLS = true;
+      savedRaw = localStorage.getItem(Core.STORAGE_KEY);
+    }
+  } catch (e) { hasLS = false; }
+
+  /* ------------------------------------------------------------------ *
+   * synthetic fixtures (test inputs only)
+   * ------------------------------------------------------------------ */
+  function m(goodLeads, sold, apptsShown, contacted, apptsSet) {
+    return {
+      goodLeads: goodLeads, sold: sold, apptsShown: apptsShown,
+      contacted: contacted, apptsSet: apptsSet,
+      contactPct: goodLeads ? contacted / goodLeads : 0,
+      apptSetOfContactedPct: contacted ? apptsSet / contacted : 0,
+      apptSetPct: goodLeads ? apptsSet / goodLeads : 0
+    };
+  }
+
+  function kpiSnap(storeId, runDate, total, internet, phone, referral) {
+    return {
+      storeId: storeId, kind: 'kpi', period: 'current',
+      begin: '2026-07-01', end: '2026-07-31', runDate: runDate,
+      source: 'fixture-' + storeId + '-' + runDate,
+      total: total,
+      byLeadType: [
+        { leadType: 'Internet', metrics: internet, byInventory: [] },
+        { leadType: 'Phone', metrics: phone, byInventory: [] },
+        { leadType: 'Referral', metrics: referral, byInventory: [] }
+      ]
+    };
+  }
+
+  // Store A — three daily cumulative snapshots. Jul 3 has a *decrease* in `sold`
+  // (a pending sale unwound) so the clamp-to-zero path is exercised.
+  var A1 = kpiSnap('fx-a', '2026-07-01', m(10, 1, 2, 5, 2), m(6, 1, 1, 3, 1), m(3, 0, 1, 2, 1), m(1, 0, 0, 0, 0));
+  var A2 = kpiSnap('fx-a', '2026-07-02', m(25, 3, 5, 15, 6), m(15, 2, 3, 12, 4), m(8, 1, 2, 3, 2), m(2, 0, 0, 0, 0));
+  var A3 = kpiSnap('fx-a', '2026-07-03', m(30, 2, 7, 18, 8), m(20, 1, 4, 15, 5), m(8, 1, 3, 3, 3), m(2, 0, 0, 0, 0));
+
+  // Store B — one snapshot, deliberately lopsided so a *mean* of percentages
+  // would differ sharply from a percentage recomputed off summed counts.
+  var B1 = kpiSnap('fx-b', '2026-07-03', m(12, 2, 3, 11, 4), m(10, 2, 3, 9, 4), m(2, 0, 0, 2, 0), m(0, 0, 0, 0, 0));
+  // store A internet on Jul 3 (cumulative): 20 leads / 15 contacted = 75%
+  // store B internet on Jul 3 (cumulative): 10 leads /  9 contacted = 90%
+  // combined must be 24/30 = 80%, never the 82.5% mean of the two rates.
+
+  function salesSnap(storeId, runDate, reps, totals) {
+    return {
+      storeId: storeId, kind: 'sales', period: 'current',
+      begin: '2026-07-01', end: '2026-07-31', runDate: runDate,
+      source: 'fixture-sales-' + runDate,
+      reps: reps, repTotals: totals
+    };
+  }
+  function rep(name, goodLeads, sold, sch, shown, calls, emails, texts) {
+    return { name: name, goodLeads: goodLeads, sold: sold, apptsScheduled: sch,
+             apptsShown: shown, calls: calls, emails: emails, texts: texts };
+  }
+  var S1 = salesSnap('fx-a', '2026-07-01',
+    [rep('Dana Reyes', 6, 1, 2, 1, 20, 10, 30), rep('Lee Park', 4, 0, 1, 0, 12, 6, 18)],
+    rep('TOTAL', 10, 1, 3, 1, 32, 16, 48));
+  var S2 = salesSnap('fx-a', '2026-07-02',
+    [rep('Dana Reyes', 15, 2, 5, 3, 45, 22, 70), rep('Lee Park', 10, 1, 3, 1, 30, 14, 44)],
+    rep('TOTAL', 25, 3, 8, 4, 75, 36, 114));
+
+  var FIXTURE = {
+    generatedAt: '2026-07-03',
+    stores: [
+      { id: 'fx-a', name: 'Fixture A', crm: 'VinSolutions', tools: [], location: null },
+      { id: 'fx-b', name: 'Fixture B', crm: 'VinSolutions', tools: [], location: null }
+    ],
+    snapshots: [A1, A2, A3, B1, S1, S2],
+    matador: [
+      { storeId: 'fx-a', name: 'Dana Reyes', role: 'Sales', messagesSent: 100 },
+      { storeId: 'fx-a', name: 'Leeanne Park', role: 'Sales', messagesSent: 60 },
+      { storeId: 'fx-a', name: 'Sam Okonkwo', role: 'BDC', messagesSent: 20 }
+    ],
+    integrations: [], coverage: {}
+  };
+
+  /* ------------------------------------------------------------------ *
+   * 1. networkDays — checked against Excel NETWORKDAYS
+   * ------------------------------------------------------------------ */
+  sec('networkDays (Excel NETWORKDAYS semantics)');
+
+  [
+    ['2026-07-01', '2026-07-31', 23, 27],
+    ['2026-07-01', '2026-07-02', 2, 2],
+    ['2026-06-01', '2026-06-30', 22, 26],
+    ['2026-06-01', '2026-06-22', 16, 19],
+    ['2026-02-01', '2026-02-28', 20, 24],
+    ['2024-02-01', '2024-02-29', 21, 25],   // leap February
+    ['2026-01-01', '2026-12-31', 261, 313], // full year 2026
+    ['2026-07-04', '2026-07-04', 0, 1],     // a Saturday
+    ['2026-07-05', '2026-07-05', 0, 0],     // a Sunday
+    ['2026-06-22', '2026-06-22', 1, 1]      // a Monday
+  ].forEach(function (c) {
+    test('NETWORKDAYS(' + c[0] + ',' + c[1] + ') Mon–Fri = ' + c[2], function () {
+      eq(Core.networkDays(c[0], c[1], false), c[2]);
+    });
+    test('NETWORKDAYS(' + c[0] + ',' + c[1] + ') Mon–Sat = ' + c[3], function () {
+      eq(Core.networkDays(c[0], c[1], true), c[3]);
+    });
+  });
+
+  test('reversed range returns a negative count, like Excel', function () {
+    eq(Core.networkDays('2026-07-06', '2026-07-04', false), -1);
+    eq(Core.networkDays('2026-07-06', '2026-07-04', true), -2);
+  });
+
+  test('networkDays accepts Date objects and VinSolutions date strings', function () {
+    eq(Core.networkDays('Jul  1 2026 12:00AM', 'Jul  2 2026 11:59PM', false), 2);
+    eq(Core.networkDays(new Date(Date.UTC(2026, 6, 1)), new Date(Date.UTC(2026, 6, 2)), false), 2);
+  });
+
+  /* ------------------------------------------------------------------ *
+   * 2. rate() null-safety
+   * ------------------------------------------------------------------ */
+  sec('rate() null-safety');
+
+  test('rate(n, 0) is null — not 0, not NaN, not Infinity', function () {
+    var r = Core.rate(5, 0);
+    eq(r, null);
+    ok(r !== 0, 'must not be 0');
+  });
+  test('rate(0, 0) is null', function () { eq(Core.rate(0, 0), null); });
+  test('rate(0, 5) is 0 (a real zero rate)', function () { eq(Core.rate(0, 5), 0); });
+  test('rate(null, 5) is null', function () { eq(Core.rate(null, 5), null); });
+  test('rate(5, null) is null', function () { eq(Core.rate(5, null), null); });
+  test('rate(3, 2) is 1.5 (rates above 1 are not clamped)', function () { eq(Core.rate(3, 2), 1.5); });
+  test('rate never returns NaN or Infinity', function () {
+    [[1, 0], [0, 0], [NaN, 1], [1, NaN], [Infinity, 1]].forEach(function (p) {
+      var r = Core.rate(p[0], p[1]);
+      ok(r === null || isFinite(r), 'rate(' + p[0] + ',' + p[1] + ') = ' + show(r));
+    });
+  });
+
+  /* ------------------------------------------------------------------ *
+   * 3. colorFor() bands
+   * ------------------------------------------------------------------ */
+  sec('colorFor() green / amber / red bands');
+
+  test('ratio >= 1.00 is green', function () {
+    eq(Core.colorFor(0.80, 0.80), 'good');
+    eq(Core.colorFor(0.95, 0.80), 'good');
+  });
+  test('ratio >= 0.85 is amber', function () {
+    eq(Core.colorFor(0.72, 0.80), 'warn');        // 0.90
+    eq(Core.colorFor(0.68, 0.80), 'warn');        // exactly 0.85
+  });
+  test('below 0.85 is red', function () {
+    eq(Core.colorFor(0.6799, 0.80), 'bad');
+    eq(Core.colorFor(0, 0.80), 'bad');
+  });
+  test('missing actual or target is "none"', function () {
+    eq(Core.colorFor(null, 0.80), 'none');
+    eq(Core.colorFor(0.8, null), 'none');
+    eq(Core.colorFor(0.8, 0), 'none');
+    eq(Core.colorFor(undefined, 0.8), 'none');
+  });
+  test('a null sales goal is never red', function () {
+    Core.setSalesGoal('fx-a', null);
+    eq(Core.getSalesGoal('fx-a'), null);
+    eq(Core.colorFor(3, Core.getSalesGoal('fx-a')), 'none');
+  });
+  test('spec targets are the defaults (80% engagement, 40% appts set)', function () {
+    eq(Core.DEFAULT_SETTINGS.engagementTarget, 0.80);
+    eq(Core.DEFAULT_SETTINGS.apptTarget, 0.40);
+    eq(Core.DEFAULT_SETTINGS.includeSaturday, true);
+  });
+
+  /* ------------------------------------------------------------------ *
+   * 4. snapshot differencing
+   * ------------------------------------------------------------------ */
+  sec('snapshot differencing into per-day deltas');
+
+  Core.init(FIXTURE);
+  Core.setAnchor('2026-07-03');
+
+  var deltas = Core.dailyDeltas('fx-a', 'kpi');
+
+  test('one delta per run date, in order', function () {
+    eq(deltas.length, 3);
+    eq(deltas[0].date, '2026-07-01');
+    eq(deltas[1].date, '2026-07-02');
+    eq(deltas[2].date, '2026-07-03');
+  });
+  test('the first snapshot of a month is its own daily value', function () {
+    ok(deltas[0].isFirst, 'first delta flagged');
+    eq(deltas[0].total.goodLeads, 10);
+    eq(deltas[0].spanStart, '2026-07-01');
+  });
+  test('subsequent days are the difference of consecutive snapshots', function () {
+    eq(deltas[1].total.goodLeads, 15);   // 25 − 10
+    eq(deltas[1].total.sold, 2);         // 3 − 1
+    eq(deltas[1].total.contacted, 10);   // 15 − 5
+    eq(deltas[2].total.goodLeads, 5);    // 30 − 25
+  });
+  test('negative deltas clamp to 0 and the day is flagged', function () {
+    eq(deltas[2].total.sold, 0, 'sold went 3 → 2, clamped');
+    ok(deltas[2].clamped === true, 'delta carries the clamp flag');
+    ok(deltas[0].clamped === false && deltas[1].clamped === false, 'clean days are not flagged');
+  });
+
+  var mtd = Core.storeMetrics('fx-a', Core.resolveRange('month'));
+
+  test('a month range uses the cumulative snapshot, never the sum of days', function () {
+    eq(mtd.total.sold, 2, 'snapshot says 2; summing clamped days would say 3');
+    eq(mtd.total.goodLeads, 30);
+    eq(mtd.coverage.months[0].mode, 'snapshot');
+  });
+  test('the clamp is surfaced on the aggregate coverage', function () {
+    ok(mtd.coverage.clamped === true, 'coverage.clamped');
+    ok(mtd.coverage.clampedDates.indexOf('2026-07-03') >= 0, 'clamped date listed');
+    ok(mtd.coverage.notes.length > 0, 'a human-readable note exists');
+  });
+
+  var mid = Core.storeMetrics('fx-a', Core.resolveRange('custom', '2026-07-02', '2026-07-03'));
+
+  test('a mid-month range sums the daily deltas', function () {
+    eq(mid.coverage.months[0].mode, 'deltas');
+    eq(mid.total.goodLeads, 20);   // 15 + 5
+    eq(mid.total.sold, 2);         // 2 + 0 (clamped)
+    eq(mid.total.contacted, 13);   // 10 + 3
+  });
+  test('a single-day range is that day only', function () {
+    var day = Core.storeMetrics('fx-a', Core.resolveRange('custom', '2026-07-02', '2026-07-02'));
+    eq(day.total.goodLeads, 15);
+    eq(day.total.sold, 2);
+  });
+  test('"Today" at the anchor resolves to the latest day', function () {
+    var t = Core.storeMetrics('fx-a', Core.resolveRange('today'));
+    eq(t.total.goodLeads, 5);
+  });
+
+  /* ------------------------------------------------------------------ *
+   * 5. percentages are recomputed, never summed or averaged
+   * ------------------------------------------------------------------ */
+  sec('percentage re-derivation');
+
+  test('store percentages come from the aggregated counts', function () {
+    near(mtd.total.contactPct, 18 / 30);
+    near(mtd.total.apptSetOfContactedPct, 8 / 18);
+    near(mtd.total.apptSetPct, 8 / 30);
+    near(mtd.total.apptShownPct, 7 / 8);
+    near(mtd.total.closingRate, 2 / 30);
+  });
+  test('internet metrics are the Internet lead-type bucket', function () {
+    eq(mtd.internet.goodLeads, 20);
+    eq(mtd.internet.contacted, 15);
+    near(mtd.internet.contactPct, 15 / 20);
+  });
+  test('mid-range percentages are recomputed from the summed deltas', function () {
+    near(mid.total.contactPct, 13 / 20);
+    ok(Math.abs(mid.total.contactPct - (A2.total.contactPct + A3.total.contactPct)) > 1e-6,
+       'must not be a sum of percentages');
+  });
+
+  var all = Core.allStoresMetrics(Core.resolveRange('month'));
+
+  test('cross-store percentages are recomputed, not averaged', function () {
+    eq(all.internet.goodLeads, 30);        // 20 + 10
+    eq(all.internet.contacted, 24);        // 15 + 9
+    near(all.internet.contactPct, 24 / 30);
+    var mean = (15 / 20 + 9 / 10) / 2;     // 0.825 — the wrong answer
+    ok(Math.abs(all.internet.contactPct - mean) > 1e-6, 'not the mean of the two rates');
+  });
+  test('perStore entries expose both the total metrics and the internet split', function () {
+    eq(all.perStore['fx-a'].goodLeads, 30);
+    eq(all.perStore['fx-a'].total.goodLeads, 30);
+    eq(all.perStore['fx-b'].internet.goodLeads, 10);
+  });
+  test('hidden lead types stay out of the breakdown but inside the total', function () {
+    var shown = mtd.displayLeadTypes.map(function (n) { return n.leadType; });
+    ok(shown.indexOf('Referral') === -1, 'Referral is not a displayed row');
+    ok(shown.indexOf('Internet') === 0, 'Internet leads the display order');
+    var referral = null;
+    mtd.byLeadType.forEach(function (n) { if (n.leadType === 'Referral') referral = n; });
+    ok(referral !== null, 'Referral is still available in byLeadType');
+    eq(referral.metrics.goodLeads, 2);
+    eq(mtd.total.goodLeads, 30, 'the TOTAL row still includes it');
+  });
+  test('Appts set of contacted % above 1.0 is not clamped', function () {
+    Core.init({
+      stores: [{ id: 'z', name: 'Z' }],
+      snapshots: [{
+        storeId: 'z', kind: 'kpi', begin: '2026-07-01', end: '2026-07-31', runDate: '2026-07-01',
+        total: { goodLeads: 10, sold: 0, apptsShown: 0, contacted: 5, apptsSet: 7 },
+        byLeadType: []
+      }]
+    });
+    Core.setAnchor('2026-07-01');
+    var z = Core.storeMetrics('z', Core.resolveRange('month'));
+    near(z.total.apptSetOfContactedPct, 1.4);
+    Core.init(FIXTURE);
+    Core.setAnchor('2026-07-03');
+  });
+  test('derived counts are computed when the pipeline only supplies percentages', function () {
+    Core.init({
+      stores: [{ id: 'p', name: 'P' }],
+      snapshots: [{
+        storeId: 'p', kind: 'kpi', begin: '2026-07-01', end: '2026-07-31', runDate: '2026-07-01',
+        total: { goodLeads: 50, sold: 5, apptsShown: 4, contactPct: 0.8, apptSetOfContactedPct: 0.5 },
+        byLeadType: []
+      }]
+    });
+    Core.setAnchor('2026-07-01');
+    var p = Core.storeMetrics('p', Core.resolveRange('month'));
+    eq(p.total.contacted, 40);   // round(0.8 * 50)
+    eq(p.total.apptsSet, 20);    // round(0.5 * 40)
+    Core.init(FIXTURE);
+    Core.setAnchor('2026-07-03');
+  });
+
+  /* ------------------------------------------------------------------ *
+   * 6. range resolution
+   * ------------------------------------------------------------------ */
+  sec('range resolution & comparison ranges');
+
+  test('timeframes() lists the seven presets from the spec', function () {
+    var tf = Core.timeframes();
+    eq(tf.length, 7);
+    eq(tf.map(function (t) { return t.id; }).join(','), 'today,yesterday,week,month,lastmonth,year,custom');
+    eq(tf.map(function (t) { return t.label; }).join('|'),
+       'Today|Yesterday|This week|This month (MTD)|Last month|This year|Custom range');
+  });
+
+  function R(id, a, b, anchor) {
+    if (anchor) Core.setAnchor(anchor);
+    return Core.resolveRange(id, a, b);
+  }
+
+  test('This month (MTD) runs from the 1st to the anchor', function () {
+    var r = R('month', null, null, '2026-07-02');
+    eq(r.start, '2026-07-01'); eq(r.end, '2026-07-02');
+    eq(r.compareStart, '2026-06-01'); eq(r.compareEnd, '2026-06-02');
+    eq(r.compareLabel, 'Same period last month');
+  });
+  test('Today / Yesterday compare to the same day last month', function () {
+    var r = R('today', null, null, '2026-07-02');
+    eq(r.start, '2026-07-02'); eq(r.end, '2026-07-02');
+    eq(r.compareStart, '2026-06-02'); eq(r.compareEnd, '2026-06-02');
+    eq(r.compareLabel, 'Same day last month');
+  });
+  test('Yesterday crosses the month boundary', function () {
+    var r = R('yesterday', null, null, '2026-07-01');
+    eq(r.start, '2026-06-30'); eq(r.end, '2026-06-30');
+    eq(r.compareStart, '2026-05-30');
+  });
+  test('This week is week-to-date from Sunday', function () {
+    var r = R('week', null, null, '2026-07-02');   // Thursday
+    eq(r.start, '2026-06-28');                     // the preceding Sunday
+    eq(r.end, '2026-07-02');
+  });
+  test('Last month is the whole previous calendar month', function () {
+    var r = R('lastmonth', null, null, '2026-07-15');
+    eq(r.start, '2026-06-01'); eq(r.end, '2026-06-30');
+    eq(r.compareStart, '2026-05-01'); eq(r.compareEnd, '2026-05-31');
+  });
+  test('Last month crosses the year boundary', function () {
+    var r = R('lastmonth', null, null, '2026-01-15');
+    eq(r.start, '2025-12-01'); eq(r.end, '2025-12-31');
+    eq(r.compareStart, '2025-11-01'); eq(r.compareEnd, '2025-11-30');
+  });
+  test('MTD on the last day of a month compares to the whole previous month', function () {
+    var r = R('month', null, null, '2026-03-31');
+    eq(r.start, '2026-03-01'); eq(r.end, '2026-03-31');
+    eq(r.compareStart, '2026-02-01'); eq(r.compareEnd, '2026-02-28');
+  });
+  test('short-month clamping: Mar 31 → Feb 28 (non-leap)', function () {
+    var r = R('today', null, null, '2026-03-31');
+    eq(r.compareStart, '2026-02-28'); eq(r.compareEnd, '2026-02-28');
+  });
+  test('short-month clamping: Mar 31 → Feb 29 (leap)', function () {
+    var r = R('today', null, null, '2024-03-31');
+    eq(r.compareStart, '2024-02-29');
+  });
+  test('leap day compares to Jan 29', function () {
+    var r = R('today', null, null, '2024-02-29');
+    eq(r.compareStart, '2024-01-29');
+  });
+  test('February MTD on the leap day is a whole-month comparison', function () {
+    var r = R('month', null, null, '2024-02-29');
+    eq(r.start, '2024-02-01'); eq(r.end, '2024-02-29');
+    eq(r.compareStart, '2024-01-01'); eq(r.compareEnd, '2024-01-31');
+  });
+  test('This year runs from Jan 1 and compares to last year', function () {
+    var r = R('year', null, null, '2026-07-02');
+    eq(r.start, '2026-01-01'); eq(r.end, '2026-07-02');
+    eq(r.compareStart, '2025-01-01'); eq(r.compareEnd, '2025-07-02');
+    eq(r.compareLabel, 'Same period last year');
+  });
+  test('a custom range is honoured and reversed input is swapped', function () {
+    var r = R('custom', '2026-07-03', '2026-07-01', '2026-07-03');
+    eq(r.start, '2026-07-01'); eq(r.end, '2026-07-03');
+    eq(r.days, 3);
+    ok(r.custom === true);
+  });
+  test('aliases and unknown ids resolve sensibly', function () {
+    eq(R('mtd', null, null, '2026-07-02').id, 'month');
+    eq(R('This month (MTD)', null, null, '2026-07-02').id, 'month');
+    eq(R('nonsense-id', null, null, '2026-07-02').id, 'month');
+    eq(Core.resolveRange({ id: 'custom', start: '2026-07-01', end: '2026-07-02' }).start, '2026-07-01');
+  });
+  test('compareRange() turns the comparison half into a usable range', function () {
+    var r = R('month', null, null, '2026-07-02');
+    var c = Core.compareRange(r);
+    eq(c.start, '2026-06-01'); eq(c.end, '2026-06-02');
+  });
+  test('the anchor is reported on every range', function () {
+    var r = R('month', null, null, '2026-07-02');
+    eq(r.anchor, '2026-07-02');
+  });
+
+  Core.setAnchor('2026-07-03');
+
+  /* ------------------------------------------------------------------ *
+   * 7. missing coverage never renders as a real zero
+   * ------------------------------------------------------------------ */
+  sec('missing data stays missing');
+
+  test('a range with no snapshots reports hasData:false with a reason', function () {
+    var none = Core.storeMetrics('fx-a', Core.resolveRange('custom', '2026-05-01', '2026-05-31'));
+    eq(none.hasData, false);
+    eq(none.coverage.hasData, false);
+    ok(!!none.coverage.reason, 'a reason is available');
+    eq(none.total.contactPct, null, 'no fabricated 0%');
+    eq(none.total.closingRate, null);
+  });
+  test('an unknown store reports no data instead of throwing', function () {
+    var none = Core.storeMetrics('does-not-exist', Core.resolveRange('month'));
+    eq(none.hasData, false);
+    ok(!!none.coverage.reason);
+  });
+  test('a store with no sales report yields an empty rep list with a reason', function () {
+    var r = Core.reps('fx-b', Core.resolveRange('month'));
+    eq(r.length, 0);
+    ok(!!r.coverage.reason, 'the reason explains the gap');
+  });
+  test('partial coverage is flagged when the range outruns the data', function () {
+    var r = Core.storeMetrics('fx-a', Core.resolveRange('custom', '2026-07-01', '2026-07-31'));
+    ok(r.hasData === true);
+    ok(r.coverage.partial === true, 'range ends after the newest snapshot');
+    eq(r.coverage.lastDate, '2026-07-03');
+  });
+
+  /* ------------------------------------------------------------------ *
+   * 8. pace
+   * ------------------------------------------------------------------ */
+  sec('pace (NETWORKDAYS)');
+
+  test('pace splits the month by worked days', function () {
+    var p = Core.pace({ goal: 30, asOf: '2026-07-02', monthStart: '2026-07-01', monthEnd: '2026-07-31', includeSaturday: true });
+    eq(p.elapsed, 2); eq(p.total, 27); eq(p.remaining, 25);
+    near(p.fraction, 2 / 27);
+    near(p.expected, 30 * 2 / 27);
+    eq(p.hasGoal, true);
+  });
+  test('includeSaturday:false uses the Mon–Fri calendar', function () {
+    var p = Core.pace({ goal: 23, asOf: '2026-07-31', monthStart: '2026-07-01', monthEnd: '2026-07-31', includeSaturday: false });
+    eq(p.elapsed, 23); eq(p.total, 23); eq(p.remaining, 0);
+    near(p.fraction, 1); near(p.expected, 23);
+  });
+  test('a null goal gives expected:null and never a red colour', function () {
+    var p = Core.pace({ goal: null, asOf: '2026-07-02', monthStart: '2026-07-01', monthEnd: '2026-07-31' });
+    eq(p.hasGoal, false);
+    eq(p.expected, null);
+    eq(Core.paceRatio(12, p), null);
+    eq(Core.colorFor(12, p.expected), 'none');
+  });
+  test('storePace reads the persisted goal and stays neutral when unset', function () {
+    Core.setSalesGoal('fx-a', null);
+    var p0 = Core.storePace('fx-a', Core.resolveRange('month'), 2);
+    eq(p0.hasGoal, false); eq(p0.color, 'none');
+    Core.setSalesGoal('fx-a', 100);
+    var p1 = Core.storePace('fx-a', Core.resolveRange('month'), 2);
+    eq(p1.hasGoal, true);
+    eq(p1.goal, 100);
+    ok(p1.expected > 0);
+    eq(p1.color, 'bad');
+    Core.setSalesGoal('fx-a', null);
+  });
+  test('a goal of 0 or a blank string counts as "no goal"', function () {
+    Core.setSalesGoal('fx-a', 0);
+    eq(Core.getSalesGoal('fx-a'), null);
+    Core.setSalesGoal('fx-a', '');
+    eq(Core.getSalesGoal('fx-a'), null);
+  });
+  test('pace before the month starts reports 0 elapsed', function () {
+    var p = Core.pace({ goal: 10, asOf: '2026-06-15', monthStart: '2026-07-01', monthEnd: '2026-07-31' });
+    eq(p.elapsed, 0); eq(p.expected, 0);
+  });
+
+  /* ------------------------------------------------------------------ *
+   * 9. reps
+   * ------------------------------------------------------------------ */
+  sec('salesperson aggregation');
+
+  test('reps aggregate cumulatively for a month range', function () {
+    var r = Core.reps('fx-a', Core.resolveRange('custom', '2026-07-01', '2026-07-02'));
+    eq(r.length, 2);
+    eq(r[0].name, 'Dana Reyes');
+    eq(r[0].goodLeads, 15);
+    eq(r[0].calls, 45);
+    near(r[0].shownPct, 3 / 5);
+  });
+  test('reps difference correctly for a mid-month range', function () {
+    var r = Core.reps('fx-a', Core.resolveRange('custom', '2026-07-02', '2026-07-02'));
+    var dana = r.filter(function (x) { return x.name === 'Dana Reyes'; })[0];
+    eq(dana.goodLeads, 9);    // 15 − 6
+    eq(dana.texts, 40);       // 70 − 30
+    eq(dana.apptsScheduled, 3);
+  });
+  test('the TOTAL row is not a rep, and repTotals carries it', function () {
+    var r = Core.reps('fx-a', Core.resolveRange('custom', '2026-07-01', '2026-07-02'));
+    ok(r.every(function (x) { return x.name.toUpperCase() !== 'TOTAL'; }));
+    var t = Core.repTotals('fx-a', Core.resolveRange('custom', '2026-07-01', '2026-07-02'));
+    eq(t.goodLeads, 25);
+    eq(t.calls, 75);
+  });
+  test('rep shownPct is null when no appointments were scheduled', function () {
+    var r = Core.reps('fx-a', Core.resolveRange('custom', '2026-07-01', '2026-07-01'));
+    var lee = r.filter(function (x) { return x.name === 'Lee Park'; })[0];
+    eq(lee.apptsShown, 0);
+    eq(lee.shownPct, 0);
+    var t = Core.repTotals('fx-b', Core.resolveRange('month'));
+    eq(t.shownPct, null, 'no data at all → null, not 0');
+  });
+  test('Matador activity joins on the exact name, then on a prefixed given name', function () {
+    var r = Core.reps('fx-a', Core.resolveRange('month'));
+    var dana = r.filter(function (x) { return x.name === 'Dana Reyes'; })[0];
+    var lee = r.filter(function (x) { return x.name === 'Lee Park'; })[0];
+    eq(dana.matador.name, 'Dana Reyes');
+    eq(lee.matador.name, 'Leeanne Park', 'Lee ↔ Leeanne, same surname, unambiguous');
+  });
+  test('Matador users with no salesperson row are reported, not silently dropped', function () {
+    var un = Core.matadorUnmatched('fx-a', Core.resolveRange('month'));
+    eq(un.length, 1);
+    eq(un[0].name, 'Sam Okonkwo');
+  });
+  test('the per-user report has no internet split, so those fields are null', function () {
+    var r = Core.reps('fx-a', Core.resolveRange('month'));
+    eq(r[0].internetGoodLeads, null);
+    eq(r[0].internetSold, null);
+  });
+
+  /* ------------------------------------------------------------------ *
+   * 10. compare()
+   * ------------------------------------------------------------------ */
+  sec('compare()');
+
+  test('compare returns delta / pct / direction per metric', function () {
+    var cur = Core.storeMetrics('fx-a', Core.resolveRange('custom', '2026-07-02', '2026-07-02')).total;
+    var pri = Core.storeMetrics('fx-a', Core.resolveRange('custom', '2026-07-01', '2026-07-01')).total;
+    var c = Core.compare(cur, pri);
+    eq(c.goodLeads.delta, 5);            // 15 − 10
+    near(c.goodLeads.pct, 0.5);
+    eq(c.goodLeads.direction, 'up');
+    eq(c.sold.delta, 1);
+  });
+  test('compare degrades to direction "none" when either side is missing', function () {
+    var c = Core.compare({ contactPct: 0.5 }, { contactPct: null });
+    eq(c.contactPct.delta, null);
+    eq(c.contactPct.direction, 'none');
+  });
+  test('compare against a zero prior gives a null pct, not Infinity', function () {
+    var c = Core.compare({ sold: 4 }, { sold: 0 });
+    eq(c.sold.delta, 4);
+    eq(c.sold.pct, null);
+  });
+
+  /* ------------------------------------------------------------------ *
+   * 11. settings persistence
+   * ------------------------------------------------------------------ */
+  sec('settings');
+
+  test('defaults match the spec and sales goals start empty', function () {
+    Core.resetSettings();
+    eq(Core.settings.engagementTarget, 0.80);
+    eq(Core.settings.apptTarget, 0.40);
+    eq(Core.settings.includeSaturday, true);
+    eq(Object.keys(Core.settings.salesGoals).length, 0);
+    eq(Core.getSalesGoal('anything'), null);
+  });
+  test('Core.settings stays the same live object after a reset', function () {
+    var ref = Core.settings;
+    Core.resetSettings();
+    ok(ref === Core.settings, 'reference identity preserved');
+  });
+  if (hasLS) {
+    test('sales goals round-trip through localStorage', function () {
+      Core.setSalesGoal('fx-a', 42);
+      var raw = JSON.parse(localStorage.getItem(Core.STORAGE_KEY));
+      eq(raw.salesGoals['fx-a'], 42);
+      Core.setSalesGoal('fx-a', null);
+      eq(JSON.parse(localStorage.getItem(Core.STORAGE_KEY)).salesGoals['fx-a'], null);
+    });
+  } else {
+    skip('sales goals round-trip through localStorage', 'localStorage unavailable in this runtime');
+  }
+
+  /* ------------------------------------------------------------------ *
+   * 12. real data (assets/data.js), when present
+   * ------------------------------------------------------------------ */
+  sec('real data (assets/data.js)');
+
+  var REAL = (typeof window !== 'undefined' ? window.DASH_DATA : null);
+
+  if (!REAL || !REAL.snapshots || !REAL.snapshots.length) {
+    skip('data.js loaded', 'assets/data.js is not present yet — logic sections above ran on inline fixtures');
+  } else {
+    Core.setAnchor(null);
+    Core.init(REAL);
+
+    test('data.js loaded and indexed', function () {
+      ok(Core.dataAvailable(), 'Core reports data available');
+      ok(Core.stores().length > 0, 'at least one store');
+    });
+
+    // independent re-derivation of each snapshot's as-of date
+    function asOf(s) {
+      var e = Core.dayNum(s.end), r = Core.dayNum(s.runDate);
+      if (e !== null && r !== null) return r < e ? Core.iso(s.runDate) : Core.iso(s.end);
+      return Core.iso(s.end || s.runDate);
+    }
+
+    Core.stores().forEach(function (st) {
+      var kpis = REAL.snapshots.filter(function (s) { return s.storeId === st.id && s.kind === 'kpi' && s.total; });
+      if (!kpis.length) {
+        skip(st.name + ': MTD equals the newest cumulative snapshot', 'no KPI snapshot for this store');
+        return;
+      }
+      var newest = kpis.slice().sort(function (a, b) { return Core.dayNum(asOf(a)) - Core.dayNum(asOf(b)); }).pop();
+      var d = asOf(newest);
+      test(st.name + ': MTD equals the newest cumulative snapshot (' + d + ')', function () {
+        var r = Core.resolveRange('custom', Core.monthStart(d), d);
+        var sm = Core.storeMetrics(st.id, r);
+        eq(sm.total.goodLeads, Number(newest.total.goodLeads) || 0, 'good leads');
+        eq(sm.total.sold, Number(newest.total.sold) || 0, 'sold');
+      });
+      test(st.name + ': percentages trace back to counts', function () {
+        var r = Core.resolveRange('custom', Core.monthStart(d), d);
+        var sm = Core.storeMetrics(st.id, r);
+        [sm.total, sm.internet].forEach(function (mm) {
+          if (mm.contactPct !== null) near(mm.contactPct, mm.contacted / mm.goodLeads, 1e-9, 'contactPct');
+          if (mm.closingRate !== null) near(mm.closingRate, mm.sold / mm.goodLeads, 1e-9, 'closingRate');
+          if (mm.goodLeads === 0) eq(mm.contactPct, null, 'no leads → null, not 0%');
+        });
+      });
+      test(st.name + ': internet contact % is a real rate (0–1)', function () {
+        var r = Core.resolveRange('custom', Core.monthStart(d), d);
+        var sm = Core.storeMetrics(st.id, r);
+        if (sm.internet.contactPct === null) { ok(true, 'no internet leads'); return; }
+        ok(sm.internet.contactPct >= 0 && sm.internet.contactPct <= 1,
+           'contact % = ' + sm.internet.contactPct);
+      });
+    });
+
+    test('every store either has data for MTD or an explicit reason', function () {
+      var r = Core.resolveRange('month');
+      Core.stores().forEach(function (st) {
+        var sm = Core.storeMetrics(st.id, r);
+        ok(sm.hasData || !!sm.coverage.reason, st.name + ' has neither data nor a reason');
+      });
+    });
+    test('the default anchor is the newest snapshot in the dataset', function () {
+      var r = Core.resolveRange('month');
+      eq(r.anchor, Core.anchorDate());
+      ok(!!r.anchor);
+    });
+    test('lead-type totals never exceed the store TOTAL row', function () {
+      var r = Core.resolveRange('month');
+      Core.stores().forEach(function (st) {
+        var sm = Core.storeMetrics(st.id, r);
+        if (!sm.hasData) return;
+        var sum = 0;
+        sm.byLeadType.forEach(function (n) { sum += n.metrics.goodLeads; });
+        ok(sum <= sm.total.goodLeads + 0.5, st.name + ': lead types sum to ' + sum + ' vs total ' + sm.total.goodLeads);
+      });
+    });
+    test('Core reports no unexpected indexing warnings', function () {
+      // Duplicate-snapshot notices are expected against the real mailbox: the same
+      // report is sent more than once (and Armstrong's salesperson report is
+      // scheduled on a fixed Jul 1-15 custom range, so consecutive runs share an
+      // as-of date). Core keeping the later run is the correct behaviour, so only
+      // warnings that are NOT duplicate notices should fail this test.
+      var w = Core.warnings().filter(function (m) {
+        return !/^duplicate snapshot for /.test(m);
+      });
+      ok(w.length === 0, w.join(' | '));
+    });
+  }
+
+  /* ------------------------------------------------------------------ *
+   * finish
+   * ------------------------------------------------------------------ */
+  Core.setAnchor(null);
+  if (hasLS) {
+    try {
+      if (savedRaw === null) localStorage.removeItem(Core.STORAGE_KEY);
+      else localStorage.setItem(Core.STORAGE_KEY, savedRaw);
+    } catch (e) { /* ignore */ }
+  }
+
+  finish();
+
+  function finish() {
+    var pass = 0, fail = 0, skipped = 0;
+    RESULTS.forEach(function (r) {
+      if (r.status === 'PASS') pass++;
+      else if (r.status === 'FAIL') fail++;
+      else skipped++;
+    });
+    var summary = { pass: pass, fail: fail, skip: skipped, results: RESULTS };
+
+    if (typeof document === 'undefined') {
+      if (typeof console !== 'undefined') console.log(JSON.stringify(summary));
+      if (typeof module !== 'undefined') module.exports = summary;
+      return summary;
+    }
+
+    var out = document.getElementById('out');
+    var html = '';
+    var cur = null;
+    RESULTS.forEach(function (r) {
+      if (r.section !== cur) {
+        if (cur !== null) html += '</table>';
+        cur = r.section;
+        html += '<h2>' + esc(cur) + '</h2><table>';
+      }
+      html += '<tr><td class="s ' + r.status + '">' + r.status + '</td><td>' + esc(r.name) +
+              (r.detail ? '<div class="d">' + esc(r.detail) + '</div>' : '') + '</td></tr>';
+    });
+    if (cur !== null) html += '</table>';
+    out.innerHTML = html;
+
+    var banner = document.getElementById('banner');
+    banner.className = 'banner ' + (fail ? 'fail' : 'pass');
+    banner.textContent = (fail ? fail + ' FAILED · ' : 'All assertions passed · ') +
+      pass + ' passed, ' + fail + ' failed, ' + skipped + ' skipped';
+    document.title = (fail ? 'FAIL ' : 'PASS ') + pass + '/' + (pass + fail) + ' — Core self-tests';
+    document.getElementById('json').textContent = JSON.stringify({ pass: pass, fail: fail, skip: skipped });
+    return summary;
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+}());
+</script>
