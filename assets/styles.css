@@ -6,17 +6,26 @@
  */
 
 :root {
-  --ink: #191D33;
-  --muted: #6B7186;
-  --faint: #A9AFC2;
-  --line: #E7E9F2;
-  --line-soft: #F0F2F8;
-  --ground: #F7F8FB;
+  /* Neutral ink on white, with ONE accent — a pale blue used as a fill, never as
+     text. That is how the reference UI works: the active item is bold near-black,
+     and the blue only ever appears behind something. Pale blue as a link colour
+     would sit at ~1.6:1 on white and be unreadable, so interactive text stays ink
+     and earns its affordance from weight, underline and the blue fill on hover. */
+  --ink: #0F1729;
+  --muted: #6B7280;   /* 4.8:1 on white — the reference's grey sits at 3.3:1, which
+                         is fine for nav labels but not for the stat labels here */
+  --faint: #9AA1AC;
+  --line: #E7EAEF;
+  --line-soft: #F2F4F7;
+  --ground: #F7F8FA;
   --card: #FFFFFF;
 
-  --accent: #4F46E5;
-  --accent-deep: #3B34C4;
-  --accent-soft: #EEF0FE;
+  --accent-pale: #B7D7F5;   /* the fill */
+  --accent-tint: #DCEBFA;   /* lighter wash for hovers and chips */
+  --accent-ink: #0F1729;    /* text sitting ON the pale fill */
+  --accent: #2C6FB0;        /* focus rings and the few places a blue line reads */
+  --accent-deep: #1B5488;
+  --accent-soft: #DCEBFA;
 
   --good: #12704A;
   --good-bg: #E3F5EC;
@@ -33,17 +42,22 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --ink: #E9ECF7;
-    --muted: #A2A9C0;
-    --faint: #6E7691;
-    --line: #2A3050;
-    --line-soft: #222741;
-    --ground: #12162A;
-    --card: #1A1F36;
+    --ink: #EDEFF3;
+    --muted: #9AA2AE;
+    --faint: #6C7484;
+    --line: #2A3040;
+    --line-soft: #222634;
+    --ground: #10131B;
+    --card: #181C26;
 
-    --accent: #8B85FF;
-    --accent-deep: #A9A4FF;
-    --accent-soft: #262A4D;
+    /* Same relationship inverted: the pale blue is still the fill, but on a dark
+       card it is light enough to carry dark text, so accent-ink flips. */
+    --accent-pale: #6FA8DC;
+    --accent-tint: #23374B;
+    --accent-ink: #0F1729;
+    --accent: #8FC2EC;
+    --accent-deep: #B7D7F5;
+    --accent-soft: #23374B;
 
     --good: #6FE0A8;
     --good-bg: #12341F;
@@ -70,7 +84,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
-a { color: var(--accent); }
+a { color: var(--ink); }
 h1, h2, h3 { line-height: 1.2; margin: 0; }
 code { font-family: var(--mono); font-size: .9em; }
 
@@ -94,15 +108,15 @@ code { font-family: var(--mono); font-size: .9em; }
   text-decoration: none;
   color: inherit;
 }
-.brand-link:hover .brand-name { color: var(--accent); }
+.brand-link:hover .brand-name { color: var(--muted); }
 
 .brand-mark {
   display: grid;
   place-items: center;
   width: 30px; height: 30px;
   border-radius: 9px;
-  background: var(--accent);
-  color: #fff;
+  background: var(--accent-pale);
+  color: var(--accent-ink);
   font-weight: 800;
   font-size: 12px;
   letter-spacing: .04em;
@@ -144,7 +158,7 @@ a:focus-visible {
   padding: 6px 12px;
   cursor: pointer;
 }
-.ghost-btn:hover { background: var(--accent-soft); border-color: var(--accent); }
+.ghost-btn:hover { background: var(--accent-tint); border-color: var(--accent-pale); }
 
 /* --------------------------------------------------------------------- nav */
 
@@ -167,7 +181,7 @@ a:focus-visible {
   white-space: nowrap;
 }
 .mainnav a:hover { color: var(--ink); }
-.mainnav a.on { color: var(--accent); border-bottom-color: var(--accent); }
+.mainnav a.on { color: var(--ink); border-bottom-color: var(--accent-pale); }
 
 /* Store-scoped tabs. These are the only tabs in the app — the top level is a
    single dashboard, so a global tab bar had nothing meaningful to switch between. */
@@ -188,7 +202,7 @@ a:focus-visible {
   white-space: nowrap;
 }
 .subnav a:hover { color: var(--ink); }
-.subnav a.on { color: var(--accent); border-bottom-color: var(--accent); }
+.subnav a.on { color: var(--ink); font-weight: 700; border-bottom-color: var(--accent-pale); border-bottom-width: 3px; }
 
 /* ---------------------------------------------------------------- settings */
 
@@ -261,7 +275,7 @@ main:focus { outline: none; }
 /* separator on every crumb except the first */
 .crumbs li + li::before { content: "/"; color: var(--faint); }
 .crumbs a { color: var(--muted); text-decoration: none; font-weight: 600; }
-.crumbs a:hover { color: var(--accent); text-decoration: underline; }
+.crumbs a:hover { color: var(--ink); text-decoration: underline; }
 .crumbs [aria-current="page"] { color: var(--ink); font-weight: 700; }
 
 /* ------------------------------------------------------------------- tiles */
@@ -320,7 +334,7 @@ main:focus { outline: none; }
   text-decoration: none;
   color: inherit;
 }
-.store-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+.store-card:hover { border-color: var(--accent-pale); box-shadow: 0 0 0 3px var(--accent-tint), var(--shadow); }
 .store-card-head {
   display: flex;
   align-items: flex-start;
@@ -345,7 +359,7 @@ main:focus { outline: none; }
   font-weight: 800;
   font-size: 18px;
   letter-spacing: -.01em;
-  color: var(--accent);
+  color: var(--ink);
 }
 .store-card-name::after {
   content: " \2192";
@@ -420,7 +434,7 @@ td.name { font-weight: 600; }
 .total-row td { font-weight: 700; border-top: 2px solid var(--line); background: var(--line-soft); }
 .lt-row td:first-child { padding-left: 22px; }
 .rowlink { text-decoration: none; color: inherit; font-weight: 600; }
-.rowlink:hover { color: var(--accent); text-decoration: underline; }
+.rowlink:hover { color: var(--ink); text-decoration: underline; }
 
 .row-note, .note-cell, .note {
   font-size: 12px;
@@ -468,8 +482,8 @@ td.bad::after  { content: "\2193"; }   /* down arrow: behind target */
   font-weight: 600;
   padding: 2px 8px;
   border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--accent-deep);
+  background: var(--accent-tint);
+  color: var(--accent-ink);
   border: 1px solid transparent;
 }
 .tool { background: transparent; border-color: var(--line); color: var(--muted); }
