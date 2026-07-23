@@ -84,16 +84,21 @@ the browser only; a store with no goal shows "no goal" and is never marked red.
 Source: VinSolutions "Enterprise Performance" exports, emailed daily by
 `reportscheduler@motosnap.com`, plus a Matador Users activity CSV.
 
-Currently loaded: **116 snapshots** — 114 from the mailbox (777 Nissan and Armstrong Subaru,
-daily Jul 1–22 2026) plus 2 from a manual Vern Eide Honda export (Jun 22 2026).
+Currently loaded: **114 snapshots** — 777 Nissan and Armstrong Subaru, daily Jul 1–22 2026.
 
-Known gaps, surfaced in the UI rather than hidden:
-- Vern Eide Honda is not on the scheduled-report list — only the one June export exists.
+Vern Eide Honda is excluded (`EXCLUDE_STORES` in `pipeline/ingest.py`): it is not on the
+scheduled-report list, so its only export was a one-off from Jun 22 2026 and it showed as a
+permanently empty store. Remove it from that set and re-run the pipeline if it ever starts
+sending reports.
+
+Known gaps:
 - Armstrong Subaru's salesperson report is scheduled on a **fixed Jul 1–15 custom date
   range** instead of MTD, so its activity page covers Jul 1–15 only. Worth fixing in
   VinSolutions.
 - The per-user report has no internet/non-internet split, so per-rep "Internet leads" and
   "Internet sold" render "—" rather than a guess.
+- Explanatory footnotes under the tables are switched off (`footnotes()` in
+  `assets/pages.js` returns ""). The caveats live on the column-header tooltips instead.
 
 ## Rebuilding after new report exports
 
@@ -110,6 +115,6 @@ workbook is classified from its **Filters** sheet — dealer, date range, run da
 level — never from the filename or email subject, and duplicate sends are de-duplicated.
 Raw exports are intentionally not committed.
 
-Run the logic tests by opening `assets/core.test.html` in a browser (106 assertions).
+Run the logic tests by opening `assets/core.test.html` in a browser (103 assertions).
 
 Push to `main` deploys via GitHub Pages.

@@ -33,6 +33,12 @@ OUT = os.path.join(HERE, "data.json")
 DEFAULT_SRC = os.path.expanduser("~/Desktop/Scott")
 CACHE = os.path.join(HERE, ".cache")
 
+# Stores kept out of the dashboard entirely, by slug. Vern Eide Honda is not on the
+# scheduled-report list, so its only export is a one-off from Jun 22 2026 — a stale
+# store on the roster is worse than no store. Delete the entry (and re-run) if it
+# ever starts sending reports. Excluded stores are reported, never dropped silently.
+EXCLUDE_STORES = {"vern-eide-honda"}
+
 MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
 HOUSE_ACCOUNT = re.compile(r"\b(team|house)\b", re.IGNORECASE)
 XLSX_MIME = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
@@ -453,11 +459,17 @@ def main(argv):
     print("workbooks found: %d" % len(xlsx_paths))
 
     snapshots, skipped = [], []
+    excluded = defaultdict(int)
     for path in sorted(xlsx_paths):
         try:
-            snapshots.append(parse_workbook(path))
+            snap = parse_workbook(path)
         except Exception as exc:  # noqa: BLE001 - one bad file must never abort
             skipped.append((os.path.basename(path), str(exc)))
+            continue
+        if snap["storeId"] in EXCLUDE_STORES:
+            excluded[snap["storeName"]] += 1
+            continue
+        snapshots.append(snap)
 
     # de-duplicate identical sends; keep the richer copy
     best = {}
@@ -476,6 +488,8 @@ def main(argv):
     matador = []
     for path in sorted(csv_paths):
         matador.extend(parse_matador(path, log))
+    # drop activity belonging to an excluded store rather than leaving it orphaned
+    matador = [m for m in matador if m["storeId"] not in EXCLUDE_STORES]
 
     # stores and coverage are derived from what actually parsed
     store_names, coverage = {}, defaultdict(lambda: {"runDates": set(), "months": set(), "kinds": set()})
@@ -528,6 +542,8 @@ def main(argv):
 
     print("parsed %d, unique %d (%d duplicate sends dropped), skipped %d"
           % (len(snapshots), len(kept), dupes, len(skipped)))
+    for name, n in sorted(excluded.items()):
+        print("  EXCLUDED %s: %d snapshots (listed in EXCLUDE_STORES)" % (name, n))
     for fname, reason in skipped:
         print("  SKIP %s: %s" % (fname, reason))
     print("\nstore coverage")

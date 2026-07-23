@@ -396,9 +396,14 @@
       "</div>";
   }
 
-  function footnotes(list) {
-    if (!list || !list.length) return "";
-    return '<div class="footnotes">' + list.map(function (n) { return "<p>" + esc(n) + "</p>"; }).join("") + "</div>";
+  /* Footnotes are switched off platform-wide at the client's request: the blocks of
+     explanatory prose under every table were noise for people who already know the
+     domain. The caveats they carried (Referral/PreviousCustomer folded into TOTAL,
+     internet-scoped Contact/Appts, appts-set over 100%, DMS Sold == Total sold,
+     browser-local goals, NETWORKDAYS pace) still live on the column-header title
+     tooltips and in the README. Return the list again here to bring them back. */
+  function footnotes(/* list */) {
+    return "";
   }
 
   function tableWrap(inner, cls) {
@@ -571,10 +576,6 @@
         '<div class="store-cards">' + cards + "</div>" +
         '<h2 class="section-title">Store detail <span class="section-sub">click a row to open the store</span></h2>' +
         storesTableBlock(range) +
-        footnotes([
-          "Engagement target " + fmtPct(engagementTarget(), 0) + "; appts set of contacted target " + fmtPct(apptTarget(), 0) + ".",
-          "Every figure is aggregated from the counts in the VinSolutions exports; percentages are recomputed from those counts, never averaged."
-        ]) +
         "</section>";
     });
   }
@@ -639,13 +640,10 @@
           "</tr>";
       }).join("");
 
-      return tableWrap(header + "<tbody>" + rows + "</tbody>", "stores-tbl") +
-        footnotes([
-          "Click any row to open that store — its salesperson activity and internet performance live inside it.",
-          "“DMS Sold” and “Total sold” are the same figure — Sold in Time Frame from the CRM export — so they are shown once, as Total sold (DMS). If a separate DMS extract is ever wired in, this splits into two columns.",
-          "Sales goals are not part of the reports: they are entered here and stored in this browser only. A store with no goal shows \"no goal\" and is never marked red.",
-          paceFootnote()
-        ]);
+      // The caveats these used to spell out (DMS Sold == Total sold, goals are
+      // browser-local, NETWORKDAYS/no-holiday pace) live on the column headers'
+      // title tooltips and in the README, so nothing was lost by removing them.
+      return tableWrap(header + "<tbody>" + rows + "</tbody>", "stores-tbl");
   }
 
   function storesPage(range) {
@@ -791,15 +789,10 @@
         "leadtype-tbl"
       );
 
-      var notes = [
-        "Rows show Internet, Phone and Walk-in only. Referral and PreviousCustomer leads are deliberately not listed, but their Good Leads and Sold in Time Frame are still included in the TOTAL row.",
-        "Contact and Appts are counts derived from the reported percentages so they can be aggregated across days and stores.",
-        "VinSolutions reports “Internet Actual Contact %” for internet leads only — it writes a literal 0 on Phone, Walk-in, Referral and PreviousCustomer rows, and copies the internet rate onto the store total. Contact and Appts are therefore internet-scoped on every row, which is why the TOTAL matches the Internet row rather than exceeding it.",
-        "Appts set of contacted can exceed 100% — one contacted lead can produce several appointments."
-      ];
-      if (!prior) {
-        notes.unshift("No comparison period is available for " + rangeLabel(range) + ", so only MTD values are shown.");
-      }
+      // Footnotes removed at the client's request. The same caveats (Referral /
+      // PreviousCustomer folded into TOTAL, internet-scoped Contact/Appts, appts
+      // set of contacted exceeding 100%) remain on the column tooltips and in the
+      // README; the sub-header still names the comparison column when one exists.
 
       var storeMeta = '<div class="store-meta">' +
         (store.crm ? '<span class="chip crm">' + esc(store.crm) + "</span>" : "") +
@@ -811,8 +804,7 @@
         return headlineTiles(sm, range, totalCmp, netCmp) +
           '<h2 class="section-title">Lead types <span class="section-sub">' +
           esc(prior ? "MTD vs " + compareLabel : "MTD") + "</span></h2>" +
-          table +
-          footnotes(notes);
+          table;
       });
     });
   }
