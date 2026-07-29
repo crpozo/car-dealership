@@ -256,15 +256,11 @@
 
   function footer() {
     var gen = document.getElementById("foot-generated");
-    var warn = document.getElementById("foot-warnings");
     var generatedAt = Core.generatedAt && Core.generatedAt();
     gen.textContent = generatedAt ? "Data generated " + generatedAt : "";
-    var list = Core.warnings ? Core.warnings() : [];
-    if (list.length) {
-      warn.textContent = list.length + " ingest note" + (list.length === 1 ? "" : "s");
-      warn.title = list.join("\n");
-      warn.className = "foot-warn";
-    }
+    // Ingest warnings (duplicate sends and the like) are pipeline diagnostics, not
+    // something the reader can act on — they stay in Core.warnings() and in the
+    // ingest.py run output rather than on screen.
   }
 
   function boot() {

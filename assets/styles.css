@@ -548,7 +548,6 @@ td.bad::after  { content: "\2193"; }   /* down arrow: behind target */
   font-size: 12px;
   color: var(--faint);
 }
-.foot-warn { color: var(--warn); cursor: help; }
 
 /* ------------------------------------------------------------- responsive */
 

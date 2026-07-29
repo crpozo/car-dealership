@@ -155,13 +155,8 @@
     return { list: kept, missing: missing };
   }
 
-  function missingNote(missing) {
-    if (!missing.length) return "";
-    var names = missing.map(function (s) { return s.name; }).join(", ");
-    return '<span class="section-sub" title="' + esc(names) +
-      '">' + esc(missing.length + (missing.length === 1 ? " store" : " stores") +
-      " hidden — no data for this range") + "</span>";
-  }
+  /* Stores with no data are simply absent — no count, no note. Which stores are
+     missing which scheduled reports is tracked in the README instead. */
 
   function whereDataIs(storeId, range, sm) {
     // Core already works out WHY there is nothing (no KPI report at all vs. reports
@@ -608,7 +603,7 @@
       return '<section class="page" id="page-overview">' +
         head + coverageBanner(range) +
         headlineTiles(all, range, null, null) +
-        '<h2 class="section-title">Stores' + missingNote(shown.missing) + "</h2>" +
+        '<h2 class="section-title">Stores</h2>' +
         '<div class="store-cards">' + cards + "</div>" +
         '<h2 class="section-title">Store detail <span class="section-sub">click a row to open the store</span></h2>' +
         storesTableBlock(range) +

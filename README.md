@@ -94,9 +94,9 @@ Report shapes handled, all detected from the Filters sheet:
 - per-user sales (`Summary Level 1 = User`) and the grouped variant (`= User Group`,
   used by Sommer's), whose group subtotal rows are skipped so reps are not double counted
 
-A store with no data in the selected range is **left out** of the cards and tables rather
-than rendered as an empty shell; the section heading carries a "N stores hidden" note with
-their names on hover, so a client that quietly stops reporting cannot vanish unnoticed.
+A store with no data in the selected range is **left out** of the cards and tables
+entirely — no placeholder, no count. The list below is therefore the only record of which
+clients are missing which scheduled reports; keep it current.
 
 Missing scheduled reports (these are the stores that get hidden):
 - **Armstrong Volkswagen** — no KPI report at all, only salesperson activity
