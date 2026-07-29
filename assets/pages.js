@@ -143,18 +143,30 @@
   /* An empty store card is useless if it only says "no data". Say which months the
      store DOES have, so the reader knows to change the timeframe rather than
      assuming the store is dead or that we simply failed to load it. */
-  function whereDataIs(storeId, range) {
+  function whereDataIs(storeId, range, sm) {
+    // Core already works out WHY there is nothing (no KPI report at all vs. reports
+    // that miss this range); repeating a months-only hint over the top of it
+    // produced nonsense like "only has Jul 2026" while viewing Jul 2026.
+    var reason = (sm && sm.coverage && sm.coverage.reason) || null;
     var months = [];
     try {
       var cov = C().coverage(storeId);
-      months = (cov && cov.months) || [];
+      // these cards show KPI figures, so it is the KPI months that matter
+      months = (cov && cov.byKind && cov.byKind.kpi && cov.byKind.kpi.months) ||
+               (cov && cov.months) || [];
     } catch (e) { months = []; }
+
+    var hint = "";
+    if (months.length) {
+      var pretty = months.map(prettyMonth);
+      var list = pretty.length === 1
+        ? pretty[0]
+        : pretty.slice(0, -1).join(", ") + " and " + pretty[pretty.length - 1];
+      hint = " KPI reports so far cover " + list + ".";
+    }
+    if (reason) return reason + hint;
     if (!months.length) return "No reports loaded for this store at all.";
-    var pretty = months.map(prettyMonth);
-    var list = pretty.length === 1
-      ? pretty[0]
-      : pretty.slice(0, -1).join(", ") + " and " + pretty[pretty.length - 1];
-    return "No reports in this range — this store only has " + list + ".";
+    return "No reports in this range." + hint;
   }
 
   function coverageAsOf(sm) {
@@ -540,7 +552,7 @@
           return '<a class="store-card no-data" href="' + esc(href) + '">' +
             '<div class="store-card-head"><span class="store-card-title">' + '<span class="store-card-kicker">Store</span>' + '<span class="store-card-name">' + esc(s.name) + "</span></span>" +
             (s.crm ? '<span class="chip crm">' + esc(s.crm) + "</span>" : "") + "</div>" +
-            '<div class="store-card-empty">' + esc(whereDataIs(s.id, range)) + "</div></a>";
+            '<div class="store-card-empty">' + esc(whereDataIs(s.id, range, sm)) + "</div></a>";
         }
         var net = sm.internet || null;
         var closing = net ? c.rate(net.sold, net.goodLeads) : null;

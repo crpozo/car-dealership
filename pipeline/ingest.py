@@ -54,6 +54,40 @@ def slug(name):
     return s.strip("-")
 
 
+def combined_name(dealers):
+    """Name a report that covers several rooftops at once.
+
+    Some groups report two rooftops as one unit (Vern Eide's Sioux City store sends
+    "Vern Eide Honda Sioux City, Vern Eide Hyundai Sioux City" in a single export).
+    The shared words at each end are the store's real identity, so
+    "Vern Eide Honda Sioux City" + "Vern Eide Hyundai Sioux City" becomes
+    "Vern Eide Sioux City (combined)" — derived from the Filters sheet, never from
+    the mail subject. Falls back to joining the names when nothing is shared.
+    """
+    parts = [d.strip() for d in dealers.split(",") if d.strip()]
+    if len(parts) == 1:
+        return parts[0]
+    words = [p.split() for p in parts]
+    head = []
+    for i in range(min(len(w) for w in words)):
+        token = words[0][i]
+        if all(w[i] == token for w in words):
+            head.append(token)
+        else:
+            break
+    tail = []
+    for i in range(1, min(len(w) for w in words) - len(head) + 1):
+        token = words[0][-i]
+        if all(w[-i] == token for w in words):
+            tail.insert(0, token)
+        else:
+            break
+    shared = head + tail
+    if not shared:
+        return " + ".join(parts)
+    return " ".join(shared) + " (combined)"
+
+
 def parse_dt(value):
     """'Jul  2 2026  8:10AM' / 'Jun  1 2026 12:00AM' -> date string 'YYYY-MM-DD'."""
     if value is None:
@@ -306,25 +340,39 @@ def parse_kpi(rows, idx):
 
 
 def parse_sales(rows, idx):
+    """Per-user activity. Handles both the flat "User" report and the grouped
+    "User Group" variant, where a group subtotal row carries a blank User and the
+    grand total sits in the group column."""
     reps, totals = [], None
+
+    def value(row, col):
+        """None (not 0) when a column is absent — some stores' exports omit
+        Texts Out entirely, and a real zero must not be invented for them."""
+        return num(row[idx[col]]) if col in idx else None
+
     for row in rows:
         user = cell(row, idx, "User")
-        if not user:
-            continue
-        if user != "TOTAL" and HOUSE_ACCOUNT.search(user):
-            continue  # CRM house accounts are not people
+        group = cell(row, idx, "User Group")
+        # grand total: "TOTAL" in whichever column leads this report
+        is_total = user == "TOTAL" or (group == "TOTAL" and not user)
+        if not is_total:
+            if not user:
+                continue  # group subtotal row — its members are listed individually
+            if HOUSE_ACCOUNT.search(user):
+                continue  # CRM house accounts are not people
         rec = {
-            "name": user,
-            "goodLeads": num(row[idx["Good Leads"]]) if "Good Leads" in idx else 0,
-            "sold": num(row[idx["Sold in Time Frame"]]) if "Sold in Time Frame" in idx else 0,
-            "apptsScheduled": num(row[idx["Appts Scheduled"]]) if "Appts Scheduled" in idx else 0,
-            "apptsShown": num(row[idx["Appts Shown"]]) if "Appts Shown" in idx else 0,
-            "shownPct": num(row[idx["Appts Shown %"]]) if "Appts Shown %" in idx else 0,
-            "calls": num(row[idx["Calls Out"]]) if "Calls Out" in idx else 0,
-            "emails": num(row[idx["Emails Out"]]) if "Emails Out" in idx else 0,
-            "texts": num(row[idx["Texts Out"]]) if "Texts Out" in idx else 0,
+            "name": "TOTAL" if is_total else user,
+            "group": group or None,
+            "goodLeads": value(row, "Good Leads"),
+            "sold": value(row, "Sold in Time Frame"),
+            "apptsScheduled": value(row, "Appts Scheduled"),
+            "apptsShown": value(row, "Appts Shown"),
+            "shownPct": value(row, "Appts Shown %"),
+            "calls": value(row, "Calls Out"),
+            "emails": value(row, "Emails Out"),
+            "texts": value(row, "Texts Out"),
         }
-        if user == "TOTAL":
+        if is_total:
             totals = rec
         else:
             reps.append(rec)
@@ -338,9 +386,10 @@ def parse_workbook(path):
         if "Report" not in wb.sheetnames:
             raise ValueError("no Report sheet")
         filters = read_filters(wb)
-        dealer = filters.get("Dealers", "").strip()
-        if not dealer or "," in dealer:
-            raise ValueError("Filters has no single dealer (%r)" % dealer)
+        dealer_field = filters.get("Dealers", "").strip()
+        if not dealer_field:
+            raise ValueError("Filters has no Dealers value")
+        dealer = combined_name(dealer_field)
         level = filters.get("Summary Level 1", "").strip()
         if not level:
             raise ValueError("Filters has no Summary Level 1")
@@ -361,10 +410,13 @@ def parse_workbook(path):
             period = "current" if (begin or "")[:7] == (run or "")[:7] else "prior"
 
         rows, idx = read_report(wb)
+        # "User Group" is the same per-rep report with an extra grouping column
+        # (Sommer's reports its teams that way); both are salesperson activity.
         snap = {
             "storeId": slug(dealer),
             "storeName": dealer,
-            "kind": "sales" if level == "User" else "kpi",
+            "dealers": [d.strip() for d in dealer_field.split(",") if d.strip()],
+            "kind": "sales" if level in ("User", "User Group") else "kpi",
             "period": period,
             "dateRange": date_range,
             "begin": begin,

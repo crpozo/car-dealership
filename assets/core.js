@@ -456,17 +456,20 @@
     };
   }
 
+  var REP_FIELDS = ['goodLeads', 'sold', 'apptsScheduled', 'apptsShown', 'calls', 'emails', 'texts'];
+
+  /* A column the export never carried must stay ABSENT from the bag rather than
+     becoming a zero — Sommer's per-user report has no "Texts Out" column at all,
+     and "0 texts sent" is a very different claim from "texts were not reported".
+     addBags only sums keys that are present, so finalizeRep can tell them apart. */
   function repToBag(r) {
     r = r || {};
-    return {
-      goodLeads: cnt(r.goodLeads),
-      sold: cnt(r.sold),
-      apptsScheduled: cnt(r.apptsScheduled),
-      apptsShown: cnt(r.apptsShown),
-      calls: cnt(r.calls),
-      emails: cnt(r.emails),
-      texts: cnt(r.texts)
-    };
+    var bag = {};
+    for (var i = 0; i < REP_FIELDS.length; i++) {
+      var v = numOrNull(r[REP_FIELDS[i]]);
+      if (v !== null) bag[REP_FIELDS[i]] = v;
+    }
+    return bag;
   }
 
   /* ------------------------------------------------------------------ *
@@ -507,6 +510,11 @@
 
   function emptyMetrics() { return finalizeMetrics({}, false); }
 
+  /** A count only when the field was actually reported; null when it never was. */
+  function reported(bag, key) {
+    return Object.prototype.hasOwnProperty.call(bag, key) ? cnt(bag[key]) : null;
+  }
+
   function finalizeRep(name, bag, hasData) {
     bag = bag || {};
     var apptsScheduled = cnt(bag.apptsScheduled);
@@ -520,9 +528,10 @@
       apptsSet: apptsScheduled,          // alias: the sales report calls it "Appts Scheduled"
       apptsShown: apptsShown,
       shownPct: rate(apptsShown, apptsScheduled),
-      calls: cnt(bag.calls),
-      emails: cnt(bag.emails),
-      texts: cnt(bag.texts),
+      // outbound activity varies by export — null (renders "—") when never reported
+      calls: reported(bag, 'calls'),
+      emails: reported(bag, 'emails'),
+      texts: reported(bag, 'texts'),
       // The VinSolutions per-user report has no internet-only split. Real value unknown → null.
       internetGoodLeads: null,
       internetSold: null,

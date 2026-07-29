@@ -361,13 +361,14 @@ main:focus { outline: none; }
   letter-spacing: -.01em;
   color: var(--ink);
 }
+/* nbsp + plain inline: an inline-block can still break BEFORE itself, which left
+   the arrow stranded on its own line under "Armstrong Subaru". Staying inline
+   means the nbsp actually binds it to the last word — worth more than the 3px
+   hover nudge an inline-block would have allowed. */
 .store-card-name::after {
-  content: " \2192";
-  display: inline-block;
+  content: "\00A0\2192";
   font-weight: 700;
-  transition: transform .12s ease;
 }
-.store-card:hover .store-card-name::after { transform: translateX(3px); }
 .store-card.no-data .store-card-name { color: var(--muted); }
 .store-card-loc { font-size: 12px; color: var(--faint); }
 .store-card-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 14px; margin-top: 14px; }
