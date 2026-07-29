@@ -235,19 +235,30 @@ a:focus-visible {
 main { display: block; padding: 22px; max-width: 1500px; }
 main:focus { outline: none; }
 
-.page-head { margin-bottom: 18px; }
-.page-head h1 { font-size: 22px; letter-spacing: -.02em; }
-.page-sub { font-size: 13px; color: var(--muted); margin: 5px 0 0; }
-.section-sub { font-size: 13px; font-weight: 500; color: var(--muted); margin-left: .5em; }
+.page-head { margin-bottom: 20px; }
+.page-head h1 { font-size: 26px; letter-spacing: -.02em; }
+.page-sub { font-size: 13px; color: var(--muted); margin: 4px 0 0; }
+.section-sub { font-size: 13px; font-weight: 500; color: var(--muted); margin-left: .6em; }
 .ttl-suffix { font-weight: 500; color: var(--muted); font-size: 15px; }
 
+/* A section heading has to out-rank the page subtitle, or the eye cannot tell
+   where "All stores · This month (MTD)" ends and "Stores" begins — both were
+   small, grey and 13px. Sections now start on a full-width rule with dark,
+   sentence-case text, so each block reads as a fresh start. */
 .section-title {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  color: var(--muted);
-  margin: 26px 0 10px;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  color: var(--ink);
+  margin: 38px 0 14px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
 }
+/* the first section after the tiles already has the tile row as a boundary */
+.tiles + .section-title { margin-top: 30px; }
 
 .panel {
   background: var(--card);
@@ -317,15 +328,18 @@ main:focus { outline: none; }
 
 /* ------------------------------------------------------------- store cards */
 
+/* Cards are all populated now that empty stores are dropped, so they can share a
+   row height again — ragged card bottoms were the other thing making the grid
+   read as noise. */
 .store-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 12px;
-  align-items: start;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 14px;
 }
 
 .store-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -344,6 +358,9 @@ main:focus { outline: none; }
   border-bottom: 1px solid var(--line-soft);
 }
 .store-card-title { display: flex; flex-direction: column; min-width: 0; }
+/* keep the stat grid pinned to the bottom so cards of differing title lengths
+   still line their numbers up across a row */
+.store-card-stats { margin-top: auto; }
 
 /* Eyebrow + accent title + chevron: makes it unmistakable that each card is a
    store you can open, and separates the card's title from the stat labels

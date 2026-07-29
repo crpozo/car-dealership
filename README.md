@@ -94,7 +94,11 @@ Report shapes handled, all detected from the Filters sheet:
 - per-user sales (`Summary Level 1 = User`) and the grouped variant (`= User Group`,
   used by Sommer's), whose group subtotal rows are skipped so reps are not double counted
 
-Missing scheduled reports, surfaced in the UI rather than papered over:
+A store with no data in the selected range is **left out** of the cards and tables rather
+than rendered as an empty shell; the section heading carries a "N stores hidden" note with
+their names on hover, so a client that quietly stops reporting cannot vanish unnoticed.
+
+Missing scheduled reports (these are the stores that get hidden):
 - **Armstrong Volkswagen** — no KPI report at all, only salesperson activity
 - **Vern Eide Honda** — KPI Prev MTD arrives but KPI MTD does not
 - **Vern Eide Mitsubishi**, **Vern Eide Sioux City** — no KPI Prev MTD, so no comparison

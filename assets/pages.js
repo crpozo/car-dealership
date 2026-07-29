@@ -143,6 +143,26 @@
   /* An empty store card is useless if it only says "no data". Say which months the
      store DOES have, so the reader knows to change the timeframe rather than
      assuming the store is dead or that we simply failed to load it. */
+  /* Split a store list into the ones with data in this range and the ones without.
+     Stores without data are dropped from the UI, but they are still counted and
+     named so a client that quietly stopped reporting cannot vanish unnoticed. */
+  function withData(list, range) {
+    var kept = [], missing = [];
+    for (var i = 0; i < list.length; i++) {
+      if (hasData(storeMetrics(list[i].id, range))) kept.push(list[i]);
+      else missing.push(list[i]);
+    }
+    return { list: kept, missing: missing };
+  }
+
+  function missingNote(missing) {
+    if (!missing.length) return "";
+    var names = missing.map(function (s) { return s.name; }).join(", ");
+    return '<span class="section-sub" title="' + esc(names) +
+      '">' + esc(missing.length + (missing.length === 1 ? " store" : " stores") +
+      " hidden — no data for this range") + "</span>";
+  }
+
   function whereDataIs(storeId, range, sm) {
     // Core already works out WHY there is nothing (no KPI report at all vs. reports
     // that miss this range); repeating a months-only hint over the top of it
@@ -538,6 +558,12 @@
         return '<section class="page" id="page-overview">' + head +
           emptyState("No stores loaded", "assets/data.js contains no stores.") + "</section>";
       }
+      if (!withData(list, range).list.length) {
+        return '<section class="page" id="page-overview">' + head +
+          emptyState("No store has data for " + rangeLabel(range),
+            "All " + list.length + " stores are missing reports for this range. Pick another timeframe.") +
+          "</section>";
+      }
       if (!all || !all.hasData) {
         return '<section class="page" id="page-overview">' + head +
           emptyState("No data for this range",
@@ -545,15 +571,13 @@
           "</section>";
       }
 
-      var cards = list.map(function (s) {
+      // A store with nothing to show in this range is left out entirely rather
+      // than rendered as an empty card. withData() is shared with the table below
+      // so the cards and the rows can never disagree about who is on the roster.
+      var shown = withData(list, range);
+      var cards = shown.list.map(function (s) {
         var sm = storeMetrics(s.id, range);
         var href = "#/store/" + encodeURIComponent(s.id);
-        if (!hasData(sm)) {
-          return '<a class="store-card no-data" href="' + esc(href) + '">' +
-            '<div class="store-card-head"><span class="store-card-title">' + '<span class="store-card-kicker">Store</span>' + '<span class="store-card-name">' + esc(s.name) + "</span></span>" +
-            (s.crm ? '<span class="chip crm">' + esc(s.crm) + "</span>" : "") + "</div>" +
-            '<div class="store-card-empty">' + esc(whereDataIs(s.id, range, sm)) + "</div></a>";
-        }
         var net = sm.internet || null;
         var closing = net ? c.rate(net.sold, net.goodLeads) : null;
         var eng = net ? net.contactPct : null;
@@ -584,7 +608,7 @@
       return '<section class="page" id="page-overview">' +
         head + coverageBanner(range) +
         headlineTiles(all, range, null, null) +
-        '<h2 class="section-title">Stores</h2>' +
+        '<h2 class="section-title">Stores' + missingNote(shown.missing) + "</h2>" +
         '<div class="store-cards">' + cards + "</div>" +
         '<h2 class="section-title">Store detail <span class="section-sub">click a row to open the store</span></h2>' +
         storesTableBlock(range) +
@@ -602,8 +626,14 @@
      standalone #/stores route and the Overview render exactly the same thing. */
   function storesTableBlock(range) {
       var c = C();
-      var list = STORES();
-      if (!list.length) return emptyState("No stores loaded", "assets/data.js contains no stores.");
+      var all = STORES();
+      if (!all.length) return emptyState("No stores loaded", "assets/data.js contains no stores.");
+      var split = withData(all, range);
+      var list = split.list;
+      if (!list.length) {
+        return emptyState("No store has data for " + rangeLabel(range),
+          "All " + all.length + " stores are missing reports for this range. Pick another timeframe.");
+      }
 
       var header =
         "<thead><tr>" +
@@ -626,11 +656,6 @@
           (s.crm ? '<span class="chip crm">' + esc(s.crm) + "</span>" : "") + "</td>";
 
         var sm = storeMetrics(s.id, range);
-        if (!hasData(sm)) {
-          return "<tr" + linkAttrs + ">" + nameCell +
-            '<td class="num none" colspan="7">' + na(noCoverageReason(range)) +
-            ' <span class="row-note">no data for this range</span></td></tr>';
-        }
         var t = sm.total || {};
         var net = sm.internet || null;
         var noNet = "No internet lead rows for " + rangeLabel(range);
@@ -957,11 +982,6 @@
         var nameCell = '<td class="name"><a href="' + esc(href) + '">' + esc(s.name) + "</a></td>";
 
         var sm = storeMetrics(s.id, range);
-        if (!hasData(sm)) {
-          return "<tr" + linkAttrs + ">" + nameCell +
-            '<td class="num none" colspan="9">' + na(noCoverageReason(range)) +
-            ' <span class="row-note">no data for this range</span></td></tr>';
-        }
         var net = sm.internet;
         var noNet = "No internet lead rows for " + rangeLabel(range);
         if (!net) {
