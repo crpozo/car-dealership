@@ -1055,9 +1055,21 @@
       } else {
         // mid-month range → sum per-day deltas
         var used = 0;
+        var straddled = null;
         for (var d2 = 0; d2 < g.deltas.length; d2++) {
           var del = g.deltas[d2];
           if (!inRange(del.date, effStart, effEnd)) continue;
+          // A delta covers spanStart..spanEnd, not just its end date. If the span
+          // reaches back before the range it cannot be attributed to the range at
+          // all: a store whose first report arrives mid-month carries the entire
+          // month-to-date in one block, and counting that block as if it were the
+          // single day it ends on would inflate the range enormously. The reports
+          // give no way to split it, so it is excluded and explained rather than
+          // silently added.
+          if (dayNum(del.spanStart) < dayNum(effStart)) {
+            straddled = del;
+            continue;
+          }
           mergePathMap(acc, del.map);
           used++;
           cov.snapshotDates.push(del.date);
@@ -1068,16 +1080,23 @@
         }
         if (!used) {
           monthInfo.mode = 'none';
-          monthInfo.note = 'No daily snapshot between ' + formatDate(effStart) + ' and ' + formatDate(effEnd) + '.';
+          monthInfo.note = straddled
+            ? 'The earliest report here covers ' + formatRange(straddled.spanStart, straddled.spanEnd) +
+              ' as a single block, so it cannot be broken down to ' + formatRange(effStart, effEnd) + '.'
+            : 'No daily snapshot between ' + formatDate(effStart) + ' and ' + formatDate(effEnd) + '.';
           cov.months.push(monthInfo);
           continue;
         }
         monthInfo.mode = 'deltas';
         monthInfo.asOf = monthInfo.coveredEnd;
-        if (dayNum(monthInfo.coveredStart) < dayNum(effStart)) {
+        if (straddled) {
           monthInfo.partial = true;
-          monthInfo.note = 'Snapshots are not daily here: the first included day covers ' +
-            formatRange(monthInfo.coveredStart, monthInfo.coveredEnd) + ', wider than the selected range.';
+          monthInfo.note = 'Excludes ' + formatRange(straddled.spanStart, straddled.spanEnd) +
+            ', which the reports only provide as one block.';
+        } else if (dayNum(monthInfo.coveredStart) > dayNum(effStart)) {
+          monthInfo.partial = true;
+          monthInfo.note = 'Reports here begin ' + formatDate(monthInfo.coveredStart) +
+            '; the selected range starts ' + formatDate(effStart) + '.';
         } else if (dayNum(monthInfo.coveredEnd) < dayNum(effEnd)) {
           monthInfo.partial = true;
           monthInfo.note = 'Data runs through ' + formatDate(monthInfo.coveredEnd) + '; the selected range ends ' + formatDate(effEnd) + '.';

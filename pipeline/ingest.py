@@ -33,11 +33,12 @@ OUT = os.path.join(HERE, "data.json")
 DEFAULT_SRC = os.path.expanduser("~/Desktop/Scott")
 CACHE = os.path.join(HERE, ".cache")
 
-# Stores kept out of the dashboard entirely, by slug. Vern Eide Honda is not on the
-# scheduled-report list, so its only export is a one-off from Jun 22 2026 — a stale
-# store on the roster is worse than no store. Delete the entry (and re-run) if it
-# ever starts sending reports. Excluded stores are reported, never dropped silently.
-EXCLUDE_STORES = {"vern-eide-honda"}
+# Stores kept out of the dashboard entirely, by slug. Empty today: Vern Eide Honda
+# was excluded while its only export was a stale one-off from Jun 22 2026, but it
+# joined the daily schedule on Jul 28 2026 along with nine other rooftops, so it is
+# back in. Excluded stores are always reported at the end of a run, never dropped
+# silently.
+EXCLUDE_STORES = set()
 
 MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
 HOUSE_ACCOUNT = re.compile(r"\b(team|house)\b", re.IGNORECASE)

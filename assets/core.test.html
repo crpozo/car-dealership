@@ -400,6 +400,36 @@ inline fixtures. Fixtures below are synthetic test inputs only — they are neve
     Core.setAnchor('2026-07-03');
   });
 
+  test('a store whose first report lands mid-month does not report the whole block as one day', function () {
+    // Ten rooftops joined the daily schedule on 2026-07-28. Their only snapshot is
+    // cumulative Jul 1-28, so it must NOT be counted as a single day's activity.
+    Core.init({
+      stores: [{ id: 'late', name: 'Late Joiner' }],
+      snapshots: [{
+        storeId: 'late', kind: 'kpi', begin: '2026-07-01', end: '2026-07-31', runDate: '2026-07-28',
+        total: { goodLeads: 280, sold: 28, apptsShown: 0, contacted: 140, apptsSet: 70 },
+        byLeadType: []
+      }]
+    });
+    Core.setAnchor('2026-07-28');
+
+    // whole-month range: the cumulative snapshot is exactly right
+    var month = Core.storeMetrics('late', Core.resolveRange('month'));
+    eq(month.total.goodLeads, 280, 'MTD should use the cumulative snapshot as-is');
+
+    // single day: 28 days of accumulation must not masquerade as one day
+    var today = Core.storeMetrics('late', Core.resolveRange('today'));
+    ok(today.total.goodLeads !== 280,
+      'a single day must not report the full 280-lead month-to-date block');
+    ok(!today.coverage.hasData,
+      'with nothing attributable to the day, coverage must say so rather than show a number');
+    ok(/single block/.test(today.coverage.notes.join(' ')),
+      'the reason must name the block that could not be broken down');
+
+    Core.init(FIXTURE);
+    Core.setAnchor('2026-07-03');
+  });
+
   /* ------------------------------------------------------------------ *
    * 6. range resolution
    * ------------------------------------------------------------------ */
