@@ -351,12 +351,37 @@ main:focus { outline: none; }
 .store-card:hover { border-color: var(--accent-pale); box-shadow: 0 0 0 3px var(--accent-tint), var(--shadow); }
 .store-card-head {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 10px;
-  padding-bottom: 10px;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
   border-bottom: 1px solid var(--line-soft);
 }
+/* Identity tile: rounded square on the pale brand fill with the store's
+   initials, the same treatment the reference UI gives every entity. This is
+   what makes a card read as "one store" at a glance — the initials do the
+   distinguishing, the tile shape does the "this is an entity" part. */
+.store-mono {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--accent-pale);
+  color: var(--accent-ink);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: .02em;
+}
+.store-mono.lg { width: 48px; height: 48px; font-size: 17px; border-radius: 14px; }
+
+.store-ident { display: flex; align-items: center; gap: 14px; }
+.store-ident .page-head { margin-bottom: 0; }
+
+/* first chip pushes to the right edge; any further tool chips sit beside it */
+.store-card-head .chip { margin-left: auto; }
+.store-card-head .chip ~ .chip { margin-left: 0; }
+
 .store-card-title { display: flex; flex-direction: column; min-width: 0; }
 /* keep the stat grid pinned to the bottom so cards of differing title lengths
    still line their numbers up across a row */

@@ -84,8 +84,9 @@ the browser only; a store with no goal shows "no goal" and is never marked red.
 Source: VinSolutions "Enterprise Performance" exports, emailed daily by
 `reportscheduler@motosnap.com`, plus a Matador Users activity CSV.
 
-Currently loaded: **191 snapshots across 12 stores**. 777 Nissan and Armstrong Subaru report
-daily since Jul 1 2026; ten more rooftops joined the schedule on Jul 28 2026.
+Currently loaded: **271 snapshots across 12 stores**, through Jul 30 2026. 777 Nissan and
+Armstrong Subaru report daily since Jul 1 2026; ten more rooftops joined Jul 28 2026, so
+the newer stores now have real daily deltas of their own.
 
 Report shapes handled, all detected from the Filters sheet:
 - single-dealer KPI (Lead Type / Inventory Type / Vehicle Make)
@@ -128,7 +129,7 @@ workbook is classified from its **Filters** sheet — dealer, date range, run da
 level — never from the filename or email subject, and duplicate sends are de-duplicated.
 Raw exports are intentionally not committed.
 
-Run the logic tests by opening `assets/core.test.html` in a browser (104 assertions).
+Run the logic tests by opening `assets/core.test.html` in a browser (131 assertions).
 
 `build.py` also stamps a content hash onto the asset URLs in `index.html`, so a rebuild is
 never served from a stale browser cache.

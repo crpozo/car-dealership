@@ -184,6 +184,22 @@
     return "No reports in this range." + hint;
   }
 
+  /* Two-letter monogram for a store's identity tile. First letter of the first
+     word + first letter of the last word (parentheticals stripped), so sister
+     rooftops stay distinct: Vern Eide Acura → VA, Vern Eide Honda → VH,
+     Vern Eide Mitsubishi → VM — where first-two-words would make them all "VE". */
+  function monogramFor(name) {
+    var words = String(name || "").replace(/\([^)]*\)/g, " ").split(/\s+/).filter(Boolean);
+    if (!words.length) return "?";
+    if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+    return (words[0].charAt(0) + words[words.length - 1].charAt(0)).toUpperCase();
+  }
+
+  function monogram(name, large) {
+    return '<span class="store-mono' + (large ? " lg" : "") + '" aria-hidden="true">' +
+      esc(monogramFor(name)) + "</span>";
+  }
+
   function coverageAsOf(sm) {
     var cov = sm && sm.coverage;
     if (!cov) return "";
@@ -586,10 +602,13 @@
           { l: "Internet closing", v: net ? pct(closing, noNet) : na(noNet), cls: "none" }
         ];
         var asOf = coverageAsOf(sm);
+        // CRM and tools live on the kicker line ("Store · VinSolutions") rather
+        // than as chips beside the name — a chip in the header row squeezed long
+        // names like "Gresham Chrysler Dodge Jeep Ram" into one word per line.
+        var kicker = ["Store"].concat(s.crm ? [s.crm] : []).concat(s.tools || []).join(" · ");
         return '<a class="store-card" href="' + esc(href) + '">' +
-          '<div class="store-card-head"><span class="store-card-title">' + '<span class="store-card-kicker">Store</span>' + '<span class="store-card-name">' + esc(s.name) + "</span></span>" +
-          (s.crm ? '<span class="chip crm">' + esc(s.crm) + "</span>" : "") +
-          ((s.tools || []).map(function (t) { return '<span class="chip tool">' + esc(t) + "</span>"; }).join("")) +
+          '<div class="store-card-head">' + monogram(s.name) +
+          '<span class="store-card-title">' + '<span class="store-card-kicker">' + esc(kicker) + '</span>' + '<span class="store-card-name">' + esc(s.name) + "</span></span>" +
           "</div>" +
           (s.location ? '<div class="store-card-loc">' + esc(s.location) + "</div>" : "") +
           '<div class="store-card-stats">' + stats.map(function (st) {
@@ -721,7 +740,11 @@
       "</div>";
     return '<section class="page" id="page-store">' +
       breadcrumbs([{ label: "Overview", href: "#/overview" }, { label: store.name }]) +
+      // same identity tile as the overview card, so following a card into its
+      // detail page visibly lands on the same store
+      '<div class="store-ident">' + monogram(store.name, true) +
       pageHead(store.name, rangeLabel(range) + (store.location ? " · " + store.location : "")) +
+      "</div>" +
       meta +
       storeTabs(store.id, active) +
       coverageBanner(range, [store.id]) +
