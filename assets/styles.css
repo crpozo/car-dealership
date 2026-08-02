@@ -462,8 +462,6 @@ main:focus { outline: none; }
 .store-card-title { display: flex; flex-direction: column; min-width: 0; }
 /* keep the stat grid pinned to the bottom so cards of differing title lengths
    still line their numbers up across a row */
-.store-card-stats { margin-top: auto; }
-
 /* Eyebrow + accent title + chevron: makes it unmistakable that each card is a
    store you can open, and separates the card's title from the stat labels
    underneath it, which were competing for the same visual weight. */
@@ -780,10 +778,12 @@ td.bad::after  { content: "\2193"; }   /* down arrow: behind target */
 .store-card-actions {
   display: flex;
   gap: 10px;
-  margin-top: 14px;
+  margin-top: auto;
   padding-top: 12px;
   border-top: 1px solid var(--line-soft);
 }
+/* minimum breathing room when the card is the tallest in its row */
+.store-card-stats { margin-bottom: 14px; }
 .btn {
   flex: 1;
   text-align: center;
