@@ -7,15 +7,40 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=20827c3e06">
+<link rel="stylesheet" href="assets/styles.css?v=e92a13284a">
 </head>
 <body>
 
-<header class="topbar">
+<div class="app">
+
+<aside class="sidebar">
   <a class="brand brand-link" href="#/overview">
     <span class="brand-mark" aria-hidden="true">IC</span>
-    <span class="brand-name">The Internet Coaches Dashboard</span>
+    <span class="brand-name">Internet Coaches</span>
   </a>
+
+  <nav class="sidenav" aria-label="Main">
+    <p class="side-label">Main menu</p>
+    <a href="#/overview" class="side-item" data-side="overview">
+      <span class="side-ico" aria-hidden="true">&#8962;</span>Dashboard
+    </a>
+
+    <p class="side-label">Stores</p>
+    <div id="side-stores"></div>
+
+    <p class="side-label">Other</p>
+    <button type="button" id="settings-toggle" class="side-item side-btn" aria-expanded="false" aria-controls="settings-panel">
+      <span class="side-ico" aria-hidden="true">&#9881;</span>Settings
+    </button>
+  </nav>
+
+  <div class="side-foot"><span id="foot-generated"></span></div>
+</aside>
+
+<div class="main">
+
+<header class="topbar">
+  <nav class="crumbs topcrumbs" aria-label="Breadcrumb"><ol id="topcrumbs"></ol></nav>
 
   <div class="tf" role="group" aria-label="Timeframe">
     <label class="tf-label" for="tf-select">Timeframe</label>
@@ -27,8 +52,6 @@
     </span>
     <span id="tf-resolved" class="tf-resolved"></span>
   </div>
-
-  <button type="button" id="settings-toggle" class="ghost-btn" aria-expanded="false" aria-controls="settings-panel">Settings</button>
 </header>
 
 <section id="settings-panel" class="settings" hidden>
@@ -61,13 +84,12 @@
 
 <main id="view" tabindex="-1"></main>
 
-<footer class="foot">
-  <span id="foot-generated"></span>
-</footer>
+</div>
+</div>
 
-<script src="assets/data.js?v=20827c3e06"></script>
-<script src="assets/core.js?v=20827c3e06"></script>
-<script src="assets/pages.js?v=20827c3e06"></script>
-<script src="assets/app.js?v=20827c3e06"></script>
+<script src="assets/data.js?v=e92a13284a"></script>
+<script src="assets/core.js?v=e92a13284a"></script>
+<script src="assets/pages.js?v=e92a13284a"></script>
+<script src="assets/app.js?v=e92a13284a"></script>
 </body>
 </html>

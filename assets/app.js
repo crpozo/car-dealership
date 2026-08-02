@@ -88,6 +88,7 @@
 
     view.innerHTML = html;
     syncNav(route);
+    renderSidebar(route, range);
     syncTimeframeReadout(range);
 
     // Move focus for keyboard/screen-reader users, but preventScroll — a plain
@@ -104,12 +105,48 @@
     return route.name === "store" ? "store/" + route.id + "/" + route.tab : route.name;
   }
 
-  /* There is no global tab bar any more — Overview is the dashboard and the only
-     tabs live inside a store (rendered by pages.js). All this does is light the
-     brand link when we are at the top level. */
+  /* Sidebar: Dashboard entry plus one item per store that has data in the
+     current range (stores with nothing to show stay out, same rule as the
+     cards). Rebuilt on every render because the roster is range-dependent. */
+  function renderSidebar(route, range) {
+    var wrap = document.getElementById("side-stores");
+    if (!wrap) return;
+    var stores = Core.stores().filter(function (s) {
+      try {
+        var m = Core.storeMetrics(s.id, range);
+        if (m && m.hasData) return true;
+        // sales-only stores (no KPI) still have a working activity page
+        var cov = Core.coverage(s.id);
+        return !!(cov && cov.byKind && cov.byKind.sales && cov.byKind.sales.snapshots);
+      } catch (e) { return false; }
+    });
+    wrap.innerHTML = stores.map(function (s) {
+      var on = route.name === "store" && route.id === s.id;
+      return '<a href="#/store/' + encodeURIComponent(s.id) + '" class="side-item side-store' +
+        (on ? " on" : "") + '"' + (on ? ' aria-current="page"' : "") + ">" +
+        '<span class="side-mono" aria-hidden="true">' + esc(Pages.monogramFor ? Pages.monogramFor(s.name) : "") + "</span>" +
+        '<span class="side-store-name">' + esc(s.name) + "</span></a>";
+    }).join("");
+
+    var dash = document.querySelector('[data-side="overview"]');
+    if (dash) {
+      dash.classList.toggle("on", route.name !== "store");
+      if (route.name !== "store") dash.setAttribute("aria-current", "page");
+      else dash.removeAttribute("aria-current");
+    }
+  }
+
+  /* Topbar breadcrumb: Dashboard on the overview; Dashboard / <store> inside one. */
   function syncNav(route) {
-    var brand = document.querySelector(".brand-link");
-    if (brand) brand.classList.toggle("on", route.name === "overview");
+    var ol = document.getElementById("topcrumbs");
+    if (!ol) return;
+    if (route.name === "store" && Core.store(route.id)) {
+      var name = Core.store(route.id).name;
+      ol.innerHTML = '<li><a href="#/overview">Dashboard</a></li>' +
+        '<li><span aria-current="page">' + esc(name) + "</span></li>";
+    } else {
+      ol.innerHTML = '<li><span aria-current="page">Dashboard</span></li>';
+    }
   }
 
   /* -------------------------------------------------------------- timeframe */
@@ -298,6 +335,9 @@
     if (!global.location.hash) global.location.hash = "#/overview";
     render();
   }
+
+  // pages.js needs to trigger a re-render for the cards/table view toggle
+  global.App = { render: function () { render(); } };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);

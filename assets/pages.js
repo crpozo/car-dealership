@@ -203,7 +203,9 @@
   function coverageAsOf(sm) {
     var cov = sm && sm.coverage;
     if (!cov) return "";
-    var last = cov.lastRun || (Array.isArray(cov.runDates) && cov.runDates.length ? cov.runDates[cov.runDates.length - 1] : null);
+    // range coverage carries lastDate; the declared per-store coverage lastRun
+    var last = cov.lastDate || cov.lastRun ||
+      (Array.isArray(cov.runDates) && cov.runDates.length ? cov.runDates[cov.runDates.length - 1] : null);
     return last ? "as of " + last : "";
   }
 
@@ -583,51 +585,132 @@
       }
 
       // A store with nothing to show in this range is left out entirely rather
-      // than rendered as an empty card. withData() is shared with the table below
+      // than rendered as an empty card. withData() is shared with the table view
       // so the cards and the rows can never disagree about who is on the roster.
       var shown = withData(list, range);
-      var cards = shown.list.map(function (s) {
-        var sm = storeMetrics(s.id, range);
-        var href = "#/store/" + encodeURIComponent(s.id);
-        var net = sm.internet || null;
-        var closing = net ? c.rate(net.sold, net.goodLeads) : null;
-        var eng = net ? net.contactPct : null;
-        var ap = net ? net.apptSetOfContactedPct : null;
-        var noNet = "No internet lead rows for " + rangeLabel(range);
-        var stats = [
-          { l: "Internet leads", v: net ? num(net.goodLeads, noNet) : na(noNet), cls: "none" },
-          { l: "Engagement", v: net ? pct(eng, noNet) : na(noNet), cls: colorFor(eng, engagementTarget()) },
-          { l: "Appts set", v: net ? pct(ap, noNet) : na(noNet), cls: colorFor(ap, apptTarget()) },
-          { l: "Sold", v: num(sm.total ? sm.total.sold : null, "No store total row for " + rangeLabel(range)), cls: "none" },
-          { l: "Internet closing", v: net ? pct(closing, noNet) : na(noNet), cls: "none" }
-        ];
-        var asOf = coverageAsOf(sm);
-        // CRM and tools live on the kicker line ("Store · VinSolutions") rather
-        // than as chips beside the name — a chip in the header row squeezed long
-        // names like "Gresham Chrysler Dodge Jeep Ram" into one word per line.
-        var kicker = ["Store"].concat(s.crm ? [s.crm] : []).concat(s.tools || []).join(" · ");
-        return '<a class="store-card" href="' + esc(href) + '">' +
-          '<div class="store-card-head">' + monogram(s.name) +
-          '<span class="store-card-title">' + '<span class="store-card-kicker">' + esc(kicker) + '</span>' + '<span class="store-card-name">' + esc(s.name) + "</span></span>" +
-          "</div>" +
-          (s.location ? '<div class="store-card-loc">' + esc(s.location) + "</div>" : "") +
-          '<div class="store-card-stats">' + stats.map(function (st) {
-            return '<div class="scs"><span class="scs-l">' + esc(st.l) + "</span>" +
-              '<span class="scs-v ' + esc(st.cls) + '">' + st.v + "</span></div>";
-          }).join("") + "</div>" +
-          (asOf ? '<div class="store-card-foot">' + esc(asOf) + "</div>" : "") +
-          "</a>";
-      }).join("");
+      var cards = shown.list.map(function (s) { return storeCard(s, range); }).join("");
+      var isCards = storeView() === "cards";
 
+      // The topbar breadcrumb carries the page identity, and the timeframe
+      // control already spells out the dates — the stats band leads directly,
+      // like the reference layout.
       return '<section class="page" id="page-overview">' +
-        head + coverageBanner(range) +
-        headlineTiles(all, range, null, null) +
-        '<h2 class="section-title">Stores</h2>' +
-        '<div class="store-cards">' + cards + "</div>" +
-        '<h2 class="section-title">Store detail <span class="section-sub">click a row to open the store</span></h2>' +
-        storesTableBlock(range) +
+        coverageBanner(range) +
+        statsBand(all, range) +
+        '<div class="cards-toolbar">' +
+          '<span class="search-wrap"><span class="search-ico" aria-hidden="true">&#8981;</span>' +
+          '<input type="search" id="store-search" placeholder="Search store&hellip;" aria-label="Search stores"' +
+          ' oninput="Pages.filterStores(this.value)"></span>' +
+          '<span class="view-toggle" role="group" aria-label="View">' +
+            '<button type="button" class="vt-btn' + (isCards ? " on" : "") + '" title="Card view"' +
+              ' aria-pressed="' + (isCards ? "true" : "false") + '" onclick="Pages.setStoreView(\'cards\')">&#9638;</button>' +
+            '<button type="button" class="vt-btn' + (!isCards ? " on" : "") + '" title="Table view"' +
+              ' aria-pressed="' + (!isCards ? "true" : "false") + '" onclick="Pages.setStoreView(\'table\')">&#9776;</button>' +
+          "</span>" +
+        "</div>" +
+        (isCards
+          ? '<div class="store-cards">' + cards + "</div>"
+          : storesTableBlock(range)) +
+        '<p class="roster-note">Showing ' + shown.list.length + " of " + list.length + " stores" +
+        (shown.missing.length ? " — the rest have no reports for " + esc(rangeLabel(range)) : "") + ".</p>" +
         "</section>";
     });
+  }
+
+  /* Reference-style store card: identity row (tile, name, CRM subline) with a
+     performance pill, label/value body, and explicit actions. The pill is the
+     engagement colour band, spelled out — Good / Average / Needs attention —
+     never an invented rating. */
+  function storeCard(s, range) {
+    var c = C();
+    var sm = storeMetrics(s.id, range);
+    var href = "#/store/" + encodeURIComponent(s.id);
+    var net = sm.internet || null;
+    var eng = net ? net.contactPct : null;
+    var ap = net ? net.apptSetOfContactedPct : null;
+    var closing = net ? c.rate(net.sold, net.goodLeads) : null;
+    var noNet = "No internet lead rows for " + rangeLabel(range);
+
+    var band = colorFor(eng, engagementTarget());
+    var pill = "";
+    if (band !== "none") {
+      var word = band === "good" ? "Good" : band === "warn" ? "Average" : "Needs attention";
+      pill = '<span class="pill ' + band + '" title="' +
+        esc("Engagement " + (fmtPct(eng) || "—") + " vs target " + fmtPct(engagementTarget(), 0)) +
+        '"><span class="dot" aria-hidden="true"></span>' + word + "</span>";
+    }
+
+    var sub = [s.crm].concat(s.tools || []).filter(Boolean).join(" · ");
+    var asOf = coverageAsOf(sm);
+    var rows = [
+      { l: "Internet leads", v: net ? num(net.goodLeads, noNet) : na(noNet), cls: "none" },
+      { l: "Engagement", v: net ? pct(eng, noNet) : na(noNet), cls: colorFor(eng, engagementTarget()) },
+      { l: "Appts set", v: net ? pct(ap, noNet) : na(noNet), cls: colorFor(ap, apptTarget()) },
+      { l: "Sold", v: num(sm.total ? sm.total.sold : null, "No store total row for " + rangeLabel(range)), cls: "none" },
+      { l: "Internet closing", v: net ? pct(closing, noNet) : na(noNet), cls: "none" },
+      { l: "Data through", v: asOf ? esc(asOf.replace(/^as of /, "")) : na("No run date"), cls: "none" }
+    ];
+
+    return '<article class="store-card" data-store-name="' + esc(s.name.toLowerCase()) + '">' +
+      '<div class="store-card-head">' + monogram(s.name) +
+      '<span class="store-card-title"><span class="store-card-name">' + esc(s.name) + "</span>" +
+      (sub ? '<span class="store-card-kicker">' + esc(sub) + "</span>" : "") +
+      "</span>" + pill + "</div>" +
+      '<div class="store-card-stats">' + rows.map(function (st) {
+        return '<div class="scs"><span class="scs-l">' + esc(st.l) + "</span>" +
+          '<span class="scs-v ' + esc(st.cls) + '">' + st.v + "</span></div>";
+      }).join("") + "</div>" +
+      '<div class="store-card-actions">' +
+        '<a class="btn" href="' + esc(href) + '">View store</a>' +
+        '<a class="btn btn-accent" href="' + esc(href) + '/activity">Salesperson activity</a>' +
+      "</div>" +
+      "</article>";
+  }
+
+  /* One stat card with divided columns, like the reference's summary band. */
+  function statsBand(all, range) {
+    var net = all.internet || null;
+    var total = all.total || null;
+    var noNet = "No internet lead rows in the reports for " + rangeLabel(range) + ".";
+    var eng = net ? net.contactPct : null;
+    var ap = net ? net.apptSetOfContactedPct : null;
+    var closing = net ? C().rate(net.sold, net.goodLeads) : null;
+    var cells = [
+      { v: net ? num(net.goodLeads, noNet) : na(noNet), l: "Good internet leads", cls: "none" },
+      { v: net ? pct(eng, noNet) : na(noNet), l: "Engagement % · target " + fmtPct(engagementTarget(), 0), cls: colorFor(eng, engagementTarget()) },
+      { v: net ? pct(ap, noNet) : na(noNet), l: "Appts set of contacted · target " + fmtPct(apptTarget(), 0), cls: colorFor(ap, apptTarget()) },
+      { v: total ? num(total.sold, "No totals") : na("No totals"), l: "Solds · all lead types", cls: "none" },
+      { v: net ? pct(closing, noNet) : na(noNet), l: "Internet closing rate", cls: "none" }
+    ];
+    return '<div class="statsband">' + cells.map(function (x) {
+      return '<div class="sb-cell"><span class="sb-v ' + esc(x.cls) + '">' + x.v + "</span>" +
+        '<span class="sb-l">' + esc(x.l) + "</span></div>";
+    }).join("") + "</div>";
+  }
+
+  /* cards ⇄ table view for the store roster, persisted per browser */
+  var VIEW_KEY = "icdash.storeView";
+  function storeView() {
+    try { return global.localStorage.getItem(VIEW_KEY) === "table" ? "table" : "cards"; }
+    catch (e) { return "cards"; }
+  }
+  function setStoreView(v) {
+    try { global.localStorage.setItem(VIEW_KEY, v === "table" ? "table" : "cards"); } catch (e) { /* private mode */ }
+    if (global.App && global.App.render) global.App.render();
+  }
+
+  /* Client-side name filter over whichever roster view is on screen. */
+  function filterStores(q) {
+    q = String(q || "").trim().toLowerCase();
+    var cards = document.querySelectorAll(".store-card[data-store-name]");
+    for (var i = 0; i < cards.length; i++) {
+      cards[i].hidden = q !== "" && cards[i].getAttribute("data-store-name").indexOf(q) === -1;
+    }
+    var rows = document.querySelectorAll(".stores-tbl tbody tr");
+    for (var j = 0; j < rows.length; j++) {
+      var cell = rows[j].querySelector("td.name");
+      rows[j].hidden = q !== "" && cell && cell.textContent.toLowerCase().indexOf(q) === -1;
+    }
   }
 
   /* ============================================================== 2. STORES */
@@ -738,8 +821,8 @@
       (store.tools || []).map(function (t) { return '<span class="chip tool">' + esc(t) + "</span>"; }).join("") +
       (coverageAsOf(sm) ? '<span class="asof">' + esc(coverageAsOf(sm)) + "</span>" : "") +
       "</div>";
+    // the topbar breadcrumb (Dashboard / <store>) owns wayfinding now
     return '<section class="page" id="page-store">' +
-      breadcrumbs([{ label: "Overview", href: "#/overview" }, { label: store.name }]) +
       // same identity tile as the overview card, so following a card into its
       // detail page visibly lands on the same store
       '<div class="store-ident">' + monogram(store.name, true) +
@@ -1231,6 +1314,9 @@
 
   global.Pages = {
     toggleRows: toggleRows,
+    monogramFor: monogramFor,
+    setStoreView: setStoreView,
+    filterStores: filterStores,
     overview: overview,
     stores: storesPage,
     storeDetail: storeDetail,

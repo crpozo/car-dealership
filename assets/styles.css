@@ -88,6 +88,74 @@ a { color: var(--ink); }
 h1, h2, h3 { line-height: 1.2; margin: 0; }
 code { font-family: var(--mono); font-size: .9em; }
 
+/* -------------------------------------------------------------- app frame */
+
+.app { display: flex; min-height: 100vh; }
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  width: 244px;
+  padding: 18px 14px;
+  background: var(--card);
+  border-right: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+.main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+
+.sidenav { display: flex; flex-direction: column; gap: 2px; margin-top: 18px; }
+.side-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--faint);
+  margin: 16px 8px 6px;
+}
+.side-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+.side-item:hover { background: var(--line-soft); color: var(--ink); }
+.side-item.on { background: var(--accent-tint); color: var(--ink); }
+.side-ico { width: 18px; text-align: center; color: var(--faint); }
+.side-item.on .side-ico { color: var(--ink); }
+.side-mono {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 26px; height: 26px;
+  border-radius: 8px;
+  background: var(--accent-pale);
+  color: var(--accent-ink);
+  font-weight: 800;
+  font-size: 10px;
+}
+.side-store-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.side-foot { margin-top: auto; padding: 14px 8px 0; font-size: 11px; color: var(--faint); }
+
 /* ------------------------------------------------------------------ topbar */
 
 .topbar {
@@ -98,13 +166,18 @@ code { font-family: var(--mono); font-size: .9em; }
   padding: 12px 22px;
   background: var(--card);
   border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 5;
 }
+.topcrumbs { margin: 0 auto 0 0; }
+.topcrumbs ol { font-size: 14px; }
+.topcrumbs [aria-current="page"] { font-weight: 700; }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-right: auto;
   text-decoration: none;
   color: inherit;
 }
@@ -345,7 +418,6 @@ main:focus { outline: none; }
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 16px;
-  text-decoration: none;
   color: inherit;
 }
 .store-card:hover { border-color: var(--accent-pale); box-shadow: 0 0 0 3px var(--accent-tint), var(--shadow); }
@@ -403,14 +475,7 @@ main:focus { outline: none; }
   letter-spacing: -.01em;
   color: var(--ink);
 }
-/* nbsp + plain inline: an inline-block can still break BEFORE itself, which left
-   the arrow stranded on its own line under "Armstrong Subaru". Staying inline
-   means the nbsp actually binds it to the last word — worth more than the 3px
-   hover nudge an inline-block would have allowed. */
-.store-card-name::after {
-  content: "\00A0\2192";
-  font-weight: 700;
-}
+
 .store-card.no-data .store-card-name { color: var(--muted); }
 .store-card-loc { font-size: 12px; color: var(--faint); }
 .store-card-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 14px; margin-top: 14px; }
@@ -608,13 +673,150 @@ td.bad::after  { content: "\2193"; }   /* down arrow: behind target */
   color: var(--faint);
 }
 
+/* --------------------------------------------------------------- statsband */
+
+.statsband {
+  display: flex;
+  flex-wrap: wrap;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  margin-bottom: 18px;
+}
+.sb-cell {
+  flex: 1 1 150px;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  padding: 14px 12px;
+  border-right: 1px solid var(--line-soft);
+}
+.sb-cell:last-child { border-right: 0; }
+.sb-v { font-size: 27px; font-weight: 800; letter-spacing: -.02em; }
+.sb-v.good, .sb-v.warn, .sb-v.bad { background: none; }
+.sb-v.good::after { content: " \2191"; font-size: .65em; }
+.sb-v.warn::after { content: " \2192"; font-size: .65em; }
+.sb-v.bad::after  { content: " \2193"; font-size: .65em; }
+.sb-l { font-size: 12px; color: var(--muted); }
+
+/* ------------------------------------------------------------ card toolbar */
+
+.cards-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+}
+.search-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 1 300px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 7px 12px;
+}
+.search-ico { color: var(--faint); font-size: 13px; }
+.search-wrap input {
+  border: 0;
+  background: none;
+  padding: 0;
+  width: 100%;
+  font-size: 13px;
+}
+.search-wrap input:focus-visible { outline: none; }
+.search-wrap:focus-within { border-color: var(--accent-pale); box-shadow: 0 0 0 3px var(--accent-tint); }
+
+.view-toggle {
+  display: inline-flex;
+  margin-left: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.vt-btn {
+  font: inherit;
+  font-size: 15px;
+  padding: 5px 12px;
+  border: 0;
+  background: var(--card);
+  color: var(--muted);
+  cursor: pointer;
+}
+.vt-btn + .vt-btn { border-left: 1px solid var(--line); }
+.vt-btn.on { background: var(--accent-tint); color: var(--ink); }
+
+.roster-note { font-size: 12px; color: var(--faint); margin: 14px 2px 0; }
+
+/* ------------------------------------------------------- card status + actions */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  flex: none;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.pill .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.pill.good { color: var(--good); background: var(--good-bg); }
+.pill.warn { color: var(--warn); background: var(--warn-bg); }
+.pill.bad { color: var(--bad); background: var(--bad-bg); }
+
+.store-card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line-soft);
+}
+.btn {
+  flex: 1;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--card);
+}
+.btn:hover { background: var(--line-soft); }
+.btn-accent { border-color: var(--good); color: var(--good); }
+.btn-accent:hover { background: var(--good-bg); }
+
 /* ------------------------------------------------------------- responsive */
 
-@media (max-width: 720px) {
+@media (max-width: 860px) {
+  .app { flex-direction: column; }
+  .sidebar {
+    width: auto;
+    height: auto;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 10px 14px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .sidenav { flex-direction: row; align-items: center; margin-top: 0; }
+  .side-label, .side-foot, .side-store-name { display: none; }
+  .side-item { width: auto; }
   .topbar { gap: 12px; }
-  .brand-name { font-size: 14px; }
   main { padding: 16px; }
-  .tile-value { font-size: 23px; }
+  .tile-value, .sb-v { font-size: 23px; }
 }
 
 @media print {

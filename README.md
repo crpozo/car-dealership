@@ -7,9 +7,12 @@ Live: https://crpozo.github.io/car-dealership/
 
 ## Navigation
 
-There is **one** dashboard at the top level. Tabs exist only inside a store, because
-"salesperson activity" and "internet performance" only mean something once you have
-picked a store — a global tab bar had nothing meaningful to switch between.
+The shell is a left sidebar (Dashboard, one entry per store with data, Settings) with a
+breadcrumb topbar; the timeframe control lives in the topbar. The overview leads with a
+single summary band, then a searchable store roster with a cards ⇄ table toggle
+(persisted per browser). Store cards carry a performance pill — the engagement colour
+band spelled out as Good / Average / Needs attention, never an invented rating — and
+explicit View store / Salesperson activity actions. Tabs exist only inside a store.
 
 | Route | What it shows |
 |---|---|
