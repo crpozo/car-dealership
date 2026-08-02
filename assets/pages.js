@@ -821,12 +821,61 @@
         }).join("");
       }
 
+      function findByKey(arr, key) {
+        for (var i = 0; i < (arr || []).length; i++) if (arr[i].key === key) return arr[i];
+        return null;
+      }
+
+      function cmpOf(cur, pri) {
+        if (!cur || !pri) return null;
+        try { return c.compare(cur, pri); } catch (e) { return null; }
+      }
+
+      /* Name cell for an expandable row: a real <button> so the drill-down works
+         by keyboard too. Pages.toggleRows shows/hides the child rows. */
+      function nameCell(label, cls, depth, expandable, kids) {
+        var inner = expandable
+          ? '<button type="button" class="expander" aria-expanded="false" onclick="Pages.toggleRows(this)"' +
+            ' title="' + esc("Break down by " + kids + " (" + label + ")") + '">' +
+            '<span class="chev" aria-hidden="true"></span>' + esc(label) + "</button>"
+          : esc(label);
+        return '<td class="name depth-' + depth + " " + cls + '">' + inner + "</td>";
+      }
+
+      /* Lead type → inventory type → vehicle make. Children render collapsed and
+         come straight from Core's aggregated tree, so they respect the selected
+         timeframe exactly like the parent rows do. */
       var ltRows = DISPLAY_LEAD_TYPES.map(function (name) {
-        var cur = metricsOf(findLeadType(sm.byLeadType, name));
-        var pri = prior ? metricsOf(findLeadType(prior.byLeadType, name)) : null;
-        var cmp = null;
-        if (cur && pri) { try { cmp = c.compare(cur, pri); } catch (e) { cmp = null; } }
-        return '<tr class="lt-row"><td class="name">' + esc(name) + "</td>" + metricCells(cur, pri, cmp) + "</tr>";
+        var node = findLeadType(sm.byLeadType, name);
+        var priNode = prior ? findLeadType(prior.byLeadType, name) : null;
+        var cur = metricsOf(node);
+        var pri = priNode ? metricsOf(priNode) : null;
+        var invs = (node && node.byInventory) || [];
+        var ltPath = "lt:" + (node ? node.key : name);
+
+        var rows = '<tr class="lt-row" data-path="' + esc(ltPath) + '">' +
+          nameCell(name, "", 0, invs.length > 0, "inventory type") +
+          metricCells(cur, pri, cmpOf(cur, pri)) + "</tr>";
+
+        rows += invs.map(function (inv) {
+          var priInv = priNode ? findByKey(priNode.byInventory, inv.key) : null;
+          var invPath = ltPath + "/inv:" + inv.key;
+          var makes = (inv.byMake || []).slice().sort(function (a, b) {
+            var d = (b.metrics.goodLeads || 0) - (a.metrics.goodLeads || 0);
+            return d !== 0 ? d : (a.make < b.make ? -1 : 1);
+          });
+          var out = '<tr class="inv-row" data-path="' + esc(invPath) + '" data-parent="' + esc(ltPath) + '" hidden>' +
+            nameCell(inv.inventoryType, "", 1, makes.length > 0, "vehicle make") +
+            metricCells(inv.metrics, priInv && priInv.metrics, cmpOf(inv.metrics, priInv && priInv.metrics)) + "</tr>";
+          out += makes.map(function (mk) {
+            var priMk = priInv ? findByKey(priInv.byMake, mk.key) : null;
+            return '<tr class="mk-row" data-path="' + esc(invPath + "/mk:" + mk.key) + '" data-parent="' + esc(invPath) + '" hidden>' +
+              nameCell(mk.make, "", 2, false, "") +
+              metricCells(mk.metrics, priMk && priMk.metrics, cmpOf(mk.metrics, priMk && priMk.metrics)) + "</tr>";
+          }).join("");
+          return out;
+        }).join("");
+        return rows;
       }).join("");
 
       var totalCmp = null, netCmp = null;
@@ -1150,9 +1199,38 @@
     });
   }
 
+  /* Expand/collapse for the drill-down rows in the lead-type table. Expanding
+     reveals direct children only; collapsing hides every descendant and resets
+     their expanders, so re-opening a lead type never dumps the whole make list. */
+  function toggleRows(btn) {
+    var tr = btn.closest ? btn.closest("tr") : null;
+    if (!tr) return;
+    var table = tr.closest("table");
+    var path = tr.getAttribute("data-path");
+    if (!table || !path) return;
+    var expanded = btn.getAttribute("aria-expanded") === "true";
+    var rows = table.querySelectorAll("tr[data-parent]");
+    for (var i = 0; i < rows.length; i++) {
+      var row = rows[i];
+      if (expanded) {
+        // collapse: hide the whole subtree beneath this row
+        var p = row.getAttribute("data-path") || "";
+        if (p.indexOf(path + "/") === 0) {
+          row.hidden = true;
+          var b = row.querySelector(".expander");
+          if (b) b.setAttribute("aria-expanded", "false");
+        }
+      } else if (row.getAttribute("data-parent") === path) {
+        row.hidden = false;
+      }
+    }
+    btn.setAttribute("aria-expanded", expanded ? "false" : "true");
+  }
+
   /* ----------------------------------------------------------------- export */
 
   global.Pages = {
+    toggleRows: toggleRows,
     overview: overview,
     stores: storesPage,
     storeDetail: storeDetail,

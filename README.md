@@ -14,7 +14,7 @@ picked a store — a global tab bar had nothing meaningful to switch between.
 | Route | What it shows |
 |---|---|
 | `#/overview` | **The dashboard.** Headline metrics across all stores, a card per store, and the store table: total opportunities · internet leads · engagement % · appts set of contacted % · internet closing % · total sold (DMS) · sales goal + pace. Click any card or row to open that store. |
-| `#/store/<id>` | Store → **Performance**: the store's headline metrics plus the lead-type table (opportunities · contact · appts · shown · sold), MTD vs the same period last month |
+| `#/store/<id>` | Store → **Performance**: the store's headline metrics plus the lead-type table (opportunities · contact · appts · shown · sold), MTD vs the same period last month. Lead-type rows drill down: click Internet/Phone/Walk-in → New/Used/Certified → vehicle make, all respecting the selected timeframe. Makes sort by good leads. |
 | `#/store/<id>/activity` | Store → **Salesperson activity**: opportunities · internet leads · calls · emails · texts · appts set · shown % · internet sold · total sold |
 | `#/store/<id>/internet` | Store → **Internet performance**: good leads · engagement % · appts set % · appts shown % · calls · texts · emails · internet sold · internet closing % |
 
@@ -89,7 +89,9 @@ Armstrong Subaru report daily since Jul 1 2026; ten more rooftops joined Jul 28 
 the newer stores now have real daily deltas of their own.
 
 Report shapes handled, all detected from the Filters sheet:
-- single-dealer KPI (Lead Type / Inventory Type / Vehicle Make)
+- single-dealer KPI (Lead Type / Inventory Type / Vehicle Make). 8 of 11 KPI stores carry
+  the Vehicle Make level; 777 Nissan, Armstrong Subaru and Gresham are scheduled without a
+  make summary level, so their drill-down stops at inventory type
 - multi-dealer KPI — Vern Eide's Sioux City store reports two rooftops in one export, so
   the shared words become the store name: "Vern Eide Sioux City (combined)"
 - per-user sales (`Summary Level 1 = User`) and the grouped variant (`= User Group`,

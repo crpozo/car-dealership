@@ -475,7 +475,41 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 td.name { font-weight: 600; }
 
 .total-row td { font-weight: 700; border-top: 2px solid var(--line); background: var(--line-soft); }
-.lt-row td:first-child { padding-left: 22px; }
+
+/* ------------------------------------------- lead-type drill-down rows */
+
+/* The name cell doubles as the expand control. A real <button> keeps it
+   keyboard-operable; the chevron rotates when open so state is visible. */
+.expander {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font: inherit;
+  font-weight: 600;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.expander:hover { color: var(--accent); }
+.chev {
+  width: 0; height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 6px solid var(--faint);
+  transition: transform .12s ease;
+}
+.expander[aria-expanded="true"] .chev { transform: rotate(90deg); border-left-color: var(--ink); }
+.expander:hover .chev { border-left-color: var(--accent); }
+
+.lt-row td.name { padding-left: 22px; }
+.inv-row td.name { padding-left: 44px; }
+.mk-row td.name { padding-left: 68px; font-weight: 500; }
+.inv-row td { background: var(--line-soft); }
+.mk-row td { color: var(--muted); }
+.mk-row td.name { color: var(--ink); }
+.inv-row:hover td, .mk-row:hover td { background: var(--accent-tint); }
 .rowlink { text-decoration: none; color: inherit; font-weight: 600; }
 .rowlink:hover { color: var(--ink); text-decoration: underline; }
 
