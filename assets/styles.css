@@ -283,6 +283,8 @@ a:focus-visible {
   padding: 18px 22px;
   background: var(--card);
   border-bottom: 1px solid var(--line);
+  /* keep the sticky topbar from covering the panel when it is scrolled into view */
+  scroll-margin-top: 64px;
 }
 .settings h2 { font-size: 15px; margin-bottom: 12px; }
 .settings h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 10px; }

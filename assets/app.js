@@ -230,6 +230,18 @@
       var open = panel.hidden;
       panel.hidden = !open;
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.classList.toggle("on", open);
+      if (open) {
+        // The button lives at the bottom of the sidebar but the panel sits at the
+        // top of the main column — without scrolling it into view, opening it
+        // from further down the page looks like the button does nothing.
+        // Explicit scrollTo, not scrollIntoView: with the sticky sidebar layout
+        // Chrome resolves scrollIntoView against the wrong ancestor and can leave
+        // the page stranded past the panel. 64px clears the sticky topbar.
+        global.scrollTo(0, Math.max(0, panel.offsetTop - 64));
+        var first = panel.querySelector("input");
+        if (first) { try { first.focus({ preventScroll: true }); } catch (e2) { /* older browsers */ } }
+      }
     });
 
     pctInput(document.getElementById("set-engagement"), "engagementTarget");
