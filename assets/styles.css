@@ -403,12 +403,15 @@ main:focus { outline: none; }
 
 /* Cards are all populated now that empty stores are dropped, so they can share a
    row height again — ragged card bottoms were the other thing making the grid
-   read as noise. */
+   read as noise. Capped at 3 per row: at 4-up the long rooftop names wrapped on
+   almost every card. */
 .store-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 14px;
 }
+@media (max-width: 1150px) { .store-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .store-cards { grid-template-columns: 1fr; } }
 
 .store-card {
   display: flex;
