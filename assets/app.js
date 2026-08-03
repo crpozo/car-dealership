@@ -98,6 +98,23 @@
     if (routeKey(route) !== lastRouteKey) {
       lastRouteKey = routeKey(route);
       global.scrollTo(0, 0);
+      // Navigating away closes the settings panel — it is static chrome above the
+      // view, so without this it stayed open on top of whatever page came next.
+      // Only on route CHANGE: editing a goal re-renders too, and closing the
+      // panel mid-edit would slam it shut under the user's cursor.
+      closeSettings();
+    }
+  }
+
+  function closeSettings() {
+    var panel = document.getElementById("settings-panel");
+    var toggle = document.getElementById("settings-toggle");
+    if (panel && !panel.hidden) {
+      panel.hidden = true;
+      if (toggle) {
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.classList.remove("on");
+      }
     }
   }
 
@@ -344,6 +361,18 @@
     initTimeframe();
     initSettings();
     footer();
+
+    // Any sidebar NAVIGATION closes the settings panel. The route-change close in
+    // render() misses one case: clicking "Dashboard" while already on the
+    // overview — the hash does not change, so no event fires at all. Delegated
+    // here because the store links are rebuilt on every render.
+    var sidebar = document.querySelector(".sidebar");
+    if (sidebar) {
+      sidebar.addEventListener("click", function (ev) {
+        var link = ev.target.closest ? ev.target.closest("a.side-item, a.brand-link") : null;
+        if (link) closeSettings();
+      });
+    }
 
     global.addEventListener("hashchange", render);
     if (!global.location.hash) global.location.hash = "#/overview";
