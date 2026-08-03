@@ -136,7 +136,9 @@
     }
   }
 
-  /* Topbar breadcrumb: Dashboard on the overview; Dashboard / <store> inside one. */
+  /* Topbar breadcrumb. Empty on the overview — the sidebar's active "Dashboard"
+     item already says where you are, so a title there was duplication. Inside a
+     store it earns its place as the way back: Dashboard / <store>. */
   function syncNav(route) {
     var ol = document.getElementById("topcrumbs");
     if (!ol) return;
@@ -145,7 +147,7 @@
       ol.innerHTML = '<li><a href="#/overview">Dashboard</a></li>' +
         '<li><span aria-current="page">' + esc(name) + "</span></li>";
     } else {
-      ol.innerHTML = '<li><span aria-current="page">Dashboard</span></li>';
+      ol.innerHTML = "";
     }
   }
 

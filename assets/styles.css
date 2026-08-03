@@ -441,9 +441,9 @@ main:focus { outline: none; }
   display: grid;
   place-items: center;
   flex: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
   background: var(--accent-pale);
   color: var(--accent-ink);
   font-weight: 800;
@@ -473,8 +473,8 @@ main:focus { outline: none; }
   color: var(--faint);
 }
 .store-card-name {
-  font-weight: 800;
-  font-size: 18px;
+  font-weight: 700;
+  font-size: 15px;
   letter-spacing: -.01em;
   color: var(--ink);
 }
@@ -498,7 +498,7 @@ main:focus { outline: none; }
   letter-spacing: .05em;
   margin-bottom: 1px;
 }
-.scs-v { display: block; font-size: 17px; font-weight: 700; }
+.scs-v { display: block; font-size: 15px; font-weight: 700; }
 .scs-v.good, .scs-v.warn, .scs-v.bad { background: none; }
 .scs.good .scs-v { color: var(--good); }
 .scs.warn .scs-v { color: var(--warn); }
