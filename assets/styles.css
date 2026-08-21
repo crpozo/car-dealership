@@ -727,7 +727,8 @@ td.bad::after  { content: "\2193"; }   /* down arrow: behind target */
 .sb-v.warn::after { content: " \2192"; font-size: .65em; }
 .sb-v.bad::after  { content: " \2193"; font-size: .65em; }
 .sb-l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
-.sb-l .goal-badge { vertical-align: 1px; }
+/* the goal sits on its own line under the label, not squeezed beside it */
+.sb-l .goal-badge { display: block; width: fit-content; margin: 5px auto 0; }
 
 /* ------------------------------------------------------------ card toolbar */
 
