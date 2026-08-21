@@ -40,6 +40,25 @@ CACHE = os.path.join(HERE, ".cache")
 # silently.
 EXCLUDE_STORES = set()
 
+# Dealer groups, matched against the store name. A group only surfaces in the UI
+# when at least two of its stores actually have data, so listing future clients
+# here (Lindsay, Lehigh Valley, Herson's) costs nothing until they onboard.
+STORE_GROUPS = [
+    ("vern-eide", "Vern Eide", "vern eide"),
+    ("armstrong", "Armstrong", "armstrong"),
+    ("lindsay", "Lindsay", "lindsay"),
+    ("lehigh-valley", "Lehigh Valley", "lehigh valley"),
+    ("hersons", "Herson's", "herson"),
+]
+
+
+def group_for(store_name):
+    low = store_name.lower()
+    for gid, gname, needle in STORE_GROUPS:
+        if needle in low:
+            return gid, gname
+    return None, None
+
 MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
 HOUSE_ACCOUNT = re.compile(r"\b(team|house)\b", re.IGNORECASE)
 XLSX_MIME = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
@@ -556,18 +575,25 @@ def main(argv):
 
     matador_stores = {m["storeId"] for m in matador}
     stores = []
+    groups = {}
     for sid in sorted(store_names):
+        gid, gname = group_for(store_names[sid])
         stores.append({
             "id": sid,
             "name": store_names[sid],
             "crm": "VinSolutions",
             "tools": ["Matador"] if sid in matador_stores else [],
             "location": None,
+            "group": gid,
         })
+        if gid:
+            groups.setdefault(gid, {"id": gid, "name": gname, "storeIds": []})
+            groups[gid]["storeIds"].append(sid)
 
     data = {
         "generatedAt": datetime.now().strftime("%Y-%m-%d"),
         "stores": stores,
+        "groups": sorted(groups.values(), key=lambda g: g["name"]),
         "snapshots": kept,
         "matador": matador,
         "integrations": INTEGRATIONS,

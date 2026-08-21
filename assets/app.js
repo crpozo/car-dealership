@@ -39,6 +39,7 @@
         tab: parts[2] || "performance"
       };
     }
+    if (parts[0] === "group") return { name: "group", id: decodeURIComponent(parts[1] || "") };
     // The stores table now lives on the Overview; keep the old route as an alias
     // so existing links and bookmarks still land somewhere sensible.
     if (parts[0] === "stores") return { name: "overview" };
@@ -76,6 +77,10 @@
         } else {
           html = Pages.storeDetail(route.id, range);
         }
+      } else if (route.name === "group") {
+        html = Core.groupById(route.id)
+          ? Pages.group(route.id, range)
+          : notFound("Unknown group", 'No dealer group "' + route.id + '" is loaded.');
       } else if (ROUTES[route.name]) {
         html = ROUTES[route.name](range);
       } else {
@@ -119,7 +124,9 @@
   }
 
   function routeKey(route) {
-    return route.name === "store" ? "store/" + route.id + "/" + route.tab : route.name;
+    if (route.name === "store") return "store/" + route.id + "/" + route.tab;
+    if (route.name === "group") return "group/" + route.id;
+    return route.name;
   }
 
   /* Sidebar: Dashboard entry plus one item per store that has data in the
@@ -145,10 +152,24 @@
         '<span class="side-store-name">' + esc(s.name) + "</span></a>";
     }).join("");
 
+    var gwrap = document.getElementById("side-groups");
+    if (gwrap) {
+      var gs = Core.groups ? Core.groups() : [];
+      gwrap.innerHTML = !gs.length ? "" :
+        '<p class="side-label">Groups</p>' + gs.map(function (g) {
+          var gon = route.name === "group" && route.id === g.id;
+          return '<a href="#/group/' + encodeURIComponent(g.id) + '" class="side-item' +
+            (gon ? " on" : "") + '"' + (gon ? ' aria-current="page"' : "") + ">" +
+            '<span class="side-mono" aria-hidden="true">' + esc(Pages.monogramFor ? Pages.monogramFor(g.name) : "") + "</span>" +
+            '<span class="side-store-name">' + esc(g.name) + " (" + g.storeIds.length + ")</span></a>";
+        }).join("");
+    }
+
     var dash = document.querySelector('[data-side="overview"]');
     if (dash) {
-      dash.classList.toggle("on", route.name !== "store");
-      if (route.name !== "store") dash.setAttribute("aria-current", "page");
+      var onDash = route.name !== "store" && route.name !== "group";
+      dash.classList.toggle("on", onDash);
+      if (onDash) dash.setAttribute("aria-current", "page");
       else dash.removeAttribute("aria-current");
     }
   }
@@ -160,9 +181,11 @@
     var ol = document.getElementById("topcrumbs");
     if (!ol) return;
     if (route.name === "store" && Core.store(route.id)) {
-      var name = Core.store(route.id).name;
       ol.innerHTML = '<li><a href="#/overview">Dashboard</a></li>' +
-        '<li><span aria-current="page">' + esc(name) + "</span></li>";
+        '<li><span aria-current="page">' + esc(Core.store(route.id).name) + "</span></li>";
+    } else if (route.name === "group" && Core.groupById(route.id)) {
+      ol.innerHTML = '<li><a href="#/overview">Dashboard</a></li>' +
+        '<li><span aria-current="page">' + esc(Core.groupById(route.id).name) + " group</span></li>";
     } else {
       ol.innerHTML = "";
     }

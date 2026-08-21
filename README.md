@@ -18,8 +18,12 @@ explicit View store / Salesperson activity actions. Tabs exist only inside a sto
 |---|---|
 | `#/overview` | **The dashboard.** Headline metrics across all stores, a card per store, and the store table: total opportunities · internet leads · engagement % · appts set of contacted % · internet closing % · total sold (DMS) · sales goal + pace. Click any card or row to open that store. |
 | `#/store/<id>` | Store → **Performance**: the store's headline metrics plus the lead-type table (opportunities · contact · appts · shown · sold), MTD vs the same period last month. Lead-type rows drill down: click Internet/Phone/Walk-in → New/Used/Certified → vehicle make, all respecting the selected timeframe. Makes sort by good leads. |
-| `#/store/<id>/activity` | Store → **Salesperson activity**: opportunities · internet leads · calls · emails · texts · appts set · shown % · internet sold · total sold |
+| `#/store/<id>/activity` | Store → **Salesperson activity**: good leads · calls/emails/texts **per working day** (NETWORKDAYS, coloured vs the store's own per-rep average) · appts set · appts shown % · sold with ± vs Prev MTD. Group-by-team toggle where the export carries User Group; CSV download and print. |
 | `#/store/<id>/internet` | Store → **Internet performance**: good leads · engagement % · appts set % · appts shown % · calls · texts · emails · internet sold · internet closing % |
+
+Dealer groups (Vern Eide, Armstrong today; Lindsay, Lehigh Valley, Herson's pre-declared
+in `STORE_GROUPS` in ingest.py) get sidebar entries and a `#/group/<id>` dashboard — the
+overview scoped to that group's stores. A group appears once two of its stores have data.
 
 Breadcrumbs (`Overview / <store>`) get you back. `#/stores` still redirects to the
 overview so older links keep working, and `Pages.activity(range)` / `Pages.internet(range)`
@@ -40,6 +44,11 @@ never resolve to an empty range. When a range is wider than the reports covering
 banner says so — a partial period is never presented as a complete one.
 
 ## Metrics
+
+Store status pills weigh FOUR checks, not one: Engagement vs its goal, Appts set vs its
+goal, Sold vs Prev MTD (same days last month), Internet closing vs Prev MTD. 0 misses =
+On track, 1 = Watch, 2+ = Needs attention; checks with no prior report are skipped, never
+counted as failures, and the pill tooltip itemises every check.
 
 | Metric | Definition |
 |---|---|
@@ -111,8 +120,9 @@ Missing scheduled reports (these are the stores that get hidden):
 - **Armstrong Subaru**, **Armstrong Volkswagen**, **Vern Eide Sioux City** — no Sales Prev MTD
 - Armstrong Subaru's salesperson report is scheduled on a **fixed Jul 1–15 custom date
   range** instead of MTD, so its activity page covers Jul 1–15 only.
-- The per-user report has no internet/non-internet split, so per-rep "Internet leads" and
-  "Internet sold" render "—" rather than a guess. Sommer's export also omits Texts Out
+- The per-user report has no internet/non-internet split, so per-rep internet columns are
+  omitted from the activity page. To get them, schedule a second Sales Stats report per
+  store filtered to Lead Type = Internet. Sommer's export also omits Texts Out
   entirely, which renders "—" rather than a fabricated zero.
 - A store that joins mid-month has only a cumulative month-to-date block, so day/week
   ranges inside that block report no data instead of counting the block as one day.

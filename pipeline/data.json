@@ -1,61 +1,69 @@
 {
- "generatedAt": "2026-08-01",
+ "generatedAt": "2026-08-21",
  "stores": [
   {
    "id": "777-nissan",
    "name": "777 Nissan",
    "crm": "VinSolutions",
    "tools": [],
-   "location": null
+   "location": null,
+   "group": null
   },
   {
    "id": "armstrong-subaru",
    "name": "Armstrong Subaru",
    "crm": "VinSolutions",
    "tools": [],
-   "location": null
+   "location": null,
+   "group": "armstrong"
   },
   {
    "id": "armstrong-volkswagen",
    "name": "Armstrong Volkswagen",
    "crm": "VinSolutions",
    "tools": [],
-   "location": null
+   "location": null,
+   "group": "armstrong"
   },
   {
    "id": "gresham-chrysler-dodge-jeep-ram",
    "name": "Gresham Chrysler Dodge Jeep Ram",
    "crm": "VinSolutions",
    "tools": [],
-   "location": null
+   "location": null,
+   "group": null
   },
   {
    "id": "lunde-s-peoria-volkswagen",
    "name": "Lunde's Peoria Volkswagen",
    "crm": "VinSolutions",
    "tools": [],
-   "location": null
+   "location": null,
+   "group": null
   },
   {
    "id": "scholfield-honda",
    "name": "Scholfield Honda",
    "crm": "VinSolutions",
    "tools": [],
-   "location": null
+   "location": null,
+   "group": null
   },
   {
    "id": "sommer-s-automotive",
    "name": "Sommer's Automotive",
    "crm": "VinSolutions",
    "tools": [],
-   "location": null
+   "location": null,
+   "group": null
   },
   {
    "id": "vern-eide-acura",
    "name": "Vern Eide Acura",
    "crm": "VinSolutions",
    "tools": [],
-   "location": null
+   "location": null,
+   "group": "vern-eide"
   },
   {
    "id": "vern-eide-honda",
@@ -64,28 +72,52 @@
    "tools": [
     "Matador"
    ],
-   "location": null
+   "location": null,
+   "group": "vern-eide"
   },
   {
    "id": "vern-eide-mitsubishi",
    "name": "Vern Eide Mitsubishi",
    "crm": "VinSolutions",
    "tools": [],
-   "location": null
+   "location": null,
+   "group": "vern-eide"
   },
   {
    "id": "vern-eide-sioux-city-combined",
    "name": "Vern Eide Sioux City (combined)",
    "crm": "VinSolutions",
    "tools": [],
-   "location": null
+   "location": null,
+   "group": "vern-eide"
   },
   {
    "id": "volvo-cars-bend",
    "name": "Volvo Cars Bend",
    "crm": "VinSolutions",
    "tools": [],
-   "location": null
+   "location": null,
+   "group": null
+  }
+ ],
+ "groups": [
+  {
+   "id": "armstrong",
+   "name": "Armstrong",
+   "storeIds": [
+    "armstrong-subaru",
+    "armstrong-volkswagen"
+   ]
+  },
+  {
+   "id": "vern-eide",
+   "name": "Vern Eide",
+   "storeIds": [
+    "vern-eide-acura",
+    "vern-eide-honda",
+    "vern-eide-mitsubishi",
+    "vern-eide-sioux-city-combined"
+   ]
   }
  ],
  "snapshots": [

@@ -600,6 +600,7 @@
       if (nm.toUpperCase() === 'TOTAL') { addInto(map, P_REPTOTAL, repToBag(rep)); continue; }
       var rPath = 'R' + SEP + normKey(nm);
       labels[rPath] = labels[rPath] || { name: nm };
+      if (rep.group && !labels[rPath].group) labels[rPath].group = String(rep.group).trim();
       addInto(map, rPath, repToBag(rep));
     }
     if (snap.repTotals) addInto(map, P_REPTOTAL, repToBag(snap.repTotals));
@@ -1267,9 +1268,15 @@
     };
   }
 
-  /** allStoresMetrics(range) → {total, internet, perStore:{id: metrics}} */
-  function allStoresMetrics(range) {
+  /** allStoresMetrics(range, storeIds?) → {total, internet, perStore:{id: metrics}}
+   * storeIds limits the roll-up to a subset — the dealer-group dashboards. */
+  function allStoresMetrics(range, storeIds) {
     range = asRange(range);
+    var only = null;
+    if (storeIds && storeIds.length) {
+      only = {};
+      for (var f = 0; f < storeIds.length; f++) only[storeIds[f]] = 1;
+    }
     var perStore = {};
     var totalBag = {}, internetBag = {};
     var anyData = false;
@@ -1278,6 +1285,7 @@
 
     for (var i = 0; i < state.stores.length; i++) {
       var st = state.stores[i];
+      if (only && !only[st.id]) continue;
       var sm = storeMetrics(st.id, range);
       // perStore[id] is the store's TOTAL metrics, with the rest hung off it so
       // both `perStore[id].goodLeads` and `perStore[id].total.goodLeads` work.
@@ -1340,7 +1348,9 @@
       if (path.charAt(0) !== 'R' || path === P_REPTOTAL) continue;
       var parts = path.split(SEP);
       if (parts.length !== 2) continue;
-      out.push(finalizeRep(labelFor(path, 'name', parts[1]), agg.map[path], has));
+      var repOut = finalizeRep(labelFor(path, 'name', parts[1]), agg.map[path], has);
+      repOut.group = labelFor(path, 'group', null);
+      out.push(repOut);
     }
     // join Matador activity by normalized name
     var mat = matadorFor(storeId);
@@ -1555,8 +1565,42 @@
 
   function stores() {
     return state.stores.map(function (s) {
-      return { id: s.id, name: s.name, crm: s.crm, tools: s.tools, location: s.location };
+      return { id: s.id, name: s.name, crm: s.crm, tools: s.tools, location: s.location, group: s.group || null };
     });
+  }
+
+  /** Dealer groups as declared by the pipeline; only those with >=2 loaded stores. */
+  function groups() {
+    var raw = (state.data && state.data.groups) || [];
+    var out = [];
+    for (var i = 0; i < raw.length; i++) {
+      var ids = (raw[i].storeIds || []).filter(function (id) { return !!state.storeById[id]; });
+      if (ids.length >= 2) out.push({ id: raw[i].id, name: raw[i].name, storeIds: ids });
+    }
+    return out;
+  }
+
+  function groupById(id) {
+    var list = groups();
+    for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i];
+    return null;
+  }
+
+  /** Sum a list of rep rows into one team-total row (counts only; percentages
+   * re-derive; a field null on every member stays null rather than becoming 0). */
+  function sumReps(list) {
+    var bag = {}, any = false;
+    for (var i = 0; i < (list || []).length; i++) {
+      var r = list[i];
+      if (!r) continue;
+      any = true;
+      for (var k = 0; k < REP_FIELDS.length; k++) {
+        var f = REP_FIELDS[k];
+        var v = numOrNull(r[f === 'apptsScheduled' ? 'apptsScheduled' : f]);
+        if (v !== null) bag[f] = (bag[f] || 0) + v;
+      }
+    }
+    return finalizeRep('TEAM TOTAL', bag, any);
   }
 
   function store(id) {
@@ -1695,6 +1739,9 @@
 
     // data accessors
     stores: stores,
+    groups: groups,
+    groupById: groupById,
+    sumReps: sumReps,
     store: store,
     coverage: coverage,
     dailyDeltas: dailyDeltas,

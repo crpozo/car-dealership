@@ -486,56 +486,67 @@
     var apptSet = net ? net.apptSetOfContactedPct : null;
     var closing = net ? c.rate(net.sold, net.goodLeads) : null;
 
+    // Order per the client: closing rate before Solds. Subs are uppercase via
+    // CSS; the goal is a badge so it stands out from descriptive text.
     var tiles = [
       {
-        label: "Good internet leads",
+        label: "Good Internet Leads",
         html: net ? num(net.goodLeads, noNet) : na(noNet),
         cls: "none",
-        sub: "Lead Type = Internet",
         delta: netCmp ? deltaChip(netCmp, "goodLeads") : ""
       },
       {
         label: "Engagement %",
         html: net ? pct(engagement, "Internet Actual Contact % not reported for " + rangeLabel(range)) : na(noNet),
         cls: colorFor(engagement, engagementTarget()),
-        sub: "target " + fmtPct(engagementTarget(), 0)
+        subHtml: '<span class="goal-badge">Goal ' + esc(fmtPct(engagementTarget(), 0)) + "</span>"
       },
       {
-        label: "Appts set of contacted %",
+        label: "Appts Set Of Contacted %",
         html: net ? pct(apptSet, "Appts Set of Contacted % not reported for " + rangeLabel(range)) : na(noNet),
         cls: colorFor(apptSet, apptTarget()),
-        sub: "target " + fmtPct(apptTarget(), 0) + " · can exceed 100%"
+        subHtml: '<span class="goal-badge">Goal ' + esc(fmtPct(apptTarget(), 0)) + "</span> Can Exceed 100%"
       },
       {
-        label: "Solds",
-        html: total ? num(total.sold, noTotal) : na(noTotal),
-        cls: "none",
-        sub: "all lead types · " + rangeLabel(range),
-        delta: cmp ? deltaChip(cmp, "sold") : ""
-      },
-      {
-        label: "Internet closing rate",
+        label: "Internet Closing Rate",
         html: net ? pct(closing, "Needs internet good leads and internet sold") : na(noNet),
         cls: "none",
-        sub: "internet sold ÷ internet good leads"
+        sub: "Internet Sold \u00f7 Internet Good Leads"
+      },
+      {
+        label: "Total Solds",
+        html: total ? num(total.sold, noTotal) : na(noTotal),
+        cls: "none",
+        sub: "All Lead Types",
+        delta: cmp ? deltaChip(cmp, "sold") : ""
       }
     ];
 
     return '<div class="tiles">' + tiles.map(function (t) {
+      var sub = t.subHtml || (t.sub ? esc(t.sub) : "");
       return '<div class="tile tone-' + esc(t.cls) + '">' +
         '<div class="tile-label">' + esc(t.label) + "</div>" +
         '<div class="tile-value ' + esc(t.cls) + '">' + t.html + "</div>" +
         (t.delta ? '<div class="tile-delta">' + t.delta + "</div>" : "") +
-        '<div class="tile-sub">' + esc(t.sub) + "</div>" +
+        (sub ? '<div class="tile-sub">' + sub + "</div>" : "") +
         "</div>";
     }).join("") + "</div>";
+  }
+
+  /* Percentage-point change chip: +4.2pp / -3.1pp vs the comparison period. */
+  function ppChip(cur, pri, label) {
+    if (!isNum(cur) || !isNum(pri)) return "";
+    var d = Math.round((cur - pri) * 1000) / 10;
+    if (d === 0) return "";
+    return ' <span class="delta ' + (d > 0 ? "up" : "down") + '" title="vs ' + esc(label || "Prev MTD") +
+      ": " + esc(fmtPct(pri) || "") + '">' + esc((d > 0 ? "+" : "") + d + "pp") + "</span>";
   }
 
   /* Core.compare() supplies the delta; the sign/direction come from Core too. */
   function deltaChip(cmp, key, compareLabel) {
     if (!cmp || !cmp[key]) return "";
     var d = cmp[key];
-    if (!isNum(d.delta)) return "";
+    if (!isNum(d.delta) || d.delta === 0) return "";
     var dir = d.direction || (d.delta > 0 ? "up" : (d.delta < 0 ? "down" : "flat"));
     var s = fmtN(d.delta);
     var sign = d.delta > 0 ? "+" : "";
@@ -588,7 +599,10 @@
       // than rendered as an empty card. withData() is shared with the table view
       // so the cards and the rows can never disagree about who is on the roster.
       var shown = withData(list, range);
-      var cards = shown.list.map(function (s) { return storeCard(s, range); }).join("");
+      var cr = compareRange(range);
+      var allPrior = null;
+      if (cr) { try { allPrior = c.allStoresMetrics(cr); } catch (e) { allPrior = null; } }
+      var cards = shown.list.map(function (s) { return storeCard(s, range, cr); }).join("");
       var isCards = storeView() === "cards";
 
       // The topbar breadcrumb carries the page identity, and the timeframe
@@ -596,7 +610,7 @@
       // like the reference layout.
       return '<section class="page" id="page-overview">' +
         coverageBanner(range) +
-        statsBand(all, range) +
+        statsBand(all, range, allPrior) +
         '<div class="cards-toolbar">' +
           '<span class="search-wrap"><span class="search-ico" aria-hidden="true">&#8981;</span>' +
           '<input type="search" id="store-search" placeholder="Search store&hellip;" aria-label="Search stores"' +
@@ -621,9 +635,11 @@
      performance pill, label/value body, and explicit actions. The pill is the
      engagement colour band, spelled out — Good / Average / Needs attention —
      never an invented rating. */
-  function storeCard(s, range) {
+  function storeCard(s, range, priorRange) {
     var c = C();
     var sm = storeMetrics(s.id, range);
+    var prior = priorRange ? storeMetrics(s.id, priorRange) : null;
+    if (prior && !hasData(prior)) prior = null;
     var href = "#/store/" + encodeURIComponent(s.id);
     var net = sm.internet || null;
     var eng = net ? net.contactPct : null;
@@ -631,13 +647,16 @@
     var closing = net ? c.rate(net.sold, net.goodLeads) : null;
     var noNet = "No internet lead rows for " + rangeLabel(range);
 
-    var band = colorFor(eng, engagementTarget());
-    var pill = "";
-    if (band !== "none") {
-      var word = band === "good" ? "Good" : band === "warn" ? "Average" : "Needs attention";
-      pill = '<span class="pill ' + band + '" title="' +
-        esc("Engagement " + (fmtPct(eng) || "—") + " vs target " + fmtPct(engagementTarget(), 0)) +
-        '"><span class="dot" aria-hidden="true"></span>' + word + "</span>";
+    var st = storeStatus(sm, prior);
+    var pill = st.band === "none" ? "" :
+      '<span class="pill ' + st.band + '" title="' + esc(st.detail) +
+      '"><span class="dot" aria-hidden="true"></span>' + esc(st.word) + "</span>";
+
+    var soldDelta = "";
+    if (prior && sm.total && prior.total) {
+      var scmp = null;
+      try { scmp = c.compare(sm.total, prior.total); } catch (e) { scmp = null; }
+      soldDelta = scmp ? deltaChip(scmp, "sold", "Prev MTD (same days last month)") : "";
     }
 
     var sub = [s.crm].concat(s.tools || []).filter(Boolean).join(" · ");
@@ -646,7 +665,7 @@
       { l: "Internet leads", v: net ? num(net.goodLeads, noNet) : na(noNet), cls: "none" },
       { l: "Engagement", v: net ? pct(eng, noNet) : na(noNet), cls: colorFor(eng, engagementTarget()) },
       { l: "Appts set", v: net ? pct(ap, noNet) : na(noNet), cls: colorFor(ap, apptTarget()) },
-      { l: "Sold", v: num(sm.total ? sm.total.sold : null, "No store total row for " + rangeLabel(range)), cls: "none" },
+      { l: "Sold", v: num(sm.total ? sm.total.sold : null, "No store total row for " + rangeLabel(range)) + soldDelta, cls: "none" },
       { l: "Internet closing", v: net ? pct(closing, noNet) : na(noNet), cls: "none" },
       { l: "Data through", v: asOf ? esc(asOf.replace(/^as of /, "")) : na("No run date"), cls: "none" }
     ];
@@ -667,24 +686,99 @@
       "</article>";
   }
 
-  /* One stat card with divided columns, like the reference's summary band. */
-  function statsBand(all, range) {
+  /* Store health from FOUR checks, not one: Engagement vs its goal, Appts set
+     vs its goal, Sold vs the same days last month, Internet closing vs the same
+     days last month. 0 misses = On track, 1 = Watch, 2+ = Needs attention.
+     Checks that cannot be evaluated (no prior report) are skipped, never
+     counted as failures, and the pill tooltip itemises every check. */
+  function storeStatus(sm, prior) {
+    var c = C();
+    var net = sm && sm.internet;
+    var checks = [];
+    var eng = net ? net.contactPct : null;
+    if (isNum(eng)) checks.push({ ok: eng >= engagementTarget(),
+      label: "Engagement " + fmtPct(eng) + " vs goal " + fmtPct(engagementTarget(), 0) });
+    var ap = net ? net.apptSetOfContactedPct : null;
+    if (isNum(ap)) checks.push({ ok: ap >= apptTarget(),
+      label: "Appts set " + fmtPct(ap) + " vs goal " + fmtPct(apptTarget(), 0) });
+    if (prior && prior.total && sm.total && isNum(sm.total.sold) && isNum(prior.total.sold)) {
+      checks.push({ ok: sm.total.sold >= prior.total.sold,
+        label: "Sold " + fmtN(sm.total.sold) + " vs " + fmtN(prior.total.sold) + " Prev MTD" });
+    }
+    var closing = net ? c.rate(net.sold, net.goodLeads) : null;
+    var priorNet = prior && prior.internet;
+    var priorClosing = priorNet ? c.rate(priorNet.sold, priorNet.goodLeads) : null;
+    if (isNum(closing) && isNum(priorClosing)) {
+      checks.push({ ok: closing >= priorClosing,
+        label: "Internet closing " + fmtPct(closing) + " vs " + fmtPct(priorClosing) + " Prev MTD" });
+    }
+    if (!checks.length) return { band: "none", word: "", detail: "" };
+    var misses = checks.filter(function (x) { return !x.ok; }).length;
+    var band = misses >= 2 ? "bad" : (misses === 1 ? "warn" : "good");
+    var word = misses >= 2 ? "Needs attention" : (misses === 1 ? "Watch" : "On track");
+    var detail = checks.map(function (x) { return (x.ok ? "\u2713 " : "\u2717 ") + x.label; }).join("  \u00b7  ") +
+      "  \u2014  " + misses + " of " + checks.length + " checks missed";
+    return { band: band, word: word, detail: detail };
+  }
+
+  /* Dealer-group dashboard: the overview, scoped to one group's stores. */
+  function groupPage(groupId, range) {
+    return guard(function () {
+      var c = C();
+      var g = c.groupById(groupId);
+      if (!g) {
+        return '<section class="page">' + pageHead("Group not found") +
+          emptyState("Unknown group", 'No dealer group "' + groupId + '" is loaded.') + "</section>";
+      }
+      var members = STORES().filter(function (s) { return g.storeIds.indexOf(s.id) !== -1; });
+      var shown = withData(members, range);
+      var head = pageHead(g.name, shown.list.length + " of " + members.length + " stores reporting \u00b7 " + rangeLabel(range));
+      if (!shown.list.length) {
+        return '<section class="page" id="page-group">' + head +
+          emptyState("No data for this range", "No " + g.name + " store has reports covering " + rangeLabel(range) + ".") +
+          "</section>";
+      }
+      var all = null, allPrior = null;
+      try { all = c.allStoresMetrics(range, g.storeIds); } catch (e) { all = null; }
+      var cr = compareRange(range);
+      if (cr) { try { allPrior = c.allStoresMetrics(cr, g.storeIds); } catch (e) { allPrior = null; } }
+      var cards = shown.list.map(function (s) { return storeCard(s, range, cr); }).join("");
+      return '<section class="page" id="page-group">' + head + coverageBanner(range, g.storeIds) +
+        (all && all.hasData ? statsBand(all, range, allPrior) : "") +
+        '<div class="store-cards">' + cards + "</div>" +
+        "</section>";
+    });
+  }
+
+  /* One stat card with divided columns, like the reference's summary band.
+     prior (same roll-up over the comparison range) adds a red/green delta light
+     on Solds — sold up vs the same days last month reads green, down reads red. */
+  function statsBand(all, range, prior) {
+    var c = C();
     var net = all.internet || null;
     var total = all.total || null;
     var noNet = "No internet lead rows in the reports for " + rangeLabel(range) + ".";
     var eng = net ? net.contactPct : null;
     var ap = net ? net.apptSetOfContactedPct : null;
-    var closing = net ? C().rate(net.sold, net.goodLeads) : null;
+    var closing = net ? c.rate(net.sold, net.goodLeads) : null;
+    var soldDelta = "";
+    if (prior && prior.hasData && total && prior.total) {
+      var cmp = null;
+      try { cmp = c.compare(total, prior.total); } catch (e) { cmp = null; }
+      soldDelta = cmp ? deltaChip(cmp, "sold", "Prev MTD (same days last month)") : "";
+    }
     var cells = [
-      { v: net ? num(net.goodLeads, noNet) : na(noNet), l: "Good internet leads", cls: "none" },
-      { v: net ? pct(eng, noNet) : na(noNet), l: "Engagement % · target " + fmtPct(engagementTarget(), 0), cls: colorFor(eng, engagementTarget()) },
-      { v: net ? pct(ap, noNet) : na(noNet), l: "Appts set of contacted · target " + fmtPct(apptTarget(), 0), cls: colorFor(ap, apptTarget()) },
-      { v: total ? num(total.sold, "No totals") : na("No totals"), l: "Solds · all lead types", cls: "none" },
-      { v: net ? pct(closing, noNet) : na(noNet), l: "Internet closing rate", cls: "none" }
+      { v: net ? num(net.goodLeads, noNet) : na(noNet), l: "Good Internet Leads", cls: "none" },
+      { v: net ? pct(eng, noNet) : na(noNet), l: "Engagement %", goal: engagementTarget(), cls: colorFor(eng, engagementTarget()) },
+      { v: net ? pct(ap, noNet) : na(noNet), l: "Appts Set Of Contacted", goal: apptTarget(), cls: colorFor(ap, apptTarget()) },
+      { v: (total ? num(total.sold, "No totals") : na("No totals")) + soldDelta, l: "Total Solds \u00b7 All Lead Types", cls: "none" },
+      { v: net ? pct(closing, noNet) : na(noNet), l: "Internet Closing Rate", cls: "none" }
     ];
     return '<div class="statsband">' + cells.map(function (x) {
       return '<div class="sb-cell"><span class="sb-v ' + esc(x.cls) + '">' + x.v + "</span>" +
-        '<span class="sb-l">' + esc(x.l) + "</span></div>";
+        '<span class="sb-l">' + esc(x.l) +
+        (x.goal ? ' <span class="goal-badge">Goal ' + esc(fmtPct(x.goal, 0)) + "</span>" : "") +
+        "</span></div>";
     }).join("") + "</div>";
   }
 
@@ -875,32 +969,46 @@
 
       /* --- Table 1: lead-type breakdown ---------------------------------- */
       var showCompare = !!prior;
+      // Column names are the client's: Good Leads (they ARE Good Leads),
+      // Engagement (a PERCENTAGE — Phone and Walk-in are always contacted, so
+      // those rows leave it blank), Appts Set, Appts Shown, Sold.
       var groups = [
-        { key: "goodLeads", label: "Opportunities", kind: "count", title: "Good Leads" },
-        { key: "contacted", label: "Contact", kind: "count", title: "Leads contacted (derived from Internet Actual Contact % × Good Leads)" },
-        { key: "apptsSet", label: "Appts", kind: "count", title: "Appointments set" },
-        { key: "apptsShown", label: "Shown", kind: "count", title: "Appts Shown" },
-        { key: "sold", label: "Sold", kind: "count", title: "Sold in Time Frame" }
+        { key: "goodLeads", label: "Good Leads", title: "Good Leads" },
+        { key: "engagement", label: "Engagement", title: "Internet Actual Contact % \u2014 an internet-lead measure. Phone and Walk-in customers are contacted by definition, so those rows are blank." },
+        { key: "apptsSet", label: "Appts Set", title: "Appointments set" },
+        { key: "apptsShown", label: "Appts Shown", title: "Appts Shown" },
+        { key: "sold", label: "Sold", title: "Sold in Time Frame" }
       ];
 
       var groupRow = '<tr class="groups"><th rowspan="2">Lead type</th>' + groups.map(function (g) {
         return '<th colspan="' + (showCompare ? 2 : 1) + '" class="num" title="' + esc(g.title) + '">' + esc(g.label) + "</th>";
       }).join("") + "</tr>";
       var subRow = "<tr>" + groups.map(function () {
-        return '<th class="num">MTD</th>' + (showCompare ? '<th class="num prior">' + esc(compareLabel) + "</th>" : "");
+        return '<th class="num">MTD</th>' + (showCompare ? '<th class="num prior" title="Same days of the previous month">Prev MTD</th>' : "");
       }).join("") + "</tr>";
 
-      function metricCells(m, pm, cmp) {
+      function metricCells(m, pm, cmp, engMode) {
         return groups.map(function (g) {
-          var v = m ? m[g.key] : null;
           var reason = m ? "Not reported in this report" : "No rows for this lead type in " + rangeLabel(range);
+          // Engagement AND Appts Set are internet-scoped derivations (contact %
+          // x internet leads); on Phone/Walk-in rows a zero there would be an
+          // invention, so both stay blank outside internet.
+          if ((g.key === "engagement" || g.key === "apptsSet") && engMode !== "pct") {
+            return td("") + (showCompare ? '<td class="num prior"></td>' : "");
+          }
+          if (g.key === "engagement") {
+            var cell0 = td(m ? pct(m.contactPct, reason) : na(reason), "",
+              m && isNum(m.contacted) ? fmtN(m.contacted) + " contacted" : "");
+            if (!showCompare) return cell0;
+            return cell0 + '<td class="num prior">' + (pm ? pct(pm.contactPct, "No Prev MTD data") : na("No Prev MTD data")) + "</td>";
+          }
+          var v = m ? m[g.key] : null;
           var extra = "";
-          if (g.key === "contacted" && m && isNum(m.contactPct)) extra = "Contact rate " + fmtPct(m.contactPct);
           if (g.key === "apptsSet" && m && isNum(m.apptSetOfContactedPct)) extra = "Appts set of contacted " + fmtPct(m.apptSetOfContactedPct);
-          var cell = td(num(v, reason) + (cmp ? " " + deltaChip(cmp, g.key, compareLabel) : ""), "", extra);
+          var cell = td(num(v, reason) + (cmp ? " " + deltaChip(cmp, g.key, "Prev MTD") : ""), "", extra);
           if (!showCompare) return cell;
           var pv = pm ? pm[g.key] : null;
-          return cell + '<td class="num prior">' + num(pv, "No comparison data for " + esc(compareLabel)) + "</td>";
+          return cell + '<td class="num prior">' + num(pv, "No Prev MTD data") + "</td>";
         }).join("");
       }
 
@@ -928,33 +1036,43 @@
       /* Lead type → inventory type → vehicle make. Children render collapsed and
          come straight from Core's aggregated tree, so they respect the selected
          timeframe exactly like the parent rows do. */
+      var UNKNOWN = /^unknown/i;
       var ltRows = DISPLAY_LEAD_TYPES.map(function (name) {
         var node = findLeadType(sm.byLeadType, name);
         var priNode = prior ? findLeadType(prior.byLeadType, name) : null;
         var cur = metricsOf(node);
         var pri = priNode ? metricsOf(priNode) : null;
-        var invs = (node && node.byInventory) || [];
+        // Engagement is internet-only; Phone and Walk-in rows leave it blank
+        var engMode = ltKey(name) === "internet" ? "pct" : "blank";
+        // "Unknown" inventory rows are hidden at the client's request; their
+        // numbers still count in the lead-type row above (it is the parent's
+        // own subtotal, not a sum of the visible children).
+        var invs = ((node && node.byInventory) || []).filter(function (inv) {
+          return !UNKNOWN.test(inv.inventoryType || "");
+        });
         var ltPath = "lt:" + (node ? node.key : name);
 
         var rows = '<tr class="lt-row" data-path="' + esc(ltPath) + '">' +
           nameCell(name, "", 0, invs.length > 0, "inventory type") +
-          metricCells(cur, pri, cmpOf(cur, pri)) + "</tr>";
+          metricCells(cur, pri, cmpOf(cur, pri), engMode) + "</tr>";
 
         rows += invs.map(function (inv) {
           var priInv = priNode ? findByKey(priNode.byInventory, inv.key) : null;
           var invPath = ltPath + "/inv:" + inv.key;
-          var makes = (inv.byMake || []).slice().sort(function (a, b) {
+          var makes = (inv.byMake || []).filter(function (mk) {
+            return !UNKNOWN.test(mk.make || "");
+          }).sort(function (a, b) {
             var d = (b.metrics.goodLeads || 0) - (a.metrics.goodLeads || 0);
             return d !== 0 ? d : (a.make < b.make ? -1 : 1);
           });
           var out = '<tr class="inv-row" data-path="' + esc(invPath) + '" data-parent="' + esc(ltPath) + '" hidden>' +
             nameCell(inv.inventoryType, "", 1, makes.length > 0, "vehicle make") +
-            metricCells(inv.metrics, priInv && priInv.metrics, cmpOf(inv.metrics, priInv && priInv.metrics)) + "</tr>";
+            metricCells(inv.metrics, priInv && priInv.metrics, cmpOf(inv.metrics, priInv && priInv.metrics), engMode) + "</tr>";
           out += makes.map(function (mk) {
             var priMk = priInv ? findByKey(priInv.byMake, mk.key) : null;
             return '<tr class="mk-row" data-path="' + esc(invPath + "/mk:" + mk.key) + '" data-parent="' + esc(invPath) + '" hidden>' +
               nameCell(mk.make, "", 2, false, "") +
-              metricCells(mk.metrics, priMk && priMk.metrics, cmpOf(mk.metrics, priMk && priMk.metrics)) + "</tr>";
+              metricCells(mk.metrics, priMk && priMk.metrics, cmpOf(mk.metrics, priMk && priMk.metrics), engMode) + "</tr>";
           }).join("");
           return out;
         }).join("");
@@ -967,7 +1085,7 @@
         try { netCmp = c.compare(sm.internet, prior.internet); } catch (e) { netCmp = null; }
       }
       var totalRow = '<tr class="total-row"><td class="name">All lead types (TOTAL)</td>' +
-        metricCells(sm.total, prior ? prior.total : null, totalCmp) + "</tr>";
+        metricCells(sm.total, prior ? prior.total : null, totalCmp, "pct") + "</tr>";
 
       var table = tableWrap(
         "<thead>" + groupRow + subRow + "</thead>" +
@@ -989,8 +1107,9 @@
 
       return storeShell(storeId, range, "performance", function () {
         return headlineTiles(sm, range, totalCmp, netCmp) +
-          '<h2 class="section-title">Lead types <span class="section-sub">' +
-          esc(prior ? "MTD vs " + compareLabel : "MTD") + "</span></h2>" +
+          '<h2 class="section-title">Lead types <span class="section-sub" title="' +
+          esc(prior ? "Prev MTD = " + compareLabel : "") + '">' +
+          esc(prior ? "MTD vs Prev MTD" : "MTD") + "</span></h2>" +
           table;
       });
     });
@@ -1001,13 +1120,50 @@
   /* Column order dictated by the client:
      1 Total opportunities · 2 Internet leads · 3 Calls · 4 Emails · 5 Texts ·
      6 Appts set · 7 Shown % · 8 Internet sold · 9 Total sold (last) */
+  /* Per-day activity, the way the coaches' Excel works: total outbound ÷
+     NETWORKDAYS in the selected range. Colours compare each rep's per-day rate
+     to the store's own per-rep average for the same range (same denominator, so
+     no invented quota), team grouping follows the export's User Group column,
+     and the table can be downloaded as CSV or printed. */
   function activity(range, storeId) {
     return guard(function () {
       var c = C();
       var list = scopedStores(storeId);
       var scoped = !!storeId;
       var head = scoped ? "" : pageHead("Salesperson activity", rangeLabel(range));
-      var noInternetSplit = "The salesperson report is not broken out by lead type, so internet figures are not available per rep.";
+      var sat = (c.settings || {}).includeSaturday !== false;
+      var days = null;
+      try { days = c.networkDays(range.start, range.end, sat); } catch (e) { days = null; }
+      var daysNote = "Working days in " + rangeLabel(range) + ": " + (days === null ? "?" : days) +
+        " (NETWORKDAYS, Mon\u2013" + (sat ? "Sat" : "Fri") + ", no holiday calendar)";
+      var priorRange = compareRange(range);
+      var groupMode = activityGroupMode();
+
+      function dayCell(total, bench, key) {
+        var avg = c.rate(total, days);
+        var benchAvg = bench ? c.rate(bench[key], days) : null;
+        var cls = colorFor(avg, benchAvg);
+        var title = (isNum(total) ? fmtN(total) + " total" : "Not reported") + " \u00b7 " + daysNote +
+          (isNum(benchAvg) ? " \u00b7 store average " + fmtN(benchAvg) + "/day" : "");
+        return td(avg === null ? na(isNum(total) ? daysNote : "Not reported in this export") : esc(fmtN(avg)), cls, title);
+      }
+
+      function soldCell(r, priorBy) {
+        var chip = "";
+        if (priorBy) {
+          var pv = priorBy[normName(r.name)];
+          if (isNum(pv) && isNum(r.sold)) {
+            var d = Math.round((r.sold - pv) * 10) / 10;
+            if (d !== 0) {
+              chip = ' <span class="delta ' + (d > 0 ? "up" : "down") + '" title="vs Prev MTD: ' +
+                esc(fmtN(pv)) + '">' + esc((d > 0 ? "+" : "") + fmtN(d)) + "</span>";
+            }
+          }
+        }
+        return td(num(r.sold, "Not reported") + chip);
+      }
+
+      function normName(n) { return String(n || "").toLowerCase().replace(/\s+/g, " ").trim(); }
 
       var sections = list.map(function (s) {
         var reps = null;
@@ -1023,58 +1179,99 @@
 
         var totals = repTotalsFor(s.id, range, reps);
         var bench = activityBenchmarks(s.id, range, reps, people);
+        var priorBy = null;
+        if (priorRange) {
+          try {
+            var priorReps = c.reps(s.id, priorRange) || [];
+            priorBy = {};
+            for (var pi = 0; pi < priorReps.length; pi++) {
+              if (!isTotalRow(priorReps[pi])) priorBy[normName(priorReps[pi].name)] = priorReps[pi].sold;
+            }
+            if (!priorReps.length) priorBy = null;
+          } catch (e) { priorBy = null; }
+        }
+
+        var hasGroups = people.some(function (r) { return !!r.group; });
 
         var header = "<thead><tr>" +
           "<th>Salesperson</th>" +
-          '<th class="num" title="Good Leads">Total opportunities</th>' +
-          '<th class="num" title="' + esc(noInternetSplit) + '">Internet leads</th>' +
-          '<th class="num" title="Calls Out">Calls</th>' +
-          '<th class="num" title="Emails Out">Emails</th>' +
-          '<th class="num" title="Texts Out">Texts</th>' +
-          '<th class="num" title="Appts Scheduled">Appts set</th>' +
-          '<th class="num" title="Appts Shown ÷ Appts Scheduled">Shown %</th>' +
-          '<th class="num" title="' + esc(noInternetSplit) + '">Internet sold</th>' +
-          '<th class="num" title="Sold in Time Frame">Total sold</th>' +
+          '<th class="num" title="Good Leads">Good Leads</th>' +
+          '<th class="num" title="Calls Out \u00f7 working days \u00b7 ' + esc(daysNote) + '">Calls/Day</th>' +
+          '<th class="num" title="Emails Out \u00f7 working days">Emails/Day</th>' +
+          '<th class="num" title="Texts Out \u00f7 working days">Texts/Day</th>' +
+          '<th class="num" title="Appts Scheduled">Appts Set</th>' +
+          '<th class="num" title="Appts Shown \u00f7 Appts Scheduled">Appts Shown %</th>' +
+          '<th class="num" title="Sold in Time Frame \u00b7 \u00b1 vs Prev MTD where a prior report exists">Sold</th>' +
           "</tr></thead>";
 
-        var rows = people.map(function (r) {
+        function repRow(r) {
           var shown = isNum(r.shownPct) ? r.shownPct : c.rate(r.apptsShown, r.apptsScheduled);
-          var iLeads = repInternet(r, "internetLeads");
-          if (iLeads === null) iLeads = repInternet(r, "internetGoodLeads");
-          var iSold = repInternet(r, "internetSold");
           return '<tr><td class="name">' + esc(r.name) + "</td>" +
             td(num(r.goodLeads, "Not reported")) +
-            td(iLeads === null ? na(noInternetSplit) : num(iLeads, noInternetSplit)) +
-            activityCell(r.calls, bench, "calls") +
-            activityCell(r.emails, bench, "emails") +
-            activityCell(r.texts, bench, "texts") +
+            dayCell(r.calls, bench, "calls") +
+            dayCell(r.emails, bench, "emails") +
+            dayCell(r.texts, bench, "texts") +
             td(num(r.apptsScheduled, "Not reported")) +
             td(pct(shown, "No appointments scheduled in this range")) +
-            td(iSold === null ? na(noInternetSplit) : num(iSold, noInternetSplit)) +
-            td(num(r.sold, "Not reported")) +
+            soldCell(r, priorBy) +
             "</tr>";
-        }).join("");
+        }
+
+        var body;
+        if (hasGroups && groupMode) {
+          var byTeam = {};
+          people.forEach(function (r) {
+            var g = r.group || "Ungrouped";
+            (byTeam[g] = byTeam[g] || []).push(r);
+          });
+          var teams = Object.keys(byTeam).sort(function (a, b) {
+            var sa = c.sumReps(byTeam[a]).sold || 0, sb = c.sumReps(byTeam[b]).sold || 0;
+            return sb - sa;
+          });
+          body = teams.map(function (g) {
+            var members = byTeam[g];
+            var sub = c.sumReps(members);
+            var subShown = c.rate(sub.apptsShown, sub.apptsScheduled);
+            return '<tr class="group-row"><td colspan="8">' + esc(g) +
+              ' <span class="section-sub">' + members.length + (members.length === 1 ? " rep" : " reps") + "</span></td></tr>" +
+              members.map(repRow).join("") +
+              '<tr class="team-sub"><td class="name">' + esc(g) + " total</td>" +
+              td(num(sub.goodLeads, "Not reported")) +
+              dayCell(sub.calls, null, "calls") +
+              dayCell(sub.emails, null, "emails") +
+              dayCell(sub.texts, null, "texts") +
+              td(num(sub.apptsScheduled, "Not reported")) +
+              td(pct(subShown, "No appointments")) +
+              td(num(sub.sold, "Not reported")) +
+              "</tr>";
+          }).join("");
+        } else {
+          body = people.map(repRow).join("");
+        }
 
         var foot = "";
         if (totals) {
           var tShown = isNum(totals.shownPct) ? totals.shownPct : c.rate(totals.apptsShown, totals.apptsScheduled);
-          foot = '<tfoot><tr class="total-row"><td class="name">TEAM TOTAL</td>' +
+          foot = '<tfoot><tr class="total-row"><td class="name">STORE TOTAL</td>' +
             td(num(totals.goodLeads, "Not reported")) +
-            td(na(noInternetSplit)) +
-            td(num(totals.calls, "Not reported")) +
-            td(num(totals.emails, "Not reported")) +
-            td(num(totals.texts, "Not reported")) +
+            dayCell(totals.calls, null, "calls") +
+            dayCell(totals.emails, null, "emails") +
+            dayCell(totals.texts, null, "texts") +
             td(num(totals.apptsScheduled, "Not reported")) +
             td(pct(tShown, "No appointments scheduled in this range")) +
-            td(na(noInternetSplit)) +
             td(num(totals.sold, "Not reported")) +
             "</tr></tfoot>";
         }
 
-        return '<section class="panel"><h2 class="section-title">' + esc(s.name) +
-          '<span class="section-sub">' + esc(String(people.length) + (people.length === 1 ? " rep" : " reps")) + "</span></h2>" +
-          tableWrap(header + "<tbody>" + rows + "</tbody>" + foot, "activity-tbl") +
-          (bench ? "" : '<p class="note">' + esc(NO_BENCHMARK) + "</p>") +
+        var groupBtn = hasGroups
+          ? '<button type="button" class="ghost-btn act-group-btn' + (groupMode ? " on" : "") + '"' +
+            ' aria-pressed="' + (groupMode ? "true" : "false") + '" onclick="Pages.toggleActivityGroups()">Group by team</button>'
+          : "";
+
+        return '<section class="panel act-panel"><h2 class="section-title">' + esc(s.name) +
+          '<span class="section-sub">' + esc(String(people.length) + (people.length === 1 ? " rep" : " reps") +
+          " \u00b7 " + (days === null ? "?" : days) + " working days") + "</span>" + groupBtn + "</h2>" +
+          tableWrap(header + "<tbody>" + body + "</tbody>" + foot, "activity-tbl") +
           "</section>";
       }).join("");
 
@@ -1082,14 +1279,69 @@
         sections = emptyState("No stores loaded", "assets/data.js contains no stores.");
       }
 
-      return '<section class="page" id="page-activity">' + head + (scoped ? "" : coverageBanner(range)) + sections +
-        footnotes([
-          "CRM house accounts (any user whose name contains \"team\" or \"house\") are excluded — they are not people.",
-          "Calls, Emails and Texts are coloured against the store's own per-rep average for the same range. No outbound-activity quota exists in the reports, so nothing here is compared to an invented target.",
-          "Split deals mean Sold can be fractional (e.g. 7.5 units)."
-        ]) +
-        "</section>";
+      var tools = '<div class="act-tools">' +
+        '<button type="button" class="ghost-btn" onclick="Pages.exportActivity(' +
+        (scoped ? "'" + esc(storeId) + "'" : "null") + ')">Download CSV</button>' +
+        '<button type="button" class="ghost-btn" onclick="window.print()">Print</button>' +
+        "</div>";
+
+      return '<section class="page" id="page-activity">' + head + (scoped ? "" : coverageBanner(range)) +
+        tools + sections + "</section>";
     });
+  }
+
+  var ACT_GROUP_KEY = "icdash.activityGroups";
+  function activityGroupMode() {
+    try { return global.localStorage.getItem(ACT_GROUP_KEY) === "1"; } catch (e) { return false; }
+  }
+  function toggleActivityGroups() {
+    try {
+      global.localStorage.setItem(ACT_GROUP_KEY, activityGroupMode() ? "0" : "1");
+    } catch (e) { /* private mode */ }
+    if (global.App && global.App.render) global.App.render();
+  }
+
+  /* CSV of the activity table for the current timeframe — totals AND per-day
+     averages, so the spreadsheet matches what the page shows. */
+  function exportActivity(storeId) {
+    var c = C();
+    var tf = (c.settings && c.settings.timeframe) || { id: "month" };
+    var range = c.resolveRange(tf.id, tf.start, tf.end);
+    var sat = (c.settings || {}).includeSaturday !== false;
+    var days = null;
+    try { days = c.networkDays(range.start, range.end, sat); } catch (e) { days = null; }
+    var stores = storeId ? scopedStores(storeId) : STORES();
+    var rows = [["Store", "Salesperson", "Team", "Good Leads",
+      "Calls", "Calls/Day", "Emails", "Emails/Day", "Texts", "Texts/Day",
+      "Appts Set", "Appts Shown %", "Sold"]];
+    stores.forEach(function (s) {
+      var reps = [];
+      try { reps = c.reps(s.id, range) || []; } catch (e) { reps = []; }
+      reps.filter(function (r) { return !isTotalRow(r); }).forEach(function (r) {
+        var shown = isNum(r.shownPct) ? r.shownPct : c.rate(r.apptsShown, r.apptsScheduled);
+        rows.push([s.name, r.name, r.group || "",
+          isNum(r.goodLeads) ? r.goodLeads : "",
+          isNum(r.calls) ? r.calls : "", fmtN(c.rate(r.calls, days)) || "",
+          isNum(r.emails) ? r.emails : "", fmtN(c.rate(r.emails, days)) || "",
+          isNum(r.texts) ? r.texts : "", fmtN(c.rate(r.texts, days)) || "",
+          isNum(r.apptsScheduled) ? r.apptsScheduled : "",
+          fmtPct(shown) || "", isNum(r.sold) ? r.sold : ""]);
+      });
+    });
+    var csv = rows.map(function (r) {
+      return r.map(function (v) {
+        v = String(v == null ? "" : v);
+        return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v;
+      }).join(",");
+    }).join("\n");
+    var blob = new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "salesperson-activity-" + (range.start || "") + "-to-" + (range.end || "") + ".csv";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 5000);
   }
 
   /* ================================================= 5. INTERNET PERFORMANCE */
@@ -1124,6 +1376,7 @@
         '<th class="num" title="Internet sold ÷ internet good leads">Internet closing %</th>' +
         "</tr></thead>";
 
+      var cr = compareRange(range);
       var rows = list.map(function (s) {
         var href = "#/store/" + encodeURIComponent(s.id);
         var linkAttrs = ' class="rowlink" tabindex="0" role="link" data-href="' + esc(href) + '"' +
@@ -1138,6 +1391,10 @@
           return "<tr" + linkAttrs + ">" + nameCell +
             '<td class="num none" colspan="9">' + na(noNet) + "</td></tr>";
         }
+        var priorSm = cr ? storeMetrics(s.id, cr) : null;
+        var pNet = priorSm && hasData(priorSm) ? priorSm.internet : null;
+        var netCmp = null;
+        if (pNet) { try { netCmp = c.compare(net, pNet); } catch (e) { netCmp = null; } }
 
         /* "Appts set %" prefers the report's own Appts Set % when present,
            otherwise the appts-set-of-contacted rate. */
@@ -1153,18 +1410,21 @@
         var totals = repTotalsFor(s.id, range, reps);
         var outReason = "No rep-level (User) export covers " + rangeLabel(range) + " for this store, so outbound activity is unavailable.";
 
+        var pApSet = pNet ? (isNum(pNet.apptSetPct) ? pNet.apptSetPct : pNet.apptSetOfContactedPct) : null;
+        var pShown = pNet ? c.rate(pNet.apptsShown, pNet.apptsSet) : null;
+        var pClosing = pNet ? c.rate(pNet.sold, pNet.goodLeads) : null;
         return "<tr" + linkAttrs + ">" + nameCell +
-          td(num(net.goodLeads, noNet)) +
-          td(pct(net.contactPct, "Internet Actual Contact % not reported"), colorFor(net.contactPct, engagementTarget()),
-            "Target " + fmtPct(engagementTarget(), 0)) +
-          td(pct(apSet, "Appts set % not reported"), colorFor(apSet, apptTarget()),
-            apSetTitle + " · target " + fmtPct(apptTarget(), 0)) +
-          td(pct(shownPct, "Needs appts set and appts shown")) +
+          td(num(net.goodLeads, noNet) + (netCmp ? " " + deltaChip(netCmp, "goodLeads", "Prev MTD") : "")) +
+          td(pct(net.contactPct, "Internet Actual Contact % not reported") + ppChip(net.contactPct, pNet && pNet.contactPct),
+            colorFor(net.contactPct, engagementTarget()), "Goal " + fmtPct(engagementTarget(), 0)) +
+          td(pct(apSet, "Appts set % not reported") + ppChip(apSet, pApSet),
+            colorFor(apSet, apptTarget()), apSetTitle + " \u00b7 Goal " + fmtPct(apptTarget(), 0)) +
+          td(pct(shownPct, "Needs appts set and appts shown") + ppChip(shownPct, pShown)) +
           td(totals ? num(totals.calls, outReason) : na(outReason), "", outboundNote) +
           td(totals ? num(totals.texts, outReason) : na(outReason), "", outboundNote) +
           td(totals ? num(totals.emails, outReason) : na(outReason), "", outboundNote) +
-          td(num(net.sold, noNet)) +
-          td(pct(closing, "Needs internet good leads and internet sold")) +
+          td(num(net.sold, noNet) + (netCmp ? " " + deltaChip(netCmp, "sold", "Prev MTD") : "")) +
+          td(pct(closing, "Needs internet good leads and internet sold") + ppChip(closing, pClosing)) +
           "</tr>";
       }).join("");
 
@@ -1314,6 +1574,9 @@
 
   global.Pages = {
     toggleRows: toggleRows,
+    toggleActivityGroups: toggleActivityGroups,
+    exportActivity: exportActivity,
+    group: groupPage,
     monogramFor: monogramFor,
     setStoreView: setStoreView,
     filterStores: filterStores,

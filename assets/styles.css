@@ -382,7 +382,28 @@ main:focus { outline: none; }
 }
 .tile-label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
 .tile-value { font-size: 27px; font-weight: 700; letter-spacing: -.02em; margin-top: 6px; }
-.tile-sub, .tile-delta { font-size: 12px; color: var(--muted); margin-top: 3px; }
+.tile-delta { font-size: 12px; color: var(--muted); margin-top: 3px; }
+.tile-sub {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+/* The goal is the standard to beat — it gets a dark badge with white text so it
+   never reads as just another caption. */
+.goal-badge {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--card);
+  font-weight: 800;
+  font-size: 10px;
+  letter-spacing: .05em;
+  padding: 2px 7px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
 
 /* a headline number is large enough that the status pill background reads as
    noise — keep the hue, drop the fill, and add the same glyph the cells use */
@@ -705,7 +726,8 @@ td.bad::after  { content: "\2193"; }   /* down arrow: behind target */
 .sb-v.good::after { content: " \2191"; font-size: .65em; }
 .sb-v.warn::after { content: " \2192"; font-size: .65em; }
 .sb-v.bad::after  { content: " \2193"; font-size: .65em; }
-.sb-l { font-size: 12px; color: var(--muted); }
+.sb-l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.sb-l .goal-badge { vertical-align: 1px; }
 
 /* ------------------------------------------------------------ card toolbar */
 
@@ -799,6 +821,54 @@ td.bad::after  { content: "\2193"; }   /* down arrow: behind target */
 .btn:hover { background: var(--line-soft); }
 .btn-accent { border-color: var(--good); color: var(--good); }
 .btn-accent:hover { background: var(--good-bg); }
+
+/* -------------------------------------- activity & internet: visible status */
+
+/* The Excel this replaces is white with saturated fills — the soft pastel cells
+   were too subtle. These fills only apply inside the two activity-style tables;
+   the softer palette stays everywhere else. */
+.activity-tbl td.good, .internet-tbl td.good { background: #A9E3C4; color: #084B2E; }
+.activity-tbl td.warn, .internet-tbl td.warn { background: #FBDE8F; color: #5C3A00; }
+.activity-tbl td.bad, .internet-tbl td.bad { background: #F6B8BB; color: #7C0F14; }
+@media (prefers-color-scheme: dark) {
+  .activity-tbl td.good, .internet-tbl td.good { background: #14532D; color: #A7F3C9; }
+  .activity-tbl td.warn, .internet-tbl td.warn { background: #4D3A08; color: #FBDE8F; }
+  .activity-tbl td.bad, .internet-tbl td.bad { background: #5C1216; color: #FDB6B9; }
+}
+
+.act-tools { display: flex; gap: 10px; margin: 0 0 14px; }
+.act-panel { margin-bottom: 18px; }
+.act-panel .section-title { border-top: 0; padding-top: 0; margin-top: 4px; display: flex; align-items: center; gap: 12px; }
+.act-group-btn { margin-left: auto; }
+.act-group-btn.on { background: var(--accent-tint); border-color: var(--accent-pale); }
+
+.group-row td {
+  background: var(--line-soft);
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.team-sub td { font-weight: 700; background: var(--line-soft); border-bottom: 2px solid var(--line); }
+
+/* ------------------------------------------------------------------- print */
+
+@media print {
+  .sidebar, .topbar, .settings, .cards-toolbar, .act-tools, .subnav { display: none !important; }
+  body { background: #fff; }
+  .app { display: block; }
+  main { padding: 0; max-width: none; }
+  .panel, .tblwrap, .tile, .statsband { box-shadow: none; border-color: #999; }
+  .tblwrap { overflow: visible; }
+  table { font-size: 11px; }
+  /* keep the status colours on paper */
+  .activity-tbl td.good, .internet-tbl td.good,
+  .activity-tbl td.warn, .internet-tbl td.warn,
+  .activity-tbl td.bad, .internet-tbl td.bad {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
 
 /* ------------------------------------------------------------- responsive */
 
