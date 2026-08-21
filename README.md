@@ -96,9 +96,9 @@ the browser only; a store with no goal shows "no goal" and is never marked red.
 Source: VinSolutions "Enterprise Performance" exports, emailed daily by
 `reportscheduler@motosnap.com`, plus a Matador Users activity CSV.
 
-Currently loaded: **271 snapshots across 12 stores**, through Jul 30 2026. 777 Nissan and
-Armstrong Subaru report daily since Jul 1 2026; ten more rooftops joined Jul 28 2026, so
-the newer stores now have real daily deltas of their own.
+Currently loaded: **983 snapshots across 12 stores**, through Aug 21 2026. Every store now
+has weeks of daily deltas; "Last month" covers the full July for all of them. 777 Nissan's
+scheduled sends stopped Aug 19 — worth checking in VinSolutions.
 
 Report shapes handled, all detected from the Filters sheet:
 - single-dealer KPI (Lead Type / Inventory Type / Vehicle Make). 8 of 11 KPI stores carry
