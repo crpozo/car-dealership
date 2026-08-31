@@ -11,6 +11,7 @@
 
   var ROUTES = {
     overview: function (range) { return Pages.overview(range); },
+    trends: function (range) { return Pages.trends(range); },
     stores: function (range) { return Pages.stores(range); },
     activity: function (range) { return Pages.activity(range); },
     internet: function (range) { return Pages.internet(range); }
@@ -167,10 +168,16 @@
 
     var dash = document.querySelector('[data-side="overview"]');
     if (dash) {
-      var onDash = route.name !== "store" && route.name !== "group";
+      var onDash = route.name !== "store" && route.name !== "group" && route.name !== "trends";
       dash.classList.toggle("on", onDash);
       if (onDash) dash.setAttribute("aria-current", "page");
       else dash.removeAttribute("aria-current");
+    }
+    var tr = document.querySelector('[data-side="trends"]');
+    if (tr) {
+      tr.classList.toggle("on", route.name === "trends");
+      if (route.name === "trends") tr.setAttribute("aria-current", "page");
+      else tr.removeAttribute("aria-current");
     }
   }
 
@@ -252,6 +259,83 @@
 
   /* --------------------------------------------------------------- settings */
 
+  /* Empty field = no goal (null) — the metric simply stays uncoloured. */
+  function pctInputNullable(el, key) {
+    if (!el) return;
+    var v = Core.settings[key];
+    el.value = (typeof v === "number" && v > 0) ? Math.round((v > 1 ? v : v * 100)) : "";
+    el.addEventListener("change", function () {
+      if (el.value === "") { Core.setSetting(key, null); render(); return; }
+      var n = parseFloat(el.value);
+      if (isNaN(n) || n <= 0) { el.value = ""; Core.setSetting(key, null); render(); return; }
+      if (n > 100) n = 100;
+      el.value = Math.round(n);
+      Core.setSetting(key, n / 100);
+      render();
+    });
+  }
+
+  function numInputNullable(el, key) {
+    if (!el) return;
+    var v = Core.settings[key];
+    el.value = (typeof v === "number" && v > 0) ? Math.round(v) : "";
+    el.addEventListener("change", function () {
+      if (el.value === "") { Core.setSetting(key, null); render(); return; }
+      var n = parseFloat(el.value);
+      if (isNaN(n) || n <= 0) { el.value = ""; Core.setSetting(key, null); render(); return; }
+      el.value = Math.round(n);
+      Core.setSetting(key, Math.round(n));
+      render();
+    });
+  }
+
+  /* Goal editing is gated behind a manager PIN. This is a per-browser
+     convenience lock, NOT security — the site is static and has no accounts. */
+  function managerUnlocked() {
+    try { return global.localStorage.getItem("icdash.managerMode") === "1"; } catch (e) { return false; }
+  }
+
+  function applyManagerLock() {
+    var locked = !managerUnlocked();
+    var panel = document.getElementById("settings-panel");
+    if (!panel) return;
+    var fields = panel.querySelectorAll("input[type=number], .goal-input");
+    for (var i = 0; i < fields.length; i++) fields[i].disabled = locked;
+    var btn = document.getElementById("manager-toggle");
+    if (btn) btn.textContent = locked ? "Unlock manager mode" : "Lock manager mode";
+    var note = document.getElementById("manager-state");
+    if (note) note.textContent = locked
+      ? "Goals are locked. Managers unlock with the PIN; employees leave this closed."
+      : "Manager mode is ON in this browser — goals are editable.";
+  }
+
+  function initManagerMode() {
+    var btn = document.getElementById("manager-toggle");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      if (managerUnlocked()) {
+        try { global.localStorage.setItem("icdash.managerMode", "0"); } catch (e) { /* private */ }
+        applyManagerLock();
+        return;
+      }
+      var pin = Core.settings.managerPin;
+      if (!pin) {
+        var a = global.prompt("Create a manager PIN (4+ digits). It is stored in this browser only \u2014 this is a lock, not real security.");
+        if (!a || a.length < 4) return;
+        var b = global.prompt("Repeat the PIN to confirm.");
+        if (a !== b) { global.alert("PINs did not match."); return; }
+        Core.setSetting("managerPin", a);
+        try { global.localStorage.setItem("icdash.managerMode", "1"); } catch (e) { /* private */ }
+      } else {
+        var typed = global.prompt("Manager PIN:");
+        if (typed !== pin) { if (typed !== null) global.alert("Wrong PIN."); return; }
+        try { global.localStorage.setItem("icdash.managerMode", "1"); } catch (e) { /* private */ }
+      }
+      applyManagerLock();
+    });
+    applyManagerLock();
+  }
+
   function pctInput(el, key) {
     el.value = Math.round((Core.settings[key] || 0) * 100);
     el.addEventListener("change", function () {
@@ -288,6 +372,12 @@
 
     pctInput(document.getElementById("set-engagement"), "engagementTarget");
     pctInput(document.getElementById("set-appt"), "apptTarget");
+    pctInputNullable(document.getElementById("set-closing"), "closingTarget");
+    pctInputNullable(document.getElementById("set-shown"), "shownTarget");
+    pctInput(document.getElementById("set-warn"), "warnRatio");
+    numInputNullable(document.getElementById("set-calls"), "callsPerDayGoal");
+    numInputNullable(document.getElementById("set-msgs"), "msgsPerDayGoal");
+    initManagerMode();
 
     var sat = document.getElementById("set-saturday");
     sat.checked = !!Core.settings.includeSaturday;
@@ -332,6 +422,7 @@
         ' placeholder="no goal" value="' + (goal === null ? "" : esc(goal)) + '"></label>';
     }
     wrap.innerHTML = html;
+    applyManagerLock();
 
     var inputs = wrap.querySelectorAll(".goal-input");
     for (var j = 0; j < inputs.length; j++) {

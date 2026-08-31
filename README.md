@@ -16,6 +16,7 @@ explicit View store / Salesperson activity actions. Tabs exist only inside a sto
 
 | Route | What it shows |
 |---|---|
+| `#/trends` | **Performance over time.** Full loaded history as line charts \u2014 metric selector (leads, sold, engagement %, appts set %, closing %), daily/weekly buckets, one line per store with a toggleable legend (validated 8-colour palette; extra stores draw grey). A store's line starts on its first daily report; mid-month catch-up blocks are excluded rather than spiked onto one day. Each store page carries the same chart scoped to itself. |
 | `#/overview` | **The dashboard.** Headline metrics across all stores, a card per store, and the store table: total opportunities · internet leads · engagement % · appts set of contacted % · internet closing % · total sold (DMS) · sales goal + pace. Click any card or row to open that store. |
 | `#/store/<id>` | Store → **Performance**: the store's headline metrics plus the lead-type table (opportunities · contact · appts · shown · sold), MTD vs the same period last month. Lead-type rows drill down: click Internet/Phone/Walk-in → New/Used/Certified → vehicle make, all respecting the selected timeframe. Makes sort by good leads. |
 | `#/store/<id>/activity` | Store → **Salesperson activity**: good leads · calls/emails/texts **per working day** (NETWORKDAYS, coloured vs the store's own per-rep average) · appts set · appts shown % · sold with ± vs Prev MTD. Group-by-team toggle where the export carries User Group; CSV download and print. |
@@ -134,7 +135,7 @@ Missing scheduled reports (these are the stores that get hidden):
 `assets/data.js` is generated — don't edit it by hand.
 
 ```bash
-python3 pipeline/ingest.py ~/Desktop/Scott   # exports -> pipeline/data.json
+python3 pipeline/ingest.py ~/Projects/Scott   # exports -> pipeline/data.json
 python3 pipeline/build.py                    # data.json -> assets/data.js
 ```
 
@@ -144,7 +145,7 @@ workbook is classified from its **Filters** sheet — dealer, date range, run da
 level — never from the filename or email subject, and duplicate sends are de-duplicated.
 Raw exports are intentionally not committed.
 
-Run the logic tests by opening `assets/core.test.html` in a browser (131 assertions).
+Run the logic tests by opening `assets/core.test.html` in a browser (128 assertions).
 
 `build.py` also stamps a content hash onto the asset URLs in `index.html`, so a rebuild is
 never served from a stale browser cache.

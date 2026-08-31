@@ -28,6 +28,12 @@
     includeSaturday: true,   // dealerships work Saturdays
     engagementTarget: 0.80,  // Internet Actual Contact %
     apptTarget: 0.40,        // Appts set of contacted %
+    closingTarget: null,     // Internet closing % — no default, colours only when set
+    shownTarget: null,       // Appts shown % — no default
+    warnRatio: 0.85,         // yellow band: at or above this share of a goal
+    callsPerDayGoal: null,   // outbound activity goals; when unset the activity
+    msgsPerDayGoal: null,    //   page colours against the store's own per-rep average
+    managerPin: null,        // gates goal editing in this browser; NOT real security
     weekStartsOn: 0,         // 0 = Sunday (US retail week)
     anchorMode: 'data',      // 'data' = anchor presets to the newest snapshot; 'clock' = wall clock
     timeframe: { id: 'month', start: null, end: null }
@@ -249,16 +255,17 @@
    * settings (localStorage backed)
    * ------------------------------------------------------------------ */
 
+  /* Derived from DEFAULT_SETTINGS so a newly added setting automatically gets
+     its default for users whose saved settings predate it — a hand-kept field
+     list here silently dropped every new key. */
   function cloneDefaults() {
-    return {
-      salesGoals: {},
-      includeSaturday: DEFAULT_SETTINGS.includeSaturday,
-      engagementTarget: DEFAULT_SETTINGS.engagementTarget,
-      apptTarget: DEFAULT_SETTINGS.apptTarget,
-      weekStartsOn: DEFAULT_SETTINGS.weekStartsOn,
-      anchorMode: DEFAULT_SETTINGS.anchorMode,
-      timeframe: { id: 'month', start: null, end: null }
-    };
+    var out = {};
+    for (var k in DEFAULT_SETTINGS) {
+      if (!Object.prototype.hasOwnProperty.call(DEFAULT_SETTINGS, k)) continue;
+      var v = DEFAULT_SETTINGS[k];
+      out[k] = (v && typeof v === 'object') ? JSON.parse(JSON.stringify(v)) : v;
+    }
+    return out;
   }
 
   function storage() {
@@ -288,6 +295,13 @@
         if (typeof saved.includeSaturday === 'boolean') s.includeSaturday = saved.includeSaturday;
         if (numOrNull(saved.engagementTarget) !== null) s.engagementTarget = numOrNull(saved.engagementTarget);
         if (numOrNull(saved.apptTarget) !== null) s.apptTarget = numOrNull(saved.apptTarget);
+        // nullable goals: null is a legitimate saved value, so restore verbatim
+        if ('closingTarget' in saved) s.closingTarget = numOrNull(saved.closingTarget);
+        if ('shownTarget' in saved) s.shownTarget = numOrNull(saved.shownTarget);
+        if (numOrNull(saved.warnRatio) !== null) s.warnRatio = numOrNull(saved.warnRatio);
+        if ('callsPerDayGoal' in saved) s.callsPerDayGoal = numOrNull(saved.callsPerDayGoal);
+        if ('msgsPerDayGoal' in saved) s.msgsPerDayGoal = numOrNull(saved.msgsPerDayGoal);
+        if (typeof saved.managerPin === 'string' && saved.managerPin) s.managerPin = saved.managerPin;
         if (saved.weekStartsOn === 0 || saved.weekStartsOn === 1) s.weekStartsOn = saved.weekStartsOn;
         if (saved.anchorMode === 'data' || saved.anchorMode === 'clock') s.anchorMode = saved.anchorMode;
         if (saved.timeframe && typeof saved.timeframe === 'object') {
@@ -356,14 +370,19 @@
 
   /** green at/above target, amber within 15% below, red further below.
    *  "none" whenever the comparison is not real (missing actual, missing/zero target). */
+  /** Green at/above the goal; yellow while still at >= warnRatio of it (85% by
+   * default, configurable in Settings); red below that; uncoloured with no goal. */
   function colorFor(actual, target) {
     var a = numOrNull(actual);
     var t = numOrNull(target);
     if (a === null || t === null || t === 0) return 'none';
     var ratio = a / t;
     if (!isFinite(ratio)) return 'none';
+    var warnAt = numOrNull(settings.warnRatio);
+    if (warnAt === null) warnAt = 0.85;
+    if (warnAt > 1) warnAt = warnAt / 100;
     if (ratio >= 1) return 'good';
-    if (ratio >= 0.85) return 'warn';
+    if (ratio >= warnAt) return 'warn';
     return 'bad';
   }
 
@@ -1673,6 +1692,62 @@
     return out;
   }
 
+  /**
+   * trendSeries(storeId, granularity 'day'|'week')
+   *   → [{date, internetLeads, sold, internetSold, contacted, apptsSet,
+   *       engagementPct, apptSetPct, closingPct}]
+   *
+   * Built from the daily KPI deltas. A delta covering more than one day (a store's
+   * first cumulative report after joining mid-month) is EXCLUDED — it cannot be
+   * placed on a single day or week, and spiking one date with a month of numbers
+   * would fabricate a trend. Ratios are re-derived from summed counts per bucket.
+   */
+  function trendSeries(storeId, granularity) {
+    var weekly = granularity === 'week';
+    var byStore = state.groupsByStore[storeId];
+    var groups = byStore ? (byStore.kpi || []) : [];
+    var buckets = {};
+    for (var i = 0; i < groups.length; i++) {
+      for (var j = 0; j < groups[i].deltas.length; j++) {
+        var d = groups[i].deltas[j];
+        if (dayNum(d.spanStart) !== dayNum(d.spanEnd)) continue; // unattributable block
+        var key = d.date;
+        if (weekly) {
+          var wd = parseDate(d.date);
+          var ws = numOrNull(settings.weekStartsOn) === null ? 0 : settings.weekStartsOn;
+          var back = (wd.getUTCDay() - ws + 7) % 7;
+          key = iso(addDays(d.date, -back));
+        }
+        var bag = buckets[key] || (buckets[key] = {});
+        var tot = d.map[P_TOTAL] || {};
+        var net = d.map['L' + SEP + 'internet'] || {};
+        bag.sold = (bag.sold || 0) + (tot.sold || 0);
+        bag.internetLeads = (bag.internetLeads || 0) + (net.goodLeads || 0);
+        bag.internetSold = (bag.internetSold || 0) + (net.sold || 0);
+        bag.contacted = (bag.contacted || 0) + (net.contacted || 0);
+        bag.apptsSet = (bag.apptsSet || 0) + (net.apptsSet || 0);
+      }
+    }
+    var out = [];
+    for (var k in buckets) {
+      if (!Object.prototype.hasOwnProperty.call(buckets, k)) continue;
+      var b = buckets[k];
+      out.push({
+        date: k,
+        internetLeads: b.internetLeads || 0,
+        sold: b.sold || 0,
+        internetSold: b.internetSold || 0,
+        contacted: b.contacted || 0,
+        apptsSet: b.apptsSet || 0,
+        engagementPct: rate(b.contacted, b.internetLeads),
+        apptSetPct: rate(b.apptsSet, b.contacted),
+        closingPct: rate(b.internetSold, b.internetLeads)
+      });
+    }
+    out.sort(function (a, b2) { return dayNum(a.date) - dayNum(b2.date); });
+    return out;
+  }
+
   function integrations() {
     return ((state.data && state.data.integrations) || []).slice();
   }
@@ -1745,6 +1820,7 @@
     store: store,
     coverage: coverage,
     dailyDeltas: dailyDeltas,
+    trendSeries: trendSeries,
     integrations: integrations,
     matador: matador,
     generatedAt: generatedAt,

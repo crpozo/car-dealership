@@ -34,6 +34,10 @@
   --bad: #B3161B;
   --bad-bg: #FCE9EA;
 
+  /* categorical data-viz palette — validated 8-slot order (dataviz reference) */
+  --viz1: #2a78d6; --viz2: #eb6834; --viz3: #1baf7a; --viz4: #eda100;
+  --viz5: #e87ba4; --viz6: #008300; --viz7: #4a3aa7; --viz8: #e34948;
+
   --sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   --shadow: 0 1px 2px rgba(25, 29, 51, .04), 0 4px 16px rgba(25, 29, 51, .05);
@@ -65,6 +69,9 @@
     --warn-bg: #3A2B0C;
     --bad: #FF8E92;
     --bad-bg: #3D1417;
+
+    --viz1: #3987e5; --viz2: #d95926; --viz3: #199e70; --viz4: #c98500;
+    --viz5: #d55181; --viz6: #008300; --viz7: #9085e9; --viz8: #e66767;
 
     --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 16px rgba(0, 0, 0, .25);
   }
@@ -382,7 +389,8 @@ main:focus { outline: none; }
 }
 .tile-label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
 .tile-value { font-size: 27px; font-weight: 700; letter-spacing: -.02em; margin-top: 6px; }
-.tile-delta { font-size: 12px; color: var(--muted); margin-top: 3px; }
+.tile-delta { font-size: 16px; font-weight: 700; color: var(--muted); margin-top: 3px; }
+.tile-delta .delta { font-size: 16px; }
 .tile-sub {
   font-size: 11px;
   color: var(--muted);
@@ -870,6 +878,66 @@ td.bad::after  { content: "\2193"; }   /* down arrow: behind target */
     print-color-adjust: exact;
   }
 }
+
+/* ----------------------------------------------------------------- trends */
+
+.trend-tools select { min-width: 220px; }
+.trend-legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+.tl-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+.tl-chip .tl-dot { width: 10px; height: 10px; border-radius: 3px; }
+.tl-chip.off { opacity: .42; }
+.tl-chip.off .tl-dot { background: var(--faint) !important; }
+
+/* ------------------------------------------------------ activity goals line */
+
+.goals-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  font-size: 12.5px;
+  margin: 0 0 12px;
+}
+.goals-line .gl-t {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: 11px;
+  color: var(--muted);
+}
+.goals-line .gl-chip {
+  background: var(--line-soft);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-weight: 600;
+}
+.goals-line .gl-legend { display: inline-flex; gap: 6px; }
+.goals-line .gl-edit { color: var(--faint); margin-left: auto; }
+
+.fieldline .opt { font-style: normal; font-weight: 400; color: var(--faint); font-size: 11.5px; }
+.color-explainer {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: var(--line-soft);
+  border-radius: 10px;
+  font-size: 13px;
+}
+.color-explainer h3 { margin-bottom: 6px; }
+.color-explainer p { margin: 0; line-height: 1.9; }
+input:disabled { opacity: .45; cursor: not-allowed; }
 
 /* ------------------------------------------------------------- responsive */
 

@@ -30,7 +30,7 @@ import openpyxl
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "data.json")
-DEFAULT_SRC = os.path.expanduser("~/Desktop/Scott")
+DEFAULT_SRC = os.path.expanduser("~/Projects/Scott")
 CACHE = os.path.join(HERE, ".cache")
 
 # Stores kept out of the dashboard entirely, by slug. Empty today: Vern Eide Honda
@@ -38,7 +38,7 @@ CACHE = os.path.join(HERE, ".cache")
 # joined the daily schedule on Jul 28 2026 along with nine other rooftops, so it is
 # back in. Excluded stores are always reported at the end of a run, never dropped
 # silently.
-EXCLUDE_STORES = set()
+EXCLUDE_STORES = {"777-nissan"}  # dropped at the client's request, 2026-08-28
 
 # Dealer groups, matched against the store name. A group only surfaces in the UI
 # when at least two of its stores actually have data, so listing future clients

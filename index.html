@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=bcdb60839a">
+<link rel="stylesheet" href="assets/styles.css?v=f5343c9aed">
 </head>
 <body>
 
@@ -23,6 +23,9 @@
     <p class="side-label">Main menu</p>
     <a href="#/overview" class="side-item" data-side="overview">
       <span class="side-ico" aria-hidden="true">&#8962;</span>Dashboard
+    </a>
+    <a href="#/trends" class="side-item" data-side="trends">
+      <span class="side-ico" aria-hidden="true">&#10148;</span>Trends
     </a>
 
     <div id="side-groups"></div>
@@ -67,6 +70,28 @@
       <label class="fieldline">Appts set of contacted target
         <span><input type="number" id="set-appt" min="0" max="100" step="1"> %</span>
       </label>
+      <label class="fieldline">Internet closing goal <em class="opt">(empty = uncoloured)</em>
+        <span><input type="number" id="set-closing" min="0" max="100" step="1" placeholder="&mdash;"> %</span>
+      </label>
+      <label class="fieldline">Appts shown goal <em class="opt">(empty = uncoloured)</em>
+        <span><input type="number" id="set-shown" min="0" max="100" step="1" placeholder="&mdash;"> %</span>
+      </label>
+      <label class="fieldline">Yellow band starts at
+        <span><input type="number" id="set-warn" min="1" max="100" step="1"> % of goal</span>
+      </label>
+      <label class="fieldline">Calls goal <em class="opt">(per rep, per day)</em>
+        <span><input type="number" id="set-calls" min="0" step="1" placeholder="store avg"></span>
+      </label>
+      <label class="fieldline">Texts + Emails goal <em class="opt">(per rep, per day)</em>
+        <span><input type="number" id="set-msgs" min="0" step="1" placeholder="store avg"></span>
+      </label>
+      <div class="color-explainer">
+        <h3>How the colours work</h3>
+        <p><span class="pill good"><span class="dot"></span>Green</span> at or above the goal &middot;
+        <span class="pill warn"><span class="dot"></span>Yellow</span> still at or above the yellow band (default 85% of the goal) &middot;
+        <span class="pill bad"><span class="dot"></span>Red</span> below that.
+        A metric with no goal set stays uncoloured &mdash; nothing is judged against an invented number.</p>
+      </div>
       <label class="checkline">
         <input type="checkbox" id="set-saturday">
         Count Saturday as a working day for pace
@@ -80,7 +105,9 @@
     </div>
   </div>
   <div class="settings-actions">
+    <button type="button" id="manager-toggle" class="ghost-btn">Unlock manager mode</button>
     <button type="button" id="settings-reset" class="ghost-btn">Reset to defaults</button>
+    <span id="manager-state" class="settings-note"></span>
   </div>
 </section>
 
@@ -89,9 +116,9 @@
 </div>
 </div>
 
-<script src="assets/data.js?v=bcdb60839a"></script>
-<script src="assets/core.js?v=bcdb60839a"></script>
-<script src="assets/pages.js?v=bcdb60839a"></script>
-<script src="assets/app.js?v=bcdb60839a"></script>
+<script src="assets/data.js?v=f5343c9aed"></script>
+<script src="assets/core.js?v=f5343c9aed"></script>
+<script src="assets/pages.js?v=f5343c9aed"></script>
+<script src="assets/app.js?v=f5343c9aed"></script>
 </body>
 </html>
