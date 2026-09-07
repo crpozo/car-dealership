@@ -41,7 +41,7 @@ TOKEN = os.path.join(CFG, "token.json")
 ADC = os.path.expanduser("~/.config/gcloud/application_default_credentials.json")
 OUT = os.path.expanduser("~/Projects/Scott/gmail-pull")
 
-WANTED_EXT = (".xlsx", ".csv")
+WANTED_EXT = (".xlsx", ".csv", ".pdf")
 
 
 def credentials():

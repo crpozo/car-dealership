@@ -24,7 +24,7 @@ import shutil
 import sys
 import zipfile
 from collections import defaultdict
-from datetime import datetime
+from datetime import date, datetime, timedelta
 
 import openpyxl
 
@@ -198,8 +198,8 @@ def extract_mbox(path, log):
 
 
 def discover(src_dirs, log):
-    """Walk the sources and return (xlsx_paths, matador_csv_paths, other_csv_paths)."""
-    xlsx, csvs, other_csvs, mboxes, zips = [], [], [], [], []
+    """Walk the sources and return (xlsx_paths, matador_csv_paths, other_csv_paths, pdf_paths)."""
+    xlsx, csvs, other_csvs, pdfs, mboxes, zips = [], [], [], [], [], []
 
     def walk(roots):
         for root in roots:
@@ -226,13 +226,15 @@ def discover(src_dirs, log):
             csvs.append(path)
         elif low.endswith(".csv"):
             other_csvs.append(path)   # sniffed later — Covideo names everything report.csv
+        elif low.endswith(".pdf"):
+            pdfs.append(path)         # DriveCentric KPI Comparison Reports
 
     walk(src_dirs)
     if zips:
         walk(unpack_zips(zips, log))
     for mb in mboxes:
         xlsx.extend(extract_mbox(mb, log))
-    return xlsx, csvs, other_csvs
+    return xlsx, csvs, other_csvs, pdfs
 
 
 # --------------------------------------------------------------------------- #
@@ -501,6 +503,137 @@ def parse_matador(path, log):
     return out
 
 
+# --------------------------------------------------------------------------- #
+# DriveCentric "KPI Comparison Report" PDFs (Bay Ridge, El Cajon, Garavel x2)
+# --------------------------------------------------------------------------- #
+
+# One page per store per day: sections per lead source (store total first, then
+# Showroom / Phone / Internet / Campaign / Service / Chat), each with rows
+# This Month / Previous MTD / Last Month and 11 columns:
+#   Net Leads, Engagement %, Appt Due, App Created, Appts Created %,
+#   Appt Show, Appt Show %, Appt Sold, Appt Sold %, Total Delivered, Closing %
+# PyMuPDF's text stream lists all data blocks first, then the section labels;
+# each label is the line right before a "Net Leads" header, and the first label
+# is the store name (its block is the store total — verified: total Net Leads
+# equals the sum of the sections, which parse_dc_pdf asserts per file).
+
+DC_ROW_LABELS = ("This Month", "Previous MTD", "Last Month")
+# Showroom is DriveCentric's walk-in traffic; mapping it keeps the dashboard's
+# fixed Internet/Phone/Walk-in rows meaningful. The other sources (Campaign,
+# Service, Chat) stay out of the visible rows but inside the store total, the
+# same treatment Referral/PreviousCustomer get on VinSolutions stores.
+DC_LEAD_TYPES = {"Showroom": "Walk-in", "Phone": "Phone", "Internet": "Internet",
+                 "Campaign": "Campaign", "Service": "Service", "Chat": "Chat"}
+
+
+def dc_value(s):
+    s = s.strip()
+    if s == "-" or s == "":
+        return None
+    if s.endswith("%"):
+        try:
+            return float(s[:-1].replace(",", "")) / 100.0
+        except ValueError:
+            return None
+    try:
+        return float(s.replace(",", ""))
+    except ValueError:
+        return None
+
+
+def dc_metrics(vals):
+    """One DriveCentric row -> the same metrics bag VinSolutions rows produce."""
+    good = int(vals[0] or 0)
+    engagement = vals[1]
+    appts_set = int(vals[3] or 0)
+    shown = int(vals[5] or 0)
+    sold = vals[9] or 0
+    contacted = int(round(engagement * good)) if engagement else 0
+    return {
+        "goodLeads": good,
+        "sold": sold,
+        "apptsShown": shown,
+        "contactPct": engagement or 0,
+        "apptSetOfContactedPct": (appts_set / contacted) if contacted else 0,
+        "apptSetPct": None,
+        "contacted": contacted,
+        "apptsSet": appts_set,
+    }
+
+
+def parse_dc_pdf(path):
+    """-> [current snapshot, prior snapshot] for one DriveCentric PDF."""
+    import fitz  # PyMuPDF
+
+    doc = fitz.open(path)
+    try:
+        lines = [ln.strip() for ln in doc[0].get_text().splitlines() if ln.strip()]
+    finally:
+        doc.close()
+
+    m = re.search(r"-(\d{1,2})-(\d{1,2})-(\d{4})\.pdf$", os.path.basename(path))
+    if not m:
+        raise ValueError("no run date in PDF filename")
+    run = date(int(m.group(3)), int(m.group(1)), int(m.group(2)))
+
+    # data blocks: each row label is followed by its 11 values
+    blocks, i = [], 0
+    while i < len(lines):
+        if lines[i] in DC_ROW_LABELS:
+            vals = [dc_value(v) for v in lines[i + 1:i + 12]]
+            blocks.append((lines[i], vals))
+            i += 12
+        else:
+            i += 1
+    # section labels: the line right before each "Net Leads" header
+    labels = [lines[j - 1] for j in range(1, len(lines)) if lines[j] == "Net Leads"]
+
+    if len(blocks) != 3 * len(labels) or not labels:
+        raise ValueError("unrecognised PDF layout (%d blocks, %d labels)" % (len(blocks), len(labels)))
+
+    store_name = labels[0]
+    per_section = {}          # label -> {rowLabel: vals}
+    for bi, (row_label, vals) in enumerate(blocks):
+        per_section.setdefault(labels[bi // 3], {})[row_label] = vals
+
+    def build(row_label, period, begin, end):
+        by_lt = []
+        for sec, rows in per_section.items():
+            if sec == store_name:
+                continue
+            lt = DC_LEAD_TYPES.get(sec, sec)
+            by_lt.append({"leadType": lt, "metrics": dc_metrics(rows[row_label]), "byInventory": []})
+        total = dc_metrics(per_section[store_name][row_label])
+        check = sum((n["metrics"]["goodLeads"] for n in by_lt))
+        if check != total["goodLeads"]:
+            raise ValueError("section leads %d != total %d (%s)" % (check, total["goodLeads"], row_label))
+        return {
+            "storeId": slug(store_name),
+            "storeName": store_name,
+            "dealers": [store_name],
+            "kind": "kpi",
+            "period": period,
+            "dateRange": "Current Month" if period == "current" else "Previous Month MTD",
+            "begin": begin.isoformat(),
+            "end": end.isoformat(),
+            "runDate": run.isoformat(),
+            "source": os.path.basename(path),
+            "crm": "DriveCentric",
+            "rowCount": len(by_lt) + 1,
+            "total": reconcile_total(total, by_lt),
+            "byLeadType": by_lt,
+            "reps": None,
+            "repTotals": None,
+        }
+
+    prev_last = date(run.year, run.month, 1) - timedelta(days=1)
+    prior_end = date(prev_last.year, prev_last.month, min(run.day, prev_last.day))
+    return [
+        build("This Month", "current", date(run.year, run.month, 1), run),
+        build("Previous MTD", "prior", date(prev_last.year, prev_last.month, 1), prior_end),
+    ]
+
+
 # Covideo's own "Vern Eide Honda Sioux City" is one of the two dealers the KPI
 # reports combine into a single store, so its activity lands on the combined id.
 COVIDEO_STORE_OVERRIDES = {"vern-eide-honda-sioux-city": "vern-eide-sioux-city-combined"}
@@ -578,7 +711,7 @@ INTEGRATIONS = [
     {"name": "Tekion", "type": "CRM", "api": "requested", "scheduledEmail": True,
      "note": "Has an API — access inquiry in progress. Reports can be scheduled by email."},
     {"name": "DriveCentric", "type": "CRM", "api": "unknown", "scheduledEmail": True,
-     "note": "API availability unconfirmed. Reports can be scheduled."},
+     "note": "Daily KPI Comparison PDF arrives by scheduled email since Aug 2026 (Bay Ridge, El Cajon, Garavel x2)."},
     {"name": "Momentum", "type": "CRM", "api": "requested", "scheduledEmail": True,
      "note": "Has an API — asking about access. Reports can be scheduled."},
     {"name": "Matador", "type": "AI messaging", "api": "unknown", "scheduledEmail": False,
@@ -593,11 +726,11 @@ def main(argv):
     log = []
     os.makedirs(CACHE, exist_ok=True)
 
-    xlsx_paths, csv_paths, other_csv_paths = discover(src_dirs, log)
+    xlsx_paths, csv_paths, other_csv_paths, pdf_paths = discover(src_dirs, log)
     print("sources: %s" % ", ".join(src_dirs))
     for line in log:
         print("  %s" % line)
-    print("workbooks found: %d" % len(xlsx_paths))
+    print("workbooks found: %d (+%d PDFs)" % (len(xlsx_paths), len(pdf_paths)))
 
     snapshots, skipped = [], []
     excluded = defaultdict(int)
@@ -611,6 +744,18 @@ def main(argv):
             excluded[snap["storeName"]] += 1
             continue
         snapshots.append(snap)
+
+    for path in sorted(pdf_paths):
+        try:
+            pdf_snaps = parse_dc_pdf(path)
+        except Exception as exc:  # noqa: BLE001
+            skipped.append((os.path.basename(path), str(exc)))
+            continue
+        for snap in pdf_snaps:
+            if snap["storeId"] in EXCLUDE_STORES:
+                excluded[snap["storeName"]] += 1
+                continue
+            snapshots.append(snap)
 
     # de-duplicate identical sends; keep the richer copy
     best = {}
@@ -636,8 +781,10 @@ def main(argv):
 
     # stores and coverage are derived from what actually parsed
     store_names, coverage = {}, defaultdict(lambda: {"runDates": set(), "months": set(), "kinds": set()})
+    store_crm = {}
     for snap in kept:
         store_names[snap["storeId"]] = snap["storeName"]
+        store_crm[snap["storeId"]] = snap.get("crm", "VinSolutions")
         cov = coverage[snap["storeId"]]
         cov["runDates"].add(snap["runDate"])
         if snap["begin"]:
@@ -653,7 +800,7 @@ def main(argv):
         stores.append({
             "id": sid,
             "name": store_names[sid],
-            "crm": "VinSolutions",
+            "crm": store_crm.get(sid, "VinSolutions"),
             "tools": (["Matador"] if sid in matador_stores else []) +
                      (["Covideo"] if sid in covideo_stores else []),
             "location": None,

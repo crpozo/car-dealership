@@ -18,9 +18,41 @@
    "group": "armstrong"
   },
   {
+   "id": "bay-ridge-honda",
+   "name": "Bay Ridge Honda",
+   "crm": "DriveCentric",
+   "tools": [],
+   "location": null,
+   "group": null
+  },
+  {
+   "id": "garavel-cjdr",
+   "name": "Garavel CJDR",
+   "crm": "DriveCentric",
+   "tools": [],
+   "location": null,
+   "group": null
+  },
+  {
+   "id": "garavel-subaru",
+   "name": "Garavel Subaru",
+   "crm": "DriveCentric",
+   "tools": [],
+   "location": null,
+   "group": null
+  },
+  {
    "id": "gresham-chrysler-dodge-jeep-ram",
    "name": "Gresham Chrysler Dodge Jeep Ram",
    "crm": "VinSolutions",
+   "tools": [],
+   "location": null,
+   "group": null
+  },
+  {
+   "id": "honda-of-el-cajon",
+   "name": "Honda of El Cajon",
+   "crm": "DriveCentric",
    "tools": [],
    "location": null,
    "group": null
@@ -32171,6 +32203,6278 @@
    "byLeadType": []
   },
   {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-08-01",
+   "end": "2026-08-29",
+   "runDate": "2026-08-29",
+   "source": "1a04d9cdd1c8bcfe-Scheduled Report-8-29-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 1399,
+    "sold": 0.25,
+    "apptsShown": 0,
+    "contactPct": 333.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 120750,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 316,
+      "sold": 0.551,
+      "apptsShown": 0,
+      "contactPct": 25.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 7900,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 323,
+      "sold": 0.337,
+      "apptsShown": 0,
+      "contactPct": 145.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 46835,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 750,
+      "sold": 0.084,
+      "apptsShown": 0,
+      "contactPct": 161.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 120750,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 10,
+      "sold": 0.2,
+      "apptsShown": 1,
+      "contactPct": 2.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 20,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-08-01",
+   "end": "2026-08-30",
+   "runDate": "2026-08-30",
+   "source": "1a052c27cb2d65b2-Scheduled Report-8-30-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 1463,
+    "sold": 0.252,
+    "apptsShown": 0,
+    "contactPct": 346.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 133790,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 340,
+      "sold": 0.532,
+      "apptsShown": 0,
+      "contactPct": 25.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 8500,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 326,
+      "sold": 0.35,
+      "apptsShown": 0,
+      "contactPct": 149.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 48574,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 787,
+      "sold": 0.08900000000000001,
+      "apptsShown": 0,
+      "contactPct": 170.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 133790,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 10,
+      "sold": 0.2,
+      "apptsShown": 1,
+      "contactPct": 2.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 20,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-08-01",
+   "end": "2026-08-31",
+   "runDate": "2026-08-31",
+   "source": "1a057fab30c48dc6-Scheduled Report-8-31-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 1501,
+    "sold": 0.248,
+    "apptsShown": 0,
+    "contactPct": 357.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 142158,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 343,
+      "sold": 0.531,
+      "apptsShown": 0,
+      "contactPct": 26.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 8918,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 331,
+      "sold": 0.344,
+      "apptsShown": 0,
+      "contactPct": 155.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 51305,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 817,
+      "sold": 0.08800000000000001,
+      "apptsShown": 0,
+      "contactPct": 174.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 142158,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 10,
+      "sold": 0.2,
+      "apptsShown": 1,
+      "contactPct": 2.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 20,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-01",
+   "runDate": "2026-09-01",
+   "source": "1a05d103460069c6-Scheduled Report-9-1-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 1,
+    "sold": 0,
+    "apptsShown": 0,
+    "contactPct": 0,
+    "apptSetOfContactedPct": 0,
+    "apptSetPct": null,
+    "contacted": 0,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-02",
+   "runDate": "2026-09-02",
+   "source": "1a06237a42bb1174-Scheduled Report-9-2-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 6,
+   "total": {
+    "goodLeads": 48,
+    "sold": 8.0,
+    "apptsShown": 5,
+    "contactPct": 0.271,
+    "apptSetOfContactedPct": 1.0769230769230769,
+    "apptSetPct": null,
+    "contacted": 10,
+    "apptsSet": 8,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 10,
+      "sold": 6.0,
+      "apptsShown": 1,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 9,
+      "sold": 1.0,
+      "apptsShown": 1,
+      "contactPct": 0.33299999999999996,
+      "apptSetOfContactedPct": 1.6666666666666667,
+      "apptSetPct": null,
+      "contacted": 3,
+      "apptsSet": 5
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 29,
+      "sold": 1.0,
+      "apptsShown": 3,
+      "contactPct": 0.345,
+      "apptSetOfContactedPct": 0.8,
+      "apptSetPct": null,
+      "contacted": 10,
+      "apptsSet": 8
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-03",
+   "runDate": "2026-09-03",
+   "source": "1a0675d373f2c221-Scheduled Report-9-3-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 6,
+   "total": {
+    "goodLeads": 99,
+    "sold": 14.0,
+    "apptsShown": 13,
+    "contactPct": 0.3,
+    "apptSetOfContactedPct": 0.9666666666666667,
+    "apptSetPct": null,
+    "contacted": 23,
+    "apptsSet": 15,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 17,
+      "sold": 7.0,
+      "apptsShown": 1,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 24,
+      "sold": 4.0,
+      "apptsShown": 4,
+      "contactPct": 0.292,
+      "apptSetOfContactedPct": 1.8571428571428572,
+      "apptSetPct": null,
+      "contacted": 7,
+      "apptsSet": 13
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 58,
+      "sold": 3.0,
+      "apptsShown": 8,
+      "contactPct": 0.397,
+      "apptSetOfContactedPct": 0.6521739130434783,
+      "apptSetPct": null,
+      "contacted": 23,
+      "apptsSet": 15
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-04",
+   "runDate": "2026-09-04",
+   "source": "1a06c82b07d1e814-Scheduled Report-9-4-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 6,
+   "total": {
+    "goodLeads": 169,
+    "sold": 27.0,
+    "apptsShown": 19,
+    "contactPct": 0.371,
+    "apptSetOfContactedPct": 0.7142857142857143,
+    "apptSetPct": null,
+    "contacted": 45,
+    "apptsSet": 21,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 28,
+      "sold": 14.0,
+      "apptsShown": 1,
+      "contactPct": 0.036000000000000004,
+      "apptSetOfContactedPct": 1.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 40,
+      "sold": 6.0,
+      "apptsShown": 6,
+      "contactPct": 0.425,
+      "apptSetOfContactedPct": 1.3529411764705883,
+      "apptSetPct": null,
+      "contacted": 17,
+      "apptsSet": 23
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 101,
+      "sold": 7.0,
+      "apptsShown": 12,
+      "contactPct": 0.446,
+      "apptSetOfContactedPct": 0.4666666666666667,
+      "apptSetPct": null,
+      "contacted": 45,
+      "apptsSet": 21
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-05",
+   "runDate": "2026-09-05",
+   "source": "1a071a97edd96aea-Scheduled Report-9-5-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 6,
+   "total": {
+    "goodLeads": 215,
+    "sold": 40.0,
+    "apptsShown": 22,
+    "contactPct": 0.414,
+    "apptSetOfContactedPct": 0.6741573033707865,
+    "apptSetPct": null,
+    "contacted": 69,
+    "apptsSet": 30,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 40,
+      "sold": 22.0,
+      "apptsShown": 1,
+      "contactPct": 0.025,
+      "apptSetOfContactedPct": 3.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 3
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 52,
+      "sold": 8.0,
+      "apptsShown": 8,
+      "contactPct": 0.365,
+      "apptSetOfContactedPct": 1.4210526315789473,
+      "apptSetPct": null,
+      "contacted": 19,
+      "apptsSet": 27
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 123,
+      "sold": 10.0,
+      "apptsShown": 13,
+      "contactPct": 0.5589999999999999,
+      "apptSetOfContactedPct": 0.43478260869565216,
+      "apptSetPct": null,
+      "contacted": 69,
+      "apptsSet": 30
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-06",
+   "runDate": "2026-09-06",
+   "source": "1a076d06ceabbd25-Scheduled Report-9-6-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 6,
+   "total": {
+    "goodLeads": 273,
+    "sold": 57.0,
+    "apptsShown": 28,
+    "contactPct": 0.392,
+    "apptSetOfContactedPct": 0.6448598130841121,
+    "apptSetPct": null,
+    "contacted": 81,
+    "apptsSet": 39,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 53,
+      "sold": 33.0,
+      "apptsShown": 2,
+      "contactPct": 0.038,
+      "apptSetOfContactedPct": 1.5,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 3
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 60,
+      "sold": 11.0,
+      "apptsShown": 10,
+      "contactPct": 0.4,
+      "apptSetOfContactedPct": 1.125,
+      "apptSetPct": null,
+      "contacted": 24,
+      "apptsSet": 27
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 160,
+      "sold": 13.0,
+      "apptsShown": 16,
+      "contactPct": 0.506,
+      "apptSetOfContactedPct": 0.48148148148148145,
+      "apptSetPct": null,
+      "contacted": 81,
+      "apptsSet": 39
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-07",
+   "runDate": "2026-09-07",
+   "source": "1a07bf699b4b9677-Scheduled Report-9-7-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 6,
+   "total": {
+    "goodLeads": 306,
+    "sold": 59.0,
+    "apptsShown": 31,
+    "contactPct": 0.40399999999999997,
+    "apptSetOfContactedPct": 0.6048387096774194,
+    "apptSetPct": null,
+    "contacted": 94,
+    "apptsSet": 43,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 59,
+      "sold": 35.0,
+      "apptsShown": 2,
+      "contactPct": 0.034,
+      "apptSetOfContactedPct": 2.0,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 4
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 64,
+      "sold": 11.0,
+      "apptsShown": 11,
+      "contactPct": 0.406,
+      "apptSetOfContactedPct": 1.0769230769230769,
+      "apptSetPct": null,
+      "contacted": 26,
+      "apptsSet": 28
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 182,
+      "sold": 13.0,
+      "apptsShown": 18,
+      "contactPct": 0.519,
+      "apptSetOfContactedPct": 0.4574468085106383,
+      "apptSetPct": null,
+      "contacted": 94,
+      "apptsSet": 43
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0.5,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-07-01",
+   "end": "2026-07-29",
+   "runDate": "2026-08-29",
+   "source": "1a04d9cdd1c8bcfe-Scheduled Report-8-29-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 1463,
+    "sold": 0.249,
+    "apptsShown": 0,
+    "contactPct": 325.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 143992,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 322,
+      "sold": 0.568,
+      "apptsShown": 0,
+      "contactPct": 21.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 6762,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 257,
+      "sold": 0.42,
+      "apptsShown": 0,
+      "contactPct": 139.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 35723,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 878,
+      "sold": 0.084,
+      "apptsShown": 0,
+      "contactPct": 164.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 143992,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 6,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 6,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-07-01",
+   "end": "2026-07-30",
+   "runDate": "2026-08-30",
+   "source": "1a052c27cb2d65b2-Scheduled Report-8-30-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 1528,
+    "sold": 0.25,
+    "apptsShown": 0,
+    "contactPct": 339.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 158295,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 333,
+      "sold": 0.5710000000000001,
+      "apptsShown": 0,
+      "contactPct": 24.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 7992,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 274,
+      "sold": 0.41200000000000003,
+      "apptsShown": 0,
+      "contactPct": 141.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 38634,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 915,
+      "sold": 0.086,
+      "apptsShown": 0,
+      "contactPct": 173.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 158295,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 6,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 6,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-07-01",
+   "end": "2026-07-31",
+   "runDate": "2026-08-31",
+   "source": "1a057fab30c48dc6-Scheduled Report-8-31-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 1580,
+    "sold": 0.266,
+    "apptsShown": 0,
+    "contactPct": 360.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 173144,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 348,
+      "sold": 0.5920000000000001,
+      "apptsShown": 0,
+      "contactPct": 24.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 8352,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 283,
+      "sold": 0.456,
+      "apptsShown": 0,
+      "contactPct": 151.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 42733,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 941,
+      "sold": 0.09,
+      "apptsShown": 0,
+      "contactPct": 184.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 173144,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 8,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 8,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-01",
+   "runDate": "2026-09-01",
+   "source": "1a05d103460069c6-Scheduled Report-9-1-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 42,
+    "sold": 10.0,
+    "apptsShown": 9,
+    "contactPct": 0.574,
+    "apptSetOfContactedPct": 0.20833333333333334,
+    "apptSetPct": null,
+    "contacted": 14,
+    "apptsSet": 3,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 13,
+      "sold": 8.0,
+      "apptsShown": 0,
+      "contactPct": 0.5,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 6,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 6,
+      "sold": 2.0,
+      "apptsShown": 6,
+      "contactPct": 0.5,
+      "apptSetOfContactedPct": 0.6666666666666666,
+      "apptSetPct": null,
+      "contacted": 3,
+      "apptsSet": 2
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 23,
+      "sold": 0,
+      "apptsShown": 3,
+      "contactPct": 0.63,
+      "apptSetOfContactedPct": 0.21428571428571427,
+      "apptSetPct": null,
+      "contacted": 14,
+      "apptsSet": 3
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-02",
+   "runDate": "2026-09-02",
+   "source": "1a06237a42bb1174-Scheduled Report-9-2-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 6,
+   "total": {
+    "goodLeads": 72,
+    "sold": 10.0,
+    "apptsShown": 10,
+    "contactPct": 0.61,
+    "apptSetOfContactedPct": 0.25,
+    "apptSetPct": null,
+    "contacted": 30,
+    "apptsSet": 7,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 16,
+      "sold": 8.0,
+      "apptsShown": 0,
+      "contactPct": 0.588,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 9,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 8,
+      "sold": 2.0,
+      "apptsShown": 7,
+      "contactPct": 0.5,
+      "apptSetOfContactedPct": 1.0,
+      "apptSetPct": null,
+      "contacted": 4,
+      "apptsSet": 4
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 48,
+      "sold": 0,
+      "apptsShown": 3,
+      "contactPct": 0.635,
+      "apptSetOfContactedPct": 0.23333333333333334,
+      "apptSetPct": null,
+      "contacted": 30,
+      "apptsSet": 7
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-03",
+   "runDate": "2026-09-03",
+   "source": "1a0675d373f2c221-Scheduled Report-9-3-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 6,
+   "total": {
+    "goodLeads": 129,
+    "sold": 19.0,
+    "apptsShown": 17,
+    "contactPct": 0.5479999999999999,
+    "apptSetOfContactedPct": 0.30985915492957744,
+    "apptSetPct": null,
+    "contacted": 46,
+    "apptsSet": 13,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 29,
+      "sold": 13.0,
+      "apptsShown": 0,
+      "contactPct": 0.5,
+      "apptSetOfContactedPct": 0.14285714285714285,
+      "apptSetPct": null,
+      "contacted": 14,
+      "apptsSet": 2
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 21,
+      "sold": 5.0,
+      "apptsShown": 12,
+      "contactPct": 0.47600000000000003,
+      "apptSetOfContactedPct": 0.7,
+      "apptSetPct": null,
+      "contacted": 10,
+      "apptsSet": 7
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 79,
+      "sold": 1.0,
+      "apptsShown": 5,
+      "contactPct": 0.583,
+      "apptSetOfContactedPct": 0.2826086956521739,
+      "apptSetPct": null,
+      "contacted": 46,
+      "apptsSet": 13
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-04",
+   "runDate": "2026-09-04",
+   "source": "1a06c82b07d1e814-Scheduled Report-9-4-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 6,
+   "total": {
+    "goodLeads": 182,
+    "sold": 35.0,
+    "apptsShown": 21,
+    "contactPct": 0.523,
+    "apptSetOfContactedPct": 0.3263157894736842,
+    "apptSetPct": null,
+    "contacted": 61,
+    "apptsSet": 19,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 42,
+      "sold": 19.0,
+      "apptsShown": 1,
+      "contactPct": 0.465,
+      "apptSetOfContactedPct": 0.15,
+      "apptSetPct": null,
+      "contacted": 20,
+      "apptsSet": 3
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 34,
+      "sold": 12.0,
+      "apptsShown": 12,
+      "contactPct": 0.41200000000000003,
+      "apptSetOfContactedPct": 0.6428571428571429,
+      "apptSetPct": null,
+      "contacted": 14,
+      "apptsSet": 9
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 105,
+      "sold": 2.0,
+      "apptsShown": 8,
+      "contactPct": 0.581,
+      "apptSetOfContactedPct": 0.3114754098360656,
+      "apptSetPct": null,
+      "contacted": 61,
+      "apptsSet": 19
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-05",
+   "runDate": "2026-09-05",
+   "source": "1a071a97edd96aea-Scheduled Report-9-5-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 6,
+   "total": {
+    "goodLeads": 239,
+    "sold": 50.0,
+    "apptsShown": 25,
+    "contactPct": 0.535,
+    "apptSetOfContactedPct": 0.328125,
+    "apptSetPct": null,
+    "contacted": 83,
+    "apptsSet": 23,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 53,
+      "sold": 27.0,
+      "apptsShown": 2,
+      "contactPct": 0.40700000000000003,
+      "apptSetOfContactedPct": 0.22727272727272727,
+      "apptSetPct": null,
+      "contacted": 22,
+      "apptsSet": 5
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 46,
+      "sold": 17.0,
+      "apptsShown": 13,
+      "contactPct": 0.478,
+      "apptSetOfContactedPct": 0.6363636363636364,
+      "apptSetPct": null,
+      "contacted": 22,
+      "apptsSet": 14
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 138,
+      "sold": 4.0,
+      "apptsShown": 10,
+      "contactPct": 0.599,
+      "apptSetOfContactedPct": 0.27710843373493976,
+      "apptSetPct": null,
+      "contacted": 83,
+      "apptsSet": 23
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 2,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0.5,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-06",
+   "runDate": "2026-09-06",
+   "source": "1a076d06ceabbd25-Scheduled Report-9-6-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 6,
+   "total": {
+    "goodLeads": 290,
+    "sold": 62.0,
+    "apptsShown": 29,
+    "contactPct": 0.525,
+    "apptSetOfContactedPct": 0.39473684210526316,
+    "apptSetPct": null,
+    "contacted": 95,
+    "apptsSet": 29,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 65,
+      "sold": 35.0,
+      "apptsShown": 4,
+      "contactPct": 0.379,
+      "apptSetOfContactedPct": 0.28,
+      "apptSetPct": null,
+      "contacted": 25,
+      "apptsSet": 7
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 63,
+      "sold": 19.0,
+      "apptsShown": 14,
+      "contactPct": 0.49200000000000005,
+      "apptSetOfContactedPct": 0.7741935483870968,
+      "apptSetPct": null,
+      "contacted": 31,
+      "apptsSet": 24
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 160,
+      "sold": 6.0,
+      "apptsShown": 11,
+      "contactPct": 0.591,
+      "apptSetOfContactedPct": 0.30526315789473685,
+      "apptSetPct": null,
+      "contacted": 95,
+      "apptsSet": 29
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 2,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0.5,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-07",
+   "runDate": "2026-09-07",
+   "source": "1a07bf699b4b9677-Scheduled Report-9-7-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 6,
+   "total": {
+    "goodLeads": 340,
+    "sold": 72.0,
+    "apptsShown": 34,
+    "contactPct": 0.505,
+    "apptSetOfContactedPct": 0.436046511627907,
+    "apptSetPct": null,
+    "contacted": 103,
+    "apptsSet": 36,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 76,
+      "sold": 40.0,
+      "apptsShown": 4,
+      "contactPct": 0.377,
+      "apptSetOfContactedPct": 0.27586206896551724,
+      "apptSetPct": null,
+      "contacted": 29,
+      "apptsSet": 8
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 80,
+      "sold": 22.0,
+      "apptsShown": 16,
+      "contactPct": 0.46299999999999997,
+      "apptSetOfContactedPct": 0.8378378378378378,
+      "apptSetPct": null,
+      "contacted": 37,
+      "apptsSet": 31
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 182,
+      "sold": 8.0,
+      "apptsShown": 14,
+      "contactPct": 0.5670000000000001,
+      "apptSetOfContactedPct": 0.34951456310679613,
+      "apptSetPct": null,
+      "contacted": 103,
+      "apptsSet": 36
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 2,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0.667,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-08-01",
+   "end": "2026-08-29",
+   "runDate": "2026-08-29",
+   "source": "1a04d9e0a63735d5-Scheduled Report-8-29-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 505,
+    "sold": 68.0,
+    "apptsShown": 105,
+    "contactPct": 0.619,
+    "apptSetOfContactedPct": 0.43769968051118213,
+    "apptSetPct": null,
+    "contacted": 155,
+    "apptsSet": 51,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 87,
+      "sold": 28.0,
+      "apptsShown": 20,
+      "contactPct": 0.809,
+      "apptSetOfContactedPct": 0.38571428571428573,
+      "apptSetPct": null,
+      "contacted": 70,
+      "apptsSet": 27
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 107,
+      "sold": 29.0,
+      "apptsShown": 47,
+      "contactPct": 0.7909999999999999,
+      "apptSetOfContactedPct": 0.6352941176470588,
+      "apptSetPct": null,
+      "contacted": 85,
+      "apptsSet": 54
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 304,
+      "sold": 8.0,
+      "apptsShown": 35,
+      "contactPct": 0.511,
+      "apptSetOfContactedPct": 0.32903225806451614,
+      "apptSetPct": null,
+      "contacted": 155,
+      "apptsSet": 51
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 7,
+      "sold": 3.0,
+      "apptsShown": 3,
+      "contactPct": 0.6,
+      "apptSetOfContactedPct": 1.25,
+      "apptSetPct": null,
+      "contacted": 4,
+      "apptsSet": 5
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-08-01",
+   "end": "2026-08-30",
+   "runDate": "2026-08-30",
+   "source": "1a052c6cb7b0ebca-Scheduled Report-8-30-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 521,
+    "sold": 72.0,
+    "apptsShown": 108,
+    "contactPct": 0.62,
+    "apptSetOfContactedPct": 0.4241486068111455,
+    "apptSetPct": null,
+    "contacted": 160,
+    "apptsSet": 51,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 95,
+      "sold": 30.0,
+      "apptsShown": 22,
+      "contactPct": 0.794,
+      "apptSetOfContactedPct": 0.36,
+      "apptSetPct": null,
+      "contacted": 75,
+      "apptsSet": 27
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 108,
+      "sold": 29.0,
+      "apptsShown": 48,
+      "contactPct": 0.784,
+      "apptSetOfContactedPct": 0.6352941176470588,
+      "apptSetPct": null,
+      "contacted": 85,
+      "apptsSet": 54
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 311,
+      "sold": 10.0,
+      "apptsShown": 35,
+      "contactPct": 0.515,
+      "apptSetOfContactedPct": 0.31875,
+      "apptSetPct": null,
+      "contacted": 160,
+      "apptsSet": 51
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 7,
+      "sold": 3.0,
+      "apptsShown": 3,
+      "contactPct": 0.6,
+      "apptSetOfContactedPct": 1.25,
+      "apptSetPct": null,
+      "contacted": 4,
+      "apptsSet": 5
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-01",
+   "runDate": "2026-09-01",
+   "source": "1a05d11f58fbe2e9-Scheduled Report-9-1-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 2,
+    "sold": 0,
+    "apptsShown": 0,
+    "contactPct": 1.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 2,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 2,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-02",
+   "runDate": "2026-09-02",
+   "source": "1a06235e0f6d24e4-Scheduled Report-9-2-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 21,
+    "sold": 2.0,
+    "apptsShown": 0,
+    "contactPct": 0.22699999999999998,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 3,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 3,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0.33299999999999996,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 6,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 0.16699999999999998,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 12,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 0.231,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 3,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-03",
+   "runDate": "2026-09-03",
+   "source": "1a06760fad4855a3-Scheduled Report-9-3-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 34,
+    "sold": 3.0,
+    "apptsShown": 3,
+    "contactPct": 0.389,
+    "apptSetOfContactedPct": 0.23076923076923078,
+    "apptSetPct": null,
+    "contacted": 5,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 6,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0.33299999999999996,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 11,
+      "sold": 1.0,
+      "apptsShown": 3,
+      "contactPct": 0.545,
+      "apptSetOfContactedPct": 0.5,
+      "apptSetPct": null,
+      "contacted": 6,
+      "apptsSet": 3
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 17,
+      "sold": 2.0,
+      "apptsShown": 0,
+      "contactPct": 0.316,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 5,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-04",
+   "runDate": "2026-09-04",
+   "source": "1a06c8201111398a-Scheduled Report-9-4-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 44,
+    "sold": 4.0,
+    "apptsShown": 5,
+    "contactPct": 0.426,
+    "apptSetOfContactedPct": 0.3157894736842105,
+    "apptSetPct": null,
+    "contacted": 8,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 8,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0.375,
+      "apptSetOfContactedPct": 0.3333333333333333,
+      "apptSetPct": null,
+      "contacted": 3,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 15,
+      "sold": 1.0,
+      "apptsShown": 5,
+      "contactPct": 0.5329999999999999,
+      "apptSetOfContactedPct": 0.625,
+      "apptSetPct": null,
+      "contacted": 8,
+      "apptsSet": 5
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 21,
+      "sold": 3.0,
+      "apptsShown": 0,
+      "contactPct": 0.375,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 8,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-05",
+   "runDate": "2026-09-05",
+   "source": "1a071a7dedaeec17-Scheduled Report-9-5-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 54,
+    "sold": 5.0,
+    "apptsShown": 6,
+    "contactPct": 0.466,
+    "apptSetOfContactedPct": 0.28,
+    "apptSetPct": null,
+    "contacted": 13,
+    "apptsSet": 1,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 12,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0.308,
+      "apptSetOfContactedPct": 0.25,
+      "apptSetPct": null,
+      "contacted": 4,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 15,
+      "sold": 2.0,
+      "apptsShown": 6,
+      "contactPct": 0.6,
+      "apptSetOfContactedPct": 0.5555555555555556,
+      "apptSetPct": null,
+      "contacted": 9,
+      "apptsSet": 5
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 27,
+      "sold": 3.0,
+      "apptsShown": 0,
+      "contactPct": 0.467,
+      "apptSetOfContactedPct": 0.07692307692307693,
+      "apptSetPct": null,
+      "contacted": 13,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-06",
+   "runDate": "2026-09-06",
+   "source": "1a076d039c84b8fd-Scheduled Report-9-6-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 73,
+    "sold": 7.0,
+    "apptsShown": 9,
+    "contactPct": 0.449,
+    "apptSetOfContactedPct": 0.2727272727272727,
+    "apptSetPct": null,
+    "contacted": 14,
+    "apptsSet": 2,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 22,
+      "sold": 1.0,
+      "apptsShown": 1,
+      "contactPct": 0.304,
+      "apptSetOfContactedPct": 0.2857142857142857,
+      "apptSetPct": null,
+      "contacted": 7,
+      "apptsSet": 2
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 17,
+      "sold": 2.0,
+      "apptsShown": 6,
+      "contactPct": 0.647,
+      "apptSetOfContactedPct": 0.45454545454545453,
+      "apptSetPct": null,
+      "contacted": 11,
+      "apptsSet": 5
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 33,
+      "sold": 4.0,
+      "apptsShown": 2,
+      "contactPct": 0.43200000000000005,
+      "apptSetOfContactedPct": 0.14285714285714285,
+      "apptSetPct": null,
+      "contacted": 14,
+      "apptsSet": 2
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-07",
+   "runDate": "2026-09-07",
+   "source": "1a07bf4aae05b1d1-Scheduled Report-9-7-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 79,
+    "sold": 7.0,
+    "apptsShown": 9,
+    "contactPct": 0.452,
+    "apptSetOfContactedPct": 0.3055555555555556,
+    "apptSetPct": null,
+    "contacted": 17,
+    "apptsSet": 2,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 22,
+      "sold": 1.0,
+      "apptsShown": 1,
+      "contactPct": 0.304,
+      "apptSetOfContactedPct": 0.42857142857142855,
+      "apptSetPct": null,
+      "contacted": 7,
+      "apptsSet": 3
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 17,
+      "sold": 2.0,
+      "apptsShown": 6,
+      "contactPct": 0.647,
+      "apptSetOfContactedPct": 0.45454545454545453,
+      "apptSetPct": null,
+      "contacted": 11,
+      "apptsSet": 5
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 39,
+      "sold": 4.0,
+      "apptsShown": 2,
+      "contactPct": 0.442,
+      "apptSetOfContactedPct": 0.11764705882352941,
+      "apptSetPct": null,
+      "contacted": 17,
+      "apptsSet": 2
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 1.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-07-01",
+   "end": "2026-07-29",
+   "runDate": "2026-08-29",
+   "source": "1a04d9e0a63735d5-Scheduled Report-8-29-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 393,
+    "sold": 59.0,
+    "apptsShown": 78,
+    "contactPct": 0.696,
+    "apptSetOfContactedPct": 0.354014598540146,
+    "apptSetPct": null,
+    "contacted": 133,
+    "apptsSet": 33,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 77,
+      "sold": 21.0,
+      "apptsShown": 17,
+      "contactPct": 0.713,
+      "apptSetOfContactedPct": 0.32727272727272727,
+      "apptSetPct": null,
+      "contacted": 55,
+      "apptsSet": 18
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 100,
+      "sold": 22.0,
+      "apptsShown": 34,
+      "contactPct": 0.787,
+      "apptSetOfContactedPct": 0.5443037974683544,
+      "apptSetPct": null,
+      "contacted": 79,
+      "apptsSet": 43
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 208,
+      "sold": 15.0,
+      "apptsShown": 24,
+      "contactPct": 0.639,
+      "apptSetOfContactedPct": 0.24812030075187969,
+      "apptSetPct": null,
+      "contacted": 133,
+      "apptsSet": 33
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 8,
+      "sold": 1.0,
+      "apptsShown": 3,
+      "contactPct": 0.9,
+      "apptSetOfContactedPct": 0.42857142857142855,
+      "apptSetPct": null,
+      "contacted": 7,
+      "apptsSet": 3
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-07-01",
+   "end": "2026-07-30",
+   "runDate": "2026-08-30",
+   "source": "1a052c6cb7b0ebca-Scheduled Report-8-30-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 402,
+    "sold": 62.0,
+    "apptsShown": 79,
+    "contactPct": 0.7,
+    "apptSetOfContactedPct": 0.3487544483985765,
+    "apptSetPct": null,
+    "contacted": 135,
+    "apptsSet": 33,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 81,
+      "sold": 22.0,
+      "apptsShown": 17,
+      "contactPct": 0.7140000000000001,
+      "apptSetOfContactedPct": 0.3103448275862069,
+      "apptSetPct": null,
+      "contacted": 58,
+      "apptsSet": 18
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 103,
+      "sold": 22.0,
+      "apptsShown": 35,
+      "contactPct": 0.7929999999999999,
+      "apptSetOfContactedPct": 0.5365853658536586,
+      "apptSetPct": null,
+      "contacted": 82,
+      "apptsSet": 44
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 210,
+      "sold": 17.0,
+      "apptsShown": 24,
+      "contactPct": 0.642,
+      "apptSetOfContactedPct": 0.24444444444444444,
+      "apptSetPct": null,
+      "contacted": 135,
+      "apptsSet": 33
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 8,
+      "sold": 1.0,
+      "apptsShown": 3,
+      "contactPct": 0.9,
+      "apptSetOfContactedPct": 0.42857142857142855,
+      "apptSetPct": null,
+      "contacted": 7,
+      "apptsSet": 3
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-01",
+   "runDate": "2026-09-01",
+   "source": "1a05d11f58fbe2e9-Scheduled Report-9-1-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 11,
+    "sold": 3.0,
+    "apptsShown": 3,
+    "contactPct": 0.75,
+    "apptSetOfContactedPct": 0.25,
+    "apptSetPct": null,
+    "contacted": 2,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 6,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 0.833,
+      "apptSetOfContactedPct": 0.2,
+      "apptSetPct": null,
+      "contacted": 5,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 2,
+      "sold": 2.0,
+      "apptsShown": 2,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.5,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 3,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 0.667,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-02",
+   "runDate": "2026-09-02",
+   "source": "1a06235e0f6d24e4-Scheduled Report-9-2-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 17,
+    "sold": 3.0,
+    "apptsShown": 3,
+    "contactPct": 0.7,
+    "apptSetOfContactedPct": 0.16666666666666666,
+    "apptSetPct": null,
+    "contacted": 6,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 6,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 0.833,
+      "apptSetOfContactedPct": 0.2,
+      "apptSetPct": null,
+      "contacted": 5,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 2,
+      "sold": 2.0,
+      "apptsShown": 2,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.5,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 9,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 0.636,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 6,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-03",
+   "runDate": "2026-09-03",
+   "source": "1a06760fad4855a3-Scheduled Report-9-3-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 35,
+    "sold": 9.0,
+    "apptsShown": 6,
+    "contactPct": 0.763,
+    "apptSetOfContactedPct": 0.25925925925925924,
+    "apptSetPct": null,
+    "contacted": 12,
+    "apptsSet": 3,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 10,
+      "sold": 3.0,
+      "apptsShown": 1,
+      "contactPct": 0.8,
+      "apptSetOfContactedPct": 0.125,
+      "apptSetPct": null,
+      "contacted": 8,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 9,
+      "sold": 4.0,
+      "apptsShown": 3,
+      "contactPct": 0.889,
+      "apptSetOfContactedPct": 0.375,
+      "apptSetPct": null,
+      "contacted": 8,
+      "apptsSet": 3
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 16,
+      "sold": 2.0,
+      "apptsShown": 2,
+      "contactPct": 0.722,
+      "apptSetOfContactedPct": 0.25,
+      "apptSetPct": null,
+      "contacted": 12,
+      "apptsSet": 3
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-04",
+   "runDate": "2026-09-04",
+   "source": "1a06c8201111398a-Scheduled Report-9-4-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 43,
+    "sold": 11.0,
+    "apptsShown": 8,
+    "contactPct": 0.7659999999999999,
+    "apptSetOfContactedPct": 0.3333333333333333,
+    "apptSetPct": null,
+    "contacted": 14,
+    "apptsSet": 4,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 10,
+      "sold": 3.0,
+      "apptsShown": 1,
+      "contactPct": 0.8,
+      "apptSetOfContactedPct": 0.25,
+      "apptSetPct": null,
+      "contacted": 8,
+      "apptsSet": 2
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 13,
+      "sold": 5.0,
+      "apptsShown": 4,
+      "contactPct": 0.9229999999999999,
+      "apptSetOfContactedPct": 0.4166666666666667,
+      "apptSetPct": null,
+      "contacted": 12,
+      "apptsSet": 5
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 19,
+      "sold": 3.0,
+      "apptsShown": 3,
+      "contactPct": 0.727,
+      "apptSetOfContactedPct": 0.2857142857142857,
+      "apptSetPct": null,
+      "contacted": 14,
+      "apptsSet": 4
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-05",
+   "runDate": "2026-09-05",
+   "source": "1a071a7dedaeec17-Scheduled Report-9-5-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 54,
+    "sold": 11.0,
+    "apptsShown": 11,
+    "contactPct": 0.742,
+    "apptSetOfContactedPct": 0.425,
+    "apptSetPct": null,
+    "contacted": 18,
+    "apptsSet": 6,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 12,
+      "sold": 3.0,
+      "apptsShown": 2,
+      "contactPct": 0.833,
+      "apptSetOfContactedPct": 0.4,
+      "apptSetPct": null,
+      "contacted": 10,
+      "apptsSet": 4
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 15,
+      "sold": 5.0,
+      "apptsShown": 5,
+      "contactPct": 0.938,
+      "apptSetOfContactedPct": 0.42857142857142855,
+      "apptSetPct": null,
+      "contacted": 14,
+      "apptsSet": 6
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 26,
+      "sold": 3.0,
+      "apptsShown": 4,
+      "contactPct": 0.677,
+      "apptSetOfContactedPct": 0.3333333333333333,
+      "apptSetPct": null,
+      "contacted": 18,
+      "apptsSet": 6
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-06",
+   "runDate": "2026-09-06",
+   "source": "1a076d039c84b8fd-Scheduled Report-9-6-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 67,
+    "sold": 15.0,
+    "apptsShown": 13,
+    "contactPct": 0.7659999999999999,
+    "apptSetOfContactedPct": 0.43137254901960786,
+    "apptSetPct": null,
+    "contacted": 24,
+    "apptsSet": 8,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 16,
+      "sold": 3.0,
+      "apptsShown": 2,
+      "contactPct": 0.875,
+      "apptSetOfContactedPct": 0.35714285714285715,
+      "apptSetPct": null,
+      "contacted": 14,
+      "apptsSet": 5
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 16,
+      "sold": 8.0,
+      "apptsShown": 6,
+      "contactPct": 0.9440000000000001,
+      "apptSetOfContactedPct": 0.5333333333333333,
+      "apptSetPct": null,
+      "contacted": 15,
+      "apptsSet": 8
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 34,
+      "sold": 3.0,
+      "apptsShown": 5,
+      "contactPct": 0.7,
+      "apptSetOfContactedPct": 0.3333333333333333,
+      "apptSetPct": null,
+      "contacted": 24,
+      "apptsSet": 8
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-07",
+   "runDate": "2026-09-07",
+   "source": "1a07bf4aae05b1d1-Scheduled Report-9-7-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 84,
+    "sold": 16.0,
+    "apptsShown": 15,
+    "contactPct": 0.726,
+    "apptSetOfContactedPct": 0.45901639344262296,
+    "apptSetPct": null,
+    "contacted": 28,
+    "apptsSet": 12,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 22,
+      "sold": 4.0,
+      "apptsShown": 2,
+      "contactPct": 0.818,
+      "apptSetOfContactedPct": 0.3333333333333333,
+      "apptSetPct": null,
+      "contacted": 18,
+      "apptsSet": 6
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 17,
+      "sold": 8.0,
+      "apptsShown": 6,
+      "contactPct": 0.9470000000000001,
+      "apptSetOfContactedPct": 0.5625,
+      "apptSetPct": null,
+      "contacted": 16,
+      "apptsSet": 9
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 44,
+      "sold": 3.0,
+      "apptsShown": 7,
+      "contactPct": 0.647,
+      "apptSetOfContactedPct": 0.42857142857142855,
+      "apptSetPct": null,
+      "contacted": 28,
+      "apptsSet": 12
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-08-01",
+   "end": "2026-08-29",
+   "runDate": "2026-08-29",
+   "source": "1a04d9e023243bd4-Scheduled Report-8-29-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 666,
+    "sold": 0.182,
+    "apptsShown": 0,
+    "contactPct": 140.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 22516,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 119,
+      "sold": 0.45399999999999996,
+      "apptsShown": 0,
+      "contactPct": 24.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 2856,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 107,
+      "sold": 0.318,
+      "apptsShown": 0,
+      "contactPct": 61.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 6527,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 433,
+      "sold": 0.07200000000000001,
+      "apptsShown": 0,
+      "contactPct": 52.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 22516,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 1.0,
+      "apptsShown": 1,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 6,
+      "sold": 0.16699999999999998,
+      "apptsShown": 1,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 6,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-08-01",
+   "end": "2026-08-30",
+   "runDate": "2026-08-30",
+   "source": "1a052c6c5ed144f1-Scheduled Report-8-30-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 696,
+    "sold": 0.184,
+    "apptsShown": 0,
+    "contactPct": 150.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 24750,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 123,
+      "sold": 0.46299999999999997,
+      "apptsShown": 0,
+      "contactPct": 26.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 3198,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 116,
+      "sold": 0.319,
+      "apptsShown": 0,
+      "contactPct": 66.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 7656,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 450,
+      "sold": 0.071,
+      "apptsShown": 0,
+      "contactPct": 55.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 24750,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 1.0,
+      "apptsShown": 1,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 6,
+      "sold": 0.16699999999999998,
+      "apptsShown": 1,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 6,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-08-01",
+   "end": "2026-08-31",
+   "runDate": "2026-08-31",
+   "source": "1a057ea4ea3cb7e1-Scheduled Report-8-31-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 718,
+    "sold": 0.184,
+    "apptsShown": 0,
+    "contactPct": 150.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 26790,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 125,
+      "sold": 0.47200000000000003,
+      "apptsShown": 0,
+      "contactPct": 25.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 3125,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 116,
+      "sold": 0.32799999999999996,
+      "apptsShown": 0,
+      "contactPct": 65.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 7540,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 470,
+      "sold": 0.07,
+      "apptsShown": 0,
+      "contactPct": 57.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 26790,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 1.0,
+      "apptsShown": 1,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 6,
+      "sold": 0.16699999999999998,
+      "apptsShown": 1,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 6,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-01",
+   "runDate": "2026-09-01",
+   "source": "1a05d11f290b20a6-Scheduled Report-9-1-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 3,
+    "sold": 0,
+    "apptsShown": 1,
+    "contactPct": 0,
+    "apptSetOfContactedPct": 0,
+    "apptSetPct": null,
+    "contacted": 0,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 3,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-02",
+   "runDate": "2026-09-02",
+   "source": "1a06235ce045a03d-Scheduled Report-9-2-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 28,
+    "sold": 2.0,
+    "apptsShown": 4,
+    "contactPct": 0.387,
+    "apptSetOfContactedPct": 0.8181818181818182,
+    "apptSetPct": null,
+    "contacted": 6,
+    "apptsSet": 3,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 3,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0.33299999999999996,
+      "apptSetOfContactedPct": 1.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 5,
+      "sold": 1.0,
+      "apptsShown": 2,
+      "contactPct": 0.6,
+      "apptSetOfContactedPct": 1.3333333333333333,
+      "apptSetPct": null,
+      "contacted": 3,
+      "apptsSet": 4
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 19,
+      "sold": 1.0,
+      "apptsShown": 2,
+      "contactPct": 0.318,
+      "apptSetOfContactedPct": 0.5,
+      "apptSetPct": null,
+      "contacted": 6,
+      "apptsSet": 3
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 1.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-03",
+   "runDate": "2026-09-03",
+   "source": "1a06760ed42dec3c-Scheduled Report-9-3-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 58,
+    "sold": 2.0,
+    "apptsShown": 8,
+    "contactPct": 0.45299999999999996,
+    "apptSetOfContactedPct": 0.5384615384615384,
+    "apptSetPct": null,
+    "contacted": 16,
+    "apptsSet": 7,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 7,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 0.429,
+      "apptSetOfContactedPct": 0.3333333333333333,
+      "apptSetPct": null,
+      "contacted": 3,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 10,
+      "sold": 1.0,
+      "apptsShown": 5,
+      "contactPct": 0.7,
+      "apptSetOfContactedPct": 0.7142857142857143,
+      "apptSetPct": null,
+      "contacted": 7,
+      "apptsSet": 5
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 40,
+      "sold": 1.0,
+      "apptsShown": 2,
+      "contactPct": 0.391,
+      "apptSetOfContactedPct": 0.4375,
+      "apptSetPct": null,
+      "contacted": 16,
+      "apptsSet": 7
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 1.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-04",
+   "runDate": "2026-09-04",
+   "source": "1a06c81f0085be33-Scheduled Report-9-4-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 84,
+    "sold": 5.0,
+    "apptsShown": 12,
+    "contactPct": 0.402,
+    "apptSetOfContactedPct": 0.5588235294117647,
+    "apptSetPct": null,
+    "contacted": 18,
+    "apptsSet": 10,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 11,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 0.636,
+      "apptSetOfContactedPct": 0.14285714285714285,
+      "apptSetPct": null,
+      "contacted": 7,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 13,
+      "sold": 2.0,
+      "apptsShown": 7,
+      "contactPct": 0.615,
+      "apptSetOfContactedPct": 0.875,
+      "apptSetPct": null,
+      "contacted": 8,
+      "apptsSet": 7
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 59,
+      "sold": 3.0,
+      "apptsShown": 4,
+      "contactPct": 0.313,
+      "apptSetOfContactedPct": 0.5555555555555556,
+      "apptSetPct": null,
+      "contacted": 18,
+      "apptsSet": 10
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 1.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-06",
+   "runDate": "2026-09-06",
+   "source": "1a076d0340d0fd77-Scheduled Report-9-6-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 137,
+    "sold": 15.0,
+    "apptsShown": 34,
+    "contactPct": 0.503,
+    "apptSetOfContactedPct": 0.6376811594202898,
+    "apptSetPct": null,
+    "contacted": 37,
+    "apptsSet": 23,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 18,
+      "sold": 4.0,
+      "apptsShown": 3,
+      "contactPct": 0.789,
+      "apptSetOfContactedPct": 0.21428571428571427,
+      "apptSetPct": null,
+      "contacted": 14,
+      "apptsSet": 3
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 23,
+      "sold": 5.0,
+      "apptsShown": 14,
+      "contactPct": 0.7829999999999999,
+      "apptSetOfContactedPct": 0.9444444444444444,
+      "apptSetPct": null,
+      "contacted": 18,
+      "apptsSet": 17
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 94,
+      "sold": 6.0,
+      "apptsShown": 16,
+      "contactPct": 0.39299999999999996,
+      "apptSetOfContactedPct": 0.6216216216216216,
+      "apptSetPct": null,
+      "contacted": 37,
+      "apptsSet": 23
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 1.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-07",
+   "runDate": "2026-09-07",
+   "source": "1a07bf49d89e12d4-Scheduled Report-9-7-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 148,
+    "sold": 15.0,
+    "apptsShown": 34,
+    "contactPct": 0.5,
+    "apptSetOfContactedPct": 0.6351351351351351,
+    "apptSetPct": null,
+    "contacted": 42,
+    "apptsSet": 24,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 18,
+      "sold": 4.0,
+      "apptsShown": 3,
+      "contactPct": 0.789,
+      "apptSetOfContactedPct": 0.35714285714285715,
+      "apptSetPct": null,
+      "contacted": 14,
+      "apptsSet": 5
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 23,
+      "sold": 5.0,
+      "apptsShown": 14,
+      "contactPct": 0.7829999999999999,
+      "apptSetOfContactedPct": 0.9444444444444444,
+      "apptSetPct": null,
+      "contacted": 18,
+      "apptsSet": 17
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 105,
+      "sold": 6.0,
+      "apptsShown": 16,
+      "contactPct": 0.39799999999999996,
+      "apptSetOfContactedPct": 0.5714285714285714,
+      "apptSetPct": null,
+      "contacted": 42,
+      "apptsSet": 24
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 1.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-07-01",
+   "end": "2026-07-29",
+   "runDate": "2026-08-29",
+   "source": "1a04d9e023243bd4-Scheduled Report-8-29-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 575,
+    "sold": 0.21,
+    "apptsShown": 0,
+    "contactPct": 160.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 17297,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 105,
+      "sold": 0.41,
+      "apptsShown": 0,
+      "contactPct": 38.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 3990,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 110,
+      "sold": 0.391,
+      "apptsShown": 0,
+      "contactPct": 70.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 7700,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 353,
+      "sold": 0.085,
+      "apptsShown": 0,
+      "contactPct": 49.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 17297,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 7,
+      "sold": 0.5710000000000001,
+      "apptsShown": 0,
+      "contactPct": 3.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 21,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-07-01",
+   "end": "2026-07-30",
+   "runDate": "2026-08-30",
+   "source": "1a052c6c5ed144f1-Scheduled Report-8-30-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 601,
+    "sold": 0.213,
+    "apptsShown": 0,
+    "contactPct": 164.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 18550,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 108,
+      "sold": 0.40700000000000003,
+      "apptsShown": 0,
+      "contactPct": 38.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 4104,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 115,
+      "sold": 0.409,
+      "apptsShown": 0,
+      "contactPct": 73.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 8395,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 371,
+      "sold": 0.086,
+      "apptsShown": 0,
+      "contactPct": 50.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 18550,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 7,
+      "sold": 0.5710000000000001,
+      "apptsShown": 0,
+      "contactPct": 3.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 21,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-07-01",
+   "end": "2026-07-31",
+   "runDate": "2026-08-31",
+   "source": "1a057ea4ea3cb7e1-Scheduled Report-8-31-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 628,
+    "sold": 0.223,
+    "apptsShown": 0,
+    "contactPct": 167.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 19788,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 110,
+      "sold": 0.418,
+      "apptsShown": 0,
+      "contactPct": 38.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 4180,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 121,
+      "sold": 0.43,
+      "apptsShown": 0,
+      "contactPct": 75.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 9075,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 388,
+      "sold": 0.095,
+      "apptsShown": 0,
+      "contactPct": 51.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 19788,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 8,
+      "sold": 0.5,
+      "apptsShown": 0,
+      "contactPct": 3.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 24,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-01",
+   "runDate": "2026-09-01",
+   "source": "1a05d11f290b20a6-Scheduled Report-9-1-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 14,
+    "sold": 2.0,
+    "apptsShown": 3,
+    "contactPct": 0.765,
+    "apptSetOfContactedPct": 0.2727272727272727,
+    "apptSetPct": null,
+    "contacted": 5,
+    "apptsSet": 2,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 6,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 6,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 1.0,
+      "apptsShown": 1,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 8,
+      "sold": 1.0,
+      "apptsShown": 2,
+      "contactPct": 0.6,
+      "apptSetOfContactedPct": 0.4,
+      "apptSetPct": null,
+      "contacted": 5,
+      "apptsSet": 2
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-02",
+   "runDate": "2026-09-02",
+   "source": "1a06235ce045a03d-Scheduled Report-9-2-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 27,
+    "sold": 2.0,
+    "apptsShown": 3,
+    "contactPct": 0.733,
+    "apptSetOfContactedPct": 0.15,
+    "apptSetPct": null,
+    "contacted": 14,
+    "apptsSet": 2,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 6,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 6,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 1.0,
+      "apptsShown": 1,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 21,
+      "sold": 1.0,
+      "apptsShown": 2,
+      "contactPct": 0.652,
+      "apptSetOfContactedPct": 0.14285714285714285,
+      "apptSetPct": null,
+      "contacted": 14,
+      "apptsSet": 2
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-03",
+   "runDate": "2026-09-03",
+   "source": "1a06760ed42dec3c-Scheduled Report-9-3-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 56,
+    "sold": 4.0,
+    "apptsShown": 6,
+    "contactPct": 0.754,
+    "apptSetOfContactedPct": 0.2857142857142857,
+    "apptSetPct": null,
+    "contacted": 24,
+    "apptsSet": 7,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 11,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 0.909,
+      "apptSetOfContactedPct": 0.1,
+      "apptSetPct": null,
+      "contacted": 10,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 8,
+      "sold": 1.0,
+      "apptsShown": 3,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.5,
+      "apptSetPct": null,
+      "contacted": 8,
+      "apptsSet": 4
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 37,
+      "sold": 2.0,
+      "apptsShown": 3,
+      "contactPct": 0.659,
+      "apptSetOfContactedPct": 0.2916666666666667,
+      "apptSetPct": null,
+      "contacted": 24,
+      "apptsSet": 7
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-04",
+   "runDate": "2026-09-04",
+   "source": "1a06c81f0085be33-Scheduled Report-9-4-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 84,
+    "sold": 8.0,
+    "apptsShown": 12,
+    "contactPct": 0.747,
+    "apptSetOfContactedPct": 0.30158730158730157,
+    "apptSetPct": null,
+    "contacted": 32,
+    "apptsSet": 9,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 20,
+      "sold": 1.0,
+      "apptsShown": 1,
+      "contactPct": 0.85,
+      "apptSetOfContactedPct": 0.058823529411764705,
+      "apptSetPct": null,
+      "contacted": 17,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 14,
+      "sold": 4.0,
+      "apptsShown": 6,
+      "contactPct": 0.941,
+      "apptSetOfContactedPct": 0.6923076923076923,
+      "apptSetPct": null,
+      "contacted": 13,
+      "apptsSet": 9
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 50,
+      "sold": 3.0,
+      "apptsShown": 4,
+      "contactPct": 0.648,
+      "apptSetOfContactedPct": 0.28125,
+      "apptSetPct": null,
+      "contacted": 32,
+      "apptsSet": 9
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-06",
+   "runDate": "2026-09-06",
+   "source": "1a076d0340d0fd77-Scheduled Report-9-6-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 126,
+    "sold": 13.0,
+    "apptsShown": 17,
+    "contactPct": 0.71,
+    "apptSetOfContactedPct": 0.25842696629213485,
+    "apptSetPct": null,
+    "contacted": 47,
+    "apptsSet": 12,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 30,
+      "sold": 3.0,
+      "apptsShown": 4,
+      "contactPct": 0.833,
+      "apptSetOfContactedPct": 0.08,
+      "apptSetPct": null,
+      "contacted": 25,
+      "apptsSet": 2
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 18,
+      "sold": 7.0,
+      "apptsShown": 7,
+      "contactPct": 0.905,
+      "apptSetOfContactedPct": 0.5625,
+      "apptSetPct": null,
+      "contacted": 16,
+      "apptsSet": 9
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 76,
+      "sold": 3.0,
+      "apptsShown": 5,
+      "contactPct": 0.624,
+      "apptSetOfContactedPct": 0.2553191489361702,
+      "apptSetPct": null,
+      "contacted": 47,
+      "apptsSet": 12
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 2,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0.5,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-07",
+   "runDate": "2026-09-07",
+   "source": "1a07bf49d89e12d4-Scheduled Report-9-7-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 140,
+    "sold": 18.0,
+    "apptsShown": 18,
+    "contactPct": 0.705,
+    "apptSetOfContactedPct": 0.25252525252525254,
+    "apptSetPct": null,
+    "contacted": 55,
+    "apptsSet": 12,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 31,
+      "sold": 5.0,
+      "apptsShown": 4,
+      "contactPct": 0.813,
+      "apptSetOfContactedPct": 0.12,
+      "apptSetPct": null,
+      "contacted": 25,
+      "apptsSet": 3
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 19,
+      "sold": 8.0,
+      "apptsShown": 8,
+      "contactPct": 0.8640000000000001,
+      "apptSetOfContactedPct": 0.625,
+      "apptSetPct": null,
+      "contacted": 16,
+      "apptsSet": 10
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 87,
+      "sold": 5.0,
+      "apptsShown": 5,
+      "contactPct": 0.636,
+      "apptSetOfContactedPct": 0.21818181818181817,
+      "apptSetPct": null,
+      "contacted": 55,
+      "apptsSet": 12
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 3,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0.667,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
    "storeId": "gresham-chrysler-dodge-jeep-ram",
    "storeName": "Gresham Chrysler Dodge Jeep Ram",
    "dealers": [
@@ -59276,6 +65580,2306 @@
    },
    "total": null,
    "byLeadType": []
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-08-01",
+   "end": "2026-08-29",
+   "runDate": "2026-08-29",
+   "source": "1a04d9e8a618f702-Scheduled Report-8-29-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 1082,
+    "sold": 0.213,
+    "apptsShown": 0,
+    "contactPct": 361.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 77763,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 249,
+      "sold": 0.406,
+      "apptsShown": 0,
+      "contactPct": 60.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 14940,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 288,
+      "sold": 0.19399999999999998,
+      "apptsShown": 0,
+      "contactPct": 144.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 41472,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 529,
+      "sold": 0.079,
+      "apptsShown": 0,
+      "contactPct": 147.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 77763,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 16,
+      "sold": 0.563,
+      "apptsShown": 0,
+      "contactPct": 9.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 144,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-08-01",
+   "end": "2026-08-30",
+   "runDate": "2026-08-30",
+   "source": "1a052c4a2483fef7-Scheduled Report-8-30-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 1125,
+    "sold": 0.221,
+    "apptsShown": 0,
+    "contactPct": 375.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 80115,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 262,
+      "sold": 0.41600000000000004,
+      "apptsShown": 0,
+      "contactPct": 62.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 16244,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 302,
+      "sold": 0.205,
+      "apptsShown": 0,
+      "contactPct": 156.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 47112,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 545,
+      "sold": 0.079,
+      "apptsShown": 0,
+      "contactPct": 147.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 80115,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 16,
+      "sold": 0.563,
+      "apptsShown": 0,
+      "contactPct": 9.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 144,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-08-01",
+   "end": "2026-08-31",
+   "runDate": "2026-08-31",
+   "source": "1a057e9da6ae6061-Scheduled Report-8-31-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 1161,
+    "sold": 0.225,
+    "apptsShown": 0,
+    "contactPct": 382.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 85050,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 273,
+      "sold": 0.418,
+      "apptsShown": 0,
+      "contactPct": 67.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 18291,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 305,
+      "sold": 0.213,
+      "apptsShown": 0,
+      "contactPct": 155.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 47275,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 567,
+      "sold": 0.078,
+      "apptsShown": 0,
+      "contactPct": 150.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 85050,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 16,
+      "sold": 0.563,
+      "apptsShown": 0,
+      "contactPct": 9.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 144,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-01",
+   "runDate": "2026-09-01",
+   "source": "1a05d1252ef31f4a-Scheduled Report-9-1-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 4,
+    "sold": 1.0,
+    "apptsShown": 0,
+    "contactPct": 0,
+    "apptSetOfContactedPct": 0,
+    "apptSetPct": null,
+    "contacted": 0,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 4,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-02",
+   "runDate": "2026-09-02",
+   "source": "1a06236456a640b2-Scheduled Report-9-2-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 40,
+    "sold": 7.0,
+    "apptsShown": 13,
+    "contactPct": 0.24,
+    "apptSetOfContactedPct": 1.9,
+    "apptSetPct": null,
+    "contacted": 5,
+    "apptsSet": 9,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 5,
+      "sold": 3.0,
+      "apptsShown": 1,
+      "contactPct": 0.4,
+      "apptSetOfContactedPct": 1.0,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 2
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 13,
+      "sold": 0,
+      "apptsShown": 4,
+      "contactPct": 0.231,
+      "apptSetOfContactedPct": 2.6666666666666665,
+      "apptSetPct": null,
+      "contacted": 3,
+      "apptsSet": 8
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 22,
+      "sold": 4.0,
+      "apptsShown": 8,
+      "contactPct": 0.21899999999999997,
+      "apptSetOfContactedPct": 1.8,
+      "apptSetPct": null,
+      "contacted": 5,
+      "apptsSet": 9
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-03",
+   "runDate": "2026-09-03",
+   "source": "1a0675d3412f753a-Scheduled Report-9-3-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 71,
+    "sold": 11.0,
+    "apptsShown": 16,
+    "contactPct": 0.313,
+    "apptSetOfContactedPct": 1.1818181818181819,
+    "apptSetPct": null,
+    "contacted": 12,
+    "apptsSet": 9,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 13,
+      "sold": 5.0,
+      "apptsShown": 1,
+      "contactPct": 0.385,
+      "apptSetOfContactedPct": 1.2,
+      "apptSetPct": null,
+      "contacted": 5,
+      "apptsSet": 6
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 17,
+      "sold": 0,
+      "apptsShown": 5,
+      "contactPct": 0.353,
+      "apptSetOfContactedPct": 1.8333333333333333,
+      "apptSetPct": null,
+      "contacted": 6,
+      "apptsSet": 11
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 41,
+      "sold": 5.0,
+      "apptsShown": 10,
+      "contactPct": 0.28300000000000003,
+      "apptSetOfContactedPct": 0.75,
+      "apptSetPct": null,
+      "contacted": 12,
+      "apptsSet": 9
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-04",
+   "runDate": "2026-09-04",
+   "source": "1a06c83e7d5da34e-Scheduled Report-9-4-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 116,
+    "sold": 15.0,
+    "apptsShown": 18,
+    "contactPct": 0.359,
+    "apptSetOfContactedPct": 1.0476190476190477,
+    "apptSetPct": null,
+    "contacted": 23,
+    "apptsSet": 18,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 23,
+      "sold": 6.0,
+      "apptsShown": 1,
+      "contactPct": 0.348,
+      "apptSetOfContactedPct": 1.0,
+      "apptSetPct": null,
+      "contacted": 8,
+      "apptsSet": 8
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 25,
+      "sold": 1.0,
+      "apptsShown": 6,
+      "contactPct": 0.44,
+      "apptSetOfContactedPct": 1.6363636363636365,
+      "apptSetPct": null,
+      "contacted": 11,
+      "apptsSet": 18
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 68,
+      "sold": 6.0,
+      "apptsShown": 11,
+      "contactPct": 0.337,
+      "apptSetOfContactedPct": 0.782608695652174,
+      "apptSetPct": null,
+      "contacted": 23,
+      "apptsSet": 18
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-05",
+   "runDate": "2026-09-05",
+   "source": "1a071ab8c12c55c2-Scheduled Report-9-5-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 172,
+    "sold": 30.0,
+    "apptsShown": 29,
+    "contactPct": 0.429,
+    "apptSetOfContactedPct": 0.8918918918918919,
+    "apptSetPct": null,
+    "contacted": 42,
+    "apptsSet": 23,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 32,
+      "sold": 9.0,
+      "apptsShown": 4,
+      "contactPct": 0.469,
+      "apptSetOfContactedPct": 0.8666666666666667,
+      "apptSetPct": null,
+      "contacted": 15,
+      "apptsSet": 13
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 43,
+      "sold": 3.0,
+      "apptsShown": 10,
+      "contactPct": 0.395,
+      "apptSetOfContactedPct": 1.7647058823529411,
+      "apptSetPct": null,
+      "contacted": 17,
+      "apptsSet": 30
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 97,
+      "sold": 8.0,
+      "apptsShown": 15,
+      "contactPct": 0.43,
+      "apptSetOfContactedPct": 0.5476190476190477,
+      "apptSetPct": null,
+      "contacted": 42,
+      "apptsSet": 23
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-06",
+   "runDate": "2026-09-06",
+   "source": "1a076ce941478cbf-Scheduled Report-9-6-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 221,
+    "sold": 47.0,
+    "apptsShown": 39,
+    "contactPct": 0.43799999999999994,
+    "apptSetOfContactedPct": 0.8762886597938144,
+    "apptSetPct": null,
+    "contacted": 50,
+    "apptsSet": 28,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 43,
+      "sold": 17.0,
+      "apptsShown": 7,
+      "contactPct": 0.442,
+      "apptSetOfContactedPct": 0.9473684210526315,
+      "apptSetPct": null,
+      "contacted": 19,
+      "apptsSet": 18
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 54,
+      "sold": 7.0,
+      "apptsShown": 13,
+      "contactPct": 0.491,
+      "apptSetOfContactedPct": 1.4444444444444444,
+      "apptSetPct": null,
+      "contacted": 27,
+      "apptsSet": 39
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 122,
+      "sold": 12.0,
+      "apptsShown": 19,
+      "contactPct": 0.408,
+      "apptSetOfContactedPct": 0.56,
+      "apptSetPct": null,
+      "contacted": 50,
+      "apptsSet": 28
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 2,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-07",
+   "runDate": "2026-09-07",
+   "source": "1a07bf60516aeab0-Scheduled Report-9-7-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 268,
+    "sold": 64.0,
+    "apptsShown": 53,
+    "contactPct": 0.434,
+    "apptSetOfContactedPct": 0.8448275862068966,
+    "apptSetPct": null,
+    "contacted": 59,
+    "apptsSet": 32,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 58,
+      "sold": 23.0,
+      "apptsShown": 9,
+      "contactPct": 0.379,
+      "apptSetOfContactedPct": 0.9545454545454546,
+      "apptSetPct": null,
+      "contacted": 22,
+      "apptsSet": 21
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 65,
+      "sold": 14.0,
+      "apptsShown": 21,
+      "contactPct": 0.515,
+      "apptSetOfContactedPct": 1.3636363636363635,
+      "apptSetPct": null,
+      "contacted": 33,
+      "apptsSet": 45
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 143,
+      "sold": 16.0,
+      "apptsShown": 23,
+      "contactPct": 0.414,
+      "apptSetOfContactedPct": 0.5423728813559322,
+      "apptSetPct": null,
+      "contacted": 59,
+      "apptsSet": 32
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 2,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-07-01",
+   "end": "2026-07-29",
+   "runDate": "2026-08-29",
+   "source": "1a04d9e8a618f702-Scheduled Report-8-29-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 915,
+    "sold": 0.251,
+    "apptsShown": 0,
+    "contactPct": 345.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 60620,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 226,
+      "sold": 0.42,
+      "apptsShown": 0,
+      "contactPct": 54.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 12204,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 247,
+      "sold": 0.20199999999999999,
+      "apptsShown": 0,
+      "contactPct": 143.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 35321,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 433,
+      "sold": 0.092,
+      "apptsShown": 0,
+      "contactPct": 140.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 60620,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 9,
+      "sold": 0.556,
+      "apptsShown": 0,
+      "contactPct": 8.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 72,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-07-01",
+   "end": "2026-07-30",
+   "runDate": "2026-08-30",
+   "source": "1a052c4a2483fef7-Scheduled Report-8-30-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 959,
+    "sold": 0.248,
+    "apptsShown": 0,
+    "contactPct": 355.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 66410,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 236,
+      "sold": 0.415,
+      "apptsShown": 0,
+      "contactPct": 55.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 12980,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 256,
+      "sold": 0.203,
+      "apptsShown": 0,
+      "contactPct": 147.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 37632,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 458,
+      "sold": 0.092,
+      "apptsShown": 0,
+      "contactPct": 145.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 66410,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 9,
+      "sold": 0.556,
+      "apptsShown": 0,
+      "contactPct": 8.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 72,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-07-01",
+   "end": "2026-07-31",
+   "runDate": "2026-08-31",
+   "source": "1a057e9da6ae6061-Scheduled Report-8-31-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 994,
+    "sold": 0.262,
+    "apptsShown": 0,
+    "contactPct": 373.0,
+    "apptSetOfContactedPct": 0.0,
+    "apptSetPct": null,
+    "contacted": 72329,
+    "apptsSet": 0,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 241,
+      "sold": 0.419,
+      "apptsShown": 0,
+      "contactPct": 59.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 14219,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 265,
+      "sold": 0.215,
+      "apptsShown": 0,
+      "contactPct": 155.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 41075,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 479,
+      "sold": 0.094,
+      "apptsShown": 0,
+      "contactPct": 151.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 72329,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 9,
+      "sold": 0.556,
+      "apptsShown": 0,
+      "contactPct": 8.0,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 72,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-01",
+   "runDate": "2026-09-01",
+   "source": "1a05d1252ef31f4a-Scheduled Report-9-1-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 38,
+    "sold": 8.0,
+    "apptsShown": 7,
+    "contactPct": 0.5,
+    "apptSetOfContactedPct": 0.8947368421052632,
+    "apptSetPct": null,
+    "contacted": 8,
+    "apptsSet": 8,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 13,
+      "sold": 6.0,
+      "apptsShown": 0,
+      "contactPct": 0.615,
+      "apptSetOfContactedPct": 0.375,
+      "apptSetPct": null,
+      "contacted": 8,
+      "apptsSet": 3
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 9,
+      "sold": 1.0,
+      "apptsShown": 3,
+      "contactPct": 0.33299999999999996,
+      "apptSetOfContactedPct": 2.0,
+      "apptSetPct": null,
+      "contacted": 3,
+      "apptsSet": 6
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 15,
+      "sold": 1.0,
+      "apptsShown": 4,
+      "contactPct": 0.5329999999999999,
+      "apptSetOfContactedPct": 1.0,
+      "apptSetPct": null,
+      "contacted": 8,
+      "apptsSet": 8
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-02",
+   "runDate": "2026-09-02",
+   "source": "1a06236456a640b2-Scheduled Report-9-2-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 66,
+    "sold": 15.0,
+    "apptsShown": 11,
+    "contactPct": 0.609,
+    "apptSetOfContactedPct": 0.675,
+    "apptSetPct": null,
+    "contacted": 20,
+    "apptsSet": 12,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 23,
+      "sold": 13.0,
+      "apptsShown": 1,
+      "contactPct": 0.696,
+      "apptSetOfContactedPct": 0.375,
+      "apptSetPct": null,
+      "contacted": 16,
+      "apptsSet": 6
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 12,
+      "sold": 1.0,
+      "apptsShown": 5,
+      "contactPct": 0.33299999999999996,
+      "apptSetOfContactedPct": 2.25,
+      "apptSetPct": null,
+      "contacted": 4,
+      "apptsSet": 9
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 30,
+      "sold": 1.0,
+      "apptsShown": 5,
+      "contactPct": 0.667,
+      "apptSetOfContactedPct": 0.6,
+      "apptSetPct": null,
+      "contacted": 20,
+      "apptsSet": 12
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-03",
+   "runDate": "2026-09-03",
+   "source": "1a0675d3412f753a-Scheduled Report-9-3-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 99,
+    "sold": 21.0,
+    "apptsShown": 14,
+    "contactPct": 0.562,
+    "apptSetOfContactedPct": 0.6071428571428571,
+    "apptSetPct": null,
+    "contacted": 27,
+    "apptsSet": 14,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 33,
+      "sold": 17.0,
+      "apptsShown": 2,
+      "contactPct": 0.636,
+      "apptSetOfContactedPct": 0.38095238095238093,
+      "apptSetPct": null,
+      "contacted": 21,
+      "apptsSet": 8
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 17,
+      "sold": 2.0,
+      "apptsShown": 7,
+      "contactPct": 0.47100000000000003,
+      "apptSetOfContactedPct": 1.5,
+      "apptSetPct": null,
+      "contacted": 8,
+      "apptsSet": 12
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 47,
+      "sold": 1.0,
+      "apptsShown": 5,
+      "contactPct": 0.5660000000000001,
+      "apptSetOfContactedPct": 0.5185185185185185,
+      "apptSetPct": null,
+      "contacted": 27,
+      "apptsSet": 14
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 2,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-04",
+   "runDate": "2026-09-04",
+   "source": "1a06c83e7d5da34e-Scheduled Report-9-4-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 137,
+    "sold": 26.0,
+    "apptsShown": 19,
+    "contactPct": 0.556,
+    "apptSetOfContactedPct": 0.631578947368421,
+    "apptSetPct": null,
+    "contacted": 34,
+    "apptsSet": 21,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 43,
+      "sold": 21.0,
+      "apptsShown": 3,
+      "contactPct": 0.591,
+      "apptSetOfContactedPct": 0.36,
+      "apptSetPct": null,
+      "contacted": 25,
+      "apptsSet": 9
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 27,
+      "sold": 2.0,
+      "apptsShown": 9,
+      "contactPct": 0.536,
+      "apptSetOfContactedPct": 1.2142857142857142,
+      "apptSetPct": null,
+      "contacted": 14,
+      "apptsSet": 17
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 63,
+      "sold": 2.0,
+      "apptsShown": 7,
+      "contactPct": 0.547,
+      "apptSetOfContactedPct": 0.6176470588235294,
+      "apptSetPct": null,
+      "contacted": 34,
+      "apptsSet": 21
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 4,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 0.5,
+      "apptSetOfContactedPct": 0.5,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-05",
+   "runDate": "2026-09-05",
+   "source": "1a071ab8c12c55c2-Scheduled Report-9-5-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 175,
+    "sold": 33.0,
+    "apptsShown": 26,
+    "contactPct": 0.5760000000000001,
+    "apptSetOfContactedPct": 0.5544554455445545,
+    "apptSetPct": null,
+    "contacted": 45,
+    "apptsSet": 22,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 47,
+      "sold": 22.0,
+      "apptsShown": 3,
+      "contactPct": 0.604,
+      "apptSetOfContactedPct": 0.35714285714285715,
+      "apptSetPct": null,
+      "contacted": 28,
+      "apptsSet": 10
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 41,
+      "sold": 5.0,
+      "apptsShown": 14,
+      "contactPct": 0.628,
+      "apptSetOfContactedPct": 0.8846153846153846,
+      "apptSetPct": null,
+      "contacted": 26,
+      "apptsSet": 23
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 83,
+      "sold": 5.0,
+      "apptsShown": 9,
+      "contactPct": 0.544,
+      "apptSetOfContactedPct": 0.4888888888888889,
+      "apptSetPct": null,
+      "contacted": 45,
+      "apptsSet": 22
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 4,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 0.5,
+      "apptSetOfContactedPct": 0.5,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-06",
+   "runDate": "2026-09-06",
+   "source": "1a076ce941478cbf-Scheduled Report-9-6-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 212,
+    "sold": 37.0,
+    "apptsShown": 32,
+    "contactPct": 0.584,
+    "apptSetOfContactedPct": 0.5725806451612904,
+    "apptSetPct": null,
+    "contacted": 57,
+    "apptsSet": 30,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 54,
+      "sold": 25.0,
+      "apptsShown": 3,
+      "contactPct": 0.618,
+      "apptSetOfContactedPct": 0.3939393939393939,
+      "apptSetPct": null,
+      "contacted": 33,
+      "apptsSet": 13
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 51,
+      "sold": 5.0,
+      "apptsShown": 18,
+      "contactPct": 0.642,
+      "apptSetOfContactedPct": 0.8181818181818182,
+      "apptSetPct": null,
+      "contacted": 33,
+      "apptsSet": 27
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 103,
+      "sold": 6.0,
+      "apptsShown": 11,
+      "contactPct": 0.55,
+      "apptSetOfContactedPct": 0.5263157894736842,
+      "apptSetPct": null,
+      "contacted": 57,
+      "apptsSet": 30
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 4,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 0.5,
+      "apptSetOfContactedPct": 0.5,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-07",
+   "runDate": "2026-09-07",
+   "source": "1a07bf60516aeab0-Scheduled Report-9-7-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 247,
+    "sold": 48.0,
+    "apptsShown": 43,
+    "contactPct": 0.597,
+    "apptSetOfContactedPct": 0.54421768707483,
+    "apptSetPct": null,
+    "contacted": 70,
+    "apptsSet": 35,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 62,
+      "sold": 32.0,
+      "apptsShown": 6,
+      "contactPct": 0.5870000000000001,
+      "apptSetOfContactedPct": 0.4166666666666667,
+      "apptSetPct": null,
+      "contacted": 36,
+      "apptsSet": 15
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 60,
+      "sold": 5.0,
+      "apptsShown": 20,
+      "contactPct": 0.6609999999999999,
+      "apptSetOfContactedPct": 0.725,
+      "apptSetPct": null,
+      "contacted": 40,
+      "apptsSet": 29
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 121,
+      "sold": 9.0,
+      "apptsShown": 17,
+      "contactPct": 0.578,
+      "apptSetOfContactedPct": 0.5,
+      "apptSetPct": null,
+      "contacted": 70,
+      "apptsSet": 35
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 4,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 0.5,
+      "apptSetOfContactedPct": 0.5,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
   },
   {
    "storeId": "lunde-s-peoria-volkswagen",
@@ -543836,7 +552440,7 @@
    "type": "CRM",
    "api": "unknown",
    "scheduledEmail": true,
-   "note": "API availability unconfirmed. Reports can be scheduled."
+   "note": "Daily KPI Comparison PDF arrives by scheduled email since Aug 2026 (Bay Ridge, El Cajon, Garavel x2)."
   },
   {
    "name": "Momentum",
@@ -543986,6 +552590,76 @@
     "sales"
    ]
   },
+  "bay-ridge-honda": {
+   "firstRun": "2026-08-29",
+   "lastRun": "2026-09-07",
+   "runDates": [
+    "2026-08-29",
+    "2026-08-30",
+    "2026-08-31",
+    "2026-09-01",
+    "2026-09-02",
+    "2026-09-03",
+    "2026-09-04",
+    "2026-09-05",
+    "2026-09-06",
+    "2026-09-07"
+   ],
+   "months": [
+    "2026-07",
+    "2026-08",
+    "2026-09"
+   ],
+   "kinds": [
+    "kpi"
+   ]
+  },
+  "garavel-cjdr": {
+   "firstRun": "2026-08-29",
+   "lastRun": "2026-09-07",
+   "runDates": [
+    "2026-08-29",
+    "2026-08-30",
+    "2026-09-01",
+    "2026-09-02",
+    "2026-09-03",
+    "2026-09-04",
+    "2026-09-05",
+    "2026-09-06",
+    "2026-09-07"
+   ],
+   "months": [
+    "2026-07",
+    "2026-08",
+    "2026-09"
+   ],
+   "kinds": [
+    "kpi"
+   ]
+  },
+  "garavel-subaru": {
+   "firstRun": "2026-08-29",
+   "lastRun": "2026-09-07",
+   "runDates": [
+    "2026-08-29",
+    "2026-08-30",
+    "2026-08-31",
+    "2026-09-01",
+    "2026-09-02",
+    "2026-09-03",
+    "2026-09-04",
+    "2026-09-06",
+    "2026-09-07"
+   ],
+   "months": [
+    "2026-07",
+    "2026-08",
+    "2026-09"
+   ],
+   "kinds": [
+    "kpi"
+   ]
+  },
   "gresham-chrysler-dodge-jeep-ram": {
    "firstRun": "2026-07-28",
    "lastRun": "2026-09-07",
@@ -544037,6 +552711,30 @@
    "kinds": [
     "kpi",
     "sales"
+   ]
+  },
+  "honda-of-el-cajon": {
+   "firstRun": "2026-08-29",
+   "lastRun": "2026-09-07",
+   "runDates": [
+    "2026-08-29",
+    "2026-08-30",
+    "2026-08-31",
+    "2026-09-01",
+    "2026-09-02",
+    "2026-09-03",
+    "2026-09-04",
+    "2026-09-05",
+    "2026-09-06",
+    "2026-09-07"
+   ],
+   "months": [
+    "2026-07",
+    "2026-08",
+    "2026-09"
+   ],
+   "kinds": [
+    "kpi"
    ]
   },
   "lunde-s-peoria-volkswagen": {
@@ -544466,8 +553164,8 @@
  },
  "ingest": {
   "workbooksFound": 2870,
-  "parsed": 2487,
-  "unique": 1385,
+  "parsed": 2563,
+  "unique": 1461,
   "duplicatesDropped": 1102,
   "skipped": [
    {
