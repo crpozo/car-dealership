@@ -32219,13 +32219,13 @@
    "rowCount": 7,
    "total": {
     "goodLeads": 1399,
-    "sold": 0.25,
-    "apptsShown": 0,
-    "contactPct": 333.0,
-    "apptSetOfContactedPct": 0.0,
+    "sold": 350.0,
+    "apptsShown": 202,
+    "contactPct": 0.48100000000000004,
+    "apptSetOfContactedPct": 0.5111441307578009,
     "apptSetPct": null,
-    "contacted": 120750,
-    "apptsSet": 0,
+    "contacted": 418,
+    "apptsSet": 166,
     "contactScope": "internet"
    },
    "byLeadType": [
@@ -32233,13 +32233,13 @@
      "leadType": "Walk-in",
      "metrics": {
       "goodLeads": 316,
-      "sold": 0.551,
-      "apptsShown": 0,
-      "contactPct": 25.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 174.0,
+      "apptsShown": 11,
+      "contactPct": 0.278,
+      "apptSetOfContactedPct": 0.29545454545454547,
       "apptSetPct": null,
-      "contacted": 7900,
-      "apptsSet": 0
+      "contacted": 88,
+      "apptsSet": 26
      },
      "byInventory": []
     },
@@ -32247,13 +32247,13 @@
      "leadType": "Phone",
      "metrics": {
       "goodLeads": 323,
-      "sold": 0.337,
-      "apptsShown": 0,
-      "contactPct": 145.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 109.0,
+      "apptsShown": 98,
+      "contactPct": 0.48,
+      "apptSetOfContactedPct": 0.967741935483871,
       "apptSetPct": null,
-      "contacted": 46835,
-      "apptsSet": 0
+      "contacted": 155,
+      "apptsSet": 150
      },
      "byInventory": []
     },
@@ -32261,13 +32261,13 @@
      "leadType": "Internet",
      "metrics": {
       "goodLeads": 750,
-      "sold": 0.084,
-      "apptsShown": 0,
-      "contactPct": 161.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 63.0,
+      "apptsShown": 91,
+      "contactPct": 0.557,
+      "apptSetOfContactedPct": 0.39712918660287083,
       "apptSetPct": null,
-      "contacted": 120750,
-      "apptsSet": 0
+      "contacted": 418,
+      "apptsSet": 166
      },
      "byInventory": []
     },
@@ -32275,13 +32275,13 @@
      "leadType": "Campaign",
      "metrics": {
       "goodLeads": 10,
-      "sold": 0.2,
-      "apptsShown": 1,
-      "contactPct": 2.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 2.0,
+      "apptsShown": 2,
+      "contactPct": 0.667,
+      "apptSetOfContactedPct": 0.2857142857142857,
       "apptSetPct": null,
-      "contacted": 20,
-      "apptsSet": 0
+      "contacted": 7,
+      "apptsSet": 2
      },
      "byInventory": []
     },
@@ -32334,13 +32334,13 @@
    "rowCount": 7,
    "total": {
     "goodLeads": 1463,
-    "sold": 0.252,
-    "apptsShown": 0,
-    "contactPct": 346.0,
-    "apptSetOfContactedPct": 0.0,
+    "sold": 369.0,
+    "apptsShown": 214,
+    "contactPct": 0.485,
+    "apptSetOfContactedPct": 0.504225352112676,
     "apptSetPct": null,
-    "contacted": 133790,
-    "apptsSet": 0,
+    "contacted": 445,
+    "apptsSet": 177,
     "contactScope": "internet"
    },
    "byLeadType": [
@@ -32348,13 +32348,13 @@
      "leadType": "Walk-in",
      "metrics": {
       "goodLeads": 340,
-      "sold": 0.532,
-      "apptsShown": 0,
-      "contactPct": 25.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 181.0,
+      "apptsShown": 12,
+      "contactPct": 0.273,
+      "apptSetOfContactedPct": 0.2903225806451613,
       "apptSetPct": null,
-      "contacted": 8500,
-      "apptsSet": 0
+      "contacted": 93,
+      "apptsSet": 27
      },
      "byInventory": []
     },
@@ -32362,13 +32362,13 @@
      "leadType": "Phone",
      "metrics": {
       "goodLeads": 326,
-      "sold": 0.35,
-      "apptsShown": 0,
-      "contactPct": 149.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 114.0,
+      "apptsShown": 102,
+      "contactPct": 0.486,
+      "apptSetOfContactedPct": 0.9620253164556962,
       "apptSetPct": null,
-      "contacted": 48574,
-      "apptsSet": 0
+      "contacted": 158,
+      "apptsSet": 152
      },
      "byInventory": []
     },
@@ -32376,13 +32376,13 @@
      "leadType": "Internet",
      "metrics": {
       "goodLeads": 787,
-      "sold": 0.08900000000000001,
-      "apptsShown": 0,
-      "contactPct": 170.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 70.0,
+      "apptsShown": 98,
+      "contactPct": 0.5660000000000001,
+      "apptSetOfContactedPct": 0.39775280898876403,
       "apptSetPct": null,
-      "contacted": 133790,
-      "apptsSet": 0
+      "contacted": 445,
+      "apptsSet": 177
      },
      "byInventory": []
     },
@@ -32390,13 +32390,13 @@
      "leadType": "Campaign",
      "metrics": {
       "goodLeads": 10,
-      "sold": 0.2,
-      "apptsShown": 1,
-      "contactPct": 2.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 2.0,
+      "apptsShown": 2,
+      "contactPct": 0.667,
+      "apptSetOfContactedPct": 0.2857142857142857,
       "apptSetPct": null,
-      "contacted": 20,
-      "apptsSet": 0
+      "contacted": 7,
+      "apptsSet": 2
      },
      "byInventory": []
     },
@@ -32449,13 +32449,13 @@
    "rowCount": 7,
    "total": {
     "goodLeads": 1501,
-    "sold": 0.248,
-    "apptsShown": 0,
-    "contactPct": 357.0,
-    "apptSetOfContactedPct": 0.0,
+    "sold": 372.0,
+    "apptsShown": 225,
+    "contactPct": 0.483,
+    "apptSetOfContactedPct": 0.5048275862068966,
     "apptSetPct": null,
-    "contacted": 142158,
-    "apptsSet": 0,
+    "contacted": 457,
+    "apptsSet": 181,
     "contactScope": "internet"
    },
    "byLeadType": [
@@ -32463,13 +32463,13 @@
      "leadType": "Walk-in",
      "metrics": {
       "goodLeads": 343,
-      "sold": 0.531,
-      "apptsShown": 0,
-      "contactPct": 26.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 182.0,
+      "apptsShown": 13,
+      "contactPct": 0.273,
+      "apptSetOfContactedPct": 0.2978723404255319,
       "apptSetPct": null,
-      "contacted": 8918,
-      "apptsSet": 0
+      "contacted": 94,
+      "apptsSet": 28
      },
      "byInventory": []
     },
@@ -32477,13 +32477,13 @@
      "leadType": "Phone",
      "metrics": {
       "goodLeads": 331,
-      "sold": 0.344,
-      "apptsShown": 0,
-      "contactPct": 155.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 114.0,
+      "apptsShown": 108,
+      "contactPct": 0.491,
+      "apptSetOfContactedPct": 0.950920245398773,
       "apptSetPct": null,
-      "contacted": 51305,
-      "apptsSet": 0
+      "contacted": 163,
+      "apptsSet": 155
      },
      "byInventory": []
     },
@@ -32491,13 +32491,13 @@
      "leadType": "Internet",
      "metrics": {
       "goodLeads": 817,
-      "sold": 0.08800000000000001,
-      "apptsShown": 0,
-      "contactPct": 174.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 72.0,
+      "apptsShown": 102,
+      "contactPct": 0.5589999999999999,
+      "apptSetOfContactedPct": 0.39606126914660833,
       "apptSetPct": null,
-      "contacted": 142158,
-      "apptsSet": 0
+      "contacted": 457,
+      "apptsSet": 181
      },
      "byInventory": []
     },
@@ -32505,13 +32505,13 @@
      "leadType": "Campaign",
      "metrics": {
       "goodLeads": 10,
-      "sold": 0.2,
-      "apptsShown": 1,
-      "contactPct": 2.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 2.0,
+      "apptsShown": 2,
+      "contactPct": 0.667,
+      "apptSetOfContactedPct": 0.2857142857142857,
       "apptSetPct": null,
-      "contacted": 20,
-      "apptsSet": 0
+      "contacted": 7,
+      "apptsSet": 2
      },
      "byInventory": []
     },
@@ -33285,13 +33285,13 @@
    "rowCount": 7,
    "total": {
     "goodLeads": 1463,
-    "sold": 0.249,
-    "apptsShown": 0,
-    "contactPct": 325.0,
-    "apptSetOfContactedPct": 0.0,
+    "sold": 365.0,
+    "apptsShown": 198,
+    "contactPct": 0.535,
+    "apptSetOfContactedPct": 0.4559386973180077,
     "apptSetPct": null,
-    "contacted": 143992,
-    "apptsSet": 0,
+    "contacted": 520,
+    "apptsSet": 185,
     "contactScope": "internet"
    },
    "byLeadType": [
@@ -33299,13 +33299,13 @@
      "leadType": "Walk-in",
      "metrics": {
       "goodLeads": 322,
-      "sold": 0.568,
-      "apptsShown": 0,
-      "contactPct": 21.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 183.0,
+      "apptsShown": 9,
+      "contactPct": 0.295,
+      "apptSetOfContactedPct": 0.2631578947368421,
       "apptSetPct": null,
-      "contacted": 6762,
-      "apptsSet": 0
+      "contacted": 95,
+      "apptsSet": 25
      },
      "byInventory": []
     },
@@ -33313,13 +33313,13 @@
      "leadType": "Phone",
      "metrics": {
       "goodLeads": 257,
-      "sold": 0.42,
-      "apptsShown": 0,
-      "contactPct": 139.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 108.0,
+      "apptsShown": 92,
+      "contactPct": 0.616,
+      "apptSetOfContactedPct": 0.9240506329113924,
       "apptSetPct": null,
-      "contacted": 35723,
-      "apptsSet": 0
+      "contacted": 158,
+      "apptsSet": 146
      },
      "byInventory": []
     },
@@ -33327,13 +33327,13 @@
      "leadType": "Internet",
      "metrics": {
       "goodLeads": 878,
-      "sold": 0.084,
-      "apptsShown": 0,
-      "contactPct": 164.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 74.0,
+      "apptsShown": 96,
+      "contactPct": 0.5920000000000001,
+      "apptSetOfContactedPct": 0.3557692307692308,
       "apptSetPct": null,
-      "contacted": 143992,
-      "apptsSet": 0
+      "contacted": 520,
+      "apptsSet": 185
      },
      "byInventory": []
     },
@@ -33343,11 +33343,11 @@
       "goodLeads": 6,
       "sold": 0,
       "apptsShown": 1,
-      "contactPct": 1.0,
-      "apptSetOfContactedPct": 0.0,
+      "contactPct": 0.5710000000000001,
+      "apptSetOfContactedPct": 0.3333333333333333,
       "apptSetPct": null,
-      "contacted": 6,
-      "apptsSet": 0
+      "contacted": 3,
+      "apptsSet": 1
      },
      "byInventory": []
     },
@@ -33400,13 +33400,13 @@
    "rowCount": 7,
    "total": {
     "goodLeads": 1528,
-    "sold": 0.25,
-    "apptsShown": 0,
-    "contactPct": 339.0,
-    "apptSetOfContactedPct": 0.0,
+    "sold": 382.0,
+    "apptsShown": 208,
+    "contactPct": 0.531,
+    "apptSetOfContactedPct": 0.45745992601726265,
     "apptSetPct": null,
-    "contacted": 158295,
-    "apptsSet": 0,
+    "contacted": 541,
+    "apptsSet": 191,
     "contactScope": "internet"
    },
    "byLeadType": [
@@ -33414,13 +33414,13 @@
      "leadType": "Walk-in",
      "metrics": {
       "goodLeads": 333,
-      "sold": 0.5710000000000001,
-      "apptsShown": 0,
-      "contactPct": 24.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 190.0,
+      "apptsShown": 10,
+      "contactPct": 0.289,
+      "apptSetOfContactedPct": 0.2604166666666667,
       "apptSetPct": null,
-      "contacted": 7992,
-      "apptsSet": 0
+      "contacted": 96,
+      "apptsSet": 25
      },
      "byInventory": []
     },
@@ -33428,13 +33428,13 @@
      "leadType": "Phone",
      "metrics": {
       "goodLeads": 274,
-      "sold": 0.41200000000000003,
-      "apptsShown": 0,
-      "contactPct": 141.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 113.0,
+      "apptsShown": 95,
+      "contactPct": 0.605,
+      "apptSetOfContactedPct": 0.927710843373494,
       "apptSetPct": null,
-      "contacted": 38634,
-      "apptsSet": 0
+      "contacted": 166,
+      "apptsSet": 154
      },
      "byInventory": []
     },
@@ -33442,13 +33442,13 @@
      "leadType": "Internet",
      "metrics": {
       "goodLeads": 915,
-      "sold": 0.086,
-      "apptsShown": 0,
-      "contactPct": 173.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 79.0,
+      "apptsShown": 102,
+      "contactPct": 0.591,
+      "apptSetOfContactedPct": 0.35304990757855825,
       "apptSetPct": null,
-      "contacted": 158295,
-      "apptsSet": 0
+      "contacted": 541,
+      "apptsSet": 191
      },
      "byInventory": []
     },
@@ -33458,11 +33458,11 @@
       "goodLeads": 6,
       "sold": 0,
       "apptsShown": 1,
-      "contactPct": 1.0,
-      "apptSetOfContactedPct": 0.0,
+      "contactPct": 0.5710000000000001,
+      "apptSetOfContactedPct": 0.3333333333333333,
       "apptSetPct": null,
-      "contacted": 6,
-      "apptsSet": 0
+      "contacted": 3,
+      "apptsSet": 1
      },
      "byInventory": []
     },
@@ -33515,13 +33515,13 @@
    "rowCount": 7,
    "total": {
     "goodLeads": 1580,
-    "sold": 0.266,
-    "apptsShown": 0,
-    "contactPct": 360.0,
-    "apptSetOfContactedPct": 0.0,
+    "sold": 420.0,
+    "apptsShown": 225,
+    "contactPct": 0.531,
+    "apptSetOfContactedPct": 0.4600715137067938,
     "apptSetPct": null,
-    "contacted": 173144,
-    "apptsSet": 0,
+    "contacted": 553,
+    "apptsSet": 197,
     "contactScope": "internet"
    },
    "byLeadType": [
@@ -33529,13 +33529,13 @@
      "leadType": "Walk-in",
      "metrics": {
       "goodLeads": 348,
-      "sold": 0.5920000000000001,
-      "apptsShown": 0,
-      "contactPct": 24.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 206.0,
+      "apptsShown": 10,
+      "contactPct": 0.29100000000000004,
+      "apptSetOfContactedPct": 0.24752475247524752,
       "apptSetPct": null,
-      "contacted": 8352,
-      "apptsSet": 0
+      "contacted": 101,
+      "apptsSet": 25
      },
      "byInventory": []
     },
@@ -33543,13 +33543,13 @@
      "leadType": "Phone",
      "metrics": {
       "goodLeads": 283,
-      "sold": 0.456,
-      "apptsShown": 0,
-      "contactPct": 151.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 129.0,
+      "apptsShown": 105,
+      "contactPct": 0.61,
+      "apptSetOfContactedPct": 0.9421965317919075,
       "apptSetPct": null,
-      "contacted": 42733,
-      "apptsSet": 0
+      "contacted": 173,
+      "apptsSet": 163
      },
      "byInventory": []
     },
@@ -33557,13 +33557,13 @@
      "leadType": "Internet",
      "metrics": {
       "goodLeads": 941,
-      "sold": 0.09,
-      "apptsShown": 0,
-      "contactPct": 184.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 85.0,
+      "apptsShown": 109,
+      "contactPct": 0.588,
+      "apptSetOfContactedPct": 0.3562386980108499,
       "apptSetPct": null,
-      "contacted": 173144,
-      "apptsSet": 0
+      "contacted": 553,
+      "apptsSet": 197
      },
      "byInventory": []
     },
@@ -33573,11 +33573,11 @@
       "goodLeads": 8,
       "sold": 0,
       "apptsShown": 1,
-      "contactPct": 1.0,
-      "apptSetOfContactedPct": 0.0,
+      "contactPct": 0.667,
+      "apptSetOfContactedPct": 0.2,
       "apptSetPct": null,
-      "contacted": 8,
-      "apptsSet": 0
+      "contacted": 5,
+      "apptsSet": 1
      },
      "byInventory": []
     },
@@ -36421,13 +36421,13 @@
    "rowCount": 7,
    "total": {
     "goodLeads": 666,
-    "sold": 0.182,
-    "apptsShown": 0,
-    "contactPct": 140.0,
-    "apptSetOfContactedPct": 0.0,
+    "sold": 121.0,
+    "apptsShown": 115,
+    "contactPct": 0.645,
+    "apptSetOfContactedPct": 0.3558139534883721,
     "apptSetPct": null,
-    "contacted": 22516,
-    "apptsSet": 0,
+    "contacted": 254,
+    "apptsSet": 62,
     "contactScope": "internet"
    },
    "byLeadType": [
@@ -36435,13 +36435,13 @@
      "leadType": "Walk-in",
      "metrics": {
       "goodLeads": 119,
-      "sold": 0.45399999999999996,
-      "apptsShown": 0,
-      "contactPct": 24.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 54.0,
+      "apptsShown": 22,
+      "contactPct": 0.748,
+      "apptSetOfContactedPct": 0.2696629213483146,
       "apptSetPct": null,
-      "contacted": 2856,
-      "apptsSet": 0
+      "contacted": 89,
+      "apptsSet": 24
      },
      "byInventory": []
     },
@@ -36449,13 +36449,13 @@
      "leadType": "Phone",
      "metrics": {
       "goodLeads": 107,
-      "sold": 0.318,
-      "apptsShown": 0,
-      "contactPct": 61.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 34.0,
+      "apptsShown": 52,
+      "contactPct": 0.813,
+      "apptSetOfContactedPct": 0.7471264367816092,
       "apptSetPct": null,
-      "contacted": 6527,
-      "apptsSet": 0
+      "contacted": 87,
+      "apptsSet": 65
      },
      "byInventory": []
     },
@@ -36463,13 +36463,13 @@
      "leadType": "Internet",
      "metrics": {
       "goodLeads": 433,
-      "sold": 0.07200000000000001,
-      "apptsShown": 0,
-      "contactPct": 52.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 31.0,
+      "apptsShown": 38,
+      "contactPct": 0.586,
+      "apptSetOfContactedPct": 0.2440944881889764,
       "apptSetPct": null,
-      "contacted": 22516,
-      "apptsSet": 0
+      "contacted": 254,
+      "apptsSet": 62
      },
      "byInventory": []
     },
@@ -36479,10 +36479,10 @@
       "goodLeads": 1,
       "sold": 1.0,
       "apptsShown": 1,
-      "contactPct": 1.0,
-      "apptSetOfContactedPct": 0.0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
       "apptSetPct": null,
-      "contacted": 1,
+      "contacted": 0,
       "apptsSet": 0
      },
      "byInventory": []
@@ -36505,13 +36505,13 @@
      "leadType": "Chat",
      "metrics": {
       "goodLeads": 6,
-      "sold": 0.16699999999999998,
+      "sold": 1.0,
       "apptsShown": 1,
-      "contactPct": 1.0,
-      "apptSetOfContactedPct": 0.0,
+      "contactPct": 0.429,
+      "apptSetOfContactedPct": 0.3333333333333333,
       "apptSetPct": null,
-      "contacted": 6,
-      "apptsSet": 0
+      "contacted": 3,
+      "apptsSet": 1
      },
      "byInventory": []
     }
@@ -36536,13 +36536,13 @@
    "rowCount": 7,
    "total": {
     "goodLeads": 696,
-    "sold": 0.184,
-    "apptsShown": 0,
-    "contactPct": 150.0,
-    "apptSetOfContactedPct": 0.0,
+    "sold": 128.0,
+    "apptsShown": 121,
+    "contactPct": 0.645,
+    "apptSetOfContactedPct": 0.36302895322939865,
     "apptSetPct": null,
-    "contacted": 24750,
-    "apptsSet": 0,
+    "contacted": 262,
+    "apptsSet": 65,
     "contactScope": "internet"
    },
    "byLeadType": [
@@ -36550,13 +36550,13 @@
      "leadType": "Walk-in",
      "metrics": {
       "goodLeads": 123,
-      "sold": 0.46299999999999997,
-      "apptsShown": 0,
-      "contactPct": 26.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 57.0,
+      "apptsShown": 23,
+      "contactPct": 0.7559999999999999,
+      "apptSetOfContactedPct": 0.26881720430107525,
       "apptSetPct": null,
-      "contacted": 3198,
-      "apptsSet": 0
+      "contacted": 93,
+      "apptsSet": 25
      },
      "byInventory": []
     },
@@ -36564,13 +36564,13 @@
      "leadType": "Phone",
      "metrics": {
       "goodLeads": 116,
-      "sold": 0.319,
-      "apptsShown": 0,
-      "contactPct": 66.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 37.0,
+      "apptsShown": 55,
+      "contactPct": 0.8109999999999999,
+      "apptSetOfContactedPct": 0.7553191489361702,
       "apptSetPct": null,
-      "contacted": 7656,
-      "apptsSet": 0
+      "contacted": 94,
+      "apptsSet": 71
      },
      "byInventory": []
     },
@@ -36578,13 +36578,13 @@
      "leadType": "Internet",
      "metrics": {
       "goodLeads": 450,
-      "sold": 0.071,
-      "apptsShown": 0,
-      "contactPct": 55.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 32.0,
+      "apptsShown": 40,
+      "contactPct": 0.5820000000000001,
+      "apptSetOfContactedPct": 0.2480916030534351,
       "apptSetPct": null,
-      "contacted": 24750,
-      "apptsSet": 0
+      "contacted": 262,
+      "apptsSet": 65
      },
      "byInventory": []
     },
@@ -36594,10 +36594,10 @@
       "goodLeads": 1,
       "sold": 1.0,
       "apptsShown": 1,
-      "contactPct": 1.0,
-      "apptSetOfContactedPct": 0.0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
       "apptSetPct": null,
-      "contacted": 1,
+      "contacted": 0,
       "apptsSet": 0
      },
      "byInventory": []
@@ -36620,13 +36620,13 @@
      "leadType": "Chat",
      "metrics": {
       "goodLeads": 6,
-      "sold": 0.16699999999999998,
+      "sold": 1.0,
       "apptsShown": 1,
-      "contactPct": 1.0,
-      "apptSetOfContactedPct": 0.0,
+      "contactPct": 0.429,
+      "apptSetOfContactedPct": 0.3333333333333333,
       "apptSetPct": null,
-      "contacted": 6,
-      "apptsSet": 0
+      "contacted": 3,
+      "apptsSet": 1
      },
      "byInventory": []
     }
@@ -36651,13 +36651,13 @@
    "rowCount": 7,
    "total": {
     "goodLeads": 718,
-    "sold": 0.184,
-    "apptsShown": 0,
-    "contactPct": 150.0,
-    "apptSetOfContactedPct": 0.0,
+    "sold": 132.0,
+    "apptsShown": 124,
+    "contactPct": 0.6459999999999999,
+    "apptSetOfContactedPct": 0.35129310344827586,
     "apptSetPct": null,
-    "contacted": 26790,
-    "apptsSet": 0,
+    "contacted": 274,
+    "apptsSet": 67,
     "contactScope": "internet"
    },
    "byLeadType": [
@@ -36665,13 +36665,13 @@
      "leadType": "Walk-in",
      "metrics": {
       "goodLeads": 125,
-      "sold": 0.47200000000000003,
-      "apptsShown": 0,
-      "contactPct": 25.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 59.0,
+      "apptsShown": 23,
+      "contactPct": 0.752,
+      "apptSetOfContactedPct": 0.2553191489361702,
       "apptSetPct": null,
-      "contacted": 3125,
-      "apptsSet": 0
+      "contacted": 94,
+      "apptsSet": 24
      },
      "byInventory": []
     },
@@ -36679,13 +36679,13 @@
      "leadType": "Phone",
      "metrics": {
       "goodLeads": 116,
-      "sold": 0.32799999999999996,
-      "apptsShown": 0,
-      "contactPct": 65.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 38.0,
+      "apptsShown": 57,
+      "contactPct": 0.828,
+      "apptSetOfContactedPct": 0.7291666666666666,
       "apptSetPct": null,
-      "contacted": 7540,
-      "apptsSet": 0
+      "contacted": 96,
+      "apptsSet": 70
      },
      "byInventory": []
     },
@@ -36693,13 +36693,13 @@
      "leadType": "Internet",
      "metrics": {
       "goodLeads": 470,
-      "sold": 0.07,
-      "apptsShown": 0,
-      "contactPct": 57.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 33.0,
+      "apptsShown": 41,
+      "contactPct": 0.583,
+      "apptSetOfContactedPct": 0.24452554744525548,
       "apptSetPct": null,
-      "contacted": 26790,
-      "apptsSet": 0
+      "contacted": 274,
+      "apptsSet": 67
      },
      "byInventory": []
     },
@@ -36709,10 +36709,10 @@
       "goodLeads": 1,
       "sold": 1.0,
       "apptsShown": 1,
-      "contactPct": 1.0,
-      "apptSetOfContactedPct": 0.0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
       "apptSetPct": null,
-      "contacted": 1,
+      "contacted": 0,
       "apptsSet": 0
      },
      "byInventory": []
@@ -36735,13 +36735,13 @@
      "leadType": "Chat",
      "metrics": {
       "goodLeads": 6,
-      "sold": 0.16699999999999998,
+      "sold": 1.0,
       "apptsShown": 1,
-      "contactPct": 1.0,
-      "apptSetOfContactedPct": 0.0,
+      "contactPct": 0.429,
+      "apptSetOfContactedPct": 0.3333333333333333,
       "apptSetPct": null,
-      "contacted": 6,
-      "apptsSet": 0
+      "contacted": 3,
+      "apptsSet": 1
      },
      "byInventory": []
     }
@@ -37456,13 +37456,13 @@
    "rowCount": 7,
    "total": {
     "goodLeads": 575,
-    "sold": 0.21,
-    "apptsShown": 0,
-    "contactPct": 160.0,
-    "apptSetOfContactedPct": 0.0,
+    "sold": 121.0,
+    "apptsShown": 138,
+    "contactPct": 0.708,
+    "apptSetOfContactedPct": 0.44471744471744473,
     "apptSetPct": null,
-    "contacted": 17297,
-    "apptsSet": 0,
+    "contacted": 224,
+    "apptsSet": 57,
     "contactScope": "internet"
    },
    "byLeadType": [
@@ -37470,13 +37470,13 @@
      "leadType": "Walk-in",
      "metrics": {
       "goodLeads": 105,
-      "sold": 0.41,
-      "apptsShown": 0,
-      "contactPct": 38.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 43.0,
+      "apptsShown": 31,
+      "contactPct": 0.772,
+      "apptSetOfContactedPct": 0.5432098765432098,
       "apptSetPct": null,
-      "contacted": 3990,
-      "apptsSet": 0
+      "contacted": 81,
+      "apptsSet": 44
      },
      "byInventory": []
     },
@@ -37484,13 +37484,13 @@
      "leadType": "Phone",
      "metrics": {
       "goodLeads": 110,
-      "sold": 0.391,
-      "apptsShown": 0,
-      "contactPct": 70.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 43.0,
+      "apptsShown": 63,
+      "contactPct": 0.91,
+      "apptSetOfContactedPct": 0.77,
       "apptSetPct": null,
-      "contacted": 7700,
-      "apptsSet": 0
+      "contacted": 100,
+      "apptsSet": 77
      },
      "byInventory": []
     },
@@ -37498,13 +37498,13 @@
      "leadType": "Internet",
      "metrics": {
       "goodLeads": 353,
-      "sold": 0.085,
-      "apptsShown": 0,
-      "contactPct": 49.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 30.0,
+      "apptsShown": 42,
+      "contactPct": 0.635,
+      "apptSetOfContactedPct": 0.2544642857142857,
       "apptSetPct": null,
-      "contacted": 17297,
-      "apptsSet": 0
+      "contacted": 224,
+      "apptsSet": 57
      },
      "byInventory": []
     },
@@ -37512,7 +37512,7 @@
      "leadType": "Campaign",
      "metrics": {
       "goodLeads": 0,
-      "sold": 0,
+      "sold": 1.0,
       "apptsShown": 0,
       "contactPct": 0,
       "apptSetOfContactedPct": 0,
@@ -37540,13 +37540,13 @@
      "leadType": "Chat",
      "metrics": {
       "goodLeads": 7,
-      "sold": 0.5710000000000001,
-      "apptsShown": 0,
-      "contactPct": 3.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 4.0,
+      "apptsShown": 2,
+      "contactPct": 0.6,
+      "apptSetOfContactedPct": 0.75,
       "apptSetPct": null,
-      "contacted": 21,
-      "apptsSet": 0
+      "contacted": 4,
+      "apptsSet": 3
      },
      "byInventory": []
     }
@@ -37571,13 +37571,13 @@
    "rowCount": 7,
    "total": {
     "goodLeads": 601,
-    "sold": 0.213,
-    "apptsShown": 0,
-    "contactPct": 164.0,
-    "apptSetOfContactedPct": 0.0,
+    "sold": 128.0,
+    "apptsShown": 142,
+    "contactPct": 0.706,
+    "apptSetOfContactedPct": 0.43160377358490565,
     "apptSetPct": null,
-    "contacted": 18550,
-    "apptsSet": 0,
+    "contacted": 233,
+    "apptsSet": 58,
     "contactScope": "internet"
    },
    "byLeadType": [
@@ -37585,13 +37585,13 @@
      "leadType": "Walk-in",
      "metrics": {
       "goodLeads": 108,
-      "sold": 0.40700000000000003,
-      "apptsShown": 0,
-      "contactPct": 38.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 44.0,
+      "apptsShown": 31,
+      "contactPct": 0.778,
+      "apptSetOfContactedPct": 0.5238095238095238,
       "apptSetPct": null,
-      "contacted": 4104,
-      "apptsSet": 0
+      "contacted": 84,
+      "apptsSet": 44
      },
      "byInventory": []
     },
@@ -37599,13 +37599,13 @@
      "leadType": "Phone",
      "metrics": {
       "goodLeads": 115,
-      "sold": 0.409,
-      "apptsShown": 0,
-      "contactPct": 73.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 47.0,
+      "apptsShown": 66,
+      "contactPct": 0.9129999999999999,
+      "apptSetOfContactedPct": 0.7428571428571429,
       "apptSetPct": null,
-      "contacted": 8395,
-      "apptsSet": 0
+      "contacted": 105,
+      "apptsSet": 78
      },
      "byInventory": []
     },
@@ -37613,13 +37613,13 @@
      "leadType": "Internet",
      "metrics": {
       "goodLeads": 371,
-      "sold": 0.086,
-      "apptsShown": 0,
-      "contactPct": 50.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 32.0,
+      "apptsShown": 43,
+      "contactPct": 0.628,
+      "apptSetOfContactedPct": 0.24892703862660945,
       "apptSetPct": null,
-      "contacted": 18550,
-      "apptsSet": 0
+      "contacted": 233,
+      "apptsSet": 58
      },
      "byInventory": []
     },
@@ -37627,7 +37627,7 @@
      "leadType": "Campaign",
      "metrics": {
       "goodLeads": 0,
-      "sold": 0,
+      "sold": 1.0,
       "apptsShown": 0,
       "contactPct": 0,
       "apptSetOfContactedPct": 0,
@@ -37655,13 +37655,13 @@
      "leadType": "Chat",
      "metrics": {
       "goodLeads": 7,
-      "sold": 0.5710000000000001,
-      "apptsShown": 0,
-      "contactPct": 3.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 4.0,
+      "apptsShown": 2,
+      "contactPct": 0.6,
+      "apptSetOfContactedPct": 0.75,
       "apptSetPct": null,
-      "contacted": 21,
-      "apptsSet": 0
+      "contacted": 4,
+      "apptsSet": 3
      },
      "byInventory": []
     }
@@ -37686,13 +37686,13 @@
    "rowCount": 7,
    "total": {
     "goodLeads": 628,
-    "sold": 0.223,
-    "apptsShown": 0,
-    "contactPct": 167.0,
-    "apptSetOfContactedPct": 0.0,
+    "sold": 140.0,
+    "apptsShown": 145,
+    "contactPct": 0.706,
+    "apptSetOfContactedPct": 0.4288939051918736,
     "apptSetPct": null,
-    "contacted": 19788,
-    "apptsSet": 0,
+    "contacted": 243,
+    "apptsSet": 59,
     "contactScope": "internet"
    },
    "byLeadType": [
@@ -37700,13 +37700,13 @@
      "leadType": "Walk-in",
      "metrics": {
       "goodLeads": 110,
-      "sold": 0.418,
-      "apptsShown": 0,
-      "contactPct": 38.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 46.0,
+      "apptsShown": 31,
+      "contactPct": 0.7829999999999999,
+      "apptSetOfContactedPct": 0.5348837209302325,
       "apptSetPct": null,
-      "contacted": 4180,
-      "apptsSet": 0
+      "contacted": 86,
+      "apptsSet": 46
      },
      "byInventory": []
     },
@@ -37714,13 +37714,13 @@
      "leadType": "Phone",
      "metrics": {
       "goodLeads": 121,
-      "sold": 0.43,
-      "apptsShown": 0,
-      "contactPct": 75.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 52.0,
+      "apptsShown": 68,
+      "contactPct": 0.91,
+      "apptSetOfContactedPct": 0.7363636363636363,
       "apptSetPct": null,
-      "contacted": 9075,
-      "apptsSet": 0
+      "contacted": 110,
+      "apptsSet": 81
      },
      "byInventory": []
     },
@@ -37728,13 +37728,13 @@
      "leadType": "Internet",
      "metrics": {
       "goodLeads": 388,
-      "sold": 0.095,
-      "apptsShown": 0,
-      "contactPct": 51.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 37.0,
+      "apptsShown": 44,
+      "contactPct": 0.626,
+      "apptSetOfContactedPct": 0.24279835390946503,
       "apptSetPct": null,
-      "contacted": 19788,
-      "apptsSet": 0
+      "contacted": 243,
+      "apptsSet": 59
      },
      "byInventory": []
     },
@@ -37744,10 +37744,10 @@
       "goodLeads": 1,
       "sold": 1.0,
       "apptsShown": 0,
-      "contactPct": 0,
-      "apptSetOfContactedPct": 0,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 1.0,
       "apptSetPct": null,
-      "contacted": 0,
+      "contacted": 1,
       "apptsSet": 1
      },
      "byInventory": []
@@ -37770,13 +37770,13 @@
      "leadType": "Chat",
      "metrics": {
       "goodLeads": 8,
-      "sold": 0.5,
-      "apptsShown": 0,
-      "contactPct": 3.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 4.0,
+      "apptsShown": 2,
+      "contactPct": 0.636,
+      "apptSetOfContactedPct": 0.6,
       "apptSetPct": null,
-      "contacted": 24,
-      "apptsSet": 0
+      "contacted": 5,
+      "apptsSet": 3
      },
      "byInventory": []
     }
@@ -65598,13 +65598,13 @@
    "rowCount": 7,
    "total": {
     "goodLeads": 1082,
-    "sold": 0.213,
-    "apptsShown": 0,
-    "contactPct": 361.0,
-    "apptSetOfContactedPct": 0.0,
+    "sold": 231.0,
+    "apptsShown": 189,
+    "contactPct": 0.578,
+    "apptSetOfContactedPct": 0.5824,
     "apptSetPct": null,
-    "contacted": 77763,
-    "apptsSet": 0,
+    "contacted": 306,
+    "apptsSet": 140,
     "contactScope": "internet"
    },
    "byLeadType": [
@@ -65612,13 +65612,13 @@
      "leadType": "Walk-in",
      "metrics": {
       "goodLeads": 249,
-      "sold": 0.406,
-      "apptsShown": 0,
-      "contactPct": 60.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 101.0,
+      "apptsShown": 24,
+      "contactPct": 0.518,
+      "apptSetOfContactedPct": 0.4806201550387597,
       "apptSetPct": null,
-      "contacted": 14940,
-      "apptsSet": 0
+      "contacted": 129,
+      "apptsSet": 62
      },
      "byInventory": []
     },
@@ -65626,13 +65626,13 @@
      "leadType": "Phone",
      "metrics": {
       "goodLeads": 288,
-      "sold": 0.19399999999999998,
-      "apptsShown": 0,
-      "contactPct": 144.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 56.0,
+      "apptsShown": 82,
+      "contactPct": 0.6409999999999999,
+      "apptSetOfContactedPct": 0.8216216216216217,
       "apptSetPct": null,
-      "contacted": 41472,
-      "apptsSet": 0
+      "contacted": 185,
+      "apptsSet": 152
      },
      "byInventory": []
     },
@@ -65640,13 +65640,13 @@
      "leadType": "Internet",
      "metrics": {
       "goodLeads": 529,
-      "sold": 0.079,
-      "apptsShown": 0,
-      "contactPct": 147.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 42.0,
+      "apptsShown": 75,
+      "contactPct": 0.578,
+      "apptSetOfContactedPct": 0.45751633986928103,
       "apptSetPct": null,
-      "contacted": 77763,
-      "apptsSet": 0
+      "contacted": 306,
+      "apptsSet": 140
      },
      "byInventory": []
     },
@@ -65654,13 +65654,13 @@
      "leadType": "Campaign",
      "metrics": {
       "goodLeads": 16,
-      "sold": 0.563,
-      "apptsShown": 0,
-      "contactPct": 9.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 9.0,
+      "apptsShown": 7,
+      "contactPct": 0.375,
+      "apptSetOfContactedPct": 1.5,
       "apptSetPct": null,
-      "contacted": 144,
-      "apptsSet": 0
+      "contacted": 6,
+      "apptsSet": 9
      },
      "byInventory": []
     },
@@ -65713,13 +65713,13 @@
    "rowCount": 7,
    "total": {
     "goodLeads": 1125,
-    "sold": 0.221,
-    "apptsShown": 0,
-    "contactPct": 375.0,
-    "apptSetOfContactedPct": 0.0,
+    "sold": 249.0,
+    "apptsShown": 198,
+    "contactPct": 0.58,
+    "apptSetOfContactedPct": 0.5766871165644172,
     "apptSetPct": null,
-    "contacted": 80115,
-    "apptsSet": 0,
+    "contacted": 317,
+    "apptsSet": 139,
     "contactScope": "internet"
    },
    "byLeadType": [
@@ -65727,13 +65727,13 @@
      "leadType": "Walk-in",
      "metrics": {
       "goodLeads": 262,
-      "sold": 0.41600000000000004,
-      "apptsShown": 0,
-      "contactPct": 62.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 109.0,
+      "apptsShown": 27,
+      "contactPct": 0.508,
+      "apptSetOfContactedPct": 0.48120300751879697,
       "apptSetPct": null,
-      "contacted": 16244,
-      "apptsSet": 0
+      "contacted": 133,
+      "apptsSet": 64
      },
      "byInventory": []
     },
@@ -65741,13 +65741,13 @@
      "leadType": "Phone",
      "metrics": {
       "goodLeads": 302,
-      "sold": 0.205,
-      "apptsShown": 0,
-      "contactPct": 156.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 62.0,
+      "apptsShown": 87,
+      "contactPct": 0.65,
+      "apptSetOfContactedPct": 0.8316326530612245,
       "apptSetPct": null,
-      "contacted": 47112,
-      "apptsSet": 0
+      "contacted": 196,
+      "apptsSet": 163
      },
      "byInventory": []
     },
@@ -65755,13 +65755,13 @@
      "leadType": "Internet",
      "metrics": {
       "goodLeads": 545,
-      "sold": 0.079,
-      "apptsShown": 0,
-      "contactPct": 147.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 43.0,
+      "apptsShown": 76,
+      "contactPct": 0.5820000000000001,
+      "apptSetOfContactedPct": 0.4384858044164038,
       "apptSetPct": null,
-      "contacted": 80115,
-      "apptsSet": 0
+      "contacted": 317,
+      "apptsSet": 139
      },
      "byInventory": []
     },
@@ -65769,13 +65769,13 @@
      "leadType": "Campaign",
      "metrics": {
       "goodLeads": 16,
-      "sold": 0.563,
-      "apptsShown": 0,
-      "contactPct": 9.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 9.0,
+      "apptsShown": 7,
+      "contactPct": 0.375,
+      "apptSetOfContactedPct": 1.5,
       "apptSetPct": null,
-      "contacted": 144,
-      "apptsSet": 0
+      "contacted": 6,
+      "apptsSet": 9
      },
      "byInventory": []
     },
@@ -65828,13 +65828,13 @@
    "rowCount": 7,
    "total": {
     "goodLeads": 1161,
-    "sold": 0.225,
-    "apptsShown": 0,
-    "contactPct": 382.0,
-    "apptSetOfContactedPct": 0.0,
+    "sold": 261.0,
+    "apptsShown": 203,
+    "contactPct": 0.5720000000000001,
+    "apptSetOfContactedPct": 0.5707831325301205,
     "apptSetPct": null,
-    "contacted": 85050,
-    "apptsSet": 0,
+    "contacted": 321,
+    "apptsSet": 141,
     "contactScope": "internet"
    },
    "byLeadType": [
@@ -65842,13 +65842,13 @@
      "leadType": "Walk-in",
      "metrics": {
       "goodLeads": 273,
-      "sold": 0.418,
-      "apptsShown": 0,
-      "contactPct": 67.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 114.0,
+      "apptsShown": 27,
+      "contactPct": 0.505,
+      "apptSetOfContactedPct": 0.4927536231884058,
       "apptSetPct": null,
-      "contacted": 18291,
-      "apptsSet": 0
+      "contacted": 138,
+      "apptsSet": 68
      },
      "byInventory": []
     },
@@ -65856,13 +65856,13 @@
      "leadType": "Phone",
      "metrics": {
       "goodLeads": 305,
-      "sold": 0.213,
-      "apptsShown": 0,
-      "contactPct": 155.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 65.0,
+      "apptsShown": 90,
+      "contactPct": 0.6509999999999999,
+      "apptSetOfContactedPct": 0.8040201005025126,
       "apptSetPct": null,
-      "contacted": 47275,
-      "apptsSet": 0
+      "contacted": 199,
+      "apptsSet": 160
      },
      "byInventory": []
     },
@@ -65870,13 +65870,13 @@
      "leadType": "Internet",
      "metrics": {
       "goodLeads": 567,
-      "sold": 0.078,
-      "apptsShown": 0,
-      "contactPct": 150.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 44.0,
+      "apptsShown": 78,
+      "contactPct": 0.5670000000000001,
+      "apptSetOfContactedPct": 0.4392523364485981,
       "apptSetPct": null,
-      "contacted": 85050,
-      "apptsSet": 0
+      "contacted": 321,
+      "apptsSet": 141
      },
      "byInventory": []
     },
@@ -65884,13 +65884,13 @@
      "leadType": "Campaign",
      "metrics": {
       "goodLeads": 16,
-      "sold": 0.563,
-      "apptsShown": 0,
-      "contactPct": 9.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 9.0,
+      "apptsShown": 7,
+      "contactPct": 0.375,
+      "apptSetOfContactedPct": 1.5,
       "apptSetPct": null,
-      "contacted": 144,
-      "apptsSet": 0
+      "contacted": 6,
+      "apptsSet": 9
      },
      "byInventory": []
     },
@@ -66748,13 +66748,13 @@
    "rowCount": 7,
    "total": {
     "goodLeads": 915,
-    "sold": 0.251,
-    "apptsShown": 0,
-    "contactPct": 345.0,
-    "apptSetOfContactedPct": 0.0,
+    "sold": 230.0,
+    "apptsShown": 188,
+    "contactPct": 0.621,
+    "apptSetOfContactedPct": 0.6232394366197183,
     "apptSetPct": null,
-    "contacted": 60620,
-    "apptsSet": 0,
+    "contacted": 278,
+    "apptsSet": 148,
     "contactScope": "internet"
    },
    "byLeadType": [
@@ -66762,13 +66762,13 @@
      "leadType": "Walk-in",
      "metrics": {
       "goodLeads": 226,
-      "sold": 0.42,
-      "apptsShown": 0,
-      "contactPct": 54.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 95.0,
+      "apptsShown": 33,
+      "contactPct": 0.45399999999999996,
+      "apptSetOfContactedPct": 0.5048543689320388,
       "apptSetPct": null,
-      "contacted": 12204,
-      "apptsSet": 0
+      "contacted": 103,
+      "apptsSet": 52
      },
      "byInventory": []
     },
@@ -66776,13 +66776,13 @@
      "leadType": "Phone",
      "metrics": {
       "goodLeads": 247,
-      "sold": 0.20199999999999999,
-      "apptsShown": 0,
-      "contactPct": 143.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 50.0,
+      "apptsShown": 65,
+      "contactPct": 0.727,
+      "apptSetOfContactedPct": 0.8166666666666667,
       "apptSetPct": null,
-      "contacted": 35321,
-      "apptsSet": 0
+      "contacted": 180,
+      "apptsSet": 147
      },
      "byInventory": []
     },
@@ -66790,13 +66790,13 @@
      "leadType": "Internet",
      "metrics": {
       "goodLeads": 433,
-      "sold": 0.092,
-      "apptsShown": 0,
-      "contactPct": 140.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 40.0,
+      "apptsShown": 86,
+      "contactPct": 0.642,
+      "apptSetOfContactedPct": 0.5323741007194245,
       "apptSetPct": null,
-      "contacted": 60620,
-      "apptsSet": 0
+      "contacted": 278,
+      "apptsSet": 148
      },
      "byInventory": []
     },
@@ -66804,13 +66804,13 @@
      "leadType": "Campaign",
      "metrics": {
       "goodLeads": 9,
-      "sold": 0.556,
-      "apptsShown": 0,
-      "contactPct": 8.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 5.0,
+      "apptsShown": 4,
+      "contactPct": 0.556,
+      "apptSetOfContactedPct": 1.4,
       "apptSetPct": null,
-      "contacted": 72,
-      "apptsSet": 0
+      "contacted": 5,
+      "apptsSet": 7
      },
      "byInventory": []
     },
@@ -66863,13 +66863,13 @@
    "rowCount": 7,
    "total": {
     "goodLeads": 959,
-    "sold": 0.248,
-    "apptsShown": 0,
-    "contactPct": 355.0,
-    "apptSetOfContactedPct": 0.0,
+    "sold": 238.0,
+    "apptsShown": 194,
+    "contactPct": 0.618,
+    "apptSetOfContactedPct": 0.6155143338954469,
     "apptSetPct": null,
-    "contacted": 66410,
-    "apptsSet": 0,
+    "contacted": 293,
+    "apptsSet": 153,
     "contactScope": "internet"
    },
    "byLeadType": [
@@ -66877,13 +66877,13 @@
      "leadType": "Walk-in",
      "metrics": {
       "goodLeads": 236,
-      "sold": 0.415,
-      "apptsShown": 0,
-      "contactPct": 55.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 98.0,
+      "apptsShown": 34,
+      "contactPct": 0.451,
+      "apptSetOfContactedPct": 0.5,
       "apptSetPct": null,
-      "contacted": 12980,
-      "apptsSet": 0
+      "contacted": 106,
+      "apptsSet": 53
      },
      "byInventory": []
     },
@@ -66891,13 +66891,13 @@
      "leadType": "Phone",
      "metrics": {
       "goodLeads": 256,
-      "sold": 0.203,
-      "apptsShown": 0,
-      "contactPct": 147.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 52.0,
+      "apptsShown": 66,
+      "contactPct": 0.721,
+      "apptSetOfContactedPct": 0.8216216216216217,
       "apptSetPct": null,
-      "contacted": 37632,
-      "apptsSet": 0
+      "contacted": 185,
+      "apptsSet": 152
      },
      "byInventory": []
     },
@@ -66905,13 +66905,13 @@
      "leadType": "Internet",
      "metrics": {
       "goodLeads": 458,
-      "sold": 0.092,
-      "apptsShown": 0,
-      "contactPct": 145.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 42.0,
+      "apptsShown": 90,
+      "contactPct": 0.639,
+      "apptSetOfContactedPct": 0.5221843003412969,
       "apptSetPct": null,
-      "contacted": 66410,
-      "apptsSet": 0
+      "contacted": 293,
+      "apptsSet": 153
      },
      "byInventory": []
     },
@@ -66919,13 +66919,13 @@
      "leadType": "Campaign",
      "metrics": {
       "goodLeads": 9,
-      "sold": 0.556,
-      "apptsShown": 0,
-      "contactPct": 8.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 5.0,
+      "apptsShown": 4,
+      "contactPct": 0.556,
+      "apptSetOfContactedPct": 1.4,
       "apptSetPct": null,
-      "contacted": 72,
-      "apptsSet": 0
+      "contacted": 5,
+      "apptsSet": 7
      },
      "byInventory": []
     },
@@ -66978,13 +66978,13 @@
    "rowCount": 7,
    "total": {
     "goodLeads": 994,
-    "sold": 0.262,
-    "apptsShown": 0,
-    "contactPct": 373.0,
-    "apptSetOfContactedPct": 0.0,
+    "sold": 260.0,
+    "apptsShown": 210,
+    "contactPct": 0.616,
+    "apptSetOfContactedPct": 0.6225490196078431,
     "apptSetPct": null,
-    "contacted": 72329,
-    "apptsSet": 0,
+    "contacted": 304,
+    "apptsSet": 159,
     "contactScope": "internet"
    },
    "byLeadType": [
@@ -66992,13 +66992,13 @@
      "leadType": "Walk-in",
      "metrics": {
       "goodLeads": 241,
-      "sold": 0.419,
-      "apptsShown": 0,
-      "contactPct": 59.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 101.0,
+      "apptsShown": 37,
+      "contactPct": 0.455,
+      "apptSetOfContactedPct": 0.509090909090909,
       "apptSetPct": null,
-      "contacted": 14219,
-      "apptsSet": 0
+      "contacted": 110,
+      "apptsSet": 56
      },
      "byInventory": []
     },
@@ -67006,13 +67006,13 @@
      "leadType": "Phone",
      "metrics": {
       "goodLeads": 265,
-      "sold": 0.215,
-      "apptsShown": 0,
-      "contactPct": 155.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 57.0,
+      "apptsShown": 73,
+      "contactPct": 0.72,
+      "apptSetOfContactedPct": 0.8324607329842932,
       "apptSetPct": null,
-      "contacted": 41075,
-      "apptsSet": 0
+      "contacted": 191,
+      "apptsSet": 159
      },
      "byInventory": []
     },
@@ -67020,13 +67020,13 @@
      "leadType": "Internet",
      "metrics": {
       "goodLeads": 479,
-      "sold": 0.094,
-      "apptsShown": 0,
-      "contactPct": 151.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 45.0,
+      "apptsShown": 96,
+      "contactPct": 0.635,
+      "apptSetOfContactedPct": 0.5230263157894737,
       "apptSetPct": null,
-      "contacted": 72329,
-      "apptsSet": 0
+      "contacted": 304,
+      "apptsSet": 159
      },
      "byInventory": []
     },
@@ -67034,13 +67034,13 @@
      "leadType": "Campaign",
      "metrics": {
       "goodLeads": 9,
-      "sold": 0.556,
-      "apptsShown": 0,
-      "contactPct": 8.0,
-      "apptSetOfContactedPct": 0.0,
+      "sold": 5.0,
+      "apptsShown": 4,
+      "contactPct": 0.556,
+      "apptSetOfContactedPct": 1.4,
       "apptSetPct": null,
-      "contacted": 72,
-      "apptsSet": 0
+      "contacted": 5,
+      "apptsSet": 7
      },
      "byInventory": []
     },

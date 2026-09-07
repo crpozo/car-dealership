@@ -541,13 +541,40 @@ def dc_value(s):
         return None
 
 
-def dc_metrics(vals):
+# Column order is NOT stable across DriveCentric's template versions (August
+# 2026 files list Engagement % last, September files list it second), so each
+# file's header run is tokenised into these names, longest match first.
+DC_COLUMNS = ["netleads", "engagement%", "apptdue", "appcreated", "apptscreated%",
+              "apptshow", "apptshow%", "apptsold", "apptsold%", "totaldelivered", "deliveredclosing%"]
+
+
+def dc_columns(header_lines):
+    blob = re.sub(r"[^a-z%]", "", "".join(header_lines).lower())
+    cols, pos = [], 0
+    by_len = sorted(DC_COLUMNS, key=len, reverse=True)
+    while pos < len(blob):
+        for name in by_len:
+            if blob.startswith(name, pos):
+                cols.append(name)
+                pos += len(name)
+                break
+        else:
+            raise ValueError("unrecognised PDF column header near %r" % blob[pos:pos + 20])
+    if sorted(cols) != sorted(DC_COLUMNS):
+        raise ValueError("PDF columns %s do not match the known set" % cols)
+    return cols
+
+
+def dc_metrics(vals, cols):
     """One DriveCentric row -> the same metrics bag VinSolutions rows produce."""
-    good = int(vals[0] or 0)
-    engagement = vals[1]
-    appts_set = int(vals[3] or 0)
-    shown = int(vals[5] or 0)
-    sold = vals[9] or 0
+    v = dict(zip(cols, vals))
+    good = int(v.get("netleads") or 0)
+    engagement = v.get("engagement%")
+    if engagement is not None and engagement > 1.5:
+        raise ValueError("engagement %r is not a percentage — column order misread" % engagement)
+    appts_set = int(v.get("appcreated") or 0)
+    shown = int(v.get("apptshow") or 0)
+    sold = v.get("totaldelivered") or 0
     contacted = int(round(engagement * good)) if engagement else 0
     return {
         "goodLeads": good,
@@ -586,10 +613,13 @@ def parse_dc_pdf(path):
         else:
             i += 1
     # section labels: the line right before each "Net Leads" header
-    labels = [lines[j - 1] for j in range(1, len(lines)) if lines[j] == "Net Leads"]
+    heads = [j for j in range(1, len(lines)) if lines[j] == "Net Leads"]
+    labels = [lines[j - 1] for j in heads]
 
     if len(blocks) != 3 * len(labels) or not labels:
         raise ValueError("unrecognised PDF layout (%d blocks, %d labels)" % (len(blocks), len(labels)))
+    # this file's column order, read from the first section's header run
+    cols = dc_columns(lines[heads[0]:(heads[1] - 1 if len(heads) > 1 else len(lines))])
 
     store_name = labels[0]
     per_section = {}          # label -> {rowLabel: vals}
@@ -602,8 +632,8 @@ def parse_dc_pdf(path):
             if sec == store_name:
                 continue
             lt = DC_LEAD_TYPES.get(sec, sec)
-            by_lt.append({"leadType": lt, "metrics": dc_metrics(rows[row_label]), "byInventory": []})
-        total = dc_metrics(per_section[store_name][row_label])
+            by_lt.append({"leadType": lt, "metrics": dc_metrics(rows[row_label], cols), "byInventory": []})
+        total = dc_metrics(per_section[store_name][row_label], cols)
         check = sum((n["metrics"]["goodLeads"] for n in by_lt))
         if check != total["goodLeads"]:
             raise ValueError("section leads %d != total %d (%s)" % (check, total["goodLeads"], row_label))

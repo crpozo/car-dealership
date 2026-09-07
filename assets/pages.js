@@ -1680,10 +1680,22 @@
     { key: "internetLeads", label: "Good Internet Leads", pct: false },
     { key: "sold", label: "Total Sold", pct: false },
     { key: "internetSold", label: "Internet Sold", pct: false },
-    { key: "engagementPct", label: "Engagement %", pct: true },
-    { key: "apptSetPct", label: "Appts Set %", pct: true },
-    { key: "closingPct", label: "Internet Closing %", pct: true }
+    { key: "engagementPct", label: "Engagement %", pct: true, goal: engagementTarget, num: "contacted", den: "internetLeads", subLabel: "contacted" },
+    { key: "apptSetPct", label: "Appts Set %", pct: true, goal: apptTarget, num: "apptsSet", den: "contacted", subLabel: "appts of contacted" },
+    { key: "closingPct", label: "Internet Closing %", pct: true, goal: closingTarget, num: "internetSold", den: "internetLeads", subLabel: "sold of leads" }
   ];
+  /* trendSeries row -> chart point; % metrics carry their counts for the tooltip */
+  function trendPoint(row, metric) {
+    var sub = "";
+    if (metric.num && isNum(row[metric.num]) && isNum(row[metric.den])) {
+      sub = fmtN(row[metric.num]) + " / " + fmtN(row[metric.den]) + " " + metric.subLabel;
+    }
+    return { d: row.date, v: row[metric.key], sub: sub };
+  }
+  function trendGoal(metric) {
+    if (!metric.goal) return null;
+    try { var g = metric.goal(); return isNum(g) ? g : null; } catch (e) { return null; }
+  }
   function trendMetric(key) {
     for (var i = 0; i < TREND_METRICS.length; i++) if (TREND_METRICS[i].key === key) return TREND_METRICS[i];
     return TREND_METRICS[0];
@@ -1709,68 +1721,299 @@
     return { css: "var(--faint)", dash: (idx - TREND_SLOTS) % 2 === 0 ? "" : "6 4" };
   }
 
+  /* ---- line chart: SVG marks + HTML hover layer -----------------------------
+     Follows the dataviz specs: 2px round lines, ring-outlined markers, hairline
+     solid grid on clean tick values, an area wash for a single series, a goal as
+     a dashed hairline, and selective direct labels (end value / series name).
+     The crosshair snaps to the nearest date and ONE tooltip lists every visible
+     series there — value first, name second, keyed by a short stroke in the
+     series color — so the reader aims at a date, never at a 2px line.
+     Keyboard: focus the chart; ← → Home End move the cursor, Esc hides it.
+     Tooltip DOM is built with textContent (store names are data, not markup). */
+
+  var LC_UID = 0;
+
+  function niceStep(maxV, pct) {
+    // ~4 gridlines on clean values: 1 / 2 / 2.5 / 5 × 10^n (for % that means
+    // 10 / 20 / 25 / 50 point steps)
+    var raw = maxV / 4;
+    if (!(raw > 0)) return pct ? 0.25 : 1;
+    var pow = Math.pow(10, Math.floor(Math.log(raw) / Math.LN10));
+    var f = raw / pow, s;
+    if (f <= 1) s = 1; else if (f <= 2) s = 2; else if (f <= 2.5) s = 2.5; else if (f <= 5) s = 5; else s = 10;
+    return s * pow;
+  }
+
+  function exactValue(v, pct) {
+    if (!isNum(v)) return DASH;
+    if (pct) return (Math.round(v * 1000) / 10).toString() + "%";
+    return Math.round(v) === v ? fmtN(v) : String(Math.round(v * 100) / 100);
+  }
+
   function lineChart(seriesArr, opts) {
     opts = opts || {};
-    var W = 960, H = 340, L = 52, R = opts.direct ? 130 : 20, T = 16, B = 36;
+    var W = 960, H = 340, L = 56, R = opts.direct ? 136 : 28, T = 18, B = 36;
     var dates = {};
     seriesArr.forEach(function (sr) { sr.points.forEach(function (pt) { dates[pt.d] = 1; }); });
     var xs = Object.keys(dates).sort();
     if (!xs.length) return emptyState("No trend data", "No single-day report deltas exist for this selection yet.");
     var xi = {}; xs.forEach(function (d, i) { xi[d] = i; });
+
     var maxV = 0;
     seriesArr.forEach(function (sr) { sr.points.forEach(function (pt) { if (isNum(pt.v) && pt.v > maxV) maxV = pt.v; }); });
-    if (maxV <= 0) maxV = 1;
-    maxV = maxV * 1.06;
+    var goal = isNum(opts.goal) && opts.goal > 0 ? opts.goal : null;
+    if (goal !== null && goal > maxV) maxV = goal;
+    var step = niceStep(maxV, opts.pct);
+    var top = Math.max(step, Math.ceil(maxV / step - 1e-9) * step);
+    // a value sitting exactly on the top gridline gets headroom — except 100%
+    if (top === maxV && !(opts.pct && maxV === 1)) top += step;
+
     var IW = W - L - R, IH = H - T - B;
     function X(d) { return L + (xs.length === 1 ? IW / 2 : xi[d] * (IW / (xs.length - 1))); }
-    function Y(v) { return T + IH - (v / maxV) * IH; }
+    function Y(v) { return T + IH - (v / top) * IH; }
     function fmtV(v) { return opts.pct ? fmtPct(v, 0) : fmtN(v); }
-    function fmtD(d) { return (C().formatDate ? C().formatDate(d) : d).replace(/, \d{4}$/, ""); }
+    function fmtD(d) { return C().formatDate(d).replace(/, \d{4}$/, ""); }
+    var base = (T + IH).toFixed(1);
 
+    /* grid + axes */
     var grid = "";
-    for (var g = 0; g <= 4; g++) {
-      var gv = maxV * g / 4, gy = Y(gv);
-      grid += '<line x1="' + L + '" y1="' + gy.toFixed(1) + '" x2="' + (W - R) + '" y2="' + gy.toFixed(1) +
-        '" stroke="var(--line-soft)" stroke-width="1"/>' +
-        '<text x="' + (L - 8) + '" y="' + (gy + 4).toFixed(1) + '" text-anchor="end" font-size="11" fill="var(--faint)">' +
+    for (var gv = 0; gv <= top + step / 1000; gv += step) {
+      var gy = Y(gv).toFixed(1);
+      grid += '<line x1="' + L + '" y1="' + gy + '" x2="' + (W - R) + '" y2="' + gy +
+        '" stroke="' + (gv === 0 ? "var(--line)" : "var(--line-soft)") + '" stroke-width="1"/>' +
+        '<text x="' + (L - 10) + '" y="' + (Y(gv) + 4).toFixed(1) + '" text-anchor="end" class="lc-tick">' +
         esc(fmtV(gv) || "0") + "</text>";
     }
-    var step = Math.max(1, Math.ceil(xs.length / 8));
+    var tickEvery = Math.max(1, Math.ceil(xs.length / 8));
     var ticks = "";
-    for (var t2 = 0; t2 < xs.length; t2 += step) {
-      ticks += '<text x="' + X(xs[t2]).toFixed(1) + '" y="' + (H - 12) + '" text-anchor="middle" font-size="11" fill="var(--faint)">' +
-        esc(fmtD(xs[t2])) + "</text>";
+    for (var t2 = 0; t2 < xs.length; t2 += tickEvery) {
+      if (xs.length - t2 <= tickEvery / 2 && t2 !== xs.length - 1) continue; // leave room for the last tick
+      ticks += '<text x="' + X(xs[t2]).toFixed(1) + '" y="' + (H - 12) + '" text-anchor="middle" class="lc-tick">' + esc(fmtD(xs[t2])) + "</text>";
+    }
+    if (xs.length > 1 && (xs.length - 1) % tickEvery !== 0) {
+      ticks += '<text x="' + X(xs[xs.length - 1]).toFixed(1) + '" y="' + (H - 12) + '" text-anchor="middle" class="lc-tick">' + esc(fmtD(xs[xs.length - 1])) + "</text>";
     }
 
-    var lines = "", labels = "";
-    var visible = seriesArr.length;
-    seriesArr.forEach(function (sr) {
-      var dcmd = "", last = null;
-      sr.points.forEach(function (pt) {
-        if (!isNum(pt.v)) { last = null; return; }
-        dcmd += (last === null ? "M" : "L") + X(pt.d).toFixed(1) + " " + Y(pt.v).toFixed(1) + " ";
-        last = pt;
+    /* goal */
+    var goalSvg = "";
+    if (goal !== null) {
+      var gyv = Y(goal).toFixed(1);
+      goalSvg = '<line x1="' + L + '" y1="' + gyv + '" x2="' + (W - R) + '" y2="' + gyv +
+        '" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 4" opacity=".8"/>' +
+        '<text x="' + (W - R - 4) + '" y="' + (Y(goal) - 5).toFixed(1) + '" text-anchor="end" class="lc-goal">Goal ' + esc(fmtV(goal)) + "</text>";
+    }
+
+    /* marks */
+    var uid = "lc" + (++LC_UID);
+    var single = seriesArr.length === 1;
+    var showDots = single ? xs.length <= 70 : xs.length <= 16;
+    var defs = "", areas = "", lines = "", dots = "", labels = "", hoverDots = "";
+    var model = { W: W, H: H, pct: !!opts.pct, gran: opts.gran || "", xs: xs, xpx: xs.map(function (d) { return Math.round(X(d) * 10) / 10; }), series: [] };
+
+    seriesArr.forEach(function (sr, si) {
+      var byDate = {};
+      sr.points.forEach(function (pt) { byDate[pt.d] = pt; });
+      var vals = [], ys = [], subs = [], segs = [], cur = [], last = null;
+      xs.forEach(function (d) {
+        var pt = byDate[d];
+        var ok = pt && isNum(pt.v);
+        vals.push(ok ? pt.v : null);
+        ys.push(ok ? Math.round(Y(pt.v) * 10) / 10 : null);
+        subs.push(ok && pt.sub ? pt.sub : "");
+        if (ok) { cur.push([X(d), Y(pt.v)]); last = { d: d, v: pt.v }; }
+        else if (cur.length) { segs.push(cur); cur = []; }
       });
-      if (!dcmd) return;
-      lines += '<path d="' + dcmd + '" fill="none" stroke="' + sr.color + '" stroke-width="2"' +
-        (sr.dash ? ' stroke-dasharray="' + sr.dash + '"' : "") + ' stroke-linejoin="round" stroke-linecap="round"/>';
-      sr.points.forEach(function (pt) {
-        if (!isNum(pt.v)) return;
-        lines += '<circle cx="' + X(pt.d).toFixed(1) + '" cy="' + Y(pt.v).toFixed(1) + '" r="3" fill="' + sr.color + '"/>' +
-          '<circle cx="' + X(pt.d).toFixed(1) + '" cy="' + Y(pt.v).toFixed(1) + '" r="10" fill="transparent">' +
-          "<title>" + esc(sr.name + " \u2014 " + fmtD(pt.d) + ": " + (fmtV(pt.v) || "")) +
-          (isNum(pt.exact) && Math.round(pt.exact) !== pt.exact ? esc(" (exact " + pt.exact + ")") : "") + "</title></circle>";
+      if (cur.length) segs.push(cur);
+      model.series.push({ name: sr.name, color: sr.color, dash: sr.dash || "", v: vals, y: ys, sub: subs });
+      if (!segs.length) return;
+
+      segs.forEach(function (seg) {
+        var d = seg.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ");
+        lines += '<path d="' + d + '" fill="none" stroke="' + sr.color + '" stroke-width="2"' +
+          (sr.dash ? ' stroke-dasharray="' + sr.dash + '"' : "") + ' stroke-linejoin="round" stroke-linecap="round"/>';
+        if (single && seg.length > 1) {
+          areas += '<path d="' + d + " L" + seg[seg.length - 1][0].toFixed(1) + " " + base + " L" + seg[0][0].toFixed(1) + " " + base +
+            ' Z" fill="url(#' + uid + 'g)" stroke="none"/>';
+        }
       });
-      if (opts.direct && visible <= 4 && last) {
-        labels += '<text x="' + (X(last.d) + 8).toFixed(1) + '" y="' + (Y(last.v) + 4).toFixed(1) +
-          '" font-size="12" font-weight="600" fill="var(--ink)">' + esc(sr.name) + "</text>";
+      if (single) {
+        defs = '<defs><linearGradient id="' + uid + 'g" x1="0" y1="0" x2="0" y2="1">' +
+          '<stop offset="0" style="stop-color:' + sr.color + ';stop-opacity:.2"/>' +
+          '<stop offset="1" style="stop-color:' + sr.color + ';stop-opacity:0"/></linearGradient></defs>';
+      }
+      if (showDots) {
+        segs.forEach(function (seg) {
+          seg.forEach(function (p) {
+            dots += '<circle cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="' + (single ? 4 : 3.5) +
+              '" fill="' + sr.color + '" stroke="var(--card)" stroke-width="2"/>';
+          });
+        });
+      }
+      hoverDots += '<circle class="lc-hd" data-si="' + si + '" r="5.5" fill="' + sr.color + '" stroke="var(--card)" stroke-width="2.5" style="display:none"/>';
+      if (last) {
+        if (single) {
+          labels += '<text x="' + (X(last.d) + 10).toFixed(1) + '" y="' + (Y(last.v) + 4).toFixed(1) + '" class="lc-end">' + esc(exactValue(last.v, opts.pct)) + "</text>";
+        } else if (opts.direct && seriesArr.length <= 4) {
+          labels += '<text x="' + (X(last.d) + 10).toFixed(1) + '" y="' + (Y(last.v) + 4).toFixed(1) + '" class="lc-end">' + esc(sr.name) + "</text>";
+        }
       }
     });
 
-    return '<svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="' + esc(opts.label || "Trend chart") +
-      '" style="width:100%;height:auto;display:block">' +
-      '<line x1="' + L + '" y1="' + (T + IH) + '" x2="' + (W - R) + '" y2="' + (T + IH) + '" stroke="var(--line)" stroke-width="1"/>' +
-      grid + ticks + lines + labels + "</svg>";
+    var hover = '<g class="lc-hover" style="display:none">' +
+      '<line class="lc-x" x1="0" y1="' + T + '" x2="0" y2="' + (T + IH) + '" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 3"/>' +
+      hoverDots + "</g>";
+
+    return '<div class="lc" tabindex="0" role="group" aria-label="' + esc((opts.label || "Trend chart") + ". Use the arrow keys to read values.") +
+      '" data-chart="' + esc(JSON.stringify(model)) +
+      '" onpointermove="Pages.chartMove(event,this)" onpointerleave="Pages.chartLeave(this)" onblur="Pages.chartLeave(this)" onkeydown="Pages.chartKey(event,this)">' +
+      '<svg viewBox="0 0 ' + W + " " + H + '" aria-hidden="true">' + defs + grid + goalSvg + areas + lines + dots + labels + ticks + hover + "</svg>" +
+      '<div class="lc-tip" hidden></div></div>';
+  }
+
+  /* Summary strip for a single series: latest (with change vs the previous
+     point), average, high and low — the numbers the chart alone makes you
+     hunt for. */
+  function trendStats(points, pct, gran) {
+    var pts = points.filter(function (p) { return isNum(p.v); });
+    if (pts.length < 2) return "";
+    var last = pts[pts.length - 1], prev = pts[pts.length - 2];
+    var sum = 0, hi = pts[0], lo = pts[0];
+    pts.forEach(function (p) { sum += p.v; if (p.v > hi.v) hi = p; if (p.v < lo.v) lo = p; });
+    var avg = sum / pts.length;
+    var d = last.v - prev.v;
+    var dTxt = d === 0 ? "no change" : (pct ? (d > 0 ? "+" : "") + Math.round(d * 100) + " pts" : (d > 0 ? "+" : "") + exactValue(d, false)) +
+      " vs prior " + (gran === "week" ? "week" : "day");
+    var when = function (p) { return C().formatDate(p.d).replace(/, \d{4}$/, ""); };
+    function tile(label, value, sub, cls, title) {
+      return '<div class="lc-stat"' + (title ? ' title="' + esc(title) + '"' : "") + '><div class="ls-l">' + esc(label) + '</div><div class="ls-v">' + esc(value) +
+        '</div><div class="ls-s' + (cls ? " " + cls : "") + '">' + esc(sub) + "</div></div>";
+    }
+    var avgShown = pct ? fmtPct(avg, 0) : fmtN(avg);
+    return '<div class="lc-stats">' +
+      tile("Latest", exactValue(last.v, pct), dTxt, d > 0 ? "up" : d < 0 ? "down" : "") +
+      tile("Average", avgShown, "across " + pts.length + (gran === "week" ? " weeks" : " days"), "", "Exact: " + exactValue(avg, pct)) +
+      tile("High", exactValue(hi.v, pct), when(hi)) +
+      tile("Low", exactValue(lo.v, pct), when(lo)) +
+      "</div>";
+  }
+
+  /* hover layer ---------------------------------------------------------- */
+
+  function chartModel(el) {
+    if (el._lc === undefined) {
+      try { el._lc = JSON.parse(el.getAttribute("data-chart")); } catch (e) { el._lc = null; }
+    }
+    return el._lc;
+  }
+
+  function chartMove(evt, el) {
+    var m = chartModel(el);
+    if (!m) return;
+    var svg = el.querySelector("svg");
+    var rect = svg.getBoundingClientRect();
+    if (!rect.width) return;
+    var px = (evt.clientX - rect.left) * (m.W / rect.width);
+    var best = 0, bd = Infinity;
+    for (var i = 0; i < m.xpx.length; i++) {
+      var dd = Math.abs(m.xpx[i] - px);
+      if (dd < bd) { bd = dd; best = i; }
+    }
+    chartShow(el, best);
+  }
+
+  function chartLeave(el) {
+    var g = el.querySelector(".lc-hover"), tip = el.querySelector(".lc-tip");
+    if (g) g.style.display = "none";
+    if (tip) tip.hidden = true;
+    el.removeAttribute("data-idx");
+  }
+
+  function chartKey(evt, el) {
+    var m = chartModel(el);
+    if (!m) return;
+    var n = m.xs.length;
+    var cur = el.hasAttribute("data-idx") ? parseInt(el.getAttribute("data-idx"), 10) : n - 1;
+    var next = null;
+    if (evt.key === "ArrowLeft") next = Math.max(0, cur - 1);
+    else if (evt.key === "ArrowRight") next = Math.min(n - 1, cur + 1);
+    else if (evt.key === "Home") next = 0;
+    else if (evt.key === "End") next = n - 1;
+    else if (evt.key === "Escape") { chartLeave(el); return; }
+    if (next === null) return;
+    evt.preventDefault();
+    chartShow(el, next);
+  }
+
+  function chartShow(el, idx) {
+    var m = chartModel(el);
+    if (!m) return;
+    el.setAttribute("data-idx", String(idx));
+    var svg = el.querySelector("svg");
+    var g = el.querySelector(".lc-hover");
+    var tip = el.querySelector(".lc-tip");
+    var x = m.xpx[idx];
+    g.style.display = "";
+    var xl = g.querySelector(".lc-x");
+    xl.setAttribute("x1", x); xl.setAttribute("x2", x);
+
+    var rows = [];
+    var hds = g.querySelectorAll(".lc-hd");
+    for (var si = 0; si < m.series.length; si++) {
+      var sr = m.series[si], v = sr.v[idx];
+      var hd = hds[si];
+      if (v === null || v === undefined) { if (hd) hd.style.display = "none"; continue; }
+      if (hd) { hd.style.display = ""; hd.setAttribute("cx", x); hd.setAttribute("cy", sr.y[idx]); }
+      rows.push({ sr: sr, v: v, y: sr.y[idx], sub: sr.sub[idx] });
+    }
+    rows.sort(function (a, b) { return b.v - a.v; });
+
+    /* tooltip content — DOM + textContent, never markup */
+    while (tip.firstChild) tip.removeChild(tip.firstChild);
+    var head = document.createElement("div");
+    head.className = "lc-d";
+    head.textContent = (m.gran === "week" ? "Week of " : "") + C().formatDate(m.xs[idx]);
+    tip.appendChild(head);
+    if (!rows.length) {
+      var none = document.createElement("div");
+      none.className = "lc-none";
+      none.textContent = "No report for this date";
+      tip.appendChild(none);
+    }
+    rows.forEach(function (r) {
+      var row = document.createElement("div");
+      row.className = "lc-row";
+      var key = document.createElement("span");
+      key.className = "lc-key" + (r.sr.dash ? " dash" : "");
+      key.style.borderColor = r.sr.color;
+      var val = document.createElement("b");
+      val.className = "lc-v";
+      val.textContent = exactValue(r.v, m.pct);
+      var name = document.createElement("span");
+      name.className = "lc-n";
+      name.textContent = r.sr.name;
+      row.appendChild(key); row.appendChild(val); row.appendChild(name);
+      if (r.sub) {
+        var sub = document.createElement("span");
+        sub.className = "lc-s";
+        sub.textContent = r.sub;
+        row.appendChild(sub);
+      }
+      tip.appendChild(row);
+    });
+
+    /* place it beside the crosshair, flipping left near the right edge */
+    tip.hidden = false;
+    var rect = svg.getBoundingClientRect();
+    var scale = rect.width / m.W;
+    var cx = x * scale;
+    var tw = tip.offsetWidth, th = tip.offsetHeight;
+    var left = cx + 14;
+    if (left + tw > rect.width - 4) left = cx - 14 - tw;
+    if (left < 0) left = 4;
+    var cy = rows.length ? rows.reduce(function (s, r) { return s + r.y; }, 0) / rows.length * scale : rect.height / 2;
+    var topPx = Math.max(4, Math.min(rect.height - th - 4, cy - th / 2));
+    tip.style.left = Math.round(left) + "px";
+    tip.style.top = Math.round(topPx) + "px";
   }
 
   function trendControls(st, opts) {
@@ -1805,16 +2048,14 @@
       var seriesArr = [];
       entries.forEach(function (entry) {
         if (st.hidden[entry.store.id]) return;
-        var pts = c.trendSeries(entry.store.id, st.gran).map(function (row) {
-          return { d: row.date, v: row[metric.key], exact: row[metric.key] };
-        });
+        var pts = c.trendSeries(entry.store.id, st.gran).map(function (row) { return trendPoint(row, metric); });
         seriesArr.push({ id: entry.store.id, name: entry.store.name, color: entry.color.css, dash: entry.color.dash, points: pts });
       });
       var head = pageHead("Trends", "Performance over time \u00b7 full loaded history, independent of the timeframe picker");
       return '<section class="page" id="page-trends">' + head +
         trendControls(st, { stores: entries }) +
         '<div class="fig-card panel">' +
-        lineChart(seriesArr, { pct: metric.pct, direct: true, label: metric.label + " over time by store" }) +
+        lineChart(seriesArr, { pct: metric.pct, direct: true, gran: st.gran, goal: trendGoal(metric), label: metric.label + " over time by store" }) +
         "</div>" +
         '<p class="roster-note">A store\u2019s line starts on its first daily report. The one-block catch-up report a store sends when it joins mid-month is excluded \u2014 it cannot be placed on a single ' +
         (st.gran === "week" ? "week" : "day") + ".</p>" +
@@ -1829,16 +2070,15 @@
     var metric = trendMetric(st.metric);
     var pts = [];
     try {
-      pts = c.trendSeries(storeId, st.gran).map(function (row) {
-        return { d: row.date, v: row[metric.key], exact: row[metric.key] };
-      });
+      pts = c.trendSeries(storeId, st.gran).map(function (row) { return trendPoint(row, metric); });
     } catch (e) { pts = []; }
     if (!pts.length) return "";
     return '<h2 class="section-title">Performance Over Time <span class="section-sub">full loaded history</span></h2>' +
       trendControls(st, null) +
       '<div class="fig-card panel">' +
+      trendStats(pts, metric.pct, st.gran) +
       lineChart([{ id: storeId, name: storeName, color: "var(--viz1)", dash: "", points: pts }],
-        { pct: metric.pct, direct: false, label: metric.label + " over time for " + storeName }) +
+        { pct: metric.pct, direct: false, gran: st.gran, goal: trendGoal(metric), label: metric.label + " over time for " + storeName }) +
       "</div>";
   }
 
@@ -1878,6 +2118,9 @@
     setTrendMetric: setTrendMetric,
     setTrendGran: setTrendGran,
     toggleTrendStore: toggleTrendStore,
+    chartMove: chartMove,
+    chartLeave: chartLeave,
+    chartKey: chartKey,
     toggleActivityGroups: toggleActivityGroups,
     exportActivity: exportActivity,
     group: groupPage,

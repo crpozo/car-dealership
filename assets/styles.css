@@ -863,7 +863,7 @@ td.bad::after  { content: "\2193"; }   /* down arrow: behind target */
 /* ------------------------------------------------------------------- print */
 
 @media print {
-  .sidebar, .topbar, .settings, .cards-toolbar, .act-tools, .subnav { display: none !important; }
+  .sidebar, .topbar, .settings, .cards-toolbar, .act-tools, .subnav, .lc-tip, .lc-hover { display: none !important; }
   body { background: #fff; }
   .app { display: block; }
   main { padding: 0; max-width: none; }
@@ -900,6 +900,44 @@ td.bad::after  { content: "\2193"; }   /* down arrow: behind target */
 .tl-chip .tl-dot { width: 10px; height: 10px; border-radius: 3px; }
 .tl-chip.off { opacity: .42; }
 .tl-chip.off .tl-dot { background: var(--faint) !important; }
+
+/* line chart: SVG marks + HTML hover layer */
+.lc { position: relative; outline: none; border-radius: 8px; }
+.lc:focus-visible { box-shadow: 0 0 0 2px var(--accent-pale); }
+.lc svg { width: 100%; height: auto; display: block; }
+.lc-tick { font-size: 11px; fill: var(--faint); font-variant-numeric: tabular-nums; }
+.lc-goal { font-size: 11px; font-weight: 700; fill: var(--muted); letter-spacing: .02em; }
+.lc-end { font-size: 12px; font-weight: 700; fill: var(--ink); }
+.lc-tip {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+  min-width: 150px;
+  max-width: 400px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(15, 23, 41, .14);
+  padding: 8px 11px 7px;
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+.lc-tip .lc-d { font-size: 11.5px; font-weight: 700; color: var(--muted); margin-bottom: 5px; }
+.lc-tip .lc-none { color: var(--faint); }
+.lc-tip .lc-row { display: flex; align-items: center; gap: 8px; padding: 2px 0; }
+.lc-tip .lc-key { width: 14px; height: 0; border-top: 2px solid; flex: none; }
+.lc-tip .lc-key.dash { border-top-style: dashed; }
+.lc-tip .lc-v { font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; min-width: 44px; }
+.lc-tip .lc-n { color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lc-tip .lc-s { color: var(--faint); font-size: 11.5px; margin-left: auto; padding-left: 10px; white-space: nowrap; }
+.lc-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 0 0 14px; }
+.lc-stat { padding: 10px 12px; border: 1px solid var(--line-soft); border-radius: 10px; }
+.lc-stat .ls-l { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); }
+.lc-stat .ls-v { font-size: 20px; font-weight: 800; color: var(--ink); line-height: 1.2; margin-top: 2px; }
+.lc-stat .ls-s { font-size: 12px; color: var(--faint); margin-top: 1px; }
+.lc-stat .ls-s.up { color: var(--good); }
+.lc-stat .ls-s.down { color: var(--bad); }
+@media (max-width: 640px) { .lc-stats { grid-template-columns: repeat(2, 1fr); } }
 
 /* ------------------------------------------------------ activity goals line */
 
