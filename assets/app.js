@@ -136,15 +136,16 @@
   function renderSidebar(route, range) {
     var wrap = document.getElementById("side-stores");
     if (!wrap) return;
+    // Only stores with KPI data in the selected range are listed — a store whose
+    // only export is a salesperson report has nothing to show on its landing tab.
     var stores = Core.stores().filter(function (s) {
       try {
         var m = Core.storeMetrics(s.id, range);
-        if (m && m.hasData) return true;
-        // sales-only stores (no KPI) still have a working activity page
-        var cov = Core.coverage(s.id);
-        return !!(cov && cov.byKind && cov.byKind.sales && cov.byKind.sales.snapshots);
+        return !!(m && m.hasData);
       } catch (e) { return false; }
     });
+    var visible = {};
+    stores.forEach(function (s) { visible[s.id] = 1; });
     wrap.innerHTML = stores.map(function (s) {
       var on = route.name === "store" && route.id === s.id;
       return '<a href="#/store/' + encodeURIComponent(s.id) + '" class="side-item side-store' +
@@ -155,14 +156,19 @@
 
     var gwrap = document.getElementById("side-groups");
     if (gwrap) {
-      var gs = Core.groups ? Core.groups() : [];
+      // a group is only worth a link when at least two of its stores have data
+      var gs = (Core.groups ? Core.groups() : []).map(function (g) {
+        var n = g.storeIds.filter(function (id) { return visible[id]; }).length;
+        return { g: g, n: n };
+      }).filter(function (e) { return e.n >= 2; });
       gwrap.innerHTML = !gs.length ? "" :
-        '<p class="side-label">Groups</p>' + gs.map(function (g) {
+        '<p class="side-label">Groups</p>' + gs.map(function (e) {
+          var g = e.g;
           var gon = route.name === "group" && route.id === g.id;
           return '<a href="#/group/' + encodeURIComponent(g.id) + '" class="side-item' +
             (gon ? " on" : "") + '"' + (gon ? ' aria-current="page"' : "") + ">" +
             '<span class="side-mono" aria-hidden="true">' + esc(Pages.monogramFor ? Pages.monogramFor(g.name) : "") + "</span>" +
-            '<span class="side-store-name">' + esc(g.name) + " (" + g.storeIds.length + ")</span></a>";
+            '<span class="side-store-name">' + esc(g.name) + " (" + e.n + ")</span></a>";
         }).join("");
     }
 
