@@ -40,7 +40,15 @@
         tab: parts[2] || "performance"
       };
     }
-    if (parts[0] === "group") return { name: "group", id: decodeURIComponent(parts[1] || "") };
+    if (parts[0] === "group") {
+      var gid = decodeURIComponent(parts[1] || "");
+      // owner-scoped links: #/group/<id>/store/<store>[/tab], #/group/<id>/trends
+      if (parts[2] === "store") {
+        return { name: "store", id: decodeURIComponent(parts[3] || ""), tab: parts[4] || "performance", group: gid };
+      }
+      if (parts[2] === "trends") return { name: "trends", group: gid };
+      return { name: "group", id: gid };
+    }
     // The stores table now lives on the Overview; keep the old route as an alias
     // so existing links and bookmarks still land somewhere sensible.
     if (parts[0] === "stores") return { name: "overview" };
@@ -62,10 +70,18 @@
       "</section>";
   }
 
+  /* The dealer group a route is scoped to, if any (see Pages.setScope). */
+  function scopeOf(route) {
+    var gid = route.group || (route.name === "group" ? route.id : null);
+    return gid && Core.groupById(gid) ? gid : null;
+  }
+
   function render() {
     var route = parseHash();
     var range = currentRange();
     var html;
+    var scope = scopeOf(route);
+    if (Pages.setScope) Pages.setScope(scope);
 
     try {
       if (route.name === "store") {
@@ -93,8 +109,8 @@
     }
 
     view.innerHTML = html;
-    syncNav(route);
-    renderSidebar(route, range);
+    syncNav(route, scope);
+    renderSidebar(route, range, scope);
     syncTimeframeReadout(range);
 
     // Move focus for keyboard/screen-reader users, but preventScroll — a plain
@@ -125,20 +141,25 @@
   }
 
   function routeKey(route) {
-    if (route.name === "store") return "store/" + route.id + "/" + route.tab;
+    var pre = route.group ? "group/" + route.group + "/" : "";
+    if (route.name === "store") return pre + "store/" + route.id + "/" + route.tab;
     if (route.name === "group") return "group/" + route.id;
-    return route.name;
+    return pre + route.name;
   }
 
   /* Sidebar: Dashboard entry plus one item per store that has data in the
      current range (stores with nothing to show stay out, same rule as the
      cards). Rebuilt on every render because the roster is range-dependent. */
-  function renderSidebar(route, range) {
+  function renderSidebar(route, range, scope) {
     var wrap = document.getElementById("side-stores");
     if (!wrap) return;
+    var group = scope ? Core.groupById(scope) : null;
+    var storeBase = group ? "#/group/" + encodeURIComponent(scope) + "/store/" : "#/store/";
     // Only stores with KPI data in the selected range are listed — a store whose
     // only export is a salesperson report has nothing to show on its landing tab.
+    // Inside an owner scope, only that group's rooftops are listed at all.
     var stores = Core.stores().filter(function (s) {
+      if (group && group.storeIds.indexOf(s.id) < 0) return false;
       try {
         var m = Core.storeMetrics(s.id, range);
         return !!(m && m.hasData);
@@ -148,14 +169,16 @@
     stores.forEach(function (s) { visible[s.id] = 1; });
     wrap.innerHTML = stores.map(function (s) {
       var on = route.name === "store" && route.id === s.id;
-      return '<a href="#/store/' + encodeURIComponent(s.id) + '" class="side-item side-store' +
+      return '<a href="' + storeBase + encodeURIComponent(s.id) + '" class="side-item side-store' +
         (on ? " on" : "") + '"' + (on ? ' aria-current="page"' : "") + ">" +
         '<span class="side-mono" aria-hidden="true">' + esc(Pages.monogramFor ? Pages.monogramFor(s.name) : "") + "</span>" +
         '<span class="side-store-name">' + esc(s.name) + "</span></a>";
     }).join("");
 
     var gwrap = document.getElementById("side-groups");
-    if (gwrap) {
+    if (gwrap && group) {
+      gwrap.innerHTML = "";   // an owner sees only their own group — no cross-links
+    } else if (gwrap) {
       // a group is only worth a link when at least two of its stores have data
       var gs = (Core.groups ? Core.groups() : []).map(function (g) {
         var n = g.storeIds.filter(function (id) { return visible[id]; }).length;
@@ -172,15 +195,21 @@
         }).join("");
     }
 
+    var groupHome = group ? "#/group/" + encodeURIComponent(scope) : "#/overview";
+    var brand = document.querySelector(".brand-link");
+    if (brand) brand.setAttribute("href", groupHome);
     var dash = document.querySelector('[data-side="overview"]');
     if (dash) {
-      var onDash = route.name !== "store" && route.name !== "group" && route.name !== "trends";
+      dash.setAttribute("href", groupHome);
+      var onDash = group ? route.name === "group"
+        : (route.name !== "store" && route.name !== "group" && route.name !== "trends");
       dash.classList.toggle("on", onDash);
       if (onDash) dash.setAttribute("aria-current", "page");
       else dash.removeAttribute("aria-current");
     }
     var tr = document.querySelector('[data-side="trends"]');
     if (tr) {
+      tr.setAttribute("href", group ? groupHome + "/trends" : "#/trends");
       tr.classList.toggle("on", route.name === "trends");
       if (route.name === "trends") tr.setAttribute("aria-current", "page");
       else tr.removeAttribute("aria-current");
@@ -190,16 +219,18 @@
   /* Topbar breadcrumb. Empty on the overview — the sidebar's active "Dashboard"
      item already says where you are, so a title there was duplication. Inside a
      store it earns its place as the way back: Dashboard / <store>. */
-  function syncNav(route) {
+  function syncNav(route, scope) {
     var ol = document.getElementById("topcrumbs");
     if (!ol) return;
+    var home = scope ? "#/group/" + encodeURIComponent(scope) : "#/overview";
     if (route.name === "store" && Core.store(route.id)) {
-      ol.innerHTML = '<li><a href="#/overview">Dashboard</a></li>' +
+      ol.innerHTML = '<li><a href="' + home + '">Dashboard</a></li>' +
         '<li><span aria-current="page">' + esc(Core.store(route.id).name) + "</span></li>";
-    } else if (route.name === "group" && Core.groupById(route.id)) {
+    } else if (route.name === "group" && Core.groupById(route.id) && !scope) {
       ol.innerHTML = '<li><a href="#/overview">Dashboard</a></li>' +
         '<li><span aria-current="page">' + esc(Core.groupById(route.id).name) + " group</span></li>";
     } else {
+      // the group landing is the owner's own dashboard — no crumb above it
       ol.innerHTML = "";
     }
   }

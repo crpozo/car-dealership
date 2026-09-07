@@ -27,6 +27,20 @@
   }
   /* Activity and Internet render one section per store; pass a storeId to scope
      them to a single store for its detail page. */
+  /* Owner scope: when the app is opened through a dealer-group link
+     (#/group/<id>/…) every store link stays inside that group, so an owner
+     shared that URL only ever navigates their own rooftops. */
+  var SCOPE = null;
+  function setScope(groupId) { SCOPE = groupId || null; }
+  function scopeGroup() {
+    if (!SCOPE) return null;
+    try { return C().groupById ? C().groupById(SCOPE) : null; } catch (e) { return null; }
+  }
+  function storeHref(storeId, suffix) {
+    return (SCOPE ? "#/group/" + encodeURIComponent(SCOPE) + "/store/" : "#/store/") +
+      encodeURIComponent(storeId) + (suffix || "");
+  }
+
   function scopedStores(storeId) {
     if (!storeId) return STORES();
     var s = storeById(storeId);
@@ -656,7 +670,7 @@
     var sm = storeMetrics(s.id, range);
     var prior = priorRange ? storeMetrics(s.id, priorRange) : null;
     if (prior && !hasData(prior)) prior = null;
-    var href = "#/store/" + encodeURIComponent(s.id);
+    var href = storeHref(s.id);
     var net = sm.internet || null;
     var eng = net ? net.contactPct : null;
     var ap = net ? net.apptSetOfContactedPct : null;
@@ -855,7 +869,7 @@
         "</tr></thead>";
 
       var rows = list.map(function (s) {
-        var href = "#/store/" + encodeURIComponent(s.id);
+        var href = storeHref(s.id);
         var linkAttrs = ' class="rowlink" tabindex="0" role="link" data-href="' + esc(href) + '"' +
           " onclick=\"location.hash=this.getAttribute('data-href')\"" +
           " onkeydown=\"if(event.key==='Enter'){location.hash=this.getAttribute('data-href')}\"";
@@ -910,7 +924,7 @@
   ];
 
   function storeTabs(storeId, active) {
-    var base = "#/store/" + encodeURIComponent(storeId);
+    var base = storeHref(storeId);
     return '<nav class="subnav" aria-label="Store sections">' + STORE_TABS.map(function (t) {
       var on = t.id === active;
       return '<a href="' + esc(base + t.suffix) + '"' + (on ? ' class="on" aria-current="page"' : "") +
@@ -1473,7 +1487,7 @@
 
       var cr = compareRange(range);
       var rows = list.map(function (s) {
-        var href = "#/store/" + encodeURIComponent(s.id);
+        var href = storeHref(s.id);
         var nameLink = '<a href="' + esc(href) + '">' + esc(s.name) + "</a>";
 
         var sm = storeMetrics(s.id, range);
@@ -1613,7 +1627,7 @@
           ? '<span class="chip ok">covered</span>'
           : '<span class="chip no" title="' + esc(noCoverageReason(range)) + '">no data</span>';
         return "<tr>" +
-          '<td class="name"><a href="#/store/' + esc(encodeURIComponent(s.id)) + '">' + esc(s.name) + "</a></td>" +
+          '<td class="name"><a href="' + esc(storeHref(s.id)) + '">' + esc(s.name) + "</a></td>" +
           "<td>" + (s.crm ? esc(s.crm) : na("CRM not recorded")) + "</td>" +
           "<td>" + ((s.tools && s.tools.length) ? s.tools.map(function (t) { return '<span class="chip tool">' + esc(t) + "</span>"; }).join("") : na("No extra tools recorded")) + "</td>" +
           "<td>" + (cov && cov.firstRun ? esc(cov.firstRun) : na("No snapshot loaded for this store")) + "</td>" +
@@ -1729,6 +1743,8 @@
     var c = C();
     var out = [];
     var all = STORES().slice().sort(function (a, b) { return a.id < b.id ? -1 : 1; });
+    var g = scopeGroup();
+    if (g) all = all.filter(function (s2) { return g.storeIds.indexOf(s2.id) >= 0; });
     for (var i = 0; i < all.length; i++) {
       var series = [];
       try { series = c.trendSeries(all[i].id, "week"); } catch (e) { series = []; }
@@ -2071,7 +2087,8 @@
         var pts = c.trendSeries(entry.store.id, st.gran).map(function (row) { return trendPoint(row, metric); });
         seriesArr.push({ id: entry.store.id, name: entry.store.name, color: entry.color.css, dash: entry.color.dash, points: pts });
       });
-      var head = pageHead("Trends", "Performance over time \u00b7 full loaded history, independent of the timeframe picker");
+      var sg = scopeGroup();
+      var head = pageHead("Trends", (sg ? sg.name + " \u00b7 " : "") + "Performance over time \u00b7 full loaded history, independent of the timeframe picker");
       return '<section class="page" id="page-trends">' + head +
         trendControls(st, { stores: entries }) +
         '<div class="fig-card panel">' +
@@ -2138,6 +2155,7 @@
     setTrendMetric: setTrendMetric,
     setTrendGran: setTrendGran,
     toggleTrendStore: toggleTrendStore,
+    setScope: setScope,
     chartMove: chartMove,
     chartLeave: chartLeave,
     chartKey: chartKey,
