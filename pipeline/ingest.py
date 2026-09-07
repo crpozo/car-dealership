@@ -49,6 +49,7 @@ STORE_GROUPS = [
     ("lindsay", "Lindsay", "lindsay"),
     ("lehigh-valley", "Lehigh Valley", "lehigh valley"),
     ("hersons", "Herson's", "herson"),
+    ("garavel", "Garavel", "garavel"),
 ]
 
 
@@ -199,7 +200,7 @@ def extract_mbox(path, log):
 
 def discover(src_dirs, log):
     """Walk the sources and return (xlsx_paths, matador_csv_paths, other_csv_paths, pdf_paths)."""
-    xlsx, csvs, other_csvs, pdfs, mboxes, zips = [], [], [], [], [], []
+    xlsx, csvs, other_csvs, pdfs, goals, mboxes, zips = [], [], [], [], [], [], []
 
     def walk(roots):
         for root in roots:
@@ -222,6 +223,8 @@ def discover(src_dirs, log):
             mboxes.append(path)
         elif low.endswith(".zip"):
             zips.append(path)
+        elif low.endswith(".csv") and "sales goals" in base.lower():
+            goals.append(path)        # per-rep goals + teams, hand-maintained
         elif low.endswith(".csv") and "matador" in base.lower():
             csvs.append(path)
         elif low.endswith(".csv"):
@@ -234,7 +237,7 @@ def discover(src_dirs, log):
         walk(unpack_zips(zips, log))
     for mb in mboxes:
         xlsx.extend(extract_mbox(mb, log))
-    return xlsx, csvs, other_csvs, pdfs
+    return xlsx, csvs, other_csvs, pdfs, goals
 
 
 # --------------------------------------------------------------------------- #
@@ -388,6 +391,7 @@ def parse_sales(rows, idx):
             "group": group or None,
             "goodLeads": value(row, "Good Leads"),
             "sold": value(row, "Sold in Time Frame"),
+            "videos": value(row, "Videos"),   # only in hand-built sheets (entered from Covideo)
             "apptsScheduled": value(row, "Appts Scheduled"),
             "apptsShown": value(row, "Appts Shown"),
             "shownPct": value(row, "Appts Shown %"),
@@ -478,6 +482,29 @@ def parse_workbook(path):
         return snap
     finally:
         wb.close()
+
+
+def parse_goals(path, log):
+    """'Sales Goals <Store>.csv' (User, Team, Sales Goal) — the per-rep monthly
+    goals and team rosters Scott keeps in his Sales Activity workbook."""
+    store = slug(re.sub(r"(?i)^sales\s+goals\s+", "", os.path.basename(path)[:-4]).strip())
+    out = []
+    try:
+        with open(path, newline="", encoding="utf-8-sig") as fh:
+            for r in csv.DictReader(fh):
+                name = (r.get("User") or "").strip()
+                if not name:
+                    continue
+                goal = (r.get("Sales Goal") or "").strip()
+                out.append({
+                    "storeId": store,
+                    "name": name,
+                    "team": (r.get("Team") or "").strip() or None,
+                    "salesGoal": float(goal) if goal else None,
+                })
+    except Exception as exc:  # noqa: BLE001
+        log.append("SKIP goals %s: %s" % (os.path.basename(path), exc))
+    return out
 
 
 def parse_matador(path, log):
@@ -756,7 +783,7 @@ def main(argv):
     log = []
     os.makedirs(CACHE, exist_ok=True)
 
-    xlsx_paths, csv_paths, other_csv_paths, pdf_paths = discover(src_dirs, log)
+    xlsx_paths, csv_paths, other_csv_paths, pdf_paths, goal_paths = discover(src_dirs, log)
     print("sources: %s" % ", ".join(src_dirs))
     for line in log:
         print("  %s" % line)
@@ -809,6 +836,11 @@ def main(argv):
 
     covideo = [c for c in parse_covideo(other_csv_paths, log) if c["storeId"] not in EXCLUDE_STORES]
 
+    rep_goals = []
+    for path in sorted(goal_paths):
+        rep_goals.extend(parse_goals(path, log))
+    rep_goals = [g for g in rep_goals if g["storeId"] not in EXCLUDE_STORES]
+
     # stores and coverage are derived from what actually parsed
     store_names, coverage = {}, defaultdict(lambda: {"runDates": set(), "months": set(), "kinds": set()})
     store_crm = {}
@@ -847,6 +879,7 @@ def main(argv):
         "snapshots": kept,
         "matador": matador,
         "covideo": covideo,
+        "repGoals": rep_goals,
         "integrations": INTEGRATIONS,
         "coverage": {
             sid: {
@@ -890,6 +923,8 @@ def main(argv):
         print("matador rows: %d" % len(matador))
     if covideo:
         print("covideo rows: %d" % len(covideo))
+    if rep_goals:
+        print("rep goals: %d" % len(rep_goals))
     print("\nwrote %s" % OUT)
     return 0
 

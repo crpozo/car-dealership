@@ -31,8 +31,8 @@
     closingTarget: null,     // Internet closing % — no default, colours only when set
     shownTarget: null,       // Appts shown % — no default
     warnRatio: 0.85,         // yellow band: at or above this share of a goal
-    callsPerDayGoal: null,   // outbound activity goals; when unset the activity
-    msgsPerDayGoal: null,    //   page colours against the store's own per-rep average
+    callsPerDayGoal: 20,     // Scott's standard outbound goals (from his Sales Activity
+    msgsPerDayGoal: 40,      //   workbook); cleared → colour against the store's own average
     managerPin: null,        // gates goal editing in this browser; NOT real security
     weekStartsOn: 0,         // 0 = Sunday (US retail week)
     anchorMode: 'data',      // 'data' = anchor presets to the newest snapshot; 'clock' = wall clock
@@ -45,7 +45,7 @@
   var HIDDEN_LEAD_TYPES = ['Referral', 'PreviousCustomer'];
 
   var KPI_COUNT_KEYS = ['goodLeads', 'sold', 'apptsShown', 'contacted', 'apptsSet'];
-  var REP_COUNT_KEYS = ['goodLeads', 'sold', 'apptsScheduled', 'apptsShown', 'calls', 'emails', 'texts'];
+  var REP_COUNT_KEYS = ['goodLeads', 'sold', 'apptsScheduled', 'apptsShown', 'calls', 'emails', 'texts', 'videos'];
 
   var SEP = '\u0001';
   var P_TOTAL = 'T';
@@ -299,8 +299,10 @@
         if ('closingTarget' in saved) s.closingTarget = numOrNull(saved.closingTarget);
         if ('shownTarget' in saved) s.shownTarget = numOrNull(saved.shownTarget);
         if (numOrNull(saved.warnRatio) !== null) s.warnRatio = numOrNull(saved.warnRatio);
-        if ('callsPerDayGoal' in saved) s.callsPerDayGoal = numOrNull(saved.callsPerDayGoal);
-        if ('msgsPerDayGoal' in saved) s.msgsPerDayGoal = numOrNull(saved.msgsPerDayGoal);
+        // an empty saved goal means "use the default", not "no goal"
+        var cg = numOrNull(saved.callsPerDayGoal), mg = numOrNull(saved.msgsPerDayGoal);
+        if (cg !== null && cg > 0) s.callsPerDayGoal = cg;
+        if (mg !== null && mg > 0) s.msgsPerDayGoal = mg;
         if (typeof saved.managerPin === 'string' && saved.managerPin) s.managerPin = saved.managerPin;
         if (saved.weekStartsOn === 0 || saved.weekStartsOn === 1) s.weekStartsOn = saved.weekStartsOn;
         if (saved.anchorMode === 'data' || saved.anchorMode === 'clock') s.anchorMode = saved.anchorMode;
@@ -339,10 +341,16 @@
     return settings.salesGoals[storeId];
   }
 
+  /** Store goal from Settings; when none is set, the sum of loaded per-rep goals. */
   function getSalesGoal(storeId) {
-    var g = settings.salesGoals ? settings.salesGoals[storeId] : null;
-    g = numOrNull(g);
-    return (g === null || g <= 0) ? null : g;
+    var g = numOrNull(settings.salesGoals ? settings.salesGoals[storeId] : null);
+    if (g !== null && g > 0) return g;
+    return repGoalTotal(storeId);
+  }
+  function salesGoalSource(storeId) {
+    var g = numOrNull(settings.salesGoals ? settings.salesGoals[storeId] : null);
+    if (g !== null && g > 0) return 'settings';
+    return repGoalTotal(storeId) !== null ? 'reps' : null;
   }
 
   function setTimeframe(tfId, start, end) {
@@ -475,7 +483,7 @@
     };
   }
 
-  var REP_FIELDS = ['goodLeads', 'sold', 'apptsScheduled', 'apptsShown', 'calls', 'emails', 'texts'];
+  var REP_FIELDS = ['goodLeads', 'sold', 'apptsScheduled', 'apptsShown', 'calls', 'emails', 'texts', 'videos'];
 
   /* A column the export never carried must stay ABSENT from the bag rather than
      becoming a zero — Sommer's per-user report has no "Texts Out" column at all,
@@ -551,6 +559,7 @@
       calls: reported(bag, 'calls'),
       emails: reported(bag, 'emails'),
       texts: reported(bag, 'texts'),
+      videos: reported(bag, 'videos'),
       // The VinSolutions per-user report has no internet-only split. Real value unknown → null.
       internetGoodLeads: null,
       internetSold: null,
@@ -1356,6 +1365,21 @@
     return list.filter(function (m) { return !m.storeId || m.storeId === storeId; });
   }
 
+  function repGoalsFor(storeId) {
+    var list = (state.data && state.data.repGoals) || [];
+    return list.filter(function (g) { return g.storeId === storeId; });
+  }
+
+  /** Sum of the per-rep monthly sales goals loaded for a store, or null. */
+  function repGoalTotal(storeId) {
+    var list = repGoalsFor(storeId), sum = null;
+    for (var i = 0; i < list.length; i++) {
+      var g = numOrNull(list[i].salesGoal);
+      if (g !== null) sum = (sum === null ? 0 : sum) + g;
+    }
+    return sum;
+  }
+
   function covideoFor(storeId) {
     var list = (state.data && state.data.covideo) || [];
     return list.filter(function (m) { return !m.storeId || m.storeId === storeId; });
@@ -1407,6 +1431,11 @@
     }
     joinByName(out, matadorFor(storeId), 'matador');
     joinByName(out, covideoFor(storeId), 'covideo');
+    joinByName(out, repGoalsFor(storeId), 'plan');
+    // a hand-maintained team roster fills in where the CRM export has no User Group
+    for (var gi = 0; gi < out.length; gi++) {
+      if (!out[gi].group && out[gi].plan && out[gi].plan.team) out[gi].group = out[gi].plan.team;
+    }
     out.sort(function (a, b) {
       if (b.sold !== a.sold) return b.sold - a.sold;
       if (b.goodLeads !== a.goodLeads) return b.goodLeads - a.goodLeads;
@@ -1837,6 +1866,9 @@
     integrations: integrations,
     matador: matador,
     covideo: covideo,
+    repGoals: repGoalsFor,
+    repGoalTotal: repGoalTotal,
+    salesGoalSource: salesGoalSource,
     generatedAt: generatedAt,
     dataAvailable: dataAvailable,
     warnings: warnings,

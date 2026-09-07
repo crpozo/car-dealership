@@ -1180,6 +1180,19 @@
         return td(avg === null ? na(isNum(total) ? daysNote : "Not reported in this export") : esc(fmtN(avg)), cls, title);
       }
 
+      // per-rep monthly goal, pro-rated to the working days in the range (same
+      // NETWORKDAYS pace rule as the store goal)
+      var monthDays = null;
+      try {
+        var ms = range.start.slice(0, 7) + "-01";
+        var me = new Date(Date.UTC(+range.end.slice(0, 4), +range.end.slice(5, 7), 0)).toISOString().slice(0, 10);
+        monthDays = c.networkDays(ms, me, sat);
+      } catch (e) { monthDays = null; }
+      function pacedGoal(r) {
+        var g = r.plan && isNum(r.plan.salesGoal) ? r.plan.salesGoal : null;
+        if (g === null || !isNum(days) || !isNum(monthDays) || monthDays <= 0) return null;
+        return g * days / monthDays;
+      }
       function soldCell(r, priorBy) {
         var chip = "";
         if (priorBy) {
@@ -1192,7 +1205,12 @@
             }
           }
         }
-        return td(num(r.sold, "Not reported") + chip);
+        var paced = pacedGoal(r), cls = "", title = "";
+        if (paced !== null && isNum(r.sold)) {
+          cls = colorFor(r.sold, paced);
+          title = "Goal " + fmtN(r.plan.salesGoal) + "/month \u00b7 paced " + fmtN(paced) + " for " + days + " of " + monthDays + " working days";
+        }
+        return td(num(r.sold, "Not reported") + chip, cls, title);
       }
 
       function msgsOf(r) {
@@ -1209,6 +1227,7 @@
         if (m && isNum(m.videosSent)) return td(num(m.videosSent, ""), "", matadorNote);
         var cv = r.covideo;
         if (cv && isNum(cv.videosSent)) return td(num(cv.videosSent, ""), "", covideoNote);
+        if (isNum(r.videos)) return td(num(r.videos, ""), "", "Videos column of the sales export (entered by hand from Covideo) \u2014 summed over the selected dates.");
         return td(na("No Matador or Covideo record joins this rep"));
       }
 
@@ -1247,7 +1266,8 @@
           '<span class="gl-t">Goals</span>' +
           '<span class="gl-chip">Calls: ' + (callsGoal !== null ? esc(fmtN(callsGoal)) + "/day" : "store avg") + "</span>" +
           '<span class="gl-chip">Texts+Emails: ' + (msgsGoal !== null ? esc(fmtN(msgsGoal)) + "/day" : "store avg") + "</span>" +
-          '<span class="gl-chip">Sales: ' + (salesGoal !== null ? esc(fmtN(salesGoal)) + "/month" : "not set") + "</span>" +
+          '<span class="gl-chip">Sales: ' + (salesGoal !== null ? esc(fmtN(salesGoal)) + "/month" +
+            (c.salesGoalSource && c.salesGoalSource(s.id) === "reps" ? " (sum of rep goals)" : "") : "not set") + "</span>" +
           '<span class="gl-legend"><span class="pill good"><span class="dot"></span>at goal</span>' +
           '<span class="pill warn"><span class="dot"></span>\u2265 ' + esc(warnPctLabel()) + " of goal</span>" +
           '<span class="pill bad"><span class="dot"></span>below</span></span>' +
