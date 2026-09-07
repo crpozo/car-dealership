@@ -1165,6 +1165,7 @@
       var callsGoal = isNum(st.callsPerDayGoal) && st.callsPerDayGoal > 0 ? st.callsPerDayGoal : null;
       var msgsGoal = isNum(st.msgsPerDayGoal) && st.msgsPerDayGoal > 0 ? st.msgsPerDayGoal : null;
       var matadorNote = "From the Matador Users export (a snapshot) \u2014 NOT filtered by the selected dates.";
+      var covideoNote = "From the daily Covideo MTD usage report (this month's running total) \u2014 NOT filtered by the selected dates.";
 
       function dayCell(total, exact, bench, goal, what) {
         var avg = c.rate(total, days);
@@ -1205,8 +1206,10 @@
 
       function videosCell(r) {
         var m = r.matador;
-        if (!m || !isNum(m.videosSent)) return td(na("No Matador join for this rep \u2014 Covideo not connected yet"));
-        return td(num(m.videosSent, ""), "", matadorNote);
+        if (m && isNum(m.videosSent)) return td(num(m.videosSent, ""), "", matadorNote);
+        var cv = r.covideo;
+        if (cv && isNum(cv.videosSent)) return td(num(cv.videosSent, ""), "", covideoNote);
+        return td(na("No Matador or Covideo record joins this rep"));
       }
 
       function normName(n) { return String(n || "").toLowerCase().replace(/\s+/g, " ").trim(); }
@@ -1432,7 +1435,7 @@
       }
 
       var outboundNote = "Outbound counts come from the rep-level report and cover all lead types, not internet only.";
-      var matadorNote = "From the Matador Users export (a snapshot) \u2014 NOT filtered by the selected dates.";
+      var matadorNote = "Sum of Matador/Covideo per-user snapshots \u2014 NOT filtered by the selected dates.";
       var UNKNOWN = /^unknown/i;
 
       var header = "<thead><tr>" +
@@ -1506,7 +1509,7 @@
             colorFor(shownPct, shownTarget()), shownTarget() !== null ? "Goal " + fmtPct(shownTarget(), 0) : "No shown-% goal set") +
           td(totals ? num(totals.calls, outReason) : na(outReason), "", outboundNote) +
           td(totals && isNum(totals.texts) ? num(totals.texts, "") : na("Texts Out not in this store's export"), "", outboundNote) +
-          td(videos === null ? na("No Matador data for this store \u2014 Covideo not connected yet") : num(videos, ""), "", matadorNote) +
+          td(videos === null ? na("No Matador or Covideo data for this store") : num(videos, ""), "", matadorNote) +
           td(num(net.sold, noNet) + (netCmp ? " " + deltaChip(netCmp, "sold", "Prev MTD") : "")) +
           td(pct(closing, "Needs internet good leads and internet sold") + ppChip(closing, pClosing),
             colorFor(closing, closingTarget()), closingTarget() !== null ? "Goal " + fmtPct(closingTarget(), 0) : "No closing goal set") +
@@ -1536,10 +1539,11 @@
     });
   }
 
-  /* Store-level Matador videos: sum of the per-user snapshot rows. */
+  /* Store-level videos: sum of the per-user Matador + Covideo snapshot rows
+     (the two tools cover disjoint stores today, so nothing double-counts). */
   function storeVideos(storeId) {
     var rows = [];
-    try { rows = C().matador() || []; } catch (e) { rows = []; }
+    try { rows = (C().matador() || []).concat(C().covideo ? C().covideo() : []); } catch (e) { rows = []; }
     var sum = null;
     for (var i = 0; i < rows.length; i++) {
       if (rows[i].storeId === storeId && isNum(rows[i].videosSent)) {

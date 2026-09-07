@@ -198,8 +198,8 @@ def extract_mbox(path, log):
 
 
 def discover(src_dirs, log):
-    """Walk the sources and return (xlsx_paths, matador_csv_paths)."""
-    xlsx, csvs, mboxes, zips = [], [], [], []
+    """Walk the sources and return (xlsx_paths, matador_csv_paths, other_csv_paths)."""
+    xlsx, csvs, other_csvs, mboxes, zips = [], [], [], [], []
 
     def walk(roots):
         for root in roots:
@@ -224,13 +224,15 @@ def discover(src_dirs, log):
             zips.append(path)
         elif low.endswith(".csv") and "matador" in base.lower():
             csvs.append(path)
+        elif low.endswith(".csv"):
+            other_csvs.append(path)   # sniffed later — Covideo names everything report.csv
 
     walk(src_dirs)
     if zips:
         walk(unpack_zips(zips, log))
     for mb in mboxes:
         xlsx.extend(extract_mbox(mb, log))
-    return xlsx, csvs
+    return xlsx, csvs, other_csvs
 
 
 # --------------------------------------------------------------------------- #
@@ -499,6 +501,73 @@ def parse_matador(path, log):
     return out
 
 
+# Covideo's own "Vern Eide Honda Sioux City" is one of the two dealers the KPI
+# reports combine into a single store, so its activity lands on the combined id.
+COVIDEO_STORE_OVERRIDES = {"vern-eide-honda-sioux-city": "vern-eide-sioux-city-combined"}
+
+
+def gmail_order(path):
+    # gmail-pull files are named <gmailMsgIdHex>-<name>; the id's high bits are
+    # the message's internal timestamp, so the hex value orders by arrival.
+    m = re.match(r"^([0-9a-f]{15,16})-", os.path.basename(path))
+    if m:
+        return int(m.group(1), 16)
+    return int(os.path.getmtime(path) * 1000)
+
+
+def parse_covideo(paths, log):
+    """Daily Covideo MTD usage CSVs (per-user video activity, cumulative for the
+    month). Reports repeat daily, so only the NEWEST rows per company are kept —
+    a snapshot join, same idea as Matador."""
+    per_company = {}
+    n_files = 0
+    for path in sorted(paths, key=gmail_order):
+        try:
+            with open(path, newline="", encoding="utf-8-sig") as fh:
+                rdr = csv.DictReader(fh)
+                cols = rdr.fieldnames or []
+                if "Company Name" not in cols or "Videos Created" not in cols:
+                    continue  # some other CSV, not Covideo's export
+                rows = list(rdr)
+        except Exception as exc:  # noqa: BLE001
+            log.append("SKIP covideo %s: %s" % (os.path.basename(path), exc))
+            continue
+        n_files += 1
+        by_co = {}
+        for r in rows:
+            co = (r.get("Company Name") or "").strip()
+            if co:
+                by_co.setdefault(co, []).append(r)
+        for co in by_co:            # later (newer) files overwrite earlier ones
+            per_company[co] = by_co[co]
+
+    def num(row, key):
+        try:
+            return int(row.get(key) or 0)
+        except ValueError:
+            return 0
+
+    out = []
+    for co, co_rows in per_company.items():
+        sid = slug(co)
+        sid = COVIDEO_STORE_OVERRIDES.get(sid, sid)
+        for r in co_rows:
+            name = (r.get("User Name") or "").strip()
+            if not name:
+                continue
+            out.append({
+                "storeId": sid,
+                "name": name,
+                "videosCreated": num(r, "Videos Created"),
+                "videosSent": num(r, "Sent"),
+                "views": num(r, "Total Views"),
+                "ctaClicks": num(r, "CTA Clicks"),
+            })
+    if n_files:
+        log.append("covideo: %d files, newest snapshot kept for %d companies" % (n_files, len(per_company)))
+    return out
+
+
 # --------------------------------------------------------------------------- #
 # integrations — described, never invented; coverage is computed from the data
 # --------------------------------------------------------------------------- #
@@ -515,7 +584,7 @@ INTEGRATIONS = [
     {"name": "Matador", "type": "AI messaging", "api": "unknown", "scheduledEmail": False,
      "note": "Texts and videos sent. Activity is exported by hand from the Users tab; no scheduled email today."},
     {"name": "Covideo", "type": "Video outreach", "api": "unknown", "scheduledEmail": True,
-     "note": "Activity reporting can be scheduled by email."},
+     "note": "Daily MTD usage report arrives by scheduled email since Sep 2026 (Sommer's + Vern Eide)."},
 ]
 
 
@@ -524,7 +593,7 @@ def main(argv):
     log = []
     os.makedirs(CACHE, exist_ok=True)
 
-    xlsx_paths, csv_paths = discover(src_dirs, log)
+    xlsx_paths, csv_paths, other_csv_paths = discover(src_dirs, log)
     print("sources: %s" % ", ".join(src_dirs))
     for line in log:
         print("  %s" % line)
@@ -563,6 +632,8 @@ def main(argv):
     # drop activity belonging to an excluded store rather than leaving it orphaned
     matador = [m for m in matador if m["storeId"] not in EXCLUDE_STORES]
 
+    covideo = [c for c in parse_covideo(other_csv_paths, log) if c["storeId"] not in EXCLUDE_STORES]
+
     # stores and coverage are derived from what actually parsed
     store_names, coverage = {}, defaultdict(lambda: {"runDates": set(), "months": set(), "kinds": set()})
     for snap in kept:
@@ -574,6 +645,7 @@ def main(argv):
         cov["kinds"].add(snap["kind"])
 
     matador_stores = {m["storeId"] for m in matador}
+    covideo_stores = {c["storeId"] for c in covideo}
     stores = []
     groups = {}
     for sid in sorted(store_names):
@@ -582,7 +654,8 @@ def main(argv):
             "id": sid,
             "name": store_names[sid],
             "crm": "VinSolutions",
-            "tools": ["Matador"] if sid in matador_stores else [],
+            "tools": (["Matador"] if sid in matador_stores else []) +
+                     (["Covideo"] if sid in covideo_stores else []),
             "location": None,
             "group": gid,
         })
@@ -596,6 +669,7 @@ def main(argv):
         "groups": sorted(groups.values(), key=lambda g: g["name"]),
         "snapshots": kept,
         "matador": matador,
+        "covideo": covideo,
         "integrations": INTEGRATIONS,
         "coverage": {
             sid: {
@@ -637,6 +711,8 @@ def main(argv):
               % (store_names[sid], c["firstRun"], c["lastRun"], len(c["runDates"]), detail))
     if matador:
         print("matador rows: %d" % len(matador))
+    if covideo:
+        print("covideo rows: %d" % len(covideo))
     print("\nwrote %s" % OUT)
     return 0
 

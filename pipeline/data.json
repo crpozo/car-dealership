@@ -45,7 +45,9 @@
    "id": "sommer-s-automotive",
    "name": "Sommer's Automotive",
    "crm": "VinSolutions",
-   "tools": [],
+   "tools": [
+    "Covideo"
+   ],
    "location": null,
    "group": null
   },
@@ -53,7 +55,9 @@
    "id": "vern-eide-acura",
    "name": "Vern Eide Acura",
    "crm": "VinSolutions",
-   "tools": [],
+   "tools": [
+    "Covideo"
+   ],
    "location": null,
    "group": "vern-eide"
   },
@@ -62,7 +66,8 @@
    "name": "Vern Eide Honda",
    "crm": "VinSolutions",
    "tools": [
-    "Matador"
+    "Matador",
+    "Covideo"
    ],
    "location": null,
    "group": "vern-eide"
@@ -71,7 +76,9 @@
    "id": "vern-eide-mitsubishi",
    "name": "Vern Eide Mitsubishi",
    "crm": "VinSolutions",
-   "tools": [],
+   "tools": [
+    "Covideo"
+   ],
    "location": null,
    "group": "vern-eide"
   },
@@ -79,7 +86,9 @@
    "id": "vern-eide-sioux-city-combined",
    "name": "Vern Eide Sioux City (combined)",
    "crm": "VinSolutions",
-   "tools": [],
+   "tools": [
+    "Covideo"
+   ],
    "location": null,
    "group": "vern-eide"
   },
@@ -542821,6 +542830,992 @@
    "assignedClients": 2
   }
  ],
+ "covideo": [
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Scott McDonald",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Adam Driewer",
+   "videosCreated": 6,
+   "videosSent": 23,
+   "views": 6,
+   "ctaClicks": 2
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Alex Higgs",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Brian Black",
+   "videosCreated": 4,
+   "videosSent": 4,
+   "views": 1,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Curt George",
+   "videosCreated": 3,
+   "videosSent": 4,
+   "views": 1,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Grant Sommer",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Jim Cross",
+   "videosCreated": 4,
+   "videosSent": 4,
+   "views": 3,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Jim Naus",
+   "videosCreated": 3,
+   "videosSent": 9,
+   "views": 3,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Joe Vella",
+   "videosCreated": 6,
+   "videosSent": 22,
+   "views": 20,
+   "ctaClicks": 3
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Kyle Bohachek",
+   "videosCreated": 3,
+   "videosSent": 14,
+   "views": 3,
+   "ctaClicks": 1
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Omar Soulimani",
+   "videosCreated": 0,
+   "videosSent": 13,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Peng Tai",
+   "videosCreated": 3,
+   "videosSent": 3,
+   "views": 1,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Rod Weber",
+   "videosCreated": 6,
+   "videosSent": 12,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Troy Royse",
+   "videosCreated": 0,
+   "videosSent": 16,
+   "views": 4,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Darrell Jackson",
+   "videosCreated": 6,
+   "videosSent": 6,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Theresa Clemens",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Adam Swernoff",
+   "videosCreated": 0,
+   "videosSent": 24,
+   "views": 2,
+   "ctaClicks": 3
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Michael Tuler",
+   "videosCreated": 7,
+   "videosSent": 7,
+   "views": 4,
+   "ctaClicks": 1
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Georgette Wellnitz",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Michael Foti",
+   "videosCreated": 0,
+   "videosSent": 3,
+   "views": 2,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Taylor Radcliffe",
+   "videosCreated": 4,
+   "videosSent": 17,
+   "views": 4,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Oliver Hatch",
+   "videosCreated": 16,
+   "videosSent": 20,
+   "views": 4,
+   "ctaClicks": 1
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Thomas Sipin",
+   "videosCreated": 15,
+   "videosSent": 23,
+   "views": 12,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Lydia Carns-Nanez",
+   "videosCreated": 4,
+   "videosSent": 9,
+   "views": 1,
+   "ctaClicks": 1
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Jeff Romeis",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Jennifer Schultz-Christ",
+   "videosCreated": 7,
+   "videosSent": 9,
+   "views": 4,
+   "ctaClicks": 4
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Amanda Mapes",
+   "videosCreated": 2,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Robert Quintanilla",
+   "videosCreated": 23,
+   "videosSent": 54,
+   "views": 11,
+   "ctaClicks": 8
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Ezekiel Heyse",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Carlos Pozo",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Total",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-acura",
+   "name": "Chase Sabers",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-acura",
+   "name": "Austin Behnke",
+   "videosCreated": 3,
+   "videosSent": 5,
+   "views": 1,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-acura",
+   "name": "Jacob Sample",
+   "videosCreated": 6,
+   "videosSent": 11,
+   "views": 1,
+   "ctaClicks": 1
+  },
+  {
+   "storeId": "vern-eide-acura",
+   "name": "Reuel Erickson",
+   "videosCreated": 1,
+   "videosSent": 6,
+   "views": 6,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-acura",
+   "name": "Bryan Veeder",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-acura",
+   "name": "Todd Trauman",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-acura",
+   "name": "Elise Mollenbeck",
+   "videosCreated": 4,
+   "videosSent": 4,
+   "views": 16,
+   "ctaClicks": 3
+  },
+  {
+   "storeId": "vern-eide-acura",
+   "name": "Blake Budde",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-acura",
+   "name": "Alec Skidmore",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-acura",
+   "name": "Dalton Dawes",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-acura",
+   "name": "Nathan Osterquist",
+   "videosCreated": 5,
+   "videosSent": 8,
+   "views": 2,
+   "ctaClicks": 1
+  },
+  {
+   "storeId": "vern-eide-acura",
+   "name": "Total",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "company-name",
+   "name": "User Name",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "company-name",
+   "name": "User Name",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "company-name",
+   "name": "User Name",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Chase Sabers",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Bryan Thu",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Susan Trauman",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Tim Stroup",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Blake Bakker",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Brandt Adamski",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Courtney Snoozy",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Emir Kantarevic",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Eric Binger",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Gordy Anderson",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Istvan Szabadi",
+   "videosCreated": 0,
+   "videosSent": 4,
+   "views": 1,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Jacob Larson",
+   "videosCreated": 1,
+   "videosSent": 1,
+   "views": 1,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Jared Fields",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Jill Baier",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Jordan Konda",
+   "videosCreated": 7,
+   "videosSent": 8,
+   "views": 1,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Justin Dziobecki",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Karen Heege",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Nick Hoyt",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Randy Finch",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Randy Meinders",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Alex Wiese",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Clint Otten",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Jeff Jaeger",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Peter Dappen",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Scot Dobson",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Steve Eggebraaten",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Zach Schroeder",
+   "videosCreated": 3,
+   "videosSent": 4,
+   "views": 10,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Marco Jauregui",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Blake  Anderson",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Josh Cooper",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Carlos Jauregui",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Kobe Zetino",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Emerson Otten",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Tony Jensen",
+   "videosCreated": 1,
+   "videosSent": 1,
+   "views": 5,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Noah Stoebner",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Cade  Clayberg",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Amin Black",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Jake DeNomme",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Noah Eggebraaten",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Nolan Hoback",
+   "videosCreated": 1,
+   "videosSent": 2,
+   "views": 3,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "name": "Total",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-sioux-city-combined",
+   "name": "Jay Piel",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-sioux-city-combined",
+   "name": "Celeste Durant",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 1,
+   "ctaClicks": 1
+  },
+  {
+   "storeId": "vern-eide-sioux-city-combined",
+   "name": "Dominick Rust",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 1,
+   "ctaClicks": 2
+  },
+  {
+   "storeId": "vern-eide-sioux-city-combined",
+   "name": "Dustin Woolworth",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-sioux-city-combined",
+   "name": "Michael Hodgson",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-sioux-city-combined",
+   "name": "Mike Paddleford",
+   "videosCreated": 1,
+   "videosSent": 1,
+   "views": 2,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-sioux-city-combined",
+   "name": "Fred Hexom",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-sioux-city-combined",
+   "name": "Greg Behrens",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-sioux-city-combined",
+   "name": "Jaspreet Singh",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-sioux-city-combined",
+   "name": "Jehmica Mcdaniel",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-sioux-city-combined",
+   "name": "Alex Lopez",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-sioux-city-combined",
+   "name": "Trae Piel",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-sioux-city-combined",
+   "name": "Lyle Stevens",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-sioux-city-combined",
+   "name": "Kelsie Liljedahl",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-sioux-city-combined",
+   "name": "Miranda Villalpando",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-sioux-city-combined",
+   "name": "Total",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Elaina Wegleitner",
+   "videosCreated": 1,
+   "videosSent": 2,
+   "views": 3,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Gilberto Salazar",
+   "videosCreated": 0,
+   "videosSent": 1,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Hope Yount",
+   "videosCreated": 2,
+   "videosSent": 60,
+   "views": 2,
+   "ctaClicks": 2
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Jared Buettgenback",
+   "videosCreated": 4,
+   "videosSent": 5,
+   "views": 1,
+   "ctaClicks": 2
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Maggie Heege",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Spencer Wedin",
+   "videosCreated": 0,
+   "videosSent": 1,
+   "views": 1,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Chase Sabers",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Jackson Lake",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Jason Hohn",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Tyler Zebell",
+   "videosCreated": 1,
+   "videosSent": 2,
+   "views": 0,
+   "ctaClicks": 1
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Jeff Reynolds",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Terry Johnston",
+   "videosCreated": 3,
+   "videosSent": 13,
+   "views": 2,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Austin Lake",
+   "videosCreated": 4,
+   "videosSent": 6,
+   "views": 21,
+   "ctaClicks": 1
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Hunter Fritsch",
+   "videosCreated": 3,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Caleb Guenther",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Caleb Guenther",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Bob Reisch",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Sia Piel",
+   "videosCreated": 2,
+   "videosSent": 33,
+   "views": 1,
+   "ctaClicks": 3
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "John Murren",
+   "videosCreated": 1,
+   "videosSent": 46,
+   "views": 3,
+   "ctaClicks": 4
+  },
+  {
+   "storeId": "vern-eide-mitsubishi",
+   "name": "Total",
+   "videosCreated": 0,
+   "videosSent": 0,
+   "views": 0,
+   "ctaClicks": 0
+  }
+ ],
  "integrations": [
   {
    "name": "VinSolutions",
@@ -542862,7 +543857,7 @@
    "type": "Video outreach",
    "api": "unknown",
    "scheduledEmail": true,
-   "note": "Activity reporting can be scheduled by email."
+   "note": "Daily MTD usage report arrives by scheduled email since Sep 2026 (Sommer's + Vern Eide)."
   }
  ],
  "coverage": {

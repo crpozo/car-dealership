@@ -1356,6 +1356,40 @@
     return list.filter(function (m) { return !m.storeId || m.storeId === storeId; });
   }
 
+  function covideoFor(storeId) {
+    var list = (state.data && state.data.covideo) || [];
+    return list.filter(function (m) { return !m.storeId || m.storeId === storeId; });
+  }
+
+  /** Attach each record in `list` to the rep with the same normalized name,
+   *  as rep[field]. Second pass is deliberately narrow: same surname and one
+   *  given name a prefix of the other ("Zach" ↔ "Zachary"), and only when
+   *  exactly one unused record qualifies. No fuzzy scoring, no invented links. */
+  function joinByName(out, list, field) {
+    var byName = {};
+    for (var mi = 0; mi < list.length; mi++) byName[normKey(list[mi].name)] = list[mi];
+    var used = {};
+    for (var i = 0; i < out.length; i++) {
+      var m = byName[normKey(out[i].name)];
+      if (m) { out[i][field] = m; used[normKey(m.name)] = 1; }
+    }
+    for (var i2 = 0; i2 < out.length; i2++) {
+      if (out[i2][field]) continue;
+      var t = nameTokens(out[i2].name);
+      if (t.length < 2) continue;
+      var hit = null, hits = 0;
+      for (var mj = 0; mj < list.length; mj++) {
+        if (used[normKey(list[mj].name)]) continue;
+        var u = nameTokens(list[mj].name);
+        if (u.length < 2) continue;
+        if (u[u.length - 1] !== t[t.length - 1]) continue;
+        if (u[0].indexOf(t[0]) !== 0 && t[0].indexOf(u[0]) !== 0) continue;
+        hits++; hit = list[mj];
+      }
+      if (hits === 1) { out[i2][field] = hit; used[normKey(hit.name)] = 1; }
+    }
+  }
+
   /** reps(storeId, range) → [rep] aggregated across the range (TOTAL row excluded) */
   function reps(storeId, range) {
     range = asRange(range);
@@ -1371,33 +1405,8 @@
       repOut.group = labelFor(path, 'group', null);
       out.push(repOut);
     }
-    // join Matador activity by normalized name
-    var mat = matadorFor(storeId);
-    var matByName = {};
-    for (var mi = 0; mi < mat.length; mi++) matByName[normKey(mat[mi].name)] = mat[mi];
-    var used = {};
-    for (var i = 0; i < out.length; i++) {
-      var m = matByName[normKey(out[i].name)];
-      if (m) { out[i].matador = m; used[normKey(m.name)] = 1; }
-    }
-    // Second pass, deliberately narrow: same surname and one given name is a prefix
-    // of the other ("Zach Schroeder" ↔ "Zachary Schroeder"), and only when exactly
-    // one unused Matador record qualifies. No fuzzy scoring, no invented links.
-    for (var i2 = 0; i2 < out.length; i2++) {
-      if (out[i2].matador) continue;
-      var t = nameTokens(out[i2].name);
-      if (t.length < 2) continue;
-      var hit = null, hits = 0;
-      for (var mj = 0; mj < mat.length; mj++) {
-        if (used[normKey(mat[mj].name)]) continue;
-        var u = nameTokens(mat[mj].name);
-        if (u.length < 2) continue;
-        if (u[u.length - 1] !== t[t.length - 1]) continue;
-        if (u[0].indexOf(t[0]) !== 0 && t[0].indexOf(u[0]) !== 0) continue;
-        hits++; hit = mat[mj];
-      }
-      if (hits === 1) { out[i2].matador = hit; used[normKey(hit.name)] = 1; }
-    }
+    joinByName(out, matadorFor(storeId), 'matador');
+    joinByName(out, covideoFor(storeId), 'covideo');
     out.sort(function (a, b) {
       if (b.sold !== a.sold) return b.sold - a.sold;
       if (b.goodLeads !== a.goodLeads) return b.goodLeads - a.goodLeads;
@@ -1756,6 +1765,10 @@
     return storeId ? matadorFor(storeId) : ((state.data && state.data.matador) || []).slice();
   }
 
+  function covideo(storeId) {
+    return storeId ? covideoFor(storeId) : ((state.data && state.data.covideo) || []).slice();
+  }
+
   function generatedAt() { return (state.data && state.data.generatedAt) || null; }
 
   function dataAvailable() {
@@ -1823,6 +1836,7 @@
     trendSeries: trendSeries,
     integrations: integrations,
     matador: matador,
+    covideo: covideo,
     generatedAt: generatedAt,
     dataAvailable: dataAvailable,
     warnings: warnings,
