@@ -507,9 +507,18 @@ def parse_goals(path, log):
     return out
 
 
+# The Sioux City rooftops are one store in the CRM exports ("Vern Eide Sioux City
+# (combined)"), so their Matador activity rolls up to that combined store.
+MATADOR_STORE_OVERRIDES = {
+    "vern-eide-honda-sioux-city": "vern-eide-sioux-city-combined",
+    "vern-eide-hyundai-sioux-city": "vern-eide-sioux-city-combined",
+}
+
+
 def parse_matador(path, log):
     out = []
     store = slug(re.sub(r"(?i)^matador\s+mtd\s+stats\s+", "", os.path.basename(path)[:-4]).strip())
+    store = MATADOR_STORE_OVERRIDES.get(store, store)
     try:
         with open(path, newline="", encoding="utf-8-sig") as fh:
             for r in csv.DictReader(fh):
