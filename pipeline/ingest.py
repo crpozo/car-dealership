@@ -514,16 +514,32 @@ MATADOR_STORE_OVERRIDES = {
     "vern-eide-hyundai-sioux-city": "vern-eide-sioux-city-combined",
 }
 
+# A Matador organization maps to one dashboard store and its locations roll up to
+# it (a sales floor and its service drive are the same dealership, and the CRM
+# reports them as one) — the location is kept on every row so the dashboard can
+# still show which one the activity came from. These locations are the exception:
+# they are separate dealerships that merely share an organization, so they keep
+# their own identity instead of inflating the parent store.
+MATADOR_SEPARATE_LOCATIONS = {"sommer-s-buick-gmc", "sommer-s-subaru"}
+
 
 def parse_matador(path, log):
     out = []
-    store = slug(re.sub(r"(?i)^matador\s+mtd\s+stats\s+", "", os.path.basename(path)[:-4]).strip())
-    store = MATADOR_STORE_OVERRIDES.get(store, store)
+    # "Matador MTD Stats <organization> -- <location>.csv"; older exports carry
+    # only one name, in which case it is both.
+    stem = re.sub(r"(?i)^matador\s+mtd\s+stats\s+", "", os.path.basename(path)[:-4]).strip()
+    org, _, location = stem.partition(" -- ")
+    location = location.strip() or org
+    if slug(location) in MATADOR_SEPARATE_LOCATIONS:
+        store = slug(location)
+    else:
+        store = MATADOR_STORE_OVERRIDES.get(slug(org), slug(org))
     try:
         with open(path, newline="", encoding="utf-8-sig") as fh:
             for r in csv.DictReader(fh):
                 out.append({
                     "storeId": store,
+                    "location": location,
                     "name": (r.get("User") or "").strip(),
                     "role": (r.get("User Role") or "").strip(),
                     "lastActivity": (r.get("Last Activity") or "").strip()[:10],

@@ -1360,9 +1360,38 @@
    * reps
    * ------------------------------------------------------------------ */
 
+  var MATADOR_SUMS = ['apptsCreated', 'videosSent', 'messagesSent', 'reviewInvites',
+                      'clientsMessaged', 'assignedClients'];
+
+  /** Matador rows for a store, one per person: a rep who works both the sales
+   *  floor and the service drive has a row per location, and those are the same
+   *  person's activity, so they are summed. Each result keeps `locations` so the
+   *  UI can show where the activity came from rather than just a total. */
   function matadorFor(storeId) {
     var list = (state.data && state.data.matador) || [];
-    return list.filter(function (m) { return !m.storeId || m.storeId === storeId; });
+    var out = [], byName = {};
+    for (var i = 0; i < list.length; i++) {
+      var m = list[i];
+      if (m.storeId && m.storeId !== storeId) continue;
+      var key = normKey(m.name);
+      var agg = byName[key];
+      if (!agg) {
+        agg = byName[key] = { name: m.name, role: m.role, lastActivity: m.lastActivity, locations: [] };
+        for (var f = 0; f < MATADOR_SUMS.length; f++) agg[MATADOR_SUMS[f]] = 0;
+        out.push(agg);
+      }
+      var here = { location: m.location || null };
+      for (var g = 0; g < MATADOR_SUMS.length; g++) {
+        var k = MATADOR_SUMS[g], v = numOrNull(m[k]);
+        here[k] = v;
+        if (v !== null) agg[k] += v;
+      }
+      agg.locations.push(here);
+      if (m.lastActivity && (!agg.lastActivity || m.lastActivity > agg.lastActivity)) {
+        agg.lastActivity = m.lastActivity;
+      }
+    }
+    return out;
   }
 
   function repGoalsFor(storeId) {

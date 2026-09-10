@@ -1236,9 +1236,23 @@
         return { v: v, note: bits.join(" \u00b7 ") };
       }
 
+      /* "Sales 12 · Service 3" when a rep worked more than one location. */
+      function locBreakdown(m, field) {
+        var locs = (m && m.locations) || [];
+        if (locs.length < 2) return "";
+        var bits = [];
+        for (var i = 0; i < locs.length; i++) {
+          if (!isNum(locs[i][field])) continue;
+          bits.push((locs[i].location || "?") + " " + fmtN(locs[i][field]));
+        }
+        return bits.length > 1 ? " \u00b7 " + bits.join(" \u00b7 ") : "";
+      }
+
       function videosCell(r) {
         var m = r.matador;
-        if (m && isNum(m.videosSent)) return td(num(m.videosSent, ""), "", matadorNote);
+        if (m && isNum(m.videosSent)) {
+          return td(num(m.videosSent, ""), "", matadorNote + locBreakdown(m, "videosSent"));
+        }
         var cv = r.covideo;
         if (cv && isNum(cv.videosSent)) return td(num(cv.videosSent, ""), "", covideoNote);
         if (isNum(r.videos)) return td(num(r.videos, ""), "", "Videos column of the sales export (entered by hand from Covideo) \u2014 summed over the selected dates.");
