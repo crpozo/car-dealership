@@ -318,7 +318,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-03",
-   "source": "19f2887294c85c29-Report-9091.xlsx",
+   "source": "Report-9091.xlsx",
    "rowCount": 8,
    "total": {
     "goodLeads": 17,
@@ -448,7 +448,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-04",
-   "source": "19f2db4d9919a3fb-Report-7374.xlsx",
+   "source": "Report-7374.xlsx",
    "rowCount": 11,
    "total": {
     "goodLeads": 26,
@@ -621,7 +621,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-05",
-   "source": "19f32d03e2e1e4d7-Report-6837.xlsx",
+   "source": "Report-6837.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 29,
@@ -822,7 +822,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-06",
-   "source": "19f380484f5553fe-Report-1964.xlsx",
+   "source": "Report-1964.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 33,
@@ -1023,7 +1023,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-07",
-   "source": "19f3d2250660a03a-Report-5163.xlsx",
+   "source": "Report-5163.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 44,
@@ -1224,7 +1224,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-08",
-   "source": "19f4247321a1bfa9-Report-3416.xlsx",
+   "source": "Report-3416.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 56,
@@ -1425,7 +1425,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-09",
-   "source": "19f47765295b7d98-Report-5960.xlsx",
+   "source": "Report-5960.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 60,
@@ -1626,7 +1626,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-12",
-   "source": "19f56de1ad0025aa-Report-3182.xlsx",
+   "source": "Report-3182.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 90,
@@ -1827,7 +1827,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-13",
-   "source": "19f5c07906b46418-Report-6670.xlsx",
+   "source": "Report-6670__1.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 102,
@@ -2028,7 +2028,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-14",
-   "source": "19f612dd29a8dfb9-Report-8797.xlsx",
+   "source": "Report-8797.xlsx",
    "rowCount": 12,
    "total": {
     "goodLeads": 108,
@@ -2215,7 +2215,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-16",
-   "source": "19f6b7b05638f3f9-Report-1030.xlsx",
+   "source": "Report-1030.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 140,
@@ -2416,7 +2416,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-17",
-   "source": "19f70a248e9603a3-Report-3992.xlsx",
+   "source": "Report-3992.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 148,
@@ -2617,7 +2617,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-18",
-   "source": "19f75c785b10dd72-Report-9828.xlsx",
+   "source": "Report-9828.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 161,
@@ -2818,7 +2818,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-19",
-   "source": "19f7aeb3b6ca9423-Report-307.xlsx",
+   "source": "Report-307.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 168,
@@ -3019,7 +3019,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-20",
-   "source": "19f801742a5aeb1d-Report-7788.xlsx",
+   "source": "Report-7788.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 180,
@@ -3220,7 +3220,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-21",
-   "source": "19f853bf5fa499ac-Report-2916.xlsx",
+   "source": "Report-2916.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 190,
@@ -3421,7 +3421,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-22",
-   "source": "19f8a6389fd6c8fd-Report-4976.xlsx",
+   "source": "Report-4976.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 201,
@@ -3622,7 +3622,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-23",
-   "source": "19f8f8d37d820a33-Report-8266.xlsx",
+   "source": "Report-8266.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 209,
@@ -3823,7 +3823,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-24",
-   "source": "19f94b0d7223137b-Report-7520.xlsx",
+   "source": "Report-7520.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 218,
@@ -4024,7 +4024,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-25",
-   "source": "19f99d890ec0ff0d-Report-5405.xlsx",
+   "source": "Report-5405.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 226,
@@ -4225,7 +4225,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-26",
-   "source": "19f9ef8454fa3eaa-Report-7748.xlsx",
+   "source": "Report-7748.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 233,
@@ -4426,7 +4426,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-27",
-   "source": "19fa4250633e3e49-Report-9071.xlsx",
+   "source": "Report-9071.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 237,
@@ -4627,7 +4627,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-28",
-   "source": "19fa9496f16a9656-Report-5749.xlsx",
+   "source": "Report-5749.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 245,
@@ -4828,7 +4828,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-29",
-   "source": "19fae76a4eb93f41-Report-9889.xlsx",
+   "source": "Report-9889.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 255,
@@ -5029,7 +5029,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-30",
-   "source": "19fb39da3a3fc644-Report-1502.xlsx",
+   "source": "Report-1502.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 261,
@@ -5230,7 +5230,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-02",
-   "source": "19fc303b5859db0f-Report-4143.xlsx",
+   "source": "Report-4143.xlsx",
    "rowCount": 9,
    "total": {
     "goodLeads": 5,
@@ -5375,7 +5375,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-04",
-   "source": "19fcd54b294e3706-Report-6641.xlsx",
+   "source": "Report-6641.xlsx",
    "rowCount": 10,
    "total": {
     "goodLeads": 17,
@@ -5534,7 +5534,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-05",
-   "source": "19fd27a8fd2076ea-Report-9564.xlsx",
+   "source": "Report-9564.xlsx",
    "rowCount": 11,
    "total": {
     "goodLeads": 29,
@@ -5707,7 +5707,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-06",
-   "source": "19fd7a75ad22084d-Report-3660.xlsx",
+   "source": "Report-3660.xlsx",
    "rowCount": 11,
    "total": {
     "goodLeads": 39,
@@ -5880,7 +5880,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-08",
-   "source": "19fe1f4f46858f45-Report-8879.xlsx",
+   "source": "Report-8879.xlsx",
    "rowCount": 12,
    "total": {
     "goodLeads": 56,
@@ -6067,7 +6067,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-09",
-   "source": "19fe71892cdcffc4-Report-9772.xlsx",
+   "source": "Report-9772.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 70,
@@ -6268,7 +6268,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-10",
-   "source": "19fec3ab14d746da-Report-3392.xlsx",
+   "source": "Report-3392.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 77,
@@ -6469,7 +6469,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-11",
-   "source": "19ff1600d8ddd54f-Report-530.xlsx",
+   "source": "Report-530.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 86,
@@ -6670,7 +6670,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-12",
-   "source": "19ff686c6d993ba1-Report-5885.xlsx",
+   "source": "Report-5885.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 96,
@@ -6871,7 +6871,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-13",
-   "source": "19ffbad75d7ccfc1-Report-1609.xlsx",
+   "source": "Report-1609.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 106,
@@ -7072,7 +7072,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-14",
-   "source": "1a000d4187cd074e-Report-4020.xlsx",
+   "source": "Report-4020.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 117,
@@ -7273,7 +7273,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-15",
-   "source": "1a005fafd91d84d4-Report-4778.xlsx",
+   "source": "Report-4778.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 127,
@@ -7474,7 +7474,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-16",
-   "source": "1a00b2660c4c96df-Report-9688.xlsx",
+   "source": "Report-9688.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 135,
@@ -7675,7 +7675,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-17",
-   "source": "1a0105118886fad3-Report-3515.xlsx",
+   "source": "Report-3515.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 146,
@@ -7876,7 +7876,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-18",
-   "source": "1a0156f0beefbffa-Report-4980.xlsx",
+   "source": "Report-4980.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 158,
@@ -8077,7 +8077,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-19",
-   "source": "1a01a952a78ee79d-Report-5270.xlsx",
+   "source": "Report-5270.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 172,
@@ -8278,7 +8278,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-20",
-   "source": "1a01fbedd0034214-Report-8907.xlsx",
+   "source": "Report-8907.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 181,
@@ -8479,7 +8479,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-21",
-   "source": "1a024ed7d1caaae8-Report-6350.xlsx",
+   "source": "Report-6350.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 186,
@@ -12423,7 +12423,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-03",
    "runDate": "2026-07-03",
-   "source": "19f2887139dcbc35-Report-2910.xlsx",
+   "source": "Report-2910.xlsx",
    "rowCount": 10,
    "total": {
     "goodLeads": 26,
@@ -12582,7 +12582,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-04",
    "runDate": "2026-07-04",
-   "source": "19f2dab345fefe06-Report-5360.xlsx",
+   "source": "Report-5360.xlsx",
    "rowCount": 11,
    "total": {
     "goodLeads": 37,
@@ -12755,7 +12755,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-05",
    "runDate": "2026-07-05",
-   "source": "19f32d0379d4fab9-Report-3631.xlsx",
+   "source": "Report-3631.xlsx",
    "rowCount": 11,
    "total": {
     "goodLeads": 43,
@@ -12928,7 +12928,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-06",
    "runDate": "2026-07-06",
-   "source": "19f37fa94372efd6-Report-5704.xlsx",
+   "source": "Report-5704.xlsx",
    "rowCount": 11,
    "total": {
     "goodLeads": 49,
@@ -13101,7 +13101,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-07",
    "runDate": "2026-07-07",
-   "source": "19f3d224ae241da5-Report-6641.xlsx",
+   "source": "Report-6641__1.xlsx",
    "rowCount": 11,
    "total": {
     "goodLeads": 54,
@@ -13274,7 +13274,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-08",
    "runDate": "2026-07-08",
-   "source": "19f424725e605542-Report-6776.xlsx",
+   "source": "Report-6776__2.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 62,
@@ -13475,7 +13475,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-09",
    "runDate": "2026-07-09",
-   "source": "19f476d01dae08b7-Report-150.xlsx",
+   "source": "Report-150.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 68,
@@ -13676,7 +13676,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-12",
    "runDate": "2026-07-12",
-   "source": "19f56de0d5145be8-Report-4377.xlsx",
+   "source": "Report-4377.xlsx",
    "rowCount": 14,
    "total": {
     "goodLeads": 98,
@@ -13891,7 +13891,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-13",
    "runDate": "2026-07-13",
-   "source": "19f5c079a6c5d550-Report-7794.xlsx",
+   "source": "Report-7794.xlsx",
    "rowCount": 14,
    "total": {
     "goodLeads": 105,
@@ -14106,7 +14106,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-14",
    "runDate": "2026-07-14",
-   "source": "19f6137885d3f138-Report-6983.xlsx",
+   "source": "Report-6983.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 112,
@@ -14307,7 +14307,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-16",
    "runDate": "2026-07-16",
-   "source": "19f6b7aff29b6810-Report-1768.xlsx",
+   "source": "Report-1768.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 134,
@@ -14508,7 +14508,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-17",
    "runDate": "2026-07-17",
-   "source": "19f70a247280f2e8-Report-1521.xlsx",
+   "source": "Report-1521.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 142,
@@ -14709,7 +14709,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-18",
    "runDate": "2026-07-18",
-   "source": "19f75c77cf9db18d-Report-1783.xlsx",
+   "source": "Report-1783.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 148,
@@ -14910,7 +14910,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-19",
    "runDate": "2026-07-19",
-   "source": "19f7aeb37eb6c09e-Report-1304.xlsx",
+   "source": "Report-1304.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 157,
@@ -15111,7 +15111,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-20",
    "runDate": "2026-07-20",
-   "source": "19f80173d827522d-Report-958.xlsx",
+   "source": "Report-958.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 169,
@@ -15312,7 +15312,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-21",
    "runDate": "2026-07-21",
-   "source": "19f853bee8bc4096-Report-2221.xlsx",
+   "source": "Report-2221.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 174,
@@ -15513,7 +15513,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-22",
    "runDate": "2026-07-22",
-   "source": "19f8a638209bdb47-Report-4382.xlsx",
+   "source": "Report-4382.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 183,
@@ -15714,7 +15714,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-23",
    "runDate": "2026-07-23",
-   "source": "19f8f8d2306f496a-Report-8270.xlsx",
+   "source": "Report-8270.xlsx",
    "rowCount": 14,
    "total": {
     "goodLeads": 197,
@@ -15929,7 +15929,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-24",
    "runDate": "2026-07-24",
-   "source": "19f94b0daf4eeae7-Report-8986.xlsx",
+   "source": "Report-8986.xlsx",
    "rowCount": 14,
    "total": {
     "goodLeads": 206,
@@ -16144,7 +16144,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-25",
    "runDate": "2026-07-25",
-   "source": "19f99cea6acf7415-Report-9515.xlsx",
+   "source": "Report-9515.xlsx",
    "rowCount": 15,
    "total": {
     "goodLeads": 221,
@@ -16373,7 +16373,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-26",
    "runDate": "2026-07-26",
-   "source": "19f9ef844da83264-Report-135.xlsx",
+   "source": "Report-135.xlsx",
    "rowCount": 15,
    "total": {
     "goodLeads": 227,
@@ -16602,7 +16602,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-27",
    "runDate": "2026-07-27",
-   "source": "19fa424f9d5103f1-Report-7730.xlsx",
+   "source": "Report-7730.xlsx",
    "rowCount": 15,
    "total": {
     "goodLeads": 234,
@@ -16831,7 +16831,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-28",
    "runDate": "2026-07-28",
-   "source": "19fa94969fde6dd2-Report-714.xlsx",
+   "source": "Report-714.xlsx",
    "rowCount": 15,
    "total": {
     "goodLeads": 247,
@@ -17060,7 +17060,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-29",
    "runDate": "2026-07-29",
-   "source": "19fae6d6743199a7-Report-4582.xlsx",
+   "source": "Report-4582.xlsx",
    "rowCount": 15,
    "total": {
     "goodLeads": 260,
@@ -17289,7 +17289,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-30",
    "runDate": "2026-07-30",
-   "source": "19fb3941663fe959-Report-3532.xlsx",
+   "source": "Report-3532.xlsx",
    "rowCount": 15,
    "total": {
     "goodLeads": 263,
@@ -17518,7 +17518,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-02",
    "runDate": "2026-08-02",
-   "source": "19fc303a164058b2-Report-7002.xlsx",
+   "source": "Report-7002.xlsx",
    "rowCount": 7,
    "total": {
     "goodLeads": 16,
@@ -17634,7 +17634,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-04",
    "runDate": "2026-08-04",
-   "source": "19fcd54a77b728fa-Report-7187.xlsx",
+   "source": "Report-7187.xlsx",
    "rowCount": 12,
    "total": {
     "goodLeads": 26,
@@ -17821,7 +17821,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-05",
    "runDate": "2026-08-05",
-   "source": "19fd27a603af5a1b-Report-7154.xlsx",
+   "source": "Report-7154__1.xlsx",
    "rowCount": 12,
    "total": {
     "goodLeads": 31,
@@ -18008,7 +18008,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-06",
    "runDate": "2026-08-06",
-   "source": "19fd79d6913885c3-Report-4568.xlsx",
+   "source": "Report-4568.xlsx",
    "rowCount": 12,
    "total": {
     "goodLeads": 42,
@@ -18195,7 +18195,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-08",
    "runDate": "2026-08-08",
-   "source": "19fe1eb38f3c567a-Report-3091.xlsx",
+   "source": "Report-3091.xlsx",
    "rowCount": 12,
    "total": {
     "goodLeads": 59,
@@ -18382,7 +18382,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-09",
    "runDate": "2026-08-09",
-   "source": "19fe70f460fcbb1d-Report-4941.xlsx",
+   "source": "Report-4941.xlsx",
    "rowCount": 12,
    "total": {
     "goodLeads": 65,
@@ -18569,7 +18569,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-10",
    "runDate": "2026-08-10",
-   "source": "19fec3aa6a97551c-Report-9087.xlsx",
+   "source": "Report-9087.xlsx",
    "rowCount": 12,
    "total": {
     "goodLeads": 77,
@@ -18756,7 +18756,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-11",
    "runDate": "2026-08-11",
-   "source": "19ff15ff9eeb3e30-Report-3587.xlsx",
+   "source": "Report-3587.xlsx",
    "rowCount": 12,
    "total": {
     "goodLeads": 86,
@@ -18943,7 +18943,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-12",
    "runDate": "2026-08-12",
-   "source": "19ff686c5a2c7b1a-Report-690.xlsx",
+   "source": "Report-690.xlsx",
    "rowCount": 12,
    "total": {
     "goodLeads": 98,
@@ -19130,7 +19130,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-13",
    "runDate": "2026-08-13",
-   "source": "19ffbad730638f10-Report-6547.xlsx",
+   "source": "Report-6547.xlsx",
    "rowCount": 12,
    "total": {
     "goodLeads": 105,
@@ -19317,7 +19317,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-14",
    "runDate": "2026-08-14",
-   "source": "1a000d411fa61b2b-Report-1373.xlsx",
+   "source": "Report-1373.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 119,
@@ -19518,7 +19518,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-08-15",
-   "source": "1a005fae673f7c1e-Report-7376.xlsx",
+   "source": "Report-7376.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 134,
@@ -19719,7 +19719,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1cea319af92-Report-5137.xlsx",
+   "source": "Report-5137.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 144,
@@ -19920,7 +19920,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-17",
    "runDate": "2026-08-17",
-   "source": "1a01047808985698-Report-7300.xlsx",
+   "source": "Report-7300.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 155,
@@ -20121,7 +20121,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-18",
    "runDate": "2026-08-18",
-   "source": "1a0156ee6e74fc33-Report-3651.xlsx",
+   "source": "Report-3651.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 163,
@@ -20322,7 +20322,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-19",
    "runDate": "2026-08-19",
-   "source": "1a01a9527bd47b99-Report-4145.xlsx",
+   "source": "Report-4145.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 173,
@@ -20523,7 +20523,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb50e01e5708-Report-2783.xlsx",
+   "source": "Report-2783.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 184,
@@ -20724,7 +20724,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-21",
    "runDate": "2026-08-21",
-   "source": "1a024e38bf10068b-Report-5075.xlsx",
+   "source": "Report-5075.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 195,
@@ -24749,7 +24749,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-07-21",
-   "source": "19f853c0430cf929-Report-2064.xlsx",
+   "source": "Report-2064.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -24846,7 +24846,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-07-22",
-   "source": "19f8a63aa3717a50-Report-3148.xlsx",
+   "source": "Report-3148__1.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -24943,7 +24943,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-07-23",
-   "source": "19f8f8d62d5a8758-Report-8788.xlsx",
+   "source": "Report-8788.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -25040,7 +25040,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-07-24",
-   "source": "19f94b0fdf2365ab-Report-8357.xlsx",
+   "source": "Report-8357.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -25137,7 +25137,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-07-25",
-   "source": "19f99ceb0128c68f-Report-9188.xlsx",
+   "source": "Report-9188.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -25234,7 +25234,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-07-26",
-   "source": "19f9ef84cd0c676e-Report-3133.xlsx",
+   "source": "Report-3133.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -25331,7 +25331,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-07-27",
-   "source": "19fa4252371c05da-Report-3063.xlsx",
+   "source": "Report-3063.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -25428,7 +25428,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-07-28",
-   "source": "19fa949848e9c031-Report-8608.xlsx",
+   "source": "Report-8608.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -25525,7 +25525,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-07-29",
-   "source": "19fae6db31bb07ae-Report-651.xlsx",
+   "source": "Report-651.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -25622,7 +25622,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-07-30",
-   "source": "19fb39429dd2fe7f-Report-5067.xlsx",
+   "source": "Report-5067__1.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -25719,7 +25719,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-02",
    "runDate": "2026-08-02",
-   "source": "19fc303d7759db7c-Report-3329.xlsx",
+   "source": "Report-3329.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -25816,7 +25816,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-04",
    "runDate": "2026-08-04",
-   "source": "19fcd54a36283564-Report-5252.xlsx",
+   "source": "Report-5252.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -25913,7 +25913,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-05",
    "runDate": "2026-08-05",
-   "source": "19fd27b64cf482d5-Report-8969.xlsx",
+   "source": "Report-8969__1.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -26010,7 +26010,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-06",
    "runDate": "2026-08-06",
-   "source": "19fd79dd62231818-Report-3282.xlsx",
+   "source": "Report-3282.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -26107,7 +26107,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-08",
    "runDate": "2026-08-08",
-   "source": "19fe1eb43776b884-Report-6918.xlsx",
+   "source": "Report-6918.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -26204,7 +26204,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-09",
    "runDate": "2026-08-09",
-   "source": "19fe70f6beb039ad-Report-312.xlsx",
+   "source": "Report-312.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -26301,7 +26301,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-10",
    "runDate": "2026-08-10",
-   "source": "19fec3ab4f977a90-Report-104.xlsx",
+   "source": "Report-104.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -26398,7 +26398,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-11",
    "runDate": "2026-08-11",
-   "source": "19ff160056be774a-Report-3978.xlsx",
+   "source": "Report-3978.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -26495,7 +26495,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-12",
    "runDate": "2026-08-12",
-   "source": "19ff686edd83a87e-Report-4965.xlsx",
+   "source": "Report-4965.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -26592,7 +26592,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-13",
    "runDate": "2026-08-13",
-   "source": "19ffbad6d6d2bc62-Report-1023.xlsx",
+   "source": "Report-1023.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -26689,7 +26689,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-14",
    "runDate": "2026-08-14",
-   "source": "1a000d3f941bc3a3-Report-7901.xlsx",
+   "source": "Report-7901.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -26786,7 +26786,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-15",
    "runDate": "2026-08-15",
-   "source": "1a005fb24ae7b5f3-Report-9076.xlsx",
+   "source": "Report-9076.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -26883,7 +26883,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1cfe2b9c80f-Report-5322.xlsx",
+   "source": "Report-5322.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -26980,7 +26980,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-17",
    "runDate": "2026-08-17",
-   "source": "1a01047a4f02af6e-Report-4323.xlsx",
+   "source": "Report-4323.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -27077,7 +27077,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-18",
    "runDate": "2026-08-18",
-   "source": "1a0156f0ff5062b9-Report-1944.xlsx",
+   "source": "Report-1944.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -27174,7 +27174,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-19",
    "runDate": "2026-08-19",
-   "source": "1a01a95471666f5a-Report-6135.xlsx",
+   "source": "Report-6135.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -27271,7 +27271,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb551608508b-Report-120.xlsx",
+   "source": "Report-120.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -27368,7 +27368,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-21",
    "runDate": "2026-08-21",
-   "source": "1a024e3a6b4449dc-Report-8892.xlsx",
+   "source": "Report-8892.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -29236,7 +29236,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-07-28",
-   "source": "19fa949c90b309ef-Report-8461.xlsx",
+   "source": "Report-8461.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -29385,7 +29385,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-07-29",
-   "source": "19fae6dbb5f77ec9-Report-178.xlsx",
+   "source": "Report-178.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -29534,7 +29534,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-07-30",
-   "source": "19fb394428363aca-Report-7414.xlsx",
+   "source": "Report-7414.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -29683,7 +29683,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-08-02",
-   "source": "19fc3043a9f4d6d4-Report-3054.xlsx",
+   "source": "Report-3054.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -29832,7 +29832,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-08-04",
-   "source": "19fcd54cff315b9a-Report-3280.xlsx",
+   "source": "Report-3280.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -29981,7 +29981,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-08-05",
-   "source": "19fd27b2d0017807-Report-8032.xlsx",
+   "source": "Report-8032.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -30130,7 +30130,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-08-06",
-   "source": "19fd79df0085805f-Report-9533.xlsx",
+   "source": "Report-9533__2.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -30279,7 +30279,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-08-08",
-   "source": "19fe1eb7587734ac-Report-3038.xlsx",
+   "source": "Report-3038.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -30428,7 +30428,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-08-09",
-   "source": "19fe70fb19a56a93-Report-980.xlsx",
+   "source": "Report-980.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -30577,7 +30577,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-08-10",
-   "source": "19fec3aeb0ca487b-Report-740.xlsx",
+   "source": "Report-740.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -30726,7 +30726,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-08-11",
-   "source": "19ff1603c3964046-Report-868.xlsx",
+   "source": "Report-868.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -30875,7 +30875,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-08-12",
-   "source": "19ff68713539b256-Report-6929.xlsx",
+   "source": "Report-6929.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -31024,7 +31024,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-08-13",
-   "source": "19ffbad9f0fdfe74-Report-221.xlsx",
+   "source": "Report-221.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -31173,7 +31173,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-08-14",
-   "source": "1a000d43846f36f9-Report-1802.xlsx",
+   "source": "Report-1802.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -31322,7 +31322,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-08-15",
-   "source": "1a005fb2b3c77463-Report-837.xlsx",
+   "source": "Report-837.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -31471,7 +31471,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-08-16",
-   "source": "1a00b1d4ac8e88f5-Report-6101.xlsx",
+   "source": "Report-6101.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -31620,7 +31620,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-08-17",
-   "source": "1a01047c092ed4c2-Report-5818.xlsx",
+   "source": "Report-5818.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -31769,7 +31769,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-08-18",
-   "source": "1a0156f2268c7dd5-Report-4495.xlsx",
+   "source": "Report-4495.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -31918,7 +31918,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-08-19",
-   "source": "1a01a95672a85982-Report-445.xlsx",
+   "source": "Report-445.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -32067,7 +32067,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-08-20",
-   "source": "1a01fb577e359702-Report-3632.xlsx",
+   "source": "Report-3632.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -32216,7 +32216,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-22",
    "runDate": "2026-08-21",
-   "source": "1a024e3eebd37016-Report-6141.xlsx",
+   "source": "Report-6141.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -44265,7 +44265,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-28",
    "runDate": "2026-07-28",
-   "source": "19fa949d3d77fc94-Report-3515.xlsx",
+   "source": "Report-3515__1.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 597,
@@ -44467,7 +44467,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-29",
    "runDate": "2026-07-29",
-   "source": "19fae6dcc770ef13-Report-1624.xlsx",
+   "source": "Report-1624.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 625,
@@ -44669,7 +44669,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-30",
    "runDate": "2026-07-30",
-   "source": "19fb3946b86ecbfd-Report-6634.xlsx",
+   "source": "Report-2755.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 645,
@@ -44871,7 +44871,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-02",
    "runDate": "2026-08-02",
-   "source": "19fc30404e425ac5-Report-9927.xlsx",
+   "source": "Report-2791.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 29,
@@ -45073,7 +45073,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-04",
    "runDate": "2026-08-04",
-   "source": "19fcd54e282a20d9-Report-3771.xlsx",
+   "source": "Report-3771.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 76,
@@ -45275,7 +45275,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-05",
    "runDate": "2026-08-05",
-   "source": "19fd27b52e4a1254-Report-8522.xlsx",
+   "source": "Report-2426.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 93,
@@ -45477,7 +45477,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-06",
    "runDate": "2026-08-06",
-   "source": "19fd79df86f0d2cd-Report-3551.xlsx",
+   "source": "Report-3551.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 115,
@@ -45679,7 +45679,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-08",
    "runDate": "2026-08-08",
-   "source": "19fe1eb803293f2b-Report-7983.xlsx",
+   "source": "Report-3377.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 170,
@@ -45881,7 +45881,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-09",
    "runDate": "2026-08-09",
-   "source": "19fe70fc770ab858-Report-5949.xlsx",
+   "source": "Report-5949.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 194,
@@ -46083,7 +46083,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-10",
    "runDate": "2026-08-10",
-   "source": "19fec3af1f57b31b-Report-8220.xlsx",
+   "source": "Report-6556.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 220,
@@ -46285,7 +46285,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-11",
    "runDate": "2026-08-11",
-   "source": "19ff160564d2085a-Report-1530.xlsx",
+   "source": "Report-1530.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 250,
@@ -46487,7 +46487,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-12",
    "runDate": "2026-08-12",
-   "source": "19ff6872a12c1e50-Report-1771.xlsx",
+   "source": "Report-1771.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 281,
@@ -46689,7 +46689,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-13",
    "runDate": "2026-08-13",
-   "source": "19ffbadbb161d080-Report-3061.xlsx",
+   "source": "Report-3061.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 307,
@@ -46891,7 +46891,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-14",
    "runDate": "2026-08-14",
-   "source": "1a000d44635b8e8a-Report-2568.xlsx",
+   "source": "Report-2568.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 332,
@@ -47093,7 +47093,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-15",
    "runDate": "2026-08-15",
-   "source": "1a005fb39b9d6d1d-Report-4008.xlsx",
+   "source": "Report-2857.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 351,
@@ -47295,7 +47295,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1d572aeb741-Report-8613.xlsx",
+   "source": "Report-2678.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 392,
@@ -47497,7 +47497,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-17",
    "runDate": "2026-08-17",
-   "source": "1a01047c9a9e9a6f-Report-7980.xlsx",
+   "source": "Report-4162.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 409,
@@ -47699,7 +47699,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-18",
    "runDate": "2026-08-18",
-   "source": "1a0156f3b7f71446-Report-1265.xlsx",
+   "source": "Report-1265.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 430,
@@ -47901,7 +47901,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-19",
    "runDate": "2026-08-19",
-   "source": "1a01a956b5d9a07d-Report-677.xlsx",
+   "source": "Report-677.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 458,
@@ -48103,7 +48103,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb57db85c2d8-Report-7609.xlsx",
+   "source": "Report-7609.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 480,
@@ -48305,7 +48305,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-21",
    "runDate": "2026-08-21",
-   "source": "1a024e3e1cf0de2b-Report-9275.xlsx",
+   "source": "Report-795.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 504,
@@ -52404,7 +52404,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-28",
    "runDate": "2026-07-28",
-   "source": "19fa949c796c5268-Report-269.xlsx",
+   "source": "Report-269.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 528,
@@ -52606,7 +52606,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-29",
    "runDate": "2026-07-29",
-   "source": "19fae6de27bef55b-Report-8297.xlsx",
+   "source": "Report-8297.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 555,
@@ -52808,7 +52808,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-30",
    "runDate": "2026-07-30",
-   "source": "19fb39493687031b-Report-4626.xlsx",
+   "source": "Report-4626.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 569,
@@ -53010,7 +53010,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-02",
    "runDate": "2026-08-02",
-   "source": "19fc3041a6a78a6f-Report-821.xlsx",
+   "source": "Report-821.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 30,
@@ -53212,7 +53212,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-04",
    "runDate": "2026-08-04",
-   "source": "19fcd550a337d4ee-Report-3291.xlsx",
+   "source": "Report-3291.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 70,
@@ -53414,7 +53414,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-05",
    "runDate": "2026-08-05",
-   "source": "19fd27b8b978be80-Report-4176.xlsx",
+   "source": "Report-4176.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 89,
@@ -53616,7 +53616,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-06",
    "runDate": "2026-08-06",
-   "source": "19fd79e24b0f496d-Report-8326.xlsx",
+   "source": "Report-8326.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 110,
@@ -53818,7 +53818,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-08",
    "runDate": "2026-08-08",
-   "source": "19fe1eb8109abba0-Report-8944.xlsx",
+   "source": "Report-8944.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 164,
@@ -54020,7 +54020,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-09",
    "runDate": "2026-08-09",
-   "source": "19fe70f8b2a77ec4-Report-5752.xlsx",
+   "source": "Report-5752.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 189,
@@ -54222,7 +54222,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-10",
    "runDate": "2026-08-10",
-   "source": "19fec3adff3427fa-Report-6012.xlsx",
+   "source": "Report-6012.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 206,
@@ -54424,7 +54424,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-11",
    "runDate": "2026-08-11",
-   "source": "19ff16053db570a6-Report-2267.xlsx",
+   "source": "Report-2267.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 227,
@@ -54626,7 +54626,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-12",
    "runDate": "2026-08-12",
-   "source": "19ff68715631a6cd-Report-8489.xlsx",
+   "source": "Report-8489.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 248,
@@ -54828,7 +54828,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-13",
    "runDate": "2026-08-13",
-   "source": "19ffbadbacf8ac01-Report-6073.xlsx",
+   "source": "Report-6073.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 266,
@@ -55030,7 +55030,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-14",
    "runDate": "2026-08-14",
-   "source": "1a000d43a7112daf-Report-3732.xlsx",
+   "source": "Report-3732.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 289,
@@ -55232,7 +55232,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-08-15",
-   "source": "1a005fb3db88a04c-Report-4945.xlsx",
+   "source": "Report-4945.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 317,
@@ -55434,7 +55434,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1d327e3b683-Report-7369.xlsx",
+   "source": "Report-7369.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 338,
@@ -55636,7 +55636,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-17",
    "runDate": "2026-08-17",
-   "source": "1a01047c442633e4-Report-5417.xlsx",
+   "source": "Report-5417.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 363,
@@ -55838,7 +55838,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-18",
    "runDate": "2026-08-18",
-   "source": "1a0156f33845f6f0-Report-3025.xlsx",
+   "source": "Report-3025.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 391,
@@ -56040,7 +56040,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-19",
    "runDate": "2026-08-19",
-   "source": "1a01a956d65ddcd7-Report-2551.xlsx",
+   "source": "Report-2551.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 401,
@@ -56242,7 +56242,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb5d43c833df-Report-6952.xlsx",
+   "source": "Report-6952.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 428,
@@ -56444,7 +56444,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-21",
    "runDate": "2026-08-21",
-   "source": "1a024e42653e7b75-Report-9645.xlsx",
+   "source": "Report-9645.xlsx",
    "rowCount": 13,
    "total": {
     "goodLeads": 449,
@@ -60686,7 +60686,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-28",
-   "source": "19fa949d0c8d2d1b-Report-3152.xlsx",
+   "source": "Report-3152.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -60874,7 +60874,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-29",
-   "source": "19fae6e0c4be7f5f-Report-3542.xlsx",
+   "source": "Report-3542.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -61062,7 +61062,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-30",
-   "source": "19fb3949efb3950b-Report-1811.xlsx",
+   "source": "Report-1811.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -61250,7 +61250,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-02",
-   "source": "19fc304315f44a1e-Report-4661.xlsx",
+   "source": "Report-4661.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -61438,7 +61438,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-04",
-   "source": "19fcd5515b3861ac-Report-4987.xlsx",
+   "source": "Report-4987.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -61626,7 +61626,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-05",
-   "source": "19fd27bbb811f833-Report-2969.xlsx",
+   "source": "Report-2969.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -61814,7 +61814,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-06",
-   "source": "19fd79e239106661-Report-1232.xlsx",
+   "source": "Report-1232__1.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -62002,7 +62002,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-08",
-   "source": "19fe1eb84d898d39-Report-1842.xlsx",
+   "source": "Report-1842.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -62190,7 +62190,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-09",
-   "source": "19fe70f9369f23cb-Report-2440.xlsx",
+   "source": "Report-2440.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -62378,7 +62378,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-10",
-   "source": "19fec3ae61e1f14e-Report-9063.xlsx",
+   "source": "Report-9063.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -62566,7 +62566,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-11",
-   "source": "19ff160562c88cff-Report-5463.xlsx",
+   "source": "Report-5463.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -62754,7 +62754,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-12",
-   "source": "19ff6871bfd756a2-Report-318.xlsx",
+   "source": "Report-318.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -62942,7 +62942,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-13",
-   "source": "19ffbadc68cdada6-Report-8798.xlsx",
+   "source": "Report-8798.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -63130,7 +63130,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-14",
-   "source": "1a000d43cbde3f2c-Report-1036.xlsx",
+   "source": "Report-1036.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -63318,7 +63318,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-15",
-   "source": "1a005fb65135f785-Report-8437.xlsx",
+   "source": "Report-8437.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -63506,7 +63506,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-16",
-   "source": "1a00b1d390fa2580-Report-4378.xlsx",
+   "source": "Report-4378.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -63694,7 +63694,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-17",
-   "source": "1a01047c67ccd67b-Report-8300.xlsx",
+   "source": "Report-8300.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -63882,7 +63882,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-18",
-   "source": "1a0156f4438a713b-Report-8942.xlsx",
+   "source": "Report-8942.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -64070,7 +64070,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-19",
-   "source": "1a01a9591f93f9d2-Report-882.xlsx",
+   "source": "Report-882.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -64258,7 +64258,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-20",
-   "source": "1a01fb5faf629611-Report-6573.xlsx",
+   "source": "Report-6573.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -64446,7 +64446,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-21",
-   "source": "1a024e4335304195-Report-544.xlsx",
+   "source": "Report-544.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -68186,7 +68186,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-28",
    "runDate": "2026-07-28",
-   "source": "19fa949d6295f682-Report-1265.xlsx",
+   "source": "Report-1265__1.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -68374,7 +68374,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e2b27b6e10-Report-5966.xlsx",
+   "source": "Report-5966.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -68562,7 +68562,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-30",
    "runDate": "2026-07-30",
-   "source": "19fb394bb01940cd-Report-3059.xlsx",
+   "source": "Report-3059.xlsx",
    "rowCount": 13,
    "reps": [
     {
@@ -68750,7 +68750,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-02",
    "runDate": "2026-08-02",
-   "source": "19fc304423d10159-Report-3804.xlsx",
+   "source": "Report-3804.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -68886,7 +68886,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-04",
    "runDate": "2026-08-04",
-   "source": "19fcd55210d3dc2f-Report-1416.xlsx",
+   "source": "Report-1416.xlsx",
    "rowCount": 12,
    "reps": [
     {
@@ -69061,7 +69061,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-05",
    "runDate": "2026-08-05",
-   "source": "19fd27bbe50a70c8-Report-1664.xlsx",
+   "source": "Report-1664.xlsx",
    "rowCount": 12,
    "reps": [
     {
@@ -69236,7 +69236,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-06",
    "runDate": "2026-08-06",
-   "source": "19fd79e47167909b-Report-3640.xlsx",
+   "source": "Report-3640.xlsx",
    "rowCount": 12,
    "reps": [
     {
@@ -69411,7 +69411,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-08",
    "runDate": "2026-08-08",
-   "source": "19fe1eb8dcbe10db-Report-1580.xlsx",
+   "source": "Report-1580.xlsx",
    "rowCount": 12,
    "reps": [
     {
@@ -69586,7 +69586,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-09",
    "runDate": "2026-08-09",
-   "source": "19fe70f9b79e1113-Report-6776.xlsx",
+   "source": "Report-6776.xlsx",
    "rowCount": 12,
    "reps": [
     {
@@ -69761,7 +69761,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-10",
    "runDate": "2026-08-10",
-   "source": "19fec3aeed94e1ec-Report-3407.xlsx",
+   "source": "Report-3407.xlsx",
    "rowCount": 12,
    "reps": [
     {
@@ -69936,7 +69936,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-11",
    "runDate": "2026-08-11",
-   "source": "19ff1605a93b19f2-Report-9646.xlsx",
+   "source": "Report-9646.xlsx",
    "rowCount": 12,
    "reps": [
     {
@@ -70111,7 +70111,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-12",
    "runDate": "2026-08-12",
-   "source": "19ff6872c447a88d-Report-185.xlsx",
+   "source": "Report-185.xlsx",
    "rowCount": 12,
    "reps": [
     {
@@ -70286,7 +70286,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-13",
    "runDate": "2026-08-13",
-   "source": "19ffbae2e4cb0734-Report-9912.xlsx",
+   "source": "Report-9912.xlsx",
    "rowCount": 12,
    "reps": [
     {
@@ -70461,7 +70461,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-14",
    "runDate": "2026-08-14",
-   "source": "1a000d45bd7db538-Report-8407.xlsx",
+   "source": "Report-8407.xlsx",
    "rowCount": 12,
    "reps": [
     {
@@ -70636,7 +70636,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-08-15",
-   "source": "1a005fb715a8ce01-Report-9840.xlsx",
+   "source": "Report-9840.xlsx",
    "rowCount": 12,
    "reps": [
     {
@@ -70811,7 +70811,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1d651f3f84f-Report-6437.xlsx",
+   "source": "Report-6437.xlsx",
    "rowCount": 12,
    "reps": [
     {
@@ -70986,7 +70986,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-17",
    "runDate": "2026-08-17",
-   "source": "1a0104869700f850-Report-2154.xlsx",
+   "source": "Report-2154.xlsx",
    "rowCount": 12,
    "reps": [
     {
@@ -71161,7 +71161,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-18",
    "runDate": "2026-08-18",
-   "source": "1a0156f46f4173af-Report-9521.xlsx",
+   "source": "Report-9521.xlsx",
    "rowCount": 12,
    "reps": [
     {
@@ -71336,7 +71336,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-19",
    "runDate": "2026-08-19",
-   "source": "1a01a95b6194ee39-Report-1436.xlsx",
+   "source": "Report-1436.xlsx",
    "rowCount": 12,
    "reps": [
     {
@@ -71511,7 +71511,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb5f25541abe-Report-9921.xlsx",
+   "source": "Report-9921.xlsx",
    "rowCount": 12,
    "reps": [
     {
@@ -71686,7 +71686,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-21",
    "runDate": "2026-08-21",
-   "source": "1a024e437c00a8ed-Report-7467.xlsx",
+   "source": "Report-7467.xlsx",
    "rowCount": 12,
    "reps": [
     {
@@ -78286,7 +78286,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-28",
    "runDate": "2026-07-28",
-   "source": "19fa949f45eb4d75-Report-4824.xlsx",
+   "source": "Report-3776.xlsx",
    "rowCount": 68,
    "total": {
     "goodLeads": 535,
@@ -79229,7 +79229,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e4eb448814-Report-6386.xlsx",
+   "source": "Report-6386.xlsx",
    "rowCount": 68,
    "total": {
     "goodLeads": 550,
@@ -80172,7 +80172,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-30",
    "runDate": "2026-07-30",
-   "source": "19fb394fd5685cb6-Report-9897.xlsx",
+   "source": "Report-1844__1.xlsx",
    "rowCount": 68,
    "total": {
     "goodLeads": 573,
@@ -81115,7 +81115,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-02",
    "runDate": "2026-08-02",
-   "source": "19fc30478dd137e4-Report-314.xlsx",
+   "source": "Report-10.xlsx",
    "rowCount": 31,
    "total": {
     "goodLeads": 27,
@@ -81557,7 +81557,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-04",
    "runDate": "2026-08-04",
-   "source": "19fcd554c14e3cc3-Report-5299.xlsx",
+   "source": "Report-1723.xlsx",
    "rowCount": 34,
    "total": {
     "goodLeads": 64,
@@ -82038,7 +82038,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-05",
    "runDate": "2026-08-05",
-   "source": "19fd27bf5a1855cc-Report-5572.xlsx",
+   "source": "Report-2024.xlsx",
    "rowCount": 38,
    "total": {
     "goodLeads": 91,
@@ -82575,7 +82575,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-06",
    "runDate": "2026-08-06",
-   "source": "19fd79e6457717dc-Report-5823.xlsx",
+   "source": "Report-2779.xlsx",
    "rowCount": 42,
    "total": {
     "goodLeads": 114,
@@ -83166,7 +83166,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ebc47a960e1-Report-1097.xlsx",
+   "source": "Report-1097.xlsx",
    "rowCount": 45,
    "total": {
     "goodLeads": 151,
@@ -83798,7 +83798,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-09",
    "runDate": "2026-08-09",
-   "source": "19fe70fc12c6a90b-Report-4063.xlsx",
+   "source": "Report-2761.xlsx",
    "rowCount": 46,
    "total": {
     "goodLeads": 184,
@@ -84443,7 +84443,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-10",
    "runDate": "2026-08-10",
-   "source": "19fec3b26d314a72-Report-649.xlsx",
+   "source": "Report-649.xlsx",
    "rowCount": 46,
    "total": {
     "goodLeads": 218,
@@ -85088,7 +85088,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-11",
    "runDate": "2026-08-11",
-   "source": "19ff16094575515a-Report-7659.xlsx",
+   "source": "Report-1275.xlsx",
    "rowCount": 48,
    "total": {
     "goodLeads": 234,
@@ -85759,7 +85759,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-12",
    "runDate": "2026-08-12",
-   "source": "19ff6877cdda227b-Report-2670.xlsx",
+   "source": "Report-1014.xlsx",
    "rowCount": 48,
    "total": {
     "goodLeads": 255,
@@ -86430,7 +86430,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-13",
    "runDate": "2026-08-13",
-   "source": "19ffbae4db7728bd-Report-6707.xlsx",
+   "source": "Report-3818.xlsx",
    "rowCount": 52,
    "total": {
     "goodLeads": 278,
@@ -87157,7 +87157,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-14",
    "runDate": "2026-08-14",
-   "source": "1a000d4ae3ceaaf0-Report-1634.xlsx",
+   "source": "Report-1634.xlsx",
    "rowCount": 58,
    "total": {
     "goodLeads": 301,
@@ -87968,7 +87968,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-15",
    "runDate": "2026-08-15",
-   "source": "1a005fb990d9d35c-Report-807.xlsx",
+   "source": "Report-5080.xlsx",
    "rowCount": 59,
    "total": {
     "goodLeads": 323,
@@ -88792,7 +88792,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1d8822abe4d-Report-5104.xlsx",
+   "source": "Report-5104.xlsx",
    "rowCount": 60,
    "total": {
     "goodLeads": 356,
@@ -89629,7 +89629,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-17",
    "runDate": "2026-08-17",
-   "source": "1a01047f5e7ccf61-Report-6102.xlsx",
+   "source": "Report-1217.xlsx",
    "rowCount": 62,
    "total": {
     "goodLeads": 384,
@@ -90492,7 +90492,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-18",
    "runDate": "2026-08-18",
-   "source": "1a0156f7c0ba64fe-Report-3342.xlsx",
+   "source": "Report-2713.xlsx",
    "rowCount": 63,
    "total": {
     "goodLeads": 409,
@@ -91368,7 +91368,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-19",
    "runDate": "2026-08-19",
-   "source": "1a01a95e382517f8-Report-8787.xlsx",
+   "source": "Report-8057.xlsx",
    "rowCount": 67,
    "total": {
     "goodLeads": 433,
@@ -92300,7 +92300,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb6a6f029e6e-Report-7205.xlsx",
+   "source": "Report-2173.xlsx",
    "rowCount": 70,
    "total": {
     "goodLeads": 453,
@@ -93271,7 +93271,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-21",
    "runDate": "2026-08-21",
-   "source": "1a024e4a01bf76e8-Report-4942.xlsx",
+   "source": "Report-4942.xlsx",
    "rowCount": 70,
    "total": {
     "goodLeads": 475,
@@ -111245,7 +111245,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a0e74b2d75-Report-9127.xlsx",
+   "source": "Report-9127.xlsx",
    "rowCount": 75,
    "total": {
     "goodLeads": 500,
@@ -112281,7 +112281,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e1b6df98c9-Report-3761.xlsx",
+   "source": "Report-3761.xlsx",
    "rowCount": 77,
    "total": {
     "goodLeads": 511,
@@ -113343,7 +113343,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-30",
    "runDate": "2026-07-30",
-   "source": "19fb3948e919c8ae-Report-9621.xlsx",
+   "source": "Report-9621.xlsx",
    "rowCount": 79,
    "total": {
     "goodLeads": 526,
@@ -114431,7 +114431,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-02",
    "runDate": "2026-08-02",
-   "source": "19fc3041b367514d-Report-165.xlsx",
+   "source": "Report-165__1.xlsx",
    "rowCount": 37,
    "total": {
     "goodLeads": 40,
@@ -114959,7 +114959,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-04",
    "runDate": "2026-08-04",
-   "source": "19fcd55615c7db61-Report-4707.xlsx",
+   "source": "Report-4707.xlsx",
    "rowCount": 41,
    "total": {
     "goodLeads": 73,
@@ -115541,7 +115541,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-05",
    "runDate": "2026-08-05",
-   "source": "19fd27b50136facf-Report-6322.xlsx",
+   "source": "Report-6322.xlsx",
    "rowCount": 42,
    "total": {
     "goodLeads": 90,
@@ -116136,7 +116136,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-06",
    "runDate": "2026-08-06",
-   "source": "19fd79e1c1b2b2a1-Report-5684.xlsx",
+   "source": "Report-5684.xlsx",
    "rowCount": 43,
    "total": {
     "goodLeads": 113,
@@ -116744,7 +116744,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ebd773c4f6a-Report-9347.xlsx",
+   "source": "Report-9347.xlsx",
    "rowCount": 51,
    "total": {
     "goodLeads": 148,
@@ -117462,7 +117462,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-09",
    "runDate": "2026-08-09",
-   "source": "19fe70fded00f40d-Report-2104.xlsx",
+   "source": "Report-2104.xlsx",
    "rowCount": 52,
    "total": {
     "goodLeads": 166,
@@ -118193,7 +118193,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-10",
    "runDate": "2026-08-10",
-   "source": "19fec3b34051471c-Report-3177.xlsx",
+   "source": "Report-3177.xlsx",
    "rowCount": 55,
    "total": {
     "goodLeads": 187,
@@ -118965,7 +118965,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-11",
    "runDate": "2026-08-11",
-   "source": "19ff160c677956bb-Report-3326.xlsx",
+   "source": "Report-3326.xlsx",
    "rowCount": 56,
    "total": {
     "goodLeads": 213,
@@ -119750,7 +119750,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-12",
    "runDate": "2026-08-12",
-   "source": "19ff687a6fbc16d3-Report-8840.xlsx",
+   "source": "Report-8840.xlsx",
    "rowCount": 58,
    "total": {
     "goodLeads": 231,
@@ -120561,7 +120561,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-13",
    "runDate": "2026-08-13",
-   "source": "19ffbae46383bd2d-Report-4743.xlsx",
+   "source": "Report-4743.xlsx",
    "rowCount": 58,
    "total": {
     "goodLeads": 249,
@@ -121372,7 +121372,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-14",
    "runDate": "2026-08-14",
-   "source": "1a000d4b303a7607-Report-4959.xlsx",
+   "source": "Report-4959.xlsx",
    "rowCount": 58,
    "total": {
     "goodLeads": 262,
@@ -122183,7 +122183,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-08-15",
-   "source": "1a005fbab701d978-Report-704.xlsx",
+   "source": "Report-704.xlsx",
    "rowCount": 61,
    "total": {
     "goodLeads": 285,
@@ -123035,7 +123035,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1d9460c1e70-Report-5467.xlsx",
+   "source": "Report-5467.xlsx",
    "rowCount": 60,
    "total": {
     "goodLeads": 304,
@@ -123874,7 +123874,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-17",
    "runDate": "2026-08-17",
-   "source": "1a01047fd4751572-Report-8196.xlsx",
+   "source": "Report-8196.xlsx",
    "rowCount": 61,
    "total": {
     "goodLeads": 326,
@@ -124726,7 +124726,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-18",
    "runDate": "2026-08-18",
-   "source": "1a0156f87221b9f6-Report-7811.xlsx",
+   "source": "Report-7811.xlsx",
    "rowCount": 62,
    "total": {
     "goodLeads": 349,
@@ -125591,7 +125591,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-19",
    "runDate": "2026-08-19",
-   "source": "1a01a95e036517f8-Report-2893.xlsx",
+   "source": "Report-2893.xlsx",
    "rowCount": 62,
    "total": {
     "goodLeads": 365,
@@ -126456,7 +126456,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb6a8cbdbb1b-Report-7107.xlsx",
+   "source": "Report-7107.xlsx",
    "rowCount": 67,
    "total": {
     "goodLeads": 380,
@@ -127386,7 +127386,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-21",
    "runDate": "2026-08-21",
-   "source": "1a024e404650a682-Report-1975.xlsx",
+   "source": "Report-1975.xlsx",
    "rowCount": 65,
    "total": {
     "goodLeads": 397,
@@ -143783,7 +143783,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-28",
    "runDate": "2026-07-28",
-   "source": "19fa949e0e80a6c0-Report-6217.xlsx",
+   "source": "Report-6217.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -143932,7 +143932,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e1527f9085-Report-5878.xlsx",
+   "source": "Report-5878.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -144081,7 +144081,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-30",
    "runDate": "2026-07-30",
-   "source": "19fb394b71de12f9-Report-114.xlsx",
+   "source": "Report-114.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -144230,7 +144230,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-02",
    "runDate": "2026-08-02",
-   "source": "19fc30456b63bf6a-Report-9162.xlsx",
+   "source": "Report-9162.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -144353,7 +144353,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-04",
    "runDate": "2026-08-04",
-   "source": "19fcd5527b22261b-Report-8259.xlsx",
+   "source": "Report-8259.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -144489,7 +144489,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-05",
    "runDate": "2026-08-05",
-   "source": "19fd27bc5beda52f-Report-1225.xlsx",
+   "source": "Report-1225.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -144625,7 +144625,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-06",
    "runDate": "2026-08-06",
-   "source": "19fd79e4c2891a81-Report-7154.xlsx",
+   "source": "Report-7154.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -144761,7 +144761,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-08",
    "runDate": "2026-08-08",
-   "source": "19fe1eb8df66d6c3-Report-4898.xlsx",
+   "source": "Report-4898.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -144897,7 +144897,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-09",
    "runDate": "2026-08-09",
-   "source": "19fe70f9cd4b6ad0-Report-6646.xlsx",
+   "source": "Report-6646.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -145033,7 +145033,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-10",
    "runDate": "2026-08-10",
-   "source": "19fec3b0d317c08e-Report-5112.xlsx",
+   "source": "Report-5112.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -145169,7 +145169,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-11",
    "runDate": "2026-08-11",
-   "source": "19ff1605b01f51be-Report-1232.xlsx",
+   "source": "Report-1232.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -145305,7 +145305,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-12",
    "runDate": "2026-08-12",
-   "source": "19ff6875a3937c45-Report-3548.xlsx",
+   "source": "Report-3548.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -145441,7 +145441,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-13",
    "runDate": "2026-08-13",
-   "source": "19ffbadea41a98c8-Report-8555.xlsx",
+   "source": "Report-8555.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -145577,7 +145577,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-14",
    "runDate": "2026-08-14",
-   "source": "1a000d463e7e46c4-Report-9491.xlsx",
+   "source": "Report-9491.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -145713,7 +145713,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-15",
    "runDate": "2026-08-15",
-   "source": "1a005fb765e51a9d-Report-8466.xlsx",
+   "source": "Report-8466.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -145849,7 +145849,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1d684557684-Report-7315.xlsx",
+   "source": "Report-7315.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -145985,7 +145985,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-17",
    "runDate": "2026-08-17",
-   "source": "1a0104896e69d1a2-Report-5079.xlsx",
+   "source": "Report-5079.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -146121,7 +146121,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-18",
    "runDate": "2026-08-18",
-   "source": "1a0156f47aca3ef2-Report-3642.xlsx",
+   "source": "Report-3642.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -146257,7 +146257,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-19",
    "runDate": "2026-08-19",
-   "source": "1a01a95ae88d4cea-Report-3333.xlsx",
+   "source": "Report-3333.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -146393,7 +146393,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb5f4cc04eb3-Report-2668.xlsx",
+   "source": "Report-2668.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -146529,7 +146529,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-21",
    "runDate": "2026-08-21",
-   "source": "1a024e43fa65fcfa-Report-5304.xlsx",
+   "source": "Report-5304.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -149281,7 +149281,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-28",
    "runDate": "2026-07-28",
-   "source": "19fa949e9ec77e48-Report-7544.xlsx",
+   "source": "Report-7544.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -149430,7 +149430,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e30b9db503-Report-8845.xlsx",
+   "source": "Report-8845.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -149579,7 +149579,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-30",
    "runDate": "2026-07-30",
-   "source": "19fb394c05196fc2-Report-8868.xlsx",
+   "source": "Report-8868.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -149728,7 +149728,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-02",
    "runDate": "2026-08-02",
-   "source": "19fc30462d566d9a-Report-319.xlsx",
+   "source": "Report-319.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -149877,7 +149877,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-04",
    "runDate": "2026-08-04",
-   "source": "19fcd552f59005bb-Report-4061.xlsx",
+   "source": "Report-4061.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -150026,7 +150026,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-05",
    "runDate": "2026-08-05",
-   "source": "19fd27bcdc8df43e-Report-6828.xlsx",
+   "source": "Report-6828.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -150175,7 +150175,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-06",
    "runDate": "2026-08-06",
-   "source": "19fd79e557bee276-Report-81.xlsx",
+   "source": "Report-81.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -150324,7 +150324,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-08",
    "runDate": "2026-08-08",
-   "source": "19fe1eb9210ff3c5-Report-3743.xlsx",
+   "source": "Report-3743__1.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -150473,7 +150473,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-09",
    "runDate": "2026-08-09",
-   "source": "19fe70fadf99f6d8-Report-9010.xlsx",
+   "source": "Report-9010.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -150622,7 +150622,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-10",
    "runDate": "2026-08-10",
-   "source": "19fec3b0ef5ca40f-Report-8036.xlsx",
+   "source": "Report-8036.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -150771,7 +150771,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-11",
    "runDate": "2026-08-11",
-   "source": "19ff16081904126d-Report-6729.xlsx",
+   "source": "Report-6729.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -150920,7 +150920,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-12",
    "runDate": "2026-08-12",
-   "source": "19ff68769948cc8f-Report-2710.xlsx",
+   "source": "Report-2710__1.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -151069,7 +151069,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-13",
    "runDate": "2026-08-13",
-   "source": "19ffbadfe40bcc8e-Report-2997.xlsx",
+   "source": "Report-2997.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -151218,7 +151218,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-14",
    "runDate": "2026-08-14",
-   "source": "1a000d465dd0beab-Report-2748.xlsx",
+   "source": "Report-2748.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -151367,7 +151367,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-08-15",
-   "source": "1a005fb7f1c04a13-Report-8293.xlsx",
+   "source": "Report-8293.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -151516,7 +151516,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1d75d0c264b-Report-5450.xlsx",
+   "source": "Report-5450.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -151665,7 +151665,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-17",
    "runDate": "2026-08-17",
-   "source": "1a01048018458e49-Report-6732.xlsx",
+   "source": "Report-6679.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -151814,7 +151814,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-18",
    "runDate": "2026-08-18",
-   "source": "1a0156f5eb80b2f9-Report-2186.xlsx",
+   "source": "Report-2186.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -151963,7 +151963,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-19",
    "runDate": "2026-08-19",
-   "source": "1a01a95bf7f709bc-Report-5997.xlsx",
+   "source": "Report-5997.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -152112,7 +152112,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb60b94b55d7-Report-1113.xlsx",
+   "source": "Report-1113.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -152261,7 +152261,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-21",
    "runDate": "2026-08-21",
-   "source": "1a024e46a95ba01f-Report-3030.xlsx",
+   "source": "Report-3030.xlsx",
    "rowCount": 10,
    "reps": [
     {
@@ -155234,7 +155234,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a14e4cdc2f-Report-4524.xlsx",
+   "source": "Report-4524.xlsx",
    "rowCount": 65,
    "total": {
     "goodLeads": 826,
@@ -156114,7 +156114,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e1d3f02b65-Report-9977.xlsx",
+   "source": "Report-9977.xlsx",
    "rowCount": 65,
    "total": {
     "goodLeads": 867,
@@ -156994,7 +156994,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-30",
    "runDate": "2026-07-30",
-   "source": "19fb394a045ab8b0-Report-7783.xlsx",
+   "source": "Report-7783.xlsx",
    "rowCount": 65,
    "total": {
     "goodLeads": 897,
@@ -157874,7 +157874,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-02",
    "runDate": "2026-08-02",
-   "source": "19fc3041a598a766-Report-8045.xlsx",
+   "source": "Report-8045.xlsx",
    "rowCount": 30,
    "total": {
     "goodLeads": 54,
@@ -158299,7 +158299,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-04",
    "runDate": "2026-08-04",
-   "source": "19fcd556f8a9e178-Report-9412.xlsx",
+   "source": "Report-9412.xlsx",
    "rowCount": 37,
    "total": {
     "goodLeads": 101,
@@ -158815,7 +158815,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-05",
    "runDate": "2026-08-05",
-   "source": "19fd27b6a79e3822-Report-9233.xlsx",
+   "source": "Report-9233.xlsx",
    "rowCount": 38,
    "total": {
     "goodLeads": 132,
@@ -159344,7 +159344,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-06",
    "runDate": "2026-08-06",
-   "source": "19fd79e2c960854b-Report-2166.xlsx",
+   "source": "Report-2166.xlsx",
    "rowCount": 40,
    "total": {
     "goodLeads": 143,
@@ -159899,7 +159899,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ebed95f9128-Report-4821.xlsx",
+   "source": "Report-4821.xlsx",
    "rowCount": 43,
    "total": {
     "goodLeads": 204,
@@ -160493,7 +160493,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-09",
    "runDate": "2026-08-09",
-   "source": "19fe70fe612d1b69-Report-2441.xlsx",
+   "source": "Report-2441.xlsx",
    "rowCount": 43,
    "total": {
     "goodLeads": 238,
@@ -161087,7 +161087,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-10",
    "runDate": "2026-08-10",
-   "source": "19fec3b48d426cd5-Report-9805.xlsx",
+   "source": "Report-9805.xlsx",
    "rowCount": 43,
    "total": {
     "goodLeads": 244,
@@ -161681,7 +161681,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-11",
    "runDate": "2026-08-11",
-   "source": "19ff160d7b5ee236-Report-7861.xlsx",
+   "source": "Report-7861.xlsx",
    "rowCount": 46,
    "total": {
     "goodLeads": 265,
@@ -162314,7 +162314,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-12",
    "runDate": "2026-08-12",
-   "source": "19ff687b10db81a9-Report-3316.xlsx",
+   "source": "Report-3316.xlsx",
    "rowCount": 46,
    "total": {
     "goodLeads": 289,
@@ -162947,7 +162947,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-13",
    "runDate": "2026-08-13",
-   "source": "19ffbae57a597b9b-Report-6626.xlsx",
+   "source": "Report-6626.xlsx",
    "rowCount": 49,
    "total": {
     "goodLeads": 323,
@@ -163619,7 +163619,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-14",
    "runDate": "2026-08-14",
-   "source": "1a000d4c493cb403-Report-8800.xlsx",
+   "source": "Report-8800.xlsx",
    "rowCount": 49,
    "total": {
     "goodLeads": 355,
@@ -164291,7 +164291,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-15",
    "runDate": "2026-08-15",
-   "source": "1a005fbc38dfffe5-Report-9995.xlsx",
+   "source": "Report-9995.xlsx",
    "rowCount": 50,
    "total": {
     "goodLeads": 378,
@@ -164976,7 +164976,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1db0ef1842d-Report-6689.xlsx",
+   "source": "Report-6689.xlsx",
    "rowCount": 52,
    "total": {
     "goodLeads": 414,
@@ -165687,7 +165687,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-17",
    "runDate": "2026-08-17",
-   "source": "1a010482243cc653-Report-9880.xlsx",
+   "source": "Report-9880.xlsx",
    "rowCount": 53,
    "total": {
     "goodLeads": 416,
@@ -166411,7 +166411,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-18",
    "runDate": "2026-08-18",
-   "source": "1a0156f93fa95674-Report-1918.xlsx",
+   "source": "Report-1918.xlsx",
    "rowCount": 53,
    "total": {
     "goodLeads": 443,
@@ -167135,7 +167135,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-19",
    "runDate": "2026-08-19",
-   "source": "1a01a95fbf310d0a-Report-3725.xlsx",
+   "source": "Report-3725.xlsx",
    "rowCount": 53,
    "total": {
     "goodLeads": 460,
@@ -167859,7 +167859,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb7112f3fad9-Report-3509.xlsx",
+   "source": "Report-3509.xlsx",
    "rowCount": 54,
    "total": {
     "goodLeads": 490,
@@ -168596,7 +168596,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-21",
    "runDate": "2026-08-21",
-   "source": "1a024e45ad8575f8-Report-4946.xlsx",
+   "source": "Report-4946.xlsx",
    "rowCount": 55,
    "total": {
     "goodLeads": 523,
@@ -182340,7 +182340,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a1a5e704cc-Report-3573.xlsx",
+   "source": "Report-3573.xlsx",
    "rowCount": 66,
    "total": {
     "goodLeads": 826,
@@ -183233,7 +183233,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e20dcc2f61-Report-7859.xlsx",
+   "source": "Report-7859.xlsx",
    "rowCount": 69,
    "total": {
     "goodLeads": 855,
@@ -184169,7 +184169,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-30",
    "runDate": "2026-07-30",
-   "source": "19fb394c7b1047f5-Report-1493.xlsx",
+   "source": "Report-1493.xlsx",
    "rowCount": 69,
    "total": {
     "goodLeads": 886,
@@ -185105,7 +185105,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-02",
    "runDate": "2026-08-02",
-   "source": "19fc30425c00397b-Report-4393.xlsx",
+   "source": "Report-4393__1.xlsx",
    "rowCount": 31,
    "total": {
     "goodLeads": 57,
@@ -185543,7 +185543,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-04",
    "runDate": "2026-08-04",
-   "source": "19fcd558a3994db9-Report-4350.xlsx",
+   "source": "Report-4350__1.xlsx",
    "rowCount": 37,
    "total": {
     "goodLeads": 113,
@@ -186059,7 +186059,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-05",
    "runDate": "2026-08-05",
-   "source": "19fd27b6708f348d-Report-6500.xlsx",
+   "source": "Report-6500.xlsx",
    "rowCount": 37,
    "total": {
     "goodLeads": 121,
@@ -186575,7 +186575,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-06",
    "runDate": "2026-08-06",
-   "source": "19fd79e487d24879-Report-883.xlsx",
+   "source": "Report-883.xlsx",
    "rowCount": 44,
    "total": {
     "goodLeads": 171,
@@ -187182,7 +187182,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ebf75279c4e-Report-5730.xlsx",
+   "source": "Report-5730.xlsx",
    "rowCount": 52,
    "total": {
     "goodLeads": 246,
@@ -187893,7 +187893,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-09",
    "runDate": "2026-08-09",
-   "source": "19fe71005ae44432-Report-9419.xlsx",
+   "source": "Report-9419.xlsx",
    "rowCount": 53,
    "total": {
     "goodLeads": 270,
@@ -188617,7 +188617,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-10",
    "runDate": "2026-08-10",
-   "source": "19fec3b577721f1c-Report-4580.xlsx",
+   "source": "Report-4580.xlsx",
    "rowCount": 53,
    "total": {
     "goodLeads": 291,
@@ -189341,7 +189341,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-11",
    "runDate": "2026-08-11",
-   "source": "19ff160fb412078a-Report-8691.xlsx",
+   "source": "Report-8691.xlsx",
    "rowCount": 53,
    "total": {
     "goodLeads": 337,
@@ -190065,7 +190065,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-12",
    "runDate": "2026-08-12",
-   "source": "19ff687bc270c807-Report-6830.xlsx",
+   "source": "Report-6830.xlsx",
    "rowCount": 54,
    "total": {
     "goodLeads": 352,
@@ -190802,7 +190802,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-13",
    "runDate": "2026-08-13",
-   "source": "19ffbae4ea743327-Report-6521.xlsx",
+   "source": "Report-6521__1.xlsx",
    "rowCount": 55,
    "total": {
     "goodLeads": 387,
@@ -191552,7 +191552,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-14",
    "runDate": "2026-08-14",
-   "source": "1a000d4d2098e037-Report-3710.xlsx",
+   "source": "Report-3710.xlsx",
    "rowCount": 57,
    "total": {
     "goodLeads": 421,
@@ -192328,7 +192328,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-08-15",
-   "source": "1a005fbd66ce756f-Report-1958.xlsx",
+   "source": "Report-1958.xlsx",
    "rowCount": 57,
    "total": {
     "goodLeads": 457,
@@ -193104,7 +193104,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1db54520239-Report-6182.xlsx",
+   "source": "Report-6182.xlsx",
    "rowCount": 57,
    "total": {
     "goodLeads": 479,
@@ -193880,7 +193880,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-17",
    "runDate": "2026-08-17",
-   "source": "1a01048283abd25c-Report-8054.xlsx",
+   "source": "Report-8054.xlsx",
    "rowCount": 57,
    "total": {
     "goodLeads": 510,
@@ -194656,7 +194656,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-18",
    "runDate": "2026-08-18",
-   "source": "1a0156fa034ca417-Report-5126.xlsx",
+   "source": "Report-5126.xlsx",
    "rowCount": 58,
    "total": {
     "goodLeads": 554,
@@ -195445,7 +195445,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-19",
    "runDate": "2026-08-19",
-   "source": "1a01a964db88f56f-Report-3652.xlsx",
+   "source": "Report-3652.xlsx",
    "rowCount": 58,
    "total": {
     "goodLeads": 570,
@@ -196234,7 +196234,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb7146d066b3-Report-1193.xlsx",
+   "source": "Report-1193.xlsx",
    "rowCount": 60,
    "total": {
     "goodLeads": 601,
@@ -197049,7 +197049,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-21",
    "runDate": "2026-08-21",
-   "source": "1a024e4399378b5c-Report-7860.xlsx",
+   "source": "Report-7860.xlsx",
    "rowCount": 60,
    "total": {
     "goodLeads": 637,
@@ -211935,7 +211935,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a131e2fda3-Report-2611.xlsx",
+   "source": "Report-2611.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -212214,7 +212214,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e0760e4718-Report-8192.xlsx",
+   "source": "Report-8192__1.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -212493,7 +212493,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-30",
    "runDate": "2026-07-30",
-   "source": "19fb394a97677fdd-Report-5601.xlsx",
+   "source": "Report-5601.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -212772,7 +212772,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-02",
    "runDate": "2026-08-02",
-   "source": "19fc3042e32d4444-Report-885.xlsx",
+   "source": "Report-885.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -213051,7 +213051,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-04",
    "runDate": "2026-08-04",
-   "source": "19fcd54e5e1d5b15-Report-9911.xlsx",
+   "source": "Report-9911.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -213330,7 +213330,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-05",
    "runDate": "2026-08-05",
-   "source": "19fd27b7d2a8ab3f-Report-996.xlsx",
+   "source": "Report-996.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -213609,7 +213609,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-06",
    "runDate": "2026-08-06",
-   "source": "19fd79e445a74b96-Report-9837.xlsx",
+   "source": "Report-9837.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -213888,7 +213888,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ebe2f8ff011-Report-5332.xlsx",
+   "source": "Report-5332.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -214167,7 +214167,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-09",
    "runDate": "2026-08-09",
-   "source": "19fe70fffcd4b589-Report-975.xlsx",
+   "source": "Report-975.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -214446,7 +214446,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-10",
    "runDate": "2026-08-10",
-   "source": "19fec3b7e4eb658b-Report-1678.xlsx",
+   "source": "Report-1678.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -214725,7 +214725,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-11",
    "runDate": "2026-08-11",
-   "source": "19ff160e72eb39b5-Report-7366.xlsx",
+   "source": "Report-7366.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -215004,7 +215004,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-12",
    "runDate": "2026-08-12",
-   "source": "19ff687b0b01255f-Report-2591.xlsx",
+   "source": "Report-2591.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -215283,7 +215283,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-13",
    "runDate": "2026-08-13",
-   "source": "19ffbae564857848-Report-2978.xlsx",
+   "source": "Report-2978.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -215562,7 +215562,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-14",
    "runDate": "2026-08-14",
-   "source": "1a000d4c1f5ca0d7-Report-6079.xlsx",
+   "source": "Report-6079.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -215841,7 +215841,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-15",
    "runDate": "2026-08-15",
-   "source": "1a005fbbf26eb3d7-Report-4669.xlsx",
+   "source": "Report-4669.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -216120,7 +216120,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1da36881c53-Report-6299.xlsx",
+   "source": "Report-6299.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -216399,7 +216399,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-17",
    "runDate": "2026-08-17",
-   "source": "1a0104818d39a68b-Report-5383.xlsx",
+   "source": "Report-5383.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -216678,7 +216678,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-18",
    "runDate": "2026-08-18",
-   "source": "1a0156f8d12dbad4-Report-432.xlsx",
+   "source": "Report-432.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -216957,7 +216957,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-19",
    "runDate": "2026-08-19",
-   "source": "1a01a964a24cf10b-Report-8289.xlsx",
+   "source": "Report-8289.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -217236,7 +217236,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb65df948767-Report-455.xlsx",
+   "source": "Report-455.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -217515,7 +217515,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-21",
    "runDate": "2026-08-21",
-   "source": "1a024e44dd96532a-Report-2861.xlsx",
+   "source": "Report-2861.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -223283,7 +223283,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a1674569c8-Report-5887.xlsx",
+   "source": "Report-5887.xlsx",
    "rowCount": 21,
    "reps": [
     {
@@ -223575,7 +223575,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e0ddd1fce1-Report-4494.xlsx",
+   "source": "Report-4494.xlsx",
    "rowCount": 21,
    "reps": [
     {
@@ -223867,7 +223867,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-30",
    "runDate": "2026-07-30",
-   "source": "19fb394b87fe7e3f-Report-8146.xlsx",
+   "source": "Report-8146.xlsx",
    "rowCount": 21,
    "reps": [
     {
@@ -224159,7 +224159,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-02",
    "runDate": "2026-08-02",
-   "source": "19fc30441dc3aba2-Report-2268.xlsx",
+   "source": "Report-2268.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -224438,7 +224438,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-04",
    "runDate": "2026-08-04",
-   "source": "19fcd54ea3677b50-Report-835.xlsx",
+   "source": "Report-835.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -224717,7 +224717,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-05",
    "runDate": "2026-08-05",
-   "source": "19fd27b7d3f88b99-Report-6638.xlsx",
+   "source": "Report-6638.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -224996,7 +224996,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-06",
    "runDate": "2026-08-06",
-   "source": "19fd79e59bb33c4d-Report-1812.xlsx",
+   "source": "Report-1812.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -225275,7 +225275,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ebe7a6ce521-Report-6624.xlsx",
+   "source": "Report-6624.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -225554,7 +225554,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-09",
    "runDate": "2026-08-09",
-   "source": "19fe70ffc6d88d6f-Report-2508.xlsx",
+   "source": "Report-2508.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -225833,7 +225833,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-10",
    "runDate": "2026-08-10",
-   "source": "19fec3b918c5ce1f-Report-3153.xlsx",
+   "source": "Report-3153.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -226112,7 +226112,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-11",
    "runDate": "2026-08-11",
-   "source": "19ff160ec1e04a11-Report-1777.xlsx",
+   "source": "Report-1777.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -226391,7 +226391,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-12",
    "runDate": "2026-08-12",
-   "source": "19ff687bc9d9cc87-Report-2816.xlsx",
+   "source": "Report-2816.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -226670,7 +226670,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-13",
    "runDate": "2026-08-13",
-   "source": "19ffbae5454e68b2-Report-3120.xlsx",
+   "source": "Report-3120.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -226949,7 +226949,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-14",
    "runDate": "2026-08-14",
-   "source": "1a000d4c4797431f-Report-4537.xlsx",
+   "source": "Report-4537.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -227228,7 +227228,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-08-15",
-   "source": "1a005fbd02ae6a33-Report-8192.xlsx",
+   "source": "Report-8192.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -227507,7 +227507,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1db0557f81d-Report-7275.xlsx",
+   "source": "Report-7275.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -227786,7 +227786,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-17",
    "runDate": "2026-08-17",
-   "source": "1a010483fdf09619-Report-5076.xlsx",
+   "source": "Report-5076.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -228065,7 +228065,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-18",
    "runDate": "2026-08-18",
-   "source": "1a0156f940995448-Report-504.xlsx",
+   "source": "Report-504.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -228344,7 +228344,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-19",
    "runDate": "2026-08-19",
-   "source": "1a01a95fb11475ec-Report-5114.xlsx",
+   "source": "Report-5114.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -228623,7 +228623,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb65dc19a790-Report-6628.xlsx",
+   "source": "Report-6628.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -228902,7 +228902,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-21",
    "runDate": "2026-08-21",
-   "source": "1a024e444f56e4f0-Report-992.xlsx",
+   "source": "Report-992.xlsx",
    "rowCount": 20,
    "reps": [
     {
@@ -234618,7 +234618,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a3c2b6ba5b-Report-2347.xlsx",
+   "source": "Report-2347.xlsx",
    "rowCount": 77,
    "total": {
     "goodLeads": 1159,
@@ -235664,7 +235664,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e5446c1b1e-Report-5993.xlsx",
+   "source": "Report-5993.xlsx",
    "rowCount": 77,
    "total": {
     "goodLeads": 1192,
@@ -236710,7 +236710,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-30",
    "runDate": "2026-07-30",
-   "source": "19fb394f50687426-Report-505.xlsx",
+   "source": "Report-505.xlsx",
    "rowCount": 78,
    "total": {
     "goodLeads": 1231,
@@ -237769,7 +237769,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-02",
    "runDate": "2026-08-02",
-   "source": "19fc30471fe05f1a-Report-8060.xlsx",
+   "source": "Report-8060.xlsx",
    "rowCount": 36,
    "total": {
     "goodLeads": 42,
@@ -238274,7 +238274,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-04",
    "runDate": "2026-08-04",
-   "source": "19fcd5515bec4d6c-Report-9000.xlsx",
+   "source": "Report-9000.xlsx",
    "rowCount": 41,
    "total": {
     "goodLeads": 114,
@@ -238846,7 +238846,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-05",
    "runDate": "2026-08-05",
-   "source": "19fd27be68a5d36c-Report-3883.xlsx",
+   "source": "Report-3883.xlsx",
    "rowCount": 45,
    "total": {
     "goodLeads": 156,
@@ -239472,7 +239472,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-06",
    "runDate": "2026-08-06",
-   "source": "19fd79e79c866b0d-Report-8039.xlsx",
+   "source": "Report-8039.xlsx",
    "rowCount": 49,
    "total": {
     "goodLeads": 196,
@@ -240150,7 +240150,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ec1c0366005-Report-3002.xlsx",
+   "source": "Report-3002__1.xlsx",
    "rowCount": 51,
    "total": {
     "goodLeads": 272,
@@ -240854,7 +240854,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-09",
    "runDate": "2026-08-09",
-   "source": "19fe710245f3bf55-Report-5317.xlsx",
+   "source": "Report-5317.xlsx",
    "rowCount": 51,
    "total": {
     "goodLeads": 329,
@@ -241558,7 +241558,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-10",
    "runDate": "2026-08-10",
-   "source": "19fec3b87749abaf-Report-8180.xlsx",
+   "source": "Report-8180.xlsx",
    "rowCount": 51,
    "total": {
     "goodLeads": 360,
@@ -242262,7 +242262,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-11",
    "runDate": "2026-08-11",
-   "source": "19ff1611eecef8b6-Report-2304.xlsx",
+   "source": "Report-2304.xlsx",
    "rowCount": 54,
    "total": {
     "goodLeads": 421,
@@ -243005,7 +243005,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-12",
    "runDate": "2026-08-12",
-   "source": "19ff687ec1b4b3c9-Report-107.xlsx",
+   "source": "Report-107.xlsx",
    "rowCount": 57,
    "total": {
     "goodLeads": 459,
@@ -243787,7 +243787,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-13",
    "runDate": "2026-08-13",
-   "source": "19ffbae85f2d002c-Report-7541.xlsx",
+   "source": "Report-7541.xlsx",
    "rowCount": 57,
    "total": {
     "goodLeads": 510,
@@ -244569,7 +244569,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-14",
    "runDate": "2026-08-14",
-   "source": "1a000d4f290eb3ba-Report-7522.xlsx",
+   "source": "Report-7522.xlsx",
    "rowCount": 57,
    "total": {
     "goodLeads": 552,
@@ -245351,7 +245351,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-15",
    "runDate": "2026-08-15",
-   "source": "1a005fbf82c60bbd-Report-2075.xlsx",
+   "source": "Report-2075.xlsx",
    "rowCount": 60,
    "total": {
     "goodLeads": 606,
@@ -246176,7 +246176,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1dcbe3612b5-Report-4720.xlsx",
+   "source": "Report-4720.xlsx",
    "rowCount": 63,
    "total": {
     "goodLeads": 648,
@@ -247040,7 +247040,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-17",
    "runDate": "2026-08-17",
-   "source": "1a0104868fbbe11c-Report-261.xlsx",
+   "source": "Report-261.xlsx",
    "rowCount": 63,
    "total": {
     "goodLeads": 664,
@@ -247904,7 +247904,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-18",
    "runDate": "2026-08-18",
-   "source": "1a0156fc038e01ff-Report-105.xlsx",
+   "source": "Report-105.xlsx",
    "rowCount": 66,
    "total": {
     "goodLeads": 719,
@@ -248807,7 +248807,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-19",
    "runDate": "2026-08-19",
-   "source": "1a01a961fc22ca20-Report-5004.xlsx",
+   "source": "Report-5004.xlsx",
    "rowCount": 66,
    "total": {
     "goodLeads": 749,
@@ -249710,7 +249710,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb69f73f4834-Report-7018.xlsx",
+   "source": "Report-7018.xlsx",
    "rowCount": 66,
    "total": {
     "goodLeads": 796,
@@ -250613,7 +250613,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-21",
    "runDate": "2026-08-21",
-   "source": "1a024e471428487e-Report-899.xlsx",
+   "source": "Report-899.xlsx",
    "rowCount": 67,
    "total": {
     "goodLeads": 841,
@@ -267129,7 +267129,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a49ac75e53-Report-746.xlsx",
+   "source": "Report-746.xlsx",
    "rowCount": 83,
    "total": {
     "goodLeads": 992,
@@ -268257,7 +268257,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e6fa608a85-Report-699.xlsx",
+   "source": "Report-699__1.xlsx",
    "rowCount": 83,
    "total": {
     "goodLeads": 1031,
@@ -269385,7 +269385,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-30",
    "runDate": "2026-07-30",
-   "source": "19fb3951888198cf-Report-7099.xlsx",
+   "source": "Report-7099.xlsx",
    "rowCount": 84,
    "total": {
     "goodLeads": 1065,
@@ -270526,7 +270526,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-02",
    "runDate": "2026-08-02",
-   "source": "19fc3048f9beb089-Report-849.xlsx",
+   "source": "Report-849.xlsx",
    "rowCount": 42,
    "total": {
     "goodLeads": 83,
@@ -271111,7 +271111,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-04",
    "runDate": "2026-08-04",
-   "source": "19fcd554102171ed-Report-8738.xlsx",
+   "source": "Report-8738.xlsx",
    "rowCount": 48,
    "total": {
     "goodLeads": 142,
@@ -271774,7 +271774,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-05",
    "runDate": "2026-08-05",
-   "source": "19fd27c01b055073-Report-8460.xlsx",
+   "source": "Report-8460__1.xlsx",
    "rowCount": 47,
    "total": {
     "goodLeads": 159,
@@ -272424,7 +272424,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-06",
    "runDate": "2026-08-06",
-   "source": "19fd79e95d11aa7c-Report-5015.xlsx",
+   "source": "Report-5015.xlsx",
    "rowCount": 51,
    "total": {
     "goodLeads": 203,
@@ -273128,7 +273128,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ec247ccf4bd-Report-1649.xlsx",
+   "source": "Report-1649.xlsx",
    "rowCount": 55,
    "total": {
     "goodLeads": 285,
@@ -273884,7 +273884,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-09",
    "runDate": "2026-08-09",
-   "source": "19fe7102f8e1cfa6-Report-6527.xlsx",
+   "source": "Report-6527.xlsx",
    "rowCount": 57,
    "total": {
     "goodLeads": 333,
@@ -274666,7 +274666,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-10",
    "runDate": "2026-08-10",
-   "source": "19fec3ba7433b2ff-Report-3743.xlsx",
+   "source": "Report-3743.xlsx",
    "rowCount": 58,
    "total": {
     "goodLeads": 385,
@@ -275461,7 +275461,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-11",
    "runDate": "2026-08-11",
-   "source": "19ff161436d8d304-Report-2495.xlsx",
+   "source": "Report-2495.xlsx",
    "rowCount": 62,
    "total": {
     "goodLeads": 426,
@@ -276308,7 +276308,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-12",
    "runDate": "2026-08-12",
-   "source": "19ff687f672c29fa-Report-5928.xlsx",
+   "source": "Report-5928.xlsx",
    "rowCount": 62,
    "total": {
     "goodLeads": 445,
@@ -277155,7 +277155,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-13",
    "runDate": "2026-08-13",
-   "source": "19ffbae920fac21a-Report-1004.xlsx",
+   "source": "Report-1004.xlsx",
    "rowCount": 63,
    "total": {
     "goodLeads": 488,
@@ -278015,7 +278015,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-14",
    "runDate": "2026-08-14",
-   "source": "1a000d51ad619c3a-Report-5289.xlsx",
+   "source": "Report-5289.xlsx",
    "rowCount": 66,
    "total": {
     "goodLeads": 546,
@@ -278914,7 +278914,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-08-15",
-   "source": "1a005fc09c361502-Report-9215.xlsx",
+   "source": "Report-9215.xlsx",
    "rowCount": 67,
    "total": {
     "goodLeads": 597,
@@ -279826,7 +279826,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1decfe501c7-Report-2637.xlsx",
+   "source": "Report-2637.xlsx",
    "rowCount": 67,
    "total": {
     "goodLeads": 647,
@@ -280738,7 +280738,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-17",
    "runDate": "2026-08-17",
-   "source": "1a010488e9c2dfb5-Report-5247.xlsx",
+   "source": "Report-5247.xlsx",
    "rowCount": 68,
    "total": {
     "goodLeads": 694,
@@ -281663,7 +281663,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-18",
    "runDate": "2026-08-18",
-   "source": "1a0156ff1181eeb6-Report-1983.xlsx",
+   "source": "Report-1983.xlsx",
    "rowCount": 70,
    "total": {
     "goodLeads": 740,
@@ -282614,7 +282614,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-19",
    "runDate": "2026-08-19",
-   "source": "1a01a962785ebac6-Report-5922.xlsx",
+   "source": "Report-5922.xlsx",
    "rowCount": 69,
    "total": {
     "goodLeads": 760,
@@ -283552,7 +283552,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb6a6f9d8454-Report-4612.xlsx",
+   "source": "Report-4612.xlsx",
    "rowCount": 69,
    "total": {
     "goodLeads": 816,
@@ -284490,7 +284490,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-21",
    "runDate": "2026-08-21",
-   "source": "1a024e4950b0a727-Report-6521.xlsx",
+   "source": "Report-6521.xlsx",
    "rowCount": 72,
    "total": {
     "goodLeads": 857,
@@ -302368,7 +302368,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-28",
-   "source": "19fa94a24efd1b07-Report-7835.xlsx",
+   "source": "Report-7835.xlsx",
    "rowCount": 28,
    "reps": [
     {
@@ -302686,7 +302686,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-29",
-   "source": "19fae6e2fbb454aa-Report-3781.xlsx",
+   "source": "Report-3781__1.xlsx",
    "rowCount": 28,
    "reps": [
     {
@@ -303004,7 +303004,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-31",
    "runDate": "2026-07-30",
-   "source": "19fb394d2771c7a7-Report-2539.xlsx",
+   "source": "Report-2539.xlsx",
    "rowCount": 28,
    "reps": [
     {
@@ -303322,7 +303322,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-02",
-   "source": "19fc3046759a7edf-Report-6132.xlsx",
+   "source": "Report-6132.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -303627,7 +303627,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-04",
-   "source": "19fcd54f79ebfaf3-Report-3523.xlsx",
+   "source": "Report-3523.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -303932,7 +303932,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-05",
-   "source": "19fd27baea19fb5a-Report-1390.xlsx",
+   "source": "Report-1390.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -304237,7 +304237,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-06",
-   "source": "19fd79e68e6599e3-Report-7465.xlsx",
+   "source": "Report-7465.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -304542,7 +304542,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-08",
-   "source": "19fe1ec0cd85efd4-Report-2561.xlsx",
+   "source": "Report-2561.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -304847,7 +304847,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-09",
-   "source": "19fe71015a653ec0-Report-3781.xlsx",
+   "source": "Report-3781.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -305152,7 +305152,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-10",
-   "source": "19fec3b78a2132c3-Report-7996.xlsx",
+   "source": "Report-7996.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -305457,7 +305457,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-11",
-   "source": "19ff160ff592493c-Report-4080.xlsx",
+   "source": "Report-4080.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -305762,7 +305762,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-12",
-   "source": "19ff687ccbc915a0-Report-8108.xlsx",
+   "source": "Report-8108.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -306067,7 +306067,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-13",
-   "source": "19ffbae72e8160da-Report-9224.xlsx",
+   "source": "Report-9224.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -306372,7 +306372,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-14",
-   "source": "1a000d4df0c8ea94-Report-3001.xlsx",
+   "source": "Report-3001.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -306677,7 +306677,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-15",
-   "source": "1a005fbe68609cf4-Report-6670.xlsx",
+   "source": "Report-6670.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -306982,7 +306982,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-16",
-   "source": "1a00b1dbc2ae00fd-Report-1458.xlsx",
+   "source": "Report-1458.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -307287,7 +307287,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-17",
-   "source": "1a010484c94ec680-Report-174.xlsx",
+   "source": "Report-174.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -307592,7 +307592,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-18",
-   "source": "1a0156fa4b97a4e0-Report-762.xlsx",
+   "source": "Report-762.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -307897,7 +307897,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-19",
-   "source": "1a01a960c28e0038-Report-9054.xlsx",
+   "source": "Report-9054.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -308202,7 +308202,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-20",
-   "source": "1a01fb6854d59883-Report-6173.xlsx",
+   "source": "Report-6173.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -308507,7 +308507,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-31",
    "runDate": "2026-08-21",
-   "source": "1a024e44e8f8dd55-Report-6896.xlsx",
+   "source": "Report-6896.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -314756,7 +314756,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a2b5d799df-Report-4080.xlsx",
+   "source": "Report-4080__1.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -314892,7 +314892,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e470e3d464-Report-9701.xlsx",
+   "source": "Report-9701.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -315028,7 +315028,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-30",
    "runDate": "2026-07-30",
-   "source": "19fb394e40ebbbfd-Report-4319.xlsx",
+   "source": "Report-4319.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -315164,7 +315164,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-02",
    "runDate": "2026-08-02",
-   "source": "19fc304753f757ea-Report-364.xlsx",
+   "source": "Report-364.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -315300,7 +315300,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-04",
    "runDate": "2026-08-04",
-   "source": "19fcd55139c0a45f-Report-1097.xlsx",
+   "source": "Report-1097__1.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -315436,7 +315436,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-05",
    "runDate": "2026-08-05",
-   "source": "19fd27bd9a2dfe85-Report-1452.xlsx",
+   "source": "Report-1452.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -315572,7 +315572,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-06",
    "runDate": "2026-08-06",
-   "source": "19fd79e75104531e-Report-4015.xlsx",
+   "source": "Report-4015.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -315708,7 +315708,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ec0e8dfa0e4-Report-9543.xlsx",
+   "source": "Report-9543.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -315844,7 +315844,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-09",
    "runDate": "2026-08-09",
-   "source": "19fe7101e7e319db-Report-9848.xlsx",
+   "source": "Report-9848.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -315980,7 +315980,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-10",
    "runDate": "2026-08-10",
-   "source": "19fec3b83eb44e09-Report-9634.xlsx",
+   "source": "Report-9634.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -316116,7 +316116,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-11",
    "runDate": "2026-08-11",
-   "source": "19ff1610b401777a-Report-9691.xlsx",
+   "source": "Report-9691.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -316252,7 +316252,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-12",
    "runDate": "2026-08-12",
-   "source": "19ff687d5c88d4d1-Report-9867.xlsx",
+   "source": "Report-9867.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -316388,7 +316388,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-13",
    "runDate": "2026-08-13",
-   "source": "19ffbae713fefd16-Report-4425.xlsx",
+   "source": "Report-4425.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -316524,7 +316524,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-14",
    "runDate": "2026-08-14",
-   "source": "1a000d4f32b1694c-Report-1046.xlsx",
+   "source": "Report-1046.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -316660,7 +316660,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-08-15",
-   "source": "1a005fbe1a859a90-Report-4206.xlsx",
+   "source": "Report-4206.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -316796,7 +316796,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1dca393a0bd-Report-2316.xlsx",
+   "source": "Report-2316.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -316932,7 +316932,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-17",
    "runDate": "2026-08-17",
-   "source": "1a0104857d513406-Report-372.xlsx",
+   "source": "Report-372.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -317068,7 +317068,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-18",
    "runDate": "2026-08-18",
-   "source": "1a0156fcc1ef4446-Report-2929.xlsx",
+   "source": "Report-2929.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -317204,7 +317204,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-19",
    "runDate": "2026-08-19",
-   "source": "1a01a961068d22da-Report-5002.xlsx",
+   "source": "Report-5002.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -317340,7 +317340,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb67ef32b9af-Report-5328.xlsx",
+   "source": "Report-5328.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -317476,7 +317476,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-21",
    "runDate": "2026-08-21",
-   "source": "1a024e4576714a11-Report-8969.xlsx",
+   "source": "Report-8969.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -320332,7 +320332,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a527cc21e8-Report-8210.xlsx",
+   "source": "Report-8210.xlsx",
    "rowCount": 85,
    "total": {
     "goodLeads": 294,
@@ -321488,7 +321488,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e75752c67b-Report-3964.xlsx",
+   "source": "Report-3964.xlsx",
    "rowCount": 87,
    "total": {
     "goodLeads": 306,
@@ -322670,7 +322670,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-30",
    "runDate": "2026-07-30",
-   "source": "19fb395248223bc3-Report-2924.xlsx",
+   "source": "Report-2924.xlsx",
    "rowCount": 89,
    "total": {
     "goodLeads": 320,
@@ -323878,7 +323878,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-02",
    "runDate": "2026-08-02",
-   "source": "19fc304907a9d936-Report-2639.xlsx",
+   "source": "Report-2639.xlsx",
    "rowCount": 25,
    "total": {
     "goodLeads": 14,
@@ -324242,7 +324242,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-04",
    "runDate": "2026-08-04",
-   "source": "19fcd553cf09653d-Report-1388.xlsx",
+   "source": "Report-1388__1.xlsx",
    "rowCount": 30,
    "total": {
     "goodLeads": 30,
@@ -324671,7 +324671,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-05",
    "runDate": "2026-08-05",
-   "source": "19fd27c03fdb789b-Report-1350.xlsx",
+   "source": "Report-1350.xlsx",
    "rowCount": 35,
    "total": {
     "goodLeads": 41,
@@ -325169,7 +325169,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-06",
    "runDate": "2026-08-06",
-   "source": "19fd79e9403d470e-Report-5673.xlsx",
+   "source": "Report-5673.xlsx",
    "rowCount": 37,
    "total": {
     "goodLeads": 51,
@@ -325693,7 +325693,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ec1f5c1ec0c-Report-370.xlsx",
+   "source": "Report-370.xlsx",
    "rowCount": 45,
    "total": {
     "goodLeads": 67,
@@ -326323,7 +326323,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-09",
    "runDate": "2026-08-09",
-   "source": "19fe7102d644f5c6-Report-6627.xlsx",
+   "source": "Report-6627.xlsx",
    "rowCount": 47,
    "total": {
     "goodLeads": 78,
@@ -326979,7 +326979,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-10",
    "runDate": "2026-08-10",
-   "source": "19fec3b9f7a0b81c-Report-4131.xlsx",
+   "source": "Report-4131.xlsx",
    "rowCount": 48,
    "total": {
     "goodLeads": 85,
@@ -327648,7 +327648,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-11",
    "runDate": "2026-08-11",
-   "source": "19ff161490c81a3f-Report-788.xlsx",
+   "source": "Report-788.xlsx",
    "rowCount": 52,
    "total": {
     "goodLeads": 98,
@@ -328369,7 +328369,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-12",
    "runDate": "2026-08-12",
-   "source": "19ff687ff3eda3b2-Report-9015.xlsx",
+   "source": "Report-9015.xlsx",
    "rowCount": 54,
    "total": {
     "goodLeads": 103,
@@ -329116,7 +329116,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-13",
    "runDate": "2026-08-13",
-   "source": "19ffbae94060c24a-Report-8295.xlsx",
+   "source": "Report-8295.xlsx",
    "rowCount": 53,
    "total": {
     "goodLeads": 118,
@@ -329850,7 +329850,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-14",
    "runDate": "2026-08-14",
-   "source": "1a000d51bf0172b9-Report-2029.xlsx",
+   "source": "Report-2029.xlsx",
    "rowCount": 58,
    "total": {
     "goodLeads": 126,
@@ -330653,7 +330653,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-15",
    "runDate": "2026-08-15",
-   "source": "1a005fc0a8adfd40-Report-5257.xlsx",
+   "source": "Report-5257.xlsx",
    "rowCount": 60,
    "total": {
     "goodLeads": 137,
@@ -331482,7 +331482,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1def3085b92-Report-6168.xlsx",
+   "source": "Report-6168.xlsx",
    "rowCount": 62,
    "total": {
     "goodLeads": 149,
@@ -332337,7 +332337,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-17",
    "runDate": "2026-08-17",
-   "source": "1a0104888cc6a99b-Report-7845.xlsx",
+   "source": "Report-7845.xlsx",
    "rowCount": 62,
    "total": {
     "goodLeads": 154,
@@ -333192,7 +333192,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-18",
    "runDate": "2026-08-18",
-   "source": "1a0156fefea7f011-Report-1722.xlsx",
+   "source": "Report-1722.xlsx",
    "rowCount": 64,
    "total": {
     "goodLeads": 168,
@@ -334073,7 +334073,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-19",
    "runDate": "2026-08-19",
-   "source": "1a01a9627558c995-Report-7117.xlsx",
+   "source": "Report-7117.xlsx",
    "rowCount": 68,
    "total": {
     "goodLeads": 178,
@@ -335006,7 +335006,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb6ae657adb1-Report-5394.xlsx",
+   "source": "Report-5394.xlsx",
    "rowCount": 68,
    "total": {
     "goodLeads": 181,
@@ -335939,7 +335939,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-21",
    "runDate": "2026-08-21",
-   "source": "1a024e4b8fd90ae7-Report-3487.xlsx",
+   "source": "Report-3487.xlsx",
    "rowCount": 68,
    "total": {
     "goodLeads": 189,
@@ -349498,7 +349498,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a5dfbbcf8a-Report-591.xlsx",
+   "source": "Report-591.xlsx",
    "rowCount": 80,
    "total": {
     "goodLeads": 263,
@@ -350591,7 +350591,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e725589ae4-Report-9603.xlsx",
+   "source": "Report-9603.xlsx",
    "rowCount": 81,
    "total": {
     "goodLeads": 281,
@@ -351697,7 +351697,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-30",
    "runDate": "2026-07-30",
-   "source": "19fb3952161a3a11-Report-608.xlsx",
+   "source": "Report-608.xlsx",
    "rowCount": 84,
    "total": {
     "goodLeads": 294,
@@ -352842,7 +352842,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-02",
    "runDate": "2026-08-02",
-   "source": "19fc30492e07077e-Report-7155.xlsx",
+   "source": "Report-7155__1.xlsx",
    "rowCount": 28,
    "total": {
     "goodLeads": 25,
@@ -353245,7 +353245,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-04",
    "runDate": "2026-08-04",
-   "source": "19fcd5545409e81e-Report-2839.xlsx",
+   "source": "Report-2839.xlsx",
    "rowCount": 40,
    "total": {
     "goodLeads": 44,
@@ -353808,7 +353808,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-05",
    "runDate": "2026-08-05",
-   "source": "19fd27c003328463-Report-3274.xlsx",
+   "source": "Report-3274.xlsx",
    "rowCount": 42,
    "total": {
     "goodLeads": 46,
@@ -354397,7 +354397,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-06",
    "runDate": "2026-08-06",
-   "source": "19fd79e996ce3749-Report-440.xlsx",
+   "source": "Report-440.xlsx",
    "rowCount": 44,
    "total": {
     "goodLeads": 58,
@@ -355016,7 +355016,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ec233f9492f-Report-1388.xlsx",
+   "source": "Report-1388.xlsx",
    "rowCount": 50,
    "total": {
     "goodLeads": 82,
@@ -355713,7 +355713,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-09",
    "runDate": "2026-08-09",
-   "source": "19fe71034d846a82-Report-3935.xlsx",
+   "source": "Report-3935.xlsx",
    "rowCount": 56,
    "total": {
     "goodLeads": 103,
@@ -356488,7 +356488,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-10",
    "runDate": "2026-08-10",
-   "source": "19fec3bc09e433b6-Report-757.xlsx",
+   "source": "Report-757.xlsx",
    "rowCount": 60,
    "total": {
     "goodLeads": 115,
@@ -357317,7 +357317,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-11",
    "runDate": "2026-08-11",
-   "source": "19ff161509c7f129-Report-6504.xlsx",
+   "source": "Report-6504.xlsx",
    "rowCount": 63,
    "total": {
     "goodLeads": 131,
@@ -358185,7 +358185,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-12",
    "runDate": "2026-08-12",
-   "source": "19ff6880deaab99a-Report-9699.xlsx",
+   "source": "Report-9699.xlsx",
    "rowCount": 63,
    "total": {
     "goodLeads": 133,
@@ -359053,7 +359053,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-13",
    "runDate": "2026-08-13",
-   "source": "19ffbaea33765eed-Report-400.xlsx",
+   "source": "Report-400.xlsx",
    "rowCount": 68,
    "total": {
     "goodLeads": 145,
@@ -359986,7 +359986,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-14",
    "runDate": "2026-08-14",
-   "source": "1a000d5276c42918-Report-6769.xlsx",
+   "source": "Report-6769.xlsx",
    "rowCount": 73,
    "total": {
     "goodLeads": 160,
@@ -360986,7 +360986,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-08-15",
-   "source": "1a005fc12613b7bf-Report-1569.xlsx",
+   "source": "Report-1569.xlsx",
    "rowCount": 74,
    "total": {
     "goodLeads": 168,
@@ -361999,7 +361999,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1dfe439f2c7-Report-8323.xlsx",
+   "source": "Report-8323.xlsx",
    "rowCount": 75,
    "total": {
     "goodLeads": 179,
@@ -363025,7 +363025,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-17",
    "runDate": "2026-08-17",
-   "source": "1a010489a075b8fe-Report-4407.xlsx",
+   "source": "Report-4407.xlsx",
    "rowCount": 75,
    "total": {
     "goodLeads": 193,
@@ -364051,7 +364051,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-18",
    "runDate": "2026-08-18",
-   "source": "1a0156ff7612c8a7-Report-6867.xlsx",
+   "source": "Report-6867.xlsx",
    "rowCount": 76,
    "total": {
     "goodLeads": 204,
@@ -365090,7 +365090,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-19",
    "runDate": "2026-08-19",
-   "source": "1a01a9628335dbc2-Report-9743.xlsx",
+   "source": "Report-9743.xlsx",
    "rowCount": 76,
    "total": {
     "goodLeads": 209,
@@ -366129,7 +366129,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb6c84ab2f32-Report-7249.xlsx",
+   "source": "Report-7249.xlsx",
    "rowCount": 79,
    "total": {
     "goodLeads": 221,
@@ -367207,7 +367207,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-21",
    "runDate": "2026-08-21",
-   "source": "1a024e4c7ee98c38-Report-7107.xlsx",
+   "source": "Report-7107__1.xlsx",
    "rowCount": 80,
    "total": {
     "goodLeads": 228,
@@ -385079,7 +385079,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a43355b61d-Report-8577.xlsx",
+   "source": "Report-8577.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -385202,7 +385202,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e52058e691-Report-2262.xlsx",
+   "source": "Report-2262.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -385325,7 +385325,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-30",
    "runDate": "2026-07-30",
-   "source": "19fb395074810790-Report-7392.xlsx",
+   "source": "Report-7392.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -385448,7 +385448,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-02",
    "runDate": "2026-08-02",
-   "source": "19fc3049026097a4-Report-4177.xlsx",
+   "source": "Report-4177.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -385571,7 +385571,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-04",
    "runDate": "2026-08-04",
-   "source": "19fcd553d1a71ee8-Report-4657.xlsx",
+   "source": "Report-4657.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -385694,7 +385694,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-05",
    "runDate": "2026-08-05",
-   "source": "19fd27bfc92893ef-Report-2886.xlsx",
+   "source": "Report-2886.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -385817,7 +385817,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-06",
    "runDate": "2026-08-06",
-   "source": "19fd79e89d2273b1-Report-4350.xlsx",
+   "source": "Report-4350.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -385940,7 +385940,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ec1312dfb28-Report-6534.xlsx",
+   "source": "Report-6534.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -386063,7 +386063,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-09",
    "runDate": "2026-08-09",
-   "source": "19fe7102751d1ba6-Report-9536.xlsx",
+   "source": "Report-9536.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -386186,7 +386186,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-10",
    "runDate": "2026-08-10",
-   "source": "19fec3b9e714e129-Report-3856.xlsx",
+   "source": "Report-3856.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -386309,7 +386309,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-11",
    "runDate": "2026-08-11",
-   "source": "19ff161346397935-Report-555.xlsx",
+   "source": "Report-555.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -386432,7 +386432,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-12",
    "runDate": "2026-08-12",
-   "source": "19ff687f0b5b97ad-Report-1686.xlsx",
+   "source": "Report-1686.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -386555,7 +386555,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-13",
    "runDate": "2026-08-13",
-   "source": "19ffbae820c6671b-Report-6724.xlsx",
+   "source": "Report-6724.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -386678,7 +386678,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-14",
    "runDate": "2026-08-14",
-   "source": "1a000d4fa43d86b8-Report-352.xlsx",
+   "source": "Report-352.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -386801,7 +386801,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-15",
    "runDate": "2026-08-15",
-   "source": "1a005fbfb852fd1a-Report-6714.xlsx",
+   "source": "Report-6714.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -386924,7 +386924,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1de4624a982-Report-7905.xlsx",
+   "source": "Report-7905.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -387047,7 +387047,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-17",
    "runDate": "2026-08-17",
-   "source": "1a010486cd809f48-Report-2617.xlsx",
+   "source": "Report-2617.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -387170,7 +387170,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-18",
    "runDate": "2026-08-18",
-   "source": "1a0156fd46d31b34-Report-9670.xlsx",
+   "source": "Report-9670.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -387293,7 +387293,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-19",
    "runDate": "2026-08-19",
-   "source": "1a01a9615c610838-Report-9787.xlsx",
+   "source": "Report-9787.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -387416,7 +387416,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb69ba779d0e-Report-9153.xlsx",
+   "source": "Report-9153.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -387539,7 +387539,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-21",
    "runDate": "2026-08-21",
-   "source": "1a024e4a85b1df73-Report-1403.xlsx",
+   "source": "Report-1403.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -389966,7 +389966,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a46a709682-Report-9815.xlsx",
+   "source": "Report-9815.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -390089,7 +390089,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e6f02c4740-Report-131.xlsx",
+   "source": "Report-131.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -390212,7 +390212,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-30",
    "runDate": "2026-07-30",
-   "source": "19fb3951535e34eb-Report-9367.xlsx",
+   "source": "Report-9367.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -390335,7 +390335,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-02",
    "runDate": "2026-08-02",
-   "source": "19fc304ab06d9473-Report-645.xlsx",
+   "source": "Report-645.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -390458,7 +390458,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-04",
    "runDate": "2026-08-04",
-   "source": "19fcd5559ded1023-Report-9992.xlsx",
+   "source": "Report-9992.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -390581,7 +390581,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-05",
    "runDate": "2026-08-05",
-   "source": "19fd27c00e03e4b8-Report-5140.xlsx",
+   "source": "Report-5140.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -390704,7 +390704,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-06",
    "runDate": "2026-08-06",
-   "source": "19fd79e92b866efb-Report-3498.xlsx",
+   "source": "Report-3498.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -390827,7 +390827,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ec1bc6f066c-Report-7660.xlsx",
+   "source": "Report-7660.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -390950,7 +390950,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-09",
    "runDate": "2026-08-09",
-   "source": "19fe7103ce869719-Report-9533.xlsx",
+   "source": "Report-9533__1.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -391073,7 +391073,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-10",
    "runDate": "2026-08-10",
-   "source": "19fec3baac98a158-Report-3072.xlsx",
+   "source": "Report-3072.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -391196,7 +391196,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-11",
    "runDate": "2026-08-11",
-   "source": "19ff16149dda9e88-Report-9463.xlsx",
+   "source": "Report-9463.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -391319,7 +391319,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-12",
    "runDate": "2026-08-12",
-   "source": "19ff687f4c1312cb-Report-7246.xlsx",
+   "source": "Report-7246.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -391442,7 +391442,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-13",
    "runDate": "2026-08-13",
-   "source": "19ffbae8679b6ea1-Report-2908.xlsx",
+   "source": "Report-2908.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -391565,7 +391565,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-14",
    "runDate": "2026-08-14",
-   "source": "1a000d50632ad74a-Report-3954.xlsx",
+   "source": "Report-3954.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -391688,7 +391688,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-08-15",
-   "source": "1a005fc0c05ec7a3-Report-7104.xlsx",
+   "source": "Report-7104.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -391811,7 +391811,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1de61ea53c5-Report-4025.xlsx",
+   "source": "Report-4025.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -391934,7 +391934,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-17",
    "runDate": "2026-08-17",
-   "source": "1a010486ac609529-Report-6528.xlsx",
+   "source": "Report-6528.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -392057,7 +392057,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-18",
    "runDate": "2026-08-18",
-   "source": "1a0156fd557e6371-Report-722.xlsx",
+   "source": "Report-722.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -392180,7 +392180,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-19",
    "runDate": "2026-08-19",
-   "source": "1a01a9618d413f2a-Report-5121.xlsx",
+   "source": "Report-5121.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -392303,7 +392303,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb6a957cdba9-Report-1335.xlsx",
+   "source": "Report-1335.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -392426,7 +392426,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-21",
    "runDate": "2026-08-21",
-   "source": "1a024e4cabdb8036-Report-1835.xlsx",
+   "source": "Report-1835.xlsx",
    "rowCount": 8,
    "reps": [
     {
@@ -396331,7 +396331,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a8aced7762-Report-7673.xlsx",
+   "source": "Report-7673.xlsx",
    "rowCount": 106,
    "total": {
     "goodLeads": 743,
@@ -397770,7 +397770,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-29",
    "runDate": "2026-07-29",
-   "source": "19fae6eafe2f74cb-Report-9803.xlsx",
+   "source": "Report-9803.xlsx",
    "rowCount": 108,
    "total": {
     "goodLeads": 776,
@@ -399235,7 +399235,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-30",
    "runDate": "2026-07-30",
-   "source": "19fb3955a7d86fcd-Report-9049.xlsx",
+   "source": "Report-9049.xlsx",
    "rowCount": 108,
    "total": {
     "goodLeads": 810,
@@ -400700,7 +400700,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-02",
    "runDate": "2026-08-02",
-   "source": "19fc304bb42397b0-Report-5294.xlsx",
+   "source": "Report-5294.xlsx",
    "rowCount": 44,
    "total": {
     "goodLeads": 46,
@@ -401317,7 +401317,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-04",
    "runDate": "2026-08-04",
-   "source": "19fcd55782733ec1-Report-4912.xlsx",
+   "source": "Report-4912.xlsx",
    "rowCount": 54,
    "total": {
     "goodLeads": 80,
@@ -402068,7 +402068,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-05",
    "runDate": "2026-08-05",
-   "source": "19fd27c23fff0b0a-Report-9042.xlsx",
+   "source": "Report-9042.xlsx",
    "rowCount": 53,
    "total": {
     "goodLeads": 89,
@@ -402806,7 +402806,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-06",
    "runDate": "2026-08-06",
-   "source": "19fd79eb5be4f0df-Report-1229.xlsx",
+   "source": "Report-1229.xlsx",
    "rowCount": 56,
    "total": {
     "goodLeads": 134,
@@ -403585,7 +403585,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ec4b6173927-Report-4855.xlsx",
+   "source": "Report-4855.xlsx",
    "rowCount": 61,
    "total": {
     "goodLeads": 196,
@@ -404429,7 +404429,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-09",
    "runDate": "2026-08-09",
-   "source": "19fe7105df9a9f3c-Report-50.xlsx",
+   "source": "Report-50.xlsx",
    "rowCount": 62,
    "total": {
     "goodLeads": 222,
@@ -405286,7 +405286,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-10",
    "runDate": "2026-08-10",
-   "source": "19fec3bde8df6935-Report-5550.xlsx",
+   "source": "Report-5550.xlsx",
    "rowCount": 65,
    "total": {
     "goodLeads": 256,
@@ -406182,7 +406182,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-11",
    "runDate": "2026-08-11",
-   "source": "19ff1617b1b79867-Report-5619.xlsx",
+   "source": "Report-5619.xlsx",
    "rowCount": 66,
    "total": {
     "goodLeads": 297,
@@ -407091,7 +407091,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-12",
    "runDate": "2026-08-12",
-   "source": "19ff6880c2af64cc-Report-841.xlsx",
+   "source": "Report-841.xlsx",
    "rowCount": 66,
    "total": {
     "goodLeads": 306,
@@ -408000,7 +408000,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-13",
    "runDate": "2026-08-13",
-   "source": "19ffbaecd9195b19-Report-1341.xlsx",
+   "source": "Report-1341.xlsx",
    "rowCount": 70,
    "total": {
     "goodLeads": 336,
@@ -408963,7 +408963,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-14",
    "runDate": "2026-08-14",
-   "source": "1a000d52d5bb221c-Report-9452.xlsx",
+   "source": "Report-9452.xlsx",
    "rowCount": 70,
    "total": {
     "goodLeads": 367,
@@ -409926,7 +409926,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-08-15",
-   "source": "1a005fc32461d82d-Report-5305.xlsx",
+   "source": "Report-5305.xlsx",
    "rowCount": 72,
    "total": {
     "goodLeads": 393,
@@ -410915,7 +410915,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1e095b7fce3-Report-4133.xlsx",
+   "source": "Report-4133.xlsx",
    "rowCount": 73,
    "total": {
     "goodLeads": 422,
@@ -411917,7 +411917,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-17",
    "runDate": "2026-08-17",
-   "source": "1a01048ad61a9c18-Report-8658.xlsx",
+   "source": "Report-8658.xlsx",
    "rowCount": 75,
    "total": {
     "goodLeads": 448,
@@ -412945,7 +412945,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-18",
    "runDate": "2026-08-18",
-   "source": "1a015701d4122aa6-Report-1932.xlsx",
+   "source": "Report-1932.xlsx",
    "rowCount": 75,
    "total": {
     "goodLeads": 480,
@@ -413973,7 +413973,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-19",
    "runDate": "2026-08-19",
-   "source": "1a01a9645e59c4dc-Report-7004.xlsx",
+   "source": "Report-7004.xlsx",
    "rowCount": 75,
    "total": {
     "goodLeads": 487,
@@ -415001,7 +415001,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb6fb7ad93b8-Report-3084.xlsx",
+   "source": "Report-3084.xlsx",
    "rowCount": 75,
    "total": {
     "goodLeads": 528,
@@ -416029,7 +416029,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-21",
    "runDate": "2026-08-21",
-   "source": "1a024e509255adce-Report-3174.xlsx",
+   "source": "Report-3174.xlsx",
    "rowCount": 75,
    "total": {
     "goodLeads": 545,
@@ -436323,7 +436323,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a6cd89fb90-Report-5842.xlsx",
+   "source": "Report-5842.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -436693,7 +436693,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e861db8a39-Report-5961.xlsx",
+   "source": "Report-5961.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -437063,7 +437063,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-30",
    "runDate": "2026-07-30",
-   "source": "19fb39537d26bf45-Report-7306.xlsx",
+   "source": "Report-7306.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -437433,7 +437433,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-02",
    "runDate": "2026-08-02",
-   "source": "19fc304b97b97689-Report-258.xlsx",
+   "source": "Report-258.xlsx",
    "rowCount": 25,
    "reps": [
     {
@@ -437777,7 +437777,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-04",
    "runDate": "2026-08-04",
-   "source": "19fcd557cf32ae42-Report-7539.xlsx",
+   "source": "Report-7539.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -438134,7 +438134,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-05",
    "runDate": "2026-08-05",
-   "source": "19fd27c17d5f3d46-Report-4647.xlsx",
+   "source": "Report-4647.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -438491,7 +438491,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-06",
    "runDate": "2026-08-06",
-   "source": "19fd79eab01cefee-Report-3216.xlsx",
+   "source": "Report-3216.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -438848,7 +438848,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ec33d7e3cef-Report-3440.xlsx",
+   "source": "Report-3440.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -439205,7 +439205,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-09",
    "runDate": "2026-08-09",
-   "source": "19fe71050a52d2b1-Report-1274.xlsx",
+   "source": "Report-1274.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -439562,7 +439562,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-10",
    "runDate": "2026-08-10",
-   "source": "19fec3bc8c83e91b-Report-5190.xlsx",
+   "source": "Report-5190.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -439919,7 +439919,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-11",
    "runDate": "2026-08-11",
-   "source": "19ff1615b06517fc-Report-5431.xlsx",
+   "source": "Report-5431.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -440276,7 +440276,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-12",
    "runDate": "2026-08-12",
-   "source": "19ff68812ccd5322-Report-9437.xlsx",
+   "source": "Report-9437.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -440633,7 +440633,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-13",
    "runDate": "2026-08-13",
-   "source": "19ffbaeb45f9c97c-Report-1802.xlsx",
+   "source": "Report-1802__1.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -440990,7 +440990,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-14",
    "runDate": "2026-08-14",
-   "source": "1a000d5116b26e20-Report-4129.xlsx",
+   "source": "Report-4129.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -441347,7 +441347,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-15",
    "runDate": "2026-08-15",
-   "source": "1a005fc22ecfc74f-Report-8975.xlsx",
+   "source": "Report-8975.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -441704,7 +441704,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1dfc864858b-Report-2714.xlsx",
+   "source": "Report-2714.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -442061,7 +442061,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-17",
    "runDate": "2026-08-17",
-   "source": "1a010488e8374986-Report-5644.xlsx",
+   "source": "Report-5644.xlsx",
    "rowCount": 26,
    "reps": [
     {
@@ -442418,7 +442418,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-18",
    "runDate": "2026-08-18",
-   "source": "1a0157000f81b75c-Report-1610.xlsx",
+   "source": "Report-1610.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -442788,7 +442788,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-19",
    "runDate": "2026-08-19",
-   "source": "1a01a96373754b44-Report-8841.xlsx",
+   "source": "Report-8841.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -443158,7 +443158,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb6d57f69a22-Report-2947.xlsx",
+   "source": "Report-2947.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -443528,7 +443528,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-21",
    "runDate": "2026-08-21",
-   "source": "1a024e4dd6f7b8ed-Report-7359.xlsx",
+   "source": "Report-7359.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -451122,7 +451122,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a66122c6bc-Report-6181.xlsx",
+   "source": "Report-6181.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -451492,7 +451492,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e8ea431a2c-Report-3271.xlsx",
+   "source": "Report-3271.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -451862,7 +451862,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-30",
    "runDate": "2026-07-30",
-   "source": "19fb39526890db2d-Report-3625.xlsx",
+   "source": "Report-3625.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -452232,7 +452232,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-02",
    "runDate": "2026-08-02",
-   "source": "19fc304bd831cf51-Report-9776.xlsx",
+   "source": "Report-9776.xlsx",
    "rowCount": 25,
    "reps": [
     {
@@ -452576,7 +452576,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-04",
    "runDate": "2026-08-04",
-   "source": "19fcd558c28e2c6f-Report-6882.xlsx",
+   "source": "Report-6882.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -452946,7 +452946,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-05",
    "runDate": "2026-08-05",
-   "source": "19fd27c16d2ab91d-Report-2776.xlsx",
+   "source": "Report-2776.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -453316,7 +453316,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-06",
    "runDate": "2026-08-06",
-   "source": "19fd79eaf63857fb-Report-1146.xlsx",
+   "source": "Report-1146.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -453686,7 +453686,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ec449273927-Report-8957.xlsx",
+   "source": "Report-8957.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -454056,7 +454056,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-09",
    "runDate": "2026-08-09",
-   "source": "19fe71065883820e-Report-6934.xlsx",
+   "source": "Report-6934.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -454426,7 +454426,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-10",
    "runDate": "2026-08-10",
-   "source": "19fec3bd073a7e85-Report-4308.xlsx",
+   "source": "Report-4308.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -454796,7 +454796,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-11",
    "runDate": "2026-08-11",
-   "source": "19ff1615c01c1246-Report-9110.xlsx",
+   "source": "Report-9110.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -455166,7 +455166,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-12",
    "runDate": "2026-08-12",
-   "source": "19ff6880b48b8fb8-Report-3468.xlsx",
+   "source": "Report-3468.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -455536,7 +455536,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-13",
    "runDate": "2026-08-13",
-   "source": "19ffbaec26a347f5-Report-8670.xlsx",
+   "source": "Report-8670.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -455906,7 +455906,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-14",
    "runDate": "2026-08-14",
-   "source": "1a000d519e77b992-Report-3703.xlsx",
+   "source": "Report-3703.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -456276,7 +456276,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-08-15",
-   "source": "1a005fc26d32c5a4-Report-5785.xlsx",
+   "source": "Report-5785.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -456646,7 +456646,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1e080cbad21-Report-3079.xlsx",
+   "source": "Report-3079.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -457016,7 +457016,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-17",
    "runDate": "2026-08-17",
-   "source": "1a010488ea507f1a-Report-9081.xlsx",
+   "source": "Report-9081.xlsx",
    "rowCount": 27,
    "reps": [
     {
@@ -457386,7 +457386,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-18",
    "runDate": "2026-08-18",
-   "source": "1a01570064935fd7-Report-7342.xlsx",
+   "source": "Report-7342.xlsx",
    "rowCount": 28,
    "reps": [
     {
@@ -457769,7 +457769,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-19",
    "runDate": "2026-08-19",
-   "source": "1a01a964b21e7910-Report-5248.xlsx",
+   "source": "Report-5248.xlsx",
    "rowCount": 28,
    "reps": [
     {
@@ -458152,7 +458152,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb6da6c5faec-Report-9116.xlsx",
+   "source": "Report-9116.xlsx",
    "rowCount": 28,
    "reps": [
     {
@@ -458535,7 +458535,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-21",
    "runDate": "2026-08-21",
-   "source": "1a024e4ee7b6ae42-Report-5246.xlsx",
+   "source": "Report-5246.xlsx",
    "rowCount": 28,
    "reps": [
     {
@@ -466214,7 +466214,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a9b7b12d6d-Report-1112.xlsx",
+   "source": "Report-1112.xlsx",
    "rowCount": 79,
    "total": {
     "goodLeads": 663,
@@ -467286,7 +467286,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-29",
    "runDate": "2026-07-29",
-   "source": "19fae6ec8cf5fbff-Report-8056.xlsx",
+   "source": "Report-111.xlsx",
    "rowCount": 78,
    "total": {
     "goodLeads": 686,
@@ -467409,7 +467409,7 @@
          }
         },
         {
-         "make": "AUDI",
+         "make": "Audi",
          "metrics": {
           "goodLeads": 14,
           "sold": 0,
@@ -468345,7 +468345,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-30",
    "runDate": "2026-07-30",
-   "source": "19fb3955dbbf7b31-Report-3619.xlsx",
+   "source": "Report-3619.xlsx",
    "rowCount": 79,
    "total": {
     "goodLeads": 715,
@@ -469417,7 +469417,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-02",
    "runDate": "2026-08-02",
-   "source": "19fc304f1233fa7a-Report-7484.xlsx",
+   "source": "Report-4599.xlsx",
    "rowCount": 42,
    "total": {
     "goodLeads": 42,
@@ -470000,7 +470000,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-04",
    "runDate": "2026-08-04",
-   "source": "19fcd55dd14a543a-Report-8553.xlsx",
+   "source": "Report-1643.xlsx",
    "rowCount": 47,
    "total": {
     "goodLeads": 98,
@@ -470592,7 +470592,7 @@
          }
         },
         {
-         "make": "Nissan",
+         "make": "NISSAN",
          "metrics": {
           "goodLeads": 2,
           "sold": 1,
@@ -470650,7 +470650,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-05",
    "runDate": "2026-08-05",
-   "source": "19fd27c633c6632d-Report-3856.xlsx",
+   "source": "Report-2502.xlsx",
    "rowCount": 47,
    "total": {
     "goodLeads": 122,
@@ -470864,7 +470864,7 @@
          }
         },
         {
-         "make": "KIA",
+         "make": "Kia",
          "metrics": {
           "goodLeads": 2,
           "sold": 0,
@@ -471300,7 +471300,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-06",
    "runDate": "2026-08-06",
-   "source": "19fd79ee11bda120-Report-1740.xlsx",
+   "source": "Report-1740.xlsx",
    "rowCount": 52,
    "total": {
     "goodLeads": 164,
@@ -472015,7 +472015,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ec7f1fd6ee4-Report-5251.xlsx",
+   "source": "Report-1083.xlsx",
    "rowCount": 53,
    "total": {
     "goodLeads": 219,
@@ -472743,7 +472743,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-09",
    "runDate": "2026-08-09",
-   "source": "19fe7109a5373860-Report-9013.xlsx",
+   "source": "Report-124.xlsx",
    "rowCount": 56,
    "total": {
     "goodLeads": 247,
@@ -472879,7 +472879,7 @@
          }
         },
         {
-         "make": "AUDI",
+         "make": "Audi",
          "metrics": {
           "goodLeads": 6,
           "sold": 0,
@@ -472970,7 +472970,7 @@
          }
         },
         {
-         "make": "Jeep",
+         "make": "JEEP",
          "metrics": {
           "goodLeads": 12,
           "sold": 0,
@@ -473512,7 +473512,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-10",
    "runDate": "2026-08-10",
-   "source": "19fec3c106287440-Report-2420.xlsx",
+   "source": "Report-2420.xlsx",
    "rowCount": 56,
    "total": {
     "goodLeads": 267,
@@ -474281,7 +474281,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-11",
    "runDate": "2026-08-11",
-   "source": "19ff161a11414463-Report-9873.xlsx",
+   "source": "Report-165.xlsx",
    "rowCount": 59,
    "total": {
     "goodLeads": 290,
@@ -475089,7 +475089,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-12",
    "runDate": "2026-08-12",
-   "source": "19ff688548f8235a-Report-3459.xlsx",
+   "source": "Report-3113.xlsx",
    "rowCount": 60,
    "total": {
     "goodLeads": 305,
@@ -475910,7 +475910,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-13",
    "runDate": "2026-08-13",
-   "source": "19ffbaef861e94ca-Report-9396.xlsx",
+   "source": "Report-6147.xlsx",
    "rowCount": 62,
    "total": {
     "goodLeads": 334,
@@ -476059,7 +476059,7 @@
          }
         },
         {
-         "make": "Audi",
+         "make": "AUDI",
          "metrics": {
           "goodLeads": 7,
           "sold": 0,
@@ -476757,7 +476757,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-14",
    "runDate": "2026-08-14",
-   "source": "1a000d562ef301b7-Report-3683.xlsx",
+   "source": "Report-3009.xlsx",
    "rowCount": 65,
    "total": {
     "goodLeads": 358,
@@ -477572,7 +477572,7 @@
          }
         },
         {
-         "make": "NISSAN",
+         "make": "Nissan",
          "metrics": {
           "goodLeads": 2,
           "sold": 2,
@@ -477643,7 +477643,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-15",
    "runDate": "2026-08-15",
-   "source": "1a005fc5752a805c-Report-4729.xlsx",
+   "source": "Report-1070.xlsx",
    "rowCount": 68,
    "total": {
     "goodLeads": 378,
@@ -477831,7 +477831,7 @@
          }
         },
         {
-         "make": "Chevrolet",
+         "make": "CHEVROLET",
          "metrics": {
           "goodLeads": 14,
           "sold": 1,
@@ -477896,7 +477896,7 @@
          }
         },
         {
-         "make": "JEEP",
+         "make": "Jeep",
          "metrics": {
           "goodLeads": 15,
           "sold": 1,
@@ -478572,7 +478572,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1e3b88c2582-Report-6854.xlsx",
+   "source": "Report-5067.xlsx",
    "rowCount": 70,
    "total": {
     "goodLeads": 397,
@@ -479527,7 +479527,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-17",
    "runDate": "2026-08-17",
-   "source": "1a01048e20261a3f-Report-7910.xlsx",
+   "source": "Report-7910.xlsx",
    "rowCount": 70,
    "total": {
     "goodLeads": 414,
@@ -480482,7 +480482,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-18",
    "runDate": "2026-08-18",
-   "source": "1a0157043305ca76-Report-3028.xlsx",
+   "source": "Report-3028.xlsx",
    "rowCount": 70,
    "total": {
     "goodLeads": 444,
@@ -481437,7 +481437,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-19",
    "runDate": "2026-08-19",
-   "source": "1a01a967af9c3c4c-Report-1584.xlsx",
+   "source": "Report-1584.xlsx",
    "rowCount": 73,
    "total": {
     "goodLeads": 478,
@@ -482431,7 +482431,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb7633dcb732-Report-7019.xlsx",
+   "source": "Report-2653.xlsx",
    "rowCount": 73,
    "total": {
     "goodLeads": 503,
@@ -483425,7 +483425,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-21",
    "runDate": "2026-08-21",
-   "source": "1a024e544e429009-Report-7502.xlsx",
+   "source": "Report-4929.xlsx",
    "rowCount": 78,
    "total": {
     "goodLeads": 530,
@@ -483743,7 +483743,7 @@
          }
         },
         {
-         "make": "Nissan",
+         "make": "NISSAN",
          "metrics": {
           "goodLeads": 12,
           "sold": 3,
@@ -484344,7 +484344,7 @@
          }
         },
         {
-         "make": "NISSAN",
+         "make": "Nissan",
          "metrics": {
           "goodLeads": 3,
           "sold": 3,
@@ -501505,7 +501505,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a7845d6a1d-Report-2790.xlsx",
+   "source": "Report-2790.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -501667,7 +501667,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-29",
    "runDate": "2026-07-29",
-   "source": "19fae6ea4d2c5a22-Report-2341.xlsx",
+   "source": "Report-2341.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -501829,7 +501829,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-30",
    "runDate": "2026-07-30",
-   "source": "19fb39536e23a9fb-Report-3788.xlsx",
+   "source": "Report-3788.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -501991,7 +501991,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-02",
    "runDate": "2026-08-02",
-   "source": "19fc304dbd369f4a-Report-515.xlsx",
+   "source": "Report-515.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -502153,7 +502153,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-04",
    "runDate": "2026-08-04",
-   "source": "19fcd55a65ee09b9-Report-813.xlsx",
+   "source": "Report-813.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -502315,7 +502315,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-05",
    "runDate": "2026-08-05",
-   "source": "19fd27c43f67486a-Report-5075.xlsx",
+   "source": "Report-5075__1.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -502477,7 +502477,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-06",
    "runDate": "2026-08-06",
-   "source": "19fd79ec0e2ec017-Report-9282.xlsx",
+   "source": "Report-9282.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -502639,7 +502639,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ec60d7c0eb0-Report-2867.xlsx",
+   "source": "Report-2867.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -502801,7 +502801,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-09",
    "runDate": "2026-08-09",
-   "source": "19fe71084d8ea239-Report-5334.xlsx",
+   "source": "Report-5334.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -502963,7 +502963,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-10",
    "runDate": "2026-08-10",
-   "source": "19fec3c4fd2165d0-Report-8460.xlsx",
+   "source": "Report-8460.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -503125,7 +503125,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-11",
    "runDate": "2026-08-11",
-   "source": "19ff1617502b6f44-Report-3256.xlsx",
+   "source": "Report-3256.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -503287,7 +503287,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-12",
    "runDate": "2026-08-12",
-   "source": "19ff68832fd0885c-Report-8106.xlsx",
+   "source": "Report-8106.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -503449,7 +503449,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-13",
    "runDate": "2026-08-13",
-   "source": "19ffbaec9e55f94d-Report-2114.xlsx",
+   "source": "Report-2114.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -503611,7 +503611,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-14",
    "runDate": "2026-08-14",
-   "source": "1a000d53405e8489-Report-3148.xlsx",
+   "source": "Report-3148.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -503773,7 +503773,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-15",
    "runDate": "2026-08-15",
-   "source": "1a005fc342cb6a30-Report-8385.xlsx",
+   "source": "Report-8385.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -503935,7 +503935,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1e1400a4708-Report-3529.xlsx",
+   "source": "Report-3529.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -504097,7 +504097,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-17",
    "runDate": "2026-08-17",
-   "source": "1a01048b171c04f9-Report-8029.xlsx",
+   "source": "Report-8029.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -504259,7 +504259,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-18",
    "runDate": "2026-08-18",
-   "source": "1a0157017e051117-Report-7296.xlsx",
+   "source": "Report-7296.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -504421,7 +504421,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-19",
    "runDate": "2026-08-19",
-   "source": "1a01a96579076ffb-Report-2363.xlsx",
+   "source": "Report-2363.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -504583,7 +504583,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb71c26d781e-Report-2199.xlsx",
+   "source": "Report-2199.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -504745,7 +504745,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-21",
    "runDate": "2026-08-21",
-   "source": "1a024e4f47afadce-Report-3851.xlsx",
+   "source": "Report-3851.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -508108,7 +508108,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a797a9b84f-Report-947.xlsx",
+   "source": "Report-947.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -508270,7 +508270,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-29",
    "runDate": "2026-07-29",
-   "source": "19fae6ea69346a40-Report-8794.xlsx",
+   "source": "Report-8794.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -508432,7 +508432,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-30",
    "runDate": "2026-07-30",
-   "source": "19fb39538f51a28d-Report-9593.xlsx",
+   "source": "Report-9593.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -508594,7 +508594,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-02",
    "runDate": "2026-08-02",
-   "source": "19fc304e0b5f5759-Report-8629.xlsx",
+   "source": "Report-8629.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -508756,7 +508756,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-04",
    "runDate": "2026-08-04",
-   "source": "19fcd55a6101d063-Report-8737.xlsx",
+   "source": "Report-8737.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -508918,7 +508918,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-05",
    "runDate": "2026-08-05",
-   "source": "19fd27c4d9c72dc5-Report-6703.xlsx",
+   "source": "Report-6703.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -509080,7 +509080,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-06",
    "runDate": "2026-08-06",
-   "source": "19fd79ec5804cf6c-Report-7494.xlsx",
+   "source": "Report-7494.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -509242,7 +509242,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ec6654e0f05-Report-7117.xlsx",
+   "source": "Report-7117__1.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -509404,7 +509404,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-09",
    "runDate": "2026-08-09",
-   "source": "19fe71084724709c-Report-6573.xlsx",
+   "source": "Report-6573__1.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -509566,7 +509566,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-10",
    "runDate": "2026-08-10",
-   "source": "19fec3bf6a87eda9-Report-2304.xlsx",
+   "source": "Report-2304__1.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -509728,7 +509728,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-11",
    "runDate": "2026-08-11",
-   "source": "19ff1617b9267ac0-Report-123.xlsx",
+   "source": "Report-123.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -509890,7 +509890,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-12",
    "runDate": "2026-08-12",
-   "source": "19ff68829e35ad43-Report-9527.xlsx",
+   "source": "Report-9527.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -510052,7 +510052,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-13",
    "runDate": "2026-08-13",
-   "source": "19ffbaedb73d2cf3-Report-8570.xlsx",
+   "source": "Report-8570.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -510214,7 +510214,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-14",
    "runDate": "2026-08-14",
-   "source": "1a000d539f0d498b-Report-8941.xlsx",
+   "source": "Report-8941.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -510376,7 +510376,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-08-15",
-   "source": "1a005fc371e563bf-Report-2394.xlsx",
+   "source": "Report-2394.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -510538,7 +510538,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1e17322fcc8-Report-5293.xlsx",
+   "source": "Report-5293.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -510700,7 +510700,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-17",
    "runDate": "2026-08-17",
-   "source": "1a01048bb261dc5e-Report-2039.xlsx",
+   "source": "Report-2039.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -510862,7 +510862,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-18",
    "runDate": "2026-08-18",
-   "source": "1a015701c3a28f8f-Report-1203.xlsx",
+   "source": "Report-1203.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -511024,7 +511024,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-19",
    "runDate": "2026-08-19",
-   "source": "1a01a965d02490dc-Report-3944.xlsx",
+   "source": "Report-3944.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -511186,7 +511186,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb72f0629ef0-Report-4530.xlsx",
+   "source": "Report-4530.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -511348,7 +511348,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-21",
    "runDate": "2026-08-21",
-   "source": "1a024e50277d9bd7-Report-7102.xlsx",
+   "source": "Report-7102.xlsx",
    "rowCount": 11,
    "reps": [
     {
@@ -514751,7 +514751,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a80d931828-Report-7766.xlsx",
+   "source": "Report-7766.xlsx",
    "rowCount": 90,
    "total": {
     "goodLeads": 380,
@@ -515973,7 +515973,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-29",
    "runDate": "2026-07-29",
-   "source": "19fae6ea73788704-Report-3587.xlsx",
+   "source": "Report-3587__1.xlsx",
    "rowCount": 90,
    "total": {
     "goodLeads": 389,
@@ -517195,7 +517195,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-30",
    "runDate": "2026-07-30",
-   "source": "19fb3954b2e03695-Report-5413.xlsx",
+   "source": "Report-5413.xlsx",
    "rowCount": 93,
    "total": {
     "goodLeads": 397,
@@ -518456,7 +518456,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-02",
    "runDate": "2026-08-02",
-   "source": "19fc304c14216391-Report-1753.xlsx",
+   "source": "Report-1753.xlsx",
    "rowCount": 21,
    "total": {
     "goodLeads": 15,
@@ -518765,7 +518765,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-04",
    "runDate": "2026-08-04",
-   "source": "19fcd55907383e6b-Report-2903.xlsx",
+   "source": "Report-2903.xlsx",
    "rowCount": 36,
    "total": {
     "goodLeads": 42,
@@ -519279,7 +519279,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-05",
    "runDate": "2026-08-05",
-   "source": "19fd27c3e7a4dc0b-Report-8384.xlsx",
+   "source": "Report-8384.xlsx",
    "rowCount": 41,
    "total": {
     "goodLeads": 59,
@@ -519858,7 +519858,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-06",
    "runDate": "2026-08-06",
-   "source": "19fd79ebe8319ad7-Report-3668.xlsx",
+   "source": "Report-3668.xlsx",
    "rowCount": 43,
    "total": {
     "goodLeads": 71,
@@ -520463,7 +520463,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ec5fcb5bc1d-Report-3263.xlsx",
+   "source": "Report-3263.xlsx",
    "rowCount": 52,
    "total": {
     "goodLeads": 96,
@@ -521187,7 +521187,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-09",
    "runDate": "2026-08-09",
-   "source": "19fe7107bf7782e0-Report-3739.xlsx",
+   "source": "Report-3739.xlsx",
    "rowCount": 60,
    "total": {
     "goodLeads": 123,
@@ -522015,7 +522015,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-10",
    "runDate": "2026-08-10",
-   "source": "19fec3bee21308e5-Report-4017.xlsx",
+   "source": "Report-4017.xlsx",
    "rowCount": 62,
    "total": {
     "goodLeads": 134,
@@ -522869,7 +522869,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-11",
    "runDate": "2026-08-11",
-   "source": "19ff1617924f2c56-Report-7571.xlsx",
+   "source": "Report-7571.xlsx",
    "rowCount": 65,
    "total": {
     "goodLeads": 156,
@@ -523762,7 +523762,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-12",
    "runDate": "2026-08-12",
-   "source": "19ff688257b5933e-Report-1258.xlsx",
+   "source": "Report-1258.xlsx",
    "rowCount": 66,
    "total": {
     "goodLeads": 170,
@@ -524668,7 +524668,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-13",
    "runDate": "2026-08-13",
-   "source": "19ffbaedff238030-Report-5305.xlsx",
+   "source": "Report-5305__1.xlsx",
    "rowCount": 71,
    "total": {
     "goodLeads": 184,
@@ -525639,7 +525639,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-14",
    "runDate": "2026-08-14",
-   "source": "1a000d54589e130f-Report-6809.xlsx",
+   "source": "Report-6809__1.xlsx",
    "rowCount": 75,
    "total": {
     "goodLeads": 200,
@@ -526662,7 +526662,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-15",
    "runDate": "2026-08-15",
-   "source": "1a005fc4884d5879-Report-8157.xlsx",
+   "source": "Report-8157.xlsx",
    "rowCount": 80,
    "total": {
     "goodLeads": 214,
@@ -527750,7 +527750,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1e314dc5e8d-Report-8924.xlsx",
+   "source": "Report-8924.xlsx",
    "rowCount": 83,
    "total": {
     "goodLeads": 231,
@@ -528877,7 +528877,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-17",
    "runDate": "2026-08-17",
-   "source": "1a01048b92ee0a07-Report-3980.xlsx",
+   "source": "Report-3980.xlsx",
    "rowCount": 84,
    "total": {
     "goodLeads": 240,
@@ -530017,7 +530017,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-18",
    "runDate": "2026-08-18",
-   "source": "1a0157034af073ec-Report-9199.xlsx",
+   "source": "Report-9199.xlsx",
    "rowCount": 85,
    "total": {
     "goodLeads": 256,
@@ -531170,7 +531170,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-19",
    "runDate": "2026-08-19",
-   "source": "1a01a96759713184-Report-7107.xlsx",
+   "source": "Report-7107__2.xlsx",
    "rowCount": 85,
    "total": {
     "goodLeads": 273,
@@ -532323,7 +532323,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb70959df06c-Report-335.xlsx",
+   "source": "Report-335.xlsx",
    "rowCount": 88,
    "total": {
     "goodLeads": 288,
@@ -533515,7 +533515,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-21",
    "runDate": "2026-08-21",
-   "source": "1a024e52a498f7fa-Report-3318.xlsx",
+   "source": "Report-3318.xlsx",
    "rowCount": 91,
    "total": {
     "goodLeads": 299,
@@ -553483,7 +553483,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-28",
    "runDate": "2026-07-28",
-   "source": "19fa94a6102df88c-Report-5728.xlsx",
+   "source": "Report-2252.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -553620,7 +553620,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-29",
    "runDate": "2026-07-29",
-   "source": "19fae6e8c04ce159-Report-9914.xlsx",
+   "source": "Report-5803.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -553757,7 +553757,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-30",
    "runDate": "2026-07-30",
-   "source": "19fb39529b369bd7-Report-2270.xlsx",
+   "source": "Report-2270.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -553894,7 +553894,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-02",
    "runDate": "2026-08-02",
-   "source": "19fc304d0ab9a4f9-Report-2819.xlsx",
+   "source": "Report-2819.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -554031,7 +554031,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-04",
    "runDate": "2026-08-04",
-   "source": "19fcd55936cf343d-Report-6005.xlsx",
+   "source": "Report-1874.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -554168,7 +554168,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-05",
    "runDate": "2026-08-05",
-   "source": "19fd27c2ed5df9d3-Report-3685.xlsx",
+   "source": "Report-3685.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -554305,7 +554305,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-06",
    "runDate": "2026-08-06",
-   "source": "19fd79eb875268cc-Report-7837.xlsx",
+   "source": "Report-3687.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -554442,7 +554442,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ec561e38162-Report-732.xlsx",
+   "source": "Report-6776__1.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -554579,7 +554579,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-09",
    "runDate": "2026-08-09",
-   "source": "19fe710740d9f396-Report-3967.xlsx",
+   "source": "Report-3967.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -554716,7 +554716,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-10",
    "runDate": "2026-08-10",
-   "source": "19fec3bed43860cd-Report-4762.xlsx",
+   "source": "Report-4762.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -554853,7 +554853,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-11",
    "runDate": "2026-08-11",
-   "source": "19ff1616bf80db4a-Report-3950.xlsx",
+   "source": "Report-3950.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -554990,7 +554990,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-12",
    "runDate": "2026-08-12",
-   "source": "19ff6880fa559256-Report-5599.xlsx",
+   "source": "Report-3652__1.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -555127,7 +555127,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-13",
    "runDate": "2026-08-13",
-   "source": "19ffbaebb7b08d2b-Report-8660.xlsx",
+   "source": "Report-7444.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -555264,7 +555264,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-14",
    "runDate": "2026-08-14",
-   "source": "1a000d5274665766-Report-8367.xlsx",
+   "source": "Report-8367.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -555401,7 +555401,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-15",
    "runDate": "2026-08-15",
-   "source": "1a005fc26d755516-Report-851.xlsx",
+   "source": "Report-851.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -555538,7 +555538,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1e0b7a1e083-Report-1003.xlsx",
+   "source": "Report-1003.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -555675,7 +555675,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-17",
    "runDate": "2026-08-17",
-   "source": "1a010489ee5f620b-Report-8954.xlsx",
+   "source": "Report-4578.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -555812,7 +555812,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-18",
    "runDate": "2026-08-18",
-   "source": "1a01570090ed600d-Report-5326.xlsx",
+   "source": "Report-2395.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -555949,7 +555949,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-19",
    "runDate": "2026-08-19",
-   "source": "1a01a9657301d38c-Report-6809.xlsx",
+   "source": "Report-619.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -556086,7 +556086,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb710f88236c-Report-3671.xlsx",
+   "source": "Report-3671.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -556223,7 +556223,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-21",
    "runDate": "2026-08-21",
-   "source": "1a024e4ebb2e34ab-Report-5603.xlsx",
+   "source": "Report-5603.xlsx",
    "rowCount": 9,
    "reps": [
     {
@@ -559125,7 +559125,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-28",
    "runDate": "2026-07-28",
-   "source": "19fa94ad169bde83-Report-7824.xlsx",
+   "source": "Report-7824.xlsx",
    "rowCount": 62,
    "total": {
     "goodLeads": 209,
@@ -559974,7 +559974,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-29",
    "runDate": "2026-07-29",
-   "source": "19fae6edccca11e0-Report-3226.xlsx",
+   "source": "Report-3226.xlsx",
    "rowCount": 62,
    "total": {
     "goodLeads": 217,
@@ -560823,7 +560823,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-30",
    "runDate": "2026-07-30",
-   "source": "19fb3958eddb1fca-Report-4547.xlsx",
+   "source": "Report-4547.xlsx",
    "rowCount": 64,
    "total": {
     "goodLeads": 226,
@@ -561698,7 +561698,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-02",
    "runDate": "2026-08-02",
-   "source": "19fc305009081c95-Report-2607.xlsx",
+   "source": "Report-2607.xlsx",
    "rowCount": 23,
    "total": {
     "goodLeads": 15,
@@ -562030,7 +562030,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-04",
    "runDate": "2026-08-04",
-   "source": "19fcd55e92937ccb-Report-756.xlsx",
+   "source": "Report-756.xlsx",
    "rowCount": 30,
    "total": {
     "goodLeads": 29,
@@ -562455,7 +562455,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-05",
    "runDate": "2026-08-05",
-   "source": "19fd27c73fb9d616-Report-8864.xlsx",
+   "source": "Report-8864.xlsx",
    "rowCount": 34,
    "total": {
     "goodLeads": 39,
@@ -562932,7 +562932,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-06",
    "runDate": "2026-08-06",
-   "source": "19fd79eec7cccd15-Report-3871.xlsx",
+   "source": "Report-3871.xlsx",
    "rowCount": 35,
    "total": {
     "goodLeads": 48,
@@ -563422,7 +563422,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-08",
    "runDate": "2026-08-08",
-   "source": "19fe1eca15a614ac-Report-8157.xlsx",
+   "source": "Report-8157__1.xlsx",
    "rowCount": 40,
    "total": {
     "goodLeads": 72,
@@ -563977,7 +563977,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-09",
    "runDate": "2026-08-09",
-   "source": "19fe710aaa572ccf-Report-1852.xlsx",
+   "source": "Report-1852.xlsx",
    "rowCount": 41,
    "total": {
     "goodLeads": 79,
@@ -564545,7 +564545,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-10",
    "runDate": "2026-08-10",
-   "source": "19fec3c2a2f825ec-Report-9709.xlsx",
+   "source": "Report-9709.xlsx",
    "rowCount": 44,
    "total": {
     "goodLeads": 88,
@@ -565152,7 +565152,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-11",
    "runDate": "2026-08-11",
-   "source": "19ff161b30f06c3e-Report-338.xlsx",
+   "source": "Report-338.xlsx",
    "rowCount": 45,
    "total": {
     "goodLeads": 94,
@@ -565772,7 +565772,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-12",
    "runDate": "2026-08-12",
-   "source": "19ff6886e0874765-Report-8700.xlsx",
+   "source": "Report-8700.xlsx",
    "rowCount": 46,
    "total": {
     "goodLeads": 106,
@@ -566405,7 +566405,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-13",
    "runDate": "2026-08-13",
-   "source": "19ffbaf11800b737-Report-1087.xlsx",
+   "source": "Report-1087.xlsx",
    "rowCount": 48,
    "total": {
     "goodLeads": 115,
@@ -567064,7 +567064,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-14",
    "runDate": "2026-08-14",
-   "source": "1a000d588e68de94-Report-8539.xlsx",
+   "source": "Report-8539.xlsx",
    "rowCount": 48,
    "total": {
     "goodLeads": 120,
@@ -567723,7 +567723,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-15",
    "runDate": "2026-08-15",
-   "source": "1a005fc8eb523d88-Report-6794.xlsx",
+   "source": "Report-6794.xlsx",
    "rowCount": 50,
    "total": {
     "goodLeads": 128,
@@ -568408,7 +568408,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1e599047595-Report-9451.xlsx",
+   "source": "Report-9451.xlsx",
    "rowCount": 50,
    "total": {
     "goodLeads": 139,
@@ -569093,7 +569093,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-17",
    "runDate": "2026-08-17",
-   "source": "1a01048ee4c7bd40-Report-7184.xlsx",
+   "source": "Report-7184.xlsx",
    "rowCount": 51,
    "total": {
     "goodLeads": 147,
@@ -569791,7 +569791,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-18",
    "runDate": "2026-08-18",
-   "source": "1a015705d250332e-Report-3029.xlsx",
+   "source": "Report-3029.xlsx",
    "rowCount": 51,
    "total": {
     "goodLeads": 152,
@@ -570489,7 +570489,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-19",
    "runDate": "2026-08-19",
-   "source": "1a01a969bd63a6ed-Report-3791.xlsx",
+   "source": "Report-3791.xlsx",
    "rowCount": 53,
    "total": {
     "goodLeads": 162,
@@ -571213,7 +571213,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb77ad6ebc1b-Report-3741.xlsx",
+   "source": "Report-3741.xlsx",
    "rowCount": 53,
    "total": {
     "goodLeads": 175,
@@ -571937,7 +571937,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-21",
    "runDate": "2026-08-21",
-   "source": "1a024e5433e96c30-Report-2042.xlsx",
+   "source": "Report-2042.xlsx",
    "rowCount": 54,
    "total": {
     "goodLeads": 187,
@@ -585120,7 +585120,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-28",
    "runDate": "2026-07-28",
-   "source": "19fa94abf870933e-Report-9327.xlsx",
+   "source": "Report-9327.xlsx",
    "rowCount": 49,
    "total": {
     "goodLeads": 195,
@@ -585792,7 +585792,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-29",
    "runDate": "2026-07-29",
-   "source": "19fae6ed13a66ded-Report-6150.xlsx",
+   "source": "Report-6150.xlsx",
    "rowCount": 50,
    "total": {
     "goodLeads": 204,
@@ -586477,7 +586477,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-30",
    "runDate": "2026-07-30",
-   "source": "19fb395891948483-Report-2938.xlsx",
+   "source": "Report-2938.xlsx",
    "rowCount": 55,
    "total": {
     "goodLeads": 213,
@@ -587231,7 +587231,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-02",
    "runDate": "2026-08-02",
-   "source": "19fc304fd911c8f6-Report-5646.xlsx",
+   "source": "Report-5646.xlsx",
    "rowCount": 19,
    "total": {
     "goodLeads": 16,
@@ -587509,7 +587509,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-04",
    "runDate": "2026-08-04",
-   "source": "19fcd55da99bdf2b-Report-2472.xlsx",
+   "source": "Report-2472.xlsx",
    "rowCount": 24,
    "total": {
     "goodLeads": 27,
@@ -587854,7 +587854,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-05",
    "runDate": "2026-08-05",
-   "source": "19fd27c6b2f9f652-Report-5782.xlsx",
+   "source": "Report-5782.xlsx",
    "rowCount": 27,
    "total": {
     "goodLeads": 31,
@@ -588240,7 +588240,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-06",
    "runDate": "2026-08-06",
-   "source": "19fd79eeda62dd9d-Report-5116.xlsx",
+   "source": "Report-5116.xlsx",
    "rowCount": 30,
    "total": {
     "goodLeads": 34,
@@ -588667,7 +588667,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ec9b0b31341-Report-4923.xlsx",
+   "source": "Report-4923.xlsx",
    "rowCount": 36,
    "total": {
     "goodLeads": 51,
@@ -589172,7 +589172,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-09",
    "runDate": "2026-08-09",
-   "source": "19fe710a4048c93c-Report-4064.xlsx",
+   "source": "Report-4064.xlsx",
    "rowCount": 35,
    "total": {
     "goodLeads": 54,
@@ -589664,7 +589664,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-10",
    "runDate": "2026-08-10",
-   "source": "19fec3c1c6587056-Report-9923.xlsx",
+   "source": "Report-9923.xlsx",
    "rowCount": 41,
    "total": {
     "goodLeads": 66,
@@ -590236,7 +590236,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-11",
    "runDate": "2026-08-11",
-   "source": "19ff161affc476be-Report-8987.xlsx",
+   "source": "Report-8987.xlsx",
    "rowCount": 43,
    "total": {
     "goodLeads": 70,
@@ -590834,7 +590834,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-12",
    "runDate": "2026-08-12",
-   "source": "19ff68866cd00cc2-Report-9770.xlsx",
+   "source": "Report-9770.xlsx",
    "rowCount": 43,
    "total": {
     "goodLeads": 70,
@@ -591432,7 +591432,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-13",
    "runDate": "2026-08-13",
-   "source": "19ffbaf081208c78-Report-3818.xlsx",
+   "source": "Report-3818__1.xlsx",
    "rowCount": 42,
    "total": {
     "goodLeads": 78,
@@ -592017,7 +592017,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-14",
    "runDate": "2026-08-14",
-   "source": "1a000d5847973f2d-Report-2484.xlsx",
+   "source": "Report-2484.xlsx",
    "rowCount": 43,
    "total": {
     "goodLeads": 88,
@@ -592615,7 +592615,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-08-15",
-   "source": "1a005fc8668335e2-Report-5535.xlsx",
+   "source": "Report-5535.xlsx",
    "rowCount": 45,
    "total": {
     "goodLeads": 98,
@@ -593239,7 +593239,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1e509b6a95f-Report-8936.xlsx",
+   "source": "Report-8936.xlsx",
    "rowCount": 45,
    "total": {
     "goodLeads": 107,
@@ -593863,7 +593863,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-17",
    "runDate": "2026-08-17",
-   "source": "1a01048ec42c9343-Report-5083.xlsx",
+   "source": "Report-5083.xlsx",
    "rowCount": 46,
    "total": {
     "goodLeads": 115,
@@ -594500,7 +594500,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-18",
    "runDate": "2026-08-18",
-   "source": "1a015705340781e3-Report-2657.xlsx",
+   "source": "Report-2657.xlsx",
    "rowCount": 47,
    "total": {
     "goodLeads": 122,
@@ -595150,7 +595150,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-19",
    "runDate": "2026-08-19",
-   "source": "1a01a9693a3af66b-Report-6649.xlsx",
+   "source": "Report-6649.xlsx",
    "rowCount": 48,
    "total": {
     "goodLeads": 126,
@@ -595813,7 +595813,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb76a349c769-Report-4684.xlsx",
+   "source": "Report-4684.xlsx",
    "rowCount": 49,
    "total": {
     "goodLeads": 135,
@@ -596489,7 +596489,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-21",
    "runDate": "2026-08-21",
-   "source": "1a024e53a93507b0-Report-5392.xlsx",
+   "source": "Report-5392.xlsx",
    "rowCount": 52,
    "total": {
     "goodLeads": 142,
@@ -610297,7 +610297,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-28",
    "runDate": "2026-07-28",
-   "source": "19fa94aa12643d09-Report-3691.xlsx",
+   "source": "Report-3691.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -610394,7 +610394,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-29",
    "runDate": "2026-07-29",
-   "source": "19fae6eb2d0e28fb-Report-9491.xlsx",
+   "source": "Report-9491__1.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -610491,7 +610491,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-30",
    "runDate": "2026-07-30",
-   "source": "19fb39550cbed7f4-Report-3987.xlsx",
+   "source": "Report-3987.xlsx",
    "rowCount": 6,
    "reps": [
     {
@@ -610588,7 +610588,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-02",
    "runDate": "2026-08-02",
-   "source": "19fc304f4463751a-Report-7666.xlsx",
+   "source": "Report-7666.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -610672,7 +610672,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-04",
    "runDate": "2026-08-04",
-   "source": "19fcd55c775d445c-Report-5818.xlsx",
+   "source": "Report-5818__1.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -610756,7 +610756,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-05",
    "runDate": "2026-08-05",
-   "source": "19fd27c5a5f527c1-Report-59.xlsx",
+   "source": "Report-59.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -610840,7 +610840,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-06",
    "runDate": "2026-08-06",
-   "source": "19fd79ed88047eab-Report-3942.xlsx",
+   "source": "Report-3942__1.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -610924,7 +610924,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ec789b0e1d0-Report-1408.xlsx",
+   "source": "Report-1408.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -611008,7 +611008,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-09",
    "runDate": "2026-08-09",
-   "source": "19fe71096be5e68b-Report-2123.xlsx",
+   "source": "Report-2123.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -611092,7 +611092,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-10",
    "runDate": "2026-08-10",
-   "source": "19fec3c09d1af5a4-Report-5715.xlsx",
+   "source": "Report-5715.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -611176,7 +611176,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-11",
    "runDate": "2026-08-11",
-   "source": "19ff1618f9fb9e62-Report-2588.xlsx",
+   "source": "Report-2588.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -611260,7 +611260,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-12",
    "runDate": "2026-08-12",
-   "source": "19ff6884fd13a908-Report-8006.xlsx",
+   "source": "Report-8006.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -611344,7 +611344,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-13",
    "runDate": "2026-08-13",
-   "source": "19ffbaee5a5c0d8e-Report-679.xlsx",
+   "source": "Report-679.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -611428,7 +611428,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-14",
    "runDate": "2026-08-14",
-   "source": "1a000d55342008c9-Report-5727.xlsx",
+   "source": "Report-5727.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -611512,7 +611512,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-15",
    "runDate": "2026-08-15",
-   "source": "1a005fc6e77dc099-Report-3150.xlsx",
+   "source": "Report-3150.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -611596,7 +611596,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1e38c583af3-Report-4297.xlsx",
+   "source": "Report-4297.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -611680,7 +611680,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-17",
    "runDate": "2026-08-17",
-   "source": "1a01048ca4a9e225-Report-3951.xlsx",
+   "source": "Report-3951.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -611764,7 +611764,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-18",
    "runDate": "2026-08-18",
-   "source": "1a015703bb27884f-Report-7259.xlsx",
+   "source": "Report-7259.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -611848,7 +611848,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-19",
    "runDate": "2026-08-19",
-   "source": "1a01a966f3237cd7-Report-705.xlsx",
+   "source": "Report-705.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -611932,7 +611932,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb744fe9dbec-Report-699.xlsx",
+   "source": "Report-699.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -612016,7 +612016,7 @@
    "begin": "2026-08-01",
    "end": "2026-08-21",
    "runDate": "2026-08-21",
-   "source": "1a024e51cb270c61-Report-5375.xlsx",
+   "source": "Report-5375.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -613566,7 +613566,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-28",
    "runDate": "2026-07-28",
-   "source": "19fa94aac0bceb11-Report-5598.xlsx",
+   "source": "Report-5598.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -613650,7 +613650,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-29",
    "runDate": "2026-07-29",
-   "source": "19fae6ebbf4363a1-Report-1627.xlsx",
+   "source": "Report-1627.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -613734,7 +613734,7 @@
    "begin": "2026-06-01",
    "end": "2026-06-30",
    "runDate": "2026-07-30",
-   "source": "19fb39566b6d4d27-Report-9152.xlsx",
+   "source": "Report-9152.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -613818,7 +613818,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-02",
    "runDate": "2026-08-02",
-   "source": "19fc304fac760e9d-Report-5545.xlsx",
+   "source": "Report-5545.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -613902,7 +613902,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-04",
    "runDate": "2026-08-04",
-   "source": "19fcd55d3ee2b00b-Report-6276.xlsx",
+   "source": "Report-6276.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -613986,7 +613986,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-05",
    "runDate": "2026-08-05",
-   "source": "19fd27c5dcc4dcf3-Report-6831.xlsx",
+   "source": "Report-6831.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -614070,7 +614070,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-06",
    "runDate": "2026-08-06",
-   "source": "19fd79edf16829fc-Report-4899.xlsx",
+   "source": "Report-4899.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -614154,7 +614154,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-08",
    "runDate": "2026-08-08",
-   "source": "19fe1ec7c39dd320-Report-8810.xlsx",
+   "source": "Report-8810.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -614238,7 +614238,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-09",
    "runDate": "2026-08-09",
-   "source": "19fe710997437e41-Report-400.xlsx",
+   "source": "Report-400__1.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -614322,7 +614322,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-10",
    "runDate": "2026-08-10",
-   "source": "19fec3c0e8680bd5-Report-9363.xlsx",
+   "source": "Report-9363.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -614406,7 +614406,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-11",
    "runDate": "2026-08-11",
-   "source": "19ff161941c57758-Report-6402.xlsx",
+   "source": "Report-6402.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -614490,7 +614490,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-12",
    "runDate": "2026-08-12",
-   "source": "19ff6884fa940712-Report-9822.xlsx",
+   "source": "Report-9822.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -614574,7 +614574,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-13",
    "runDate": "2026-08-13",
-   "source": "19ffbaef08bb2227-Report-1002.xlsx",
+   "source": "Report-1002.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -614658,7 +614658,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-14",
    "runDate": "2026-08-14",
-   "source": "1a000d55542fc2ea-Report-2087.xlsx",
+   "source": "Report-2087.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -614742,7 +614742,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-15",
    "runDate": "2026-08-15",
-   "source": "1a005fc723bbe61d-Report-2067.xlsx",
+   "source": "Report-2067.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -614826,7 +614826,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-16",
    "runDate": "2026-08-16",
-   "source": "1a00b1e3a086311d-Report-5686.xlsx",
+   "source": "Report-5686.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -614910,7 +614910,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-17",
    "runDate": "2026-08-17",
-   "source": "1a01048d4d0984b0-Report-6576.xlsx",
+   "source": "Report-6576.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -614994,7 +614994,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-18",
    "runDate": "2026-08-18",
-   "source": "1a015703db55a331-Report-1428.xlsx",
+   "source": "Report-1428.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -615078,7 +615078,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-19",
    "runDate": "2026-08-19",
-   "source": "1a01a96782ce8acd-Report-7112.xlsx",
+   "source": "Report-7112.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -615162,7 +615162,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-20",
    "runDate": "2026-08-20",
-   "source": "1a01fb74e0f01d52-Report-4888.xlsx",
+   "source": "Report-4888.xlsx",
    "rowCount": 5,
    "reps": [
     {
@@ -615246,7 +615246,7 @@
    "begin": "2026-07-01",
    "end": "2026-07-21",
    "runDate": "2026-08-21",
-   "source": "1a024e52480de3bc-Report-9757.xlsx",
+   "source": "Report-9757.xlsx",
    "rowCount": 5,
    "reps": [
     {
