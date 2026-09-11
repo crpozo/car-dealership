@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-10",
+ "generatedAt": "2026-09-11",
  "stores": [
   {
    "id": "armstrong-subaru",
@@ -36088,6 +36088,107 @@
     "Bay Ridge Honda"
    ],
    "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-11",
+   "runDate": "2026-09-11",
+   "source": "1a0908e2611fc1fe-Scheduled Report-9-11-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 6,
+   "total": {
+    "goodLeads": 526,
+    "sold": 102.0,
+    "apptsShown": 50,
+    "contactPct": 0.45899999999999996,
+    "apptSetOfContactedPct": 0.5020746887966805,
+    "apptSetPct": null,
+    "contacted": 179,
+    "apptsSet": 66,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 100,
+      "sold": 56.0,
+      "apptsShown": 2,
+      "contactPct": 0.09,
+      "apptSetOfContactedPct": 1.1111111111111112,
+      "apptSetPct": null,
+      "contacted": 9,
+      "apptsSet": 10
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 113,
+      "sold": 21.0,
+      "apptsShown": 18,
+      "contactPct": 0.447,
+      "apptSetOfContactedPct": 0.8823529411764706,
+      "apptSetPct": null,
+      "contacted": 51,
+      "apptsSet": 45
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 312,
+      "sold": 25.0,
+      "apptsShown": 30,
+      "contactPct": 0.574,
+      "apptSetOfContactedPct": 0.3687150837988827,
+      "apptSetPct": null,
+      "contacted": 179,
+      "apptsSet": 66
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0.667,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
    "period": "prior",
    "dateRange": "Previous Month MTD",
    "begin": "2026-07-01",
@@ -37415,6 +37516,107 @@
       "apptSetPct": null,
       "contacted": 141,
       "apptsSet": 50
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 2,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0.667,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-11",
+   "runDate": "2026-09-11",
+   "source": "1a0908e2611fc1fe-Scheduled Report-9-11-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 6,
+   "total": {
+    "goodLeads": 523,
+    "sold": 116.0,
+    "apptsShown": 68,
+    "contactPct": 0.503,
+    "apptSetOfContactedPct": 0.44106463878326996,
+    "apptSetPct": null,
+    "contacted": 162,
+    "apptsSet": 54,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 121,
+      "sold": 64.0,
+      "apptsShown": 7,
+      "contactPct": 0.344,
+      "apptSetOfContactedPct": 0.2857142857142857,
+      "apptSetPct": null,
+      "contacted": 42,
+      "apptsSet": 12
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 114,
+      "sold": 31.0,
+      "apptsShown": 35,
+      "contactPct": 0.48700000000000004,
+      "apptSetOfContactedPct": 0.8928571428571429,
+      "apptSetPct": null,
+      "contacted": 56,
+      "apptsSet": 50
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 286,
+      "sold": 19.0,
+      "apptsShown": 26,
+      "contactPct": 0.5670000000000001,
+      "apptSetOfContactedPct": 0.3333333333333333,
+      "apptSetPct": null,
+      "contacted": 162,
+      "apptsSet": 54
      },
      "byInventory": []
     },
@@ -38837,6 +39039,121 @@
     "Garavel CJDR"
    ],
    "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-11",
+   "runDate": "2026-09-11",
+   "source": "1a09090c1e6b55be-Scheduled Report-9-11-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 141,
+    "sold": 11.0,
+    "apptsShown": 24,
+    "contactPct": 0.547,
+    "apptSetOfContactedPct": 0.36363636363636365,
+    "apptSetPct": null,
+    "contacted": 37,
+    "apptsSet": 6,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 32,
+      "sold": 3.0,
+      "apptsShown": 5,
+      "contactPct": 0.529,
+      "apptSetOfContactedPct": 0.47058823529411764,
+      "apptSetPct": null,
+      "contacted": 17,
+      "apptsSet": 8
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 33,
+      "sold": 4.0,
+      "apptsShown": 12,
+      "contactPct": 0.636,
+      "apptSetOfContactedPct": 0.6190476190476191,
+      "apptSetPct": null,
+      "contacted": 21,
+      "apptsSet": 13
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 74,
+      "sold": 4.0,
+      "apptsShown": 6,
+      "contactPct": 0.506,
+      "apptSetOfContactedPct": 0.16216216216216217,
+      "apptSetPct": null,
+      "contacted": 37,
+      "apptsSet": 6
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 2,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.5,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
    "period": "prior",
    "dateRange": "Previous Month MTD",
    "begin": "2026-07-01",
@@ -40161,6 +40478,121 @@
       "apptSetPct": null,
       "contacted": 40,
       "apptsSet": 13
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 3,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 0.4,
+      "apptSetOfContactedPct": 1.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-11",
+   "runDate": "2026-09-11",
+   "source": "1a09090c1e6b55be-Scheduled Report-9-11-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 138,
+    "sold": 23.0,
+    "apptsShown": 33,
+    "contactPct": 0.757,
+    "apptSetOfContactedPct": 0.41346153846153844,
+    "apptSetPct": null,
+    "contacted": 46,
+    "apptsSet": 17,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 35,
+      "sold": 8.0,
+      "apptsShown": 6,
+      "contactPct": 0.8290000000000001,
+      "apptSetOfContactedPct": 0.27586206896551724,
+      "apptSetPct": null,
+      "contacted": 29,
+      "apptsSet": 8
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 30,
+      "sold": 10.0,
+      "apptsShown": 15,
+      "contactPct": 0.9690000000000001,
+      "apptSetOfContactedPct": 0.5862068965517241,
+      "apptSetPct": null,
+      "contacted": 29,
+      "apptsSet": 17
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 70,
+      "sold": 4.0,
+      "apptsShown": 12,
+      "contactPct": 0.6629999999999999,
+      "apptSetOfContactedPct": 0.3695652173913043,
+      "apptSetPct": null,
+      "contacted": 46,
+      "apptsSet": 17
      },
      "byInventory": []
     },
@@ -41597,6 +42029,121 @@
     "Garavel Subaru"
    ],
    "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-11",
+   "runDate": "2026-09-11",
+   "source": "1a09090be69d51d4-Scheduled Report-9-11-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 245,
+    "sold": 39.0,
+    "apptsShown": 54,
+    "contactPct": 0.57,
+    "apptSetOfContactedPct": 0.4785714285714286,
+    "apptSetPct": null,
+    "contacted": 76,
+    "apptsSet": 32,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 35,
+      "sold": 12.0,
+      "apptsShown": 6,
+      "contactPct": 0.846,
+      "apptSetOfContactedPct": 0.23333333333333334,
+      "apptSetPct": null,
+      "contacted": 30,
+      "apptsSet": 7
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 44,
+      "sold": 10.0,
+      "apptsShown": 23,
+      "contactPct": 0.778,
+      "apptSetOfContactedPct": 0.7941176470588235,
+      "apptSetPct": null,
+      "contacted": 34,
+      "apptsSet": 27
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 164,
+      "sold": 17.0,
+      "apptsShown": 24,
+      "contactPct": 0.46399999999999997,
+      "apptSetOfContactedPct": 0.42105263157894735,
+      "apptSetPct": null,
+      "contacted": 76,
+      "apptsSet": 32
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 1.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0.5,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
    "period": "prior",
    "dateRange": "Previous Month MTD",
    "begin": "2026-07-01",
@@ -42962,6 +43509,121 @@
       "apptSetOfContactedPct": 0.0,
       "apptSetPct": null,
       "contacted": 2,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-11",
+   "runDate": "2026-09-11",
+   "source": "1a09090be69d51d4-Scheduled Report-9-11-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 231,
+    "sold": 37.0,
+    "apptsShown": 34,
+    "contactPct": 0.703,
+    "apptSetOfContactedPct": 0.30246913580246915,
+    "apptSetPct": null,
+    "contacted": 90,
+    "apptsSet": 24,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 48,
+      "sold": 15.0,
+      "apptsShown": 7,
+      "contactPct": 0.78,
+      "apptSetOfContactedPct": 0.1891891891891892,
+      "apptSetPct": null,
+      "contacted": 37,
+      "apptsSet": 7
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 37,
+      "sold": 12.0,
+      "apptsShown": 15,
+      "contactPct": 0.875,
+      "apptSetOfContactedPct": 0.5625,
+      "apptSetPct": null,
+      "contacted": 32,
+      "apptsSet": 18
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 142,
+      "sold": 10.0,
+      "apptsShown": 11,
+      "contactPct": 0.636,
+      "apptSetOfContactedPct": 0.26666666666666666,
+      "apptSetPct": null,
+      "contacted": 90,
+      "apptsSet": 24
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 4,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0.75,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 3,
       "apptsSet": 0
      },
      "byInventory": []
@@ -610829,8 +611491,8 @@
   {
    "storeId": "sommer-s-automotive",
    "name": "Brian Black",
-   "videosCreated": 9,
-   "videosSent": 10,
+   "videosCreated": 10,
+   "videosSent": 11,
    "views": 4,
    "ctaClicks": 0
   },
@@ -610869,49 +611531,49 @@
   {
    "storeId": "sommer-s-automotive",
    "name": "Joe Vella",
-   "videosCreated": 8,
-   "videosSent": 31,
-   "views": 25,
+   "videosCreated": 9,
+   "videosSent": 37,
+   "views": 36,
    "ctaClicks": 3
   },
   {
    "storeId": "sommer-s-automotive",
    "name": "Kyle Bohachek",
    "videosCreated": 5,
-   "videosSent": 26,
-   "views": 8,
+   "videosSent": 31,
+   "views": 11,
    "ctaClicks": 1
   },
   {
    "storeId": "sommer-s-automotive",
    "name": "Omar Soulimani",
-   "videosCreated": 1,
-   "videosSent": 18,
-   "views": 0,
-   "ctaClicks": 0
-  },
-  {
-   "storeId": "sommer-s-automotive",
-   "name": "Peng Tai",
-   "videosCreated": 7,
-   "videosSent": 9,
+   "videosCreated": 2,
+   "videosSent": 19,
    "views": 2,
    "ctaClicks": 0
   },
   {
    "storeId": "sommer-s-automotive",
-   "name": "Rod Weber",
+   "name": "Peng Tai",
    "videosCreated": 8,
-   "videosSent": 23,
+   "videosSent": 10,
    "views": 3,
-   "ctaClicks": 6
+   "ctaClicks": 0
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "name": "Rod Weber",
+   "videosCreated": 12,
+   "videosSent": 32,
+   "views": 5,
+   "ctaClicks": 7
   },
   {
    "storeId": "sommer-s-automotive",
    "name": "Troy Royse",
    "videosCreated": 4,
    "videosSent": 34,
-   "views": 16,
+   "views": 19,
    "ctaClicks": 0
   },
   {
@@ -610941,9 +611603,9 @@
   {
    "storeId": "sommer-s-automotive",
    "name": "Michael Tuler",
-   "videosCreated": 11,
-   "videosSent": 11,
-   "views": 4,
+   "videosCreated": 21,
+   "videosSent": 21,
+   "views": 6,
    "ctaClicks": 1
   },
   {
@@ -610965,25 +611627,25 @@
   {
    "storeId": "sommer-s-automotive",
    "name": "Taylor Radcliffe",
-   "videosCreated": 11,
-   "videosSent": 38,
+   "videosCreated": 12,
+   "videosSent": 39,
    "views": 12,
    "ctaClicks": 0
   },
   {
    "storeId": "sommer-s-automotive",
    "name": "Oliver Hatch",
-   "videosCreated": 22,
-   "videosSent": 27,
+   "videosCreated": 23,
+   "videosSent": 28,
    "views": 6,
    "ctaClicks": 2
   },
   {
    "storeId": "sommer-s-automotive",
    "name": "Thomas Sipin",
-   "videosCreated": 23,
-   "videosSent": 32,
-   "views": 17,
+   "videosCreated": 24,
+   "videosSent": 34,
+   "views": 18,
    "ctaClicks": 0
   },
   {
@@ -611021,9 +611683,9 @@
   {
    "storeId": "sommer-s-automotive",
    "name": "Robert Quintanilla",
-   "videosCreated": 28,
-   "videosSent": 63,
-   "views": 13,
+   "videosCreated": 31,
+   "videosSent": 67,
+   "views": 15,
    "ctaClicks": 8
   },
   {
@@ -611069,9 +611731,9 @@
   {
    "storeId": "vern-eide-acura",
    "name": "Jacob Sample",
-   "videosCreated": 11,
-   "videosSent": 20,
-   "views": 2,
+   "videosCreated": 14,
+   "videosSent": 24,
+   "views": 5,
    "ctaClicks": 1
   },
   {
@@ -611101,8 +611763,8 @@
   {
    "storeId": "vern-eide-acura",
    "name": "Elise Mollenbeck",
-   "videosCreated": 7,
-   "videosSent": 7,
+   "videosCreated": 9,
+   "videosSent": 9,
    "views": 17,
    "ctaClicks": 6
   },
@@ -611254,7 +611916,7 @@
    "storeId": "vern-eide-honda",
    "name": "Istvan Szabadi",
    "videosCreated": 0,
-   "videosSent": 15,
+   "videosSent": 18,
    "views": 1,
    "ctaClicks": 0
   },
@@ -611437,16 +612099,16 @@
   {
    "storeId": "vern-eide-honda",
    "name": "Tony Jensen",
-   "videosCreated": 1,
-   "videosSent": 1,
+   "videosCreated": 2,
+   "videosSent": 5,
    "views": 5,
    "ctaClicks": 0
   },
   {
    "storeId": "vern-eide-honda",
    "name": "Noah Stoebner",
-   "videosCreated": 0,
-   "videosSent": 0,
+   "videosCreated": 1,
+   "videosSent": 1,
    "views": 0,
    "ctaClicks": 0
   },
@@ -611517,9 +612179,9 @@
   {
    "storeId": "vern-eide-sioux-city-combined",
    "name": "Dominick Rust",
-   "videosCreated": 1,
-   "videosSent": 1,
-   "views": 4,
+   "videosCreated": 3,
+   "videosSent": 3,
+   "views": 8,
    "ctaClicks": 2
   },
   {
@@ -611653,9 +612315,9 @@
   {
    "storeId": "vern-eide-mitsubishi",
    "name": "Jared Buettgenback",
-   "videosCreated": 6,
-   "videosSent": 10,
-   "views": 1,
+   "videosCreated": 7,
+   "videosSent": 13,
+   "views": 3,
    "ctaClicks": 2
   },
   {
@@ -611702,7 +612364,7 @@
    "storeId": "vern-eide-mitsubishi",
    "name": "Tyler Zebell",
    "videosCreated": 1,
-   "videosSent": 43,
+   "videosSent": 45,
    "views": 4,
    "ctaClicks": 2
   },
@@ -611717,9 +612379,9 @@
   {
    "storeId": "vern-eide-mitsubishi",
    "name": "Terry Johnston",
-   "videosCreated": 3,
-   "videosSent": 20,
-   "views": 3,
+   "videosCreated": 4,
+   "videosSent": 24,
+   "views": 7,
    "ctaClicks": 0
   },
   {
@@ -611734,7 +612396,7 @@
    "storeId": "vern-eide-mitsubishi",
    "name": "Hunter Fritsch",
    "videosCreated": 3,
-   "videosSent": 3,
+   "videosSent": 7,
    "views": 0,
    "ctaClicks": 0
   },
@@ -611766,7 +612428,7 @@
    "storeId": "vern-eide-mitsubishi",
    "name": "Sia Piel",
    "videosCreated": 2,
-   "videosSent": 37,
+   "videosSent": 39,
    "views": 1,
    "ctaClicks": 3
   },
@@ -612111,7 +612773,7 @@
   },
   "bay-ridge-honda": {
    "firstRun": "2026-08-29",
-   "lastRun": "2026-09-10",
+   "lastRun": "2026-09-11",
    "runDates": [
     "2026-08-29",
     "2026-08-30",
@@ -612125,7 +612787,8 @@
     "2026-09-07",
     "2026-09-08",
     "2026-09-09",
-    "2026-09-10"
+    "2026-09-10",
+    "2026-09-11"
    ],
    "months": [
     "2026-07",
@@ -612138,7 +612801,7 @@
   },
   "garavel-cjdr": {
    "firstRun": "2026-08-29",
-   "lastRun": "2026-09-10",
+   "lastRun": "2026-09-11",
    "runDates": [
     "2026-08-29",
     "2026-08-30",
@@ -612151,7 +612814,8 @@
     "2026-09-07",
     "2026-09-08",
     "2026-09-09",
-    "2026-09-10"
+    "2026-09-10",
+    "2026-09-11"
    ],
    "months": [
     "2026-07",
@@ -612164,7 +612828,7 @@
   },
   "garavel-subaru": {
    "firstRun": "2026-08-29",
-   "lastRun": "2026-09-10",
+   "lastRun": "2026-09-11",
    "runDates": [
     "2026-08-29",
     "2026-08-30",
@@ -612177,7 +612841,8 @@
     "2026-09-07",
     "2026-09-08",
     "2026-09-09",
-    "2026-09-10"
+    "2026-09-10",
+    "2026-09-11"
    ],
    "months": [
     "2026-07",
@@ -612723,8 +613388,8 @@
  },
  "ingest": {
   "workbooksFound": 2994,
-  "parsed": 2711,
-  "unique": 1594,
+  "parsed": 2717,
+  "unique": 1600,
   "duplicatesDropped": 1117,
   "skipped": [
    {
