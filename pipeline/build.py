@@ -26,6 +26,19 @@ INDEX = os.path.join(ROOT, "index.html")
 VERSIONED = ["data.js", "core.js", "pages.js", "app.js", "styles.css"]
 
 data = json.load(open(SRC))
+
+# the Logs page: the newest runs, newest first
+RUNS = os.path.join(HERE, "runs.jsonl")
+runs = []
+if os.path.exists(RUNS):
+    for line in open(RUNS):
+        line = line.strip()
+        if line:
+            try:
+                runs.append(json.loads(line))
+            except ValueError:
+                pass
+data["runs"] = list(reversed(runs))[:60]
 payload = json.dumps(data, separators=(",", ":")).replace("</", "<\\/")
 
 os.makedirs(ASSETS, exist_ok=True)

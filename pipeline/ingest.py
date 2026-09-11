@@ -950,8 +950,69 @@ def main(argv):
         print("covideo rows: %d" % len(covideo))
     if rep_goals:
         print("rep goals: %d" % len(rep_goals))
+    write_run_log(data, xlsx_paths, pdf_paths, csv_paths, other_csv_paths,
+                  snapshots, kept, dupes, skipped, matador, covideo, src_dirs)
     print("\nwrote %s" % OUT)
     return 0
+
+
+RUNS = os.path.join(HERE, "runs.jsonl")
+RUNS_KEPT = 180        # ~3 months of twice-daily refreshes
+
+
+def write_run_log(data, xlsx, pdfs, mat_csv, other_csv, parsed, kept, dupes,
+                  skipped, matador, covideo, src_dirs):
+    """One line per refresh: what arrived, what it became, what failed.
+
+    This is the dashboard's Logs page. It is written here rather than by the
+    shell script because only the ingest knows what each file turned into, and
+    "new snapshots" is the count that actually answers "did today's data land?"
+    """
+    prev = None
+    try:
+        with open(RUNS) as fh:
+            lines = [ln for ln in fh.read().splitlines() if ln.strip()]
+        prev = json.loads(lines[-1]) if lines else None
+    except Exception:
+        lines = []
+
+    pull = None
+    for d in src_dirs:
+        candidate = os.path.join(d, "gmail-pull", ".last-pull.json")
+        if os.path.exists(candidate):
+            try:
+                pull = json.load(open(candidate))
+            except Exception:
+                pull = None
+            break
+
+    before = (prev or {}).get("snapshots", {}).get("total", 0)
+    stores = []
+    for sid, cov in sorted(data["coverage"].items()):
+        stores.append({"id": sid, "name": data_store_name(data, sid), "through": cov.get("lastRun")})
+
+    entry = {
+        "at": datetime.now().strftime("%Y-%m-%d %H:%M"),
+        "gmail": pull,
+        "files": {"workbooks": len(xlsx), "pdfs": len(pdfs),
+                  "matadorCsv": len(mat_csv), "otherCsv": len(other_csv)},
+        "snapshots": {"total": len(kept), "new": max(0, len(kept) - before),
+                      "parsed": len(parsed), "duplicatesDropped": dupes},
+        "matadorRows": len(matador),
+        "covideoRows": len(covideo),
+        "stores": stores,
+        "skipped": [{"file": f, "reason": r} for f, r in skipped],
+    }
+    lines.append(json.dumps(entry, separators=(",", ":")))
+    with open(RUNS, "w") as fh:
+        fh.write("\n".join(lines[-RUNS_KEPT:]) + "\n")
+
+
+def data_store_name(data, sid):
+    for s in data.get("stores", []):
+        if s["id"] == sid:
+            return s["name"]
+    return sid
 
 
 if __name__ == "__main__":

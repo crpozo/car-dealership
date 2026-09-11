@@ -25,6 +25,7 @@ import json
 import os
 import sys
 import time
+from datetime import datetime
 
 from googleapiclient.errors import HttpError
 
@@ -144,6 +145,15 @@ def main():
             print("  ...%d/%d messages" % (i, len(new_ids)))
 
     print("saved %d attachments (%d messages had none) -> %s" % (saved, skipped, OUT))
+
+    # leave a breadcrumb for ingest.py, which builds the run log the dashboard shows
+    try:
+        with open(os.path.join(os.path.dirname(OUT), ".last-pull.json"), "w") as fh:
+            json.dump({"at": datetime.now().strftime("%Y-%m-%d %H:%M"),
+                       "messages": len(msg_ids), "new": len(new_ids),
+                       "attachments": saved}, fh)
+    except Exception:  # the log is a nicety; never fail a pull over it
+        pass
 
 
 if __name__ == "__main__":

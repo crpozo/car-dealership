@@ -2163,7 +2163,102 @@
 
   /* ----------------------------------------------------------------- export */
 
+  /* ============================================================== 7. LOGS
+     What entered the dashboard on each refresh. The numbers come from the
+     pipeline itself (pipeline/runs.jsonl), so this answers "did today's data
+     actually land?" without anyone opening a terminal. */
+
+  function logsPage() {
+    return guard(function () {
+      var runs = DATA().runs || [];
+      var head = pageHead("Logs", "What each refresh brought in \u00b7 newest first");
+      if (!runs.length) {
+        return '<section class="page" id="page-logs">' + head +
+          emptyState("No runs recorded yet",
+                     "The log starts filling on the next refresh.") + "</section>";
+      }
+
+      function dayOf(at) { return String(at || "").slice(0, 10); }
+
+      /* stores whose newest report is the day the run happened */
+      function freshCount(run) {
+        var d = dayOf(run.at), n = 0;
+        (run.stores || []).forEach(function (st) { if (st.through === d) n++; });
+        return n;
+      }
+
+      var rows = runs.map(function (run, i) {
+        var g = run.gmail || null;
+        var f = run.files || {};
+        var sn = run.snapshots || {};
+        var fresh = freshCount(run);
+        var total = (run.stores || []).length;
+        var problems = (run.skipped || []).length;
+        var path = "run:" + i;
+        var kids = (run.stores || []).slice().sort(function (a, b) {
+          return (a.through || "") < (b.through || "") ? 1 : -1;
+        });
+
+        var main = '<tr class="lt-row" data-path="' + esc(path) + '">' +
+          '<td class="name depth-0"><button type="button" class="expander" aria-expanded="false"' +
+          ' onclick="Pages.toggleRows(this)" title="Show every store and any files that were skipped">' +
+          '<span class="chev" aria-hidden="true"></span>' + esc(run.at || "?") + "</button></td>" +
+          td(g ? num(g["new"], "") : na("This run pre-dates the Gmail log"),
+             "", g ? g.messages + " messages in the label \u00b7 " + g.attachments + " attachments saved" : "") +
+          td(num((f.workbooks || 0) + (f.pdfs || 0) + (f.matadorCsv || 0) + (f.otherCsv || 0), ""), "",
+             "Excel " + (f.workbooks || 0) + " \u00b7 PDF " + (f.pdfs || 0) +
+             " \u00b7 Matador CSV " + (f.matadorCsv || 0) + " \u00b7 other CSV " + (f.otherCsv || 0)) +
+          td(sn["new"] ? '<b>+' + esc(fmtN(sn["new"])) + "</b>" : num(0, ""), "",
+             "Total kept after de-duplication: " + fmtN(sn.total || 0) +
+             " \u00b7 parsed " + fmtN(sn.parsed || 0) +
+             " \u00b7 duplicate sends dropped " + fmtN(sn.duplicatesDropped || 0)) +
+          td(num(run.matadorRows, ""), "", "Rows in the Matador user exports") +
+          td(num(run.covideoRows, ""), "", "Rows in the Covideo usage exports") +
+          td(esc(fmtN(fresh)) + '<span class="muted"> / ' + esc(fmtN(total)) + "</span>",
+             fresh === total ? "good" : fresh ? "warn" : "bad",
+             "Stores whose newest report is dated the day this run happened") +
+          td(problems ? '<span class="delta down">' + esc(fmtN(problems)) + "</span>" : num(0, ""),
+             "", problems ? "Files the pipeline could not use" : "Every file parsed") +
+          "</tr>";
+
+        var detail = kids.map(function (st) {
+          var stale = st.through !== dayOf(run.at);
+          return '<tr class="inv-row" data-path="' + esc(path + "/s:" + st.id) + '" data-parent="' +
+            esc(path) + '" hidden>' +
+            '<td class="name depth-1">' + esc(st.name || st.id) + "</td>" +
+            '<td class="num" colspan="6">' + esc(st.through || "\u2014") + "</td>" +
+            td(stale ? '<span class="delta down">stale</span>' : '<span class="delta up">ok</span>', "",
+               stale ? "No report dated the day of this run" : "Reported on the day of this run") +
+            "</tr>";
+        }).join("");
+
+        detail += (run.skipped || []).map(function (sk) {
+          return '<tr class="inv-row" data-path="' + esc(path + "/x") + '" data-parent="' + esc(path) + '" hidden>' +
+            '<td class="name depth-1">' + esc(sk.file) + "</td>" +
+            '<td colspan="7" class="note-cell">' + esc(sk.reason) + "</td></tr>";
+        }).join("");
+
+        return main + detail;
+      }).join("");
+
+      var header = "<thead><tr><th>Run</th>" +
+        '<th class="num" title="New messages found in the SCOTT REPORTS label">New emails</th>' +
+        '<th class="num" title="Every report file the pipeline read this run">Files read</th>' +
+        '<th class="num" title="Report snapshots this run added">New snapshots</th>' +
+        '<th class="num">Matador rows</th>' +
+        '<th class="num">Covideo rows</th>' +
+        '<th class="num" title="Stores that reported on the day of the run">Stores up to date</th>' +
+        '<th class="num">Problems</th></tr></thead>';
+
+      return '<section class="page" id="page-logs">' + head +
+        tableWrap(header + "<tbody>" + rows + "</tbody>", "logs-tbl") +
+        '<p class="roster-note">Each row expands to every store with the date of its newest report, plus any file the pipeline could not use.</p>' +
+        "</section>";
+    });
+  }
+
   global.Pages = {
+    logs: logsPage,
     toggleRows: toggleRows,
     trends: trendsPage,
     setTrendMetric: setTrendMetric,

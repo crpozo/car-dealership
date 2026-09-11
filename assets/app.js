@@ -12,6 +12,7 @@
   var ROUTES = {
     overview: function (range) { return Pages.overview(range); },
     trends: function (range) { return Pages.trends(range); },
+    logs: function () { return Pages.logs(); },
     stores: function (range) { return Pages.stores(range); },
     activity: function (range) { return Pages.activity(range); },
     internet: function (range) { return Pages.internet(range); }
@@ -202,10 +203,17 @@
     if (dash) {
       dash.setAttribute("href", groupHome);
       var onDash = group ? route.name === "group"
-        : (route.name !== "store" && route.name !== "group" && route.name !== "trends");
+        : (route.name !== "store" && route.name !== "group" &&
+           route.name !== "trends" && route.name !== "logs");
       dash.classList.toggle("on", onDash);
       if (onDash) dash.setAttribute("aria-current", "page");
       else dash.removeAttribute("aria-current");
+    }
+    var lg = document.querySelector('[data-side="logs"]');
+    if (lg) {
+      lg.classList.toggle("on", route.name === "logs");
+      if (route.name === "logs") lg.setAttribute("aria-current", "page");
+      else lg.removeAttribute("aria-current");
     }
     var tr = document.querySelector('[data-side="trends"]');
     if (tr) {
