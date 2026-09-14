@@ -253,14 +253,19 @@
   function syncTimeframeReadout(range) {
     if (!tfResolved) return;
     if (!range) { tfResolved.textContent = ""; return; }
-    // the <select> already shows the preset name — spell out the actual dates here
-    tfResolved.textContent = range.dateLabel || range.label || "";
-    var tip = [];
-    if (range.compareDateLabel || range.compareLabel) {
-      tip.push("Compared against " + (range.compareDateLabel || range.compareLabel));
+    // The date inputs always show the range on screen — for a preset they are
+    // filled in here, so what is being looked at is never a guess. Editing
+    // either one turns the preset into a custom range (see initTimeframe).
+    if (tfSelect.value !== "custom") {
+      if (range.start) tfStart.value = range.start;
+      if (range.end) tfEnd.value = range.end;
     }
+    var cmp = range.compareDateLabel || range.compareLabel;
+    tfResolved.textContent = cmp ? "vs " + cmp : "";
+    var tip = [];
+    if (cmp) tip.push("Every comparison on the page is against " + cmp + ".");
     if (range.anchorMode === "data" && range.anchor) {
-      tip.push("Presets are anchored to the newest snapshot in the data (" + range.anchor + "), not today's clock.");
+      tip.push("Presets are anchored to the newest report in the data (" + range.anchor + "), not today's clock.");
     }
     if (tip.length) tfResolved.title = tip.join("\n");
     else tfResolved.removeAttribute("title");
@@ -278,11 +283,9 @@
 
     if (saved.start) tfStart.value = saved.start;
     if (saved.end) tfEnd.value = saved.end;
-    tfCustom.hidden = saved.id !== "custom";
 
     tfSelect.addEventListener("change", function () {
       var id = tfSelect.value;
-      tfCustom.hidden = id !== "custom";
       if (id === "custom" && (!tfStart.value || !tfEnd.value)) {
         // seed the custom inputs from whatever range is on screen so the first
         // switch to "custom" is not an empty, dataless view
@@ -295,8 +298,9 @@
     });
 
     function onCustom() {
-      if (tfSelect.value !== "custom") return;
       if (!tfStart.value || !tfEnd.value) return;
+      // touching a date while a preset is selected means "I want these dates"
+      tfSelect.value = "custom";
       if (tfStart.value > tfEnd.value) {
         var swap = tfStart.value; tfStart.value = tfEnd.value; tfEnd.value = swap;
       }
@@ -452,7 +456,6 @@
   function initTimeframeValues() {
     var tf = Core.settings.timeframe || { id: "month" };
     tfSelect.value = tf.id;
-    tfCustom.hidden = tf.id !== "custom";
     tfStart.value = tf.start || "";
     tfEnd.value = tf.end || "";
   }

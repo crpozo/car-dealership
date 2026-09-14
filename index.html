@@ -4,10 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Internet Coaches Dashboard</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=b9df6023f8">
+<link rel="stylesheet" href="assets/styles.css?v=ee21499dfc">
 </head>
 <body>
 
@@ -51,9 +52,10 @@
   <div class="tf" role="group" aria-label="Timeframe">
     <label class="tf-label" for="tf-select">Timeframe</label>
     <select id="tf-select"></select>
-    <span id="tf-custom" class="tf-custom" hidden>
+    <span id="tf-custom" class="tf-custom">
+      <label class="tf-sub" for="tf-start">From</label>
       <input type="date" id="tf-start" aria-label="Range start">
-      <span class="tf-dash" aria-hidden="true">&rarr;</span>
+      <label class="tf-sub" for="tf-end">To</label>
       <input type="date" id="tf-end" aria-label="Range end">
     </span>
     <span id="tf-resolved" class="tf-resolved"></span>
@@ -117,9 +119,9 @@
 </div>
 </div>
 
-<script src="assets/data.js?v=b9df6023f8"></script>
-<script src="assets/core.js?v=b9df6023f8"></script>
-<script src="assets/pages.js?v=b9df6023f8"></script>
-<script src="assets/app.js?v=b9df6023f8"></script>
+<script src="assets/data.js?v=ee21499dfc"></script>
+<script src="assets/core.js?v=ee21499dfc"></script>
+<script src="assets/pages.js?v=ee21499dfc"></script>
+<script src="assets/app.js?v=ee21499dfc"></script>
 </body>
 </html>

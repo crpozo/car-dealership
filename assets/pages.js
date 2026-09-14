@@ -132,6 +132,17 @@
     return (range && (range.label || (range.start && range.end && range.start + " → " + range.end))) || "selected range";
   }
 
+  /* What to call the selected period and its comparison. "MTD / Prev MTD" is
+     only true for the month preset; any other range says its dates, so a
+     custom June never reads as "month to date". */
+  function periodLabels(range) {
+    if (!range || range.id === "month") return { cur: "MTD", prev: "Prev MTD" };
+    return {
+      cur: range.dateLabel || rangeLabel(range),
+      prev: range.compareDateLabel || range.compareLabel || "prior period"
+    };
+  }
+
   function compareRange(range) {
     if (!range || !range.compareStart || !range.compareEnd) return null;
     return {
@@ -568,7 +579,7 @@
     var d = Math.round((cur - pri) * 100);
     if (d === 0) return "";
     return ' <span class="delta ' + (d > 0 ? "up" : "down") + '" title="' +
-      esc("Percentage points vs " + (label || "Prev MTD") + " (was " + (fmtPct(pri) || "?") + ")") +
+      esc("Percentage points vs " + (label || "the comparison period") + " (was " + (fmtPct(pri) || "?") + ")") +
       '">' + esc((d > 0 ? "+" : "") + d + " pts") + "</span>";
   }
 
@@ -677,7 +688,7 @@
     var closing = net ? c.rate(net.sold, net.goodLeads) : null;
     var noNet = "No internet lead rows for " + rangeLabel(range);
 
-    var st = storeStatus(sm, prior);
+    var st = storeStatus(sm, prior, range);
     var pill = st.band === "none" ? "" :
       '<span class="pill ' + st.band + '" title="' + esc(st.detail) +
       '"><span class="dot" aria-hidden="true"></span>' + esc(st.word) + "</span>";
@@ -686,7 +697,7 @@
     if (prior && sm.total && prior.total) {
       var scmp = null;
       try { scmp = c.compare(sm.total, prior.total); } catch (e) { scmp = null; }
-      soldDelta = scmp ? deltaChip(scmp, "sold", "Prev MTD (same days last month)") : "";
+      soldDelta = scmp ? deltaChip(scmp, "sold", periodLabels(range).prev) : "";
     }
 
     var sub = [s.crm].concat(s.tools || []).filter(Boolean).join(" · ");
@@ -721,7 +732,8 @@
      days last month. 0 misses = On track, 1 = Watch, 2+ = Needs attention.
      Checks that cannot be evaluated (no prior report) are skipped, never
      counted as failures, and the pill tooltip itemises every check. */
-  function storeStatus(sm, prior) {
+  function storeStatus(sm, prior, range) {
+    var PL = periodLabels(range);
     var c = C();
     var net = sm && sm.internet;
     var checks = [];
@@ -733,14 +745,14 @@
       label: "Appts set " + fmtPct(ap) + " vs goal " + fmtPct(apptTarget(), 0) });
     if (prior && prior.total && sm.total && isNum(sm.total.sold) && isNum(prior.total.sold)) {
       checks.push({ ok: sm.total.sold >= prior.total.sold,
-        label: "Sold " + fmtN(sm.total.sold) + " vs " + fmtN(prior.total.sold) + " Prev MTD" });
+        label: "Sold " + fmtN(sm.total.sold) + " vs " + fmtN(prior.total.sold) + " " + PL.prev });
     }
     var closing = net ? c.rate(net.sold, net.goodLeads) : null;
     var priorNet = prior && prior.internet;
     var priorClosing = priorNet ? c.rate(priorNet.sold, priorNet.goodLeads) : null;
     if (isNum(closing) && isNum(priorClosing)) {
       checks.push({ ok: closing >= priorClosing,
-        label: "Internet closing " + fmtPct(closing) + " vs " + fmtPct(priorClosing) + " Prev MTD" });
+        label: "Internet closing " + fmtPct(closing) + " vs " + fmtPct(priorClosing) + " " + PL.prev });
     }
     if (!checks.length) return { band: "none", word: "", detail: "" };
     var misses = checks.filter(function (x) { return !x.ok; }).length;
@@ -762,7 +774,8 @@
       }
       var members = STORES().filter(function (s) { return g.storeIds.indexOf(s.id) !== -1; });
       var shown = withData(members, range);
-      var head = pageHead(g.name, shown.list.length + " of " + members.length + " stores reporting \u00b7 " + rangeLabel(range));
+      var head = '<a class="backlink" href="#/overview">&larr; All stores</a>' +
+        pageHead(g.name, shown.list.length + " of " + members.length + " stores reporting \u00b7 " + rangeLabel(range));
       if (!shown.list.length) {
         return '<section class="page" id="page-group">' + head +
           emptyState("No data for this range", "No " + g.name + " store has reports covering " + rangeLabel(range) + ".") +
@@ -795,7 +808,7 @@
     if (prior && prior.hasData && total && prior.total) {
       var cmp = null;
       try { cmp = c.compare(total, prior.total); } catch (e) { cmp = null; }
-      soldDelta = cmp ? deltaChip(cmp, "sold", "Prev MTD (same days last month)") : "";
+      soldDelta = cmp ? deltaChip(cmp, "sold", periodLabels(range).prev) : "";
     }
     var cells = [
       { v: net ? num(net.goodLeads, noNet) : na(noNet), l: "Good Internet Leads", cls: "none" },
@@ -996,6 +1009,7 @@
       var cmpInfo = comparison(store.id, range);
       var prior = cmpInfo.prior;
       var compareLabel = cmpInfo.label;
+      var PL = periodLabels(range);
 
       /* --- Table 1: lead-type breakdown ---------------------------------- */
       var showCompare = !!prior;
@@ -1014,7 +1028,7 @@
         return '<th colspan="' + (showCompare ? 2 : 1) + '" class="num" title="' + esc(g.title) + '">' + esc(g.label) + "</th>";
       }).join("") + "</tr>";
       var subRow = "<tr>" + groups.map(function () {
-        return '<th class="num">MTD</th>' + (showCompare ? '<th class="num prior" title="Same days of the previous month">Prev MTD</th>' : "");
+        return '<th class="num">' + esc(PL.cur) + '</th>' + (showCompare ? '<th class="num prior" title="' + esc(compareLabel) + '">' + esc(PL.prev) + '</th>' : "");
       }).join("") + "</tr>";
 
       function metricCells(m, pm, cmp, engMode) {
@@ -1030,15 +1044,15 @@
             var cell0 = td(m ? pct(m.contactPct, reason) : na(reason), "",
               m && isNum(m.contacted) ? fmtN(m.contacted) + " contacted" : "");
             if (!showCompare) return cell0;
-            return cell0 + '<td class="num prior">' + (pm ? pct(pm.contactPct, "No Prev MTD data") : na("No Prev MTD data")) + "</td>";
+            return cell0 + '<td class="num prior">' + (pm ? pct(pm.contactPct, "No " + PL.prev + " data") : na("No " + PL.prev + " data")) + "</td>";
           }
           var v = m ? m[g.key] : null;
           var extra = "";
           if (g.key === "apptsSet" && m && isNum(m.apptSetOfContactedPct)) extra = "Appts set of contacted " + fmtPct(m.apptSetOfContactedPct);
-          var cell = td(num(v, reason) + (cmp ? " " + deltaChip(cmp, g.key, "Prev MTD") : ""), "", extra);
+          var cell = td(num(v, reason) + (cmp ? " " + deltaChip(cmp, g.key, PL.prev) : ""), "", extra);
           if (!showCompare) return cell;
           var pv = pm ? pm[g.key] : null;
-          return cell + '<td class="num prior">' + num(pv, "No Prev MTD data") + "</td>";
+          return cell + '<td class="num prior">' + num(pv, "No " + PL.prev + " data") + "</td>";
         }).join("");
       }
 
@@ -1138,8 +1152,8 @@
       return storeShell(storeId, range, "performance", function () {
         return headlineTiles(sm, range, totalCmp, netCmp) +
           '<h2 class="section-title">Lead types <span class="section-sub" title="' +
-          esc(prior ? "Prev MTD = " + compareLabel : "") + '">' +
-          esc(prior ? "MTD vs Prev MTD" : "MTD") + "</span></h2>" +
+          esc(prior ? PL.prev + " = " + compareLabel : "") + '">' +
+          esc(prior ? PL.cur + " vs " + PL.prev : PL.cur) + "</span></h2>" +
           table +
           storeTrendSection(storeId, store.name);
       });
@@ -1214,7 +1228,7 @@
           if (isNum(pv) && isNum(r.sold)) {
             var d = Math.round(r.sold - pv);
             if (d !== 0) {
-              chip = ' <span class="delta ' + (d > 0 ? "up" : "down") + '" title="vs Prev MTD: ' +
+              chip = ' <span class="delta ' + (d > 0 ? "up" : "down") + '" title="vs ' + esc(periodLabels(range).prev) + ': ' +
                 esc(fmtN(pv)) + '">' + esc((d > 0 ? "+" : "") + d) + "</span>";
             }
           }
@@ -1310,7 +1324,7 @@
           '<th class="num" title="' + esc(matadorNote) + '">Videos Sent</th>' +
           '<th class="num" title="Appts Scheduled">Appts Set</th>' +
           '<th class="num" title="Appts Shown \u00f7 Appts Scheduled">Appts Shown %</th>' +
-          '<th class="num" title="Sold in Time Frame \u00b7 \u00b1 vs Prev MTD where a prior report exists">Sold</th>' +
+          '<th class="num" title="Sold in Time Frame \u00b7 \u00b1 vs ' + esc(periodLabels(range).prev) + ' where a prior report exists">Sold</th>' +
           "</tr></thead>";
 
         function repRow(r) {
@@ -1548,7 +1562,7 @@
             : "") + nameLink + "</td>";
 
         var out = '<tr data-path="' + esc(path) + '">' + nameCell +
-          td(num(net.goodLeads, noNet) + (netCmp ? " " + deltaChip(netCmp, "goodLeads", "Prev MTD") : "")) +
+          td(num(net.goodLeads, noNet) + (netCmp ? " " + deltaChip(netCmp, "goodLeads", periodLabels(range).prev) : "")) +
           td(pct(net.contactPct, "Internet Actual Contact % not reported") + ppChip(net.contactPct, pNet && pNet.contactPct),
             colorFor(net.contactPct, engagementTarget()), "Goal " + fmtPct(engagementTarget(), 0)) +
           td(pct(apSet, "Appts set % not reported") + ppChip(apSet, pApSet),
@@ -1558,7 +1572,7 @@
           td(totals ? num(totals.calls, outReason) : na(outReason), "", outboundNote) +
           td(totals && isNum(totals.texts) ? num(totals.texts, "") : na("Texts Out not in this store's export"), "", outboundNote) +
           td(videos === null ? na("No Matador or Covideo data for this store") : num(videos, ""), "", matadorNote) +
-          td(num(net.sold, noNet) + (netCmp ? " " + deltaChip(netCmp, "sold", "Prev MTD") : "")) +
+          td(num(net.sold, noNet) + (netCmp ? " " + deltaChip(netCmp, "sold", periodLabels(range).prev) : "")) +
           td(pct(closing, "Needs internet good leads and internet sold") + ppChip(closing, pClosing),
             colorFor(closing, closingTarget()), closingTarget() !== null ? "Goal " + fmtPct(closingTarget(), 0) : "No closing goal set") +
           "</tr>";

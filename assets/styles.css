@@ -207,8 +207,11 @@ code { font-family: var(--mono); font-size: .9em; }
 .tf { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .tf-label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
 .tf-custom { display: inline-flex; align-items: center; gap: 6px; }
-.tf-dash { color: var(--faint); }
+.tf-sub { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-left: 4px; }
+.tf input[type="date"] { font: inherit; font-size: 13px; padding: 5px 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--ink); }
 .tf-resolved { font-size: 13px; color: var(--muted); }
+.backlink { display: inline-block; font-size: 13px; font-weight: 600; color: var(--muted); text-decoration: none; margin-bottom: 6px; }
+.backlink:hover { color: var(--ink); }
 
 select, input[type="date"], input[type="number"] {
   font: inherit;
