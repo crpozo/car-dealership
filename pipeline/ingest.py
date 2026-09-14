@@ -751,7 +751,8 @@ def parse_covideo(paths, log):
         by_co = {}
         for r in rows:
             co = (r.get("Company Name") or "").strip()
-            if co:
+            # some exports repeat the header line mid-file; it is not a company
+            if co and co.lower() != "company name":
                 by_co.setdefault(co, []).append(r)
         for co in by_co:            # later (newer) files overwrite earlier ones
             per_company[co] = by_co[co]
