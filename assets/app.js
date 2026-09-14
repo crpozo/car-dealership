@@ -230,15 +230,20 @@
   function syncNav(route, scope) {
     var ol = document.getElementById("topcrumbs");
     if (!ol) return;
-    var home = scope ? "#/group/" + encodeURIComponent(scope) : "#/overview";
+    // Inside a group the sidebar's "Dashboard" is the group itself, so the
+    // crumbs are the only way back up to every store.
+    var group = scope ? Core.groupById(scope) : null;
+    var groupHome = scope ? "#/group/" + encodeURIComponent(scope) : null;
     if (route.name === "store" && Core.store(route.id)) {
-      ol.innerHTML = '<li><a href="' + home + '">Dashboard</a></li>' +
+      ol.innerHTML = (group
+          ? '<li><a href="#/overview">All stores</a></li>' +
+            '<li><a href="' + groupHome + '">' + esc(group.name) + "</a></li>"
+          : '<li><a href="#/overview">Dashboard</a></li>') +
         '<li><span aria-current="page">' + esc(Core.store(route.id).name) + "</span></li>";
-    } else if (route.name === "group" && Core.groupById(route.id) && !scope) {
-      ol.innerHTML = '<li><a href="#/overview">Dashboard</a></li>' +
-        '<li><span aria-current="page">' + esc(Core.groupById(route.id).name) + " group</span></li>";
+    } else if (route.name === "group" && Core.groupById(route.id)) {
+      ol.innerHTML = '<li><a href="#/overview">All stores</a></li>' +
+        '<li><span aria-current="page">' + esc(Core.groupById(route.id).name) + "</span></li>";
     } else {
-      // the group landing is the owner's own dashboard — no crumb above it
       ol.innerHTML = "";
     }
   }
