@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-14",
+ "generatedAt": "2026-09-15",
  "stores": [
   {
    "id": "armstrong-subaru",
@@ -38383,6 +38383,107 @@
     "Bay Ridge Honda"
    ],
    "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-15",
+   "runDate": "2026-09-15",
+   "source": "1a0a52830c1b69ac-Scheduled Report-9-15-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 6,
+   "total": {
+    "goodLeads": 734,
+    "sold": 142.0,
+    "apptsShown": 74,
+    "contactPct": 0.486,
+    "apptSetOfContactedPct": 0.4957983193277311,
+    "apptSetPct": null,
+    "contacted": 257,
+    "apptsSet": 95,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 143,
+      "sold": 73.0,
+      "apptsShown": 3,
+      "contactPct": 0.18899999999999997,
+      "apptSetOfContactedPct": 0.5555555555555556,
+      "apptSetPct": null,
+      "contacted": 27,
+      "apptsSet": 15
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 155,
+      "sold": 35.0,
+      "apptsShown": 31,
+      "contactPct": 0.436,
+      "apptSetOfContactedPct": 0.9852941176470589,
+      "apptSetPct": null,
+      "contacted": 68,
+      "apptsSet": 67
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 433,
+      "sold": 34.0,
+      "apptsShown": 40,
+      "contactPct": 0.594,
+      "apptSetOfContactedPct": 0.36964980544747084,
+      "apptSetPct": null,
+      "contacted": 257,
+      "apptsSet": 95
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 3,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0.6,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
    "period": "prior",
    "dateRange": "Previous Month MTD",
    "begin": "2026-07-01",
@@ -40114,6 +40215,107 @@
       "apptSetPct": null,
       "contacted": 206,
       "apptsSet": 75
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 4,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 0.6,
+      "apptSetOfContactedPct": 0.5,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "bay-ridge-honda",
+   "storeName": "Bay Ridge Honda",
+   "dealers": [
+    "Bay Ridge Honda"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-15",
+   "runDate": "2026-09-15",
+   "source": "1a0a52830c1b69ac-Scheduled Report-9-15-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 6,
+   "total": {
+    "goodLeads": 722,
+    "sold": 169.0,
+    "apptsShown": 97,
+    "contactPct": 0.52,
+    "apptSetOfContactedPct": 0.4533333333333333,
+    "apptSetPct": null,
+    "contacted": 227,
+    "apptsSet": 79,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 173,
+      "sold": 94.0,
+      "apptsShown": 9,
+      "contactPct": 0.35100000000000003,
+      "apptSetOfContactedPct": 0.2786885245901639,
+      "apptSetPct": null,
+      "contacted": 61,
+      "apptsSet": 17
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 166,
+      "sold": 47.0,
+      "apptsShown": 46,
+      "contactPct": 0.49700000000000005,
+      "apptSetOfContactedPct": 0.8795180722891566,
+      "apptSetPct": null,
+      "contacted": 83,
+      "apptsSet": 73
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 379,
+      "sold": 26.0,
+      "apptsShown": 41,
+      "contactPct": 0.599,
+      "apptSetOfContactedPct": 0.34801762114537443,
+      "apptSetPct": null,
+      "contacted": 227,
+      "apptsSet": 79
      },
      "byInventory": []
     },
@@ -41996,6 +42198,121 @@
     "Garavel CJDR"
    ],
    "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-15",
+   "runDate": "2026-09-15",
+   "source": "1a0a528ab5aefc82-Scheduled Report-9-15-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 194,
+    "sold": 19.0,
+    "apptsShown": 35,
+    "contactPct": 0.532,
+    "apptSetOfContactedPct": 0.3786407766990291,
+    "apptSetPct": null,
+    "contacted": 53,
+    "apptsSet": 11,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 36,
+      "sold": 4.0,
+      "apptsShown": 7,
+      "contactPct": 0.513,
+      "apptSetOfContactedPct": 0.5,
+      "apptSetPct": null,
+      "contacted": 18,
+      "apptsSet": 9
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 47,
+      "sold": 9.0,
+      "apptsShown": 18,
+      "contactPct": 0.596,
+      "apptSetOfContactedPct": 0.6071428571428571,
+      "apptSetPct": null,
+      "contacted": 28,
+      "apptsSet": 17
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 107,
+      "sold": 5.0,
+      "apptsShown": 8,
+      "contactPct": 0.496,
+      "apptSetOfContactedPct": 0.20754716981132076,
+      "apptSetPct": null,
+      "contacted": 53,
+      "apptsSet": 11
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 4,
+      "sold": 1.0,
+      "apptsShown": 2,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.5,
+      "apptSetPct": null,
+      "contacted": 4,
+      "apptsSet": 2
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
    "period": "prior",
    "dateRange": "Previous Month MTD",
    "begin": "2026-07-01",
@@ -43822,6 +44139,121 @@
       "apptSetPct": null,
       "contacted": 2,
       "apptsSet": 2
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-cjdr",
+   "storeName": "Garavel CJDR",
+   "dealers": [
+    "Garavel CJDR"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-15",
+   "runDate": "2026-09-15",
+   "source": "1a0a528ab5aefc82-Scheduled Report-9-15-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 229,
+    "sold": 34.0,
+    "apptsShown": 55,
+    "contactPct": 0.708,
+    "apptSetOfContactedPct": 0.4567901234567901,
+    "apptSetPct": null,
+    "contacted": 72,
+    "apptsSet": 27,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 58,
+      "sold": 12.0,
+      "apptsShown": 10,
+      "contactPct": 0.845,
+      "apptSetOfContactedPct": 0.32653061224489793,
+      "apptSetPct": null,
+      "contacted": 49,
+      "apptsSet": 16
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 44,
+      "sold": 16.0,
+      "apptsShown": 25,
+      "contactPct": 0.9059999999999999,
+      "apptSetOfContactedPct": 0.7,
+      "apptSetPct": null,
+      "contacted": 40,
+      "apptsSet": 28
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 123,
+      "sold": 5.0,
+      "apptsShown": 20,
+      "contactPct": 0.586,
+      "apptSetOfContactedPct": 0.375,
+      "apptSetPct": null,
+      "contacted": 72,
+      "apptsSet": 27
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 4,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 0.5,
+      "apptSetOfContactedPct": 1.5,
+      "apptSetPct": null,
+      "contacted": 2,
+      "apptsSet": 3
      },
      "byInventory": []
     }
@@ -45676,6 +46108,121 @@
     "Garavel Subaru"
    ],
    "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-15",
+   "runDate": "2026-09-15",
+   "source": "1a0a5289a0b5efc1-Scheduled Report-9-15-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 313,
+    "sold": 56.0,
+    "apptsShown": 68,
+    "contactPct": 0.5760000000000001,
+    "apptSetOfContactedPct": 0.4444444444444444,
+    "apptSetPct": null,
+    "contacted": 96,
+    "apptsSet": 36,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 52,
+      "sold": 16.0,
+      "apptsShown": 7,
+      "contactPct": 0.7859999999999999,
+      "apptSetOfContactedPct": 0.24390243902439024,
+      "apptSetPct": null,
+      "contacted": 41,
+      "apptsSet": 10
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 58,
+      "sold": 18.0,
+      "apptsShown": 31,
+      "contactPct": 0.8,
+      "apptSetOfContactedPct": 0.717391304347826,
+      "apptSetPct": null,
+      "contacted": 46,
+      "apptsSet": 33
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 199,
+      "sold": 22.0,
+      "apptsShown": 29,
+      "contactPct": 0.48,
+      "apptSetOfContactedPct": 0.375,
+      "apptSetPct": null,
+      "contacted": 96,
+      "apptsSet": 36
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 1,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 1.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 3,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0.25,
+      "apptSetOfContactedPct": 0.0,
+      "apptSetPct": null,
+      "contacted": 1,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
    "period": "prior",
    "dateRange": "Previous Month MTD",
    "begin": "2026-07-01",
@@ -47501,6 +48048,121 @@
       "apptSetOfContactedPct": 0.3333333333333333,
       "apptSetPct": null,
       "contacted": 3,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "garavel-subaru",
+   "storeName": "Garavel Subaru",
+   "dealers": [
+    "Garavel Subaru"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-15",
+   "runDate": "2026-09-15",
+   "source": "1a0a5289a0b5efc1-Scheduled Report-9-15-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 349,
+    "sold": 57.0,
+    "apptsShown": 59,
+    "contactPct": 0.6940000000000001,
+    "apptSetOfContactedPct": 0.3181818181818182,
+    "apptSetPct": null,
+    "contacted": 138,
+    "apptsSet": 34,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 68,
+      "sold": 24.0,
+      "apptsShown": 13,
+      "contactPct": 0.8,
+      "apptSetOfContactedPct": 0.24074074074074073,
+      "apptSetPct": null,
+      "contacted": 54,
+      "apptsSet": 13
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 55,
+      "sold": 19.0,
+      "apptsShown": 24,
+      "contactPct": 0.898,
+      "apptSetOfContactedPct": 0.5918367346938775,
+      "apptSetPct": null,
+      "contacted": 49,
+      "apptsSet": 29
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 223,
+      "sold": 14.0,
+      "apptsShown": 20,
+      "contactPct": 0.618,
+      "apptSetOfContactedPct": 0.2463768115942029,
+      "apptSetPct": null,
+      "contacted": 138,
+      "apptsSet": 34
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 3,
+      "sold": 0,
+      "apptsShown": 1,
+      "contactPct": 0.75,
+      "apptSetOfContactedPct": 0.5,
+      "apptSetPct": null,
+      "contacted": 2,
       "apptsSet": 1
      },
      "byInventory": []
@@ -81895,6 +82557,121 @@
     "Honda of El Cajon"
    ],
    "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-09-01",
+   "end": "2026-09-15",
+   "runDate": "2026-09-15",
+   "source": "1a0a529b02535a55-Scheduled Report-9-15-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 561,
+    "sold": 135.0,
+    "apptsShown": 89,
+    "contactPct": 0.531,
+    "apptSetOfContactedPct": 0.5503355704697986,
+    "apptSetPct": null,
+    "contacted": 139,
+    "apptsSet": 63,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 117,
+      "sold": 44.0,
+      "apptsShown": 11,
+      "contactPct": 0.564,
+      "apptSetOfContactedPct": 0.4090909090909091,
+      "apptSetPct": null,
+      "contacted": 66,
+      "apptsSet": 27
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 148,
+      "sold": 31.0,
+      "apptsShown": 36,
+      "contactPct": 0.624,
+      "apptSetOfContactedPct": 0.7934782608695652,
+      "apptSetPct": null,
+      "contacted": 92,
+      "apptsSet": 73
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 293,
+      "sold": 37.0,
+      "apptsShown": 42,
+      "contactPct": 0.475,
+      "apptSetOfContactedPct": 0.45323741007194246,
+      "apptSetPct": null,
+      "contacted": 139,
+      "apptsSet": 63
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 3,
+      "sold": 1.0,
+      "apptsShown": 0,
+      "contactPct": 1.0,
+      "apptSetOfContactedPct": 0.3333333333333333,
+      "apptSetPct": null,
+      "contacted": 3,
+      "apptsSet": 1
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
    "period": "prior",
    "dateRange": "Previous Month MTD",
    "begin": "2026-07-01",
@@ -83679,6 +84456,121 @@
       "apptSetPct": null,
       "contacted": 161,
       "apptsSet": 75
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Campaign",
+     "metrics": {
+      "goodLeads": 7,
+      "sold": 4.0,
+      "apptsShown": 2,
+      "contactPct": 0.429,
+      "apptSetOfContactedPct": 1.0,
+      "apptSetPct": null,
+      "contacted": 3,
+      "apptsSet": 3
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Service",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Chat",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 0,
+      "apptsShown": 0,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": null,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": []
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "honda-of-el-cajon",
+   "storeName": "Honda of El Cajon",
+   "dealers": [
+    "Honda of El Cajon"
+   ],
+   "kind": "kpi",
+   "period": "prior",
+   "dateRange": "Previous Month MTD",
+   "begin": "2026-08-01",
+   "end": "2026-08-15",
+   "runDate": "2026-09-15",
+   "source": "1a0a529b02535a55-Scheduled Report-9-15-2026.pdf",
+   "crm": "DriveCentric",
+   "rowCount": 7,
+   "total": {
+    "goodLeads": 577,
+    "sold": 134.0,
+    "apptsShown": 111,
+    "contactPct": 0.633,
+    "apptSetOfContactedPct": 0.5424657534246575,
+    "apptSetPct": null,
+    "contacted": 174,
+    "apptsSet": 83,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Walk-in",
+     "metrics": {
+      "goodLeads": 144,
+      "sold": 61.0,
+      "apptsShown": 17,
+      "contactPct": 0.593,
+      "apptSetOfContactedPct": 0.4117647058823529,
+      "apptSetPct": null,
+      "contacted": 85,
+      "apptsSet": 35
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 149,
+      "sold": 31.0,
+      "apptsShown": 47,
+      "contactPct": 0.69,
+      "apptSetOfContactedPct": 0.7378640776699029,
+      "apptSetPct": null,
+      "contacted": 103,
+      "apptsSet": 76
+     },
+     "byInventory": []
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 277,
+      "sold": 28.0,
+      "apptsShown": 45,
+      "contactPct": 0.628,
+      "apptSetOfContactedPct": 0.47701149425287354,
+      "apptSetPct": null,
+      "contacted": 174,
+      "apptsSet": 83
      },
      "byInventory": []
     },
@@ -649161,39 +650053,39 @@
    "location": "Armstrong Subaru",
    "name": "Hannah Wakefield",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
-   "videosSent": 27,
-   "messagesSent": 195,
+   "videosSent": 29,
+   "messagesSent": 204,
    "reviewInvites": 0,
-   "clientsMessaged": 64,
-   "assignedClients": 39
+   "clientsMessaged": 66,
+   "assignedClients": 40
   },
   {
    "storeId": "armstrong-subaru",
    "location": "Armstrong Subaru",
    "name": "Milan De Proost",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
-   "videosSent": 31,
-   "messagesSent": 189,
+   "videosSent": 33,
+   "messagesSent": 199,
    "reviewInvites": 0,
-   "clientsMessaged": 40,
-   "assignedClients": 49
+   "clientsMessaged": 45,
+   "assignedClients": 51
   },
   {
    "storeId": "armstrong-subaru",
    "location": "Armstrong Subaru",
    "name": "Corey Wakefield",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
-   "videosSent": 18,
-   "messagesSent": 92,
+   "videosSent": 22,
+   "messagesSent": 105,
    "reviewInvites": 0,
-   "clientsMessaged": 44,
-   "assignedClients": 32
+   "clientsMessaged": 46,
+   "assignedClients": 35
   },
   {
    "storeId": "armstrong-subaru",
@@ -649206,33 +650098,33 @@
    "messagesSent": 87,
    "reviewInvites": 0,
    "clientsMessaged": 48,
-   "assignedClients": 34
+   "assignedClients": 36
   },
   {
    "storeId": "armstrong-subaru",
    "location": "Armstrong Subaru",
    "name": "Devin Wilson",
    "role": "Admin",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 16,
    "reviewInvites": 0,
    "clientsMessaged": 16,
-   "assignedClients": 39
+   "assignedClients": 40
   },
   {
    "storeId": "armstrong-subaru",
    "location": "Armstrong Subaru",
    "name": "Shane Lewis",
    "role": "Support Agent",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 7,
    "reviewInvites": 0,
    "clientsMessaged": 2,
-   "assignedClients": 6
+   "assignedClients": 8
   },
   {
    "storeId": "armstrong-subaru",
@@ -649245,7 +650137,7 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 19
+   "assignedClients": 20
   },
   {
    "storeId": "armstrong-subaru",
@@ -649265,26 +650157,26 @@
    "location": "Armstrong Volkswagen",
    "name": "Peter Tolomei",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 18,
-   "messagesSent": 169,
+   "messagesSent": 174,
    "reviewInvites": 0,
    "clientsMessaged": 47,
-   "assignedClients": 51
+   "assignedClients": 53
   },
   {
    "storeId": "armstrong-volkswagen",
    "location": "Armstrong Volkswagen",
    "name": "James Anderson",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 152,
+   "messagesSent": 155,
    "reviewInvites": 0,
    "clientsMessaged": 44,
-   "assignedClients": 77
+   "assignedClients": 80
   },
   {
    "storeId": "armstrong-volkswagen",
@@ -649304,33 +650196,33 @@
    "location": "Armstrong Volkswagen",
    "name": "Layne Thrasher",
    "role": "Admin",
-   "lastActivity": "2026-09-11",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
-   "videosSent": 3,
-   "messagesSent": 72,
+   "videosSent": 4,
+   "messagesSent": 81,
    "reviewInvites": 0,
-   "clientsMessaged": 16,
-   "assignedClients": 60
+   "clientsMessaged": 18,
+   "assignedClients": 63
   },
   {
    "storeId": "armstrong-volkswagen",
    "location": "Armstrong Volkswagen",
    "name": "Lou Feiring",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 15,
-   "messagesSent": 34,
+   "messagesSent": 39,
    "reviewInvites": 0,
    "clientsMessaged": 20,
-   "assignedClients": 66
+   "assignedClients": 69
   },
   {
    "storeId": "armstrong-volkswagen",
    "location": "Armstrong Volkswagen",
    "name": "Sam Jaramillo",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 1,
    "messagesSent": 26,
@@ -649346,10 +650238,10 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 2,
-   "messagesSent": 11,
+   "messagesSent": 13,
    "reviewInvites": 0,
-   "clientsMessaged": 5,
-   "assignedClients": 32
+   "clientsMessaged": 7,
+   "assignedClients": 34
   },
   {
    "storeId": "armstrong-volkswagen",
@@ -649375,7 +650267,7 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 54
+   "assignedClients": 56
   },
   {
    "storeId": "armstrong-volkswagen",
@@ -649388,7 +650280,7 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 50
+   "assignedClients": 52
   },
   {
    "storeId": "armstrong-volkswagen",
@@ -649421,26 +650313,26 @@
    "location": "Gresham Chrysler Dodge Jeep Ram",
    "name": "Dante Quinones",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 885,
+   "messagesSent": 903,
    "reviewInvites": 0,
-   "clientsMessaged": 490,
-   "assignedClients": 150
+   "clientsMessaged": 504,
+   "assignedClients": 154
   },
   {
    "storeId": "gresham-chrysler-dodge-jeep-ram",
    "location": "Gresham Chrysler Dodge Jeep Ram",
    "name": "Heather James",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 6,
-   "messagesSent": 431,
+   "messagesSent": 465,
    "reviewInvites": 0,
-   "clientsMessaged": 246,
-   "assignedClients": 55
+   "clientsMessaged": 251,
+   "assignedClients": 59
   },
   {
    "storeId": "gresham-chrysler-dodge-jeep-ram",
@@ -649460,13 +650352,26 @@
    "location": "Gresham Chrysler Dodge Jeep Ram",
    "name": "Luis Plantillas",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 7,
-   "messagesSent": 273,
+   "messagesSent": 280,
    "reviewInvites": 0,
-   "clientsMessaged": 82,
-   "assignedClients": 32
+   "clientsMessaged": 85,
+   "assignedClients": 33
+  },
+  {
+   "storeId": "gresham-chrysler-dodge-jeep-ram",
+   "location": "Gresham Chrysler Dodge Jeep Ram",
+   "name": "Karrar Alsaadi",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 7,
+   "messagesSent": 264,
+   "reviewInvites": 0,
+   "clientsMessaged": 68,
+   "assignedClients": 46
   },
   {
    "storeId": "gresham-chrysler-dodge-jeep-ram",
@@ -649484,38 +650389,25 @@
   {
    "storeId": "gresham-chrysler-dodge-jeep-ram",
    "location": "Gresham Chrysler Dodge Jeep Ram",
-   "name": "Karrar Alsaadi",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 6,
-   "messagesSent": 245,
-   "reviewInvites": 0,
-   "clientsMessaged": 63,
-   "assignedClients": 41
-  },
-  {
-   "storeId": "gresham-chrysler-dodge-jeep-ram",
-   "location": "Gresham Chrysler Dodge Jeep Ram",
    "name": "Rigo Mendez",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 3,
-   "messagesSent": 223,
+   "messagesSent": 232,
    "reviewInvites": 0,
-   "clientsMessaged": 117,
-   "assignedClients": 39
+   "clientsMessaged": 118,
+   "assignedClients": 41
   },
   {
    "storeId": "gresham-chrysler-dodge-jeep-ram",
    "location": "Gresham Chrysler Dodge Jeep Ram",
    "name": "Derek Olsen",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
-   "videosSent": 2,
-   "messagesSent": 198,
+   "videosSent": 4,
+   "messagesSent": 211,
    "reviewInvites": 0,
    "clientsMessaged": 106,
    "assignedClients": 26
@@ -649525,39 +650417,39 @@
    "location": "Gresham Chrysler Dodge Jeep Ram",
    "name": "Mustafa Alzubidi",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 5,
-   "messagesSent": 172,
+   "messagesSent": 175,
    "reviewInvites": 0,
    "clientsMessaged": 41,
-   "assignedClients": 28
+   "assignedClients": 31
   },
   {
    "storeId": "gresham-chrysler-dodge-jeep-ram",
    "location": "Gresham Chrysler Dodge Jeep Ram",
    "name": "Russ Solnyshkin",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 1,
-   "messagesSent": 135,
+   "messagesSent": 142,
    "reviewInvites": 0,
-   "clientsMessaged": 79,
-   "assignedClients": 34
+   "clientsMessaged": 82,
+   "assignedClients": 37
   },
   {
    "storeId": "gresham-chrysler-dodge-jeep-ram",
    "location": "Gresham Chrysler Dodge Jeep Ram",
    "name": "Felaga I Jr Tuia Ana",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 123,
+   "messagesSent": 130,
    "reviewInvites": 0,
-   "clientsMessaged": 67,
-   "assignedClients": 32
+   "clientsMessaged": 69,
+   "assignedClients": 33
   },
   {
    "storeId": "gresham-chrysler-dodge-jeep-ram",
@@ -649570,46 +650462,46 @@
    "messagesSent": 50,
    "reviewInvites": 0,
    "clientsMessaged": 22,
-   "assignedClients": 19
+   "assignedClients": 20
   },
   {
    "storeId": "gresham-chrysler-dodge-jeep-ram",
    "location": "Gresham Chrysler Dodge Jeep Ram",
    "name": "Yousif Alhamdani",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 2,
    "messagesSent": 43,
    "reviewInvites": 0,
    "clientsMessaged": 20,
-   "assignedClients": 20
-  },
-  {
-   "storeId": "gresham-chrysler-dodge-jeep-ram",
-   "location": "Gresham Chrysler Dodge Jeep Ram",
-   "name": "Tylor Fritcher",
-   "role": "Admin",
-   "lastActivity": "2026-09-13",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 10,
-   "reviewInvites": 0,
-   "clientsMessaged": 2,
-   "assignedClients": 10
+   "assignedClients": 22
   },
   {
    "storeId": "gresham-chrysler-dodge-jeep-ram",
    "location": "Gresham Chrysler Dodge Jeep Ram",
    "name": "Diego Ragazzi",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 1,
+   "messagesSent": 16,
+   "reviewInvites": 0,
+   "clientsMessaged": 6,
+   "assignedClients": 4
+  },
+  {
+   "storeId": "gresham-chrysler-dodge-jeep-ram",
+   "location": "Gresham Chrysler Dodge Jeep Ram",
+   "name": "Tylor Fritcher",
+   "role": "Admin",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 8,
+   "messagesSent": 14,
    "reviewInvites": 0,
-   "clientsMessaged": 5,
-   "assignedClients": 3
+   "clientsMessaged": 3,
+   "assignedClients": 11
   },
   {
    "storeId": "gresham-chrysler-dodge-jeep-ram",
@@ -649622,7 +650514,7 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 7
+   "assignedClients": 8
   },
   {
    "storeId": "gresham-chrysler-dodge-jeep-ram",
@@ -649642,13 +650534,13 @@
    "location": "Gresham Chrysler Dodge Jeep Ram",
    "name": "Paul Johnson",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 18
+   "assignedClients": 21
   },
   {
    "storeId": "gresham-chrysler-dodge-jeep-ram",
@@ -649668,13 +650560,13 @@
    "location": "Lehigh Valley Acura Service",
    "name": "Matthew Jones",
    "role": "Admin",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 134,
+   "messagesSent": 157,
    "reviewInvites": 0,
-   "clientsMessaged": 49,
-   "assignedClients": 65
+   "clientsMessaged": 53,
+   "assignedClients": 68
   },
   {
    "storeId": "lehigh-valley-acura",
@@ -649684,9 +650576,22 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 2,
    "videosSent": 5,
-   "messagesSent": 121,
+   "messagesSent": 130,
    "reviewInvites": 0,
-   "clientsMessaged": 23,
+   "clientsMessaged": 25,
+   "assignedClients": 21
+  },
+  {
+   "storeId": "lehigh-valley-acura",
+   "location": "Lehigh Valley Acura Service",
+   "name": "Kimberly Santana",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 3,
+   "videosSent": 9,
+   "messagesSent": 119,
+   "reviewInvites": 0,
+   "clientsMessaged": 32,
    "assignedClients": 20
   },
   {
@@ -649694,26 +650599,13 @@
    "location": "Lehigh Valley Acura Service",
    "name": "Andrew Seltzer",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 104,
+   "messagesSent": 106,
    "reviewInvites": 0,
-   "clientsMessaged": 70,
-   "assignedClients": 33
-  },
-  {
-   "storeId": "lehigh-valley-acura",
-   "location": "Lehigh Valley Acura Service",
-   "name": "Kimberly Santana",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 2,
-   "videosSent": 9,
-   "messagesSent": 101,
-   "reviewInvites": 0,
-   "clientsMessaged": 30,
-   "assignedClients": 19
+   "clientsMessaged": 72,
+   "assignedClients": 34
   },
   {
    "storeId": "lehigh-valley-acura",
@@ -649733,13 +650625,13 @@
    "location": "Lehigh Valley Acura Service",
    "name": "Eoin Walshe",
    "role": "Admin",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 16,
+   "messagesSent": 19,
    "reviewInvites": 0,
-   "clientsMessaged": 10,
-   "assignedClients": 49
+   "clientsMessaged": 12,
+   "assignedClients": 52
   },
   {
    "storeId": "lehigh-valley-acura",
@@ -649752,14 +650644,14 @@
    "messagesSent": 10,
    "reviewInvites": 0,
    "clientsMessaged": 7,
-   "assignedClients": 12
+   "assignedClients": 13
   },
   {
    "storeId": "lehigh-valley-acura",
    "location": "Lehigh Valley Acura Service",
    "name": "Yosmar Mendoza Gomez",
    "role": "Admin",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 6,
@@ -649798,13 +650690,13 @@
    "location": "Lehigh Valley Acura",
    "name": "Matthew Jones",
    "role": "Admin",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 134,
+   "messagesSent": 157,
    "reviewInvites": 0,
-   "clientsMessaged": 49,
-   "assignedClients": 65
+   "clientsMessaged": 53,
+   "assignedClients": 68
   },
   {
    "storeId": "lehigh-valley-acura",
@@ -649814,9 +650706,22 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 2,
    "videosSent": 5,
-   "messagesSent": 121,
+   "messagesSent": 130,
    "reviewInvites": 0,
-   "clientsMessaged": 23,
+   "clientsMessaged": 25,
+   "assignedClients": 21
+  },
+  {
+   "storeId": "lehigh-valley-acura",
+   "location": "Lehigh Valley Acura",
+   "name": "Kimberly Santana",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 3,
+   "videosSent": 9,
+   "messagesSent": 119,
+   "reviewInvites": 0,
+   "clientsMessaged": 32,
    "assignedClients": 20
   },
   {
@@ -649824,26 +650729,13 @@
    "location": "Lehigh Valley Acura",
    "name": "Andrew Seltzer",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 104,
+   "messagesSent": 106,
    "reviewInvites": 0,
-   "clientsMessaged": 70,
-   "assignedClients": 33
-  },
-  {
-   "storeId": "lehigh-valley-acura",
-   "location": "Lehigh Valley Acura",
-   "name": "Kimberly Santana",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 2,
-   "videosSent": 9,
-   "messagesSent": 101,
-   "reviewInvites": 0,
-   "clientsMessaged": 30,
-   "assignedClients": 19
+   "clientsMessaged": 72,
+   "assignedClients": 34
   },
   {
    "storeId": "lehigh-valley-acura",
@@ -649863,13 +650755,13 @@
    "location": "Lehigh Valley Acura",
    "name": "Eoin Walshe",
    "role": "Admin",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 16,
+   "messagesSent": 19,
    "reviewInvites": 0,
-   "clientsMessaged": 10,
-   "assignedClients": 49
+   "clientsMessaged": 12,
+   "assignedClients": 52
   },
   {
    "storeId": "lehigh-valley-acura",
@@ -649882,14 +650774,14 @@
    "messagesSent": 10,
    "reviewInvites": 0,
    "clientsMessaged": 7,
-   "assignedClients": 12
+   "assignedClients": 13
   },
   {
    "storeId": "lehigh-valley-acura",
    "location": "Lehigh Valley Acura",
    "name": "Yosmar Mendoza Gomez",
    "role": "Admin",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 6,
@@ -649928,26 +650820,26 @@
    "location": "Lehigh Valley Honda Service",
    "name": "Maria Jurado",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 250,
+   "messagesSent": 292,
    "reviewInvites": 0,
-   "clientsMessaged": 130,
-   "assignedClients": 147
+   "clientsMessaged": 146,
+   "assignedClients": 164
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda Service",
    "name": "Joshua Buesgen",
    "role": "Support Agent",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 17,
    "messagesSent": 193,
    "reviewInvites": 0,
    "clientsMessaged": 40,
-   "assignedClients": 25
+   "assignedClients": 26
   },
   {
    "storeId": "lehigh-valley-honda",
@@ -649957,10 +650849,10 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 4,
-   "messagesSent": 142,
+   "messagesSent": 184,
    "reviewInvites": 0,
-   "clientsMessaged": 28,
-   "assignedClients": 18
+   "clientsMessaged": 35,
+   "assignedClients": 20
   },
   {
    "storeId": "lehigh-valley-honda",
@@ -649969,24 +650861,37 @@
    "role": "Support Agent",
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
-   "videosSent": 15,
-   "messagesSent": 123,
+   "videosSent": 16,
+   "messagesSent": 138,
    "reviewInvites": 0,
-   "clientsMessaged": 28,
-   "assignedClients": 23
+   "clientsMessaged": 33,
+   "assignedClients": 28
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda Service",
    "name": "Emil Steczkowski",
    "role": "Manager",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 133,
+   "reviewInvites": 0,
+   "clientsMessaged": 100,
+   "assignedClients": 152
+  },
+  {
+   "storeId": "lehigh-valley-honda",
+   "location": "Lehigh Valley Honda Service",
+   "name": "Andamo Campbell",
+   "role": "Support Agent",
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 122,
+   "messagesSent": 110,
    "reviewInvites": 0,
-   "clientsMessaged": 89,
-   "assignedClients": 141
+   "clientsMessaged": 38,
+   "assignedClients": 19
   },
   {
    "storeId": "lehigh-valley-honda",
@@ -650004,19 +650909,6 @@
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda Service",
-   "name": "Andamo Campbell",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 92,
-   "reviewInvites": 0,
-   "clientsMessaged": 34,
-   "assignedClients": 17
-  },
-  {
-   "storeId": "lehigh-valley-honda",
-   "location": "Lehigh Valley Honda Service",
    "name": "Juan Carrasquillo Rosa",
    "role": "Manager",
    "lastActivity": "2026-09-10",
@@ -650025,17 +650917,17 @@
    "messagesSent": 86,
    "reviewInvites": 0,
    "clientsMessaged": 63,
-   "assignedClients": 119
+   "assignedClients": 126
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda Service",
    "name": "Alvaro Perez",
    "role": "Support Agent",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 12,
-   "messagesSent": 73,
+   "messagesSent": 75,
    "reviewInvites": 0,
    "clientsMessaged": 35,
    "assignedClients": 19
@@ -650045,59 +650937,85 @@
    "location": "Lehigh Valley Honda Service",
    "name": "Iancarlos Carmona",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
-   "videosSent": 5,
-   "messagesSent": 60,
+   "videosSent": 7,
+   "messagesSent": 74,
    "reviewInvites": 0,
-   "clientsMessaged": 20,
-   "assignedClients": 16
+   "clientsMessaged": 22,
+   "assignedClients": 19
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda Service",
    "name": "Jennifer Leiby",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
-   "videosSent": 17,
+   "videosSent": 19,
    "messagesSent": 43,
    "reviewInvites": 0,
    "clientsMessaged": 16,
-   "assignedClients": 13
+   "assignedClients": 16
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda Service",
    "name": "Angel Balbuena",
    "role": "Manager",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 36,
    "reviewInvites": 0,
    "clientsMessaged": 29,
-   "assignedClients": 103
+   "assignedClients": 110
+  },
+  {
+   "storeId": "lehigh-valley-honda",
+   "location": "Lehigh Valley Honda Service",
+   "name": "Gary Morales",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 5,
+   "messagesSent": 33,
+   "reviewInvites": 0,
+   "clientsMessaged": 9,
+   "assignedClients": 18
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda Service",
    "name": "Peter Aksamit",
    "role": "Support Agent",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 25,
+   "messagesSent": 28,
    "reviewInvites": 0,
-   "clientsMessaged": 11,
-   "assignedClients": 8
+   "clientsMessaged": 13,
+   "assignedClients": 10
+  },
+  {
+   "storeId": "lehigh-valley-honda",
+   "location": "Lehigh Valley Honda Service",
+   "name": "Luis Leiva",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 2,
+   "messagesSent": 23,
+   "reviewInvites": 0,
+   "clientsMessaged": 8,
+   "assignedClients": 11
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda Service",
    "name": "Richard Mello",
    "role": "Support Agent",
-   "lastActivity": "2026-09-12",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 3,
    "messagesSent": 23,
@@ -650116,43 +651034,17 @@
    "messagesSent": 21,
    "reviewInvites": 0,
    "clientsMessaged": 10,
-   "assignedClients": 17
-  },
-  {
-   "storeId": "lehigh-valley-honda",
-   "location": "Lehigh Valley Honda Service",
-   "name": "Gary Morales",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 5,
-   "messagesSent": 19,
-   "reviewInvites": 0,
-   "clientsMessaged": 7,
-   "assignedClients": 16
-  },
-  {
-   "storeId": "lehigh-valley-honda",
-   "location": "Lehigh Valley Honda Service",
-   "name": "Luis Leiva",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 2,
-   "messagesSent": 17,
-   "reviewInvites": 0,
-   "clientsMessaged": 6,
-   "assignedClients": 10
+   "assignedClients": 18
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda Service",
    "name": "Juan Pablo Palacio R.",
    "role": "Support Agent",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 2,
-   "messagesSent": 9,
+   "messagesSent": 10,
    "reviewInvites": 0,
    "clientsMessaged": 6,
    "assignedClients": 2
@@ -650162,7 +651054,7 @@
    "location": "Lehigh Valley Honda Service",
    "name": "Manjit Singh",
    "role": "Support Agent",
-   "lastActivity": "2026-09-12",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 6,
@@ -650173,9 +651065,35 @@
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda Service",
+   "name": "Michael Seidel",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-14",
+   "apptsCreated": 0,
+   "videosSent": 1,
+   "messagesSent": 4,
+   "reviewInvites": 0,
+   "clientsMessaged": 2,
+   "assignedClients": 10
+  },
+  {
+   "storeId": "lehigh-valley-honda",
+   "location": "Lehigh Valley Honda Service",
+   "name": "Brian Simpson",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-14",
+   "apptsCreated": 0,
+   "videosSent": 3,
+   "messagesSent": 4,
+   "reviewInvites": 0,
+   "clientsMessaged": 4,
+   "assignedClients": 8
+  },
+  {
+   "storeId": "lehigh-valley-honda",
+   "location": "Lehigh Valley Honda Service",
    "name": "Ciara Miranda",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 4,
@@ -650188,7 +651106,7 @@
    "location": "Lehigh Valley Honda Service",
    "name": "Margaret Bisazza",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 2,
    "messagesSent": 3,
@@ -650207,27 +651125,14 @@
    "messagesSent": 3,
    "reviewInvites": 0,
    "clientsMessaged": 2,
-   "assignedClients": 10
-  },
-  {
-   "storeId": "lehigh-valley-honda",
-   "location": "Lehigh Valley Honda Service",
-   "name": "Brian Simpson",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 3,
-   "messagesSent": 3,
-   "reviewInvites": 0,
-   "clientsMessaged": 3,
-   "assignedClients": 7
+   "assignedClients": 12
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda Service",
    "name": "Julio Garcia Pino",
    "role": "Manager",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 1,
    "messagesSent": 2,
@@ -650240,13 +651145,26 @@
    "location": "Lehigh Valley Honda Service",
    "name": "Jason Ba",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 1,
    "reviewInvites": 0,
    "clientsMessaged": 1,
-   "assignedClients": 41
+   "assignedClients": 46
+  },
+  {
+   "storeId": "lehigh-valley-honda",
+   "location": "Lehigh Valley Honda Service",
+   "name": "Paul Lormeus",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 1,
+   "messagesSent": 1,
+   "reviewInvites": 0,
+   "clientsMessaged": 1,
+   "assignedClients": 18
   },
   {
    "storeId": "lehigh-valley-honda",
@@ -650259,7 +651177,7 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 51
+   "assignedClients": 56
   },
   {
    "storeId": "lehigh-valley-honda",
@@ -650272,14 +651190,14 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 58
+   "assignedClients": 62
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda Service",
    "name": "Rami Hazouri",
    "role": "Admin",
-   "lastActivity": "2026-09-10",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
@@ -650298,14 +651216,14 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 24
+   "assignedClients": 28
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda Service",
    "name": "Jessica Nakkoul",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
@@ -650337,20 +651255,7 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 71
-  },
-  {
-   "storeId": "lehigh-valley-honda",
-   "location": "Lehigh Valley Honda Service",
-   "name": "Michael Seidel",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 0,
-   "reviewInvites": 0,
-   "clientsMessaged": 0,
-   "assignedClients": 7
+   "assignedClients": 72
   },
   {
    "storeId": "lehigh-valley-honda",
@@ -650358,19 +651263,6 @@
    "name": "Adrienne Fessler",
    "role": "Admin",
    "lastActivity": "2026-09-11",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 0,
-   "reviewInvites": 0,
-   "clientsMessaged": 0,
-   "assignedClients": 17
-  },
-  {
-   "storeId": "lehigh-valley-honda",
-   "location": "Lehigh Valley Honda Service",
-   "name": "Paul Lormeus",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
@@ -650402,7 +651294,7 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 57
+   "assignedClients": 65
   },
   {
    "storeId": "lehigh-valley-honda",
@@ -650422,26 +651314,26 @@
    "location": "Lehigh Valley Honda",
    "name": "Maria Jurado",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 250,
+   "messagesSent": 292,
    "reviewInvites": 0,
-   "clientsMessaged": 130,
-   "assignedClients": 147
+   "clientsMessaged": 146,
+   "assignedClients": 164
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda",
    "name": "Joshua Buesgen",
    "role": "Support Agent",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 17,
    "messagesSent": 193,
    "reviewInvites": 0,
    "clientsMessaged": 40,
-   "assignedClients": 25
+   "assignedClients": 26
   },
   {
    "storeId": "lehigh-valley-honda",
@@ -650451,10 +651343,10 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 4,
-   "messagesSent": 142,
+   "messagesSent": 184,
    "reviewInvites": 0,
-   "clientsMessaged": 28,
-   "assignedClients": 18
+   "clientsMessaged": 35,
+   "assignedClients": 20
   },
   {
    "storeId": "lehigh-valley-honda",
@@ -650463,24 +651355,37 @@
    "role": "Support Agent",
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
-   "videosSent": 15,
-   "messagesSent": 123,
+   "videosSent": 16,
+   "messagesSent": 138,
    "reviewInvites": 0,
-   "clientsMessaged": 28,
-   "assignedClients": 23
+   "clientsMessaged": 33,
+   "assignedClients": 28
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda",
    "name": "Emil Steczkowski",
    "role": "Manager",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 133,
+   "reviewInvites": 0,
+   "clientsMessaged": 100,
+   "assignedClients": 152
+  },
+  {
+   "storeId": "lehigh-valley-honda",
+   "location": "Lehigh Valley Honda",
+   "name": "Andamo Campbell",
+   "role": "Support Agent",
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 122,
+   "messagesSent": 110,
    "reviewInvites": 0,
-   "clientsMessaged": 89,
-   "assignedClients": 141
+   "clientsMessaged": 38,
+   "assignedClients": 19
   },
   {
    "storeId": "lehigh-valley-honda",
@@ -650498,19 +651403,6 @@
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda",
-   "name": "Andamo Campbell",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 92,
-   "reviewInvites": 0,
-   "clientsMessaged": 34,
-   "assignedClients": 17
-  },
-  {
-   "storeId": "lehigh-valley-honda",
-   "location": "Lehigh Valley Honda",
    "name": "Juan Carrasquillo Rosa",
    "role": "Manager",
    "lastActivity": "2026-09-10",
@@ -650519,17 +651411,17 @@
    "messagesSent": 86,
    "reviewInvites": 0,
    "clientsMessaged": 63,
-   "assignedClients": 119
+   "assignedClients": 126
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda",
    "name": "Alvaro Perez",
    "role": "Support Agent",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 12,
-   "messagesSent": 73,
+   "messagesSent": 75,
    "reviewInvites": 0,
    "clientsMessaged": 35,
    "assignedClients": 19
@@ -650539,59 +651431,85 @@
    "location": "Lehigh Valley Honda",
    "name": "Iancarlos Carmona",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
-   "videosSent": 5,
-   "messagesSent": 60,
+   "videosSent": 7,
+   "messagesSent": 74,
    "reviewInvites": 0,
-   "clientsMessaged": 20,
-   "assignedClients": 16
+   "clientsMessaged": 22,
+   "assignedClients": 19
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda",
    "name": "Jennifer Leiby",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
-   "videosSent": 17,
+   "videosSent": 19,
    "messagesSent": 43,
    "reviewInvites": 0,
    "clientsMessaged": 16,
-   "assignedClients": 13
+   "assignedClients": 16
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda",
    "name": "Angel Balbuena",
    "role": "Manager",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 36,
    "reviewInvites": 0,
    "clientsMessaged": 29,
-   "assignedClients": 103
+   "assignedClients": 110
+  },
+  {
+   "storeId": "lehigh-valley-honda",
+   "location": "Lehigh Valley Honda",
+   "name": "Gary Morales",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 5,
+   "messagesSent": 33,
+   "reviewInvites": 0,
+   "clientsMessaged": 9,
+   "assignedClients": 18
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda",
    "name": "Peter Aksamit",
    "role": "Support Agent",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 25,
+   "messagesSent": 28,
    "reviewInvites": 0,
-   "clientsMessaged": 11,
-   "assignedClients": 8
+   "clientsMessaged": 13,
+   "assignedClients": 10
+  },
+  {
+   "storeId": "lehigh-valley-honda",
+   "location": "Lehigh Valley Honda",
+   "name": "Luis Leiva",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 2,
+   "messagesSent": 23,
+   "reviewInvites": 0,
+   "clientsMessaged": 8,
+   "assignedClients": 11
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda",
    "name": "Richard Mello",
    "role": "Support Agent",
-   "lastActivity": "2026-09-12",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 3,
    "messagesSent": 23,
@@ -650610,43 +651528,17 @@
    "messagesSent": 21,
    "reviewInvites": 0,
    "clientsMessaged": 10,
-   "assignedClients": 17
-  },
-  {
-   "storeId": "lehigh-valley-honda",
-   "location": "Lehigh Valley Honda",
-   "name": "Gary Morales",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 5,
-   "messagesSent": 19,
-   "reviewInvites": 0,
-   "clientsMessaged": 7,
-   "assignedClients": 16
-  },
-  {
-   "storeId": "lehigh-valley-honda",
-   "location": "Lehigh Valley Honda",
-   "name": "Luis Leiva",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 2,
-   "messagesSent": 17,
-   "reviewInvites": 0,
-   "clientsMessaged": 6,
-   "assignedClients": 10
+   "assignedClients": 18
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda",
    "name": "Juan Pablo Palacio R.",
    "role": "Support Agent",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 2,
-   "messagesSent": 9,
+   "messagesSent": 10,
    "reviewInvites": 0,
    "clientsMessaged": 6,
    "assignedClients": 2
@@ -650656,7 +651548,7 @@
    "location": "Lehigh Valley Honda",
    "name": "Manjit Singh",
    "role": "Support Agent",
-   "lastActivity": "2026-09-12",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 6,
@@ -650667,9 +651559,35 @@
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda",
+   "name": "Michael Seidel",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-14",
+   "apptsCreated": 0,
+   "videosSent": 1,
+   "messagesSent": 4,
+   "reviewInvites": 0,
+   "clientsMessaged": 2,
+   "assignedClients": 10
+  },
+  {
+   "storeId": "lehigh-valley-honda",
+   "location": "Lehigh Valley Honda",
+   "name": "Brian Simpson",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-14",
+   "apptsCreated": 0,
+   "videosSent": 3,
+   "messagesSent": 4,
+   "reviewInvites": 0,
+   "clientsMessaged": 4,
+   "assignedClients": 8
+  },
+  {
+   "storeId": "lehigh-valley-honda",
+   "location": "Lehigh Valley Honda",
    "name": "Ciara Miranda",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 4,
@@ -650682,7 +651600,7 @@
    "location": "Lehigh Valley Honda",
    "name": "Margaret Bisazza",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 2,
    "messagesSent": 3,
@@ -650701,27 +651619,14 @@
    "messagesSent": 3,
    "reviewInvites": 0,
    "clientsMessaged": 2,
-   "assignedClients": 10
-  },
-  {
-   "storeId": "lehigh-valley-honda",
-   "location": "Lehigh Valley Honda",
-   "name": "Brian Simpson",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 3,
-   "messagesSent": 3,
-   "reviewInvites": 0,
-   "clientsMessaged": 3,
-   "assignedClients": 7
+   "assignedClients": 12
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda",
    "name": "Julio Garcia Pino",
    "role": "Manager",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 1,
    "messagesSent": 2,
@@ -650734,13 +651639,26 @@
    "location": "Lehigh Valley Honda",
    "name": "Jason Ba",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 1,
    "reviewInvites": 0,
    "clientsMessaged": 1,
-   "assignedClients": 41
+   "assignedClients": 46
+  },
+  {
+   "storeId": "lehigh-valley-honda",
+   "location": "Lehigh Valley Honda",
+   "name": "Paul Lormeus",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 1,
+   "messagesSent": 1,
+   "reviewInvites": 0,
+   "clientsMessaged": 1,
+   "assignedClients": 18
   },
   {
    "storeId": "lehigh-valley-honda",
@@ -650753,7 +651671,7 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 51
+   "assignedClients": 56
   },
   {
    "storeId": "lehigh-valley-honda",
@@ -650766,14 +651684,14 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 58
+   "assignedClients": 62
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda",
    "name": "Rami Hazouri",
    "role": "Admin",
-   "lastActivity": "2026-09-10",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
@@ -650792,14 +651710,14 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 24
+   "assignedClients": 28
   },
   {
    "storeId": "lehigh-valley-honda",
    "location": "Lehigh Valley Honda",
    "name": "Jessica Nakkoul",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
@@ -650831,20 +651749,7 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 71
-  },
-  {
-   "storeId": "lehigh-valley-honda",
-   "location": "Lehigh Valley Honda",
-   "name": "Michael Seidel",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 0,
-   "reviewInvites": 0,
-   "clientsMessaged": 0,
-   "assignedClients": 7
+   "assignedClients": 72
   },
   {
    "storeId": "lehigh-valley-honda",
@@ -650852,19 +651757,6 @@
    "name": "Adrienne Fessler",
    "role": "Admin",
    "lastActivity": "2026-09-11",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 0,
-   "reviewInvites": 0,
-   "clientsMessaged": 0,
-   "assignedClients": 17
-  },
-  {
-   "storeId": "lehigh-valley-honda",
-   "location": "Lehigh Valley Honda",
-   "name": "Paul Lormeus",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
@@ -650896,7 +651788,7 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 57
+   "assignedClients": 65
   },
   {
    "storeId": "lehigh-valley-honda",
@@ -652827,26 +653719,26 @@
    "location": "Lindsay Honda",
    "name": "Jacob Times",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 910,
+   "messagesSent": 936,
    "reviewInvites": 0,
-   "clientsMessaged": 433,
-   "assignedClients": 191
+   "clientsMessaged": 443,
+   "assignedClients": 200
   },
   {
    "storeId": "lindsay-honda",
    "location": "Lindsay Honda",
    "name": "Brittni Olivares",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 421,
+   "messagesSent": 447,
    "reviewInvites": 0,
-   "clientsMessaged": 233,
-   "assignedClients": 243
+   "clientsMessaged": 246,
+   "assignedClients": 251
   },
   {
    "storeId": "lindsay-honda",
@@ -652859,7 +653751,7 @@
    "messagesSent": 374,
    "reviewInvites": 0,
    "clientsMessaged": 84,
-   "assignedClients": 109
+   "assignedClients": 113
   },
   {
    "storeId": "lindsay-honda",
@@ -652869,30 +653761,30 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 312,
+   "messagesSent": 320,
    "reviewInvites": 0,
-   "clientsMessaged": 139,
-   "assignedClients": 192
+   "clientsMessaged": 141,
+   "assignedClients": 194
   },
   {
    "storeId": "lindsay-honda",
    "location": "Lindsay Honda",
    "name": "Andrea Williams",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 288,
+   "messagesSent": 297,
    "reviewInvites": 0,
-   "clientsMessaged": 108,
-   "assignedClients": 127
+   "clientsMessaged": 114,
+   "assignedClients": 135
   },
   {
    "storeId": "lindsay-honda",
    "location": "Lindsay Honda",
    "name": "Jim Babcock",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 152,
@@ -652908,23 +653800,36 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 137,
+   "messagesSent": 140,
    "reviewInvites": 0,
-   "clientsMessaged": 83,
-   "assignedClients": 141
+   "clientsMessaged": 84,
+   "assignedClients": 148
   },
   {
    "storeId": "lindsay-honda",
    "location": "Lindsay Honda",
    "name": "Jared Scales",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 129,
+   "messagesSent": 138,
    "reviewInvites": 0,
-   "clientsMessaged": 44,
-   "assignedClients": 32
+   "clientsMessaged": 46,
+   "assignedClients": 34
+  },
+  {
+   "storeId": "lindsay-honda",
+   "location": "Lindsay Honda",
+   "name": "Mikale Long",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 4,
+   "messagesSent": 131,
+   "reviewInvites": 0,
+   "clientsMessaged": 89,
+   "assignedClients": 56
   },
   {
    "storeId": "lindsay-honda",
@@ -652937,33 +653842,20 @@
    "messagesSent": 123,
    "reviewInvites": 0,
    "clientsMessaged": 60,
-   "assignedClients": 60
-  },
-  {
-   "storeId": "lindsay-honda",
-   "location": "Lindsay Honda",
-   "name": "Mikale Long",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 117,
-   "reviewInvites": 0,
-   "clientsMessaged": 86,
-   "assignedClients": 53
+   "assignedClients": 62
   },
   {
    "storeId": "lindsay-honda",
    "location": "Lindsay Honda",
    "name": "Nick Libom",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 2,
-   "messagesSent": 111,
+   "messagesSent": 115,
    "reviewInvites": 0,
-   "clientsMessaged": 58,
-   "assignedClients": 47
+   "clientsMessaged": 62,
+   "assignedClients": 50
   },
   {
    "storeId": "lindsay-honda",
@@ -652973,23 +653865,23 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 88,
+   "messagesSent": 90,
    "reviewInvites": 0,
    "clientsMessaged": 43,
-   "assignedClients": 43
+   "assignedClients": 47
   },
   {
    "storeId": "lindsay-honda",
    "location": "Lindsay Honda",
    "name": "Kody Jordan",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 80,
+   "messagesSent": 84,
    "reviewInvites": 0,
-   "clientsMessaged": 34,
-   "assignedClients": 134
+   "clientsMessaged": 37,
+   "assignedClients": 139
   },
   {
    "storeId": "lindsay-honda",
@@ -652999,10 +653891,10 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 1,
-   "messagesSent": 79,
+   "messagesSent": 83,
    "reviewInvites": 0,
-   "clientsMessaged": 30,
-   "assignedClients": 15
+   "clientsMessaged": 34,
+   "assignedClients": 17
   },
   {
    "storeId": "lindsay-honda",
@@ -653015,20 +653907,46 @@
    "messagesSent": 75,
    "reviewInvites": 0,
    "clientsMessaged": 67,
-   "assignedClients": 193
+   "assignedClients": 197
   },
   {
    "storeId": "lindsay-honda",
    "location": "Lindsay Honda",
    "name": "Jason Youngblood",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 6,
-   "messagesSent": 68,
+   "messagesSent": 69,
+   "reviewInvites": 0,
+   "clientsMessaged": 37,
+   "assignedClients": 42
+  },
+  {
+   "storeId": "lindsay-honda",
+   "location": "Lindsay Honda",
+   "name": "Ernie Hyatt",
+   "role": "Manager",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 55,
    "reviewInvites": 0,
    "clientsMessaged": 36,
-   "assignedClients": 41
+   "assignedClients": 208
+  },
+  {
+   "storeId": "lindsay-honda",
+   "location": "Lindsay Honda",
+   "name": "Tory Bowers",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 52,
+   "reviewInvites": 0,
+   "clientsMessaged": 34,
+   "assignedClients": 36
   },
   {
    "storeId": "lindsay-honda",
@@ -653067,45 +653985,19 @@
    "messagesSent": 46,
    "reviewInvites": 0,
    "clientsMessaged": 10,
-   "assignedClients": 26
-  },
-  {
-   "storeId": "lindsay-honda",
-   "location": "Lindsay Honda",
-   "name": "Ernie Hyatt",
-   "role": "Manager",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 45,
-   "reviewInvites": 0,
-   "clientsMessaged": 29,
-   "assignedClients": 202
-  },
-  {
-   "storeId": "lindsay-honda",
-   "location": "Lindsay Honda",
-   "name": "Tory Bowers",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 45,
-   "reviewInvites": 0,
-   "clientsMessaged": 30,
-   "assignedClients": 34
+   "assignedClients": 30
   },
   {
    "storeId": "lindsay-honda",
    "location": "Lindsay Honda",
    "name": "James Hill",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 42,
+   "messagesSent": 43,
    "reviewInvites": 0,
-   "clientsMessaged": 25,
+   "clientsMessaged": 26,
    "assignedClients": 27
   },
   {
@@ -653113,52 +654005,52 @@
    "location": "Lindsay Honda",
    "name": "David Wheeler",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 35,
+   "messagesSent": 41,
    "reviewInvites": 0,
-   "clientsMessaged": 23,
-   "assignedClients": 23
+   "clientsMessaged": 26,
+   "assignedClients": 25
   },
   {
    "storeId": "lindsay-honda",
    "location": "Lindsay Honda",
    "name": "Hermon Malone",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 28,
    "reviewInvites": 0,
    "clientsMessaged": 18,
-   "assignedClients": 42
+   "assignedClients": 44
   },
   {
    "storeId": "lindsay-honda",
    "location": "Lindsay Honda",
    "name": "Scott Becker",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 1,
-   "messagesSent": 26,
+   "messagesSent": 27,
    "reviewInvites": 0,
-   "clientsMessaged": 19,
-   "assignedClients": 29
+   "clientsMessaged": 20,
+   "assignedClients": 32
   },
   {
    "storeId": "lindsay-honda",
    "location": "Lindsay Honda",
    "name": "Luther Clinchscales",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 26,
    "reviewInvites": 0,
    "clientsMessaged": 15,
-   "assignedClients": 41
+   "assignedClients": 43
   },
   {
    "storeId": "lindsay-honda",
@@ -653171,7 +654063,7 @@
    "messagesSent": 24,
    "reviewInvites": 0,
    "clientsMessaged": 18,
-   "assignedClients": 29
+   "assignedClients": 30
   },
   {
    "storeId": "lindsay-honda",
@@ -653181,9 +654073,9 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 22,
+   "messagesSent": 23,
    "reviewInvites": 0,
-   "clientsMessaged": 18,
+   "clientsMessaged": 19,
    "assignedClients": 32
   },
   {
@@ -653191,7 +654083,7 @@
    "location": "Lindsay Honda",
    "name": "Hector Medina",
    "role": "Support Agent",
-   "lastActivity": "2026-09-11",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 21,
@@ -653207,20 +654099,20 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 17,
+   "messagesSent": 18,
    "reviewInvites": 0,
    "clientsMessaged": 11,
-   "assignedClients": 23
+   "assignedClients": 24
   },
   {
    "storeId": "lindsay-honda",
    "location": "Lindsay Honda",
    "name": "Keenan Quentin",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 15,
+   "messagesSent": 16,
    "reviewInvites": 0,
    "clientsMessaged": 10,
    "assignedClients": 7
@@ -653230,13 +654122,13 @@
    "location": "Lindsay Honda",
    "name": "Michael Houston",
    "role": "Support Agent",
-   "lastActivity": "2026-09-11",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 15,
    "reviewInvites": 0,
    "clientsMessaged": 11,
-   "assignedClients": 17
+   "assignedClients": 18
   },
   {
    "storeId": "lindsay-honda",
@@ -653267,9 +654159,22 @@
   {
    "storeId": "lindsay-honda",
    "location": "Lindsay Honda",
+   "name": "Monique Benefield",
+   "role": "Manager",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 11,
+   "reviewInvites": 0,
+   "clientsMessaged": 11,
+   "assignedClients": 21
+  },
+  {
+   "storeId": "lindsay-honda",
+   "location": "Lindsay Honda",
    "name": "Fernando Soler",
    "role": "Support Agent",
-   "lastActivity": "2026-09-12",
+   "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 1,
    "messagesSent": 9,
@@ -653308,7 +654213,7 @@
    "location": "Lindsay Honda",
    "name": "Ernest Agyemang",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 5,
@@ -653360,7 +654265,7 @@
    "location": "Lindsay Honda",
    "name": "David Wilson",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 2,
    "messagesSent": 5,
@@ -653371,28 +654276,15 @@
   {
    "storeId": "lindsay-honda",
    "location": "Lindsay Honda",
-   "name": "Monique Benefield",
-   "role": "Manager",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 5,
-   "reviewInvites": 0,
-   "clientsMessaged": 5,
-   "assignedClients": 15
-  },
-  {
-   "storeId": "lindsay-honda",
-   "location": "Lindsay Honda",
    "name": "Jaime Carpenter",
    "role": "Admin",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 4,
    "reviewInvites": 0,
    "clientsMessaged": 2,
-   "assignedClients": 76
+   "assignedClients": 78
   },
   {
    "storeId": "lindsay-honda",
@@ -653405,20 +654297,20 @@
    "messagesSent": 3,
    "reviewInvites": 0,
    "clientsMessaged": 3,
-   "assignedClients": 56
+   "assignedClients": 59
   },
   {
    "storeId": "lindsay-honda",
    "location": "Lindsay Honda",
    "name": "Dave Dawes",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 1,
    "reviewInvites": 0,
    "clientsMessaged": 1,
-   "assignedClients": 28
+   "assignedClients": 29
   },
   {
    "storeId": "lindsay-honda",
@@ -653431,7 +654323,7 @@
    "messagesSent": 1,
    "reviewInvites": 0,
    "clientsMessaged": 1,
-   "assignedClients": 5
+   "assignedClients": 6
   },
   {
    "storeId": "lindsay-honda",
@@ -653444,20 +654336,20 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 64
+   "assignedClients": 66
   },
   {
    "storeId": "lindsay-honda",
    "location": "Lindsay Honda",
    "name": "Ruben Rai",
    "role": "Support Agent",
-   "lastActivity": "2026-08-25",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 4
+   "assignedClients": 5
   },
   {
    "storeId": "lindsay-honda",
@@ -653470,59 +654362,59 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 288
-  },
-  {
-   "storeId": "lunde-s-peoria-volkswagen",
-   "location": "Lunde's Peoria Volkswagen",
-   "name": "Lily Reagan",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 16,
-   "messagesSent": 316,
-   "reviewInvites": 0,
-   "clientsMessaged": 138,
-   "assignedClients": 17
+   "assignedClients": 300
   },
   {
    "storeId": "lunde-s-peoria-volkswagen",
    "location": "Lunde's Peoria Volkswagen",
    "name": "Cody Carlson",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 299,
+   "videosSent": 1,
+   "messagesSent": 331,
    "reviewInvites": 0,
-   "clientsMessaged": 97,
-   "assignedClients": 45
+   "clientsMessaged": 99,
+   "assignedClients": 47
+  },
+  {
+   "storeId": "lunde-s-peoria-volkswagen",
+   "location": "Lunde's Peoria Volkswagen",
+   "name": "Lily Reagan",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 16,
+   "messagesSent": 321,
+   "reviewInvites": 0,
+   "clientsMessaged": 139,
+   "assignedClients": 17
   },
   {
    "storeId": "lunde-s-peoria-volkswagen",
    "location": "Lunde's Peoria Volkswagen",
    "name": "Rae Jensen",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 29,
-   "messagesSent": 237,
+   "messagesSent": 248,
    "reviewInvites": 0,
-   "clientsMessaged": 104,
-   "assignedClients": 25
+   "clientsMessaged": 105,
+   "assignedClients": 26
   },
   {
    "storeId": "lunde-s-peoria-volkswagen",
    "location": "Lunde's Peoria Volkswagen",
    "name": "Louis Vroman",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
-   "videosSent": 7,
-   "messagesSent": 223,
+   "videosSent": 9,
+   "messagesSent": 237,
    "reviewInvites": 0,
-   "clientsMessaged": 57,
-   "assignedClients": 31
+   "clientsMessaged": 59,
+   "assignedClients": 33
   },
   {
    "storeId": "lunde-s-peoria-volkswagen",
@@ -653532,10 +654424,23 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 139,
+   "messagesSent": 145,
    "reviewInvites": 0,
-   "clientsMessaged": 54,
-   "assignedClients": 94
+   "clientsMessaged": 55,
+   "assignedClients": 99
+  },
+  {
+   "storeId": "lunde-s-peoria-volkswagen",
+   "location": "Lunde's Peoria Volkswagen",
+   "name": "Monique Miller",
+   "role": "Admin",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 131,
+   "reviewInvites": 0,
+   "clientsMessaged": 118,
+   "assignedClients": 20
   },
   {
    "storeId": "lunde-s-peoria-volkswagen",
@@ -653548,46 +654453,46 @@
    "messagesSent": 127,
    "reviewInvites": 0,
    "clientsMessaged": 81,
-   "assignedClients": 168
-  },
-  {
-   "storeId": "lunde-s-peoria-volkswagen",
-   "location": "Lunde's Peoria Volkswagen",
-   "name": "Monique Miller",
-   "role": "Admin",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 122,
-   "reviewInvites": 0,
-   "clientsMessaged": 109,
-   "assignedClients": 20
+   "assignedClients": 173
   },
   {
    "storeId": "lunde-s-peoria-volkswagen",
    "location": "Lunde's Peoria Volkswagen",
    "name": "Kyra Knight",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 83,
+   "messagesSent": 95,
    "reviewInvites": 0,
-   "clientsMessaged": 39,
-   "assignedClients": 20
+   "clientsMessaged": 42,
+   "assignedClients": 23
   },
   {
    "storeId": "lunde-s-peoria-volkswagen",
    "location": "Lunde's Peoria Volkswagen",
    "name": "Dontae Lee",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 4,
    "messagesSent": 82,
    "reviewInvites": 0,
    "clientsMessaged": 32,
    "assignedClients": 19
+  },
+  {
+   "storeId": "lunde-s-peoria-volkswagen",
+   "location": "Lunde's Peoria Volkswagen",
+   "name": "Meagan Minas",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 8,
+   "messagesSent": 82,
+   "reviewInvites": 0,
+   "clientsMessaged": 27,
+   "assignedClients": 20
   },
   {
    "storeId": "lunde-s-peoria-volkswagen",
@@ -653605,28 +654510,15 @@
   {
    "storeId": "lunde-s-peoria-volkswagen",
    "location": "Lunde's Peoria Volkswagen",
-   "name": "Meagan Minas",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-13",
-   "apptsCreated": 0,
-   "videosSent": 7,
-   "messagesSent": 74,
-   "reviewInvites": 0,
-   "clientsMessaged": 24,
-   "assignedClients": 19
-  },
-  {
-   "storeId": "lunde-s-peoria-volkswagen",
-   "location": "Lunde's Peoria Volkswagen",
    "name": "Ryan Smith",
    "role": "Support Agent",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 2,
-   "messagesSent": 64,
+   "messagesSent": 65,
    "reviewInvites": 0,
-   "clientsMessaged": 34,
-   "assignedClients": 20
+   "clientsMessaged": 35,
+   "assignedClients": 22
   },
   {
    "storeId": "lunde-s-peoria-volkswagen",
@@ -653639,20 +654531,33 @@
    "messagesSent": 60,
    "reviewInvites": 0,
    "clientsMessaged": 26,
-   "assignedClients": 60
+   "assignedClients": 62
   },
   {
    "storeId": "lunde-s-peoria-volkswagen",
    "location": "Lunde's Peoria Volkswagen",
    "name": "Jeffrey Leisses",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 11,
    "messagesSent": 59,
    "reviewInvites": 0,
    "clientsMessaged": 24,
-   "assignedClients": 26
+   "assignedClients": 27
+  },
+  {
+   "storeId": "lunde-s-peoria-volkswagen",
+   "location": "Lunde's Peoria Volkswagen",
+   "name": "Bradley Thompson",
+   "role": "Manager",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 58,
+   "reviewInvites": 0,
+   "clientsMessaged": 20,
+   "assignedClients": 72
   },
   {
    "storeId": "lunde-s-peoria-volkswagen",
@@ -653665,20 +654570,7 @@
    "messagesSent": 57,
    "reviewInvites": 0,
    "clientsMessaged": 18,
-   "assignedClients": 15
-  },
-  {
-   "storeId": "lunde-s-peoria-volkswagen",
-   "location": "Lunde's Peoria Volkswagen",
-   "name": "Bradley Thompson",
-   "role": "Manager",
-   "lastActivity": "2026-09-13",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 51,
-   "reviewInvites": 0,
-   "clientsMessaged": 16,
-   "assignedClients": 68
+   "assignedClients": 0
   },
   {
    "storeId": "lunde-s-peoria-volkswagen",
@@ -653688,9 +654580,9 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 1,
-   "messagesSent": 42,
+   "messagesSent": 47,
    "reviewInvites": 0,
-   "clientsMessaged": 25,
+   "clientsMessaged": 26,
    "assignedClients": 20
   },
   {
@@ -653698,7 +654590,7 @@
    "location": "Lunde's Peoria Volkswagen",
    "name": "Kyle Harrison",
    "role": "Admin",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 26,
@@ -653714,23 +654606,23 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 22,
+   "messagesSent": 24,
    "reviewInvites": 0,
-   "clientsMessaged": 8,
-   "assignedClients": 4
+   "clientsMessaged": 10,
+   "assignedClients": 5
   },
   {
    "storeId": "lunde-s-peoria-volkswagen",
    "location": "Lunde's Peoria Volkswagen",
    "name": "Tristen Hays",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 16,
+   "messagesSent": 21,
    "reviewInvites": 0,
-   "clientsMessaged": 3,
-   "assignedClients": 3
+   "clientsMessaged": 4,
+   "assignedClients": 4
   },
   {
    "storeId": "lunde-s-peoria-volkswagen",
@@ -653750,7 +654642,7 @@
    "location": "Lunde's Peoria Volkswagen",
    "name": "Ashley Eggers",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 2,
@@ -653763,7 +654655,7 @@
    "location": "Lunde's Peoria Volkswagen",
    "name": "Tyzick Rivera",
    "role": "Manager",
-   "lastActivity": "2026-09-04",
+   "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 1,
@@ -653774,38 +654666,25 @@
   {
    "storeId": "mercedes-benz-of-lehigh-valley",
    "location": "Mercedes-Benz Lehigh Valley",
-   "name": "Intekhab Alam",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 11,
-   "messagesSent": 229,
-   "reviewInvites": 0,
-   "clientsMessaged": 89,
-   "assignedClients": 17
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Mercedes-Benz Lehigh Valley",
    "name": "Ethan Maclean",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 9,
-   "messagesSent": 226,
+   "messagesSent": 263,
    "reviewInvites": 0,
-   "clientsMessaged": 74,
-   "assignedClients": 34
+   "clientsMessaged": 91,
+   "assignedClients": 41
   },
   {
    "storeId": "mercedes-benz-of-lehigh-valley",
    "location": "Mercedes-Benz Lehigh Valley",
    "name": "Julien De La Cruz",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
-   "videosSent": 12,
-   "messagesSent": 221,
+   "videosSent": 13,
+   "messagesSent": 243,
    "reviewInvites": 0,
    "clientsMessaged": 51,
    "assignedClients": 19
@@ -653813,800 +654692,644 @@
   {
    "storeId": "mercedes-benz-of-lehigh-valley",
    "location": "Mercedes-Benz Lehigh Valley",
-   "name": "Travis Kost",
-   "role": "Admin",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 127,
-   "reviewInvites": 0,
-   "clientsMessaged": 76,
-   "assignedClients": 116
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Mercedes-Benz Lehigh Valley",
-   "name": "Lee Brannon",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 2,
-   "messagesSent": 117,
-   "reviewInvites": 0,
-   "clientsMessaged": 43,
-   "assignedClients": 25
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Mercedes-Benz Lehigh Valley",
-   "name": "David Cooke",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 24,
-   "messagesSent": 103,
-   "reviewInvites": 0,
-   "clientsMessaged": 13,
-   "assignedClients": 11
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Mercedes-Benz Lehigh Valley",
-   "name": "Christian Acosta",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 5,
-   "messagesSent": 89,
-   "reviewInvites": 0,
-   "clientsMessaged": 32,
-   "assignedClients": 19
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Mercedes-Benz Lehigh Valley",
-   "name": "Edwin Perez",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 4,
-   "messagesSent": 81,
-   "reviewInvites": 0,
-   "clientsMessaged": 26,
-   "assignedClients": 19
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Mercedes-Benz Lehigh Valley",
-   "name": "Elizabeth Kim",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 10,
-   "messagesSent": 75,
-   "reviewInvites": 0,
-   "clientsMessaged": 28,
-   "assignedClients": 13
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Mercedes-Benz Lehigh Valley",
-   "name": "Jim Sangiorgio",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-11",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 63,
-   "reviewInvites": 0,
-   "clientsMessaged": 19,
-   "assignedClients": 7
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Mercedes-Benz Lehigh Valley",
-   "name": "David Thomas",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 1,
-   "messagesSent": 52,
-   "reviewInvites": 0,
-   "clientsMessaged": 18,
-   "assignedClients": 19
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Mercedes-Benz Lehigh Valley",
-   "name": "Gianni Tersigni",
-   "role": "Manager",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 33,
-   "reviewInvites": 0,
-   "clientsMessaged": 15,
-   "assignedClients": 42
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Mercedes-Benz Lehigh Valley",
-   "name": "Sayed Ahmed",
-   "role": "Admin",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 22,
-   "reviewInvites": 0,
-   "clientsMessaged": 21,
-   "assignedClients": 80
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Mercedes-Benz Lehigh Valley",
-   "name": "James Lewis",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-11",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 14,
-   "reviewInvites": 0,
-   "clientsMessaged": 9,
-   "assignedClients": 66
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Mercedes-Benz Lehigh Valley",
-   "name": "Paul Goodwin",
-   "role": "Admin",
-   "lastActivity": "2026-07-27",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 0,
-   "reviewInvites": 0,
-   "clientsMessaged": 0,
-   "assignedClients": 2
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Mercedes-Benz Lehigh Valley",
-   "name": "Timothy Swavely",
-   "role": "Manager",
-   "lastActivity": "2026-06-16",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 0,
-   "reviewInvites": 0,
-   "clientsMessaged": 0,
-   "assignedClients": 6
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Mercedes-Benz Lehigh Valley",
-   "name": "Adrienne Fessler",
-   "role": "Admin",
-   "lastActivity": "2026-09-11",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 0,
-   "reviewInvites": 0,
-   "clientsMessaged": 0,
-   "assignedClients": 16
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Porsche of Lehigh Valley",
    "name": "Intekhab Alam",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 11,
-   "messagesSent": 229,
+   "messagesSent": 237,
    "reviewInvites": 0,
-   "clientsMessaged": 89,
-   "assignedClients": 17
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Porsche of Lehigh Valley",
-   "name": "Ethan Maclean",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 9,
-   "messagesSent": 226,
-   "reviewInvites": 0,
-   "clientsMessaged": 74,
-   "assignedClients": 34
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Porsche of Lehigh Valley",
-   "name": "Julien De La Cruz",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 12,
-   "messagesSent": 221,
-   "reviewInvites": 0,
-   "clientsMessaged": 51,
+   "clientsMessaged": 91,
    "assignedClients": 19
   },
   {
    "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Porsche of Lehigh Valley",
+   "location": "Mercedes-Benz Lehigh Valley",
    "name": "Travis Kost",
    "role": "Admin",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 127,
-   "reviewInvites": 0,
-   "clientsMessaged": 76,
-   "assignedClients": 116
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Porsche of Lehigh Valley",
-   "name": "Lee Brannon",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 2,
-   "messagesSent": 117,
-   "reviewInvites": 0,
-   "clientsMessaged": 43,
-   "assignedClients": 25
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Porsche of Lehigh Valley",
-   "name": "David Cooke",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 24,
-   "messagesSent": 103,
-   "reviewInvites": 0,
-   "clientsMessaged": 13,
-   "assignedClients": 11
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Porsche of Lehigh Valley",
-   "name": "Christian Acosta",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 5,
-   "messagesSent": 89,
-   "reviewInvites": 0,
-   "clientsMessaged": 32,
-   "assignedClients": 19
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Porsche of Lehigh Valley",
-   "name": "Edwin Perez",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 4,
-   "messagesSent": 81,
-   "reviewInvites": 0,
-   "clientsMessaged": 26,
-   "assignedClients": 19
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Porsche of Lehigh Valley",
-   "name": "Elizabeth Kim",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 10,
-   "messagesSent": 75,
-   "reviewInvites": 0,
-   "clientsMessaged": 28,
-   "assignedClients": 13
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Porsche of Lehigh Valley",
-   "name": "Jim Sangiorgio",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-11",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 63,
-   "reviewInvites": 0,
-   "clientsMessaged": 19,
-   "assignedClients": 7
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Porsche of Lehigh Valley",
-   "name": "David Thomas",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 1,
-   "messagesSent": 52,
-   "reviewInvites": 0,
-   "clientsMessaged": 18,
-   "assignedClients": 19
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Porsche of Lehigh Valley",
-   "name": "Gianni Tersigni",
-   "role": "Manager",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 33,
-   "reviewInvites": 0,
-   "clientsMessaged": 15,
-   "assignedClients": 42
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Porsche of Lehigh Valley",
-   "name": "Sayed Ahmed",
-   "role": "Admin",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 22,
-   "reviewInvites": 0,
-   "clientsMessaged": 21,
-   "assignedClients": 80
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Porsche of Lehigh Valley",
-   "name": "James Lewis",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-11",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 14,
-   "reviewInvites": 0,
-   "clientsMessaged": 9,
-   "assignedClients": 66
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Porsche of Lehigh Valley",
-   "name": "Paul Goodwin",
-   "role": "Admin",
-   "lastActivity": "2026-07-27",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 0,
-   "reviewInvites": 0,
-   "clientsMessaged": 0,
-   "assignedClients": 2
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Porsche of Lehigh Valley",
-   "name": "Timothy Swavely",
-   "role": "Manager",
-   "lastActivity": "2026-06-16",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 0,
-   "reviewInvites": 0,
-   "clientsMessaged": 0,
-   "assignedClients": 6
-  },
-  {
-   "storeId": "mercedes-benz-of-lehigh-valley",
-   "location": "Porsche of Lehigh Valley",
-   "name": "Adrienne Fessler",
-   "role": "Admin",
-   "lastActivity": "2026-09-11",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 0,
-   "reviewInvites": 0,
-   "clientsMessaged": 0,
-   "assignedClients": 16
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Jacob Times",
-   "role": "Manager",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 702,
-   "reviewInvites": 0,
-   "clientsMessaged": 366,
-   "assignedClients": 182
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Brittni Olivares",
-   "role": "Manager",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 403,
-   "reviewInvites": 0,
-   "clientsMessaged": 227,
-   "assignedClients": 235
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Carol Thompson",
-   "role": "Manager",
-   "lastActivity": "2026-09-11",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 374,
+   "messagesSent": 158,
    "reviewInvites": 0,
    "clientsMessaged": 84,
-   "assignedClients": 109
+   "assignedClients": 124
   },
   {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Sandy Elliott",
-   "role": "Manager",
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Mercedes-Benz Lehigh Valley",
+   "name": "Lee Brannon",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 2,
+   "messagesSent": 119,
+   "reviewInvites": 0,
+   "clientsMessaged": 44,
+   "assignedClients": 26
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Mercedes-Benz Lehigh Valley",
+   "name": "David Cooke",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 24,
+   "messagesSent": 106,
+   "reviewInvites": 0,
+   "clientsMessaged": 14,
+   "assignedClients": 13
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Mercedes-Benz Lehigh Valley",
+   "name": "Christian Acosta",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 5,
+   "messagesSent": 90,
+   "reviewInvites": 0,
+   "clientsMessaged": 32,
+   "assignedClients": 20
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Mercedes-Benz Lehigh Valley",
+   "name": "Elizabeth Kim",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 14,
+   "messagesSent": 85,
+   "reviewInvites": 0,
+   "clientsMessaged": 30,
+   "assignedClients": 14
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Mercedes-Benz Lehigh Valley",
+   "name": "Edwin Perez",
+   "role": "Support Agent",
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 279,
+   "videosSent": 5,
+   "messagesSent": 83,
    "reviewInvites": 0,
-   "clientsMessaged": 133,
-   "assignedClients": 189
+   "clientsMessaged": 28,
+   "assignedClients": 21
   },
   {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Andrea Williams",
-   "role": "Manager",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 261,
-   "reviewInvites": 0,
-   "clientsMessaged": 102,
-   "assignedClients": 122
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Jim Babcock",
-   "role": "Manager",
-   "lastActivity": "2026-09-12",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 151,
-   "reviewInvites": 0,
-   "clientsMessaged": 125,
-   "assignedClients": 78
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Savana Vanmeter",
-   "role": "Manager",
-   "lastActivity": "2026-09-11",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 135,
-   "reviewInvites": 0,
-   "clientsMessaged": 81,
-   "assignedClients": 134
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Miriam Younan",
-   "role": "Manager",
-   "lastActivity": "2026-09-13",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 123,
-   "reviewInvites": 0,
-   "clientsMessaged": 60,
-   "assignedClients": 60
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Jared Scales",
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Mercedes-Benz Lehigh Valley",
+   "name": "Jim Sangiorgio",
    "role": "Support Agent",
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 122,
+   "messagesSent": 66,
    "reviewInvites": 0,
-   "clientsMessaged": 42,
+   "clientsMessaged": 22,
+   "assignedClients": 7
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Mercedes-Benz Lehigh Valley",
+   "name": "David Thomas",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 1,
+   "messagesSent": 54,
+   "reviewInvites": 0,
+   "clientsMessaged": 18,
+   "assignedClients": 19
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Mercedes-Benz Lehigh Valley",
+   "name": "Gianni Tersigni",
+   "role": "Manager",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 35,
+   "reviewInvites": 0,
+   "clientsMessaged": 17,
+   "assignedClients": 43
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Mercedes-Benz Lehigh Valley",
+   "name": "Sayed Ahmed",
+   "role": "Admin",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 25,
+   "reviewInvites": 0,
+   "clientsMessaged": 24,
+   "assignedClients": 85
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Mercedes-Benz Lehigh Valley",
+   "name": "James Lewis",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-11",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 14,
+   "reviewInvites": 0,
+   "clientsMessaged": 9,
+   "assignedClients": 67
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Mercedes-Benz Lehigh Valley",
+   "name": "Paul Goodwin",
+   "role": "Admin",
+   "lastActivity": "2026-07-27",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 0,
+   "reviewInvites": 0,
+   "clientsMessaged": 0,
+   "assignedClients": 2
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Mercedes-Benz Lehigh Valley",
+   "name": "Timothy Swavely",
+   "role": "Manager",
+   "lastActivity": "2026-06-16",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 0,
+   "reviewInvites": 0,
+   "clientsMessaged": 0,
+   "assignedClients": 6
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Mercedes-Benz Lehigh Valley",
+   "name": "Adrienne Fessler",
+   "role": "Admin",
+   "lastActivity": "2026-09-11",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 0,
+   "reviewInvites": 0,
+   "clientsMessaged": 0,
+   "assignedClients": 18
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Porsche of Lehigh Valley",
+   "name": "Ethan Maclean",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 9,
+   "messagesSent": 263,
+   "reviewInvites": 0,
+   "clientsMessaged": 91,
+   "assignedClients": 41
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Porsche of Lehigh Valley",
+   "name": "Julien De La Cruz",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 13,
+   "messagesSent": 243,
+   "reviewInvites": 0,
+   "clientsMessaged": 51,
+   "assignedClients": 19
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Porsche of Lehigh Valley",
+   "name": "Intekhab Alam",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 11,
+   "messagesSent": 237,
+   "reviewInvites": 0,
+   "clientsMessaged": 91,
+   "assignedClients": 19
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Porsche of Lehigh Valley",
+   "name": "Travis Kost",
+   "role": "Admin",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 158,
+   "reviewInvites": 0,
+   "clientsMessaged": 84,
+   "assignedClients": 124
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Porsche of Lehigh Valley",
+   "name": "Lee Brannon",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 2,
+   "messagesSent": 119,
+   "reviewInvites": 0,
+   "clientsMessaged": 44,
+   "assignedClients": 26
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Porsche of Lehigh Valley",
+   "name": "David Cooke",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 24,
+   "messagesSent": 106,
+   "reviewInvites": 0,
+   "clientsMessaged": 14,
+   "assignedClients": 13
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Porsche of Lehigh Valley",
+   "name": "Christian Acosta",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 5,
+   "messagesSent": 90,
+   "reviewInvites": 0,
+   "clientsMessaged": 32,
+   "assignedClients": 20
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Porsche of Lehigh Valley",
+   "name": "Elizabeth Kim",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 14,
+   "messagesSent": 85,
+   "reviewInvites": 0,
+   "clientsMessaged": 30,
+   "assignedClients": 14
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Porsche of Lehigh Valley",
+   "name": "Edwin Perez",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-14",
+   "apptsCreated": 0,
+   "videosSent": 5,
+   "messagesSent": 83,
+   "reviewInvites": 0,
+   "clientsMessaged": 28,
+   "assignedClients": 21
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Porsche of Lehigh Valley",
+   "name": "Jim Sangiorgio",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-14",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 66,
+   "reviewInvites": 0,
+   "clientsMessaged": 22,
+   "assignedClients": 7
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Porsche of Lehigh Valley",
+   "name": "David Thomas",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 1,
+   "messagesSent": 54,
+   "reviewInvites": 0,
+   "clientsMessaged": 18,
+   "assignedClients": 19
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Porsche of Lehigh Valley",
+   "name": "Gianni Tersigni",
+   "role": "Manager",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 35,
+   "reviewInvites": 0,
+   "clientsMessaged": 17,
+   "assignedClients": 43
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Porsche of Lehigh Valley",
+   "name": "Sayed Ahmed",
+   "role": "Admin",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 25,
+   "reviewInvites": 0,
+   "clientsMessaged": 24,
+   "assignedClients": 85
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Porsche of Lehigh Valley",
+   "name": "James Lewis",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-11",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 14,
+   "reviewInvites": 0,
+   "clientsMessaged": 9,
+   "assignedClients": 67
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Porsche of Lehigh Valley",
+   "name": "Paul Goodwin",
+   "role": "Admin",
+   "lastActivity": "2026-07-27",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 0,
+   "reviewInvites": 0,
+   "clientsMessaged": 0,
+   "assignedClients": 2
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Porsche of Lehigh Valley",
+   "name": "Timothy Swavely",
+   "role": "Manager",
+   "lastActivity": "2026-06-16",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 0,
+   "reviewInvites": 0,
+   "clientsMessaged": 0,
+   "assignedClients": 6
+  },
+  {
+   "storeId": "mercedes-benz-of-lehigh-valley",
+   "location": "Porsche of Lehigh Valley",
+   "name": "Adrienne Fessler",
+   "role": "Admin",
+   "lastActivity": "2026-09-11",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 0,
+   "reviewInvites": 0,
+   "clientsMessaged": 0,
+   "assignedClients": 18
+  },
+  {
+   "storeId": "scholfield-honda",
+   "location": "Scholfield Honda",
+   "name": "Angelyka Wood",
+   "role": "Admin",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 823,
+   "reviewInvites": 0,
+   "clientsMessaged": 406,
+   "assignedClients": 418
+  },
+  {
+   "storeId": "scholfield-honda",
+   "location": "Scholfield Honda",
+   "name": "Michael Triana",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-14",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 94,
+   "reviewInvites": 0,
+   "clientsMessaged": 44,
+   "assignedClients": 98
+  },
+  {
+   "storeId": "scholfield-honda",
+   "location": "Scholfield Honda",
+   "name": "Andrew Woods",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 3,
+   "messagesSent": 88,
+   "reviewInvites": 0,
+   "clientsMessaged": 28,
    "assignedClients": 30
   },
   {
    "storeId": "scholfield-honda",
    "location": "Scholfield Honda",
-   "name": "Mikale Long",
+   "name": "Ryan Shepherd",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 110,
+   "messagesSent": 69,
    "reviewInvites": 0,
-   "clientsMessaged": 79,
-   "assignedClients": 47
+   "clientsMessaged": 12,
+   "assignedClients": 86
   },
   {
    "storeId": "scholfield-honda",
    "location": "Scholfield Honda",
-   "name": "Nick Libom",
+   "name": "Taylor Rangel",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
-   "videosSent": 2,
-   "messagesSent": 109,
+   "videosSent": 7,
+   "messagesSent": 62,
    "reviewInvites": 0,
-   "clientsMessaged": 57,
-   "assignedClients": 47
+   "clientsMessaged": 26,
+   "assignedClients": 34
   },
   {
    "storeId": "scholfield-honda",
    "location": "Scholfield Honda",
-   "name": "Kody Jordan",
-   "role": "Manager",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 80,
-   "reviewInvites": 0,
-   "clientsMessaged": 34,
-   "assignedClients": 130
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Bambi Avey",
+   "name": "Vic Villarreal",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 79,
-   "reviewInvites": 0,
-   "clientsMessaged": 39,
-   "assignedClients": 37
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Shannon Dailey",
-   "role": "Manager",
-   "lastActivity": "2026-09-10",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 75,
-   "reviewInvites": 0,
-   "clientsMessaged": 67,
-   "assignedClients": 192
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Kevin Caldwell",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 1,
-   "messagesSent": 67,
+   "messagesSent": 58,
+   "reviewInvites": 0,
+   "clientsMessaged": 26,
+   "assignedClients": 35
+  },
+  {
+   "storeId": "scholfield-honda",
+   "location": "Scholfield Honda",
+   "name": "Hector Pompa",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 1,
+   "messagesSent": 53,
    "reviewInvites": 0,
    "clientsMessaged": 28,
+   "assignedClients": 32
+  },
+  {
+   "storeId": "scholfield-honda",
+   "location": "Scholfield Honda",
+   "name": "Oscar Rayo",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 2,
+   "messagesSent": 52,
+   "reviewInvites": 0,
+   "clientsMessaged": 20,
+   "assignedClients": 50
+  },
+  {
+   "storeId": "scholfield-honda",
+   "location": "Scholfield Honda",
+   "name": "Malik Qasim",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-14",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 35,
+   "reviewInvites": 0,
+   "clientsMessaged": 16,
+   "assignedClients": 15
+  },
+  {
+   "storeId": "scholfield-honda",
+   "location": "Scholfield Honda",
+   "name": "Gabriel Terrazas",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 34,
+   "reviewInvites": 0,
+   "clientsMessaged": 18,
+   "assignedClients": 18
+  },
+  {
+   "storeId": "scholfield-honda",
+   "location": "Scholfield Honda",
+   "name": "Hamilton Richardson",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 33,
+   "reviewInvites": 0,
+   "clientsMessaged": 17,
+   "assignedClients": 80
+  },
+  {
+   "storeId": "scholfield-honda",
+   "location": "Scholfield Honda",
+   "name": "Stewart Hoover",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-14",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 25,
+   "reviewInvites": 0,
+   "clientsMessaged": 9,
+   "assignedClients": 54
+  },
+  {
+   "storeId": "scholfield-honda",
+   "location": "Scholfield Honda",
+   "name": "Sage Peterson",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-14",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 20,
+   "reviewInvites": 0,
+   "clientsMessaged": 14,
+   "assignedClients": 31
+  },
+  {
+   "storeId": "scholfield-honda",
+   "location": "Scholfield Honda",
+   "name": "Oscar Maldanado",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 1,
+   "messagesSent": 20,
+   "reviewInvites": 0,
+   "clientsMessaged": 12,
+   "assignedClients": 10
+  },
+  {
+   "storeId": "scholfield-honda",
+   "location": "Scholfield Honda",
+   "name": "Brandon Balman",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-14",
+   "apptsCreated": 0,
+   "videosSent": 3,
+   "messagesSent": 17,
+   "reviewInvites": 0,
+   "clientsMessaged": 9,
+   "assignedClients": 124
+  },
+  {
+   "storeId": "scholfield-honda",
+   "location": "Scholfield Honda",
+   "name": "Brandon Lytle",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 7,
+   "messagesSent": 17,
+   "reviewInvites": 0,
+   "clientsMessaged": 12,
    "assignedClients": 14
   },
   {
    "storeId": "scholfield-honda",
    "location": "Scholfield Honda",
-   "name": "Jason Youngblood",
+   "name": "Roman Rojas",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 6,
-   "messagesSent": 55,
-   "reviewInvites": 0,
-   "clientsMessaged": 32,
-   "assignedClients": 40
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Michael Schroeder",
-   "role": "Manager",
-   "lastActivity": "2026-09-12",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 50,
+   "messagesSent": 16,
    "reviewInvites": 0,
-   "clientsMessaged": 13,
-   "assignedClients": 57
+   "clientsMessaged": 8,
+   "assignedClients": 13
   },
   {
    "storeId": "scholfield-honda",
    "location": "Scholfield Honda",
-   "name": "Stephanie Fraley",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-12",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 47,
-   "reviewInvites": 0,
-   "clientsMessaged": 11,
-   "assignedClients": 29
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Derek Bible",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-12",
-   "apptsCreated": 0,
-   "videosSent": 9,
-   "messagesSent": 46,
-   "reviewInvites": 0,
-   "clientsMessaged": 10,
-   "assignedClients": 25
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Tory Bowers",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-13",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 43,
-   "reviewInvites": 0,
-   "clientsMessaged": 28,
-   "assignedClients": 32
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Ernie Hyatt",
-   "role": "Manager",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 41,
-   "reviewInvites": 0,
-   "clientsMessaged": 25,
-   "assignedClients": 197
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "James Hill",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 41,
-   "reviewInvites": 0,
-   "clientsMessaged": 25,
-   "assignedClients": 26
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "David Wheeler",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-12",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 35,
-   "reviewInvites": 0,
-   "clientsMessaged": 23,
-   "assignedClients": 22
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Hermon Malone",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-11",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 26,
-   "reviewInvites": 0,
-   "clientsMessaged": 16,
-   "assignedClients": 37
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Luther Clinchscales",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-12",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 26,
-   "reviewInvites": 0,
-   "clientsMessaged": 15,
-   "assignedClients": 40
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Scott Becker",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 1,
-   "messagesSent": 24,
-   "reviewInvites": 0,
-   "clientsMessaged": 18,
-   "assignedClients": 28
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Stinson Crews",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-12",
-   "apptsCreated": 0,
-   "videosSent": 2,
-   "messagesSent": 24,
-   "reviewInvites": 0,
-   "clientsMessaged": 18,
-   "assignedClients": 27
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Cody Endlich",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 22,
-   "reviewInvites": 0,
-   "clientsMessaged": 18,
-   "assignedClients": 32
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Hector Medina",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-11",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 21,
-   "reviewInvites": 0,
-   "clientsMessaged": 13,
-   "assignedClients": 21
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Keenan Quentin",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 15,
-   "reviewInvites": 0,
-   "clientsMessaged": 10,
-   "assignedClients": 7
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Matthew Burgoon",
+   "name": "Joe Reece",
    "role": "Support Agent",
    "lastActivity": "2026-09-12",
    "apptsCreated": 0,
@@ -654614,194 +655337,64 @@
    "messagesSent": 15,
    "reviewInvites": 0,
    "clientsMessaged": 9,
-   "assignedClients": 21
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Michael Houston",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-11",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 15,
-   "reviewInvites": 0,
-   "clientsMessaged": 11,
-   "assignedClients": 16
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Brian Penn",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-11",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 12,
-   "reviewInvites": 0,
-   "clientsMessaged": 7,
-   "assignedClients": 23
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Rachel Williams",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-12",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 11,
-   "reviewInvites": 0,
-   "clientsMessaged": 5,
-   "assignedClients": 24
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Fernando Soler",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-12",
-   "apptsCreated": 0,
-   "videosSent": 1,
-   "messagesSent": 9,
-   "reviewInvites": 0,
-   "clientsMessaged": 4,
-   "assignedClients": 15
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Taesha Coles",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-08",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 7,
-   "reviewInvites": 0,
-   "clientsMessaged": 1,
-   "assignedClients": 8
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Tyler Woodall",
-   "role": "Manager",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 5,
-   "reviewInvites": 0,
-   "clientsMessaged": 3,
-   "assignedClients": 47
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "David Hacker",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-11",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 5,
-   "reviewInvites": 0,
-   "clientsMessaged": 4,
-   "assignedClients": 33
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Hugh Fullerton",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-06",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 5,
-   "reviewInvites": 0,
-   "clientsMessaged": 1,
-   "assignedClients": 0
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Keith Fleming",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-13",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 5,
-   "reviewInvites": 0,
-   "clientsMessaged": 4,
-   "assignedClients": 17
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Jaime Carpenter",
-   "role": "Admin",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 4,
-   "reviewInvites": 0,
-   "clientsMessaged": 2,
    "assignedClients": 75
   },
   {
    "storeId": "scholfield-honda",
    "location": "Scholfield Honda",
-   "name": "Ernest Agyemang",
+   "name": "Isaac Leal",
    "role": "Support Agent",
-   "lastActivity": "2026-09-12",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 3,
+   "messagesSent": 13,
    "reviewInvites": 0,
-   "clientsMessaged": 2,
-   "assignedClients": 12
+   "clientsMessaged": 7,
+   "assignedClients": 89
   },
   {
    "storeId": "scholfield-honda",
    "location": "Scholfield Honda",
-   "name": "David Wilson",
+   "name": "Demetrius Willams",
    "role": "Support Agent",
-   "lastActivity": "2026-09-12",
-   "apptsCreated": 0,
-   "videosSent": 1,
-   "messagesSent": 3,
-   "reviewInvites": 0,
-   "clientsMessaged": 3,
-   "assignedClients": 4
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Thierno Dia",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-12",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 2,
+   "messagesSent": 8,
    "reviewInvites": 0,
-   "clientsMessaged": 2,
-   "assignedClients": 54
+   "clientsMessaged": 4,
+   "assignedClients": 38
   },
   {
    "storeId": "scholfield-honda",
    "location": "Scholfield Honda",
-   "name": "Monique Benefield",
+   "name": "Tyler Alderman",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 2,
+   "messagesSent": 3,
    "reviewInvites": 0,
-   "clientsMessaged": 2,
-   "assignedClients": 13
+   "clientsMessaged": 1,
+   "assignedClients": 179
   },
   {
    "storeId": "scholfield-honda",
    "location": "Scholfield Honda",
-   "name": "Dave Dawes",
+   "name": "Mark Wiens",
+   "role": "Admin",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 1,
+   "reviewInvites": 0,
+   "clientsMessaged": 1,
+   "assignedClients": 188
+  },
+  {
+   "storeId": "scholfield-honda",
+   "location": "Scholfield Honda",
+   "name": "Nathan Oliver",
    "role": "Support Agent",
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
@@ -654809,40 +655402,66 @@
    "messagesSent": 1,
    "reviewInvites": 0,
    "clientsMessaged": 1,
-   "assignedClients": 28
+   "assignedClients": 6
   },
   {
    "storeId": "scholfield-honda",
    "location": "Scholfield Honda",
-   "name": "Sebastian Mallory",
+   "name": "Todd Drake",
+   "role": "Admin",
+   "lastActivity": "2026-09-14",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 0,
+   "reviewInvites": 0,
+   "clientsMessaged": 0,
+   "assignedClients": 247
+  },
+  {
+   "storeId": "scholfield-honda",
+   "location": "Scholfield Honda",
+   "name": "Matt Council",
+   "role": "Admin",
+   "lastActivity": "2026-09-08",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 0,
+   "reviewInvites": 0,
+   "clientsMessaged": 0,
+   "assignedClients": 170
+  },
+  {
+   "storeId": "scholfield-honda",
+   "location": "Scholfield Honda",
+   "name": "Grant Dittmer",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-14",
+   "apptsCreated": 0,
+   "videosSent": 1,
+   "messagesSent": 0,
+   "reviewInvites": 0,
+   "clientsMessaged": 0,
+   "assignedClients": 31
+  },
+  {
+   "storeId": "scholfield-honda",
+   "location": "Scholfield Honda",
+   "name": "Hailie Harmon",
    "role": "Support Agent",
    "lastActivity": "2026-09-11",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 1,
-   "reviewInvites": 0,
-   "clientsMessaged": 1,
-   "assignedClients": 5
-  },
-  {
-   "storeId": "scholfield-honda",
-   "location": "Scholfield Honda",
-   "name": "Kevin Shannon",
-   "role": "Manager",
-   "lastActivity": "2026-09-12",
-   "apptsCreated": 0,
-   "videosSent": 0,
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 61
+   "assignedClients": 69
   },
   {
    "storeId": "scholfield-honda",
    "location": "Scholfield Honda",
-   "name": "Ruben Rai",
-   "role": "Support Agent",
-   "lastActivity": "2026-08-25",
+   "name": "Jason Kahrs",
+   "role": "Manager",
+   "lastActivity": "2026-09-11",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
@@ -654853,15 +655472,15 @@
   {
    "storeId": "scholfield-honda",
    "location": "Scholfield Honda",
-   "name": "Eric Tinker",
-   "role": "Manager",
-   "lastActivity": "2026-09-09",
+   "name": "Bill Pace",
+   "role": "Admin",
+   "lastActivity": "2026-09-03",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 280
+   "assignedClients": 121
   },
   {
    "storeId": "scott-robinson-honda",
@@ -655336,51 +655955,51 @@
    "location": "Sommer's Automotive",
    "name": "Mike Kay",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 570,
+   "messagesSent": 598,
    "reviewInvites": 0,
-   "clientsMessaged": 336,
-   "assignedClients": 186
+   "clientsMessaged": 353,
+   "assignedClients": 201
   },
   {
    "storeId": "sommer-s-automotive",
    "location": "Sommer's Automotive",
    "name": "Hubert Kelly",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 504,
    "reviewInvites": 0,
    "clientsMessaged": 258,
-   "assignedClients": 175
+   "assignedClients": 178
   },
   {
    "storeId": "sommer-s-automotive",
    "location": "Sommer's Automotive",
    "name": "Stephanie Lewis",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 441,
+   "messagesSent": 502,
    "reviewInvites": 0,
-   "clientsMessaged": 214,
-   "assignedClients": 108
+   "clientsMessaged": 232,
+   "assignedClients": 125
   },
   {
    "storeId": "sommer-s-automotive",
    "location": "Sommer's Automotive",
    "name": "Jennifer Schultz-christ",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 170,
+   "messagesSent": 175,
    "reviewInvites": 0,
-   "clientsMessaged": 26,
+   "clientsMessaged": 27,
    "assignedClients": 12
   },
   {
@@ -655388,26 +656007,26 @@
    "location": "Sommer's Automotive",
    "name": "Peng Tai",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 145,
+   "messagesSent": 151,
    "reviewInvites": 0,
-   "clientsMessaged": 50,
-   "assignedClients": 20
+   "clientsMessaged": 51,
+   "assignedClients": 21
   },
   {
    "storeId": "sommer-s-automotive",
    "location": "Sommer's Automotive",
    "name": "Robert Quintanilla",
    "role": "Support Agent",
-   "lastActivity": "2026-09-12",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 141,
+   "messagesSent": 142,
    "reviewInvites": 0,
    "clientsMessaged": 49,
-   "assignedClients": 36
+   "assignedClients": 37
   },
   {
    "storeId": "sommer-s-automotive",
@@ -655417,9 +656036,9 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 125,
+   "messagesSent": 126,
    "reviewInvites": 0,
-   "clientsMessaged": 60,
+   "clientsMessaged": 61,
    "assignedClients": 18
   },
   {
@@ -655430,10 +656049,10 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 118,
+   "messagesSent": 124,
    "reviewInvites": 0,
    "clientsMessaged": 43,
-   "assignedClients": 43
+   "assignedClients": 44
   },
   {
    "storeId": "sommer-s-automotive",
@@ -655451,61 +656070,61 @@
   {
    "storeId": "sommer-s-automotive",
    "location": "Sommer's Automotive",
-   "name": "Joe Vella",
+   "name": "Thomas Sipin",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 96,
+   "messagesSent": 102,
    "reviewInvites": 0,
-   "clientsMessaged": 65,
-   "assignedClients": 55
+   "clientsMessaged": 38,
+   "assignedClients": 36
   },
   {
    "storeId": "sommer-s-automotive",
    "location": "Sommer's Automotive",
-   "name": "Thomas Sipin",
+   "name": "Joe Vella",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 93,
+   "messagesSent": 98,
    "reviewInvites": 0,
-   "clientsMessaged": 35,
-   "assignedClients": 33
+   "clientsMessaged": 66,
+   "assignedClients": 59
   },
   {
    "storeId": "sommer-s-automotive",
    "location": "Sommer's Automotive",
    "name": "Brian Black",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 81,
+   "messagesSent": 84,
    "reviewInvites": 0,
    "clientsMessaged": 26,
-   "assignedClients": 19
+   "assignedClients": 20
   },
   {
    "storeId": "sommer-s-automotive",
    "location": "Sommer's Automotive",
    "name": "Tracy Wheeler",
    "role": "Admin",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 71,
+   "messagesSent": 78,
    "reviewInvites": 0,
-   "clientsMessaged": 64,
-   "assignedClients": 143
+   "clientsMessaged": 71,
+   "assignedClients": 151
   },
   {
    "storeId": "sommer-s-automotive",
    "location": "Sommer's Automotive",
    "name": "Michael Tuler",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 67,
@@ -655518,49 +656137,62 @@
    "location": "Sommer's Automotive",
    "name": "Jim Cross",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 47,
+   "messagesSent": 50,
    "reviewInvites": 0,
    "clientsMessaged": 22,
-   "assignedClients": 21
+   "assignedClients": 22
   },
   {
    "storeId": "sommer-s-automotive",
    "location": "Sommer's Automotive",
    "name": "Michael Foti",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 41,
+   "messagesSent": 47,
    "reviewInvites": 0,
-   "clientsMessaged": 30,
-   "assignedClients": 150
+   "clientsMessaged": 32,
+   "assignedClients": 157
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "location": "Sommer's Automotive",
+   "name": "Alex Higgs",
+   "role": "Manager",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 39,
+   "reviewInvites": 0,
+   "clientsMessaged": 19,
+   "assignedClients": 147
   },
   {
    "storeId": "sommer-s-automotive",
    "location": "Sommer's Automotive",
    "name": "Rod Weber",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 34,
    "reviewInvites": 0,
    "clientsMessaged": 20,
-   "assignedClients": 26
+   "assignedClients": 31
   },
   {
    "storeId": "sommer-s-automotive",
    "location": "Sommer's Automotive",
    "name": "Lydia Carns",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 33,
+   "messagesSent": 34,
    "reviewInvites": 0,
    "clientsMessaged": 15,
    "assignedClients": 11
@@ -655576,59 +656208,46 @@
    "messagesSent": 32,
    "reviewInvites": 0,
    "clientsMessaged": 16,
-   "assignedClients": 135
-  },
-  {
-   "storeId": "sommer-s-automotive",
-   "location": "Sommer's Automotive",
-   "name": "Alex Higgs",
-   "role": "Manager",
-   "lastActivity": "2026-09-12",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 30,
-   "reviewInvites": 0,
-   "clientsMessaged": 14,
-   "assignedClients": 136
-  },
-  {
-   "storeId": "sommer-s-automotive",
-   "location": "Sommer's Automotive",
-   "name": "Darrell Jackson",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 30,
-   "reviewInvites": 0,
-   "clientsMessaged": 28,
-   "assignedClients": 24
+   "assignedClients": 146
   },
   {
    "storeId": "sommer-s-automotive",
    "location": "Sommer's Automotive",
    "name": "Oliver Hatch",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 29,
+   "messagesSent": 32,
    "reviewInvites": 0,
-   "clientsMessaged": 12,
+   "clientsMessaged": 13,
    "assignedClients": 22
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "location": "Sommer's Automotive",
+   "name": "Darrell Jackson",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 31,
+   "reviewInvites": 0,
+   "clientsMessaged": 29,
+   "assignedClients": 26
   },
   {
    "storeId": "sommer-s-automotive",
    "location": "Sommer's Automotive",
    "name": "Troy Royse",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 25,
+   "messagesSent": 26,
    "reviewInvites": 0,
-   "clientsMessaged": 18,
-   "assignedClients": 36
+   "clientsMessaged": 19,
+   "assignedClients": 40
   },
   {
    "storeId": "sommer-s-automotive",
@@ -655641,7 +656260,20 @@
    "messagesSent": 25,
    "reviewInvites": 0,
    "clientsMessaged": 24,
-   "assignedClients": 137
+   "assignedClients": 141
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "location": "Sommer's Automotive",
+   "name": "Amanda Mapes",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 24,
+   "reviewInvites": 0,
+   "clientsMessaged": 8,
+   "assignedClients": 11
   },
   {
    "storeId": "sommer-s-automotive",
@@ -655654,20 +656286,7 @@
    "messagesSent": 22,
    "reviewInvites": 0,
    "clientsMessaged": 4,
-   "assignedClients": 12
-  },
-  {
-   "storeId": "sommer-s-automotive",
-   "location": "Sommer's Automotive",
-   "name": "Amanda Mapes",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 22,
-   "reviewInvites": 0,
-   "clientsMessaged": 7,
-   "assignedClients": 10
+   "assignedClients": 13
   },
   {
    "storeId": "sommer-s-automotive",
@@ -655680,33 +656299,33 @@
    "messagesSent": 11,
    "reviewInvites": 0,
    "clientsMessaged": 4,
-   "assignedClients": 19
-  },
-  {
-   "storeId": "sommer-s-automotive",
-   "location": "Sommer's Automotive",
-   "name": "Theresa Clemens",
-   "role": "Admin",
-   "lastActivity": "2026-09-12",
-   "apptsCreated": 0,
-   "videosSent": 2,
-   "messagesSent": 10,
-   "reviewInvites": 0,
-   "clientsMessaged": 8,
-   "assignedClients": 70
+   "assignedClients": 20
   },
   {
    "storeId": "sommer-s-automotive",
    "location": "Sommer's Automotive",
    "name": "Zeke Heyse",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
+   "messagesSent": 11,
+   "reviewInvites": 0,
+   "clientsMessaged": 6,
+   "assignedClients": 94
+  },
+  {
+   "storeId": "sommer-s-automotive",
+   "location": "Sommer's Automotive",
+   "name": "Theresa Clemens",
+   "role": "Admin",
+   "lastActivity": "2026-09-14",
+   "apptsCreated": 0,
+   "videosSent": 2,
    "messagesSent": 10,
    "reviewInvites": 0,
-   "clientsMessaged": 5,
-   "assignedClients": 88
+   "clientsMessaged": 8,
+   "assignedClients": 76
   },
   {
    "storeId": "sommer-s-automotive",
@@ -655732,58 +656351,58 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 46
+   "assignedClients": 49
   },
   {
    "storeId": "sommer-s-buick-gmc",
    "location": "Sommer's Buick GMC",
    "name": "Mike Kay",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 570,
+   "messagesSent": 598,
    "reviewInvites": 0,
-   "clientsMessaged": 336,
-   "assignedClients": 186
+   "clientsMessaged": 353,
+   "assignedClients": 201
   },
   {
    "storeId": "sommer-s-buick-gmc",
    "location": "Sommer's Buick GMC",
    "name": "Hubert Kelly",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 504,
    "reviewInvites": 0,
    "clientsMessaged": 258,
-   "assignedClients": 175
+   "assignedClients": 178
   },
   {
    "storeId": "sommer-s-buick-gmc",
    "location": "Sommer's Buick GMC",
    "name": "Stephanie Lewis",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 441,
+   "messagesSent": 502,
    "reviewInvites": 0,
-   "clientsMessaged": 214,
-   "assignedClients": 108
+   "clientsMessaged": 232,
+   "assignedClients": 125
   },
   {
    "storeId": "sommer-s-buick-gmc",
    "location": "Sommer's Buick GMC",
    "name": "Jennifer Schultz-christ",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 170,
+   "messagesSent": 175,
    "reviewInvites": 0,
-   "clientsMessaged": 26,
+   "clientsMessaged": 27,
    "assignedClients": 12
   },
   {
@@ -655791,26 +656410,26 @@
    "location": "Sommer's Buick GMC",
    "name": "Peng Tai",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 145,
+   "messagesSent": 151,
    "reviewInvites": 0,
-   "clientsMessaged": 50,
-   "assignedClients": 20
+   "clientsMessaged": 51,
+   "assignedClients": 21
   },
   {
    "storeId": "sommer-s-buick-gmc",
    "location": "Sommer's Buick GMC",
    "name": "Robert Quintanilla",
    "role": "Support Agent",
-   "lastActivity": "2026-09-12",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 141,
+   "messagesSent": 142,
    "reviewInvites": 0,
    "clientsMessaged": 49,
-   "assignedClients": 36
+   "assignedClients": 37
   },
   {
    "storeId": "sommer-s-buick-gmc",
@@ -655820,9 +656439,9 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 125,
+   "messagesSent": 126,
    "reviewInvites": 0,
-   "clientsMessaged": 60,
+   "clientsMessaged": 61,
    "assignedClients": 18
   },
   {
@@ -655833,10 +656452,10 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 118,
+   "messagesSent": 124,
    "reviewInvites": 0,
    "clientsMessaged": 43,
-   "assignedClients": 43
+   "assignedClients": 44
   },
   {
    "storeId": "sommer-s-buick-gmc",
@@ -655854,61 +656473,61 @@
   {
    "storeId": "sommer-s-buick-gmc",
    "location": "Sommer's Buick GMC",
-   "name": "Joe Vella",
+   "name": "Thomas Sipin",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 96,
+   "messagesSent": 102,
    "reviewInvites": 0,
-   "clientsMessaged": 65,
-   "assignedClients": 55
+   "clientsMessaged": 38,
+   "assignedClients": 36
   },
   {
    "storeId": "sommer-s-buick-gmc",
    "location": "Sommer's Buick GMC",
-   "name": "Thomas Sipin",
+   "name": "Joe Vella",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 93,
+   "messagesSent": 98,
    "reviewInvites": 0,
-   "clientsMessaged": 35,
-   "assignedClients": 33
+   "clientsMessaged": 66,
+   "assignedClients": 59
   },
   {
    "storeId": "sommer-s-buick-gmc",
    "location": "Sommer's Buick GMC",
    "name": "Brian Black",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 81,
+   "messagesSent": 84,
    "reviewInvites": 0,
    "clientsMessaged": 26,
-   "assignedClients": 19
+   "assignedClients": 20
   },
   {
    "storeId": "sommer-s-buick-gmc",
    "location": "Sommer's Buick GMC",
    "name": "Tracy Wheeler",
    "role": "Admin",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 71,
+   "messagesSent": 78,
    "reviewInvites": 0,
-   "clientsMessaged": 64,
-   "assignedClients": 143
+   "clientsMessaged": 71,
+   "assignedClients": 151
   },
   {
    "storeId": "sommer-s-buick-gmc",
    "location": "Sommer's Buick GMC",
    "name": "Michael Tuler",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 67,
@@ -655921,49 +656540,62 @@
    "location": "Sommer's Buick GMC",
    "name": "Jim Cross",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 47,
+   "messagesSent": 50,
    "reviewInvites": 0,
    "clientsMessaged": 22,
-   "assignedClients": 21
+   "assignedClients": 22
   },
   {
    "storeId": "sommer-s-buick-gmc",
    "location": "Sommer's Buick GMC",
    "name": "Michael Foti",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 41,
+   "messagesSent": 47,
    "reviewInvites": 0,
-   "clientsMessaged": 30,
-   "assignedClients": 150
+   "clientsMessaged": 32,
+   "assignedClients": 157
+  },
+  {
+   "storeId": "sommer-s-buick-gmc",
+   "location": "Sommer's Buick GMC",
+   "name": "Alex Higgs",
+   "role": "Manager",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 39,
+   "reviewInvites": 0,
+   "clientsMessaged": 19,
+   "assignedClients": 147
   },
   {
    "storeId": "sommer-s-buick-gmc",
    "location": "Sommer's Buick GMC",
    "name": "Rod Weber",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 34,
    "reviewInvites": 0,
    "clientsMessaged": 20,
-   "assignedClients": 26
+   "assignedClients": 31
   },
   {
    "storeId": "sommer-s-buick-gmc",
    "location": "Sommer's Buick GMC",
    "name": "Lydia Carns",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 33,
+   "messagesSent": 34,
    "reviewInvites": 0,
    "clientsMessaged": 15,
    "assignedClients": 11
@@ -655979,59 +656611,46 @@
    "messagesSent": 32,
    "reviewInvites": 0,
    "clientsMessaged": 16,
-   "assignedClients": 135
-  },
-  {
-   "storeId": "sommer-s-buick-gmc",
-   "location": "Sommer's Buick GMC",
-   "name": "Alex Higgs",
-   "role": "Manager",
-   "lastActivity": "2026-09-12",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 30,
-   "reviewInvites": 0,
-   "clientsMessaged": 14,
-   "assignedClients": 136
-  },
-  {
-   "storeId": "sommer-s-buick-gmc",
-   "location": "Sommer's Buick GMC",
-   "name": "Darrell Jackson",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 30,
-   "reviewInvites": 0,
-   "clientsMessaged": 28,
-   "assignedClients": 24
+   "assignedClients": 146
   },
   {
    "storeId": "sommer-s-buick-gmc",
    "location": "Sommer's Buick GMC",
    "name": "Oliver Hatch",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 29,
+   "messagesSent": 32,
    "reviewInvites": 0,
-   "clientsMessaged": 12,
+   "clientsMessaged": 13,
    "assignedClients": 22
+  },
+  {
+   "storeId": "sommer-s-buick-gmc",
+   "location": "Sommer's Buick GMC",
+   "name": "Darrell Jackson",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 31,
+   "reviewInvites": 0,
+   "clientsMessaged": 29,
+   "assignedClients": 26
   },
   {
    "storeId": "sommer-s-buick-gmc",
    "location": "Sommer's Buick GMC",
    "name": "Troy Royse",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 25,
+   "messagesSent": 26,
    "reviewInvites": 0,
-   "clientsMessaged": 18,
-   "assignedClients": 36
+   "clientsMessaged": 19,
+   "assignedClients": 40
   },
   {
    "storeId": "sommer-s-buick-gmc",
@@ -656044,7 +656663,20 @@
    "messagesSent": 25,
    "reviewInvites": 0,
    "clientsMessaged": 24,
-   "assignedClients": 137
+   "assignedClients": 141
+  },
+  {
+   "storeId": "sommer-s-buick-gmc",
+   "location": "Sommer's Buick GMC",
+   "name": "Amanda Mapes",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 24,
+   "reviewInvites": 0,
+   "clientsMessaged": 8,
+   "assignedClients": 11
   },
   {
    "storeId": "sommer-s-buick-gmc",
@@ -656057,20 +656689,7 @@
    "messagesSent": 22,
    "reviewInvites": 0,
    "clientsMessaged": 4,
-   "assignedClients": 12
-  },
-  {
-   "storeId": "sommer-s-buick-gmc",
-   "location": "Sommer's Buick GMC",
-   "name": "Amanda Mapes",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 22,
-   "reviewInvites": 0,
-   "clientsMessaged": 7,
-   "assignedClients": 10
+   "assignedClients": 13
   },
   {
    "storeId": "sommer-s-buick-gmc",
@@ -656083,33 +656702,33 @@
    "messagesSent": 11,
    "reviewInvites": 0,
    "clientsMessaged": 4,
-   "assignedClients": 19
-  },
-  {
-   "storeId": "sommer-s-buick-gmc",
-   "location": "Sommer's Buick GMC",
-   "name": "Theresa Clemens",
-   "role": "Admin",
-   "lastActivity": "2026-09-12",
-   "apptsCreated": 0,
-   "videosSent": 2,
-   "messagesSent": 10,
-   "reviewInvites": 0,
-   "clientsMessaged": 8,
-   "assignedClients": 70
+   "assignedClients": 20
   },
   {
    "storeId": "sommer-s-buick-gmc",
    "location": "Sommer's Buick GMC",
    "name": "Zeke Heyse",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
+   "messagesSent": 11,
+   "reviewInvites": 0,
+   "clientsMessaged": 6,
+   "assignedClients": 94
+  },
+  {
+   "storeId": "sommer-s-buick-gmc",
+   "location": "Sommer's Buick GMC",
+   "name": "Theresa Clemens",
+   "role": "Admin",
+   "lastActivity": "2026-09-14",
+   "apptsCreated": 0,
+   "videosSent": 2,
    "messagesSent": 10,
    "reviewInvites": 0,
-   "clientsMessaged": 5,
-   "assignedClients": 88
+   "clientsMessaged": 8,
+   "assignedClients": 76
   },
   {
    "storeId": "sommer-s-buick-gmc",
@@ -656135,58 +656754,58 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 46
+   "assignedClients": 49
   },
   {
    "storeId": "sommer-s-subaru",
    "location": "Sommer's Subaru",
    "name": "Mike Kay",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 570,
+   "messagesSent": 598,
    "reviewInvites": 0,
-   "clientsMessaged": 336,
-   "assignedClients": 186
+   "clientsMessaged": 353,
+   "assignedClients": 201
   },
   {
    "storeId": "sommer-s-subaru",
    "location": "Sommer's Subaru",
    "name": "Hubert Kelly",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 504,
    "reviewInvites": 0,
    "clientsMessaged": 258,
-   "assignedClients": 175
+   "assignedClients": 178
   },
   {
    "storeId": "sommer-s-subaru",
    "location": "Sommer's Subaru",
    "name": "Stephanie Lewis",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 441,
+   "messagesSent": 502,
    "reviewInvites": 0,
-   "clientsMessaged": 214,
-   "assignedClients": 108
+   "clientsMessaged": 232,
+   "assignedClients": 125
   },
   {
    "storeId": "sommer-s-subaru",
    "location": "Sommer's Subaru",
    "name": "Jennifer Schultz-christ",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 170,
+   "messagesSent": 175,
    "reviewInvites": 0,
-   "clientsMessaged": 26,
+   "clientsMessaged": 27,
    "assignedClients": 12
   },
   {
@@ -656194,26 +656813,26 @@
    "location": "Sommer's Subaru",
    "name": "Peng Tai",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 145,
+   "messagesSent": 151,
    "reviewInvites": 0,
-   "clientsMessaged": 50,
-   "assignedClients": 20
+   "clientsMessaged": 51,
+   "assignedClients": 21
   },
   {
    "storeId": "sommer-s-subaru",
    "location": "Sommer's Subaru",
    "name": "Robert Quintanilla",
    "role": "Support Agent",
-   "lastActivity": "2026-09-12",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 141,
+   "messagesSent": 142,
    "reviewInvites": 0,
    "clientsMessaged": 49,
-   "assignedClients": 36
+   "assignedClients": 37
   },
   {
    "storeId": "sommer-s-subaru",
@@ -656223,9 +656842,9 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 125,
+   "messagesSent": 126,
    "reviewInvites": 0,
-   "clientsMessaged": 60,
+   "clientsMessaged": 61,
    "assignedClients": 18
   },
   {
@@ -656236,10 +656855,10 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 118,
+   "messagesSent": 124,
    "reviewInvites": 0,
    "clientsMessaged": 43,
-   "assignedClients": 43
+   "assignedClients": 44
   },
   {
    "storeId": "sommer-s-subaru",
@@ -656257,61 +656876,61 @@
   {
    "storeId": "sommer-s-subaru",
    "location": "Sommer's Subaru",
-   "name": "Joe Vella",
+   "name": "Thomas Sipin",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 96,
+   "messagesSent": 102,
    "reviewInvites": 0,
-   "clientsMessaged": 65,
-   "assignedClients": 55
+   "clientsMessaged": 38,
+   "assignedClients": 36
   },
   {
    "storeId": "sommer-s-subaru",
    "location": "Sommer's Subaru",
-   "name": "Thomas Sipin",
+   "name": "Joe Vella",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 93,
+   "messagesSent": 98,
    "reviewInvites": 0,
-   "clientsMessaged": 35,
-   "assignedClients": 33
+   "clientsMessaged": 66,
+   "assignedClients": 59
   },
   {
    "storeId": "sommer-s-subaru",
    "location": "Sommer's Subaru",
    "name": "Brian Black",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 81,
+   "messagesSent": 84,
    "reviewInvites": 0,
    "clientsMessaged": 26,
-   "assignedClients": 19
+   "assignedClients": 20
   },
   {
    "storeId": "sommer-s-subaru",
    "location": "Sommer's Subaru",
    "name": "Tracy Wheeler",
    "role": "Admin",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 71,
+   "messagesSent": 78,
    "reviewInvites": 0,
-   "clientsMessaged": 64,
-   "assignedClients": 143
+   "clientsMessaged": 71,
+   "assignedClients": 151
   },
   {
    "storeId": "sommer-s-subaru",
    "location": "Sommer's Subaru",
    "name": "Michael Tuler",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 67,
@@ -656324,49 +656943,62 @@
    "location": "Sommer's Subaru",
    "name": "Jim Cross",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 47,
+   "messagesSent": 50,
    "reviewInvites": 0,
    "clientsMessaged": 22,
-   "assignedClients": 21
+   "assignedClients": 22
   },
   {
    "storeId": "sommer-s-subaru",
    "location": "Sommer's Subaru",
    "name": "Michael Foti",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 41,
+   "messagesSent": 47,
    "reviewInvites": 0,
-   "clientsMessaged": 30,
-   "assignedClients": 150
+   "clientsMessaged": 32,
+   "assignedClients": 157
+  },
+  {
+   "storeId": "sommer-s-subaru",
+   "location": "Sommer's Subaru",
+   "name": "Alex Higgs",
+   "role": "Manager",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 39,
+   "reviewInvites": 0,
+   "clientsMessaged": 19,
+   "assignedClients": 147
   },
   {
    "storeId": "sommer-s-subaru",
    "location": "Sommer's Subaru",
    "name": "Rod Weber",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 34,
    "reviewInvites": 0,
    "clientsMessaged": 20,
-   "assignedClients": 26
+   "assignedClients": 31
   },
   {
    "storeId": "sommer-s-subaru",
    "location": "Sommer's Subaru",
    "name": "Lydia Carns",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 33,
+   "messagesSent": 34,
    "reviewInvites": 0,
    "clientsMessaged": 15,
    "assignedClients": 11
@@ -656382,59 +657014,46 @@
    "messagesSent": 32,
    "reviewInvites": 0,
    "clientsMessaged": 16,
-   "assignedClients": 135
-  },
-  {
-   "storeId": "sommer-s-subaru",
-   "location": "Sommer's Subaru",
-   "name": "Alex Higgs",
-   "role": "Manager",
-   "lastActivity": "2026-09-12",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 30,
-   "reviewInvites": 0,
-   "clientsMessaged": 14,
-   "assignedClients": 136
-  },
-  {
-   "storeId": "sommer-s-subaru",
-   "location": "Sommer's Subaru",
-   "name": "Darrell Jackson",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 30,
-   "reviewInvites": 0,
-   "clientsMessaged": 28,
-   "assignedClients": 24
+   "assignedClients": 146
   },
   {
    "storeId": "sommer-s-subaru",
    "location": "Sommer's Subaru",
    "name": "Oliver Hatch",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 29,
+   "messagesSent": 32,
    "reviewInvites": 0,
-   "clientsMessaged": 12,
+   "clientsMessaged": 13,
    "assignedClients": 22
+  },
+  {
+   "storeId": "sommer-s-subaru",
+   "location": "Sommer's Subaru",
+   "name": "Darrell Jackson",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 31,
+   "reviewInvites": 0,
+   "clientsMessaged": 29,
+   "assignedClients": 26
   },
   {
    "storeId": "sommer-s-subaru",
    "location": "Sommer's Subaru",
    "name": "Troy Royse",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 25,
+   "messagesSent": 26,
    "reviewInvites": 0,
-   "clientsMessaged": 18,
-   "assignedClients": 36
+   "clientsMessaged": 19,
+   "assignedClients": 40
   },
   {
    "storeId": "sommer-s-subaru",
@@ -656447,7 +657066,20 @@
    "messagesSent": 25,
    "reviewInvites": 0,
    "clientsMessaged": 24,
-   "assignedClients": 137
+   "assignedClients": 141
+  },
+  {
+   "storeId": "sommer-s-subaru",
+   "location": "Sommer's Subaru",
+   "name": "Amanda Mapes",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 24,
+   "reviewInvites": 0,
+   "clientsMessaged": 8,
+   "assignedClients": 11
   },
   {
    "storeId": "sommer-s-subaru",
@@ -656460,20 +657092,7 @@
    "messagesSent": 22,
    "reviewInvites": 0,
    "clientsMessaged": 4,
-   "assignedClients": 12
-  },
-  {
-   "storeId": "sommer-s-subaru",
-   "location": "Sommer's Subaru",
-   "name": "Amanda Mapes",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 22,
-   "reviewInvites": 0,
-   "clientsMessaged": 7,
-   "assignedClients": 10
+   "assignedClients": 13
   },
   {
    "storeId": "sommer-s-subaru",
@@ -656486,33 +657105,33 @@
    "messagesSent": 11,
    "reviewInvites": 0,
    "clientsMessaged": 4,
-   "assignedClients": 19
-  },
-  {
-   "storeId": "sommer-s-subaru",
-   "location": "Sommer's Subaru",
-   "name": "Theresa Clemens",
-   "role": "Admin",
-   "lastActivity": "2026-09-12",
-   "apptsCreated": 0,
-   "videosSent": 2,
-   "messagesSent": 10,
-   "reviewInvites": 0,
-   "clientsMessaged": 8,
-   "assignedClients": 70
+   "assignedClients": 20
   },
   {
    "storeId": "sommer-s-subaru",
    "location": "Sommer's Subaru",
    "name": "Zeke Heyse",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
+   "messagesSent": 11,
+   "reviewInvites": 0,
+   "clientsMessaged": 6,
+   "assignedClients": 94
+  },
+  {
+   "storeId": "sommer-s-subaru",
+   "location": "Sommer's Subaru",
+   "name": "Theresa Clemens",
+   "role": "Admin",
+   "lastActivity": "2026-09-14",
+   "apptsCreated": 0,
+   "videosSent": 2,
    "messagesSent": 10,
    "reviewInvites": 0,
-   "clientsMessaged": 5,
-   "assignedClients": 88
+   "clientsMessaged": 8,
+   "assignedClients": 76
   },
   {
    "storeId": "sommer-s-subaru",
@@ -656538,7 +657157,20 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 46
+   "assignedClients": 49
+  },
+  {
+   "storeId": "vern-eide-acura",
+   "location": "Vern Eide Acura",
+   "name": "Austin Behnke",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 109,
+   "reviewInvites": 0,
+   "clientsMessaged": 32,
+   "assignedClients": 20
   },
   {
    "storeId": "vern-eide-acura",
@@ -656551,40 +657183,27 @@
    "messagesSent": 108,
    "reviewInvites": 0,
    "clientsMessaged": 29,
-   "assignedClients": 25
-  },
-  {
-   "storeId": "vern-eide-acura",
-   "location": "Vern Eide Acura",
-   "name": "Austin Behnke",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 101,
-   "reviewInvites": 0,
-   "clientsMessaged": 32,
-   "assignedClients": 19
+   "assignedClients": 26
   },
   {
    "storeId": "vern-eide-acura",
    "location": "Vern Eide Acura",
    "name": "Jacob Sample",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 69,
+   "messagesSent": 78,
    "reviewInvites": 0,
-   "clientsMessaged": 41,
-   "assignedClients": 33
+   "clientsMessaged": 44,
+   "assignedClients": 35
   },
   {
    "storeId": "vern-eide-acura",
    "location": "Vern Eide Acura",
    "name": "Nathan Osterquist",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 46,
@@ -656603,19 +657222,19 @@
    "messagesSent": 24,
    "reviewInvites": 0,
    "clientsMessaged": 7,
-   "assignedClients": 6
+   "assignedClients": 8
   },
   {
    "storeId": "vern-eide-acura",
    "location": "Vern Eide Acura",
    "name": "Reuel Erickson",
    "role": "Support Agent",
-   "lastActivity": "2026-09-12",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 19,
+   "messagesSent": 20,
    "reviewInvites": 0,
-   "clientsMessaged": 11,
+   "clientsMessaged": 12,
    "assignedClients": 23
   },
   {
@@ -656623,7 +657242,7 @@
    "location": "Vern Eide Acura",
    "name": "Dalton Dawes",
    "role": "Manager",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 8,
@@ -656649,13 +657268,26 @@
    "location": "Vern Eide Acura",
    "name": "Bryan Veeder",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 48
+   "assignedClients": 52
+  },
+  {
+   "storeId": "vern-eide-acura",
+   "location": "Vern Eide Service",
+   "name": "Austin Behnke",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 109,
+   "reviewInvites": 0,
+   "clientsMessaged": 32,
+   "assignedClients": 20
   },
   {
    "storeId": "vern-eide-acura",
@@ -656668,40 +657300,27 @@
    "messagesSent": 108,
    "reviewInvites": 0,
    "clientsMessaged": 29,
-   "assignedClients": 25
-  },
-  {
-   "storeId": "vern-eide-acura",
-   "location": "Vern Eide Service",
-   "name": "Austin Behnke",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 101,
-   "reviewInvites": 0,
-   "clientsMessaged": 32,
-   "assignedClients": 19
+   "assignedClients": 26
   },
   {
    "storeId": "vern-eide-acura",
    "location": "Vern Eide Service",
    "name": "Jacob Sample",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 69,
+   "messagesSent": 78,
    "reviewInvites": 0,
-   "clientsMessaged": 41,
-   "assignedClients": 33
+   "clientsMessaged": 44,
+   "assignedClients": 35
   },
   {
    "storeId": "vern-eide-acura",
    "location": "Vern Eide Service",
    "name": "Nathan Osterquist",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 46,
@@ -656720,19 +657339,19 @@
    "messagesSent": 24,
    "reviewInvites": 0,
    "clientsMessaged": 7,
-   "assignedClients": 6
+   "assignedClients": 8
   },
   {
    "storeId": "vern-eide-acura",
    "location": "Vern Eide Service",
    "name": "Reuel Erickson",
    "role": "Support Agent",
-   "lastActivity": "2026-09-12",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 19,
+   "messagesSent": 20,
    "reviewInvites": 0,
-   "clientsMessaged": 11,
+   "clientsMessaged": 12,
    "assignedClients": 23
   },
   {
@@ -656740,7 +657359,7 @@
    "location": "Vern Eide Service",
    "name": "Dalton Dawes",
    "role": "Manager",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 8,
@@ -656766,13 +657385,13 @@
    "location": "Vern Eide Service",
    "name": "Bryan Veeder",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 48
+   "assignedClients": 52
   },
   {
    "storeId": "vern-eide-honda",
@@ -657401,6 +658020,19 @@
   {
    "storeId": "vern-eide-honda",
    "location": "Vern Eide Acura",
+   "name": "Austin Behnke",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 109,
+   "reviewInvites": 0,
+   "clientsMessaged": 32,
+   "assignedClients": 20
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "location": "Vern Eide Acura",
    "name": "Elise Mollenbeck",
    "role": "Support Agent",
    "lastActivity": "2026-09-12",
@@ -657409,40 +658041,27 @@
    "messagesSent": 108,
    "reviewInvites": 0,
    "clientsMessaged": 29,
-   "assignedClients": 25
-  },
-  {
-   "storeId": "vern-eide-honda",
-   "location": "Vern Eide Acura",
-   "name": "Austin Behnke",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 101,
-   "reviewInvites": 0,
-   "clientsMessaged": 32,
-   "assignedClients": 19
+   "assignedClients": 26
   },
   {
    "storeId": "vern-eide-honda",
    "location": "Vern Eide Acura",
    "name": "Jacob Sample",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 69,
+   "messagesSent": 78,
    "reviewInvites": 0,
-   "clientsMessaged": 41,
-   "assignedClients": 33
+   "clientsMessaged": 44,
+   "assignedClients": 35
   },
   {
    "storeId": "vern-eide-honda",
    "location": "Vern Eide Acura",
    "name": "Nathan Osterquist",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 46,
@@ -657461,19 +658080,19 @@
    "messagesSent": 24,
    "reviewInvites": 0,
    "clientsMessaged": 7,
-   "assignedClients": 6
+   "assignedClients": 8
   },
   {
    "storeId": "vern-eide-honda",
    "location": "Vern Eide Acura",
    "name": "Reuel Erickson",
    "role": "Support Agent",
-   "lastActivity": "2026-09-12",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 19,
+   "messagesSent": 20,
    "reviewInvites": 0,
-   "clientsMessaged": 11,
+   "clientsMessaged": 12,
    "assignedClients": 23
   },
   {
@@ -657481,7 +658100,7 @@
    "location": "Vern Eide Acura",
    "name": "Dalton Dawes",
    "role": "Manager",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 8,
@@ -657507,13 +658126,13 @@
    "location": "Vern Eide Acura",
    "name": "Bryan Veeder",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 48
+   "assignedClients": 52
   },
   {
    "storeId": "vern-eide-honda",
@@ -658376,6 +658995,19 @@
   {
    "storeId": "vern-eide-honda",
    "location": "Vern Eide Service",
+   "name": "Austin Behnke",
+   "role": "Support Agent",
+   "lastActivity": "2026-09-15",
+   "apptsCreated": 0,
+   "videosSent": 0,
+   "messagesSent": 109,
+   "reviewInvites": 0,
+   "clientsMessaged": 32,
+   "assignedClients": 20
+  },
+  {
+   "storeId": "vern-eide-honda",
+   "location": "Vern Eide Service",
    "name": "Elise Mollenbeck",
    "role": "Support Agent",
    "lastActivity": "2026-09-12",
@@ -658384,40 +659016,27 @@
    "messagesSent": 108,
    "reviewInvites": 0,
    "clientsMessaged": 29,
-   "assignedClients": 25
-  },
-  {
-   "storeId": "vern-eide-honda",
-   "location": "Vern Eide Service",
-   "name": "Austin Behnke",
-   "role": "Support Agent",
-   "lastActivity": "2026-09-14",
-   "apptsCreated": 0,
-   "videosSent": 0,
-   "messagesSent": 101,
-   "reviewInvites": 0,
-   "clientsMessaged": 32,
-   "assignedClients": 19
+   "assignedClients": 26
   },
   {
    "storeId": "vern-eide-honda",
    "location": "Vern Eide Service",
    "name": "Jacob Sample",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 69,
+   "messagesSent": 78,
    "reviewInvites": 0,
-   "clientsMessaged": 41,
-   "assignedClients": 33
+   "clientsMessaged": 44,
+   "assignedClients": 35
   },
   {
    "storeId": "vern-eide-honda",
    "location": "Vern Eide Service",
    "name": "Nathan Osterquist",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 46,
@@ -658436,19 +659055,19 @@
    "messagesSent": 24,
    "reviewInvites": 0,
    "clientsMessaged": 7,
-   "assignedClients": 6
+   "assignedClients": 8
   },
   {
    "storeId": "vern-eide-honda",
    "location": "Vern Eide Service",
    "name": "Reuel Erickson",
    "role": "Support Agent",
-   "lastActivity": "2026-09-12",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 19,
+   "messagesSent": 20,
    "reviewInvites": 0,
-   "clientsMessaged": 11,
+   "clientsMessaged": 12,
    "assignedClients": 23
   },
   {
@@ -658456,7 +659075,7 @@
    "location": "Vern Eide Service",
    "name": "Dalton Dawes",
    "role": "Manager",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 8,
@@ -658482,59 +659101,59 @@
    "location": "Vern Eide Service",
    "name": "Bryan Veeder",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 48
+   "assignedClients": 52
   },
   {
    "storeId": "vern-eide-sioux-city-combined",
    "location": "Vern Eide Honda Sioux City",
    "name": "Dominick Rust",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 152,
+   "messagesSent": 159,
    "reviewInvites": 0,
-   "clientsMessaged": 39,
-   "assignedClients": 36
+   "clientsMessaged": 41,
+   "assignedClients": 37
   },
   {
    "storeId": "vern-eide-sioux-city-combined",
    "location": "Vern Eide Honda Sioux City",
    "name": "Trae Piel",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 102,
+   "messagesSent": 112,
    "reviewInvites": 0,
-   "clientsMessaged": 22,
-   "assignedClients": 28
+   "clientsMessaged": 24,
+   "assignedClients": 30
   },
   {
    "storeId": "vern-eide-sioux-city-combined",
    "location": "Vern Eide Honda Sioux City",
    "name": "Michael Paddleford",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 38,
+   "messagesSent": 39,
    "reviewInvites": 0,
    "clientsMessaged": 14,
-   "assignedClients": 5
+   "assignedClients": 6
   },
   {
    "storeId": "vern-eide-sioux-city-combined",
    "location": "Vern Eide Honda Sioux City",
    "name": "Celeste Durant",
    "role": "Support Agent",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 24,
@@ -658547,12 +659166,12 @@
    "location": "Vern Eide Honda Sioux City",
    "name": "Miranda Villalpando Gallegos",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 22,
+   "messagesSent": 24,
    "reviewInvites": 0,
-   "clientsMessaged": 9,
+   "clientsMessaged": 10,
    "assignedClients": 9
   },
   {
@@ -658560,13 +659179,13 @@
    "location": "Vern Eide Honda Sioux City",
    "name": "Alex Lopez",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 17,
+   "messagesSent": 18,
    "reviewInvites": 0,
-   "clientsMessaged": 11,
-   "assignedClients": 33
+   "clientsMessaged": 12,
+   "assignedClients": 37
   },
   {
    "storeId": "vern-eide-sioux-city-combined",
@@ -658586,7 +659205,7 @@
    "location": "Vern Eide Honda Sioux City",
    "name": "Jaspreet Singh",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 2,
@@ -658599,7 +659218,7 @@
    "location": "Vern Eide Honda Sioux City",
    "name": "Scott Mcdonald",
    "role": "Admin",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
@@ -658618,7 +659237,7 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 6
+   "assignedClients": 9
   },
   {
    "storeId": "vern-eide-sioux-city-combined",
@@ -658631,20 +659250,20 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 1
+   "assignedClients": 2
   },
   {
    "storeId": "vern-eide-sioux-city-combined",
    "location": "Vern Eide Honda Sioux City",
    "name": "Fred Hexom",
    "role": "Manager",
-   "lastActivity": "2026-09-11",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 8
+   "assignedClients": 10
   },
   {
    "storeId": "vern-eide-sioux-city-combined",
@@ -658664,46 +659283,46 @@
    "location": "Vern Eide Sioux City - Service",
    "name": "Dominick Rust",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 152,
+   "messagesSent": 159,
    "reviewInvites": 0,
-   "clientsMessaged": 39,
-   "assignedClients": 36
+   "clientsMessaged": 41,
+   "assignedClients": 37
   },
   {
    "storeId": "vern-eide-sioux-city-combined",
    "location": "Vern Eide Sioux City - Service",
    "name": "Trae Piel",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 102,
+   "messagesSent": 112,
    "reviewInvites": 0,
-   "clientsMessaged": 22,
-   "assignedClients": 28
+   "clientsMessaged": 24,
+   "assignedClients": 30
   },
   {
    "storeId": "vern-eide-sioux-city-combined",
    "location": "Vern Eide Sioux City - Service",
    "name": "Michael Paddleford",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 38,
+   "messagesSent": 39,
    "reviewInvites": 0,
    "clientsMessaged": 14,
-   "assignedClients": 5
+   "assignedClients": 6
   },
   {
    "storeId": "vern-eide-sioux-city-combined",
    "location": "Vern Eide Sioux City - Service",
    "name": "Celeste Durant",
    "role": "Support Agent",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 24,
@@ -658716,12 +659335,12 @@
    "location": "Vern Eide Sioux City - Service",
    "name": "Miranda Villalpando Gallegos",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 22,
+   "messagesSent": 24,
    "reviewInvites": 0,
-   "clientsMessaged": 9,
+   "clientsMessaged": 10,
    "assignedClients": 9
   },
   {
@@ -658729,13 +659348,13 @@
    "location": "Vern Eide Sioux City - Service",
    "name": "Alex Lopez",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 17,
+   "messagesSent": 18,
    "reviewInvites": 0,
-   "clientsMessaged": 11,
-   "assignedClients": 33
+   "clientsMessaged": 12,
+   "assignedClients": 37
   },
   {
    "storeId": "vern-eide-sioux-city-combined",
@@ -658755,7 +659374,7 @@
    "location": "Vern Eide Sioux City - Service",
    "name": "Jaspreet Singh",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 2,
@@ -658768,7 +659387,7 @@
    "location": "Vern Eide Sioux City - Service",
    "name": "Scott Mcdonald",
    "role": "Admin",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
@@ -658787,7 +659406,7 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 6
+   "assignedClients": 9
   },
   {
    "storeId": "vern-eide-sioux-city-combined",
@@ -658800,20 +659419,20 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 1
+   "assignedClients": 2
   },
   {
    "storeId": "vern-eide-sioux-city-combined",
    "location": "Vern Eide Sioux City - Service",
    "name": "Fred Hexom",
    "role": "Manager",
-   "lastActivity": "2026-09-11",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 8
+   "assignedClients": 10
   },
   {
    "storeId": "vern-eide-sioux-city-combined",
@@ -658833,23 +659452,23 @@
    "location": "Vern Eide Hyundai Sioux City",
    "name": "Jaspreet Singh",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 94,
+   "messagesSent": 95,
    "reviewInvites": 0,
    "clientsMessaged": 27,
-   "assignedClients": 18
+   "assignedClients": 19
   },
   {
    "storeId": "vern-eide-sioux-city-combined",
    "location": "Vern Eide Hyundai Sioux City",
    "name": "Celeste Durant",
    "role": "Support Agent",
-   "lastActivity": "2026-09-13",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 1,
-   "messagesSent": 70,
+   "messagesSent": 72,
    "reviewInvites": 0,
    "clientsMessaged": 18,
    "assignedClients": 20
@@ -658862,17 +659481,17 @@
    "lastActivity": "2026-09-14",
    "apptsCreated": 0,
    "videosSent": 0,
-   "messagesSent": 53,
+   "messagesSent": 57,
    "reviewInvites": 0,
-   "clientsMessaged": 13,
-   "assignedClients": 20
+   "clientsMessaged": 17,
+   "assignedClients": 21
   },
   {
    "storeId": "vern-eide-sioux-city-combined",
    "location": "Vern Eide Hyundai Sioux City",
    "name": "Alex Lopez",
    "role": "Manager",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 10,
@@ -658885,7 +659504,7 @@
    "location": "Vern Eide Hyundai Sioux City",
    "name": "Miranda Villalpando Gallegos",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 3,
@@ -658904,14 +659523,14 @@
    "messagesSent": 0,
    "reviewInvites": 0,
    "clientsMessaged": 0,
-   "assignedClients": 9
+   "assignedClients": 10
   },
   {
    "storeId": "vern-eide-sioux-city-combined",
    "location": "Vern Eide Hyundai Sioux City",
    "name": "Fred Hexom",
    "role": "Manager",
-   "lastActivity": "2026-09-11",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
@@ -658924,7 +659543,7 @@
    "location": "Vern Eide Hyundai Sioux City",
    "name": "Dominick Rust",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
@@ -658937,7 +659556,7 @@
    "location": "Vern Eide Hyundai Sioux City",
    "name": "Trae Piel",
    "role": "Support Agent",
-   "lastActivity": "2026-09-14",
+   "lastActivity": "2026-09-15",
    "apptsCreated": 0,
    "videosSent": 0,
    "messagesSent": 0,
@@ -659494,8 +660113,8 @@
   {
    "storeId": "sommer-s-automotive",
    "name": "Brian Black",
-   "videosCreated": 13,
-   "videosSent": 14,
+   "videosCreated": 17,
+   "videosSent": 17,
    "views": 13,
    "ctaClicks": 3
   },
@@ -659520,23 +660139,23 @@
    "name": "Jim Cross",
    "videosCreated": 9,
    "videosSent": 9,
-   "views": 4,
+   "views": 8,
    "ctaClicks": 0
   },
   {
    "storeId": "sommer-s-automotive",
    "name": "Jim Naus",
-   "videosCreated": 3,
-   "videosSent": 34,
+   "videosCreated": 4,
+   "videosSent": 37,
    "views": 6,
    "ctaClicks": 1
   },
   {
    "storeId": "sommer-s-automotive",
    "name": "Joe Vella",
-   "videosCreated": 9,
-   "videosSent": 44,
-   "views": 48,
+   "videosCreated": 11,
+   "videosSent": 49,
+   "views": 59,
    "ctaClicks": 5
   },
   {
@@ -659558,33 +660177,33 @@
   {
    "storeId": "sommer-s-automotive",
    "name": "Peng Tai",
-   "videosCreated": 12,
-   "videosSent": 15,
+   "videosCreated": 13,
+   "videosSent": 16,
    "views": 4,
    "ctaClicks": 0
   },
   {
    "storeId": "sommer-s-automotive",
    "name": "Rod Weber",
-   "videosCreated": 13,
-   "videosSent": 34,
-   "views": 6,
+   "videosCreated": 16,
+   "videosSent": 37,
+   "views": 8,
    "ctaClicks": 8
   },
   {
    "storeId": "sommer-s-automotive",
    "name": "Troy Royse",
-   "videosCreated": 6,
-   "videosSent": 49,
-   "views": 28,
-   "ctaClicks": 1
+   "videosCreated": 9,
+   "videosSent": 58,
+   "views": 31,
+   "ctaClicks": 3
   },
   {
    "storeId": "sommer-s-automotive",
    "name": "Darrell Jackson",
-   "videosCreated": 19,
-   "videosSent": 13,
-   "views": 1,
+   "videosCreated": 20,
+   "videosSent": 15,
+   "views": 3,
    "ctaClicks": 0
   },
   {
@@ -659599,15 +660218,15 @@
    "storeId": "sommer-s-automotive",
    "name": "Adam Swernoff",
    "videosCreated": 0,
-   "videosSent": 51,
-   "views": 5,
+   "videosSent": 64,
+   "views": 6,
    "ctaClicks": 4
   },
   {
    "storeId": "sommer-s-automotive",
    "name": "Michael Tuler",
-   "videosCreated": 22,
-   "videosSent": 22,
+   "videosCreated": 23,
+   "videosSent": 24,
    "views": 6,
    "ctaClicks": 1
   },
@@ -659630,32 +660249,32 @@
   {
    "storeId": "sommer-s-automotive",
    "name": "Taylor Radcliffe",
-   "videosCreated": 19,
-   "videosSent": 48,
-   "views": 18,
+   "videosCreated": 26,
+   "videosSent": 57,
+   "views": 26,
    "ctaClicks": 0
   },
   {
    "storeId": "sommer-s-automotive",
    "name": "Oliver Hatch",
-   "videosCreated": 25,
-   "videosSent": 30,
-   "views": 6,
+   "videosCreated": 29,
+   "videosSent": 33,
+   "views": 8,
    "ctaClicks": 2
   },
   {
    "storeId": "sommer-s-automotive",
    "name": "Thomas Sipin",
-   "videosCreated": 32,
-   "videosSent": 45,
-   "views": 34,
+   "videosCreated": 34,
+   "videosSent": 46,
+   "views": 35,
    "ctaClicks": 2
   },
   {
    "storeId": "sommer-s-automotive",
    "name": "Lydia Carns-Nanez",
-   "videosCreated": 15,
-   "videosSent": 33,
+   "videosCreated": 18,
+   "videosSent": 37,
    "views": 5,
    "ctaClicks": 2
   },
@@ -659670,24 +660289,24 @@
   {
    "storeId": "sommer-s-automotive",
    "name": "Jennifer Schultz-Christ",
-   "videosCreated": 17,
-   "videosSent": 23,
-   "views": 8,
+   "videosCreated": 24,
+   "videosSent": 41,
+   "views": 17,
    "ctaClicks": 5
   },
   {
    "storeId": "sommer-s-automotive",
    "name": "Amanda Mapes",
-   "videosCreated": 9,
-   "videosSent": 6,
-   "views": 3,
+   "videosCreated": 18,
+   "videosSent": 10,
+   "views": 4,
    "ctaClicks": 0
   },
   {
    "storeId": "sommer-s-automotive",
    "name": "Robert Quintanilla",
-   "videosCreated": 37,
-   "videosSent": 83,
+   "videosCreated": 38,
+   "videosSent": 85,
    "views": 20,
    "ctaClicks": 8
   },
@@ -659734,24 +660353,24 @@
   {
    "storeId": "vern-eide-acura",
    "name": "Jacob Sample",
-   "videosCreated": 14,
-   "videosSent": 24,
+   "videosCreated": 15,
+   "videosSent": 26,
    "views": 6,
    "ctaClicks": 1
   },
   {
    "storeId": "vern-eide-acura",
    "name": "Reuel Erickson",
-   "videosCreated": 5,
-   "videosSent": 22,
-   "views": 8,
-   "ctaClicks": 1
+   "videosCreated": 7,
+   "videosSent": 26,
+   "views": 11,
+   "ctaClicks": 3
   },
   {
    "storeId": "vern-eide-acura",
    "name": "Bryan Veeder",
-   "videosCreated": 0,
-   "videosSent": 0,
+   "videosCreated": 1,
+   "videosSent": 1,
    "views": 0,
    "ctaClicks": 0
   },
@@ -659782,8 +660401,8 @@
   {
    "storeId": "vern-eide-acura",
    "name": "Alec Skidmore",
-   "videosCreated": 3,
-   "videosSent": 3,
+   "videosCreated": 4,
+   "videosSent": 5,
    "views": 1,
    "ctaClicks": 1
   },
@@ -659798,8 +660417,8 @@
   {
    "storeId": "vern-eide-acura",
    "name": "Nathan Osterquist",
-   "videosCreated": 6,
-   "videosSent": 10,
+   "videosCreated": 9,
+   "videosSent": 14,
    "views": 10,
    "ctaClicks": 1
   },
@@ -659895,7 +660514,7 @@
    "storeId": "vern-eide-honda",
    "name": "Istvan Szabadi",
    "videosCreated": 0,
-   "videosSent": 20,
+   "videosSent": 26,
    "views": 1,
    "ctaClicks": 0
   },
@@ -659926,8 +660545,8 @@
   {
    "storeId": "vern-eide-honda",
    "name": "Jordan Konda",
-   "videosCreated": 17,
-   "videosSent": 22,
+   "videosCreated": 19,
+   "videosSent": 24,
    "views": 4,
    "ctaClicks": 4
   },
@@ -660038,9 +660657,9 @@
   {
    "storeId": "vern-eide-honda",
    "name": "Blake  Anderson",
-   "videosCreated": 1,
-   "videosSent": 2,
-   "views": 2,
+   "videosCreated": 9,
+   "videosSent": 11,
+   "views": 9,
    "ctaClicks": 0
   },
   {
@@ -660086,8 +660705,8 @@
   {
    "storeId": "vern-eide-honda",
    "name": "Noah Stoebner",
-   "videosCreated": 2,
-   "videosSent": 1,
+   "videosCreated": 3,
+   "videosSent": 2,
    "views": 0,
    "ctaClicks": 0
   },
@@ -660270,10 +660889,10 @@
   {
    "storeId": "vern-eide-mitsubishi",
    "name": "Elaina Wegleitner",
-   "videosCreated": 34,
-   "videosSent": 67,
-   "views": 4,
-   "ctaClicks": 0
+   "videosCreated": 43,
+   "videosSent": 81,
+   "views": 7,
+   "ctaClicks": 1
   },
   {
    "storeId": "vern-eide-mitsubishi",
@@ -660294,9 +660913,9 @@
   {
    "storeId": "vern-eide-mitsubishi",
    "name": "Jared Buettgenback",
-   "videosCreated": 32,
-   "videosSent": 38,
-   "views": 5,
+   "videosCreated": 40,
+   "videosSent": 44,
+   "views": 10,
    "ctaClicks": 3
   },
   {
@@ -660342,9 +660961,9 @@
   {
    "storeId": "vern-eide-mitsubishi",
    "name": "Tyler Zebell",
-   "videosCreated": 6,
-   "videosSent": 59,
-   "views": 5,
+   "videosCreated": 7,
+   "videosSent": 107,
+   "views": 10,
    "ctaClicks": 2
   },
   {
@@ -660358,9 +660977,9 @@
   {
    "storeId": "vern-eide-mitsubishi",
    "name": "Terry Johnston",
-   "videosCreated": 6,
-   "videosSent": 30,
-   "views": 9,
+   "videosCreated": 7,
+   "videosSent": 34,
+   "views": 11,
    "ctaClicks": 1
   },
   {
@@ -660374,10 +660993,10 @@
   {
    "storeId": "vern-eide-mitsubishi",
    "name": "Hunter Fritsch",
-   "videosCreated": 5,
-   "videosSent": 14,
-   "views": 4,
-   "ctaClicks": 0
+   "videosCreated": 6,
+   "videosSent": 17,
+   "views": 5,
+   "ctaClicks": 1
   },
   {
    "storeId": "vern-eide-mitsubishi",
@@ -660422,9 +661041,9 @@
   {
    "storeId": "vern-eide-mitsubishi",
    "name": "Quinn Johnson",
-   "videosCreated": 6,
-   "videosSent": 10,
-   "views": 11,
+   "videosCreated": 8,
+   "videosSent": 13,
+   "views": 12,
    "ctaClicks": 1
   },
   {
@@ -660766,7 +661385,7 @@
   },
   "bay-ridge-honda": {
    "firstRun": "2026-08-29",
-   "lastRun": "2026-09-14",
+   "lastRun": "2026-09-15",
    "runDates": [
     "2026-08-29",
     "2026-08-30",
@@ -660784,7 +661403,8 @@
     "2026-09-11",
     "2026-09-12",
     "2026-09-13",
-    "2026-09-14"
+    "2026-09-14",
+    "2026-09-15"
    ],
    "months": [
     "2026-07",
@@ -660797,7 +661417,7 @@
   },
   "garavel-cjdr": {
    "firstRun": "2026-08-29",
-   "lastRun": "2026-09-14",
+   "lastRun": "2026-09-15",
    "runDates": [
     "2026-08-29",
     "2026-08-30",
@@ -660814,7 +661434,8 @@
     "2026-09-11",
     "2026-09-12",
     "2026-09-13",
-    "2026-09-14"
+    "2026-09-14",
+    "2026-09-15"
    ],
    "months": [
     "2026-07",
@@ -660827,7 +661448,7 @@
   },
   "garavel-subaru": {
    "firstRun": "2026-08-29",
-   "lastRun": "2026-09-14",
+   "lastRun": "2026-09-15",
    "runDates": [
     "2026-08-29",
     "2026-08-30",
@@ -660844,7 +661465,8 @@
     "2026-09-11",
     "2026-09-12",
     "2026-09-13",
-    "2026-09-14"
+    "2026-09-14",
+    "2026-09-15"
    ],
    "months": [
     "2026-07",
@@ -660916,7 +661538,7 @@
   },
   "honda-of-el-cajon": {
    "firstRun": "2026-08-29",
-   "lastRun": "2026-09-14",
+   "lastRun": "2026-09-15",
    "runDates": [
     "2026-08-29",
     "2026-08-30",
@@ -660933,7 +661555,8 @@
     "2026-09-10",
     "2026-09-12",
     "2026-09-13",
-    "2026-09-14"
+    "2026-09-14",
+    "2026-09-15"
    ],
    "months": [
     "2026-07",
@@ -661420,8 +662043,8 @@
  },
  "ingest": {
   "workbooksFound": 3117,
-  "parsed": 2864,
-  "unique": 1732,
+  "parsed": 2872,
+  "unique": 1740,
   "duplicatesDropped": 1132,
   "skipped": [
    {
