@@ -979,7 +979,7 @@ def write_run_log(data, xlsx, pdfs, mat_csv, other_csv, parsed, kept, dupes,
 
     pull = None
     for d in src_dirs:
-        candidate = os.path.join(d, "gmail-pull", ".last-pull.json")
+        candidate = os.path.join(d, ".last-pull.json")   # pull.py writes it beside gmail-pull/
         if os.path.exists(candidate):
             try:
                 pull = json.load(open(candidate))
