@@ -676,6 +676,10 @@
   }
 
   function snapshotMonth(snap, asOf) {
+    // A window (non-cumulative block such as a DriveCentric weekly users report)
+    // belongs to the month it ends in, so a Sat–Fri week that straddles the 1st
+    // is counted once, in the later month.
+    if (snap.window) return monthKey(snap.end) || monthKey(asOf) || monthKey(snap.runDate);
     return monthKey(snap.begin) || monthKey(asOf) || monthKey(snap.end) || monthKey(snap.runDate);
   }
 
@@ -708,6 +712,7 @@
         runDate: iso(s.runDate),
         asOf: asOf,
         source: s.source || null,
+        window: !!s.window,
         map: flattenSnapshot(s)
       });
     }
@@ -720,6 +725,38 @@
         var ra = dayNum(a.runDate) || 0, rb = dayNum(b.runDate) || 0;
         return ra - rb;
       });
+      // windows are already per-period blocks: keep the latest run of each
+      // begin..end pair and turn it straight into a delta, never difference it
+      var windows = {};
+      var cumulative = [];
+      for (var w = 0; w < grp.snapshots.length; w++) {
+        var sw = grp.snapshots[w];
+        if (!sw.window) { cumulative.push(sw); continue; }
+        var wk = (sw.begin || '') + '..' + (sw.end || '');
+        var prevW = windows[wk];
+        if (!prevW || (dayNum(sw.runDate) || 0) >= (dayNum(prevW.runDate) || 0)) windows[wk] = sw;
+      }
+      grp.snapshots = cumulative;
+      for (var wkey in windows) {
+        var win = windows[wkey];
+        var clampedStart = win.begin && dayNum(win.begin) < dayNum(grp.monthStart);
+        grp.deltas.push({
+          date: win.asOf,
+          spanStart: clampedStart ? grp.monthStart : (win.begin || win.asOf),
+          spanEnd: win.end || win.asOf,
+          map: win.map,
+          clamped: false,
+          clampedPaths: [],
+          source: win.source,
+          isFirst: false,
+          window: true,
+          note: clampedStart
+            ? 'The week ' + formatRange(win.begin, win.end) + ' is counted in ' + grp.month + ' as one block.'
+            : null
+        });
+        grp.windows = (grp.windows || []).concat([win]);
+      }
+
       // de-duplicate same as-of date: the later run wins (a re-run supersedes)
       var deduped = [];
       for (var n = 0; n < grp.snapshots.length; n++) {
@@ -755,6 +792,7 @@
           isFirst: !prevS
         });
       }
+      grp.deltas.sort(function (a, b) { return dayNum(a.spanStart) - dayNum(b.spanStart) || dayNum(a.date) - dayNum(b.date); });
     }
     return groups;
   }
@@ -795,8 +833,9 @@
       var g = state.groups[k];
       var byStore = state.groupsByStore[g.storeId] || (state.groupsByStore[g.storeId] = { kpi: [], sales: [] });
       (byStore[g.kind] || (byStore[g.kind] = [])).push(g);
-      for (var i = 0; i < g.snapshots.length; i++) {
-        var a = g.snapshots[i].asOf;
+      var allSnaps = g.snapshots.concat(g.windows || []);
+      for (var i = 0; i < allSnaps.length; i++) {
+        var a = allSnaps[i].asOf;
         earliest = earliest === null ? a : minIso(earliest, a);
         latest = latest === null ? a : maxIso(latest, a);
       }
@@ -1059,12 +1098,15 @@
         partial: false, clamped: false, coveredStart: null, coveredEnd: null, note: null
       };
 
+      var chosen = null;
       if (dayNum(effStart) <= dayNum(g.monthStart)) {
-        // whole-month-from-the-start → use the cumulative snapshot itself
-        var chosen = null;
         for (var s = 0; s < g.snapshots.length; s++) {
           if (dayNum(g.snapshots[s].asOf) <= dayNum(effEnd)) chosen = g.snapshots[s];
         }
+      }
+      var windowsOnly = !g.snapshots.length && g.deltas.length > 0;   // e.g. weekly DriveCentric users reports
+      if (dayNum(effStart) <= dayNum(g.monthStart) && !windowsOnly) {
+        // whole-month-from-the-start → use the cumulative snapshot itself
         if (!chosen) {
           monthInfo.mode = 'none';
           monthInfo.note = 'No snapshot on or before ' + formatDate(effEnd) + ' for ' + g.month + '.';
@@ -1091,9 +1133,10 @@
           }
         }
       } else {
-        // mid-month range → sum per-day deltas
+        // mid-month range (or a windows-only month) → sum per-period deltas
         var used = 0;
         var straddled = null;
+        var windowNotes = [];
         for (var d2 = 0; d2 < g.deltas.length; d2++) {
           var del = g.deltas[d2];
           if (!inRange(del.date, effStart, effEnd)) continue;
@@ -1113,6 +1156,7 @@
           cov.snapshotDates.push(del.date);
           if (del.source) cov.sources.push(del.source);
           if (del.clamped) { monthInfo.clamped = true; cov.clampedDates.push(del.date); }
+          if (del.note) windowNotes.push(del.note);
           monthInfo.coveredStart = monthInfo.coveredStart === null ? del.spanStart : minIso(monthInfo.coveredStart, del.spanStart);
           monthInfo.coveredEnd = monthInfo.coveredEnd === null ? del.spanEnd : maxIso(monthInfo.coveredEnd, del.spanEnd);
         }
@@ -1127,6 +1171,7 @@
         }
         monthInfo.mode = 'deltas';
         monthInfo.asOf = monthInfo.coveredEnd;
+        if (windowNotes.length) monthInfo.windowNote = windowNotes.join(' ');
         if (straddled) {
           monthInfo.partial = true;
           monthInfo.note = 'Excludes ' + formatRange(straddled.spanStart, straddled.spanEnd) +
@@ -1150,7 +1195,8 @@
     cov.snapshotDates.sort();
     cov.firstDate = cov.snapshotDates.length ? cov.snapshotDates[0] : null;
     cov.lastDate = cov.snapshotDates.length ? cov.snapshotDates[cov.snapshotDates.length - 1] : null;
-    cov.notes = cov.months.map(function (m) { return m.note; }).filter(Boolean);
+    cov.notes = cov.months.map(function (m) { return m.note; }).filter(Boolean)
+      .concat(cov.months.map(function (m) { return m.windowNote; }).filter(Boolean));
     if (!cov.hasData) {
       cov.reason = anyOverlap
         ? 'Reports for this store do not cover ' + formatRange(range.start, range.end) + '.'

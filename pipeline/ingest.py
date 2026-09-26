@@ -640,8 +640,103 @@ def dc_metrics(vals, cols):
     }
 
 
+# DriveCentric "Activity Report - Users": one row per salesperson for a one-week
+# window (Sat-Fri), 20 cells after each name in this order. Verified against the
+# rendered header on 2026-09-26; the 20th column has no header and is always 0.
+DC_USER_COLS = ["totalOpps", "showroom", "showroomSoldPct", "phone", "phoneSoldPct",
+                "internet", "internetSoldPct", "internetSold", "campaign", "campaignSoldPct",
+                "apptsScheduled", "apptsCreated", "apptsShow", "calls", "texts", "emails",
+                "videos", "sold", "delivered", "_blank"]
+
+
+def dc_cell(s):
+    """'1,709' -> 1709, '37.3%' -> 0.373, '-' / '—' / text -> None."""
+    s = (s or "").strip()
+    if not s or s in ("-", "\u2014", "\u2013"):
+        return None
+    if s.endswith("%"):
+        try:
+            return float(s[:-1].replace(",", "")) / 100.0
+        except ValueError:
+            return None
+    try:
+        return float(s.replace(",", ""))
+    except ValueError:
+        return None
+
+
+def parse_dc_users(lines, path, run):
+    """'Activity Report - Users' -> ONE sales snapshot covering the report's week.
+    Line 1 is the window, line 2 the store, then the store's own total row and
+    one row per person; the column labels trail at the end of the text stream."""
+    m = re.match(r"(\d{1,2})/(\d{1,2})/(\d{4})\s*-\s*(\d{1,2})/(\d{1,2})/(\d{4})", lines[1])
+    if not m:
+        raise ValueError("users report without a date window: %r" % lines[1])
+    begin = date(int(m.group(3)), int(m.group(1)), int(m.group(2)))
+    end = date(int(m.group(6)), int(m.group(4)), int(m.group(5)))
+    store_name = lines[2].strip()
+
+    def to_int(v):
+        return int(round(v)) if v is not None else None
+
+    def rep_from(name, cells):
+        v = dict(zip(DC_USER_COLS, cells))
+        return {
+            "name": name,
+            "group": None,
+            "goodLeads": to_int(v.get("totalOpps")),
+            "sold": to_int(v.get("delivered")),          # same meaning as the KPI report's Total Delivered
+            "apptsScheduled": to_int(v.get("apptsScheduled")),
+            "apptsShown": to_int(v.get("apptsShow")),
+            "shownPct": None,
+            "calls": to_int(v.get("calls")),
+            "emails": to_int(v.get("emails")),
+            "texts": to_int(v.get("texts")),
+            "videos": to_int(v.get("videos")),
+        }
+
+    reps, totals = [], None
+    i = 2
+    n = len(DC_USER_COLS)
+    while i + n < len(lines):
+        name = lines[i].strip()
+        cells = [dc_cell(x) for x in lines[i + 1:i + 1 + n]]
+        if all(c is None for c in cells):
+            break                                   # reached the trailing column labels
+        rec = rep_from("TOTAL" if name == store_name else name, cells)
+        if name == store_name:
+            totals = rec
+        elif name and not HOUSE_ACCOUNT.search(name):
+            reps.append(rec)
+        i += 1 + n
+    if not reps:
+        raise ValueError("users report had no salesperson rows")
+    return [{
+        "storeId": slug(store_name),
+        "storeName": store_name,
+        "dealers": [store_name],
+        "kind": "sales",
+        "period": "current",
+        "dateRange": "Custom Date Range",
+        "begin": begin.isoformat(),
+        "end": end.isoformat(),
+        "runDate": run.isoformat(),
+        "source": os.path.basename(path),
+        "crm": "DriveCentric",
+        # A Sat-Fri week is a disjoint block (window); a block that starts on the
+        # 1st and runs longer than a week is a cumulative month-to-date snapshot.
+        "window": begin.day != 1 or (end - begin).days == 6,
+        "rowCount": len(reps) + 1,
+        "reps": reps,
+        "repTotals": totals,
+        "total": None,
+        "byLeadType": [],
+    }]
+
+
 def parse_dc_pdf(path):
-    """-> [current snapshot, prior snapshot] for one DriveCentric PDF."""
+    """-> snapshots for one DriveCentric PDF: [current, prior] for a KPI
+    Comparison Report, or [sales] for an Activity Report - Users."""
     import fitz  # PyMuPDF
 
     doc = fitz.open(path)
@@ -654,6 +749,9 @@ def parse_dc_pdf(path):
     if not m:
         raise ValueError("no run date in PDF filename")
     run = date(int(m.group(3)), int(m.group(1)), int(m.group(2)))
+
+    if lines and lines[0].startswith("Activity Report - Users"):
+        return parse_dc_users(lines, path, run)
 
     # data blocks: each row label is followed by its 11 values
     blocks, i = [], 0
