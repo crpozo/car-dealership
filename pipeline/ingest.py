@@ -523,6 +523,47 @@ MATADOR_STORE_OVERRIDES = {
 MATADOR_SEPARATE_LOCATIONS = {"sommer-s-buick-gmc", "sommer-s-subaru"}
 
 
+# The bot rewrites every org's CSV on each run, so a file that has not been
+# touched for this long belongs to an org/location pair the bot no longer
+# produces (early runs mislabelled some downloads with another org's name).
+MATADOR_MAX_AGE_DAYS = 3
+
+
+def select_matador_files(paths, log):
+    """Drop stale Matador CSVs and, within an organization, byte-identical
+    location copies. Matador's "Download Users CSV" is organization-wide, so
+    every location of an org yields the same file; summing those copies would
+    double every rep's texts and videos."""
+    import hashlib
+    from datetime import timedelta
+    cutoff = datetime.now() - timedelta(days=MATADOR_MAX_AGE_DAYS)
+    fresh = []
+    for path in sorted(paths):
+        if datetime.fromtimestamp(os.path.getmtime(path)) < cutoff:
+            log.append("SKIP matador %s: not refreshed in %d days" % (os.path.basename(path), MATADOR_MAX_AGE_DAYS))
+            continue
+        fresh.append(path)
+    def parts(path):
+        stem = re.sub(r"(?i)^matador\s+mtd\s+stats\s+", "", os.path.basename(path)[:-4]).strip()
+        org, _, loc = stem.partition(" -- ")
+        return org.strip(), (loc.strip() or org.strip())
+
+    # the copy named after the org itself wins over its "- Service" twins
+    fresh.sort(key=lambda p: (slug(parts(p)[0]), 0 if parts(p)[1] == parts(p)[0] else 1, p))
+    keep, seen = [], {}
+    for path in fresh:
+        org = parts(path)[0]
+        with open(path, "rb") as fh:
+            digest = hashlib.md5(fh.read()).hexdigest()
+        key = (slug(org), digest)
+        if key in seen:
+            log.append("SKIP matador %s: identical to %s" % (os.path.basename(path), os.path.basename(seen[key])))
+            continue
+        seen[key] = path
+        keep.append(path)
+    return keep
+
+
 def parse_matador(path, log):
     out = []
     # "Matador MTD Stats <organization> -- <location>.csv"; older exports carry
@@ -953,7 +994,7 @@ def main(argv):
     kept = sorted(best.values(), key=lambda s: (s["storeId"], s["kind"], s["period"], s["runDate"] or ""))
 
     matador = []
-    for path in sorted(csv_paths):
+    for path in select_matador_files(csv_paths, log):
         matador.extend(parse_matador(path, log))
     # drop activity belonging to an excluded store rather than leaving it orphaned
     matador = [m for m in matador if m["storeId"] not in EXCLUDE_STORES]
