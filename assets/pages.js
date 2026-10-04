@@ -1384,7 +1384,7 @@
           '<span class="gl-legend"><span class="pill good"><span class="dot"></span>At goal</span>' +
           '<span class="pill warn"><span class="dot"></span>\u2265 ' + esc(warnPctLabel()) + " of goal</span>" +
           '<span class="pill bad"><span class="dot"></span>Below</span></span>' +
-          '<span class="gl-edit" title="Goals are edited in Settings and are gated behind Manager mode in this browser.">Edit in Settings \u00b7 Manager only</span>' +
+          '<span class="gl-edit" title="Goals are edited in Settings (saved in this browser).">Edit in Settings</span>' +
           "</div>";
 
         var header = "<thead><tr>" +
