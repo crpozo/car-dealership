@@ -689,9 +689,18 @@
     var noNet = "No internet lead rows for " + rangeLabel(range);
 
     var st = storeStatus(sm, prior, range);
+    /* The status is a button: the checks behind it open inside the card on a
+       click or tap, so nobody has to find a browser tooltip. */
     var pill = st.band === "none" ? "" :
-      '<span class="pill ' + st.band + '" title="' + esc(st.detail) +
-      '"><span class="dot" aria-hidden="true"></span>' + esc(st.word) + "</span>";
+      '<button type="button" class="pill ' + st.band + ' status-btn" aria-expanded="false" onclick="Pages.toggleStatus(this)"' +
+      ' title="Show the checks behind this status"><span class="dot" aria-hidden="true"></span>' + esc(st.word) +
+      '<span class="status-n">' + st.misses + "/" + st.checks.length + "</span></button>";
+    var statusDetail = st.band === "none" ? "" :
+      '<div class="status-detail" hidden><p class="status-why">' + esc(st.misses) + " of " + esc(st.checks.length) +
+      " checks missed \u00b7 performance against goals and the same days last month, not a data problem</p><ul>" +
+      st.checks.map(function (x) {
+        return '<li class="' + (x.ok ? "ok" : "miss") + '"><span aria-hidden="true">' + (x.ok ? "\u2713" : "\u2717") + "</span> " + esc(x.label) + "</li>";
+      }).join("") + "</ul></div>";
 
     var soldDelta = "";
     if (prior && sm.total && prior.total) {
@@ -715,7 +724,7 @@
       '<div class="store-card-head">' + monogram(s.name) +
       '<span class="store-card-title"><span class="store-card-name">' + esc(s.name) + "</span>" +
       (sub ? '<span class="store-card-kicker">' + esc(sub) + "</span>" : "") +
-      "</span>" + pill + "</div>" +
+      "</span>" + pill + "</div>" + statusDetail +
       '<div class="store-card-stats">' + rows.map(function (st) {
         return '<div class="scs"><span class="scs-l">' + esc(st.l) + "</span>" +
           '<span class="scs-v ' + esc(st.cls) + '">' + st.v + "</span></div>";
@@ -754,13 +763,22 @@
       checks.push({ ok: closing >= priorClosing,
         label: "Internet closing " + fmtPct(closing) + " vs " + fmtPct(priorClosing) + " " + PL.prev });
     }
-    if (!checks.length) return { band: "none", word: "", detail: "" };
+    if (!checks.length) return { band: "none", word: "", detail: "", checks: [], misses: 0 };
     var misses = checks.filter(function (x) { return !x.ok; }).length;
     var band = misses >= 2 ? "bad" : (misses === 1 ? "warn" : "good");
     var word = misses >= 2 ? "Needs attention" : (misses === 1 ? "Watch" : "On track");
     var detail = checks.map(function (x) { return (x.ok ? "\u2713 " : "\u2717 ") + x.label; }).join("  \u00b7  ") +
       "  \u2014  " + misses + " of " + checks.length + " checks missed";
-    return { band: band, word: word, detail: detail };
+    return { band: band, word: word, detail: detail, checks: checks, misses: misses };
+  }
+
+  function toggleStatus(btn) {
+    var card = btn.closest ? btn.closest(".store-card") : null;
+    var box = card ? card.querySelector(".status-detail") : null;
+    if (!box) return;
+    var open = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", open ? "false" : "true");
+    box.hidden = open;
   }
 
   /* Dealer-group dashboard: the overview, scoped to one group's stores. */
@@ -2294,6 +2312,7 @@
   global.Pages = {
     logs: logsPage,
     toggleRows: toggleRows,
+    toggleStatus: toggleStatus,
     trends: trendsPage,
     setTrendMetric: setTrendMetric,
     setTrendGran: setTrendGran,

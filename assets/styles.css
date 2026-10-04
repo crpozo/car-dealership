@@ -492,6 +492,14 @@ main:focus { outline: none; }
 .store-card-head .chip ~ .chip { margin-left: 0; }
 
 .store-card-title { display: flex; flex-direction: column; min-width: 0; }
+.status-btn { font: inherit; cursor: pointer; border: 1px solid transparent; }
+.status-btn:hover, .status-btn[aria-expanded="true"] { border-color: currentColor; }
+.status-btn .status-n { font-weight: 600; opacity: .7; font-variant-numeric: tabular-nums; margin-left: 2px; }
+.status-detail { margin: 2px 0 10px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--line-soft); font-size: 12.5px; }
+.status-detail .status-why { margin: 0 0 6px; color: var(--muted); }
+.status-detail ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.status-detail li.ok { color: var(--good); }
+.status-detail li.miss { color: var(--bad); }
 /* keep the stat grid pinned to the bottom so cards of differing title lengths
    still line their numbers up across a row */
 /* Eyebrow + accent title + chevron: makes it unmistakable that each card is a
