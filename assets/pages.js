@@ -1119,6 +1119,7 @@
           metricCells(cur, pri, cmpOf(cur, pri), engMode) + "</tr>";
 
         rows += invs.map(function (inv) {
+          if (/^certified/i.test(inv.inventoryType || "")) return "";   // Certified dropped (Oct 2026)
           var priInv = priNode ? findByKey(priNode.byInventory, inv.key) : null;
           var invPath = ltPath + "/inv:" + inv.key;
           var makes = (inv.byMake || []).filter(function (mk) {
@@ -1844,8 +1845,8 @@
       var raw = global.localStorage.getItem(TREND_KEY);
       var st = raw ? JSON.parse(raw) : {};
       var gran = st.gran === "day" || st.gran === "month" ? st.gran : "week";
-      return { metric: st.metric || "internetLeads", gran: gran, hidden: st.hidden || {}, view: st.view === "grid" ? "grid" : "combined" };
-    } catch (e) { return { metric: "internetLeads", gran: "week", hidden: {}, view: "combined" }; }
+      return { metric: st.metric || "sold", gran: gran, hidden: st.hidden || {}, view: st.view === "grid" ? "grid" : "combined" };
+    } catch (e) { return { metric: "sold", gran: "week", hidden: {}, view: "combined" }; }
   }
   function saveTrendState(st) {
     try { global.localStorage.setItem(TREND_KEY, JSON.stringify(st)); } catch (e) { /* private mode */ }
@@ -1872,9 +1873,9 @@
   function monthLabel(iso) { var m = /^(\d{4})-(\d{2})/.exec(iso || ""); return m ? MONTHS_SHORT[+m[2] - 1] + " " + m[1] : iso; }
 
   var TREND_METRICS = [
-    { key: "internetLeads", label: "Good Internet Leads", pct: false },
     { key: "sold", label: "Total Sold", pct: false },
     { key: "internetSold", label: "Internet Sold", pct: false },
+    { key: "internetLeads", label: "Good Internet Leads", pct: false },
     { key: "engagementPct", label: "Engagement %", pct: true, goal: engagementTarget, num: "contacted", den: "internetLeads", subLabel: "contacted" },
     { key: "apptSetPct", label: "Appts Set %", pct: true, goal: apptTarget, num: "apptsSet", den: "contacted", subLabel: "appts of contacted" },
     { key: "closingPct", label: "Internet Closing %", pct: true, goal: closingTarget, num: "internetSold", den: "internetLeads", subLabel: "sold of leads" }
@@ -2265,7 +2266,7 @@
         seriesArr.push({ id: entry.store.id, name: entry.store.name, color: entry.color.css, dash: entry.color.dash, points: pts });
       });
       var sg = scopeGroup();
-      var head = pageHead("Trends", (sg ? sg.name + " \u00b7 " : "") + "Performance over time \u00b7 full loaded history, independent of the timeframe picker");
+      var head = pageHead("Trends", (sg ? sg.name + " \u00b7 " : "") + "Performance over time, independent of the timeframe picker");
       var chartHtml;
       if (st.view === "grid") {
         /* small multiples: one chart per store on ONE shared scale, so a tall
@@ -2309,7 +2310,7 @@
       pts = c.trendSeries(storeId, st.gran).map(function (row) { return trendPoint(row, metric); });
     } catch (e) { pts = []; }
     if (!pts.length) return "";
-    return '<h2 class="section-title">Performance Over Time <span class="section-sub">full loaded history</span></h2>' +
+    return '<h2 class="section-title">Performance Over Time</h2>' +
       trendControls(st, null) +
       '<div class="fig-card panel">' +
       trendStats(pts, metric.pct, st.gran) +
