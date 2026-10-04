@@ -902,6 +902,11 @@ td.bad::after  { content: "\2193"; }   /* down arrow: behind target */
 }
 .tl-chip .tl-dot { width: 10px; height: 10px; border-radius: 3px; }
 .tl-chip.off { opacity: .42; }
+.tl-actions { display: inline-flex; align-items: center; gap: 6px; margin-right: 6px; padding-right: 10px; border-right: 1px solid var(--line); }
+.tl-act { font: inherit; font-size: 12px; font-weight: 600; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; cursor: pointer; }
+.tl-act:hover:not([disabled]) { background: var(--accent-tint, var(--line-soft)); }
+.tl-act[disabled] { opacity: .45; cursor: default; }
+.tl-count { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .tl-chip.off .tl-dot { background: var(--faint) !important; }
 
 /* line chart: SVG marks + HTML hover layer */

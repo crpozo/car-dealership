@@ -1806,7 +1806,7 @@
   }
 
   /**
-   * trendSeries(storeId, granularity 'day'|'week')
+   * trendSeries(storeId, granularity 'day'|'week'|'month')
    *   → [{date, internetLeads, sold, internetSold, contacted, apptsSet,
    *       engagementPct, apptSetPct, closingPct}]
    *
@@ -1817,10 +1817,28 @@
    */
   function trendSeries(storeId, granularity) {
     var weekly = granularity === 'week';
+    var monthly = granularity === 'month';
     var byStore = state.groupsByStore[storeId];
     var groups = byStore ? (byStore.kpi || []) : [];
     var buckets = {};
     for (var i = 0; i < groups.length; i++) {
+      if (monthly) {
+        // A month is the newest cumulative snapshot the store sent for it (the
+        // same figure the dashboard shows for that month), never a sum of daily
+        // deltas, which would drop days without a report.
+        var snaps = groups[i].snapshots;
+        if (!snaps.length) continue;
+        var newest = snaps[snaps.length - 1];
+        var mb = buckets[groups[i].monthStart] || (buckets[groups[i].monthStart] = {});
+        var mt = newest.map[P_TOTAL] || {};
+        var mn = newest.map['L' + SEP + 'internet'] || {};
+        mb.sold = (mb.sold || 0) + (mt.sold || 0);
+        mb.internetLeads = (mb.internetLeads || 0) + (mn.goodLeads || 0);
+        mb.internetSold = (mb.internetSold || 0) + (mn.sold || 0);
+        mb.contacted = (mb.contacted || 0) + (mn.contacted || 0);
+        mb.apptsSet = (mb.apptsSet || 0) + (mn.apptsSet || 0);
+        continue;
+      }
       for (var j = 0; j < groups[i].deltas.length; j++) {
         var d = groups[i].deltas[j];
         if (dayNum(d.spanStart) !== dayNum(d.spanEnd)) continue; // unattributable block

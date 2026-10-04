@@ -1723,7 +1723,8 @@
     try {
       var raw = global.localStorage.getItem(TREND_KEY);
       var st = raw ? JSON.parse(raw) : {};
-      return { metric: st.metric || "internetLeads", gran: st.gran === "day" ? "day" : "week", hidden: st.hidden || {} };
+      var gran = st.gran === "day" || st.gran === "month" ? st.gran : "week";
+      return { metric: st.metric || "internetLeads", gran: gran, hidden: st.hidden || {} };
     } catch (e) { return { metric: "internetLeads", gran: "week", hidden: {} }; }
   }
   function saveTrendState(st) {
@@ -1737,6 +1738,17 @@
     if (st.hidden[id]) delete st.hidden[id]; else st.hidden[id] = 1;
     saveTrendState(st);
   }
+  /* "Clear all" empties the chart so the reader can pick two or three stores
+     without un-clicking a dozen; "Select all" is the way back. */
+  function trendShowAll(show) {
+    var st = trendState();
+    st.hidden = {};
+    if (!show) trendStores().forEach(function (s2) { st.hidden[s2.id] = 1; });
+    saveTrendState(st);
+  }
+
+  var MONTHS_SHORT = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  function monthLabel(iso) { var m = /^(\d{4})-(\d{2})/.exec(iso || ""); return m ? MONTHS_SHORT[+m[2] - 1] + " " + m[1] : iso; }
 
   var TREND_METRICS = [
     { key: "internetLeads", label: "Good Internet Leads", pct: false },
@@ -1836,7 +1848,7 @@
     function X(d) { return L + (xs.length === 1 ? IW / 2 : xi[d] * (IW / (xs.length - 1))); }
     function Y(v) { return T + IH - (v / top) * IH; }
     function fmtV(v) { return opts.pct ? fmtPct(v, 0) : fmtN(v); }
-    function fmtD(d) { return C().formatDate(d).replace(/, \d{4}$/, ""); }
+    function fmtD(d) { return opts.gran === "month" ? monthLabel(d) : C().formatDate(d).replace(/, \d{4}$/, ""); }
     var base = (T + IH).toFixed(1);
 
     /* grid + axes */
@@ -1937,6 +1949,7 @@
   /* Summary strip for a single series: latest (with change vs the previous
      point), average, high and low — the numbers the chart alone makes you
      hunt for. */
+  function granWord(gran) { return gran === "week" ? "week" : gran === "month" ? "month" : "day"; }
   function trendStats(points, pct, gran) {
     var pts = points.filter(function (p) { return isNum(p.v); });
     if (pts.length < 2) return "";
@@ -1946,8 +1959,8 @@
     var avg = sum / pts.length;
     var d = last.v - prev.v;
     var dTxt = d === 0 ? "no change" : (pct ? (d > 0 ? "+" : "") + Math.round(d * 100) + " pts" : (d > 0 ? "+" : "") + exactValue(d, false)) +
-      " vs prior " + (gran === "week" ? "week" : "day");
-    var when = function (p) { return C().formatDate(p.d).replace(/, \d{4}$/, ""); };
+      " vs prior " + granWord(gran);
+    var when = function (p) { return gran === "month" ? monthLabel(p.d) : C().formatDate(p.d).replace(/, \d{4}$/, ""); };
     function tile(label, value, sub, cls, title) {
       return '<div class="lc-stat"' + (title ? ' title="' + esc(title) + '"' : "") + '><div class="ls-l">' + esc(label) + '</div><div class="ls-v">' + esc(value) +
         '</div><div class="ls-s' + (cls ? " " + cls : "") + '">' + esc(sub) + "</div></div>";
@@ -1955,7 +1968,7 @@
     var avgShown = pct ? fmtPct(avg, 0) : fmtN(avg);
     return '<div class="lc-stats">' +
       tile("Latest", exactValue(last.v, pct), dTxt, d > 0 ? "up" : d < 0 ? "down" : "") +
-      tile("Average", avgShown, "across " + pts.length + (gran === "week" ? " weeks" : " days"), "", "Exact: " + exactValue(avg, pct)) +
+      tile("Average", avgShown, "across " + pts.length + " " + granWord(gran) + "s", "", "Exact: " + exactValue(avg, pct)) +
       tile("High", exactValue(hi.v, pct), when(hi)) +
       tile("Low", exactValue(lo.v, pct), when(lo)) +
       "</div>";
@@ -2035,7 +2048,7 @@
     while (tip.firstChild) tip.removeChild(tip.firstChild);
     var head = document.createElement("div");
     head.className = "lc-d";
-    head.textContent = (m.gran === "week" ? "Week of " : "") + C().formatDate(m.xs[idx]);
+    head.textContent = m.gran === "month" ? monthLabel(m.xs[idx]) : (m.gran === "week" ? "Week of " : "") + C().formatDate(m.xs[idx]);
     tip.appendChild(head);
     if (!rows.length) {
       var none = document.createElement("div");
@@ -2088,10 +2101,17 @@
     var gran = '<span class="view-toggle" role="group" aria-label="Granularity">' +
       '<button type="button" class="vt-btn' + (st.gran === "day" ? " on" : "") + '" onclick="Pages.setTrendGran(\'day\')">Daily</button>' +
       '<button type="button" class="vt-btn' + (st.gran === "week" ? " on" : "") + '" onclick="Pages.setTrendGran(\'week\')">Weekly</button>' +
+      '<button type="button" class="vt-btn' + (st.gran === "month" ? " on" : "") + '" onclick="Pages.setTrendGran(\'month\')">Monthly</button>' +
       "</span>";
     var chips = "";
     if (opts && opts.stores) {
-      chips = '<div class="trend-legend">' + opts.stores.map(function (entry) {
+      var shown = opts.stores.filter(function (entry) { return !st.hidden[entry.store.id]; }).length;
+      chips = '<div class="trend-legend">' +
+        '<span class="tl-actions">' +
+        '<button type="button" class="tl-act" onclick="Pages.trendShowAll(false)"' + (shown ? "" : " disabled") + '>Clear all</button>' +
+        '<button type="button" class="tl-act" onclick="Pages.trendShowAll(true)"' + (shown === opts.stores.length ? " disabled" : "") + '>Select all</button>' +
+        '<span class="tl-count">' + shown + " of " + opts.stores.length + "</span></span>" +
+        opts.stores.map(function (entry) {
         var off = !!st.hidden[entry.store.id];
         return '<button type="button" class="tl-chip' + (off ? " off" : "") + '" aria-pressed="' + (!off) +
           '" onclick="Pages.toggleTrendStore(\'' + esc(entry.store.id) + '\')">' +
@@ -2123,7 +2143,7 @@
         lineChart(seriesArr, { pct: metric.pct, direct: true, gran: st.gran, goal: trendGoal(metric), label: metric.label + " over time by store" }) +
         "</div>" +
         '<p class="roster-note">A store\u2019s line starts on its first daily report. The one-block catch-up report a store sends when it joins mid-month is excluded \u2014 it cannot be placed on a single ' +
-        (st.gran === "week" ? "week" : "day") + ".</p>" +
+        granWord(st.gran) + "." + (st.gran === "month" ? " The current month is month-to-date; year-over-year appears on this view once a second year of history is loaded." : "") + "</p>" +
         "</section>";
     });
   }
@@ -2278,6 +2298,7 @@
     setTrendMetric: setTrendMetric,
     setTrendGran: setTrendGran,
     toggleTrendStore: toggleTrendStore,
+    trendShowAll: trendShowAll,
     setScope: setScope,
     chartMove: chartMove,
     chartLeave: chartLeave,
