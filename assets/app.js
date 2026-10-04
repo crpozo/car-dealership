@@ -12,6 +12,11 @@
   var ROUTES = {
     overview: function (range) { return Pages.overview(range); },
     trends: function (range) { return Pages.trends(range); },
+    admin: function () {
+      var u = global.DASH_USER;
+      if (!u || !u.admin) return notFound("Admins only", "User management is available to dashboard admins.");
+      return Pages.admin();
+    },
     logs: function () { return Pages.logs(); },
     stores: function (range) { return Pages.stores(range); },
     activity: function (range) { return Pages.activity(range); },
@@ -204,7 +209,7 @@
       dash.setAttribute("href", groupHome);
       var onDash = group ? route.name === "group"
         : (route.name !== "store" && route.name !== "group" &&
-           route.name !== "trends" && route.name !== "logs");
+           route.name !== "trends" && route.name !== "logs" && route.name !== "admin");
       dash.classList.toggle("on", onDash);
       if (onDash) dash.setAttribute("aria-current", "page");
       else dash.removeAttribute("aria-current");
@@ -214,6 +219,12 @@
       lg.classList.toggle("on", route.name === "logs");
       if (route.name === "logs") lg.setAttribute("aria-current", "page");
       else lg.removeAttribute("aria-current");
+    }
+    var ad = document.querySelector('[data-side="admin"]');
+    if (ad) {
+      ad.classList.toggle("on", route.name === "admin");
+      if (route.name === "admin") ad.setAttribute("aria-current", "page");
+      else ad.removeAttribute("aria-current");
     }
     var tr = document.querySelector('[data-side="trends"]');
     if (tr) {
@@ -513,6 +524,22 @@
     // ingest.py run output rather than on screen.
   }
 
+  /* Who is signed in: email in the sidebar, admin-only nav items, sign out. */
+  function applyUser() {
+    var u = global.DASH_USER || null;
+    var box = document.getElementById("side-user");
+    var mail = document.getElementById("side-user-mail");
+    if (box) box.hidden = !u;
+    if (mail && u) mail.textContent = u.name || u.email || "";
+    var adminOnly = document.querySelectorAll("[data-admin-only]");
+    for (var i = 0; i < adminOnly.length; i++) adminOnly[i].hidden = !(u && u.admin);
+    var out = document.getElementById("side-signout");
+    if (out && !out.getAttribute("data-wired")) {
+      out.setAttribute("data-wired", "1");
+      out.addEventListener("click", function () { if (global.Auth) global.Auth.signOut(); });
+    }
+  }
+
   function boot() {
     view = document.getElementById("view");
     tfSelect = document.getElementById("tf-select");
@@ -533,6 +560,7 @@
     }
 
     Core.init(global.DASH_DATA);
+    applyUser();
 
     if (!Core.dataAvailable()) {
       view.innerHTML = notFound("No usable snapshots",
@@ -561,13 +589,20 @@
     render();
   }
 
-  // pages.js needs to trigger a re-render for the cards/table view toggle
-  global.App = { render: function () { render(); } };
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", boot);
-  } else {
+  // pages.js needs to trigger a re-render for the cards/table view toggle;
+  // auth.js calls boot() once the signed-in user's data is in DASH_DATA
+  var booted = false;
+  function bootOnce() {
+    if (booted) { Core.init(global.DASH_DATA); render(); return; }
+    booted = true;
     boot();
+  }
+  global.App = { render: function () { render(); }, boot: bootOnce };
+
+  // Without auth.js (local file:// dev with a data.js) boot straight away.
+  if (!global.Auth && !document.querySelector('script[src*="auth.js"]')) {
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+    else boot();
   }
 
 }(typeof window !== "undefined" ? window : this));

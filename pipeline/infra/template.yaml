@@ -1,0 +1,205 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Internet Coaches Dashboard - sign-in and per-store data access.
+  Cognito holds the users (admins see everything, customers only their stores),
+  the data lives in a private bucket as one JSON per store, and a small API
+  hands each signed-in user short-lived links to exactly the files they may read.
+
+Parameters:
+  AllowedOrigin:
+    Type: String
+    Default: https://crpozo.github.io
+    Description: Where the dashboard is served from (GitHub Pages).
+  SenderName:
+    Type: String
+    Default: Internet Coaches Dashboard
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 20
+    MemorySize: 256
+
+Resources:
+  DataBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub scott-dashboard-data-${AWS::AccountId}
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      CorsConfiguration:
+        CorsRules:
+          - AllowedOrigins: [!Ref AllowedOrigin, "http://localhost:8000", "http://127.0.0.1:8000"]
+            AllowedMethods: [GET]
+            AllowedHeaders: ["*"]
+            MaxAge: 3600
+
+  UserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: scott-dashboard
+      UsernameAttributes: [email]
+      AutoVerifiedAttributes: [email]
+      AdminCreateUserConfig:
+        AllowAdminCreateUserOnly: true
+        InviteMessageTemplate:
+          EmailSubject: Your Internet Coaches Dashboard login
+          EmailMessage: !Sub |
+            You have been given access to the ${SenderName}.<br><br>
+            Username: {username}<br>Temporary password: {####}<br><br>
+            Sign in at ${AllowedOrigin}/car-dealership/ and choose a new password on first login.
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 10
+          RequireLowercase: true
+          RequireUppercase: true
+          RequireNumbers: true
+          RequireSymbols: false
+          TemporaryPasswordValidityDays: 14
+      AccountRecoverySetting:
+        RecoveryMechanisms:
+          - Name: verified_email
+            Priority: 1
+      Schema:
+        - Name: email
+          AttributeDataType: String
+          Required: true
+          Mutable: true
+        - Name: name
+          AttributeDataType: String
+          Required: false
+          Mutable: true
+        - Name: stores
+          AttributeDataType: String
+          Mutable: true
+          StringAttributeConstraints:
+            MaxLength: "2048"
+
+  UserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      ClientName: dashboard-web
+      UserPoolId: !Ref UserPool
+      GenerateSecret: false
+      ExplicitAuthFlows:
+        - ALLOW_USER_PASSWORD_AUTH
+        - ALLOW_REFRESH_TOKEN_AUTH
+      PreventUserExistenceErrors: ENABLED
+      AccessTokenValidity: 1
+      IdTokenValidity: 1
+      RefreshTokenValidity: 30
+      TokenValidityUnits:
+        AccessToken: hours
+        IdToken: hours
+        RefreshToken: days
+
+  AdminGroup:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties:
+      GroupName: admin
+      Description: Sees every store and manages users
+      UserPoolId: !Ref UserPool
+
+  Api:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      CorsConfiguration:
+        AllowOrigins: [!Ref AllowedOrigin, "http://localhost:8000", "http://127.0.0.1:8000"]
+        AllowMethods: [GET, POST, PATCH, DELETE, OPTIONS]
+        AllowHeaders: [Authorization, Content-Type]
+        MaxAge: 3600
+      Auth:
+        DefaultAuthorizer: CognitoJwt
+        Authorizers:
+          CognitoJwt:
+            JwtConfiguration:
+              issuer: !Sub https://cognito-idp.${AWS::Region}.amazonaws.com/${UserPool}
+              audience: [!Ref UserPoolClient]
+            IdentitySource: $request.header.Authorization
+
+  ApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: scott-dashboard-api
+      CodeUri: api/
+      Handler: app.handler
+      Environment:
+        Variables:
+          BUCKET: !Ref DataBucket
+          POOL_ID: !Ref UserPool
+          LINK_TTL: "900"
+      Policies:
+        - S3ReadPolicy:
+            BucketName: !Sub scott-dashboard-data-${AWS::AccountId}
+        - Statement:
+            - Effect: Allow
+              Action:
+                - cognito-idp:ListUsers
+                - cognito-idp:AdminGetUser
+                - cognito-idp:AdminCreateUser
+                - cognito-idp:AdminUpdateUserAttributes
+                - cognito-idp:AdminDeleteUser
+                - cognito-idp:AdminEnableUser
+                - cognito-idp:AdminDisableUser
+                - cognito-idp:AdminAddUserToGroup
+                - cognito-idp:AdminRemoveUserFromGroup
+                - cognito-idp:AdminListGroupsForUser
+                - cognito-idp:AdminResetUserPassword
+              Resource: !GetAtt UserPool.Arn
+      Events:
+        Data:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref Api
+            Path: /data
+            Method: GET
+        Me:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref Api
+            Path: /me
+            Method: GET
+        ListUsers:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref Api
+            Path: /users
+            Method: GET
+        CreateUser:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref Api
+            Path: /users
+            Method: POST
+        UpdateUser:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref Api
+            Path: /users/{username}
+            Method: PATCH
+        DeleteUser:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref Api
+            Path: /users/{username}
+            Method: DELETE
+        Resend:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref Api
+            Path: /users/{username}/resend
+            Method: POST
+
+Outputs:
+  ApiUrl:
+    Value: !Sub https://${Api}.execute-api.${AWS::Region}.amazonaws.com
+  UserPoolId:
+    Value: !Ref UserPool
+  ClientId:
+    Value: !Ref UserPoolClient
+  DataBucketName:
+    Value: !Ref DataBucket

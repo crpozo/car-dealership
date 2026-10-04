@@ -2,3 +2,8 @@
 pipeline/.cache/
 __pycache__/
 *.pyc
+
+# live data is served from S3 to signed-in users; never commit a data bundle
+assets/data.js
+pipeline/data.js
+pipeline/.cache/

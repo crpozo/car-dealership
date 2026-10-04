@@ -2348,6 +2348,152 @@
 
   /* ----------------------------------------------------------------- export */
 
+  /* ============================================================== 6b. USERS
+     Admin-only user management against the dashboard API (Cognito behind it).
+     Admins see everything; a customer sees the stores and groups ticked here. */
+
+  var ADMIN = { users: null, loading: false, error: null, editing: null, busy: false };
+
+  function adminLoad() {
+    if (!global.Auth) return;
+    ADMIN.loading = true; ADMIN.error = null;
+    global.Auth.api("/users").then(function (res) {
+      ADMIN.users = res.users || [];
+    }).catch(function (err) {
+      ADMIN.error = err.message || "Could not load users";
+    }).then(function () {
+      ADMIN.loading = false;
+      if (global.App) global.App.render();
+    });
+  }
+
+  function adminAccessPicker(selected, prefix) {
+    var c = C();
+    var sel = {};
+    (selected || []).forEach(function (x) { sel[x] = 1; });
+    var groups = c.groups ? c.groups() : [];
+    var stores = STORES().slice().sort(function (a, b) { return a.name < b.name ? -1 : 1; });
+    var html = "";
+    if (groups.length) {
+      html += '<div class="ap-col"><div class="ap-h">Owner groups <span class="muted">(every store in the group)</span></div>' +
+        groups.map(function (g) {
+          return '<label class="ap-item"><input type="checkbox" name="' + prefix + '" value="' + esc(g.id) + '"' + (sel[g.id] ? " checked" : "") + '> ' + esc(g.name) + "</label>";
+        }).join("") + "</div>";
+    }
+    html += '<div class="ap-col"><div class="ap-h">Stores</div>' +
+      stores.map(function (st) {
+        return '<label class="ap-item"><input type="checkbox" name="' + prefix + '" value="' + esc(st.id) + '"' + (sel[st.id] ? " checked" : "") + '> ' + esc(st.name) + "</label>";
+      }).join("") + "</div>";
+    return '<div class="ap-grid">' + html + "</div>";
+  }
+
+  function adminPickedValues(form, prefix) {
+    var out = [];
+    var boxes = form.querySelectorAll('input[name="' + prefix + '"]:checked');
+    for (var i = 0; i < boxes.length; i++) out.push(boxes[i].value);
+    return out;
+  }
+
+  function adminLabel(ids) {
+    var c = C();
+    var names = (ids || []).map(function (id) {
+      var g = c.groupById ? c.groupById(id) : null;
+      if (g) return g.name + " (group)";
+      var st = c.storeById ? c.storeById(id) : null;
+      return st ? st.name : id;
+    });
+    return names.length ? names.join(", ") : "\u2014";
+  }
+
+  function adminPage() {
+    return guard(function () {
+      if (ADMIN.users === null && !ADMIN.loading && !ADMIN.error) adminLoad();
+      var head = pageHead("Users", "Who can sign in, and which stores each person sees");
+      var me = global.DASH_USER || {};
+      var create = '<section class="panel admin-create"><h2 class="section-title">Invite someone</h2>' +
+        '<form class="admin-form" onsubmit="return Pages.adminCreate(this)">' +
+        '<div class="af-row"><label>Email<input type="email" name="email" required placeholder="name@dealership.com"></label>' +
+        '<label>Name <span class="muted">(optional)</span><input type="text" name="name" placeholder="Jane Doe"></label>' +
+        '<label class="af-check"><input type="checkbox" name="admin"> Admin \u2014 sees every store and manages users</label></div>' +
+        '<div class="af-access"><div class="ap-title">Access <span class="muted">(ignored for admins)</span></div>' + adminAccessPicker([], "access") + "</div>" +
+        '<div class="af-actions"><button type="submit" class="btn btn-accent"' + (ADMIN.busy ? " disabled" : "") + '>Send invite</button>' +
+        '<span class="muted">They get an email with a temporary password and set their own on first sign-in.</span></div>' +
+        '<p class="lg-msg" id="admin-create-msg"></p></form></section>';
+
+      var list;
+      if (ADMIN.loading) list = '<section class="panel"><p class="muted">Loading users\u2026</p></section>';
+      else if (ADMIN.error) list = '<section class="panel"><p class="delta down">' + esc(ADMIN.error) + '</p><button type="button" class="ghost-btn" onclick="Pages.adminReload()">Try again</button></section>';
+      else {
+        var rows = (ADMIN.users || []).map(function (u) {
+          var isMe = u.username === me.email || u.email === me.email;
+          var status = u.status === "FORCE_CHANGE_PASSWORD" ? '<span class="pill warn"><span class="dot"></span>Invited</span>'
+            : (!u.enabled ? '<span class="pill bad"><span class="dot"></span>Disabled</span>' : '<span class="pill good"><span class="dot"></span>Active</span>');
+          var editing = ADMIN.editing === u.username;
+          var main = "<tr" + (editing ? ' class="editing"' : "") + ">" +
+            '<td class="name">' + esc(u.email || u.username) + (u.name ? '<span class="muted"> \u00b7 ' + esc(u.name) + "</span>" : "") + (isMe ? '<span class="muted"> (you)</span>' : "") + "</td>" +
+            "<td>" + (u.admin ? '<span class="pill good"><span class="dot"></span>Admin</span>' : "Customer") + "</td>" +
+            '<td class="admin-access">' + (u.admin ? '<span class="muted">All stores</span>' : esc(adminLabel(u.stores))) + "</td>" +
+            "<td>" + status + "</td>" +
+            '<td class="admin-actions">' +
+              '<button type="button" class="ghost-btn" onclick="Pages.adminEdit(\'' + esc(u.username) + '\')">' + (editing ? "Close" : "Edit") + "</button>" +
+              (u.status === "FORCE_CHANGE_PASSWORD" ? '<button type="button" class="ghost-btn" onclick="Pages.adminResend(\'' + esc(u.username) + '\')">Resend invite</button>' : "") +
+              (!isMe ? '<button type="button" class="ghost-btn" onclick="Pages.adminToggle(\'' + esc(u.username) + '\',' + (u.enabled ? "false" : "true") + ')">' + (u.enabled ? "Disable" : "Enable") + "</button>" : "") +
+              (!isMe ? '<button type="button" class="ghost-btn danger" onclick="Pages.adminDelete(\'' + esc(u.username) + '\')">Delete</button>' : "") +
+            "</td></tr>";
+          if (!editing) return main;
+          return main + '<tr class="edit-row"><td colspan="5">' +
+            '<form class="admin-form" onsubmit="return Pages.adminSave(this, \'' + esc(u.username) + '\')">' +
+            '<div class="af-row"><label>Name<input type="text" name="name" value="' + esc(u.name || "") + '"></label>' +
+            '<label class="af-check"><input type="checkbox" name="admin"' + (u.admin ? " checked" : "") + (isMe ? " disabled" : "") + '> Admin</label></div>' +
+            '<div class="af-access"><div class="ap-title">Access</div>' + adminAccessPicker(u.stores, "access") + "</div>" +
+            '<div class="af-actions"><button type="submit" class="btn btn-accent"' + (ADMIN.busy ? " disabled" : "") + '>Save</button>' +
+            '<button type="button" class="ghost-btn" onclick="Pages.adminEdit(null)">Cancel</button></div>' +
+            '<p class="lg-msg" id="admin-edit-msg"></p></form></td></tr>';
+        }).join("");
+        list = '<section class="panel"><h2 class="section-title">People with access <span class="section-sub">' + (ADMIN.users || []).length + "</span></h2>" +
+          tableWrap("<thead><tr><th>Email</th><th>Role</th><th>Sees</th><th>Status</th><th></th></tr></thead><tbody>" + rows + "</tbody>", "admin-tbl") +
+          "</section>";
+      }
+      return '<section class="page" id="page-admin">' + head + create + list + "</section>";
+    });
+  }
+
+  function adminMsg(id, text, kind) {
+    var m = document.getElementById(id);
+    if (m) { m.textContent = text || ""; m.className = "lg-msg" + (kind ? " " + kind : ""); }
+  }
+  function adminCreate(form) {
+    var body = { email: form.elements.email.value.trim(), name: form.elements.name.value.trim(), admin: !!form.elements.admin.checked, stores: adminPickedValues(form, "access") };
+    if (!body.admin && !body.stores.length) { adminMsg("admin-create-msg", "Tick at least one store or group, or make them an admin.", "bad"); return false; }
+    adminMsg("admin-create-msg", "Sending invite\u2026", "good");
+    ADMIN.busy = true;
+    global.Auth.api("/users", { method: "POST", body: body }).then(function () {
+      ADMIN.busy = false; adminLoad();
+    }).catch(function (err) { ADMIN.busy = false; adminMsg("admin-create-msg", err.message, "bad"); });
+    return false;
+  }
+  function adminSave(form, username) {
+    var body = { name: form.elements.name.value.trim(), stores: adminPickedValues(form, "access") };
+    if (!form.elements.admin.disabled) body.admin = !!form.elements.admin.checked;
+    adminMsg("admin-edit-msg", "Saving\u2026", "good");
+    global.Auth.api("/users/" + encodeURIComponent(username), { method: "PATCH", body: body }).then(function () {
+      ADMIN.editing = null; adminLoad();
+    }).catch(function (err) { adminMsg("admin-edit-msg", err.message, "bad"); });
+    return false;
+  }
+  function adminEdit(username) { ADMIN.editing = ADMIN.editing === username ? null : username; if (global.App) global.App.render(); }
+  function adminReload() { ADMIN.users = null; ADMIN.error = null; adminLoad(); }
+  function adminToggle(username, enabled) {
+    global.Auth.api("/users/" + encodeURIComponent(username), { method: "PATCH", body: { enabled: enabled } }).then(adminLoad).catch(function (err) { global.alert(err.message); });
+  }
+  function adminResend(username) {
+    global.Auth.api("/users/" + encodeURIComponent(username) + "/resend", { method: "POST", body: {} }).then(function () { global.alert("Invite re-sent to " + username); adminLoad(); }).catch(function (err) { global.alert(err.message); });
+  }
+  function adminDelete(username) {
+    if (!global.confirm("Delete the login for " + username + "? They will no longer be able to sign in.")) return;
+    global.Auth.api("/users/" + encodeURIComponent(username), { method: "DELETE" }).then(adminLoad).catch(function (err) { global.alert(err.message); });
+  }
+
   /* ============================================================== 7. LOGS
      What entered the dashboard on each refresh. The numbers come from the
      pipeline itself (pipeline/runs.jsonl), so this answers "did today's data
@@ -2446,6 +2592,9 @@
     logs: logsPage,
     toggleRows: toggleRows,
     toggleStatus: toggleStatus,
+    admin: adminPage,
+    adminCreate: adminCreate, adminSave: adminSave, adminEdit: adminEdit, adminReload: adminReload,
+    adminToggle: adminToggle, adminResend: adminResend, adminDelete: adminDelete,
     setActivitySource: setActivitySource,
     trends: trendsPage,
     setTrendMetric: setTrendMetric,

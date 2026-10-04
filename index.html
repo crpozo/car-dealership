@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=0ef20e0b11">
+<link rel="stylesheet" href="assets/styles.css?v=0ca90062b4">
 </head>
 <body>
 
@@ -28,8 +28,11 @@
     <a href="#/trends" class="side-item" data-side="trends">
       <span class="side-ico" aria-hidden="true">&#10148;</span>Trends
     </a>
-    <a href="#/logs" class="side-item" data-side="logs">
+    <a href="#/logs" class="side-item" data-side="logs" data-admin-only hidden>
       <span class="side-ico" aria-hidden="true">&#9776;</span>Logs
+    </a>
+    <a href="#/admin" class="side-item" data-side="admin" data-admin-only hidden>
+      <span class="side-ico" aria-hidden="true">&#9787;</span>Users
     </a>
     <button type="button" id="settings-toggle" class="side-item side-btn" aria-expanded="false" aria-controls="settings-panel">
       <span class="side-ico" aria-hidden="true">&#9881;</span>Settings
@@ -41,7 +44,13 @@
     <div id="side-stores"></div>
   </nav>
 
-  <div class="side-foot"><span id="foot-generated"></span></div>
+  <div class="side-foot">
+    <div class="side-user" id="side-user" hidden>
+      <span class="side-user-mail" id="side-user-mail"></span>
+      <button type="button" class="side-signout" id="side-signout">Sign out</button>
+    </div>
+    <span id="foot-generated"></span>
+  </div>
 </aside>
 
 <div class="main">
@@ -121,9 +130,16 @@
 </div>
 </div>
 
-<script src="assets/data.js?v=0ef20e0b11"></script>
-<script src="assets/core.js?v=0ef20e0b11"></script>
-<script src="assets/pages.js?v=0ef20e0b11"></script>
-<script src="assets/app.js?v=0ef20e0b11"></script>
+<div id="login" class="login" hidden>
+  <div class="login-card">
+    <div class="login-brand"><span class="brand-mark" aria-hidden="true">IC</span></div>
+    <form class="login-form" novalidate data-mode="signin"></form>
+  </div>
+</div>
+
+<script src="assets/core.js?v=0ca90062b4"></script>
+<script src="assets/pages.js?v=0ca90062b4"></script>
+<script src="assets/app.js?v=0ca90062b4"></script>
+<script src="assets/auth.js?v=0ca90062b4"></script>
 </body>
 </html>

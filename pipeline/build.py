@@ -19,11 +19,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 SRC = os.path.join(HERE, "data.json")
 ASSETS = os.path.join(ROOT, "assets")
-OUT = os.path.join(ASSETS, "data.js")
+OUT = os.path.join(HERE, "data.js")   # local dev copy only; the live site reads S3
 INDEX = os.path.join(ROOT, "index.html")
 
 # assets referenced by index.html that should be versioned
-VERSIONED = ["data.js", "core.js", "pages.js", "app.js", "styles.css"]
+VERSIONED = ["core.js", "pages.js", "app.js", "auth.js", "styles.css"]
 
 data = json.load(open(SRC))
 
@@ -69,6 +69,64 @@ html_out = re.sub(r"assets/(%s)(?:\?v=[0-9a-f]+)?" % "|".join(re.escape(n) for n
                   stamp, html)
 if html_out != html:
     open(INDEX, "w").write(html_out)
+
+# --publish: the signed-in dashboard reads one private JSON per store from S3
+# (plus meta.json for the store list, groups and the Logs page). The runner
+# calls this after every refresh; nothing here touches the public repo.
+import gzip
+import sys
+
+DATA_BUCKET = os.environ.get("DASH_DATA_BUCKET", "scott-dashboard-data-160184161302")
+STORE_LISTS = ("snapshots", "matador", "covideo", "repGoals")
+
+
+def split_by_store(d):
+    per = {}
+    for s in d.get("stores", []):
+        per[s["id"]] = {"storeId": s["id"], "snapshots": [], "matador": [], "covideo": [], "repGoals": [],
+                        "coverage": (d.get("coverage") or {}).get(s["id"])}
+    for key in STORE_LISTS:
+        for row in d.get(key, []):
+            sid = row.get("storeId")
+            if sid in per:
+                per[sid][key].append(row)
+            elif sid:                                   # a store with rows but no store record
+                per.setdefault(sid, {"storeId": sid, "snapshots": [], "matador": [], "covideo": [], "repGoals": [], "coverage": None})
+                per[sid][key].append(row)
+    meta = {k: v for k, v in d.items() if k not in STORE_LISTS and k != "coverage"}
+    meta["storeFiles"] = sorted(per.keys())
+    return meta, per
+
+
+def publish(d):
+    """Write the gzipped files locally, then ship them with the AWS CLI (present
+    on the runner, which has no boto3). meta.json goes last so a reader never
+    sees a store list that points at files not yet uploaded."""
+    import shutil
+    import subprocess
+    meta, per = split_by_store(d)
+    stage = os.path.join(HERE, ".cache", "publish")
+    shutil.rmtree(stage, ignore_errors=True)
+    os.makedirs(os.path.join(stage, "store"), exist_ok=True)
+
+    def put(rel, obj):
+        raw = gzip.compress(json.dumps(obj, separators=(",", ":")).encode("utf-8"))
+        with open(os.path.join(stage, rel), "wb") as fh:
+            fh.write(raw)
+        return len(raw)
+
+    total = 0
+    for sid, obj in per.items():
+        total += put(os.path.join("store", "%s.json" % sid), obj)
+    common = ["--content-type", "application/json", "--content-encoding", "gzip", "--cache-control", "no-cache", "--only-show-errors"]
+    subprocess.run(["aws", "s3", "cp", os.path.join(stage, "store"), "s3://%s/data/store/" % DATA_BUCKET, "--recursive"] + common, check=True)
+    total += put("meta.json", meta)
+    subprocess.run(["aws", "s3", "cp", os.path.join(stage, "meta.json"), "s3://%s/data/meta.json" % DATA_BUCKET] + common, check=True)
+    print("published meta + %d store files to s3://%s/data (%.1f KB gzipped)" % (len(per), DATA_BUCKET, total / 1024.0))
+
+
+if "--publish" in sys.argv:
+    publish(data)
 
 print("wrote %s (%.1f KB, %d snapshots, %d stores)"
       % (OUT, len(payload) / 1024.0, len(data.get("snapshots", [])), len(data.get("stores", []))))
