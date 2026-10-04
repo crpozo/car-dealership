@@ -1234,7 +1234,8 @@
         var me = new Date(Date.UTC(+range.end.slice(0, 4), +range.end.slice(5, 7), 0)).toISOString().slice(0, 10);
         monthDays = c.networkDays(ms, me, sat);
       } catch (e) { monthDays = null; }
-      function repGoal(r) { return c.getRepSalesGoal(s.id, r); }
+      var curStoreId = null;   // set per store inside the sections loop below
+      function repGoal(r) { return c.getRepSalesGoal(curStoreId, r); }
       function pacedGoal(r) {
         var g = repGoal(r).goal;
         if (g === null || !isNum(days) || !isNum(monthDays) || monthDays <= 0) return null;
@@ -1318,6 +1319,7 @@
       function normName(n) { return String(n || "").toLowerCase().replace(/\s+/g, " ").trim(); }
 
       var sections = list.map(function (s) {
+        curStoreId = s.id;
         var reps = null;
         try { reps = c.reps(s.id, range); } catch (e) { reps = null; }
         var people = (reps || []).filter(function (r) { return !isTotalRow(r); });
