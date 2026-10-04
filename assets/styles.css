@@ -15,10 +15,16 @@
   --muted: #6B7280;   /* 4.8:1 on white — the reference's grey sits at 3.3:1, which
                          is fine for nav labels but not for the stat labels here */
   --faint: #9AA1AC;
-  --line: #E7EAEF;
-  --line-soft: #F2F4F7;
-  --ground: #F7F8FA;
+  --line: #D3DAE4;
+  --line-soft: #E6EAF0;
+  --ground: #E4E8EE;     /* Oct 2026: darker ground so white cards read as cards */
   --card: #FFFFFF;
+  --nav-bg: #0F1729;     /* dark navy sidebar for contrast against the cards */
+  --nav-ink: #E6EAF0;
+  --nav-muted: #A9B2C0;
+  --nav-faint: #6F7A8C;
+  --nav-hover: rgba(255,255,255,.08);
+  --nav-on: rgba(183,215,245,.22);
 
   --accent-pale: #B7D7F5;   /* the fill */
   --accent-tint: #DCEBFA;   /* lighter wash for hovers and chips */
@@ -40,7 +46,7 @@
 
   --sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-  --shadow: 0 1px 2px rgba(25, 29, 51, .04), 0 4px 16px rgba(25, 29, 51, .05);
+  --shadow: 0 1px 2px rgba(25, 29, 51, .06), 0 6px 20px rgba(25, 29, 51, .08);
   --radius: 12px;
 }
 
@@ -51,8 +57,14 @@
     --faint: #6C7484;
     --line: #2A3040;
     --line-soft: #222634;
-    --ground: #10131B;
+    --ground: #0B0E15;
     --card: #181C26;
+    --nav-bg: #0B0E15;
+    --nav-ink: #E6EAF0;
+    --nav-muted: #A9B2C0;
+    --nav-faint: #6F7A8C;
+    --nav-hover: rgba(255,255,255,.08);
+    --nav-on: rgba(111,168,220,.25);
 
     /* Same relationship inverted: the pale blue is still the fill, but on a dark
        card it is light enough to carry dark text, so accent-ink flips. */
@@ -105,8 +117,9 @@ code { font-family: var(--mono); font-size: .9em; }
   flex: none;
   width: 244px;
   padding: 18px 14px;
-  background: var(--card);
-  border-right: 1px solid var(--line);
+  background: var(--nav-bg);
+  color: var(--nav-ink);
+  border-right: 1px solid rgba(255,255,255,.06);
   position: sticky;
   top: 0;
   height: 100vh;
@@ -140,10 +153,16 @@ code { font-family: var(--mono); font-size: .9em; }
   text-align: left;
   width: 100%;
 }
-.side-item:hover { background: var(--line-soft); color: var(--ink); }
-.side-item.on { background: var(--accent-tint); color: var(--ink); }
-.side-ico { width: 18px; text-align: center; color: var(--faint); }
-.side-item.on .side-ico { color: var(--ink); }
+.sidebar .side-item { color: var(--nav-muted); }
+.sidebar .side-item:hover { background: var(--nav-hover); color: var(--nav-ink); }
+.sidebar .side-item.on { background: var(--nav-on); color: #FFFFFF; }
+.side-ico { width: 18px; text-align: center; color: var(--nav-faint); }
+.side-item.on .side-ico { color: #FFFFFF; }
+.sidebar .side-label { color: var(--nav-faint); }
+.sidebar .side-foot { color: var(--nav-faint); }
+.sidebar .brand-name { color: var(--nav-ink); }
+.sidebar .brand-link:hover .brand-name { color: #FFFFFF; }
+.sidebar .side-mono { background: rgba(183,215,245,.9); }
 .side-mono {
   display: grid;
   place-items: center;
