@@ -1306,20 +1306,43 @@
       }
 
       function videosCell(r) {
-        var m = r.matador;
+        var m = source === "crm" ? null : r.matador;
         if (m && isNum(m.videosSent)) {
           return td(num(m.videosSent, ""), "", matadorNote + locBreakdown(m, "videosSent"));
         }
-        var cv = r.covideo;
+        var cv = source === "crm" ? null : r.covideo;
         if (cv && isNum(cv.videosSent)) return td(num(cv.videosSent, ""), "", covideoNote);
         if (isNum(r.videos)) return td(num(r.videos, ""), "", "Videos column of the sales export (entered by hand from Covideo) \u2014 summed over the selected dates.");
-        return td(na("No Matador or Covideo record joins this rep"));
+        return td(na(source === "crm" ? "The CRM export has no videos column for this store" : "No Matador or Covideo record joins this rep"));
       }
 
       function normName(n) { return String(n || "").toLowerCase().replace(/\s+/g, " ").trim(); }
 
+      var source = scoped ? activitySource() : "total";
+      function sourceToggle(s) {
+        var hasMat = (s.tools || []).indexOf("Matador") >= 0;
+        if (!scoped || !hasMat) return "";
+        function b(v, label, title) {
+          return '<button type="button" class="vt-btn' + (source === v ? " on" : "") + '" onclick="Pages.setActivitySource(\'' + v + '\')" title="' + esc(title) + '">' + esc(label) + "</button>";
+        }
+        return '<span class="view-toggle act-source" role="group" aria-label="Data source">' +
+          b("total", "Total", "CRM salesperson rows, with videos from Matador/Covideo") +
+          b("crm", esc(s.crm || "CRM"), "The CRM export only") +
+          b("matador", "Matador", "Matador's own per-user export (texts, videos, appointments)") + "</span>";
+      }
+
       var sections = list.map(function (s) {
         curStoreId = s.id;
+        if (source === "matador" && scoped) {
+          var mrows = [];
+          try { mrows = c.matador(s.id) || []; } catch (e) { mrows = []; }
+          return '<section class="panel act-panel"><h2 class="section-title">' + esc(s.name) +
+            '<span class="section-sub">' + esc(mrows.length + (mrows.length === 1 ? " user" : " users") + " \u00b7 Matador month-to-date snapshot") + "</span>" +
+            sourceToggle(s) + "</h2>" +
+            '<p class="roster-note">Matador\u2019s Users export is a month-to-date snapshot of every user in the organization \u2014 it is not filtered by the selected dates.</p>' +
+            (mrows.length ? matadorTable(s, mrows) : emptyState("No Matador rows", "The bot has not downloaded this organization yet.")) +
+            "</section>";
+        }
         var reps = null;
         try { reps = c.reps(s.id, range); } catch (e) { reps = null; }
         var people = (reps || []).filter(function (r) { return !isTotalRow(r); });
@@ -1449,7 +1472,7 @@
 
         return '<section class="panel act-panel"><h2 class="section-title">' + esc(s.name) +
           '<span class="section-sub">' + esc(String(people.length) + (people.length === 1 ? " rep" : " reps") +
-          " \u00b7 " + (days === null ? "?" : days) + " working days") + "</span>" + groupBtn + "</h2>" +
+          " \u00b7 " + (days === null ? "?" : days) + " working days") + "</span>" + groupBtn + sourceToggle(s) + "</h2>" +
           goalsLine +
           tableWrap(header + "<tbody>" + body + "</tbody>" + foot, "activity-tbl") +
           "</section>";
@@ -1475,6 +1498,41 @@
     if (!isNum(w)) w = 0.85;
     if (w > 1) w = w / 100;
     return Math.round(w * 100) + "%";
+  }
+
+  /* Which source the activity table reads: "total" = CRM rows enriched with
+     Matador/Covideo videos (the default), "crm" = the CRM export alone,
+     "matador" = Matador's own per-user export. */
+  var ACT_SRC_KEY = "icdash.activitySource";
+  function activitySource() {
+    try { var v = global.localStorage.getItem(ACT_SRC_KEY); return v === "crm" || v === "matador" ? v : "total"; } catch (e) { return "total"; }
+  }
+  function setActivitySource(v) {
+    try { global.localStorage.setItem(ACT_SRC_KEY, v); } catch (e) { /* private mode */ }
+    if (global.App && global.App.render) global.App.render();
+  }
+  function matadorTable(s, rows) {
+    var list = rows.slice().sort(function (a, b) { return (b.messagesSent || 0) - (a.messagesSent || 0); });
+    var sums = { assignedClients: 0, clientsMessaged: 0, messagesSent: 0, videosSent: 0, apptsCreated: 0, reviewInvites: 0 };
+    list.forEach(function (m) { for (var k in sums) if (isNum(m[k])) sums[k] += m[k]; });
+    var header = "<thead><tr><th>User</th><th>Role</th>" +
+      '<th class="num" title="Clients assigned to this user in Matador">Assigned Clients</th>' +
+      '<th class="num" title="Distinct clients this user messaged">Clients Messaged</th>' +
+      '<th class="num" title="Messages sent (texts)">Messages Sent</th>' +
+      '<th class="num" title="Videos sent through Matador">Videos Sent</th>' +
+      '<th class="num" title="Appointments created in Matador">Appts Created</th>' +
+      '<th class="num" title="Review invites sent">Review Invites</th>' +
+      '<th title="Last activity recorded by Matador">Last Activity</th></tr></thead>';
+    function cells(m) {
+      return td(num(m.assignedClients, "")) + td(num(m.clientsMessaged, "")) + td(num(m.messagesSent, "")) +
+        td(num(m.videosSent, "")) + td(num(m.apptsCreated, "")) + td(num(m.reviewInvites, ""));
+    }
+    var body = list.map(function (m) {
+      return '<tr><td class="name">' + esc(m.name) + "</td><td>" + esc(m.role || "") + "</td>" + cells(m) +
+        "<td>" + esc(m.lastActivity || "\u2014") + "</td></tr>";
+    }).join("");
+    var foot = '<tfoot><tr class="total-row"><td class="name">MATADOR TOTAL</td><td></td>' + cells(sums) + "<td></td></tr></tfoot>";
+    return tableWrap(header + "<tbody>" + body + "</tbody>" + foot, "activity-tbl matador-tbl");
   }
 
   var ACT_GROUP_KEY = "icdash.activityGroups";
@@ -1786,8 +1844,8 @@
       var raw = global.localStorage.getItem(TREND_KEY);
       var st = raw ? JSON.parse(raw) : {};
       var gran = st.gran === "day" || st.gran === "month" ? st.gran : "week";
-      return { metric: st.metric || "internetLeads", gran: gran, hidden: st.hidden || {} };
-    } catch (e) { return { metric: "internetLeads", gran: "week", hidden: {} }; }
+      return { metric: st.metric || "internetLeads", gran: gran, hidden: st.hidden || {}, view: st.view === "grid" ? "grid" : "combined" };
+    } catch (e) { return { metric: "internetLeads", gran: "week", hidden: {}, view: "combined" }; }
   }
   function saveTrendState(st) {
     try { global.localStorage.setItem(TREND_KEY, JSON.stringify(st)); } catch (e) { /* private mode */ }
@@ -1795,6 +1853,7 @@
   }
   function setTrendMetric(v) { var st = trendState(); st.metric = v; saveTrendState(st); }
   function setTrendGran(v) { var st = trendState(); st.gran = v; saveTrendState(st); }
+  function setTrendView(v) { var st = trendState(); st.view = v; saveTrendState(st); }
   function toggleTrendStore(id) {
     var st = trendState();
     if (st.hidden[id]) delete st.hidden[id]; else st.hidden[id] = 1;
@@ -1890,7 +1949,7 @@
 
   function lineChart(seriesArr, opts) {
     opts = opts || {};
-    var W = 960, H = 340, L = 56, R = opts.direct ? 136 : 28, T = 18, B = 36;
+    var W = 960, H = opts.compact ? 230 : 340, L = 56, R = opts.direct ? 136 : 28, T = 18, B = 36;
     var dates = {};
     seriesArr.forEach(function (sr) { sr.points.forEach(function (pt) { dates[pt.d] = 1; }); });
     var xs = Object.keys(dates).sort();
@@ -1901,6 +1960,7 @@
     seriesArr.forEach(function (sr) { sr.points.forEach(function (pt) { if (isNum(pt.v) && pt.v > maxV) maxV = pt.v; }); });
     var goal = isNum(opts.goal) && opts.goal > 0 ? opts.goal : null;
     if (goal !== null && goal > maxV) maxV = goal;
+    if (isNum(opts.ceiling) && opts.ceiling > maxV) maxV = opts.ceiling;   // shared scale across small multiples
     var step = niceStep(maxV, opts.pct);
     var top = Math.max(step, Math.ceil(maxV / step - 1e-9) * step);
     // a value sitting exactly on the top gridline gets headroom — except 100%
@@ -2165,6 +2225,13 @@
       '<button type="button" class="vt-btn' + (st.gran === "week" ? " on" : "") + '" onclick="Pages.setTrendGran(\'week\')">Weekly</button>' +
       '<button type="button" class="vt-btn' + (st.gran === "month" ? " on" : "") + '" onclick="Pages.setTrendGran(\'month\')">Monthly</button>' +
       "</span>";
+    var view = "";
+    if (opts && opts.stores) {
+      view = '<span class="view-toggle" role="group" aria-label="Layout">' +
+        '<button type="button" class="vt-btn' + (st.view !== "grid" ? " on" : "") + '" onclick="Pages.setTrendView(\'combined\')" title="Every store on one chart">One chart</button>' +
+        '<button type="button" class="vt-btn' + (st.view === "grid" ? " on" : "") + '" onclick="Pages.setTrendView(\'grid\')" title="One small chart per store, same scale">Grid</button>' +
+        "</span>";
+    }
     var chips = "";
     if (opts && opts.stores) {
       var shown = opts.stores.filter(function (entry) { return !st.hidden[entry.store.id]; }).length;
@@ -2180,7 +2247,7 @@
           '<span class="tl-dot" style="background:' + entry.color.css + '"></span>' + esc(entry.store.name) + "</button>";
       }).join("") + "</div>";
     }
-    return '<div class="cards-toolbar trend-tools">' + sel + gran + "</div>" + chips;
+    return '<div class="cards-toolbar trend-tools">' + sel + gran + view + "</div>" + chips;
   }
 
   /* Global trends: every store's history on one chart. */
@@ -2199,11 +2266,33 @@
       });
       var sg = scopeGroup();
       var head = pageHead("Trends", (sg ? sg.name + " \u00b7 " : "") + "Performance over time \u00b7 full loaded history, independent of the timeframe picker");
+      var chartHtml;
+      if (st.view === "grid") {
+        /* small multiples: one chart per store on ONE shared scale, so a tall
+           line means a big number, not a different axis */
+        var ceiling = 0;
+        seriesArr.forEach(function (sr) { sr.points.forEach(function (pt) { if (isNum(pt.v) && pt.v > ceiling) ceiling = pt.v; }); });
+        chartHtml = seriesArr.length
+          ? '<div class="trend-grid">' + seriesArr.map(function (sr) {
+              var lastPt = null;
+              for (var q = sr.points.length - 1; q >= 0; q--) if (isNum(sr.points[q].v)) { lastPt = sr.points[q]; break; }
+              return '<div class="trend-cell panel">' +
+                '<div class="tc-head"><span class="tl-dot" style="background:' + sr.color + '"></span>' +
+                '<a class="tc-name" href="' + esc(storeHref(sr.id)) + '/trends">' + esc(sr.name) + "</a>" +
+                (lastPt ? '<span class="tc-last" title="Latest ' + esc(granWord(st.gran)) + '">' + esc(exactValue(lastPt.v, metric.pct)) + "</span>" : "") +
+                "</div>" +
+                lineChart([sr], { pct: metric.pct, direct: false, compact: true, gran: st.gran, goal: trendGoal(metric), ceiling: ceiling, label: metric.label + " over time for " + sr.name }) +
+                "</div>";
+            }).join("") + "</div>"
+          : '<div class="fig-card panel">' + emptyState("No stores selected", "Pick stores above or click Select all.") + "</div>";
+      } else {
+        chartHtml = '<div class="fig-card panel">' +
+          lineChart(seriesArr, { pct: metric.pct, direct: true, gran: st.gran, goal: trendGoal(metric), label: metric.label + " over time by store" }) +
+          "</div>";
+      }
       return '<section class="page" id="page-trends">' + head +
         trendControls(st, { stores: entries }) +
-        '<div class="fig-card panel">' +
-        lineChart(seriesArr, { pct: metric.pct, direct: true, gran: st.gran, goal: trendGoal(metric), label: metric.label + " over time by store" }) +
-        "</div>" +
+        chartHtml +
         '<p class="roster-note">A store\u2019s line starts on its first daily report. The one-block catch-up report a store sends when it joins mid-month is excluded \u2014 it cannot be placed on a single ' +
         granWord(st.gran) + "." + (st.gran === "month" ? " The current month is month-to-date; year-over-year appears on this view once a second year of history is loaded." : "") + "</p>" +
         "</section>";
@@ -2357,11 +2446,13 @@
     logs: logsPage,
     toggleRows: toggleRows,
     toggleStatus: toggleStatus,
+    setActivitySource: setActivitySource,
     trends: trendsPage,
     setTrendMetric: setTrendMetric,
     setTrendGran: setTrendGran,
     toggleTrendStore: toggleTrendStore,
     trendShowAll: trendShowAll,
+    setTrendView: setTrendView,
     setScope: setScope,
     chartMove: chartMove,
     chartLeave: chartLeave,

@@ -941,6 +941,16 @@ td.bad::after  { content: "\2193"; }   /* down arrow: behind target */
 .tl-act:hover:not([disabled]) { background: var(--accent-tint, var(--line-soft)); }
 .tl-act[disabled] { opacity: .45; cursor: default; }
 .tl-count { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.act-source { margin-left: auto; }
+.section-title .act-source { font-weight: 500; }
+.trend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.trend-cell { padding: 12px 12px 6px; }
+.tc-head { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; font-size: 13px; }
+.tc-head .tl-dot { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+.tc-name { font-weight: 700; color: var(--ink); text-decoration: none; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tc-name:hover { text-decoration: underline; }
+.tc-last { margin-left: auto; font-weight: 800; font-variant-numeric: tabular-nums; }
+.trend-cell .lc-tick { font-size: 13px; }
 .tl-chip.off .tl-dot { background: var(--faint) !important; }
 
 /* line chart: SVG marks + HTML hover layer */
