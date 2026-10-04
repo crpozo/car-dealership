@@ -545,7 +545,7 @@
         label: "Appts Set Of Contacted %",
         html: net ? pct(apptSet, "Appts Set of Contacted % not reported for " + rangeLabel(range)) : na(noNet),
         cls: colorFor(apptSet, apptTarget()),
-        subHtml: '<span class="goal-badge">Goal ' + esc(fmtPct(apptTarget(), 0)) + "</span> Can Exceed 100%"
+        subHtml: '<span class="goal-badge">Goal ' + esc(fmtPct(apptTarget(), 0)) + "</span>"
       },
       {
         label: "Internet Closing Rate",
@@ -893,7 +893,7 @@
         '<th class="num" title="Good Leads, all lead types (store TOTAL row)">Total opportunities</th>' +
         '<th class="num" title="Good Leads where Lead Type = Internet">Good leads — internet</th>' +
         '<th class="num" title="Internet Actual Contact % · target ' + esc(fmtPct(engagementTarget(), 0)) + '">Engagement %</th>' +
-        '<th class="num" title="Appts set ÷ contacted (internet) · target ' + esc(fmtPct(apptTarget(), 0)) + ' · can exceed 100%">Appts set of contacted %</th>' +
+        '<th class="num" title="Appts set ÷ contacted (internet) · target ' + esc(fmtPct(apptTarget(), 0)) + ' ">Appts set of contacted %</th>' +
         '<th class="num" title="Internet Sold in Time Frame ÷ internet Good Leads">Internet sold closing %</th>' +
         '<th class="num" title="Sold in Time Frame for the selected timeframe, all lead types — includes Referral &amp; PreviousCustomer. This is the DMS sold figure; no separate DMS feed exists, so it is not shown twice.">Total sold (DMS)</th>' +
         '<th class="num" title="Monthly unit goal (user-set, stored locally) and pace against it">Sales goal + pace</th>' +
@@ -1522,7 +1522,7 @@
         "<th>Store</th>" +
         '<th class="num" title="Good Leads where Lead Type = Internet">Good Leads</th>' +
         '<th class="num" title="Internet Actual Contact % \u00b7 Goal ' + esc(fmtPct(engagementTarget(), 0)) + '">Engagement %</th>' +
-        '<th class="num" title="Appts set \u00b7 Goal ' + esc(fmtPct(apptTarget(), 0)) + ' \u00b7 can exceed 100%">Appts Set %</th>' +
+        '<th class="num" title="Appts set \u00b7 Goal ' + esc(fmtPct(apptTarget(), 0)) + '">Appts Set %</th>' +
         '<th class="num" title="Appts Shown \u00f7 appts set">Appts Shown %</th>' +
         '<th class="num" title="Calls Out \u00b7 ' + esc(outboundNote) + '">Calls</th>' +
         '<th class="num" title="Texts Out \u00b7 ' + esc(outboundNote) + '">Texts</th>' +
