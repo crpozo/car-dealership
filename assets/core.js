@@ -25,14 +25,16 @@
 
   var DEFAULT_SETTINGS = {
     salesGoals: {},          // { storeId: units|null }  — null by default, never invented
+    repSalesGoalDefault: 12, // per-salesperson monthly units (Scott's floor); managers adjust
+    repSalesGoals: {},       // { storeId: units|null } per-store override of the rep default
     includeSaturday: true,   // dealerships work Saturdays
     engagementTarget: 0.80,  // Internet Actual Contact %
     apptTarget: 0.40,        // Appts set of contacted %
-    closingTarget: null,     // Internet closing % — no default, colours only when set
+    closingTarget: null,     // Internet closing % — no default, colors only when set
     shownTarget: null,       // Appts shown % — no default
     warnRatio: 0.85,         // yellow band: at or above this share of a goal
     callsPerDayGoal: 20,     // Scott's standard outbound goals (from his Sales Activity
-    msgsPerDayGoal: 40,      //   workbook); cleared → colour against the store's own average
+    msgsPerDayGoal: 40,      //   workbook); cleared → color against the store's own average
     managerPin: null,        // gates goal editing in this browser; NOT real security
     weekStartsOn: 0,         // 0 = Sunday (US retail week)
     anchorMode: 'data',      // 'data' = anchor presets to the newest snapshot; 'clock' = wall clock
@@ -347,6 +349,23 @@
     if (g !== null && g > 0) return g;
     return repGoalTotal(storeId);
   }
+  /** Per-salesperson monthly sales goal: the rep's own plan from the Sales Goals
+   *  export when one exists, else the store's override, else the default. */
+  function getRepSalesGoal(storeId, rep) {
+    var own = rep && rep.plan ? numOrNull(rep.plan.salesGoal) : null;
+    if (own !== null && own > 0) return { goal: own, source: 'plan' };
+    var st = numOrNull(settings.repSalesGoals ? settings.repSalesGoals[storeId] : null);
+    if (st !== null && st > 0) return { goal: st, source: 'store' };
+    var d = numOrNull(settings.repSalesGoalDefault);
+    return d !== null && d > 0 ? { goal: d, source: 'default' } : { goal: null, source: null };
+  }
+  function setRepSalesGoal(storeId, goal) {
+    var g = numOrNull(goal);
+    if (!settings.repSalesGoals) settings.repSalesGoals = {};
+    settings.repSalesGoals[storeId] = (g === null || g <= 0) ? null : g;
+    saveSettings();
+    return settings.repSalesGoals[storeId];
+  }
   function salesGoalSource(storeId) {
     var g = numOrNull(settings.salesGoals ? settings.salesGoals[storeId] : null);
     if (g !== null && g > 0) return 'settings';
@@ -379,7 +398,7 @@
   /** green at/above target, amber within 15% below, red further below.
    *  "none" whenever the comparison is not real (missing actual, missing/zero target). */
   /** Green at/above the goal; yellow while still at >= warnRatio of it (85% by
-   * default, configurable in Settings); red below that; uncoloured with no goal. */
+   * default, configurable in Settings); red below that; uncolored with no goal. */
   function colorFor(actual, target) {
     var a = numOrNull(actual);
     var t = numOrNull(target);
@@ -1941,6 +1960,8 @@
     saveSettings: saveSettings,
     setSetting: setSetting,
     setSalesGoal: setSalesGoal,
+    getRepSalesGoal: getRepSalesGoal,
+    setRepSalesGoal: setRepSalesGoal,
     getSalesGoal: getSalesGoal,
     setTimeframe: setTimeframe,
     resetSettings: resetSettings,

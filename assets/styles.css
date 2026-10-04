@@ -890,6 +890,13 @@ td.bad::after  { content: "\2193"; }   /* down arrow: behind target */
   }
 }
 
+/* goal rows: store goal + per-rep goal side by side */
+.goal-row { display: flex; align-items: center; gap: 10px; }
+.goal-row > span { flex: 1; min-width: 0; }
+.goal-field { display: inline-flex; align-items: center; gap: 6px; }
+.goal-field em { font-style: normal; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.goal-field input { width: 84px; }
+
 /* ----------------------------------------------------------------- trends */
 
 .trend-tools select { min-width: 220px; }

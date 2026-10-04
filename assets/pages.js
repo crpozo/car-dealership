@@ -91,13 +91,13 @@
   }
   function pct(v, reason) { var s = fmtPct(v); return s === null ? na(reason) : esc(s); }
 
-  /* Numeric <td>. cls is the conditional colour class from Core.colorFor(). */
+  /* Numeric <td>. cls is the conditional color class from Core.colorFor(). */
   function td(html, cls, title) {
     return '<td class="num' + (cls ? " " + esc(cls) : "") + '"' +
       (title ? ' title="' + esc(title) + '"' : "") + ">" + html + "</td>";
   }
 
-  /* ---------------------------------------------- targets & colour classes */
+  /* ---------------------------------------------- targets & color classes */
 
   /* Core.settings owns the targets. Accept either fraction (0.8) or percent
      (80) form so a settings mismatch can't flip every cell to red. */
@@ -109,7 +109,7 @@
   }
   function engagementTarget() { return targetOf("engagementTarget", 0.8); }
   function apptTarget() { return targetOf("apptTarget", 0.4); }
-  /* nullable goals: no default, colour only when the manager sets one */
+  /* nullable goals: no default, color only when the manager sets one */
   function nullableTarget(key) {
     var v = ((global.Core && C().settings) || {})[key];
     if (!isNum(v) || v <= 0) return null;
@@ -393,9 +393,9 @@
 
   function isTotalRow(rep) { return String(rep && rep.name || "").trim().toUpperCase() === "TOTAL"; }
 
-  /* Benchmark for the calls/emails/texts colouring: the store's own per-rep
+  /* Benchmark for the calls/emails/texts coloring: the store's own per-rep
      average, derived from Core's team totals via Core.rate(). If Core exposes
-     no totals we colour nothing rather than invent a target. */
+     no totals we color nothing rather than invent a target. */
   function activityBenchmarks(storeId, range, reps, people) {
     var c = C();
     if (typeof c.activityBenchmark === "function") {
@@ -674,7 +674,7 @@
 
   /* Reference-style store card: identity row (tile, name, CRM subline) with a
      performance pill, label/value body, and explicit actions. The pill is the
-     engagement colour band, spelled out — Good / Average / Needs attention —
+     engagement color band, spelled out — Good / Average / Needs attention —
      never an invented rating. */
   function storeCard(s, range, priorRange) {
     var c = C();
@@ -1184,12 +1184,12 @@
      1 Total opportunities · 2 Internet leads · 3 Calls · 4 Emails · 5 Texts ·
      6 Appts set · 7 Shown % · 8 Internet sold · 9 Total sold (last) */
   /* Per-day activity, the way the coaches' Excel works: total outbound ÷
-     NETWORKDAYS in the selected range. Colours compare each rep's per-day rate
+     NETWORKDAYS in the selected range. Colors compare each rep's per-day rate
      to the store's own per-rep average for the same range (same denominator, so
      no invented quota), team grouping follows the export's User Group column,
      and the table can be downloaded as CSV or printed. */
   /* Per-day activity the way the coaches' Excel works. Calls and Texts+Emails
-     are per working day (NETWORKDAYS); colours compare each rep to the
+     are per working day (NETWORKDAYS); colors compare each rep to the
      CONFIGURED per-day goal when the manager has set one, otherwise to the
      store's own per-rep average for the range. Videos come from the Matador
      per-rep join. Everything rounds to whole numbers; hover shows the exact
@@ -1222,7 +1222,7 @@
           : (isNum(target) ? "store average " + fmtN(target) + "/day (no goal set)" : "no goal or average available");
         var title = what + ": " + (isNum(total) ? fmtN(total) + " total" : "not reported") +
           (exact ? " \u00b7 " + exact : "") +
-          " \u00b7 " + daysNote + " \u00b7 coloured vs " + basis;
+          " \u00b7 " + daysNote + " \u00b7 colored vs " + basis;
         return td(avg === null ? na(isNum(total) ? daysNote : "Not reported in this export") : esc(fmtN(avg)), cls, title);
       }
 
@@ -1234,10 +1234,39 @@
         var me = new Date(Date.UTC(+range.end.slice(0, 4), +range.end.slice(5, 7), 0)).toISOString().slice(0, 10);
         monthDays = c.networkDays(ms, me, sat);
       } catch (e) { monthDays = null; }
+      function repGoal(r) { return c.getRepSalesGoal(s.id, r); }
       function pacedGoal(r) {
-        var g = r.plan && isNum(r.plan.salesGoal) ? r.plan.salesGoal : null;
+        var g = repGoal(r).goal;
         if (g === null || !isNum(days) || !isNum(monthDays) || monthDays <= 0) return null;
         return g * days / monthDays;
+      }
+      var GOAL_SRC = { plan: "from the Sales Goals export", store: "store setting", "default": "default (Settings)" };
+      function goalCell(r) {
+        var g = repGoal(r);
+        if (g.goal === null) return td(na("No sales goal set"));
+        return td(esc(fmtN(g.goal)), "", "Monthly sales goal \u00b7 " + GOAL_SRC[g.source]);
+      }
+      /* Pace = sold so far vs the goal pro-rated to the working days elapsed.
+         100% means exactly on pace; colors follow the usual goal bands. */
+      function paceCell(r) {
+        var paced = pacedGoal(r);
+        if (paced === null || !isNum(r.sold)) return td(na(paced === null ? "No goal or working-day count" : "Sold not reported"));
+        var ratio = paced > 0 ? r.sold / paced : null;
+        var cls = colorFor(r.sold, paced);
+        var title = "Sold " + fmtN(r.sold) + " vs " + fmtN(Math.round(paced * 10) / 10) + " expected by now (goal " +
+          fmtN(repGoal(r).goal) + "/month \u00d7 " + days + " of " + monthDays + " working days)";
+        return td(ratio === null ? na("Goal is zero") : esc(fmtPct(ratio, 0)), cls, title);
+      }
+      function sumGoal(list) {
+        var t = 0, n = 0;
+        list.forEach(function (r) { var g = repGoal(r).goal; if (g !== null) { t += g; n++; } });
+        return n ? t : null;
+      }
+      function sumPace(list) {
+        var sold = 0, paced = 0, n = 0;
+        list.forEach(function (r) { var p2 = pacedGoal(r); if (p2 !== null && isNum(r.sold)) { sold += r.sold; paced += p2; n++; } });
+        if (!n || paced <= 0) return td(na("No goals"));
+        return td(esc(fmtPct(sold / paced, 0)), colorFor(sold, paced), "Sold " + fmtN(sold) + " vs " + fmtN(Math.round(paced * 10) / 10) + " expected by now");
       }
       function soldCell(r, priorBy) {
         var chip = "";
@@ -1251,12 +1280,7 @@
             }
           }
         }
-        var paced = pacedGoal(r), cls = "", title = "";
-        if (paced !== null && isNum(r.sold)) {
-          cls = colorFor(r.sold, paced);
-          title = "Goal " + fmtN(r.plan.salesGoal) + "/month \u00b7 paced " + fmtN(paced) + " for " + days + " of " + monthDays + " working days";
-        }
-        return td(num(r.sold, "Not reported") + chip, cls, title);
+        return td(num(r.sold, "Not reported") + chip);
       }
 
       function msgsOf(r) {
@@ -1322,15 +1346,19 @@
         var hasGroups = people.some(function (r) { return !!r.group; });
 
         var salesGoal = c.getSalesGoal(s.id);
+        var repGoalInfo = c.getRepSalesGoal(s.id, null);
+        var repGoalDefault = repGoalInfo.goal, repGoalSrc = repGoalInfo.source;
         var goalsLine = '<div class="goals-line">' +
           '<span class="gl-t">Goals</span>' +
           '<span class="gl-chip">Calls: ' + (callsGoal !== null ? esc(fmtN(callsGoal)) + "/day" : "store avg") + "</span>" +
           '<span class="gl-chip">Texts+Emails: ' + (msgsGoal !== null ? esc(fmtN(msgsGoal)) + "/day" : "store avg") + "</span>" +
           '<span class="gl-chip">Sales: ' + (salesGoal !== null ? esc(fmtN(salesGoal)) + "/month" +
             (c.salesGoalSource && c.salesGoalSource(s.id) === "reps" ? " (sum of rep goals)" : "") : "not set") + "</span>" +
-          '<span class="gl-legend"><span class="pill good"><span class="dot"></span>at goal</span>' +
+          '<span class="gl-chip">Sales per rep: ' + (repGoalDefault !== null ? esc(fmtN(repGoalDefault)) + "/month" +
+            (repGoalSrc === "store" ? " (store setting)" : "") : "not set") + "</span>" +
+          '<span class="gl-legend"><span class="pill good"><span class="dot"></span>At goal</span>' +
           '<span class="pill warn"><span class="dot"></span>\u2265 ' + esc(warnPctLabel()) + " of goal</span>" +
-          '<span class="pill bad"><span class="dot"></span>below</span></span>' +
+          '<span class="pill bad"><span class="dot"></span>Below</span></span>' +
           '<span class="gl-edit" title="Goals are edited in Settings and are gated behind Manager mode in this browser.">Edit in Settings \u00b7 Manager only</span>' +
           "</div>";
 
@@ -1343,6 +1371,8 @@
           '<th class="num" title="Appts Scheduled">Appts Set</th>' +
           '<th class="num" title="Appts Shown \u00f7 Appts Scheduled">Appts Shown %</th>' +
           '<th class="num" title="Sold in Time Frame \u00b7 \u00b1 vs ' + esc(periodLabels(range).prev) + ' where a prior report exists">Sold</th>' +
+          '<th class="num" title="Monthly sales goal per salesperson \u00b7 Sales Goals export, else the store setting, else the default in Settings">Sales Goal</th>' +
+          '<th class="num" title="Sold \u00f7 goal pro-rated to the working days elapsed \u00b7 100% = on pace">Pace</th>' +
           "</tr></thead>";
 
         function repRow(r) {
@@ -1357,6 +1387,8 @@
             td(pct(shown, "No appointments scheduled in this range"), colorFor(shown, shownTarget()),
               shownTarget() !== null ? "Goal " + fmtPct(shownTarget(), 0) : "No shown-% goal set") +
             soldCell(r, priorBy) +
+            goalCell(r) +
+            paceCell(r) +
             "</tr>";
         }
 
@@ -1372,7 +1404,7 @@
             var sub = c.sumReps(members);
             var subShown = c.rate(sub.apptsShown, sub.apptsScheduled);
             var subMsgs = msgsOf(sub);
-            return '<tr class="group-row"><td colspan="8">' + esc(g) +
+            return '<tr class="group-row"><td colspan="10">' + esc(g) +
               ' <span class="section-sub">' + members.length + (members.length === 1 ? " rep" : " reps") + "</span></td></tr>" +
               members.map(repRow).join("") +
               '<tr class="team-sub"><td class="name">' + esc(g) + " total</td>" +
@@ -1383,6 +1415,8 @@
               td(num(sub.apptsScheduled, "Not reported")) +
               td(pct(subShown, "No appointments")) +
               td(num(sub.sold, "Not reported")) +
+              td(sumGoal(members) === null ? na("No goals") : esc(fmtN(sumGoal(members)))) +
+              sumPace(members) +
               "</tr>";
           }).join("");
         } else {
@@ -1401,6 +1435,8 @@
             td(num(totals.apptsScheduled, "Not reported")) +
             td(pct(tShown, "No appointments scheduled in this range")) +
             td(num(totals.sold, "Not reported")) +
+            td(sumGoal(people) === null ? na("No goals") : esc(fmtN(sumGoal(people))), "", "Sum of the salesperson goals") +
+            sumPace(people) +
             "</tr></tfoot>";
         }
 
@@ -1462,7 +1498,7 @@
     var stores = storeId ? scopedStores(storeId) : STORES();
     var rows = [["Store", "Salesperson", "Team", "Good Leads",
       "Calls", "Calls/Day", "Emails", "Emails/Day", "Texts", "Texts/Day",
-      "Appts Set", "Appts Shown %", "Sold"]];
+      "Appts Set", "Appts Shown %", "Sold", "Sales Goal"]];
     stores.forEach(function (s) {
       var reps = [];
       try { reps = c.reps(s.id, range) || []; } catch (e) { reps = []; }
@@ -1474,7 +1510,8 @@
           isNum(r.emails) ? r.emails : "", fmtN(c.rate(r.emails, days)) || "",
           isNum(r.texts) ? r.texts : "", fmtN(c.rate(r.texts, days)) || "",
           isNum(r.apptsScheduled) ? r.apptsScheduled : "",
-          fmtPct(shown) || "", isNum(r.sold) ? r.sold : ""]);
+          fmtPct(shown) || "", isNum(r.sold) ? r.sold : "",
+          (c.getRepSalesGoal(s.id, r).goal === null ? "" : c.getRepSalesGoal(s.id, r).goal)]);
       });
     });
     var csv = rows.map(function (r) {
@@ -1564,12 +1601,15 @@
         var pShown = pNet ? c.rate(pNet.apptsShown, pNet.apptsSet) : null;
         var pClosing = pNet ? c.rate(pNet.sold, pNet.goodLeads) : null;
 
-        // inventory children (New / Used / Certified), Unknown hidden as elsewhere
+        // inventory children (New / Used), Unknown hidden as elsewhere
         var invs = [];
         var ltList = sm.byLeadType || [];
         for (var li = 0; li < ltList.length; li++) {
           if (ltList[li].key === "internet") {
-            invs = (ltList[li].byInventory || []).filter(function (inv) { return !UNKNOWN.test(inv.inventoryType || ""); });
+            // Certified dropped at the client's request (Oct 2026): New / Used only
+            invs = (ltList[li].byInventory || []).filter(function (inv) {
+              return !UNKNOWN.test(inv.inventoryType || "") && !/^certified/i.test(inv.inventoryType || "");
+            });
           }
         }
         var path = "st:" + s.id;
@@ -1605,7 +1645,9 @@
             td(pct(m.contactPct, "Not reported")) +
             td(pct(m.apptSetOfContactedPct, "Not reported")) +
             td(pct(iShown, "Needs appts set and shown")) +
-            td("") + td("") + td("") +
+            td(na("Outbound activity is reported per salesperson, not per inventory type")) +
+            td(na("Outbound activity is reported per salesperson, not per inventory type")) +
+            td(na("Videos are reported per salesperson, not per inventory type")) +
             td(num(m.sold, "Not reported")) +
             td(pct(iClosing, "Needs leads and sold")) +
             "</tr>";

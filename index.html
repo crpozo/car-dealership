@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=de30286648">
+<link rel="stylesheet" href="assets/styles.css?v=e7e9cc1aed">
 </head>
 <body>
 
@@ -73,10 +73,10 @@
       <label class="fieldline">Appts set of contacted target
         <span><input type="number" id="set-appt" min="0" max="100" step="1"> %</span>
       </label>
-      <label class="fieldline">Internet closing goal <em class="opt">(empty = uncoloured)</em>
+      <label class="fieldline">Internet closing goal <em class="opt">(empty = uncolored)</em>
         <span><input type="number" id="set-closing" min="0" max="100" step="1" placeholder="&mdash;"> %</span>
       </label>
-      <label class="fieldline">Appts shown goal <em class="opt">(empty = uncoloured)</em>
+      <label class="fieldline">Appts shown goal <em class="opt">(empty = uncolored)</em>
         <span><input type="number" id="set-shown" min="0" max="100" step="1" placeholder="&mdash;"> %</span>
       </label>
       <label class="fieldline">Yellow band starts at
@@ -88,12 +88,15 @@
       <label class="fieldline">Texts + Emails goal <em class="opt">(per rep, per day)</em>
         <span><input type="number" id="set-msgs" min="0" step="1" placeholder="40"></span>
       </label>
+      <label class="fieldline">Sales goal per salesperson <em class="opt">(units per month; stores can override)</em>
+        <span><input type="number" id="set-repgoal" min="0" step="1" placeholder="12"></span>
+      </label>
       <div class="color-explainer">
-        <h3>How the colours work</h3>
+        <h3>How the colors work</h3>
         <p><span class="pill good"><span class="dot"></span>Green</span> at or above the goal &middot;
         <span class="pill warn"><span class="dot"></span>Yellow</span> still at or above the yellow band (default 85% of the goal) &middot;
         <span class="pill bad"><span class="dot"></span>Red</span> below that.
-        A metric with no goal set stays uncoloured &mdash; nothing is judged against an invented number.</p>
+        A metric with no goal set stays uncolored &mdash; nothing is judged against an invented number.</p>
       </div>
       <label class="checkline">
         <input type="checkbox" id="set-saturday">
@@ -103,12 +106,11 @@
     </div>
     <div class="settings-block">
       <h3>Monthly sales goals</h3>
-      <p class="settings-note">Goals are not present in the CRM exports, so they start empty. A store with no goal shows &ldquo;no goal&rdquo; and is never coloured red.</p>
+      <p class="settings-note">Store goals are not in the CRM exports, so they start empty; a store with no goal shows &ldquo;no goal&rdquo; and is never colored red. The per-rep goal falls back to the default above (12) and drives the Sales Goal and Pace columns on Salesperson Activity.</p>
       <div id="goal-list" class="goal-list"></div>
     </div>
   </div>
   <div class="settings-actions">
-    <button type="button" id="manager-toggle" class="ghost-btn">Unlock manager mode</button>
     <button type="button" id="settings-reset" class="ghost-btn">Reset to defaults</button>
     <span id="manager-state" class="settings-note"></span>
   </div>
@@ -119,9 +121,9 @@
 </div>
 </div>
 
-<script src="assets/data.js?v=de30286648"></script>
-<script src="assets/core.js?v=de30286648"></script>
-<script src="assets/pages.js?v=de30286648"></script>
-<script src="assets/app.js?v=de30286648"></script>
+<script src="assets/data.js?v=e7e9cc1aed"></script>
+<script src="assets/core.js?v=e7e9cc1aed"></script>
+<script src="assets/pages.js?v=e7e9cc1aed"></script>
+<script src="assets/app.js?v=e7e9cc1aed"></script>
 </body>
 </html>

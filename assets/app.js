@@ -313,7 +313,7 @@
 
   /* --------------------------------------------------------------- settings */
 
-  /* Empty field = no goal (null) — the metric simply stays uncoloured. */
+  /* Empty field = no goal (null) — the metric simply stays uncolored. */
   function pctInputNullable(el, key) {
     if (!el) return;
     var v = Core.settings[key];
@@ -350,7 +350,9 @@
   }
 
   function applyManagerLock() {
-    var locked = !managerUnlocked();
+    // Oct 2026: goals are open to everyone who can reach the page (the client
+    // asked for Scott and store managers to edit freely); the PIN is retired.
+    var locked = false;
     var panel = document.getElementById("settings-panel");
     if (!panel) return;
     var fields = panel.querySelectorAll("input[type=number], .goal-input");
@@ -358,9 +360,7 @@
     var btn = document.getElementById("manager-toggle");
     if (btn) btn.textContent = locked ? "Unlock manager mode" : "Lock manager mode";
     var note = document.getElementById("manager-state");
-    if (note) note.textContent = locked
-      ? "Goals are locked. Managers unlock with the PIN; employees leave this closed."
-      : "Manager mode is ON in this browser — goals are editable.";
+    if (note) note.textContent = "Goals and targets are saved in this browser. Set them once on the device the team uses.";
   }
 
   function initManagerMode() {
@@ -431,6 +431,7 @@
     pctInput(document.getElementById("set-warn"), "warnRatio");
     numInputNullable(document.getElementById("set-calls"), "callsPerDayGoal");
     numInputNullable(document.getElementById("set-msgs"), "msgsPerDayGoal");
+    numInputNullable(document.getElementById("set-repgoal"), "repSalesGoalDefault");
     initManagerMode();
 
     var sat = document.getElementById("set-saturday");
@@ -470,9 +471,15 @@
     var html = "";
     for (var i = 0; i < stores.length; i++) {
       var goal = Core.getSalesGoal(stores[i].id);
-      html += '<label class="goal-row"><span>' + esc(stores[i].name) + "</span>" +
+      var rg = (Core.settings.repSalesGoals || {})[stores[i].id];
+      var dflt = Core.settings.repSalesGoalDefault;
+      html += '<div class="goal-row"><span>' + esc(stores[i].name) + "</span>" +
+        '<label class="goal-field" title="Store monthly sales goal"><em>store</em>' +
         '<input type="number" min="0" step="1" class="goal-input" data-store="' + esc(stores[i].id) + '"' +
-        ' placeholder="no goal" value="' + (goal === null ? "" : esc(goal)) + '"></label>';
+        ' placeholder="no goal" value="' + (goal === null ? "" : esc(goal)) + '"></label>' +
+        '<label class="goal-field" title="Monthly sales goal per salesperson at this store (empty = default)"><em>per rep</em>' +
+        '<input type="number" min="0" step="1" class="repgoal-input" data-store="' + esc(stores[i].id) + '"' +
+        ' placeholder="' + (typeof dflt === "number" ? esc(dflt) : "\u2014") + '" value="' + (typeof rg === "number" ? esc(rg) : "") + '"></label></div>';
     }
     wrap.innerHTML = html;
     applyManagerLock();
@@ -482,6 +489,14 @@
       inputs[j].addEventListener("change", function (ev) {
         var el = ev.currentTarget;
         Core.setSalesGoal(el.getAttribute("data-store"), el.value === "" ? null : el.value);
+        render();
+      });
+    }
+    var rinputs = wrap.querySelectorAll(".repgoal-input");
+    for (var k = 0; k < rinputs.length; k++) {
+      rinputs[k].addEventListener("change", function (ev) {
+        var el = ev.currentTarget;
+        Core.setRepSalesGoal(el.getAttribute("data-store"), el.value === "" ? null : el.value);
         render();
       });
     }
