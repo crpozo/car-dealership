@@ -771,9 +771,7 @@ th.prior { color: var(--muted); }
 .sb-cell:last-child { border-right: 0; }
 .sb-v { font-size: 27px; font-weight: 800; letter-spacing: -.02em; }
 .sb-v.good, .sb-v.warn, .sb-v.bad { background: none; }
-.sb-v.good::after { content: " \2191"; font-size: .65em; }
-.sb-v.warn::after { content: " \2192"; font-size: .65em; }
-.sb-v.bad::after  { content: " \2193"; font-size: .65em; }
+.sb-v::after { content: none !important; }   /* the direction lives in the subtitle ("Below goal ↓") */
 .sb-l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
 /* the goal sits on its own line under the label, not squeezed beside it */
 .sb-l .goal-badge { display: block; width: fit-content; margin: 5px auto 0; }
@@ -1226,3 +1224,31 @@ tr.edit-row td { background: var(--line-soft); }
 .store-card-actions { margin-top: 20px; padding-top: 18px; gap: 12px; }
 .store-card-actions .btn { padding: 11px 18px; }
 @media (max-width: 900px) { main > .page { padding: 18px 16px 24px; border-radius: 16px; } .topbar { margin: 10px 12px 0; } }
+
+
+/* ---- stat tiles exactly like the reference */
+.statsband { gap: 16px; }
+.sb-cell { padding: 22px 24px 20px; border-radius: 18px; gap: 14px; justify-content: space-between; min-height: 176px; text-align: left; align-items: stretch; }
+.sb-top { align-items: center; }
+.sb-l { font-size: 16px; font-weight: 500; color: var(--ink); max-width: 11ch; }
+.sb-arrow { width: 34px; height: 34px; border: 1.5px solid var(--ink); color: var(--ink); font-size: 14px; font-weight: 700; background: transparent; }
+.sb-v { font-size: 44px; font-weight: 800; letter-spacing: -.035em; line-height: 1; text-align: left; margin: 2px 0 0; }
+.sb-v.good { color: var(--good); } .sb-v.warn { color: #8A6A00; } .sb-v.bad { color: var(--bad); }
+.sb-foot { font-size: 14px; gap: 10px; }
+.sb-sub { color: var(--muted); font-weight: 500; }
+.sb-chip { font-size: 13px; font-weight: 700; padding: 3px 10px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--card); }
+.sb-chip.up { color: var(--good); border-color: #BFE3CF; }
+.sb-chip.down { color: var(--bad); border-color: #F1C2C5; }
+.sb-cell .goal-badge { font-size: 12px; font-weight: 800; letter-spacing: .06em; padding: 4px 10px; border-radius: 10px; }
+.sb-hero { background: linear-gradient(135deg, #2F8257 0%, #1E6B45 45%, #14472E 100%); }
+.sb-hero .sb-l { color: #FFFFFF; }
+.sb-hero .sb-arrow { border-color: transparent; background: rgba(255,255,255,.2); color: #FFFFFF; }
+.sb-hero .sb-chip { border-color: rgba(255,255,255,.45); background: transparent; color: #FFFFFF; }
+.sb-hero .sb-sub { color: rgba(255,255,255,.9); }
+.sb-cell .delta { font-size: 13px; font-weight: 700; padding: 3px 10px; border-radius: 10px; border: 1.5px solid #F1C2C5; }
+.sb-cell .delta.up { border-color: #BFE3CF; }
+@media (max-width: 1200px) { .sb-v { font-size: 38px; } .sb-cell { min-height: 0; } }
+.statsband { background: transparent; border: 0; box-shadow: none; padding: 0; }
+.sb-cell { flex: initial; border-right: 1px solid var(--line); }
+.sb-cell:last-child { border-right: 1px solid var(--line); }
+.sb-hero, .sb-hero:last-child { border: 1px solid transparent; }
