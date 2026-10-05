@@ -199,7 +199,7 @@
           return '<a href="#/group/' + encodeURIComponent(g.id) + '" class="side-item' +
             (gon ? " on" : "") + '"' + (gon ? ' aria-current="page"' : "") + ">" +
             '<span class="side-mono" aria-hidden="true">' + esc(Pages.monogramFor ? Pages.monogramFor(g.name) : "") + "</span>" +
-            '<span class="side-store-name">' + esc(g.name) + " (" + e.n + ")</span></a>";
+            '<span class="side-store-name">' + esc(g.name) + '</span><span class="side-count">' + e.n + "</span></a>";
         }).join("");
     }
 

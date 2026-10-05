@@ -663,9 +663,6 @@
         '<div class="cards-toolbar stores-bar">' +
           '<h2 class="stores-title">Stores <span class="stores-count" id="stores-count">' + shown.list.length + " of " + list.length + "</span></h2>" +
           '<span class="st-chips" role="group" aria-label="Filter by status">' + chip("all", "All") + chip("bad", "Needs attention", counts.bad) + chip("warn", "Watch", counts.warn) + chip("good", "On track", counts.good) + "</span>" +
-          '<span class="search-wrap"><span class="search-ico" aria-hidden="true">&#8981;</span>' +
-          '<input type="search" id="store-search" placeholder="Search store&hellip;" aria-label="Search stores"' +
-          ' oninput="Pages.filterStores(this.value)"><kbd class="search-kbd">\u2318F</kbd></span>' +
           '<span class="view-toggle" role="group" aria-label="View">' +
             '<button type="button" class="vt-btn' + (isCards ? " on" : "") + '" title="Card view"' +
               ' aria-pressed="' + (isCards ? "true" : "false") + '" onclick="Pages.setStoreView(\'cards\')">&#9638;</button>' +
@@ -894,6 +891,11 @@
   var STATUS_FILTER = "all";
   function filterStores(q) {
     q = String(q || "").trim().toLowerCase();
+    if (q && !document.querySelector(".store-card[data-store-name], .stores-tbl") && global.location) {
+      global.location.hash = "#/overview";
+      setTimeout(function () { filterStores(q); var b = document.getElementById("store-search"); if (b) { b.value = q; b.focus(); } }, 60);
+      return;
+    }
     var cards = document.querySelectorAll(".store-card[data-store-name]");
     var shown = 0;
     for (var i = 0; i < cards.length; i++) {
