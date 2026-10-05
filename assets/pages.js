@@ -656,7 +656,7 @@
           ' onclick="Pages.filterStatus(this)">' + esc(label) + (n !== undefined ? ' <span class="st-n">' + n + "</span>" : "") + "</button>";
       }
       return '<section class="page dash" id="page-overview">' +
-        '<div class="page-head dash-head"><div><h1>Dashboard</h1><p class="page-sub">Internet lead performance across all stores \u00b7 ' + esc(rangeLabel(range)) + "</p></div>" +
+        '<div class="page-head dash-head"><div><p class="page-sub">Internet lead performance across all stores \u00b7 ' + esc(rangeLabel(range)) + "</p></div>" +
         '<div class="dash-actions"><button type="button" class="btn" onclick="window.print()">Export report</button></div></div>' +
         coverageBanner(range) +
         statsBand(all, range, allPrior) +
