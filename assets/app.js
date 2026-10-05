@@ -681,7 +681,7 @@
   // auth.js calls boot() once the signed-in user's data is in DASH_DATA
   var booted = false;
   function bootOnce() {
-    if (booted) { Core.init(global.DASH_DATA); render(); return; }
+    if (booted) { Core.init(global.DASH_DATA); applyUser(); render(); return; }
     booted = true;
     boot();
   }
