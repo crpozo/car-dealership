@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=934ae0d6ae">
+<link rel="stylesheet" href="assets/styles.css?v=d6f2add532">
 </head>
 <body>
 
@@ -75,7 +75,15 @@
     </span>
     <span id="tf-resolved" class="tf-resolved"></span>
   </div>
-  <span class="top-avatar" id="top-avatar" hidden></span>
+  <div class="user-menu-wrap">
+    <button type="button" class="top-avatar" id="top-avatar" aria-haspopup="menu" aria-expanded="false" hidden></button>
+    <div class="user-menu" id="user-menu" role="menu" hidden>
+      <div class="um-head"><span class="um-avatar" id="um-avatar"></span><span class="um-text"><b id="um-name"></b><small id="um-mail"></small></span></div>
+      <div class="um-role" id="um-role"></div>
+      <button type="button" class="um-item" id="um-passkey" role="menuitem" hidden>Enable Touch ID on this device</button>
+      <button type="button" class="um-item um-out" id="um-signout" role="menuitem">Sign out</button>
+    </div>
+  </div>
 </header>
 
 <section id="settings-panel" class="settings" hidden>
@@ -144,9 +152,9 @@
   </div>
 </div>
 
-<script src="assets/core.js?v=934ae0d6ae"></script>
-<script src="assets/pages.js?v=934ae0d6ae"></script>
-<script src="assets/app.js?v=934ae0d6ae"></script>
-<script src="assets/auth.js?v=934ae0d6ae"></script>
+<script src="assets/core.js?v=d6f2add532"></script>
+<script src="assets/pages.js?v=d6f2add532"></script>
+<script src="assets/app.js?v=d6f2add532"></script>
+<script src="assets/auth.js?v=d6f2add532"></script>
 </body>
 </html>

@@ -534,13 +534,54 @@
     if (box) box.hidden = !u;
     if (mail && u) mail.textContent = u.name || u.email || "";
     var av = document.getElementById("top-avatar");
+    var menu = document.getElementById("user-menu");
     if (av) {
       av.hidden = !u;
       if (u) {
         var src = (u.name || u.email || "?").trim();
         var parts = src.split(/[\s@._-]+/).filter(Boolean);
-        av.textContent = ((parts[0] || "?")[0] + (parts[1] ? parts[1][0] : "")).toUpperCase();
-        av.title = (u.name ? u.name + " \u00b7 " : "") + (u.email || "") + (u.admin ? " \u00b7 admin" : "");
+        var ini = ((parts[0] || "?")[0] + (parts[1] ? parts[1][0] : "")).toUpperCase();
+        av.textContent = ini;
+        av.title = "Account";
+        var set = function (id, t) { var el = document.getElementById(id); if (el) el.textContent = t; };
+        set("um-avatar", ini); set("um-name", u.name || u.email || ""); set("um-mail", u.email || "");
+        var role = document.getElementById("um-role");
+        if (role) role.innerHTML = u.admin
+          ? '<span class="pill good"><span class="dot"></span>Admin</span><span class="um-role-sub">Sees every store and manages users</span>'
+          : '<span class="pill none">Member</span><span class="um-role-sub">' + (u.storeIds || []).length + (u.storeIds && u.storeIds.length === 1 ? " store" : " stores") + "</span>";
+      }
+      if (!av.getAttribute("data-wired")) {
+        av.setAttribute("data-wired", "1");
+        av.addEventListener("click", function (ev) {
+          ev.stopPropagation();
+          var open = menu && !menu.hidden;
+          if (menu) menu.hidden = open;
+          av.setAttribute("aria-expanded", open ? "false" : "true");
+        });
+        document.addEventListener("click", function (ev) {
+          if (menu && !menu.hidden && !menu.contains(ev.target)) { menu.hidden = true; av.setAttribute("aria-expanded", "false"); }
+        });
+        document.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && menu && !menu.hidden) { menu.hidden = true; av.setAttribute("aria-expanded", "false"); } });
+        var so = document.getElementById("um-signout");
+        if (so) so.addEventListener("click", function () { if (global.Auth) global.Auth.signOut(); });
+      }
+    }
+    var pk2 = document.getElementById("um-passkey");
+    if (pk2 && u && global.Auth && global.Auth.passkeysSupported && global.Auth.passkeysSupported()) {
+      var has2 = false;
+      try { has2 = global.localStorage.getItem("icdash.passkey") === "1"; } catch (e) { has2 = false; }
+      pk2.hidden = has2;
+      if (!pk2.getAttribute("data-wired")) {
+        pk2.setAttribute("data-wired", "1");
+        pk2.addEventListener("click", function () {
+          pk2.disabled = true; pk2.textContent = "Follow the prompt\u2026";
+          global.Auth.registerPasskey().then(function () {
+            pk2.textContent = "Touch ID enabled"; setTimeout(function () { pk2.hidden = true; }, 1500);
+          }).catch(function (err) {
+            pk2.disabled = false; pk2.textContent = "Enable Touch ID on this device";
+            global.alert(err && err.name === "NotAllowedError" ? "Touch ID setup was cancelled." : (err.message || "Could not enable Touch ID."));
+          });
+        });
       }
     }
     var adminOnly = document.querySelectorAll("[data-admin-only]");

@@ -808,7 +808,7 @@
       }
       var members = STORES().filter(function (s) { return g.storeIds.indexOf(s.id) !== -1; });
       var shown = withData(members, range);
-      var head = '<a class="backlink" href="#/overview">&larr; All stores</a>' +
+      var head = '<a class="backlink back-pill" href="#/overview">&larr; Back to dashboard</a>' +
         pageHead(g.name, shown.list.length + " of " + members.length + " stores reporting \u00b7 " + rangeLabel(range));
       if (!shown.list.length) {
         return '<section class="page" id="page-group">' + head +
@@ -1029,7 +1029,9 @@
       (coverageAsOf(sm) ? '<span class="asof">' + esc(coverageAsOf(sm)) + "</span>" : "") +
       "</div>";
     // the topbar breadcrumb (Dashboard / <store>) owns wayfinding now
+    var sg0 = scopeGroup();
     return '<section class="page" id="page-store">' +
+      '<a class="backlink back-pill" href="' + (sg0 ? "#/group/" + encodeURIComponent(sg0.id) : "#/overview") + '">&larr; ' + (sg0 ? "Back to " + esc(sg0.name) : "Back to dashboard") + "</a>" +
       // same identity tile as the overview card, so following a card into its
       // detail page visibly lands on the same store
       '<div class="store-ident">' + monogram(store.name, true) +
