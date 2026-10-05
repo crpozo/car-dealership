@@ -1177,6 +1177,6 @@ tr.edit-row td { background: var(--line-soft); }
 .ap-grid { gap: 14px 28px; }
 .ap-col { background: var(--line-soft); border-radius: 12px; padding: 12px 14px; }
 .ap-h { margin-bottom: 8px; }
-.ap-item { display: flex; flex-direction: row; align-items: center; gap: 10px; padding: 6px 0; font-weight: 500; color: var(--ink); text-transform: none; letter-spacing: 0; font-size: 14px; }
+.admin-form .ap-item, .ap-item { display: flex; flex-direction: row; align-items: center; gap: 10px; padding: 6px 0; font-weight: 500; color: var(--ink); text-transform: none; letter-spacing: 0; font-size: 14px; margin: 0; }
 .ap-item input { width: 16px; height: 16px; accent-color: var(--brand); margin: 0; }
 .admin-form input[type=checkbox] { accent-color: var(--brand); }
