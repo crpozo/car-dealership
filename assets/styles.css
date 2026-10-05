@@ -1417,3 +1417,4 @@ tr.edit-row .user-form { border: 1px solid var(--line); border-radius: 16px; pad
 .dash-actions .btn { padding: 10px 18px; font-size: 14px; }
 .stores-title { font-size: 22px; }
 .people-title { font-size: 20px; }
+.uf-foot .btn { flex: none; width: auto; min-width: 0; }
