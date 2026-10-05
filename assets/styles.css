@@ -1377,3 +1377,6 @@ tr.edit-row .user-form { border: 1px solid var(--line); border-radius: 16px; pad
 
 .sidebar .brand-name, .sidebar .brand-link:hover .brand-name { color: var(--nav-ink); }
 .sidebar .brand-link:hover .brand-name { color: var(--brand-deep); }
+.fieldline { display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; }
+.fieldline > span { margin-left: auto; flex: none; }
+.fieldline .opt { display: inline; margin: 0 0 0 4px; }
