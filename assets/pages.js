@@ -2562,10 +2562,14 @@
               (!isMe ? '<button type="button" class="ghost-btn" onclick="Pages.adminToggle(\'' + esc(u.username) + '\',' + (u.enabled ? "false" : "true") + ')">' + (u.enabled ? "Disable" : "Enable") + "</button>" : "") +
               (!isMe ? '<button type="button" class="ghost-btn danger" onclick="Pages.adminDelete(\'' + esc(u.username) + '\')">Delete</button>' : "") +
             "</td></tr>";
-          if (!editing) return main;
-          return main + '<tr class="edit-row"><td colspan="5">' + adminForm(u) + "</td></tr>";
+          return main;
         }).join("");
-        list = '<h2 class="stores-title people-title">People with access <span class="stores-count">' + (ADMIN.users || []).length + "</span></h2>" +
+        var editingUser = ADMIN.editing ? (ADMIN.users || []).filter(function (u) { return u.username === ADMIN.editing; })[0] : null;
+        var editPanel = editingUser
+          ? '<section class="panel user-panel" id="user-edit"><h2 class="section-title">Editing ' + esc(editingUser.name || editingUser.email || "") +
+            ' <span class="section-sub">' + esc(editingUser.email || "") + "</span></h2>" + adminForm(editingUser) + "</section>"
+          : "";
+        list = editPanel + '<h2 class="stores-title people-title">People with access <span class="stores-count">' + (ADMIN.users || []).length + "</span></h2>" +
           tableWrap("<thead><tr><th>Person</th><th>Role</th><th>Sees</th><th>Status</th><th></th></tr></thead><tbody>" + rows + "</tbody>", "admin-tbl");
       }
       return '<section class="page" id="page-admin">' + head + create + list + "</section>";
@@ -2598,7 +2602,11 @@
     }).catch(function (err) { adminMsg(form, err.message, "bad"); });
     return false;
   }
-  function adminEdit(username) { ADMIN.editing = ADMIN.editing === username ? null : username; ADMIN.creating = false; if (global.App) global.App.render(); }
+  function adminEdit(username) {
+    ADMIN.editing = ADMIN.editing === username ? null : username; ADMIN.creating = false;
+    if (global.App) global.App.render();
+    if (ADMIN.editing) setTimeout(function () { var p = document.getElementById("user-edit"); if (p && p.scrollIntoView) p.scrollIntoView({ behavior: "smooth", block: "start" }); }, 40);
+  }
   function adminReload() { ADMIN.users = null; ADMIN.error = null; adminLoad(); }
   function adminToggle(username, enabled) {
     global.Auth.api("/users/" + encodeURIComponent(username), { method: "PATCH", body: { enabled: enabled } }).then(adminLoad).catch(function (err) { global.alert(err.message); });

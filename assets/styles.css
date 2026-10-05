@@ -1430,3 +1430,9 @@ tr.edit-row .user-form { border: 1px solid var(--line); border-radius: 16px; pad
 .status-row { flex-wrap: nowrap; }
 .status-row .pill { white-space: nowrap; flex: none; }
 .status-meta { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+
+.user-panel .section-title { margin-bottom: 16px; }
+.user-form { max-width: 100%; min-width: 0; }
+.uf-two, .uf-roles, .uf-access-grid { min-width: 0; }
+.uf-role small { white-space: normal; }
+.admin-tbl tr.editing td { background: var(--brand-tint); }
