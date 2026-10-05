@@ -1517,3 +1517,5 @@ tr.edit-row .user-form { border: 1px solid var(--line); border-radius: 16px; pad
   .sidebar .brand { padding-left: 52px; }
   .sidebar .brand-name { font-size: 18px; }
 }
+.status-row > .pill { margin: 0 auto 0 0 !important; }
+.status-row > .status-meta { margin-left: auto !important; }
