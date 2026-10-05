@@ -278,6 +278,7 @@
 
   /* ---------------------------------------------------------------- ui */
   var FORMS = {
+    loading: '<div class="lg-loading" aria-live="polite"><span class="lg-spinner" aria-hidden="true"></span><p class="lg-sub">Loading your dashboard\u2026</p></div>',
     signin: '<h1>Internet Coaches Dashboard</h1><p class="lg-sub">Sign in with the email you were invited with.</p>' +
       '<label>Email<input type="email" name="email" autocomplete="username" required autofocus></label>' +
       '<label>Password<input type="password" name="password" autocomplete="current-password" required></label>' +
@@ -413,7 +414,9 @@
     wireLogin();
     load();
     if (!state.tokens) { showLogin("signin"); return; }
-    showLogin("signin", { text: "Signing you back in…", kind: "good" });
+    // A returning user never sees the sign-in form: a quiet splash while the
+    // token is refreshed and the data loads, then straight into the dashboard.
+    showLogin("loading");
     loadData().then(function () {
       hideLogin();
       if (global.App && global.App.boot) global.App.boot();
