@@ -665,6 +665,20 @@
       });
     }
 
+    // mobile drawer
+    var navT = document.getElementById("nav-toggle"), navS = document.getElementById("nav-scrim"), side = document.querySelector(".sidebar");
+    function setNav(open) {
+      if (!side) return;
+      side.classList.toggle("open", open);
+      if (navS) navS.hidden = !open;
+      if (navT) navT.setAttribute("aria-expanded", open ? "true" : "false");
+      document.body.classList.toggle("nav-open", open);
+    }
+    if (navT) navT.addEventListener("click", function () { setNav(!side.classList.contains("open")); });
+    if (navS) navS.addEventListener("click", function () { setNav(false); });
+    if (side) side.addEventListener("click", function (ev) { if (ev.target.closest && ev.target.closest("a.side-item, a.brand-link")) setNav(false); });
+    global.addEventListener("hashchange", function () { setNav(false); });
+
     global.addEventListener("hashchange", render);
     // ⌘F / Ctrl+F jumps to the store search when it is on screen
     global.addEventListener("keydown", function (ev) {

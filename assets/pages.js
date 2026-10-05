@@ -712,7 +712,7 @@
     var pill = st.band === "none" ? "" :
       '<button type="button" class="status-row ' + st.band + ' status-btn" aria-expanded="false" onclick="Pages.toggleStatus(this)"' +
       ' title="Show the checks behind this status"><span class="pill ' + st.band + '"><span class="dot" aria-hidden="true"></span>' + esc(st.word) + "</span>" +
-      '<span class="status-meta">' + st.misses + "/" + st.checks.length + " flags" + (asOf ? " \u00b7 through <b>" + esc(asOf.replace(/^as of /, "")) + "</b>" : "") + "</span></button>";
+      '<span class="status-meta" title="Data through ' + esc(asOf ? asOf.replace(/^as of /, "") : "") + '">' + (asOf ? esc(asOf.replace(/^as of /, "")) : "") + "</span></button>";
     var statusDetail = st.band === "none" ? "" :
       '<div class="status-detail" hidden><p class="status-why">' + esc(st.misses) + " of " + esc(st.checks.length) +
       " checks missed \u00b7 performance against goals and the same days last month, not a data problem</p><ul>" +
