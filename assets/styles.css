@@ -15,23 +15,27 @@
   --muted: #6B7280;   /* 4.8:1 on white — the reference's grey sits at 3.3:1, which
                          is fine for nav labels but not for the stat labels here */
   --faint: #9AA1AC;
-  --line: #D3DAE4;
-  --line-soft: #E6EAF0;
-  --ground: #E4E8EE;     /* Oct 2026: darker ground so white cards read as cards */
+  --line: #DCE3DE;
+  --line-soft: #EEF2EF;
+  --ground: #F1F4F2;     /* Oct 2026 reference: soft grey-green ground, white cards */
   --card: #FFFFFF;
-  --nav-bg: #0F1729;     /* dark navy sidebar for contrast against the cards */
-  --nav-ink: #E6EAF0;
-  --nav-muted: #A9B2C0;
-  --nav-faint: #6F7A8C;
-  --nav-hover: rgba(255,255,255,.08);
-  --nav-on: rgba(183,215,245,.22);
+  --brand: #1E6B45;      /* deep green: primary buttons, active nav, hero tile */
+  --brand-deep: #14472E;
+  --brand-tint: #E4F0E8; /* light green wash: active nav, chips */
+  --brand-ink: #FFFFFF;
+  --nav-bg: #FFFFFF;
+  --nav-ink: #0F1729;
+  --nav-muted: #4B5563;
+  --nav-faint: #8A94A6;
+  --nav-hover: #F1F4F2;
+  --nav-on: #E4F0E8;
 
-  --accent-pale: #B7D7F5;   /* the fill */
-  --accent-tint: #DCEBFA;   /* lighter wash for hovers and chips */
-  --accent-ink: #0F1729;    /* text sitting ON the pale fill */
-  --accent: #2C6FB0;        /* focus rings and the few places a blue line reads */
-  --accent-deep: #1B5488;
-  --accent-soft: #DCEBFA;
+  --accent-pale: #E4F0E8;   /* the fill (light green) */
+  --accent-tint: #EEF5F0;   /* lighter wash for hovers and chips */
+  --accent-ink: #14472E;    /* text sitting ON the pale fill */
+  --accent: #1E6B45;        /* focus rings and the few places a line reads */
+  --accent-deep: #14472E;
+  --accent-soft: #E4F0E8;
 
   --good: #12704A;
   --good-bg: #E3F5EC;
@@ -59,12 +63,9 @@
     --line-soft: #222634;
     --ground: #0B0E15;
     --card: #181C26;
-    --nav-bg: #0B0E15;
-    --nav-ink: #E6EAF0;
-    --nav-muted: #A9B2C0;
-    --nav-faint: #6F7A8C;
-    --nav-hover: rgba(255,255,255,.08);
-    --nav-on: rgba(111,168,220,.25);
+    --brand: #3FA66F; --brand-deep: #1E6B45; --brand-tint: #16331F; --brand-ink: #FFFFFF;
+    --nav-bg: #11151C; --nav-ink: #E6EAF0; --nav-muted: #A9B2C0; --nav-faint: #6F7A8C;
+    --nav-hover: rgba(255,255,255,.06); --nav-on: #16331F;
 
     /* Same relationship inverted: the pale blue is still the fill, but on a dark
        card it is light enough to carry dark text, so accent-ink flips. */
@@ -119,7 +120,7 @@ code { font-family: var(--mono); font-size: .9em; }
   padding: 18px 14px;
   background: var(--nav-bg);
   color: var(--nav-ink);
-  border-right: 1px solid rgba(255,255,255,.06);
+  border-right: 1px solid var(--line);
   position: sticky;
   top: 0;
   height: 100vh;
@@ -155,14 +156,18 @@ code { font-family: var(--mono); font-size: .9em; }
 }
 .sidebar .side-item { color: var(--nav-muted); }
 .sidebar .side-item:hover { background: var(--nav-hover); color: var(--nav-ink); }
-.sidebar .side-item.on { background: var(--nav-on); color: #FFFFFF; }
+.sidebar .side-item { position: relative; }
+.sidebar .side-item.on { background: var(--nav-on); color: var(--brand-deep); font-weight: 700; }
+.sidebar .side-item.on::before { content: ""; position: absolute; left: -14px; top: 8px; bottom: 8px; width: 4px; border-radius: 0 4px 4px 0; background: var(--brand); }
 .side-ico { width: 18px; text-align: center; color: var(--nav-faint); }
-.side-item.on .side-ico { color: #FFFFFF; }
+.side-item.on .side-ico { color: var(--brand-deep); }
+.side-dot { margin-left: auto; width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.side-dot.good { background: var(--good); } .side-dot.warn { background: #C98A00; } .side-dot.bad { background: var(--bad); }
 .sidebar .side-label { color: var(--nav-faint); }
 .sidebar .side-foot { color: var(--nav-faint); }
 .sidebar .brand-name { color: var(--nav-ink); }
 .sidebar .brand-link:hover .brand-name { color: #FFFFFF; }
-.sidebar .side-mono { background: rgba(183,215,245,.9); }
+.sidebar .side-mono { background: var(--brand-tint); color: var(--brand-deep); }
 .side-mono {
   display: grid;
   place-items: center;
@@ -1101,3 +1106,77 @@ body.locked { overflow: hidden; }
 .admin-actions .ghost-btn { margin-right: 4px; }
 .ghost-btn.danger { color: var(--bad); }
 tr.edit-row td { background: var(--line-soft); }
+
+
+/* ============================================================ Oct 2026 dashboard refresh */
+.topbar { gap: 16px; }
+.top-avatar { margin-left: auto; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: var(--brand); color: var(--brand-ink); font-weight: 800; font-size: 13px; letter-spacing: .02em; flex: none; }
+.dash-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.dash-head h1 { font-size: 30px; font-weight: 800; letter-spacing: -.02em; }
+.dash-head .page-sub { margin: 4px 0 0; color: var(--muted); }
+.btn { border-radius: 999px; padding: 10px 20px; font-weight: 700; }
+.btn-accent, .lg-btn { background: var(--brand); color: var(--brand-ink); border-color: var(--brand); }
+.btn-accent:hover, .lg-btn:hover { background: var(--brand-deep); border-color: var(--brand-deep); }
+
+/* stats band: five tiles, the first one filled */
+.statsband { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin: 20px 0 26px; }
+.sb-cell { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px 16px; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.sb-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.sb-l { font-size: 15px; font-weight: 600; color: var(--ink); text-transform: none; letter-spacing: 0; line-height: 1.25; }
+.sb-arrow { flex: none; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; font-size: 13px; color: var(--muted); }
+.sb-v { font-size: 40px; font-weight: 800; letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.sb-v.good { color: var(--good); } .sb-v.warn { color: #9A6B00; } .sb-v.bad { color: var(--bad); }
+.sb-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-height: 22px; font-size: 13px; }
+.sb-sub { color: var(--muted); }
+.sb-chip { font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); }
+.sb-chip.up { color: var(--good); } .sb-chip.down { color: var(--bad); }
+.sb-cell .goal-badge { background: var(--ink); color: var(--card); border-radius: 8px; font-weight: 800; }
+.sb-hero { background: linear-gradient(135deg, var(--brand) 0%, var(--brand-deep) 100%); border-color: transparent; color: #FFFFFF; }
+.sb-hero .sb-l, .sb-hero .sb-sub, .sb-hero .sb-v { color: #FFFFFF; }
+.sb-hero .sb-arrow { background: rgba(255,255,255,.18); border-color: transparent; color: #FFFFFF; }
+.sb-hero .sb-chip { background: rgba(255,255,255,.16); border-color: transparent; color: #FFFFFF; }
+.sb-hero .sb-chip.down { color: #FFD6D6; }
+@media (max-width: 1200px) { .statsband { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 720px) { .statsband { grid-template-columns: 1fr 1fr; } .sb-v { font-size: 32px; } }
+
+/* stores header: title, status chips, search */
+.stores-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.stores-title { font-size: 24px; font-weight: 800; letter-spacing: -.02em; margin: 0; }
+.stores-count { font-size: 14px; font-weight: 600; color: var(--muted); margin-left: 8px; }
+.st-chips { display: inline-flex; gap: 8px; flex-wrap: wrap; margin-left: auto; }
+.st-chip { font: inherit; font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; }
+.st-chip:hover { background: var(--line-soft); }
+.st-chip.on { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+.st-chip .st-n { font-weight: 700; opacity: .7; margin-left: 2px; }
+.stores-bar .search-wrap { order: -1; flex: 1 1 260px; max-width: 420px; position: relative; }
+.stores-bar .search-wrap input { width: 100%; border-radius: 999px; padding: 11px 44px 11px 40px; }
+.search-kbd { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font: 600 11px var(--mono); color: var(--muted); background: var(--line-soft); border-radius: 6px; padding: 2px 6px; }
+@media (max-width: 900px) { .st-chips { margin-left: 0; } }
+
+/* store cards */
+.store-cards { gap: 18px; }
+.store-card { border-radius: 18px; padding: 20px; }
+.store-card-name { font-size: 20px; font-weight: 800; }
+.store-card-kicker { text-transform: uppercase; letter-spacing: .08em; font-size: 11.5px; color: var(--muted); }
+.status-row { display: flex; align-items: center; gap: 12px; width: 100%; margin: 14px 0 6px; padding: 10px 12px; border-radius: 12px; background: var(--line-soft); border: 1px solid transparent; font: inherit; cursor: pointer; text-align: left; color: var(--ink); }
+.status-row:hover, .status-row[aria-expanded="true"] { border-color: var(--line); background: var(--card); }
+.status-row .pill { font-size: 13px; padding: 0; background: transparent; }
+.status-meta { font-size: 13px; color: var(--muted); margin-left: auto; white-space: nowrap; }
+.status-meta b { color: var(--ink); font-weight: 700; }
+.store-card-stats { grid-template-columns: repeat(3, 1fr); gap: 14px 16px; margin-top: 12px; }
+.scs-l { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.scs-v { font-size: 24px; font-weight: 800; letter-spacing: -.02em; }
+.store-card-actions { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line-soft); }
+.store-card-actions .btn { flex: 1; text-align: center; }
+
+/* users page: cleaner form */
+.admin-create .section-title { margin-bottom: 14px; }
+.admin-form .af-row { align-items: end; }
+.admin-form .af-row > label { gap: 6px; }
+.admin-form .af-check { flex-direction: row; align-items: center; }
+.ap-grid { gap: 14px 28px; }
+.ap-col { background: var(--line-soft); border-radius: 12px; padding: 12px 14px; }
+.ap-h { margin-bottom: 8px; }
+.ap-item { display: flex; flex-direction: row; align-items: center; gap: 10px; padding: 6px 0; font-weight: 500; color: var(--ink); text-transform: none; letter-spacing: 0; font-size: 14px; }
+.ap-item input { width: 16px; height: 16px; accent-color: var(--brand); margin: 0; }
+.admin-form input[type=checkbox] { accent-color: var(--brand); }

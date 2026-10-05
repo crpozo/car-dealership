@@ -178,7 +178,9 @@
       return '<a href="' + storeBase + encodeURIComponent(s.id) + '" class="side-item side-store' +
         (on ? " on" : "") + '"' + (on ? ' aria-current="page"' : "") + ">" +
         '<span class="side-mono" aria-hidden="true">' + esc(Pages.monogramFor ? Pages.monogramFor(s.name) : "") + "</span>" +
-        '<span class="side-store-name">' + esc(s.name) + "</span></a>";
+        '<span class="side-store-name">' + esc(s.name) + "</span>" +
+        (function () { var b = Pages.storeStatusFor ? Pages.storeStatusFor(s.id, range).band : "none"; return b && b !== "none" ? '<span class="side-dot ' + b + '" title="' + (b === "bad" ? "Needs attention" : b === "warn" ? "Watch" : "On track") + '"></span>' : ""; }()) +
+        "</a>";
     }).join("");
 
     var gwrap = document.getElementById("side-groups");
@@ -531,6 +533,16 @@
     var mail = document.getElementById("side-user-mail");
     if (box) box.hidden = !u;
     if (mail && u) mail.textContent = u.name || u.email || "";
+    var av = document.getElementById("top-avatar");
+    if (av) {
+      av.hidden = !u;
+      if (u) {
+        var src = (u.name || u.email || "?").trim();
+        var parts = src.split(/[\s@._-]+/).filter(Boolean);
+        av.textContent = ((parts[0] || "?")[0] + (parts[1] ? parts[1][0] : "")).toUpperCase();
+        av.title = (u.name ? u.name + " \u00b7 " : "") + (u.email || "") + (u.admin ? " \u00b7 admin" : "");
+      }
+    }
     var adminOnly = document.querySelectorAll("[data-admin-only]");
     for (var i = 0; i < adminOnly.length; i++) adminOnly[i].hidden = !(u && u.admin);
     var pk = document.getElementById("side-passkey");
@@ -603,6 +615,13 @@
     }
 
     global.addEventListener("hashchange", render);
+    // ⌘F / Ctrl+F jumps to the store search when it is on screen
+    global.addEventListener("keydown", function (ev) {
+      if ((ev.metaKey || ev.ctrlKey) && (ev.key === "f" || ev.key === "F")) {
+        var box = document.getElementById("store-search");
+        if (box) { ev.preventDefault(); box.focus(); box.select(); }
+      }
+    });
     if (!global.location.hash) global.location.hash = "#/overview";
     render();
   }

@@ -649,13 +649,23 @@
       // The topbar breadcrumb carries the page identity, and the timeframe
       // control already spells out the dates — the stats band leads directly,
       // like the reference layout.
-      return '<section class="page" id="page-overview">' +
+      var counts = { bad: 0, warn: 0, good: 0 };
+      shown.list.forEach(function (s2) { var b = storeStatusFor(s2.id, range).band; if (counts[b] !== undefined) counts[b]++; });
+      function chip(key, label, n) {
+        return '<button type="button" class="st-chip' + (key === "all" ? " on" : "") + (key !== "all" ? " " + key : "") + '" data-status="' + key + '"' +
+          ' onclick="Pages.filterStatus(this)">' + esc(label) + (n !== undefined ? ' <span class="st-n">' + n + "</span>" : "") + "</button>";
+      }
+      return '<section class="page dash" id="page-overview">' +
+        '<div class="page-head dash-head"><div><h1>Dashboard</h1><p class="page-sub">Internet lead performance across all stores \u00b7 ' + esc(rangeLabel(range)) + "</p></div>" +
+        '<div class="dash-actions"><button type="button" class="btn" onclick="window.print()">Export report</button></div></div>' +
         coverageBanner(range) +
         statsBand(all, range, allPrior) +
-        '<div class="cards-toolbar">' +
+        '<div class="cards-toolbar stores-bar">' +
+          '<h2 class="stores-title">Stores <span class="stores-count" id="stores-count">' + shown.list.length + " of " + list.length + "</span></h2>" +
+          '<span class="st-chips" role="group" aria-label="Filter by status">' + chip("all", "All") + chip("bad", "Needs attention", counts.bad) + chip("warn", "Watch", counts.warn) + chip("good", "On track", counts.good) + "</span>" +
           '<span class="search-wrap"><span class="search-ico" aria-hidden="true">&#8981;</span>' +
           '<input type="search" id="store-search" placeholder="Search store&hellip;" aria-label="Search stores"' +
-          ' oninput="Pages.filterStores(this.value)"></span>' +
+          ' oninput="Pages.filterStores(this.value)"><kbd class="search-kbd">\u2318F</kbd></span>' +
           '<span class="view-toggle" role="group" aria-label="View">' +
             '<button type="button" class="vt-btn' + (isCards ? " on" : "") + '" title="Card view"' +
               ' aria-pressed="' + (isCards ? "true" : "false") + '" onclick="Pages.setStoreView(\'cards\')">&#9638;</button>' +
@@ -666,10 +676,20 @@
         (isCards
           ? '<div class="store-cards">' + cards + "</div>"
           : storesTableBlock(range)) +
-        '<p class="roster-note">Showing ' + shown.list.length + " of " + list.length + " stores" +
-        (shown.missing.length ? " — the rest have no reports for " + esc(rangeLabel(range)) : "") + ".</p>" +
+        (shown.missing.length ? '<p class="roster-note">' + shown.missing.length + " store" + (shown.missing.length === 1 ? " has" : "s have") + " no reports for " + esc(rangeLabel(range)) + " and " + (shown.missing.length === 1 ? "is" : "are") + " not listed.</p>" : "") +
         "</section>";
     });
+  }
+
+  /* status of one store for the current range (sidebar dots, filter chips) */
+  function storeStatusFor(storeId, range) {
+    try {
+      var sm = storeMetrics(storeId, range);
+      var cr = compareRange(range);
+      var prior = cr ? storeMetrics(storeId, cr) : null;
+      if (prior && !hasData(prior)) prior = null;
+      return storeStatus(sm, prior, range);
+    } catch (e) { return { band: "none", word: "", detail: "", checks: [], misses: 0 }; }
   }
 
   /* Reference-style store card: identity row (tile, name, CRM subline) with a
@@ -691,10 +711,11 @@
     var st = storeStatus(sm, prior, range);
     /* The status is a button: the checks behind it open inside the card on a
        click or tap, so nobody has to find a browser tooltip. */
+    var asOf = coverageAsOf(sm);
     var pill = st.band === "none" ? "" :
-      '<button type="button" class="pill ' + st.band + ' status-btn" aria-expanded="false" onclick="Pages.toggleStatus(this)"' +
-      ' title="Show the checks behind this status"><span class="dot" aria-hidden="true"></span>' + esc(st.word) +
-      '<span class="status-n">' + st.misses + "/" + st.checks.length + "</span></button>";
+      '<button type="button" class="status-row ' + st.band + ' status-btn" aria-expanded="false" onclick="Pages.toggleStatus(this)"' +
+      ' title="Show the checks behind this status"><span class="pill ' + st.band + '"><span class="dot" aria-hidden="true"></span>' + esc(st.word) + "</span>" +
+      '<span class="status-meta">' + st.misses + "/" + st.checks.length + " flags" + (asOf ? " \u00b7 through <b>" + esc(asOf.replace(/^as of /, "")) + "</b>" : "") + "</span></button>";
     var statusDetail = st.band === "none" ? "" :
       '<div class="status-detail" hidden><p class="status-why">' + esc(st.misses) + " of " + esc(st.checks.length) +
       " checks missed \u00b7 performance against goals and the same days last month, not a data problem</p><ul>" +
@@ -710,23 +731,21 @@
     }
 
     var sub = [s.crm].concat(s.tools || []).filter(Boolean).join(" · ");
-    var asOf = coverageAsOf(sm);
     var rows = [
-      { l: "Internet leads", v: net ? num(net.goodLeads, noNet) : na(noNet), cls: "none" },
-      { l: "Engagement", v: net ? pct(eng, noNet) : na(noNet), cls: colorFor(eng, engagementTarget()) },
-      { l: "Appts set", v: net ? pct(ap, noNet) : na(noNet), cls: colorFor(ap, apptTarget()) },
-      { l: "Internet closing", v: net ? pct(closing, noNet) : na(noNet), cls: colorFor(closing, closingTarget()) },
-      { l: "Sold", v: num(sm.total ? sm.total.sold : null, "No store total row for " + rangeLabel(range)) + soldDelta, cls: "none" },
-      { l: "Data through", v: asOf ? esc(asOf.replace(/^as of /, "")) : na("No run date"), cls: "none" }
+      { l: "Leads", v: net ? num(net.goodLeads, noNet) : na(noNet), cls: "none", t: "Good internet leads" },
+      { l: "Engaged", v: net ? pct(eng, noNet) : na(noNet), cls: colorFor(eng, engagementTarget()), t: "Engagement %" },
+      { l: "Appts", v: net ? pct(ap, noNet) : na(noNet), cls: colorFor(ap, apptTarget()), t: "Appts set of contacted %" },
+      { l: "Closing", v: net ? pct(closing, noNet) : na(noNet), cls: colorFor(closing, closingTarget()), t: "Internet closing %" },
+      { l: "Sold", v: num(sm.total ? sm.total.sold : null, "No store total row for " + rangeLabel(range)) + soldDelta, cls: "none", t: "Total sold, all lead types" }
     ];
 
-    return '<article class="store-card" data-store-name="' + esc(s.name.toLowerCase()) + '">' +
+    return '<article class="store-card" data-store-name="' + esc(s.name.toLowerCase()) + '" data-status="' + esc(st.band) + '">' +
       '<div class="store-card-head">' + monogram(s.name) +
       '<span class="store-card-title"><span class="store-card-name">' + esc(s.name) + "</span>" +
       (sub ? '<span class="store-card-kicker">' + esc(sub) + "</span>" : "") +
-      "</span>" + pill + "</div>" + statusDetail +
+      "</span></div>" + pill + statusDetail +
       '<div class="store-card-stats">' + rows.map(function (st) {
-        return '<div class="scs"><span class="scs-l">' + esc(st.l) + "</span>" +
+        return '<div class="scs" title="' + esc(st.t || "") + '"><span class="scs-l">' + esc(st.l) + "</span>" +
           '<span class="scs-v ' + esc(st.cls) + '">' + st.v + "</span></div>";
       }).join("") + "</div>" +
       '<div class="store-card-actions">' +
@@ -828,18 +847,35 @@
       try { cmp = c.compare(total, prior.total); } catch (e) { cmp = null; }
       soldDelta = cmp ? deltaChip(cmp, "sold", periodLabels(range).prev) : "";
     }
+    var pNet = prior && prior.hasData ? prior.internet : null;
+    function goalWord(cls) {
+      return cls === "good" ? "At goal \u2191" : cls === "warn" ? "Near goal \u2192" : cls === "bad" ? "Below goal \u2193" : "";
+    }
+    function vsPrev(cur, prev, isPct) {
+      if (!isNum(cur) || !isNum(prev)) return "";
+      var d = isPct ? Math.round((cur - prev) * 100) : Math.round(cur - prev);
+      if (d === 0) return '<span class="sb-sub">Flat vs previous period</span>';
+      return '<span class="sb-chip ' + (d > 0 ? "up" : "down") + '">' + (d > 0 ? "+" : "") + d + (isPct ? " pts" : "") + "</span>" +
+        '<span class="sb-sub">vs previous period</span>';
+    }
+    var leadsDelta = vsPrev(net ? net.goodLeads : null, pNet ? pNet.goodLeads : null, false);
+    var closeDelta = vsPrev(closing, pNet ? c.rate(pNet.sold, pNet.goodLeads) : null, true);
     var cells = [
-      { v: net ? num(net.goodLeads, noNet) : na(noNet), l: "Good Internet Leads", cls: "none" },
-      { v: net ? pct(eng, noNet) : na(noNet), l: "Engagement %", goal: engagementTarget(), cls: colorFor(eng, engagementTarget()) },
-      { v: net ? pct(ap, noNet) : na(noNet), l: "Appts Set Of Contacted", goal: apptTarget(), cls: colorFor(ap, apptTarget()) },
-      { v: net ? pct(closing, noNet) : na(noNet), l: "Internet Closing Rate", goal: closingTarget(), cls: colorFor(closing, closingTarget()) },
-      { v: (total ? num(total.sold, "No totals") : na("No totals")) + soldDelta, l: "Total Solds \u00b7 All Lead Types", cls: "none" }
+      { v: net ? num(net.goodLeads, noNet) : na(noNet), l: "Good Internet Leads", cls: "none", hero: true, sub: leadsDelta },
+      { v: net ? pct(eng, noNet) : na(noNet), l: "Engagement", goal: engagementTarget(), cls: colorFor(eng, engagementTarget()) },
+      { v: net ? pct(ap, noNet) : na(noNet), l: "Appts Set of Contacted", goal: apptTarget(), cls: colorFor(ap, apptTarget()) },
+      { v: net ? pct(closing, noNet) : na(noNet), l: "Internet Closing Rate", goal: closingTarget(), cls: colorFor(closing, closingTarget()), sub: closeDelta },
+      { v: (total ? num(total.sold, "No totals") : na("No totals")), l: "Total Solds", cls: "none",
+        sub: (soldDelta ? soldDelta + " " : "") + '<span class="sb-sub">All lead types</span>' }
     ];
     return '<div class="statsband">' + cells.map(function (x) {
-      return '<div class="sb-cell"><span class="sb-v ' + esc(x.cls) + '">' + x.v + "</span>" +
-        '<span class="sb-l">' + esc(x.l) +
-        (x.goal ? ' <span class="goal-badge">Goal ' + esc(fmtPct(x.goal, 0)) + "</span>" : "") +
-        "</span></div>";
+      var sub = x.sub || "";
+      if (!sub && x.goal) sub = '<span class="goal-badge">Goal ' + esc(fmtPct(x.goal, 0)) + "</span>" + (goalWord(x.cls) ? '<span class="sb-sub">' + goalWord(x.cls) + "</span>" : "");
+      else if (x.goal) sub = '<span class="goal-badge">Goal ' + esc(fmtPct(x.goal, 0)) + "</span>" + sub;
+      return '<div class="sb-cell' + (x.hero ? " sb-hero" : "") + '">' +
+        '<div class="sb-top"><span class="sb-l">' + esc(x.l) + '</span><span class="sb-arrow" aria-hidden="true">\u2197</span></div>' +
+        '<span class="sb-v ' + esc(x.cls) + '">' + x.v + "</span>" +
+        '<div class="sb-foot">' + sub + "</div></div>";
     }).join("") + "</div>";
   }
 
@@ -855,17 +891,31 @@
   }
 
   /* Client-side name filter over whichever roster view is on screen. */
+  var STATUS_FILTER = "all";
   function filterStores(q) {
     q = String(q || "").trim().toLowerCase();
     var cards = document.querySelectorAll(".store-card[data-store-name]");
+    var shown = 0;
     for (var i = 0; i < cards.length; i++) {
-      cards[i].hidden = q !== "" && cards[i].getAttribute("data-store-name").indexOf(q) === -1;
+      var hideName = q !== "" && cards[i].getAttribute("data-store-name").indexOf(q) === -1;
+      var hideStatus = STATUS_FILTER !== "all" && cards[i].getAttribute("data-status") !== STATUS_FILTER;
+      cards[i].hidden = hideName || hideStatus;
+      if (!cards[i].hidden) shown++;
     }
     var rows = document.querySelectorAll(".stores-tbl tbody tr");
     for (var j = 0; j < rows.length; j++) {
       var cell = rows[j].querySelector("td.name");
       rows[j].hidden = q !== "" && cell && cell.textContent.toLowerCase().indexOf(q) === -1;
     }
+    var count = document.getElementById("stores-count");
+    if (count && cards.length) count.textContent = shown + " of " + count.textContent.split(" of ").pop();
+  }
+  function filterStatus(btn) {
+    STATUS_FILTER = btn.getAttribute("data-status") || "all";
+    var chips = document.querySelectorAll(".st-chip");
+    for (var i = 0; i < chips.length; i++) chips[i].classList.toggle("on", chips[i] === btn);
+    var q = document.getElementById("store-search");
+    filterStores(q ? q.value : "");
   }
 
   /* ============================================================== 2. STORES */
@@ -2613,6 +2663,8 @@
     monogramFor: monogramFor,
     setStoreView: setStoreView,
     filterStores: filterStores,
+    filterStatus: filterStatus,
+    storeStatusFor: storeStatusFor,
     overview: overview,
     stores: storesPage,
     storeDetail: storeDetail,
