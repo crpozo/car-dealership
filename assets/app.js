@@ -182,7 +182,7 @@
       return '<a href="' + storeBase + encodeURIComponent(s.id) + '" class="side-item side-store' +
         (on ? " on" : "") + '"' + (on ? ' aria-current="page"' : "") + ">" +
         '<span class="side-mono" aria-hidden="true">' + esc(Pages.monogramFor ? Pages.monogramFor(s.name) : "") + "</span>" +
-        '<span class="side-store-name">' + esc(s.name) + "</span>" +
+        '<span class="side-store-name" title="' + esc(s.name) + '">' + esc(s.name) + "</span>" +
         (function () { var b = Pages.storeStatusFor ? Pages.storeStatusFor(s.id, range).band : "none"; return b && b !== "none" ? '<span class="side-dot ' + b + '" title="' + (b === "bad" ? "Needs attention" : b === "warn" ? "Watch" : "On track") + '"></span>' : ""; }()) +
         "</a>";
     }).join("");

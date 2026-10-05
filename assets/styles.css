@@ -1493,3 +1493,21 @@ tr.edit-row .user-form { border: 1px solid var(--line); border-radius: 16px; pad
   .store-card-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .statsband { grid-template-columns: 1fr; }
 }
+
+
+/* sidebar names readable: wrap to two lines, tooltip on hover */
+.sidebar { width: 264px; }
+.side-store-name { white-space: normal; overflow: visible; text-overflow: clip; font-size: 13.5px; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.side-item { align-items: center; padding: 9px 12px; }
+.side-dot { align-self: center; }
+
+/* card stats: 3 + 2 with room to breathe */
+.store-card-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 18px; margin-top: 14px; }
+.scs-l { font-size: 11px; letter-spacing: .08em; margin-bottom: 2px; display: block; }
+.scs-v { font-size: 22px; }
+@media (max-width: 1400px) { .store-card-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* status row: pill left, date right, both centred */
+.status-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: nowrap; }
+.status-row .pill { flex: none; }
+.status-meta { margin-left: auto; font-size: 12.5px; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; }
