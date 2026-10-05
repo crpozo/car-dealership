@@ -1380,3 +1380,40 @@ tr.edit-row .user-form { border: 1px solid var(--line); border-radius: 16px; pad
 .fieldline { display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; }
 .fieldline > span { margin-left: auto; flex: none; }
 .fieldline .opt { display: inline; margin: 0 0 0 4px; }
+
+/* users page: standard sizes */
+.user-panel { padding: 20px 22px; margin-bottom: 20px; }
+.user-form .uf-label { font-size: 11px; margin-bottom: 8px; }
+.uf-two { gap: 16px; margin-bottom: 20px; }
+.uf-field input { font-size: 14px; padding: 10px 12px; border-radius: 10px; }
+.uf-roles { gap: 16px; margin-bottom: 20px; }
+.uf-role { gap: 12px; padding: 12px 16px; border-radius: 12px; }
+.uf-radio { width: 18px; height: 18px; margin-top: 2px; }
+.uf-role.on .uf-radio::after { width: 9px; height: 9px; }
+.uf-role b { font-size: 15px; }
+.uf-role small { font-size: 13px; }
+.uf-count { font-size: 13px; }
+.uf-access-grid { gap: 16px; }
+.uf-box { padding: 14px 16px; border-radius: 12px; }
+.uf-box-head { font-size: 14px; margin-bottom: 8px; }
+.uf-box-head .muted { font-size: 13px; }
+.uf-filter { padding: 7px 12px; gap: 8px; max-width: 360px; }
+.uf-filter input { font-size: 13.5px; }
+.uf-clear { font-size: 13.5px; }
+.uf-check { gap: 10px; padding: 7px 10px; font-size: 14px; border-radius: 8px; }
+.uf-check input { width: 16px; height: 16px; }
+.uf-group { padding: 8px 10px; }
+.uf-group .uf-n { font-size: 12.5px; }
+.uf-store-grid { gap: 0 12px; }
+.uf-foot { gap: 12px; margin-top: 20px; padding-top: 18px; font-size: 13.5px; }
+.uf-submit, .uf-foot .btn { padding: 10px 20px; font-size: 14px; }
+.admin-tbl thead th { font-size: 11px; padding: 12px 14px; }
+.admin-tbl td { padding: 12px 14px; font-size: 14px; }
+.person .avatar { width: 38px; height: 38px; font-size: 12.5px; }
+.person-text small { font-size: 12.5px; }
+.role-pill { font-size: 12.5px; padding: 3px 10px; }
+.dash-head h1 { font-size: 26px; }
+.dash-head .page-sub { font-size: 14px; }
+.dash-actions .btn { padding: 10px 18px; font-size: 14px; }
+.stores-title { font-size: 22px; }
+.people-title { font-size: 20px; }
