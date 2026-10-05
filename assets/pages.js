@@ -2432,8 +2432,13 @@
     ((u && u.stores) || []).forEach(function (x) { sel[x] = 1; });
     var groups = (c.groups ? c.groups() : []).slice();
     var stores = STORES().slice().sort(function (a, b) { return a.name < b.name ? -1 : 1; });
-    var admin = !!(u && u.admin);
+    var role = u ? (u.role || (u.admin ? "admin" : "client")) : "client";
+    var admin = role === "admin";
     var submit = isNew ? "Pages.adminCreate(this)" : "Pages.adminSave(this, '" + esc(u.username) + "')";
+    function roleCard(value, title, sub) {
+      return '<label class="uf-role' + (role === value ? " on" : "") + '"><input type="radio" name="role" value="' + value + '"' + (role === value ? " checked" : "") + (isMe ? " disabled" : "") + ' onchange="Pages.adminFormChange(this.form)">' +
+        '<span class="uf-radio"></span><span><b>' + title + "</b><small>" + sub + "</small></span></label>";
+    }
 
     var groupRows = groups.map(function (g) {
       return '<label class="uf-check uf-group' + (sel[g.id] ? " on" : "") + '"><input type="checkbox" name="access" value="' + esc(g.id) + '"' + (sel[g.id] ? " checked" : "") +
@@ -2450,11 +2455,10 @@
         '<label class="uf-field"><span class="uf-label">Name <em>(optional)</em></span><input type="text" name="name" placeholder="Jane Doe" value="' + esc(u ? (u.name || "") : "") + '"></label>' +
       "</div>" +
       '<div class="uf-label">Role</div>' +
-      '<div class="uf-roles">' +
-        '<label class="uf-role' + (!admin ? " on" : "") + '"><input type="radio" name="role" value="member"' + (!admin ? " checked" : "") + (isMe ? " disabled" : "") + ' onchange="Pages.adminFormChange(this.form)">' +
-          '<span class="uf-radio"></span><span><b>Member</b><small>Sees only the groups and stores you pick below</small></span></label>' +
-        '<label class="uf-role' + (admin ? " on" : "") + '"><input type="radio" name="role" value="admin"' + (admin ? " checked" : "") + (isMe ? " disabled" : "") + ' onchange="Pages.adminFormChange(this.form)">' +
-          '<span class="uf-radio"></span><span><b>Admin</b><small>Sees every store and manages users</small></span></label>' +
+      '<div class="uf-roles uf-roles-3">' +
+        roleCard("client", "Client", "Dealer staff: sees only the stores you pick below") +
+        roleCard("staff", "Staff", "Coach: the stores you pick below, plus goals and settings") +
+        roleCard("admin", "Admin", "Sees every store, manages users and the intake log") +
       "</div>" +
       '<div class="uf-access' + (admin ? " is-admin" : "") + '">' +
         '<div class="uf-access-head"><span class="uf-label">Access</span><span class="uf-count" data-count>' + adminCountText(u ? u.stores : [], groups) + "</span></div>" +
@@ -2548,7 +2552,8 @@
           var editing = ADMIN.editing === u.username;
           var main = "<tr" + (editing ? ' class="editing"' : "") + ">" +
             '<td class="name"><span class="person"><span class="avatar">' + esc(initialsOf(u)) + "</span><span class=\"person-text\"><b>" + esc(u.name || (u.email || "").split("@")[0]) + (isMe ? ' <span class="muted">(you)</span>' : "") + "</b><small>" + esc(u.email || u.username) + "</small></span></span></td>" +
-            "<td>" + (u.admin ? '<span class="pill good role-pill"><span class="dot"></span>Admin</span>' : '<span class="pill none role-pill">Member</span>') + "</td>" +
+            "<td>" + (u.role === "admin" || u.admin ? '<span class="pill good role-pill"><span class="dot"></span>Admin</span>'
+              : (u.role === "staff" ? '<span class="pill warn role-pill"><span class="dot"></span>Staff</span>' : '<span class="pill none role-pill">Client</span>')) + "</td>" +
             '<td class="admin-access">' + (u.admin ? "All stores" : esc(adminLabel(u.stores))) + "</td>" +
             "<td>" + status + "</td>" +
             '<td class="admin-actions">' +
@@ -2574,8 +2579,9 @@
   function adminNew() { ADMIN.creating = true; ADMIN.editing = null; if (global.App) global.App.render(); setTimeout(function () { var f = document.querySelector('.user-form[data-mode="new"] input[name=email]'); if (f) f.focus(); }, 50); }
   function adminCancel() { ADMIN.creating = false; ADMIN.editing = null; if (global.App) global.App.render(); }
   function adminCreate(form) {
-    var admin = form.elements.role.value === "admin";
-    var body = { email: form.elements.email.value.trim(), name: form.elements.name.value.trim(), admin: admin, stores: admin ? [] : adminPickedValues(form) };
+    var role = form.elements.role.value;
+    var admin = role === "admin";
+    var body = { email: form.elements.email.value.trim(), name: form.elements.name.value.trim(), role: role, admin: admin, stores: admin ? [] : adminPickedValues(form) };
     if (!admin && !body.stores.length) { adminMsg(form, "Pick at least one group or store, or make them an admin.", "bad"); return false; }
     adminMsg(form, "Sending invite\u2026", "good");
     global.Auth.api("/users", { method: "POST", body: body }).then(function () {
@@ -2585,7 +2591,7 @@
   }
   function adminSave(form, username) {
     var body = { name: form.elements.name.value.trim(), stores: adminPickedValues(form) };
-    if (!form.elements.role.disabled) body.admin = form.elements.role.value === "admin";
+    if (!form.elements.role.disabled) body.role = form.elements.role.value;
     adminMsg(form, "Saving\u2026", "good");
     global.Auth.api("/users/" + encodeURIComponent(username), { method: "PATCH", body: body }).then(function () {
       ADMIN.editing = null; adminLoad();

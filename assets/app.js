@@ -17,7 +17,11 @@
       if (!u || !u.admin) return notFound("Admins only", "User management is available to dashboard admins.");
       return Pages.admin();
     },
-    logs: function () { return Pages.logs(); },
+    logs: function () {
+      var u = global.DASH_USER;
+      if (u && !u.admin) return notFound("Admins only", "The intake log is available to dashboard admins.");
+      return Pages.logs();
+    },
     stores: function (range) { return Pages.stores(range); },
     activity: function (range) { return Pages.activity(range); },
     internet: function (range) { return Pages.internet(range); }
@@ -546,9 +550,12 @@
         var set = function (id, t) { var el = document.getElementById(id); if (el) el.textContent = t; };
         set("um-avatar", ini); set("um-name", u.name || u.email || ""); set("um-mail", u.email || "");
         var role = document.getElementById("um-role");
+        var nStores = (u.storeIds || []).length + (u.storeIds && u.storeIds.length === 1 ? " store" : " stores");
         if (role) role.innerHTML = u.admin
           ? '<span class="pill good"><span class="dot"></span>Admin</span><span class="um-role-sub">Sees every store and manages users</span>'
-          : '<span class="pill none">Member</span><span class="um-role-sub">' + (u.storeIds || []).length + (u.storeIds && u.storeIds.length === 1 ? " store" : " stores") + "</span>";
+          : (u.staff
+            ? '<span class="pill warn"><span class="dot"></span>Staff</span><span class="um-role-sub">' + nStores + " \u00b7 can edit goals</span>"
+            : '<span class="pill none">Client</span><span class="um-role-sub">' + nStores + "</span>");
       }
       if (!av.getAttribute("data-wired")) {
         av.setAttribute("data-wired", "1");
@@ -586,6 +593,9 @@
     }
     var adminOnly = document.querySelectorAll("[data-admin-only]");
     for (var i = 0; i < adminOnly.length; i++) adminOnly[i].hidden = !(u && u.admin);
+    var staffOnly = document.querySelectorAll("[data-staff-only]");
+    for (var i2 = 0; i2 < staffOnly.length; i2++) staffOnly[i2].hidden = !(u && (u.admin || u.staff));
+    if (u && !(u.admin || u.staff)) closeSettings();
     var pk = document.getElementById("side-passkey");
     if (pk && u && global.Auth && global.Auth.passkeysSupported && global.Auth.passkeysSupported()) {
       var has = false;

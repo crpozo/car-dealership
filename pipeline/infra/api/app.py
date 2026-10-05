@@ -39,11 +39,35 @@ def claims_of(event):
     return (event.get("requestContext", {}).get("authorizer", {}).get("jwt", {}).get("claims", {})) or {}
 
 
-def is_admin(claims):
+def groups_of(claims):
     groups = claims.get("cognito:groups") or ""
     if isinstance(groups, list):
-        return "admin" in groups
-    return "admin" in [g.strip() for g in str(groups).strip("[]").split(",")]
+        return [str(g) for g in groups]
+    return [g.strip() for g in str(groups).strip("[]").split(",") if g.strip()]
+
+
+def is_admin(claims):
+    return "admin" in groups_of(claims)
+
+
+def role_of(claims):
+    g = groups_of(claims)
+    return "admin" if "admin" in g else ("staff" if "staff" in g else "client")
+
+
+ROLES = ("admin", "staff", "client")
+
+
+def set_role(username, role):
+    """Group membership is the role: admin > staff > (none = client)."""
+    for grp in ("admin", "staff"):
+        try:
+            if role == grp:
+                idp.admin_add_user_to_group(UserPoolId=POOL_ID, Username=username, GroupName=grp)
+            else:
+                idp.admin_remove_user_from_group(UserPoolId=POOL_ID, Username=username, GroupName=grp)
+        except ClientError:
+            pass
 
 
 def load_meta():
@@ -90,6 +114,7 @@ def get_data(claims):
             files.append({"storeId": sid, "url": presign("data/store/%s.json" % sid)})
     return reply(200, {
         "admin": admin,
+        "role": role_of(claims),
         "email": claims.get("email"),
         "name": claims.get("name"),
         "storeIds": ids,
@@ -102,7 +127,7 @@ def get_data(claims):
 def get_me(claims):
     meta = load_meta()
     ids, admin = allowed_store_ids(claims, meta)
-    return reply(200, {"email": claims.get("email"), "name": claims.get("name"), "admin": admin, "storeIds": ids})
+    return reply(200, {"email": claims.get("email"), "name": claims.get("name"), "admin": admin, "role": role_of(claims), "storeIds": ids})
 
 
 def user_view(u, groups=None):
@@ -115,6 +140,7 @@ def user_view(u, groups=None):
         "status": u.get("UserStatus"),
         "enabled": u.get("Enabled", True),
         "admin": "admin" in (groups or []),
+        "role": "admin" if "admin" in (groups or []) else ("staff" if "staff" in (groups or []) else "client"),
         "created": u.get("UserCreateDate"),
         "lastModified": u.get("UserLastModifiedDate"),
     }
@@ -156,14 +182,17 @@ def create_user(body):
     if not re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", email):
         return reply(400, {"error": "a valid email is required"})
     stores = [s.strip() for s in body.get("stores", []) if s and s.strip()]
-    admin = bool(body.get("admin"))
+    role = body.get("role") or ("admin" if body.get("admin") else "client")
+    if role not in ROLES:
+        return reply(400, {"error": "role must be admin, staff or client"})
+    admin = role == "admin"
     meta = load_meta()
     try:
         validate_stores(stores, meta)
     except ValueError as exc:
         return reply(400, {"error": str(exc)})
     if not admin and not stores:
-        return reply(400, {"error": "a customer needs at least one store or group"})
+        return reply(400, {"error": "a staff member or client needs at least one store or group"})
     attrs = [{"Name": "email", "Value": email}, {"Name": "email_verified", "Value": "true"},
              {"Name": "custom:stores", "Value": ",".join(stores)}]
     if body.get("name"):
@@ -177,9 +206,8 @@ def create_user(body):
             return reply(409, {"error": "that email already has a login"})
         return reply(400, {"error": exc.response["Error"].get("Message", code)})
     username = res["User"]["Username"]
-    if admin:
-        idp.admin_add_user_to_group(UserPoolId=POOL_ID, Username=username, GroupName="admin")
-    return reply(201, {"user": user_view(res["User"], ["admin"] if admin else [])})
+    set_role(username, role)
+    return reply(201, {"user": user_view(res["User"], [role] if role != "client" else [])})
 
 
 def update_user(username, body, caller):
@@ -195,16 +223,13 @@ def update_user(username, body, caller):
     if "name" in body:
         idp.admin_update_user_attributes(UserPoolId=POOL_ID, Username=username,
                                          UserAttributes=[{"Name": "name", "Value": str(body["name"] or "").strip()[:120]}])
-    if "admin" in body:
-        if not body["admin"] and username == caller:
+    role = body.get("role") if "role" in body else (("admin" if body["admin"] else "client") if "admin" in body else None)
+    if role is not None:
+        if role not in ROLES:
+            return reply(400, {"error": "role must be admin, staff or client"})
+        if role != "admin" and username == caller:
             return reply(400, {"error": "you cannot remove your own admin access"})
-        if body["admin"]:
-            idp.admin_add_user_to_group(UserPoolId=POOL_ID, Username=username, GroupName="admin")
-        else:
-            try:
-                idp.admin_remove_user_from_group(UserPoolId=POOL_ID, Username=username, GroupName="admin")
-            except ClientError:
-                pass
+        set_role(username, role)
     if "enabled" in body:
         if not body["enabled"] and username == caller:
             return reply(400, {"error": "you cannot disable yourself"})

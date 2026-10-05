@@ -168,7 +168,8 @@
           });
           if (!grant.admin) delete data.runs;   // the Logs page is for admins
           global.DASH_DATA = data;
-          global.DASH_USER = { email: grant.email, name: grant.name, admin: !!grant.admin, storeIds: grant.storeIds || [] };
+          var role = grant.role || (grant.admin ? "admin" : "client");
+          global.DASH_USER = { email: grant.email, name: grant.name, admin: !!grant.admin, role: role, staff: role === "staff" || role === "admin", storeIds: grant.storeIds || [] };
           state.user = global.DASH_USER;
           return data;
         });

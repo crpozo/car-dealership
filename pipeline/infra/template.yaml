@@ -110,6 +110,13 @@ Resources:
       Description: Sees every store and manages users
       UserPoolId: !Ref UserPool
 
+  StaffGroup:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties:
+      GroupName: staff
+      Description: "Coaches: assigned stores plus settings"
+      UserPoolId: !Ref UserPool
+
   Api:
     Type: AWS::Serverless::HttpApi
     Properties:
