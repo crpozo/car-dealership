@@ -1519,3 +1519,19 @@ tr.edit-row .user-form { border: 1px solid var(--line); border-radius: 16px; pad
 }
 .status-row > .pill { margin: 0 auto 0 0 !important; }
 .status-row > .status-meta { margin-left: auto !important; }
+
+
+/* sidebar accordions */
+.side-acc-row { display: flex; align-items: center; gap: 2px; }
+.side-acc-row .side-item { flex: 1; min-width: 0; }
+.side-chev { flex: none; width: 30px; height: 30px; border: 0; background: transparent; border-radius: 8px; cursor: pointer; display: grid; place-items: center; color: var(--nav-faint); }
+.side-chev:hover { background: var(--nav-hover); color: var(--nav-ink); }
+.side-chev .chev { width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); transition: transform .15s; }
+.side-acc.open > .side-acc-row .side-chev .chev, .side-label-acc.open .chev { transform: rotate(45deg); }
+.side-acc-body { margin: 2px 0 6px 14px; padding-left: 10px; border-left: 2px solid var(--line-soft); display: flex; flex-direction: column; gap: 2px; }
+.side-acc-body .side-item { padding: 7px 10px; font-size: 13.5px; }
+.side-acc-body .side-mono { width: 28px; height: 28px; font-size: 10px; }
+.side-label-acc { padding: 0; margin: 18px 0 6px; }
+.side-label-btn { display: flex; align-items: center; gap: 8px; width: 100%; font: inherit; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--nav-faint); padding: 6px 10px; height: auto; justify-content: flex-start; }
+.side-label-btn .side-count { margin-left: 0; font-size: 11px; letter-spacing: 0; }
+.side-label-btn .chev { margin-left: auto; }

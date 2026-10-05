@@ -177,35 +177,64 @@
     });
     var visible = {};
     stores.forEach(function (s) { visible[s.id] = 1; });
-    wrap.innerHTML = stores.map(function (s) {
+
+    function storeLink(s, base) {
       var on = route.name === "store" && route.id === s.id;
-      return '<a href="' + storeBase + encodeURIComponent(s.id) + '" class="side-item side-store' +
+      var b = Pages.storeStatusFor ? Pages.storeStatusFor(s.id, range).band : "none";
+      return '<a href="' + base + encodeURIComponent(s.id) + '" class="side-item side-store' +
         (on ? " on" : "") + '"' + (on ? ' aria-current="page"' : "") + ">" +
         '<span class="side-mono" aria-hidden="true">' + esc(Pages.monogramFor ? Pages.monogramFor(s.name) : "") + "</span>" +
         '<span class="side-store-name" title="' + esc(s.name) + '">' + esc(s.name) + "</span>" +
-        (function () { var b = Pages.storeStatusFor ? Pages.storeStatusFor(s.id, range).band : "none"; return b && b !== "none" ? '<span class="side-dot ' + b + '" title="' + (b === "bad" ? "Needs attention" : b === "warn" ? "Watch" : "On track") + '"></span>' : ""; }()) +
+        (b && b !== "none" ? '<span class="side-dot ' + b + '" title="' + (b === "bad" ? "Needs attention" : b === "warn" ? "Watch" : "On track") + '"></span>' : "") +
         "</a>";
-    }).join("");
+    }
+
+    // accordion state (per browser); a section containing the current page opens itself
+    function isOpen(key, dflt) {
+      try { var v = global.localStorage.getItem("icdash.side." + key); return v === null ? dflt : v === "1"; } catch (e) { return dflt; }
+    }
 
     var gwrap = document.getElementById("side-groups");
+    var grouped = {};
     if (gwrap && group) {
       gwrap.innerHTML = "";   // an owner sees only their own group — no cross-links
     } else if (gwrap) {
       // a group is only worth a link when at least two of its stores have data
       var gs = (Core.groups ? Core.groups() : []).map(function (g) {
-        var n = g.storeIds.filter(function (id) { return visible[id]; }).length;
-        return { g: g, n: n };
-      }).filter(function (e) { return e.n >= 2; });
+        var members = stores.filter(function (s) { return g.storeIds.indexOf(s.id) >= 0; });
+        return { g: g, members: members };
+      }).filter(function (e) { return e.members.length >= 2; });
+      gs.forEach(function (e) { e.members.forEach(function (s) { grouped[s.id] = 1; }); });
       gwrap.innerHTML = !gs.length ? "" :
         '<p class="side-label">Groups</p>' + gs.map(function (e) {
           var g = e.g;
           var gon = route.name === "group" && route.id === g.id;
-          return '<a href="#/group/' + encodeURIComponent(g.id) + '" class="side-item' +
-            (gon ? " on" : "") + '"' + (gon ? ' aria-current="page"' : "") + ">" +
+          var inside = route.name === "store" && e.members.some(function (s) { return s.id === route.id; });
+          var open = inside || gon || isOpen("g:" + g.id, false);
+          return '<div class="side-acc' + (open ? " open" : "") + '" data-acc="g:' + esc(g.id) + '">' +
+            '<div class="side-acc-row">' +
+            '<a href="#/group/' + encodeURIComponent(g.id) + '" class="side-item' + (gon ? " on" : "") + '"' + (gon ? ' aria-current="page"' : "") + ">" +
             '<span class="side-mono" aria-hidden="true">' + esc(Pages.monogramFor ? Pages.monogramFor(g.name) : "") + "</span>" +
-            '<span class="side-store-name">' + esc(g.name) + '</span><span class="side-count">' + e.n + "</span></a>";
+            '<span class="side-store-name">' + esc(g.name) + '</span><span class="side-count">' + e.members.length + "</span></a>" +
+            '<button type="button" class="side-chev" aria-expanded="' + (open ? "true" : "false") + '" aria-label="' + (open ? "Collapse" : "Expand") + " " + esc(g.name) + '"><span class="chev"></span></button>' +
+            "</div>" +
+            '<div class="side-acc-body"' + (open ? "" : " hidden") + ">" +
+            e.members.map(function (s) { return storeLink(s, "#/group/" + encodeURIComponent(g.id) + "/store/"); }).join("") +
+            "</div></div>";
         }).join("");
     }
+
+    // the Stores section lists what no group above already holds, and folds too
+    var loose = stores.filter(function (s) { return !grouped[s.id]; });
+    var storesOpen = isOpen("stores", true) || (route.name === "store" && loose.some(function (s) { return s.id === route.id; }));
+    var label = document.querySelector("#side-stores-label");
+    if (label) {
+      label.innerHTML = '<button type="button" class="side-label-btn side-chev" aria-expanded="' + (storesOpen ? "true" : "false") + '" data-acc="stores">' +
+        '<span>Stores</span><span class="side-count">' + loose.length + '</span><span class="chev"></span></button>';
+      label.classList.toggle("open", storesOpen);
+    }
+    wrap.hidden = !storesOpen;
+    wrap.innerHTML = loose.map(function (s) { return storeLink(s, storeBase); }).join("");
 
     var groupHome = group ? "#/group/" + encodeURIComponent(scope) : "#/overview";
     var brand = document.querySelector(".brand-link");
@@ -662,6 +691,27 @@
       sidebar.addEventListener("click", function (ev) {
         var link = ev.target.closest ? ev.target.closest("a.side-item, a.brand-link") : null;
         if (link) closeSettings();
+        var chev = ev.target.closest ? ev.target.closest(".side-chev") : null;
+        if (chev) {
+          ev.preventDefault();
+          var acc = chev.closest(".side-acc");
+          var key = acc ? acc.getAttribute("data-acc") : chev.getAttribute("data-acc");
+          var nowOpen;
+          if (acc) {
+            nowOpen = !acc.classList.contains("open");
+            acc.classList.toggle("open", nowOpen);
+            var body = acc.querySelector(".side-acc-body");
+            if (body) body.hidden = !nowOpen;
+          } else {
+            var list = document.getElementById("side-stores");
+            nowOpen = list ? list.hidden : true;
+            if (list) list.hidden = !nowOpen;
+            var lab = document.getElementById("side-stores-label");
+            if (lab) lab.classList.toggle("open", nowOpen);
+          }
+          chev.setAttribute("aria-expanded", nowOpen ? "true" : "false");
+          try { global.localStorage.setItem("icdash.side." + key, nowOpen ? "1" : "0"); } catch (e) { /* private */ }
+        }
       });
     }
 
