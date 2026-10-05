@@ -166,7 +166,7 @@ code { font-family: var(--mono); font-size: .9em; }
 .sidebar .side-label { color: var(--nav-faint); }
 .sidebar .side-foot { color: var(--nav-faint); }
 .sidebar .brand-name { color: var(--nav-ink); }
-.sidebar .brand-link:hover .brand-name { color: #FFFFFF; }
+.sidebar .brand-link:hover .brand-name { color: var(--brand-deep); }
 .sidebar .side-mono { background: var(--brand-tint); color: var(--brand-deep); }
 .side-mono {
   display: grid;
@@ -215,7 +215,7 @@ code { font-family: var(--mono); font-size: .9em; }
   text-decoration: none;
   color: inherit;
 }
-.brand-link:hover .brand-name { color: var(--muted); }
+.brand-link:hover .brand-name { color: var(--brand-deep); }
 
 .brand-mark {
   display: grid;
@@ -1374,3 +1374,6 @@ tr.edit-row .user-form { border: 1px solid var(--line); border-radius: 16px; pad
 .goal-field input { width: 92px; font: inherit; font-size: 15px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 10px; text-align: right; }
 .settings-actions { margin-top: 20px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 @media (max-width: 1100px) { .settings-grid { grid-template-columns: 1fr; } }
+
+.sidebar .brand-name, .sidebar .brand-link:hover .brand-name { color: var(--nav-ink); }
+.sidebar .brand-link:hover .brand-name { color: var(--brand-deep); }
