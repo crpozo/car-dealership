@@ -175,12 +175,114 @@
     });
   }
 
+  /* ----------------------------------------------------------- passkeys
+     Touch ID / Face ID / Windows Hello through WebAuthn. Cognito issues the
+     options, the browser's authenticator signs them, Cognito verifies. A
+     passkey is registered once per device after a normal sign-in. */
+  var LAST_EMAIL = "icdash.lastEmail";
+  function b64uToBuf(str) {
+    str = String(str).replace(/-/g, "+").replace(/_/g, "/");
+    while (str.length % 4) str += "=";
+    var bin = atob(str), out = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out.buffer;
+  }
+  function bufToB64u(buf) {
+    var bytes = new Uint8Array(buf), bin = "";
+    for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  }
+  function passkeysSupported() {
+    return !!(global.PublicKeyCredential && navigator.credentials && navigator.credentials.create);
+  }
+  function parseJsonMaybe(v) { return typeof v === "string" ? JSON.parse(v) : v; }
+
+  function toCreationOptions(o) {
+    o = parseJsonMaybe(o);
+    var pk = o.publicKey || o;
+    pk.challenge = b64uToBuf(pk.challenge);
+    pk.user.id = b64uToBuf(pk.user.id);
+    (pk.excludeCredentials || []).forEach(function (c) { c.id = b64uToBuf(c.id); });
+    return { publicKey: pk };
+  }
+  function toRequestOptions(o) {
+    o = parseJsonMaybe(o);
+    var pk = o.publicKey || o;
+    pk.challenge = b64uToBuf(pk.challenge);
+    (pk.allowCredentials || []).forEach(function (c) { c.id = b64uToBuf(c.id); });
+    return { publicKey: pk };
+  }
+  function credentialJson(cred) {
+    var r = cred.response, out = {
+      id: cred.id, rawId: bufToB64u(cred.rawId), type: cred.type,
+      authenticatorAttachment: cred.authenticatorAttachment || undefined,
+      clientExtensionResults: cred.getClientExtensionResults ? cred.getClientExtensionResults() : {},
+      response: { clientDataJSON: bufToB64u(r.clientDataJSON) }
+    };
+    if (r.attestationObject) {
+      out.response.attestationObject = bufToB64u(r.attestationObject);
+      if (r.getTransports) out.response.transports = r.getTransports();
+    }
+    if (r.authenticatorData) {
+      out.response.authenticatorData = bufToB64u(r.authenticatorData);
+      out.response.signature = bufToB64u(r.signature);
+      if (r.userHandle) out.response.userHandle = bufToB64u(r.userHandle);
+    }
+    return out;
+  }
+
+  /* Register this device's Touch ID / Face ID for the signed-in user. */
+  function registerPasskey() {
+    if (!passkeysSupported()) return Promise.reject(new Error("This browser does not support passkeys."));
+    return validToken().then(function () {
+      return idp("StartWebAuthnRegistration", { AccessToken: state.tokens.access });
+    }).then(function (res) {
+      return navigator.credentials.create(toCreationOptions(res.CredentialCreationOptions));
+    }).then(function (cred) {
+      return idp("CompleteWebAuthnRegistration", { AccessToken: state.tokens.access, Credential: credentialJson(cred) });
+    }).then(function () {
+      try { global.localStorage.setItem("icdash.passkey", "1"); } catch (e) { /* ignore */ }
+      return true;
+    });
+  }
+
+  function listPasskeys() {
+    return validToken().then(function () { return idp("ListWebAuthnCredentials", { AccessToken: state.tokens.access, MaxResults: 20 }); })
+      .then(function (res) { return res.Credentials || []; });
+  }
+
+  /* Sign in with a passkey: Cognito's USER_AUTH flow, WEB_AUTHN challenge. */
+  function signInWithPasskey(email) {
+    if (!passkeysSupported()) return Promise.reject(new Error("This browser does not support passkeys."));
+    return idp("InitiateAuth", {
+      AuthFlow: "USER_AUTH", ClientId: CFG.clientId,
+      AuthParameters: { USERNAME: email, PREFERRED_CHALLENGE: "WEB_AUTHN" }
+    }).then(function (res) {
+      if (res.ChallengeName !== "WEB_AUTHN") {
+        var e = new Error("No passkey is set up for this email on Cognito. Sign in with your password first, then enable Touch ID.");
+        e.code = "NoPasskey";
+        throw e;
+      }
+      var opts = toRequestOptions(res.ChallengeParameters.CREDENTIAL_REQUEST_OPTIONS);
+      return navigator.credentials.get(opts).then(function (cred) {
+        return idp("RespondToAuthChallenge", {
+          ChallengeName: "WEB_AUTHN", ClientId: CFG.clientId, Session: res.Session,
+          ChallengeResponses: { USERNAME: email, CREDENTIAL: JSON.stringify(credentialJson(cred)) }
+        });
+      });
+    }).then(function (res) {
+      acceptAuth(res.AuthenticationResult);
+      return { ok: true };
+    });
+  }
+
   /* ---------------------------------------------------------------- ui */
   var FORMS = {
     signin: '<h1>Internet Coaches Dashboard</h1><p class="lg-sub">Sign in with the email you were invited with.</p>' +
       '<label>Email<input type="email" name="email" autocomplete="username" required autofocus></label>' +
       '<label>Password<input type="password" name="password" autocomplete="current-password" required></label>' +
       '<button type="submit" class="lg-btn">Sign in</button>' +
+      '<button type="button" class="lg-btn lg-alt" data-passkey hidden>Sign in with Touch ID / Face ID</button>' +
       '<button type="button" class="lg-link" data-go="forgot">Forgot your password?</button>',
     newPassword: '<h1>Choose a new password</h1><p class="lg-sub">Your temporary password worked. Pick the one you will use from now on (10+ characters, upper and lower case, a number).</p>' +
       '<label>New password<input type="password" name="password" autocomplete="new-password" required minlength="10" autofocus></label>' +
@@ -209,7 +311,11 @@
     form.setAttribute("data-mode", mode);
     form.innerHTML = FORMS[mode] + '<p class="lg-msg" role="alert"></p>';
     if (message) setMsg(message.text, message.kind);
-    if (prefillEmail) { var em = form.querySelector('[name=email]'); if (em) em.value = prefillEmail; }
+    var remembered = null;
+    try { remembered = global.localStorage.getItem(LAST_EMAIL); } catch (e) { remembered = null; }
+    if (prefillEmail || remembered) { var em = form.querySelector('[name=email]'); if (em && !em.value) em.value = prefillEmail || remembered; }
+    var pkBtn = form.querySelector("[data-passkey]");
+    if (pkBtn && passkeysSupported()) pkBtn.hidden = false;
     var first = form.querySelector("[autofocus]");
     if (first) setTimeout(function () { first.focus(); }, 0);
   }
@@ -249,6 +355,18 @@
     form.addEventListener("click", function (ev) {
       var go = ev.target.getAttribute && ev.target.getAttribute("data-go");
       if (go) showLogin(go);
+      if (ev.target.hasAttribute && ev.target.hasAttribute("data-passkey")) {
+        var email = (form.elements.email.value || "").trim().toLowerCase();
+        if (!email) { setMsg("Type your email first, then use Touch ID.", "bad"); form.elements.email.focus(); return; }
+        setMsg("");
+        ev.target.disabled = true;
+        signInWithPasskey(email).then(function () {
+          try { global.localStorage.setItem(LAST_EMAIL, email); } catch (e) { /* ignore */ }
+          return afterSignIn();
+        }).catch(function (err) {
+          setMsg(err && err.name === "NotAllowedError" ? "Touch ID was cancelled." : friendly(err), "bad");
+        }).then(function () { ev.target.disabled = false; });
+      }
     });
     form.addEventListener("submit", function (ev) {
       ev.preventDefault();
@@ -260,6 +378,7 @@
       if (mode === "signin") {
         var email = f.email.value.trim().toLowerCase();
         p = signIn(email, f.password.value).then(function (r) {
+          try { global.localStorage.setItem(LAST_EMAIL, email); } catch (e) { /* ignore */ }
           if (r.challenge === "newPassword") { showLogin("newPassword"); return null; }
           return afterSignIn();
         });
@@ -304,7 +423,10 @@
     });
   }
 
-  global.Auth = { start: start, signOut: signOut, api: api, reload: loadData, user: function () { return state.user; }, config: CFG };
+  global.Auth = {
+    start: start, signOut: signOut, api: api, reload: loadData, user: function () { return state.user; }, config: CFG,
+    passkeysSupported: passkeysSupported, registerPasskey: registerPasskey, listPasskeys: listPasskeys
+  };
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
   else start();

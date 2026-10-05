@@ -1072,12 +1072,15 @@ body.locked { overflow: hidden; }
 .login-form input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
 .lg-btn { width: 100%; font: inherit; font-weight: 700; font-size: 15px; padding: 11px 14px; border: 0; border-radius: 10px; background: var(--ink); color: var(--card); cursor: pointer; margin-top: 4px; }
 .lg-btn[disabled] { opacity: .6; cursor: default; }
+.lg-btn.lg-alt { background: var(--card); color: var(--ink); border: 1px solid var(--line); margin-top: 10px; }
+.lg-btn.lg-alt:hover { background: var(--line-soft); }
 .lg-link { display: block; margin: 12px auto 0; font: inherit; font-size: 13px; color: var(--muted); background: none; border: 0; cursor: pointer; text-decoration: underline; }
 .lg-msg { min-height: 1.2em; margin: 10px 0 0; font-size: 13px; color: var(--muted); }
 .lg-msg.bad { color: var(--bad); }
 .lg-msg.good { color: var(--good); }
 
 .side-user { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+.side-user-actions { display: flex; flex-wrap: wrap; gap: 6px; }
 .side-user-mail { font-size: 12px; color: var(--nav-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .side-signout { align-self: flex-start; font: inherit; font-size: 12px; font-weight: 600; color: var(--nav-ink); background: var(--nav-hover); border: 0; border-radius: 8px; padding: 5px 10px; cursor: pointer; }
 .side-signout:hover { background: var(--nav-on); }

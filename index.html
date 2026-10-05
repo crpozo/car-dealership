@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=248b311f49">
+<link rel="stylesheet" href="assets/styles.css?v=74303ca53e">
 </head>
 <body>
 
@@ -47,7 +47,10 @@
   <div class="side-foot">
     <div class="side-user" id="side-user" hidden>
       <span class="side-user-mail" id="side-user-mail"></span>
-      <button type="button" class="side-signout" id="side-signout">Sign out</button>
+      <div class="side-user-actions">
+        <button type="button" class="side-signout" id="side-passkey" hidden title="Sign in on this device with Touch ID / Face ID next time">Enable Touch ID</button>
+        <button type="button" class="side-signout" id="side-signout">Sign out</button>
+      </div>
     </div>
     <span id="foot-generated"></span>
   </div>
@@ -137,9 +140,9 @@
   </div>
 </div>
 
-<script src="assets/core.js?v=248b311f49"></script>
-<script src="assets/pages.js?v=248b311f49"></script>
-<script src="assets/app.js?v=248b311f49"></script>
-<script src="assets/auth.js?v=248b311f49"></script>
+<script src="assets/core.js?v=74303ca53e"></script>
+<script src="assets/pages.js?v=74303ca53e"></script>
+<script src="assets/app.js?v=74303ca53e"></script>
+<script src="assets/auth.js?v=74303ca53e"></script>
 </body>
 </html>

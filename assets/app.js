@@ -533,6 +533,24 @@
     if (mail && u) mail.textContent = u.name || u.email || "";
     var adminOnly = document.querySelectorAll("[data-admin-only]");
     for (var i = 0; i < adminOnly.length; i++) adminOnly[i].hidden = !(u && u.admin);
+    var pk = document.getElementById("side-passkey");
+    if (pk && u && global.Auth && global.Auth.passkeysSupported && global.Auth.passkeysSupported()) {
+      var has = false;
+      try { has = global.localStorage.getItem("icdash.passkey") === "1"; } catch (e) { has = false; }
+      pk.hidden = has;
+      if (!pk.getAttribute("data-wired")) {
+        pk.setAttribute("data-wired", "1");
+        pk.addEventListener("click", function () {
+          pk.disabled = true; pk.textContent = "Follow the prompt\u2026";
+          global.Auth.registerPasskey().then(function () {
+            pk.textContent = "Touch ID enabled"; setTimeout(function () { pk.hidden = true; }, 1500);
+          }).catch(function (err) {
+            pk.disabled = false; pk.textContent = "Enable Touch ID";
+            global.alert(err && err.name === "NotAllowedError" ? "Touch ID setup was cancelled." : (err.message || "Could not enable Touch ID."));
+          });
+        });
+      }
+    }
     var out = document.getElementById("side-signout");
     if (out && !out.getAttribute("data-wired")) {
       out.setAttribute("data-wired", "1");
