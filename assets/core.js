@@ -885,6 +885,8 @@
     { id: 'today', label: 'Today' },
     { id: 'yesterday', label: 'Yesterday' },
     { id: 'week', label: 'This week' },
+    { id: 'last7', label: 'Last 7 days' },
+    { id: 'lastweek', label: 'Last week' },
     { id: 'month', label: 'This month (MTD)' },
     { id: 'lastmonth', label: 'Last month' },
     { id: 'year', label: 'This year' },
@@ -895,6 +897,8 @@
     today: 'today', day: 'today',
     yesterday: 'yesterday', prevday: 'yesterday',
     week: 'week', thisweek: 'week', wtd: 'week', weektodate: 'week',
+    last7: 'last7', last7days: 'last7', sevendays: 'last7', rolling7: 'last7',
+    lastweek: 'lastweek', previousweek: 'lastweek', prevweek: 'lastweek',
     month: 'month', thismonth: 'month', mtd: 'month', thismonthmtd: 'month', monthtodate: 'month', currentmonth: 'month',
     lastmonth: 'lastmonth', previousmonth: 'lastmonth', priormonth: 'lastmonth', prevmonth: 'lastmonth',
     year: 'year', thisyear: 'year', ytd: 'year', yeartodate: 'year',
@@ -956,6 +960,17 @@
         label: 'Same period last year'
       };
     }
+    // Week-shaped presets compare with the window just before them: the same
+    // weekdays, so a Sunday is never measured against a Tuesday.
+    if (tfId === 'week' || tfId === 'last7' || tfId === 'lastweek') {
+      var span = dayNum(end) - dayNum(start) + 1;
+      var shift = tfId === 'week' ? 7 : span;
+      return {
+        start: addDays(start, -shift),
+        end: addDays(end, -shift),
+        label: tfId === 'week' ? 'Same days last week' : 'Previous ' + span + ' days'
+      };
+    }
     var cs = addMonths(start, -1);
     var ce;
     if (isLastDayOfMonth(end) &&
@@ -1008,6 +1023,8 @@
         case 'today':     start = anchor; end = anchor; break;
         case 'yesterday': start = addDays(anchor, -1); end = start; break;
         case 'week':      start = startOfWeek(anchor); end = anchor; break;
+        case 'last7':     start = addDays(anchor, -6); end = anchor; break;
+        case 'lastweek':  end = addDays(startOfWeek(anchor), -1); start = addDays(end, -6); break;
         case 'lastmonth': var lm = addMonths(monthStart(anchor), -1);
                           start = monthStart(lm); end = monthEnd(lm); break;
         case 'year':      start = iso(mkDate(parseDate(anchor).getUTCFullYear(), 0, 1)); end = anchor; break;
