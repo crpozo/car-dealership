@@ -158,12 +158,13 @@
           data.groups = (meta.groups || []).map(function (g) {
             return { id: g.id, name: g.name, storeIds: (g.storeIds || []).filter(function (id) { return allowed[id]; }) };
           }).filter(function (g) { return g.storeIds.length; });
-          data.snapshots = []; data.matador = []; data.covideo = []; data.repGoals = []; data.coverage = {};
+          data.snapshots = []; data.matador = []; data.covideo = []; data.repGoals = []; data.sources = []; data.coverage = {};
           parts.slice(1).forEach(function (sf) {
             data.snapshots = data.snapshots.concat(sf.snapshots || []);
             data.matador = data.matador.concat(sf.matador || []);
             data.covideo = data.covideo.concat(sf.covideo || []);
             data.repGoals = data.repGoals.concat(sf.repGoals || []);
+            data.sources = data.sources.concat(sf.sources || []);
             if (sf.coverage) data.coverage[sf.storeId] = sf.coverage;
           });
           if (!grant.admin) delete data.runs;   // the Logs page is for admins

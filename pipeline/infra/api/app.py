@@ -124,6 +124,30 @@ def get_data(claims):
     })
 
 
+SOURCE_KEY = re.compile(r"^sources/([a-z0-9][a-z0-9-]{0,80})/([^/]{1,200})$")
+
+
+def get_file(claims, event):
+    """A short-lived link to one original report file (sources/<store>/<file>),
+    only for a store the caller may read. Lets an admin open the exact document
+    the dashboard parsed, to check the numbers against the system of record."""
+    key = (event.get("queryStringParameters") or {}).get("key", "")
+    m = SOURCE_KEY.match(key)
+    if not m:
+        return reply(400, {"error": "bad key"})
+    ids, _ = allowed_store_ids(claims, load_meta())
+    if m.group(1) not in ids:
+        return reply(403, {"error": "not your store"})
+    name = m.group(2)
+    disposition = "inline" if name.lower().endswith(".pdf") else "attachment"
+    url = s3.generate_presigned_url(
+        "get_object",
+        Params={"Bucket": BUCKET, "Key": key,
+                "ResponseContentDisposition": '%s; filename="%s"' % (disposition, name.split("-", 1)[-1] if re.match(r"^[0-9a-f]{15,16}-", name) else name)},
+        ExpiresIn=LINK_TTL)
+    return reply(200, {"url": url, "file": name})
+
+
 def get_me(claims):
     meta = load_meta()
     ids, admin = allowed_store_ids(claims, meta)
@@ -272,6 +296,8 @@ def handler(event, context):
         return get_data(claims)
     if path == "/me" and method == "GET":
         return get_me(claims)
+    if path == "/file" and method == "GET":
+        return get_file(claims, event)
 
     # everything below is user management: admins only
     if not is_admin(claims):

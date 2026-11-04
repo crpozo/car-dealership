@@ -1015,6 +1015,68 @@
     }).join("") + "</nav>";
   }
 
+  /* "Which document is this number coming from?" One row per feed of the store:
+     when the newest file arrived, what range it covers, and a button that opens
+     the original through the API (admins and staff). A feed whose newest file is
+     older than 3 days, or whose range is not the current month, is flagged. */
+  function sourcesPanel(storeId) {
+    var rows = (DATA().sources || []).filter(function (r) { return r.storeId === storeId; });
+    if (!rows.length) return "";
+    var today = (DATA().generatedAt || new Date().toISOString().slice(0, 10)).slice(0, 10);
+    var thisMonth = today.slice(0, 7);
+    var canOpen = !!(global.Auth && global.Auth.api);
+    var order = { kpi: 0, sales: 1, matador: 2, covideo: 3 };
+    rows.sort(function (a, b) {
+      return (order[a.kind] - order[b.kind]) || String(a.period || "").localeCompare(String(b.period || ""));
+    });
+    var body = rows.map(function (r) {
+      var recDay = String(r.received || "").slice(0, 10);
+      var ageDays = recDay ? Math.round((Date.parse(today) - Date.parse(recDay)) / 864e5) : null;
+      var range = r.begin && r.end ? r.begin + " \u2192 " + r.end : (r.dateRange || "\u2014");
+      var flag = "", why = "";
+      if (ageDays !== null && ageDays >= 3) { flag = "stale"; why = "Newest file is " + ageDays + " days old"; }
+      else if (r.period === "current" && r.begin && r.begin.slice(0, 7) !== thisMonth) {
+        flag = "wrong range"; why = "A Current Month report should start on " + thisMonth + "-01; this one is a fixed custom range";
+      } else if (r.period === "prior" && r.begin && r.begin.slice(0, 7) === thisMonth) {
+        flag = "wrong range"; why = "A Previous Month report is covering the current month";
+      }
+      var open = r.key
+        ? '<button type="button" class="btn btn-sm" ' + (canOpen ? 'onclick="Pages.openSource(this)" data-key="' + esc(r.key) + '"' : 'disabled title="Sign in to open the original file"') + ">Open file</button>"
+        : '<span class="muted">not published</span>';
+      return "<tr>" +
+        '<td class="name"><b>' + esc(r.system) + "</b><br><span class=\"muted\">" + esc(r.label) + "</span></td>" +
+        '<td class="num" title="When the newest file reached the reports inbox">' + esc(r.received || "\u2014") + "</td>" +
+        '<td class="num" title="Date range inside the report">' + esc(range) + "</td>" +
+        '<td class="num">' + esc(r.runDate || "\u2014") + "</td>" +
+        "<td>" + (flag ? '<span class="delta down" title="' + esc(why) + '">' + esc(flag) + "</span>" : '<span class="delta up">ok</span>') + "</td>" +
+        '<td class="src-file"><span class="mono" title="' + esc(r.file || "") + '">' + esc((r.file || "").replace(/^[0-9a-f]{15,16}-/, "")) + "</span></td>" +
+        '<td class="num">' + open + "</td></tr>";
+    }).join("");
+    var header = "<thead><tr><th>Source</th><th class=\"num\">Received</th><th class=\"num\">Report range</th>" +
+      '<th class="num">Run date</th><th>Status</th><th>File</th><th></th></tr></thead>';
+    return '<details class="panel sources-panel" open><summary><b>Data sources</b> <span class="muted">' +
+      esc(rows.length) + " feeds \u00b7 newest file per feed, with the original document</span></summary>" +
+      tableWrap(header + "<tbody>" + body + "</tbody>", "sources-tbl") +
+      '<p class="roster-note">"Received" is when the file hit the inbox; "Report range" is what the file says it covers. A Current Month feed that does not start on the 1st of this month was scheduled with a fixed custom range.</p>' +
+      "</details>";
+  }
+
+  function openSource(btn) {
+    var key = btn.getAttribute("data-key");
+    if (!key || !global.Auth) return;
+    btn.disabled = true;
+    var old = btn.textContent;
+    btn.textContent = "Opening\u2026";
+    // open the tab synchronously (popup blockers), then point it at the link
+    var w = global.open("", "_blank");
+    global.Auth.api("/file?key=" + encodeURIComponent(key)).then(function (res) {
+      if (w) w.location = res.url; else global.location = res.url;
+    }).catch(function (err) {
+      if (w) w.close();
+      global.alert(err.message || "Could not open the file.");
+    }).then(function () { btn.disabled = false; btn.textContent = old; });
+  }
+
   /* Shared chrome for every store page: breadcrumbs, title, meta, tabs. */
   function storeShell(storeId, range, active, body) {
     var store = storeById(storeId);
@@ -1040,6 +1102,7 @@
       meta +
       storeTabs(store.id, active) +
       coverageBanner(range, [store.id]) +
+      (active === "performance" ? sourcesPanel(store.id) : "") +
       body(store, sm) +
       "</section>";
   }
@@ -2761,6 +2824,7 @@
 
   global.Pages = {
     logs: logsPage,
+    openSource: openSource,
     toggleRows: toggleRows,
     toggleStatus: toggleStatus,
     admin: adminPage,

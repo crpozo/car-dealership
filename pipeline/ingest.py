@@ -865,7 +865,7 @@ def parse_dc_pdf(path):
     for bi, (row_label, vals) in enumerate(blocks):
         per_section.setdefault(labels[bi // 3], {})[row_label] = vals
 
-    def build(row_label, period, begin, end):
+    def build(row_label, period, begin, end, date_range=None):
         by_lt = []
         for sec, rows in per_section.items():
             if sec == store_name:
@@ -883,7 +883,7 @@ def parse_dc_pdf(path):
             "dealers": [store_name],
             "kind": "kpi",
             "period": period,
-            "dateRange": "Current Month" if period == "current" else "Previous Month MTD",
+            "dateRange": date_range or ("Current Month" if period == "current" else "Previous Month MTD"),
             "begin": begin.isoformat(),
             "end": end.isoformat(),
             "runDate": run.isoformat(),
@@ -898,10 +898,18 @@ def parse_dc_pdf(path):
 
     prev_last = date(run.year, run.month, 1) - timedelta(days=1)
     prior_end = date(prev_last.year, prev_last.month, min(run.day, prev_last.day))
-    return [
+    out = [
         build("This Month", "current", date(run.year, run.month, 1), run),
         build("Previous MTD", "prior", date(prev_last.year, prev_last.month, 1), prior_end),
     ]
+    # "Last Month" is the whole previous month as DriveCentric sees it today.
+    # Deliveries get posted days after the sale, so the report run on the last
+    # morning of a month undercounts it (Bay Ridge Oct 2026: 284 on the Oct 31
+    # run, 313 by Nov 4). This row, dated the month's last day, supersedes the
+    # last-morning snapshot in the dashboard and keeps the closed month honest.
+    if prior_end != prev_last:
+        out.append(build("Last Month", "prior", date(prev_last.year, prev_last.month, 1), prev_last, "Last Month"))
+    return out
 
 
 # Covideo's own "Vern Eide Honda Sioux City" is one of the two dealers the KPI
@@ -916,6 +924,9 @@ def gmail_order(path):
     if m:
         return int(m.group(1), 16)
     return int(os.path.getmtime(path) * 1000)
+
+
+COVIDEO_SOURCE = {}     # storeId -> newest Covideo CSV that fed it (for the Data sources panel)
 
 
 def parse_covideo(paths, log):
@@ -944,6 +955,7 @@ def parse_covideo(paths, log):
                 by_co.setdefault(co, []).append(r)
         for co in by_co:            # later (newer) files overwrite earlier ones
             per_company[co] = by_co[co]
+            COVIDEO_SOURCE[COVIDEO_STORE_OVERRIDES.get(slug(co), slug(co))] = path
 
     def num(row, key):
         try:
@@ -1043,8 +1055,12 @@ def main(argv):
     kept = sorted(best.values(), key=lambda s: (s["storeId"], s["kind"], s["period"], s["runDate"] or ""))
 
     matador = []
+    matador_src = {}
     for path in select_matador_files(csv_paths, log):
-        matador.extend(parse_matador(path, log))
+        rows = parse_matador(path, log)
+        for r in rows:
+            matador_src[r["storeId"]] = path
+        matador.extend(rows)
     # drop activity belonging to an excluded store rather than leaving it orphaned
     matador = [m for m in matador if m["storeId"] not in EXCLUDE_STORES]
 
@@ -1088,8 +1104,11 @@ def main(argv):
             groups.setdefault(gid, {"id": gid, "name": gname, "storeIds": []})
             groups[gid]["storeIds"].append(sid)
 
+    sources = build_sources(kept, xlsx_paths + pdf_paths, matador_src, COVIDEO_SOURCE)
+
     data = {
         "generatedAt": datetime.now().strftime("%Y-%m-%d"),
+        "sources": sources,
         "stores": stores,
         "groups": sorted(groups.values(), key=lambda g: g["name"]),
         "snapshots": kept,
@@ -1153,6 +1172,60 @@ def main(argv):
 
 RUNS = os.path.join(HERE, "runs.jsonl")
 RUNS_KEPT = 180        # ~3 months of twice-daily refreshes
+
+
+def received_at(path):
+    """When the file reached the inbox: the Gmail id encodes the message time;
+    hand-copied files fall back to their modification time."""
+    m = re.match(r"^([0-9a-f]{15,16})-", os.path.basename(path))
+    ts = (int(m.group(1), 16) >> 20) / 1000.0 if m else os.path.getmtime(path)
+    return datetime.fromtimestamp(ts).strftime("%Y-%m-%d %H:%M")
+
+
+SOURCE_LABELS = {
+    ("kpi", "current"): "KPI report, Current Month",
+    ("kpi", "prior"): "KPI report, Previous Month",
+    ("kpi", "last"): "KPI report, Last Month (closed)",
+    ("sales", "current"): "Salesperson report, Current Month",
+    ("sales", "prior"): "Salesperson report, Previous Month",
+}
+
+
+def build_sources(kept, report_paths, matador_src, covideo_src):
+    """The newest file behind every feed of every store, so an admin can check
+    "is the dashboard reading the right document?" without opening a terminal.
+    build.py --publish copies these files to S3 and the API hands out links."""
+    by_name = {os.path.basename(p): p for p in report_paths}
+    newest = {}
+    for snap in kept:
+        key = (snap["storeId"], snap["kind"], snap["period"])
+        path = by_name.get(snap.get("source") or "")
+        if not path:
+            continue
+        rank = (snap.get("runDate") or "", gmail_order(path))
+        if key not in newest or rank > newest[key][0]:
+            newest[key] = (rank, snap, path)
+    out = []
+    for (sid, kind, period), (_, snap, path) in sorted(newest.items()):
+        out.append({
+            "storeId": sid,
+            "system": snap.get("crm", "VinSolutions"),
+            "label": SOURCE_LABELS.get((kind, period), "%s %s" % (kind, period)),
+            "kind": kind, "period": period,
+            "file": os.path.basename(path), "path": path,
+            "received": received_at(path),
+            "runDate": snap.get("runDate"), "begin": snap.get("begin"), "end": snap.get("end"),
+            "dateRange": snap.get("dateRange"),
+        })
+    for sid, path in sorted(matador_src.items()):
+        out.append({"storeId": sid, "system": "Matador", "label": "Users export (CSV)", "kind": "matador", "period": None,
+                    "file": os.path.basename(path), "path": path, "received": received_at(path),
+                    "runDate": None, "begin": None, "end": None, "dateRange": "Month to date at export"})
+    for sid, path in sorted(covideo_src.items()):
+        out.append({"storeId": sid, "system": "Covideo", "label": "MTD usage report (CSV)", "kind": "covideo", "period": None,
+                    "file": os.path.basename(path), "path": path, "received": received_at(path),
+                    "runDate": None, "begin": None, "end": None, "dateRange": "Month to date at export"})
+    return out
 
 
 def write_run_log(data, xlsx, pdfs, mat_csv, other_csv, parsed, kept, dupes,

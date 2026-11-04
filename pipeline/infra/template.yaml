@@ -176,6 +176,12 @@ Resources:
             ApiId: !Ref Api
             Path: /me
             Method: GET
+        File:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref Api
+            Path: /file
+            Method: GET
         ListUsers:
           Type: HttpApi
           Properties:

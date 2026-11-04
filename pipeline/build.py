@@ -39,6 +39,8 @@ if os.path.exists(RUNS):
             except ValueError:
                 pass
 data["runs"] = list(reversed(runs))[:60]
+for _src in data.get("sources", []):
+    _src.pop("path", None)
 payload = json.dumps(data, separators=(",", ":")).replace("</", "<\\/")
 
 os.makedirs(ASSETS, exist_ok=True)
@@ -77,13 +79,13 @@ import gzip
 import sys
 
 DATA_BUCKET = os.environ.get("DASH_DATA_BUCKET", "scott-dashboard-data-160184161302")
-STORE_LISTS = ("snapshots", "matador", "covideo", "repGoals")
+STORE_LISTS = ("snapshots", "matador", "covideo", "repGoals", "sources")
 
 
 def split_by_store(d):
     per = {}
     for s in d.get("stores", []):
-        per[s["id"]] = {"storeId": s["id"], "snapshots": [], "matador": [], "covideo": [], "repGoals": [],
+        per[s["id"]] = {"storeId": s["id"], "snapshots": [], "matador": [], "covideo": [], "repGoals": [], "sources": [],
                         "coverage": (d.get("coverage") or {}).get(s["id"])}
     for key in STORE_LISTS:
         for row in d.get(key, []):
@@ -91,7 +93,7 @@ def split_by_store(d):
             if sid in per:
                 per[sid][key].append(row)
             elif sid:                                   # a store with rows but no store record
-                per.setdefault(sid, {"storeId": sid, "snapshots": [], "matador": [], "covideo": [], "repGoals": [], "coverage": None})
+                per.setdefault(sid, {"storeId": sid, "snapshots": [], "matador": [], "covideo": [], "repGoals": [], "sources": [], "coverage": None})
                 per[sid][key].append(row)
     meta = {k: v for k, v in d.items() if k not in STORE_LISTS and k != "coverage"}
     meta["storeFiles"] = sorted(per.keys())
@@ -114,6 +116,22 @@ def publish(d):
         with open(os.path.join(stage, rel), "wb") as fh:
             fh.write(raw)
         return len(raw)
+
+    # the original report files behind each feed: one copy per store/feed under
+    # sources/<store>/, synced with --delete so only the newest of each remains
+    src_stage = os.path.join(stage, "sources")
+    for sid, obj in per.items():
+        for src in obj.get("sources", []):
+            local = src.pop("path", None)
+            if not local or not os.path.exists(local) or not re.match(r"^[a-z0-9][a-z0-9-]{0,80}$", sid):
+                continue
+            key = "sources/%s/%s" % (sid, os.path.basename(local))
+            os.makedirs(os.path.join(src_stage, sid), exist_ok=True)
+            shutil.copyfile(local, os.path.join(src_stage, sid, os.path.basename(local)))
+            src["key"] = key
+    if os.path.isdir(src_stage):
+        # no --delete: the runner role has no s3:DeleteObject; superseded files just stay
+        subprocess.run(["aws", "s3", "sync", src_stage, "s3://%s/sources/" % DATA_BUCKET, "--only-show-errors"], check=True)
 
     total = 0
     for sid, obj in per.items():
