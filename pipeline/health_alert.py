@@ -48,9 +48,13 @@ def main(argv):
 
     out = []
     if new_stale:
-        out.append("STORES NOT UPDATING (no report in the last 3 days):")
+        out.append("STORES NOT UPDATING (no Current Month KPI report in the last 3 days):")
         for s in sorted(new_stale, key=lambda x: x["name"]):
-            out.append("  - %s: newest report %s (%d days old)" % (s["name"], s["through"], s["days"]))
+            out.append("  - %s: newest Current Month report %s (%d days old)" % (s["name"], s["through"], s["days"]))
+        out.append("")
+        out.append("  If other reports for the store still arrive daily, the scheduled 'Current")
+        out.append("  Month' report was probably re-saved with a fixed custom date range in")
+        out.append("  VinSolutions. Set its Date Range back to 'Month to Date'.")
         out.append("")
     if new_files:
         by_reason = Counter(r["reason"] for r in new_files)

@@ -1063,6 +1063,8 @@ def main(argv):
         store_crm[snap["storeId"]] = snap.get("crm", "VinSolutions")
         cov = coverage[snap["storeId"]]
         cov["runDates"].add(snap["runDate"])
+        if snap["kind"] == "kpi" and snap["period"] == "current":
+            cov["currentRuns"] = cov.get("currentRuns", set()) | {snap["runDate"]}
         if snap["begin"]:
             cov["months"].add(snap["begin"][:7])
         cov["kinds"].add(snap["kind"])
@@ -1099,6 +1101,10 @@ def main(argv):
             sid: {
                 "firstRun": min(c["runDates"]) if c["runDates"] else None,
                 "lastRun": max(c["runDates"]) if c["runDates"] else None,
+                # newest Current Month KPI report: what the store card actually shows.
+                # A misconfigured schedule keeps sending "previous month" files daily,
+                # so lastRun alone never goes stale (Lunde's, Oct 2026).
+                "lastCurrent": max(c["currentRuns"]) if c.get("currentRuns") else None,
                 "runDates": sorted(c["runDates"]),
                 "months": sorted(c["months"]),
                 "kinds": sorted(c["kinds"]),
@@ -1178,7 +1184,9 @@ def write_run_log(data, xlsx, pdfs, mat_csv, other_csv, parsed, kept, dupes,
     before = (prev or {}).get("snapshots", {}).get("total", 0)
     stores = []
     for sid, cov in sorted(data["coverage"].items()):
-        stores.append({"id": sid, "name": data_store_name(data, sid), "through": cov.get("lastRun")})
+        stores.append({"id": sid, "name": data_store_name(data, sid),
+                       "through": cov.get("lastCurrent") or cov.get("lastRun"),
+                       "lastAny": cov.get("lastRun")})
 
     now = datetime.now()
     today = now.date()
