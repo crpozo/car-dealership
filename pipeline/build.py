@@ -39,9 +39,10 @@ if os.path.exists(RUNS):
             except ValueError:
                 pass
 data["runs"] = list(reversed(runs))[:60]
-for _src in data.get("sources", []):
-    _src.pop("path", None)
-payload = json.dumps(data, separators=(",", ":")).replace("</", "<\\/")
+# the dev bundle must never carry local file paths (publish() below needs them)
+_dev = dict(data)
+_dev["sources"] = [{k: v for k, v in r.items() if k != "path"} for r in data.get("sources", [])]
+payload = json.dumps(_dev, separators=(",", ":")).replace("</", "<\\/")
 
 os.makedirs(ASSETS, exist_ok=True)
 with open(OUT, "w") as fh:
