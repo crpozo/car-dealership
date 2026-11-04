@@ -2652,16 +2652,16 @@
         var rejected = (run.skipped || []).filter(function (sk) { return !isBenign(sk); });
         if (!stale.length && !rejected.length) {
           return '<div class="banner ok-banner" role="status"><strong>All sources healthy.</strong>' +
-            " Every store reported within the last 3 days and every file parsed on the newest run (" +
+            " Every store sent a Current Month KPI report within the last 3 days and every file parsed on the newest run (" +
             esc(run.at || "?") + ").</div>";
         }
         var html = '<div class="banner warn-banner" role="status"><strong>Needs attention</strong>' +
           " \u2014 newest run " + esc(run.at || "?");
         if (stale.length) {
-          html += "<p>Stores with no report in the last 3 days:</p><ul>" + stale.map(function (st) {
-            return "<li>" + esc(st.name || st.id) + " \u2014 newest report " + esc(st.through || "?") +
+          html += "<p>Stores with no Current Month KPI report in the last 3 days:</p><ul>" + stale.map(function (st) {
+            return "<li>" + esc(st.name || st.id) + " \u2014 newest Current Month report " + esc(st.through || "?") +
               " (" + esc(fmtN(st.days)) + " days old)</li>";
-          }).join("") + "</ul>";
+          }).join("") + "</ul><p>If the store's other reports still arrive, its scheduled Current Month report was probably re-saved with a fixed custom date range. Set the Date Range back to Month to Date in VinSolutions.</p>";
         }
         if (rejected.length) {
           var byReason = {};
@@ -2713,7 +2713,7 @@
           td(num(run.covideoRows, ""), "", "Rows in the Covideo usage exports") +
           td(esc(fmtN(fresh)) + '<span class="muted"> / ' + esc(fmtN(total)) + "</span>",
              fresh === total ? "good" : fresh ? "warn" : "bad",
-             "Stores whose newest report is dated the day this run happened") +
+             "Stores whose Current Month KPI report is dated the day this run happened") +
           td((problems ? '<span class="delta down">' + esc(fmtN(problems)) + "</span>" : num(0, "")) +
              (empties ? '<span class="muted"> +' + esc(fmtN(empties)) + " empty</span>" : ""),
              "", (problems ? problems + " file(s) rejected by the parser" : "Every file parsed") +
@@ -2725,9 +2725,10 @@
           return '<tr class="inv-row" data-path="' + esc(path + "/s:" + st.id) + '" data-parent="' +
             esc(path) + '" hidden>' +
             '<td class="name depth-1">' + esc(st.name || st.id) + "</td>" +
-            '<td class="num" colspan="6">' + esc(st.through || "\u2014") + "</td>" +
+            '<td class="num" colspan="6">' + esc(st.through || "\u2014") +
+            (st.lastAny && st.lastAny !== st.through ? '<span class="muted"> (other reports through ' + esc(st.lastAny) + ")</span>" : "") + "</td>" +
             td(stale ? '<span class="delta down">stale</span>' : '<span class="delta up">ok</span>', "",
-               stale ? "No report dated the day of this run" : "Reported on the day of this run") +
+               stale ? "No Current Month KPI report dated the day of this run" : "Current Month report dated the day of this run") +
             "</tr>";
         }).join("");
 
@@ -2748,12 +2749,12 @@
         '<th class="num" title="Report snapshots this run added">New snapshots</th>' +
         '<th class="num">Matador rows</th>' +
         '<th class="num">Covideo rows</th>' +
-        '<th class="num" title="Stores that reported on the day of the run">Stores up to date</th>' +
+        '<th class="num" title="Stores whose Current Month KPI report is dated the day of the run">Stores up to date</th>' +
         '<th class="num">Problems</th></tr></thead>';
 
       return '<section class="page" id="page-logs">' + head + healthBanner(runs[0]) +
         tableWrap(header + "<tbody>" + rows + "</tbody>", "logs-tbl") +
-        '<p class="roster-note">Each row expands to every store with the date of its newest report, plus any file the pipeline could not use.</p>' +
+        '<p class="roster-note">Each row expands to every store with the date of its newest Current Month KPI report, plus any file the pipeline could not use.</p>' +
         "</section>";
     });
   }
