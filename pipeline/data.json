@@ -1706777,6 +1706777,7 @@
   "armstrong-subaru": {
    "firstRun": "2026-07-02",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-11-04",
    "runDates": [
     "2026-07-02",
     "2026-07-03",
@@ -1706911,6 +1706912,7 @@
   "armstrong-volkswagen": {
    "firstRun": "2026-07-28",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-11-04",
    "runDates": [
     "2026-07-28",
     "2026-07-29",
@@ -1707021,6 +1707023,7 @@
   "bay-ridge-honda": {
    "firstRun": "2026-08-29",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-11-04",
    "runDates": [
     "2026-08-29",
     "2026-08-30",
@@ -1707106,6 +1707109,7 @@
   "garavel-cjdr": {
    "firstRun": "2026-08-29",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-11-04",
    "runDates": [
     "2026-08-29",
     "2026-08-30",
@@ -1707189,6 +1707193,7 @@
   "garavel-subaru": {
    "firstRun": "2026-08-29",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-11-04",
    "runDates": [
     "2026-08-29",
     "2026-08-30",
@@ -1707273,6 +1707278,7 @@
   "gresham-chrysler-dodge-jeep-ram": {
    "firstRun": "2026-07-28",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-11-04",
    "runDates": [
     "2026-07-28",
     "2026-07-29",
@@ -1707384,6 +1707390,7 @@
   "honda-of-el-cajon": {
    "firstRun": "2026-08-29",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-11-04",
    "runDates": [
     "2026-08-29",
     "2026-08-30",
@@ -1707468,6 +1707475,7 @@
   "lindsay-acura": {
    "firstRun": "2026-09-25",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-10-31",
    "runDates": [
     "2026-09-25",
     "2026-10-01",
@@ -1707519,6 +1707527,7 @@
   "lindsay-buick-gmc": {
    "firstRun": "2026-09-25",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-11-03",
    "runDates": [
     "2026-09-25",
     "2026-10-01",
@@ -1707572,6 +1707581,7 @@
   "lindsay-honda": {
    "firstRun": "2026-09-25",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-10-27",
    "runDates": [
     "2026-09-25",
     "2026-10-01",
@@ -1707624,6 +1707634,7 @@
   "lunde-s-peoria-volkswagen": {
    "firstRun": "2026-07-28",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-10-21",
    "runDates": [
     "2026-07-28",
     "2026-07-29",
@@ -1707735,6 +1707746,7 @@
   "scholfield-honda": {
    "firstRun": "2026-07-28",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-11-04",
    "runDates": [
     "2026-07-28",
     "2026-07-29",
@@ -1707846,6 +1707858,7 @@
   "sommer-s-automotive": {
    "firstRun": "2026-07-28",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-11-04",
    "runDates": [
     "2026-07-28",
     "2026-07-29",
@@ -1707957,6 +1707970,7 @@
   "toyota-of-el-cajon": {
    "firstRun": "2026-09-19",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-11-04",
    "runDates": [
     "2026-09-19",
     "2026-09-20",
@@ -1708020,6 +1708034,7 @@
   "vern-eide-acura": {
    "firstRun": "2026-07-28",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-11-04",
    "runDates": [
     "2026-07-28",
     "2026-07-29",
@@ -1708131,6 +1708146,7 @@
   "vern-eide-honda": {
    "firstRun": "2026-06-22",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-11-04",
    "runDates": [
     "2026-06-22",
     "2026-07-28",
@@ -1708244,6 +1708260,7 @@
   "vern-eide-mitsubishi": {
    "firstRun": "2026-07-28",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-11-04",
    "runDates": [
     "2026-07-28",
     "2026-07-29",
@@ -1708355,6 +1708372,7 @@
   "vern-eide-sioux-city-combined": {
    "firstRun": "2026-07-28",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-11-04",
    "runDates": [
     "2026-07-28",
     "2026-07-29",
@@ -1708465,6 +1708483,7 @@
   "volvo-cars-bend": {
    "firstRun": "2026-07-28",
    "lastRun": "2026-11-04",
+   "lastCurrent": "2026-11-04",
    "runDates": [
     "2026-07-28",
     "2026-07-29",
