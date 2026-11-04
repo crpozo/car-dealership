@@ -724,6 +724,8 @@ th.prior { color: var(--muted); }
 .banner p { margin: 6px 0 0; color: var(--muted); }
 .warn-banner { border-color: var(--warn); background: var(--warn-bg); color: var(--warn); }
 .warn-banner strong { color: var(--warn); }
+.ok-banner { border-color: var(--good); color: var(--good); }
+.ok-banner strong { color: var(--good); }
 .warn-banner p { color: inherit; opacity: .85; }
 
 .footnotes {

@@ -1180,8 +1180,21 @@ def write_run_log(data, xlsx, pdfs, mat_csv, other_csv, parsed, kept, dupes,
     for sid, cov in sorted(data["coverage"].items()):
         stores.append({"id": sid, "name": data_store_name(data, sid), "through": cov.get("lastRun")})
 
+    now = datetime.now()
+    today = now.date()
+    stale = []
+    for st in stores:
+        try:
+            through = datetime.strptime(st["through"], "%Y-%m-%d").date()
+        except Exception:
+            continue
+        days = (today - through).days
+        if days >= STALE_DAYS:
+            stale.append({"id": st["id"], "name": st["name"], "through": st["through"], "days": days})
+    rejected = [{"file": f, "reason": r} for f, r in skipped if not benign_skip(r)]
+
     entry = {
-        "at": datetime.now().strftime("%Y-%m-%d %H:%M"),
+        "at": now.strftime("%Y-%m-%d %H:%M"),
         "gmail": pull,
         "files": {"workbooks": len(xlsx), "pdfs": len(pdfs),
                   "matadorCsv": len(mat_csv), "otherCsv": len(other_csv)},
@@ -1190,11 +1203,29 @@ def write_run_log(data, xlsx, pdfs, mat_csv, other_csv, parsed, kept, dupes,
         "matadorRows": len(matador),
         "covideoRows": len(covideo),
         "stores": stores,
-        "skipped": [{"file": f, "reason": r} for f, r in skipped],
+        "skipped": [{"file": f, "reason": r, "benign": benign_skip(r)} for f, r in skipped],
+        "health": {"stale": stale, "rejected": len(rejected)},
     }
     lines.append(json.dumps(entry, separators=(",", ":")))
     with open(RUNS, "w") as fh:
         fh.write("\n".join(lines[-RUNS_KEPT:]) + "\n")
+
+    # machine-readable summary for the runner's alert step (health_alert.py)
+    with open(HEALTH, "w") as fh:
+        json.dump({"at": entry["at"], "stale": stale, "rejected": rejected,
+                   "newSnapshots": entry["snapshots"]["new"]}, fh, indent=1)
+
+
+STALE_DAYS = 3          # a store with no report dated within the last 3 days
+HEALTH = os.path.join(HERE, ".health.json")
+
+# Exports that arrive empty (a day with no activity, or a report scheduled
+# before the store's data exists) are rejected on purpose and are not a fault.
+BENIGN_SKIPS = ("had no usable rows", "no usable user rows")
+
+
+def benign_skip(reason):
+    return any(b in reason for b in BENIGN_SKIPS)
 
 
 def data_store_name(data, sid):

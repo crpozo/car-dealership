@@ -2636,6 +2636,45 @@
 
       function dayOf(at) { return String(at || "").slice(0, 10); }
 
+      /* runs logged before Nov 2026 carry no "benign" flag: apply the same rule */
+      function isBenign(sk) {
+        if (typeof sk.benign === "boolean") return sk.benign;
+        var r = String(sk.reason || "");
+        return r.indexOf("had no usable rows") >= 0 || r.indexOf("no usable user rows") >= 0;
+      }
+
+      /* Health of the newest run, up front: a store that stopped updating or
+         files the parser keeps rejecting are the two things that hid the
+         October DriveCentric outage for 18 days. Empty exports don't count. */
+      function healthBanner(run) {
+        var h = run.health || {};
+        var stale = h.stale || [];
+        var rejected = (run.skipped || []).filter(function (sk) { return !isBenign(sk); });
+        if (!stale.length && !rejected.length) {
+          return '<div class="banner ok-banner" role="status"><strong>All sources healthy.</strong>' +
+            " Every store reported within the last 3 days and every file parsed on the newest run (" +
+            esc(run.at || "?") + ").</div>";
+        }
+        var html = '<div class="banner warn-banner" role="status"><strong>Needs attention</strong>' +
+          " \u2014 newest run " + esc(run.at || "?");
+        if (stale.length) {
+          html += "<p>Stores with no report in the last 3 days:</p><ul>" + stale.map(function (st) {
+            return "<li>" + esc(st.name || st.id) + " \u2014 newest report " + esc(st.through || "?") +
+              " (" + esc(fmtN(st.days)) + " days old)</li>";
+          }).join("") + "</ul>";
+        }
+        if (rejected.length) {
+          var byReason = {};
+          rejected.forEach(function (sk) { byReason[sk.reason] = (byReason[sk.reason] || 0) + 1; });
+          html += "<p>Files the parser rejected (" + esc(fmtN(rejected.length)) + "):</p><ul>" +
+            Object.keys(byReason).sort(function (a, b) { return byReason[b] - byReason[a]; }).map(function (r) {
+              return "<li>" + esc(fmtN(byReason[r])) + " \u00d7 " + esc(r) + "</li>";
+            }).join("") + "</ul>";
+        }
+        html += "<p>Most likely a report changed format or a scheduled email stopped. Expand the run below for the files and stores involved.</p></div>";
+        return html;
+      }
+
       /* stores whose newest report is the day the run happened */
       function freshCount(run) {
         var d = dayOf(run.at), n = 0;
@@ -2649,7 +2688,9 @@
         var sn = run.snapshots || {};
         var fresh = freshCount(run);
         var total = (run.stores || []).length;
-        var problems = (run.skipped || []).length;
+        var skipped = run.skipped || [];
+        var problems = skipped.filter(function (sk) { return !isBenign(sk); }).length;
+        var empties = skipped.length - problems;
         var path = "run:" + i;
         var kids = (run.stores || []).slice().sort(function (a, b) {
           return (a.through || "") < (b.through || "") ? 1 : -1;
@@ -2673,8 +2714,10 @@
           td(esc(fmtN(fresh)) + '<span class="muted"> / ' + esc(fmtN(total)) + "</span>",
              fresh === total ? "good" : fresh ? "warn" : "bad",
              "Stores whose newest report is dated the day this run happened") +
-          td(problems ? '<span class="delta down">' + esc(fmtN(problems)) + "</span>" : num(0, ""),
-             "", problems ? "Files the pipeline could not use" : "Every file parsed") +
+          td((problems ? '<span class="delta down">' + esc(fmtN(problems)) + "</span>" : num(0, "")) +
+             (empties ? '<span class="muted"> +' + esc(fmtN(empties)) + " empty</span>" : ""),
+             "", (problems ? problems + " file(s) rejected by the parser" : "Every file parsed") +
+             (empties ? " \u00b7 " + empties + " empty export(s), expected on days with no data" : "")) +
           "</tr>";
 
         var detail = kids.map(function (st) {
@@ -2691,7 +2734,9 @@
         detail += (run.skipped || []).map(function (sk) {
           return '<tr class="inv-row" data-path="' + esc(path + "/x") + '" data-parent="' + esc(path) + '" hidden>' +
             '<td class="name depth-1">' + esc(sk.file) + "</td>" +
-            '<td colspan="7" class="note-cell">' + esc(sk.reason) + "</td></tr>";
+            '<td colspan="7" class="note-cell">' +
+            (isBenign(sk) ? '<span class="muted">empty export</span> \u00b7 ' : '<span class="delta down">rejected</span> \u00b7 ') +
+            esc(sk.reason) + "</td></tr>";
         }).join("");
 
         return main + detail;
@@ -2706,7 +2751,7 @@
         '<th class="num" title="Stores that reported on the day of the run">Stores up to date</th>' +
         '<th class="num">Problems</th></tr></thead>';
 
-      return '<section class="page" id="page-logs">' + head +
+      return '<section class="page" id="page-logs">' + head + healthBanner(runs[0]) +
         tableWrap(header + "<tbody>" + rows + "</tbody>", "logs-tbl") +
         '<p class="roster-note">Each row expands to every store with the date of its newest report, plus any file the pipeline could not use.</p>' +
         "</section>";
