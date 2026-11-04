@@ -639,12 +639,14 @@ def dc_value(s):
 # file's header run is tokenised into these names, longest match first.
 DC_COLUMNS = ["netleads", "engagement%", "apptdue", "appcreated", "apptscreated%",
               "apptshow", "apptshow%", "apptsold", "apptsold%", "totaldelivered", "deliveredclosing%"]
+# Oct 2026: some stores' templates add New Leads / Used Leads next to Net Leads.
+DC_OPTIONAL = ["newleads", "usedleads"]
 
 
 def dc_columns(header_lines):
     blob = re.sub(r"[^a-z%]", "", "".join(header_lines).lower())
     cols, pos = [], 0
-    by_len = sorted(DC_COLUMNS, key=len, reverse=True)
+    by_len = sorted(DC_COLUMNS + DC_OPTIONAL, key=len, reverse=True)
     while pos < len(blob):
         for name in by_len:
             if blob.startswith(name, pos):
@@ -653,9 +655,23 @@ def dc_columns(header_lines):
                 break
         else:
             raise ValueError("unrecognised PDF column header near %r" % blob[pos:pos + 20])
-    if sorted(cols) != sorted(DC_COLUMNS):
+    if sorted(c for c in cols if c in DC_COLUMNS) != sorted(DC_COLUMNS) or len(cols) != len(set(cols)):
         raise ValueError("PDF columns %s do not match the known set" % cols)
     return cols
+
+
+def dc_inventory(vals, cols):
+    """New / Used lead counts when the template carries them (lead counts only;
+    the other columns are not broken down by inventory in this report)."""
+    v = dict(zip(cols, vals))
+    out = []
+    for key, label in (("newleads", "New"), ("usedleads", "Used")):
+        if key in v and v[key] is not None:
+            out.append({"inventoryType": label, "key": label.lower(),
+                        "metrics": {"goodLeads": int(v[key]), "sold": None, "apptsShown": None, "contactPct": None,
+                                    "apptSetOfContactedPct": None, "apptSetPct": None, "contacted": None, "apptsSet": None},
+                        "byMake": []})
+    return out
 
 
 def dc_metrics(vals, cols):
@@ -782,7 +798,11 @@ def parse_dc_pdf(path):
 
     doc = fitz.open(path)
     try:
-        lines = [ln.strip() for ln in doc[0].get_text().splitlines() if ln.strip()]
+        # a store with many sections spills onto a second page (the last rows
+        # and a repeated section header), so read every page in order
+        lines = []
+        for page in doc:
+            lines.extend(ln.strip() for ln in page.get_text().splitlines() if ln.strip())
     finally:
         doc.close()
 
@@ -794,23 +814,51 @@ def parse_dc_pdf(path):
     if lines and lines[0].startswith("Activity Report - Users"):
         return parse_dc_users(lines, path, run)
 
-    # data blocks: each row label is followed by its 11 values
-    blocks, i = [], 0
-    while i < len(lines):
-        if lines[i] in DC_ROW_LABELS:
-            vals = [dc_value(v) for v in lines[i + 1:i + 12]]
-            blocks.append((lines[i], vals))
-            i += 12
-        else:
-            i += 1
-    # section labels: the line right before each "Net Leads" header
+    # section labels: the line right before each "Net Leads" header, and this
+    # file's column order from the first section's header run
     heads = [j for j in range(1, len(lines)) if lines[j] == "Net Leads"]
-    labels = [lines[j - 1] for j in heads]
-
-    if len(blocks) != 3 * len(labels) or not labels:
-        raise ValueError("unrecognised PDF layout (%d blocks, %d labels)" % (len(blocks), len(labels)))
-    # this file's column order, read from the first section's header run
+    labels = []
+    for j in heads:                      # a page break repeats the section header
+        if lines[j - 1] not in labels:
+            labels.append(lines[j - 1])
+    if not labels:
+        raise ValueError("unrecognised PDF layout (no section headers)")
     cols = dc_columns(lines[heads[0]:(heads[1] - 1 if len(heads) > 1 else len(lines))])
+    ncol = len(cols)
+
+    # data rows: every run of numeric lines before the header block, cut into
+    # rows of ncol values. Rows arrive in order (This Month, Previous MTD, Last
+    # Month per section) and a row label can go missing at a page break, so the
+    # labels are assigned by position rather than read from the text.
+    numeric = re.compile(r"^[-\d.,%]+$|^[\u2014\u2013-]$")
+
+    def read_blocks(greedy):
+        """Each row label is followed by its ncol values. With greedy=True a
+        label may also own the next row when its own label was lost at a page
+        break (the values then run on without a label in between)."""
+        out, i, limit = [], 0, len(lines)   # row labels never occur inside the header text
+        while i < limit:
+            if lines[i] in DC_ROW_LABELS:
+                vals = [dc_value(v) for v in lines[i + 1:i + 1 + ncol]]
+                out.append((lines[i], vals))
+                i += 1 + ncol
+                if greedy:
+                    start = DC_ROW_LABELS.index(out[-1][0])
+                    k = 1
+                    while i + ncol <= limit and all(numeric.match(x) for x in lines[i:i + ncol]) \
+                            and (i + ncol >= limit or not numeric.match(lines[i + ncol])):
+                        out.append((DC_ROW_LABELS[(start + k) % 3], [dc_value(v) for v in lines[i:i + ncol]]))
+                        i += ncol
+                        k += 1
+            else:
+                i += 1
+        return out
+
+    blocks = read_blocks(False)
+    if len(blocks) != 3 * len(labels):
+        blocks = read_blocks(True)
+    if len(blocks) != 3 * len(labels):
+        raise ValueError("unrecognised PDF layout (%d blocks, %d labels)" % (len(blocks), len(labels)))
 
     store_name = labels[0]
     per_section = {}          # label -> {rowLabel: vals}
@@ -823,7 +871,8 @@ def parse_dc_pdf(path):
             if sec == store_name:
                 continue
             lt = DC_LEAD_TYPES.get(sec, sec)
-            by_lt.append({"leadType": lt, "metrics": dc_metrics(rows[row_label], cols), "byInventory": []})
+            by_lt.append({"leadType": lt, "metrics": dc_metrics(rows[row_label], cols),
+                          "byInventory": dc_inventory(rows[row_label], cols)})
         total = dc_metrics(per_section[store_name][row_label], cols)
         check = sum((n["metrics"]["goodLeads"] for n in by_lt))
         if check != total["goodLeads"]:
