@@ -1137,8 +1137,10 @@
         "— MTD vs same period last month");
 
       if (!hasData(sm)) {
+        // no numbers to show is exactly when the reader wants to see which
+        // files arrived, so the sources panel stays
         return '<section class="page" id="page-store">' + head +
-          emptyState("No data for this range", noCoverageReason(range)) + "</section>";
+          emptyState("No data for this range", noCoverageReason(range)) + sourcesPanel(store.id) + "</section>";
       }
 
       var cmpInfo = comparison(store.id, range);
