@@ -22440,6 +22440,136 @@
     "Armstrong Subaru"
    ],
    "kind": "kpi",
+   "period": "current",
+   "dateRange": "Current Month",
+   "begin": "2026-11-01",
+   "end": "2026-11-30",
+   "runDate": "2026-11-04",
+   "source": "1a1a759c0571023c-Report-4854.xlsx",
+   "rowCount": 8,
+   "total": {
+    "goodLeads": 16,
+    "sold": 3,
+    "apptsShown": 4,
+    "contactPct": 0.125,
+    "apptSetOfContactedPct": 1,
+    "apptSetPct": 0.125,
+    "contacted": 2,
+    "apptsSet": 1,
+    "contactScope": "internet"
+   },
+   "byLeadType": [
+    {
+     "leadType": "Phone",
+     "metrics": {
+      "goodLeads": 0,
+      "sold": 2,
+      "apptsShown": 1,
+      "contactPct": 0,
+      "apptSetOfContactedPct": 0,
+      "apptSetPct": 0,
+      "contacted": 0,
+      "apptsSet": 0
+     },
+     "byInventory": [
+      {
+       "inventoryType": "New",
+       "metrics": {
+        "goodLeads": 0,
+        "sold": 1,
+        "apptsShown": 1,
+        "contactPct": 0,
+        "apptSetOfContactedPct": 1,
+        "apptSetPct": 1,
+        "contacted": 0,
+        "apptsSet": 0
+       },
+       "byMake": []
+      },
+      {
+       "inventoryType": "Unknown",
+       "metrics": {
+        "goodLeads": 0,
+        "sold": 0,
+        "apptsShown": 0,
+        "contactPct": 0,
+        "apptSetOfContactedPct": 0,
+        "apptSetPct": 0,
+        "contacted": 0,
+        "apptsSet": 0
+       },
+       "byMake": []
+      },
+      {
+       "inventoryType": "Used",
+       "metrics": {
+        "goodLeads": 0,
+        "sold": 1,
+        "apptsShown": 0,
+        "contactPct": 0,
+        "apptSetOfContactedPct": 0,
+        "apptSetPct": 0,
+        "contacted": 0,
+        "apptsSet": 0
+       },
+       "byMake": []
+      }
+     ]
+    },
+    {
+     "leadType": "Internet",
+     "metrics": {
+      "goodLeads": 16,
+      "sold": 1,
+      "apptsShown": 3,
+      "contactPct": 0.125,
+      "apptSetOfContactedPct": 0.5,
+      "apptSetPct": 0.0625,
+      "contacted": 2,
+      "apptsSet": 1
+     },
+     "byInventory": [
+      {
+       "inventoryType": "New",
+       "metrics": {
+        "goodLeads": 13,
+        "sold": 0,
+        "apptsShown": 1,
+        "contactPct": 0.0769,
+        "apptSetOfContactedPct": 0,
+        "apptSetPct": 0,
+        "contacted": 1,
+        "apptsSet": 0
+       },
+       "byMake": []
+      },
+      {
+       "inventoryType": "Used",
+       "metrics": {
+        "goodLeads": 3,
+        "sold": 1,
+        "apptsShown": 2,
+        "contactPct": 0.3333,
+        "apptSetOfContactedPct": 1,
+        "apptSetPct": 0.3333,
+        "contacted": 1,
+        "apptsSet": 1
+       },
+       "byMake": []
+      }
+     ]
+    }
+   ],
+   "reps": null,
+   "repTotals": null
+  },
+  {
+   "storeId": "armstrong-subaru",
+   "storeName": "Armstrong Subaru",
+   "dealers": [
+    "Armstrong Subaru"
+   ],
+   "kind": "kpi",
    "period": "prior",
    "dateRange": "Previous Month MTD",
    "begin": "2026-06-01",
@@ -1708445,10 +1708575,10 @@
   }
  },
  "ingest": {
-  "workbooksFound": 5615,
-  "parsed": 6087,
-  "unique": 4635,
-  "duplicatesDropped": 1452,
+  "workbooksFound": 5617,
+  "parsed": 6089,
+  "unique": 4636,
+  "duplicatesDropped": 1453,
   "skipped": [
    {
     "file": "1a05d874a377adc1-Report-9700.xlsx",
