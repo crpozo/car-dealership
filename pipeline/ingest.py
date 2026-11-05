@@ -24,7 +24,7 @@ import shutil
 import sys
 import zipfile
 from collections import defaultdict
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 
 import openpyxl
 
@@ -202,6 +202,7 @@ def extract_mbox(path, log):
 def discover(src_dirs, log):
     """Walk the sources and return (xlsx_paths, matador_csv_paths, other_csv_paths, pdf_paths)."""
     xlsx, csvs, other_csvs, pdfs, goals, mboxes, zips = [], [], [], [], [], [], []
+    momentum = []
 
     def walk(roots):
         for root in roots:
@@ -228,6 +229,8 @@ def discover(src_dirs, log):
             goals.append(path)        # per-rep goals + teams, hand-maintained
         elif low.endswith(".csv") and "matador" in base.lower():
             csvs.append(path)
+        elif low.endswith(".csv") and "salesperson stats" in base.lower():
+            momentum.append(path)     # Momentum (Vinart Group) daily MTD salesperson CSVs
         elif low.endswith(".csv"):
             other_csvs.append(path)   # sniffed later — Covideo names everything report.csv
         elif low.endswith(".pdf"):
@@ -238,7 +241,7 @@ def discover(src_dirs, log):
         walk(unpack_zips(zips, log))
     for mb in mboxes:
         xlsx.extend(extract_mbox(mb, log))
-    return xlsx, csvs, other_csvs, pdfs, goals
+    return xlsx, csvs, other_csvs, pdfs, goals, momentum
 
 
 # --------------------------------------------------------------------------- #
@@ -918,6 +921,139 @@ def parse_dc_pdf(path):
 COVIDEO_STORE_OVERRIDES = {"vern-eide-honda-sioux-city": "vern-eide-sioux-city-combined"}
 
 
+# --------------------------------------------------------------------------- #
+# Momentum (Vinart Group): "Salesperson Stats MTD" CSV, scheduled daily per store
+# --------------------------------------------------------------------------- #
+
+# Every Momentum store schedules the same report from its own sender domain, so
+# pull.py tags the file with that domain; the file itself never names the store.
+MOMENTUM_STORES = {
+    "vinartcars.com": "Lehigh Valley Honda",
+    "lvhyundai.vinartautos.com": "Lehigh Valley Hyundai",
+    "acura.vinartautos.com": "Lehigh Valley Acura",
+    "drive.mbporschelehighvalley.com": "MB Porsche of Lehigh Valley",
+}
+MOMENTUM_NAME = re.compile(r"^[0-9a-f]{15,16}-\[(?P<dom>[a-z0-9.-]+)\] (?P<name>.*)_(?P<ms>\d{13})\.csv$", re.IGNORECASE)
+MOMENTUM_COLS = {"Name", "Prospects", "Internet Prospects", "Internet Sales", "Total Sales",
+                 "Outbound Calls", "Outbound Emails", "Outbound Texts", "Outbound Videos",
+                 "Appts Created", "Show Appts"}
+
+
+def momentum_identity(path):
+    """-> (store_name, is_combined, run_date) from the tagged file name, or raises."""
+    m = MOMENTUM_NAME.match(os.path.basename(path))
+    if not m:
+        raise ValueError("Momentum: file is not tagged with its sender domain (re-pull with the current pull.py)")
+    store = MOMENTUM_STORES.get(m.group("dom").lower())
+    if not store:
+        raise ValueError("Momentum: unknown sender domain %s" % m.group("dom"))
+    # the epoch is the local run time; UTC-4/5 keeps the calendar day for US East
+    run = datetime.fromtimestamp(int(m.group("ms")) / 1000, timezone(timedelta(hours=-5))).date()
+    return store, "combined" in m.group("name").lower(), run
+
+
+def parse_momentum(path):
+    """-> [kpi snapshot, sales snapshot] for one Momentum salesperson-stats CSV.
+    The report is cumulative month-to-date and run daily; the run date is the
+    epoch-ms suffix Momentum puts in the file name."""
+    store, combined, run = momentum_identity(path)
+    if combined:
+        raise ValueError("Momentum: combined report covers several stores, use the per-store schedule")
+    with open(path, newline="", encoding="utf-8-sig") as fh:
+        rows = list(csv.DictReader(fh))
+    cols = set(rows[0].keys()) if rows else set()
+    if not MOMENTUM_COLS <= cols:
+        raise ValueError("Momentum: unexpected columns %s" % sorted(cols - MOMENTUM_COLS)[:5])
+
+    def n(row, key):
+        v = (row.get(key) or "").strip().replace(",", "").replace("%", "")
+        try:
+            return int(float(v)) if v else 0
+        except ValueError:
+            return 0
+
+    def rep_from(row):
+        return {
+            "name": (row.get("Name") or "").strip(),
+            "group": (row.get("Team") or "").strip() or None,
+            "goodLeads": n(row, "Internet Prospects"),
+            "sold": n(row, "Total Sales"),
+            "apptsScheduled": n(row, "Appts Created"),
+            "apptsShown": n(row, "Show Appts"),
+            "shownPct": None,
+            "calls": n(row, "Outbound Calls"),
+            "emails": n(row, "Outbound Emails"),
+            "texts": n(row, "Outbound Texts"),
+            "videos": n(row, "Outbound Videos"),
+        }
+
+    reps, totals = [], None
+    for row in rows:
+        name = (row.get("Name") or "").strip()
+        if not name:
+            continue
+        if name.lower().startswith("total"):
+            totals = rep_from(row)
+            totals["name"] = "TOTAL"
+        elif not HOUSE_ACCOUNT.search(name):
+            reps.append(rep_from(row))
+    if not reps:
+        raise ValueError("Momentum report had no usable rows")
+    if totals is None:
+        totals = rep_from({})
+        totals["name"] = "TOTAL"
+        for k in ("goodLeads", "sold", "apptsScheduled", "apptsShown", "calls", "emails", "texts", "videos"):
+            totals[k] = sum(r[k] or 0 for r in reps)
+
+    begin = run.replace(day=1)
+    common = {
+        "storeId": slug(store), "storeName": store, "dealers": [store],
+        "period": "current", "dateRange": "Month to Date",
+        "begin": begin.isoformat(), "end": run.isoformat(), "runDate": run.isoformat(),
+        "source": os.path.basename(path), "crm": "Momentum",
+    }
+    kpi = dict(common, kind="kpi", rowCount=1, byLeadType=[], total={
+        "goodLeads": totals["goodLeads"], "sold": totals["sold"],
+        "apptsShown": totals["apptsShown"], "apptsSet": totals["apptsScheduled"],
+        "contacted": 0, "contactPct": 0, "apptSetOfContactedPct": 0, "apptSetPct": None,
+    })
+    sales = dict(common, kind="sales", window=False, rowCount=len(reps) + 1,
+                 reps=reps, repTotals=totals, total=None, byLeadType=[])
+    return [kpi, sales]
+
+
+def parse_momentum_files(paths):
+    """-> [(path, snapshots | reason)]. Guard: when several store senders deliver a
+    byte-identical file on the same day, the schedules all point at one saved
+    report and the file says nothing about any single store, so nothing is loaded."""
+    import hashlib
+    by_day = defaultdict(lambda: defaultdict(set))   # run date -> md5 -> {store}
+    ident = {}
+    for path in paths:
+        try:
+            store, combined, run = momentum_identity(path)
+        except ValueError:
+            continue
+        if combined:
+            continue
+        with open(path, "rb") as fh:
+            digest = hashlib.md5(fh.read()).hexdigest()
+        ident[path] = (run, digest)
+        by_day[run][digest].add(store)
+    out = []
+    for path in sorted(paths):
+        run_digest = ident.get(path)
+        if run_digest and len(by_day[run_digest[0]][run_digest[1]]) > 1:
+            out.append((path, "Momentum: identical report sent by %d stores, schedules point at the same saved report"
+                        % len(by_day[run_digest[0]][run_digest[1]])))
+            continue
+        try:
+            out.append((path, parse_momentum(path)))
+        except Exception as exc:  # noqa: BLE001
+            out.append((path, str(exc)))
+    return out
+
+
 def gmail_order(path):
     # gmail-pull files are named <gmailMsgIdHex>-<name>; the id's high bits are
     # the message's internal timestamp, so the hex value orders by arrival.
@@ -1010,7 +1146,7 @@ def main(argv):
     log = []
     os.makedirs(CACHE, exist_ok=True)
 
-    xlsx_paths, csv_paths, other_csv_paths, pdf_paths, goal_paths = discover(src_dirs, log)
+    xlsx_paths, csv_paths, other_csv_paths, pdf_paths, goal_paths, momentum_paths = discover(src_dirs, log)
     print("sources: %s" % ", ".join(src_dirs))
     for line in log:
         print("  %s" % line)
@@ -1036,6 +1172,16 @@ def main(argv):
             skipped.append((os.path.basename(path), str(exc)))
             continue
         for snap in pdf_snaps:
+            if snap["storeId"] in EXCLUDE_STORES:
+                excluded[snap["storeName"]] += 1
+                continue
+            snapshots.append(snap)
+
+    for path, snaps_or_err in parse_momentum_files(momentum_paths):
+        if isinstance(snaps_or_err, str):
+            skipped.append((os.path.basename(path), snaps_or_err))
+            continue
+        for snap in snaps_or_err:
             if snap["storeId"] in EXCLUDE_STORES:
                 excluded[snap["storeName"]] += 1
                 continue
@@ -1105,7 +1251,7 @@ def main(argv):
             groups.setdefault(gid, {"id": gid, "name": gname, "storeIds": []})
             groups[gid]["storeIds"].append(sid)
 
-    sources = build_sources(kept, xlsx_paths + pdf_paths, matador_src, COVIDEO_SOURCE)
+    sources = build_sources(kept, xlsx_paths + pdf_paths + momentum_paths, matador_src, COVIDEO_SOURCE)
 
     data = {
         "generatedAt": datetime.now().strftime("%Y-%m-%d"),
@@ -1274,6 +1420,14 @@ def write_run_log(data, xlsx, pdfs, mat_csv, other_csv, parsed, kept, dupes,
         if days >= STALE_DAYS:
             stale.append({"id": st["id"], "name": st["name"], "through": st["through"], "days": days})
     rejected = [{"file": f, "reason": r} for f, r in skipped if not benign_skip(r)]
+    # one Momentum problem produces a new file every day; alert on the reason once
+    seen_reason = set()
+    rejected = [r for r in rejected
+                if not r["reason"].startswith("Momentum:")
+                or (r["reason"] not in seen_reason and not seen_reason.add(r["reason"]))]
+    for r in rejected:
+        if r["reason"].startswith("Momentum:"):
+            r["file"] = r["reason"]
 
     entry = {
         "at": now.strftime("%Y-%m-%d %H:%M"),

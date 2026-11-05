@@ -21,6 +21,7 @@ Attachments land in ~/Projects/Scott/gmail-pull/ (which ingest.py walks), named
 state is just "which message ids already have files on disk" — no database.
 """
 import base64
+import re
 import json
 import os
 import sys
@@ -94,6 +95,19 @@ EXTRA_QUERIES = [
     "from:(vinartcars.com OR vinartautos.com OR mbporschelehighvalley.com) has:attachment",
 ]
 
+# Momentum names every store's CSV the same way, so the sender domain is the only
+# thing that says which store a file belongs to. Attachments from these domains are
+# saved as "<msgid>-[<domain>] <name>" and ingest.py maps the domain to a store.
+TAG_DOMAINS = ("vinartcars.com", "vinartautos.com", "mbporschelehighvalley.com")
+
+
+def sender_domain(msg):
+    for h in (msg.get("payload") or {}).get("headers", []) or []:
+        if h.get("name", "").lower() == "from":
+            m = re.search(r"@([A-Za-z0-9.-]+)", h.get("value", ""))
+            return m.group(1).lower() if m else ""
+    return ""
+
 
 def main():
     os.makedirs(OUT, exist_ok=True)
@@ -140,6 +154,8 @@ def main():
                 yield from walk(sub)
 
         got_any = False
+        dom = sender_domain(msg)
+        tag = "[%s] " % dom if dom.endswith(TAG_DOMAINS) else ""
         for part in walk(msg["payload"]):
             fname = part.get("filename") or ""
             att_id = (part.get("body") or {}).get("attachmentId")
@@ -148,7 +164,7 @@ def main():
             att = run(svc.users().messages().attachments().get(
                 userId="me", messageId=mid, id=att_id))
             data = base64.urlsafe_b64decode(att["data"])
-            safe = fname.replace("/", "_")
+            safe = tag + fname.replace("/", "_")
             with open(os.path.join(OUT, "%s-%s" % (mid, safe)), "wb") as fh:
                 fh.write(data)
             saved += 1
