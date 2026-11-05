@@ -756,6 +756,13 @@
         if (!prevW || (dayNum(sw.runDate) || 0) >= (dayNum(prevW.runDate) || 0)) windows[wk] = sw;
       }
       grp.snapshots = cumulative;
+      // a month that also has cumulative MTD snapshots (DriveCentric "Salesman
+      // Activity Report MTD", since Nov 2026) is measured from those alone:
+      // adding the weekly blocks on top would count the same activity twice
+      if (cumulative.length && Object.keys(windows).length) {
+        state.warnings.push('ignored ' + Object.keys(windows).length + ' weekly window(s) for ' + grp.storeId + ' ' + grp.kind + ' ' + grp.month + ' — month-to-date snapshots exist');
+        windows = {};
+      }
       for (var wkey in windows) {
         var win = windows[wkey];
         var clampedStart = win.begin && dayNum(win.begin) < dayNum(grp.monthStart);

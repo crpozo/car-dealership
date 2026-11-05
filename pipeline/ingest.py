@@ -795,6 +795,64 @@ def parse_dc_users(lines, path, run):
     }]
 
 
+# DriveCentric "Salesman Activity Report MTD" (scheduled since 2026-11-05 for Bay
+# Ridge x2 and Garavel CJDR): one cumulative month-to-date row per salesperson,
+# 8 cells after each name: Calls, Emails, Texts, Video Sent, Appts Created,
+# Appts Show, Delivered, Total Good Leads. Layout: title, date range (or "-"),
+# store name, the 8 store totals, then name + 8 cells per rep, then the labels.
+DC_MTD_TITLE = "Salesman Activity Report MTD"
+DC_MTD_COLS = ["calls", "emails", "texts", "videos", "apptsScheduled", "apptsShown", "sold", "goodLeads"]
+DC_MTD_LABELS = {"Calls", "Emails", "Texts", "Video", "Sent", "Appts", "Created", "Show", "Delivered", "Total", "Good", "Leads"}
+
+
+def parse_dc_salesman_mtd(lines, path, run):
+    """'Salesman Activity Report MTD' -> [sales snapshot] for the month to date."""
+    body = [ln for ln in lines[1:] if ln not in DC_MTD_LABELS and not ln.startswith("Page ")]
+    rng = re.match(r"(\d{1,2})/(\d{1,2})/(\d{4}) - (\d{1,2})/(\d{1,2})/(\d{4})$", body[0] if body else "")
+    if rng or body[0] == "-":
+        body = body[1:]
+    if rng:
+        begin = date(int(rng.group(3)), int(rng.group(1)), int(rng.group(2)))
+    else:
+        begin = run.replace(day=1)
+    store_name = body[0] if body else ""
+    if not store_name or re.fullmatch(r"[-\d.,%]+", store_name):
+        raise ValueError("MTD report: store name not found")
+    n = len(DC_MTD_COLS)
+
+    def rec(name, cells):
+        v = {}
+        for key, c in zip(DC_MTD_COLS, cells):
+            x = dc_cell(c)
+            v[key] = int(round(x)) if x is not None else None
+        return {"name": name, "group": None, "goodLeads": v["goodLeads"], "sold": v["sold"],
+                "apptsScheduled": v["apptsScheduled"], "apptsShown": v["apptsShown"], "shownPct": None,
+                "calls": v["calls"], "emails": v["emails"], "texts": v["texts"], "videos": v["videos"]}
+
+    totals = rec("TOTAL", body[1:1 + n])
+    reps = []
+    i = 1 + n
+    while i + n < len(body) + 1 and i < len(body):
+        name = body[i]
+        cells = body[i + 1:i + 1 + n]
+        if len(cells) < n or any(dc_cell(c) is None for c in cells):
+            break
+        if not HOUSE_ACCOUNT.search(name):
+            reps.append(rec(name, cells))
+        i += 1 + n
+    if not reps:
+        raise ValueError("MTD report had no usable rows")
+    return [{
+        "storeId": slug(store_name), "storeName": store_name, "dealers": [store_name],
+        "kind": "sales", "period": "current" if begin.month == run.month and begin.year == run.year else "prior",
+        "dateRange": "Month to Date",
+        "begin": begin.isoformat(), "end": run.isoformat(), "runDate": run.isoformat(),
+        "source": os.path.basename(path), "crm": "DriveCentric",
+        "window": False, "rowCount": len(reps) + 1,
+        "reps": reps, "repTotals": totals, "total": None, "byLeadType": [],
+    }]
+
+
 def parse_dc_pdf(path):
     """-> snapshots for one DriveCentric PDF: [current, prior] for a KPI
     Comparison Report, or [sales] for an Activity Report - Users."""
@@ -817,6 +875,8 @@ def parse_dc_pdf(path):
 
     if lines and lines[0].startswith("Activity Report - Users"):
         return parse_dc_users(lines, path, run)
+    if lines and lines[0].startswith(DC_MTD_TITLE):
+        return parse_dc_salesman_mtd(lines, path, run)
 
     # section labels: the line right before each "Net Leads" header, and this
     # file's column order from the first section's header run
@@ -1457,7 +1517,7 @@ HEALTH = os.path.join(HERE, ".health.json")
 
 # Exports that arrive empty (a day with no activity, or a report scheduled
 # before the store's data exists) are rejected on purpose and are not a fault.
-BENIGN_SKIPS = ("had no usable rows", "no usable user rows")
+BENIGN_SKIPS = ("had no usable rows", "no usable user rows")  # includes "MTD report had no usable rows"
 
 
 def benign_skip(reason):
