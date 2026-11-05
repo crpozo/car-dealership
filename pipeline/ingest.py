@@ -50,6 +50,7 @@ STORE_GROUPS = [
     ("lehigh-valley", "Lehigh Valley", "lehigh valley"),
     ("hersons", "Herson's", "herson"),
     ("garavel", "Garavel", "garavel"),
+    ("el-cajon", "El Cajon", "el cajon"),       # Honda of El Cajon + Toyota of El Cajon (DriveCentric)
 ]
 
 
