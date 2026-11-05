@@ -11,3 +11,4 @@ dev.html
 
 # per-run health summary for the runner alert; regenerated every ingest
 pipeline/.health.json
+pipeline/data.json
