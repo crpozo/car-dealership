@@ -47,7 +47,7 @@ STORE_GROUPS = [
     ("vern-eide", "Vern Eide", "vern eide"),
     ("armstrong", "Armstrong", "armstrong"),
     ("lindsay", "Lindsay", "lindsay"),
-    ("lehigh-valley", "Lehigh Valley", "lehigh valley"),
+    ("vinart", "Vinart Group", "lehigh valley"),   # Lehigh Valley Honda/Hyundai/Acura + MB Porsche of Lehigh Valley (Momentum)
     ("hersons", "Herson's", "herson"),
     ("garavel", "Garavel", "garavel"),
     ("el-cajon", "El Cajon", "el cajon"),       # Honda of El Cajon + Toyota of El Cajon (DriveCentric)

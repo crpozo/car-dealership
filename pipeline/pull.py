@@ -90,6 +90,11 @@ def run(req):
             delay *= 2
 
 
+EXTRA_QUERIES = [
+    "from:(vinartcars.com OR vinartautos.com OR mbporschelehighvalley.com) has:attachment",
+]
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     svc = build("gmail", "v1", credentials=credentials())
@@ -109,6 +114,17 @@ def main():
         page = resp.get("nextPageToken")
         if not page:
             break
+
+    # Momentum (Vinart Group) schedules its CSVs from per-store sender domains and
+    # the Gmail filter only catches some of them, so also search by sender.
+    for query in EXTRA_QUERIES:
+        page = None
+        while True:
+            resp = run(svc.users().messages().list(userId="me", q=query, maxResults=500, pageToken=page))
+            msg_ids += [m["id"] for m in resp.get("messages", []) if m["id"] not in msg_ids]
+            page = resp.get("nextPageToken")
+            if not page:
+                break
 
     new_ids = [m for m in msg_ids if m not in have]
     print("label %s: %d messages, %d already pulled, %d new"
