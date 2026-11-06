@@ -13,8 +13,9 @@ Dealership KPI dashboard for Scott McDonald (The Internet Coaches). Owner: Carlo
 | Auth + API | `pipeline/infra/` (AWS SAM stack `scott-dashboard-auth`: Cognito pool, HTTP API, Lambda `api/app.py`, S3 data bucket) |
 | Runner | EC2 `i-0166edea4fada485e`, us-east-1, repo at `/opt/car-dealership`, data at `/opt/scott-data`, script `/opt/run-refresh.sh` |
 | Matador bot | separate repo `matador-bot` (Playwright), on the runner at `/opt/matador-bot` |
+| Focus bot (Herson's) | private repo `crm-bots` (Playwright; René's laptop `D:\RENE\Mindfultech\crm-bots`), on the runner at `/opt/crm-bots`, CSVs in `/opt/scott-data/focus`; see its README for session quirks |
 | Report data (private) | S3 `scott-dashboard-data-160184161302`: `data/meta.json`, `data/store/<id>.json`, `sources/<store>/<file>` |
-| Secrets | Secrets Manager `scott-dash/gcloud-adc` (Gmail), `scott-dash/matador-session` |
+| Secrets | Secrets Manager `scott-dash/gcloud-adc` (Gmail), `scott-dash/matador-session`, `scott-dash/focus-session` |
 | Alerts | SNS topic `scott-dashboard-alerts` (email) |
 
 Customer data never goes in the repo: `assets/data.js`, `pipeline/data.js` and `pipeline/data.json`
@@ -24,8 +25,8 @@ are gitignored (data.json was tracked until 2026-11-05; it is still in the publi
 ## Schedule on the runner (systemd timers, America/Guayaquil)
 
 - `scott-refresh.timer` 11:00 and 14:00: Gmail pull → ingest → publish. No Matador.
-- `scott-matador.timer` 02:00: same plus the Matador bot (`--matador`). Never run the bot in
-  business hours: it signs in with Scott's own account and logs him out.
+- `scott-matador.timer` 02:00: same plus the Matador bot and the Focus bot (`--matador`). Never run
+  the bots in business hours: they sign in with the client's own accounts and log people out.
 
 Operate the box only through SSM (no SSH keys, no open ports):
 
@@ -78,6 +79,11 @@ Python deps: openpyxl, PyMuPDF (fitz). JS has no dependencies and no bundler; a 
   Rep sales goal default 12, store override in Settings (`repSalesGoals`).
 - Matador (texts/videos/calls per rep) and Covideo (videos sent) are joined to reps by name.
   Matador CSVs older than 3 days are ignored; identical location files are deduped.
+- Reynolds Focus (Herson's Honda / Kia) has no export: the crm-bots bot reads four shared reports
+  off the screen per store and range (month to date + previous month) into
+  `Focus <store> <report>[ <stock>] <begin> <end>.csv` with a `# key,value` header; `parse_focus_files`
+  turns them into KPI (lead types Internet/Phone/Walk-In with New/Used under each; leads = Prospects
+  Entered minus duplicates; no contact rate) and salesperson snapshots (calls = confirmed by telephony).
 - Momentum (Vinart Group, 4 Lehigh Valley stores) emails a "Salesperson Stats MTD" CSV daily from
   a per-store sender domain. The file never names the store, so `pull.py` saves attachments from
   those domains as `<msgid>-[<domain>] <name>` and `parse_momentum` maps the domain
@@ -117,8 +123,10 @@ for RP `crpozo.github.io`.
 
 Waiting on Scott: fix the VinSolutions schedules for Lindsay Acura/Honda/Buick GMC and Lunde's
 (Date Range = Month to Date) and send one Oct 1–31 export each; daily "Previous Month" exports;
-Tekion and Reynolds Focus credentials with MFA routed to Carlos (bots to build for Scott Robinson
-Honda, Precision Honda, Herson's x2; Truck Ranch gave notice Nov 2026 and is dropped); Momentum:
+Tekion credentials with MFA routed to Carlos (bots to build for Scott Robinson Honda, Precision Honda;
+Truck Ranch gave notice Nov 2026 and is dropped; Herson's x2 live on the Focus bot since 2026-11-05);
+the EC2 role still needs `secretsmanager:PutSecretValue` on `scott-dash/focus-session*` (inline policy
+`scott-dash-session-persist`) so the runner can persist the rotated Focus session; Momentum:
 all four Lehigh Valley schedules send the identical report, each store must schedule its own
 all-salespeople report (and a lead-source KPI report); a dedicated Matador user for the bot; store
 sales goals. Carlos: decide whether to purge `pipeline/data.json` from git history (force push).
