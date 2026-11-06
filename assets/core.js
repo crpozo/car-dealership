@@ -427,11 +427,15 @@
    *   'RT'                               sales rep TOTAL row
    * ------------------------------------------------------------------ */
 
+  /* A null/undefined value means "not reported" and must stay absent, never
+     become a 0: a CRM with no contact rate (Reynolds Focus) reports no
+     `contacted` at all, and 0 contacted is a very different claim. */
   function addBags(a, b) {
     var out = {}, k;
-    for (k in a) if (Object.prototype.hasOwnProperty.call(a, k)) out[k] = a[k];
+    for (k in a) if (Object.prototype.hasOwnProperty.call(a, k) && a[k] !== null && a[k] !== undefined) out[k] = a[k];
     for (k in b) {
       if (!Object.prototype.hasOwnProperty.call(b, k)) continue;
+      if (b[k] === null || b[k] === undefined) continue;
       out[k] = (out[k] || 0) + (b[k] || 0);
     }
     return out;
@@ -484,8 +488,10 @@
     var apptSetPct = numOrNull(m.apptSetPct);
     var apptOfCont = numOrNull(m.apptSetOfContactedPct);
 
+    // contacted stays null when the report carries neither a count nor a rate
+    // (Reynolds Focus): the UI then shows "not reported" instead of 0%
     var contacted = numOrNull(m.contacted);
-    if (contacted === null) contacted = contactPct === null ? 0 : round(contactPct * goodLeads);
+    if (contacted === null && contactPct !== null) contacted = round(contactPct * goodLeads);
 
     var apptsSet = numOrNull(m.apptsSet);
     if (apptsSet === null) {
@@ -493,13 +499,9 @@
       else if (apptOfCont !== null) apptsSet = round(apptOfCont * contacted);
       else apptsSet = 0;
     }
-    return {
-      goodLeads: goodLeads,
-      sold: sold,
-      apptsShown: apptsShown,
-      contacted: contacted,
-      apptsSet: apptsSet
-    };
+    var bag = { goodLeads: goodLeads, sold: sold, apptsShown: apptsShown, apptsSet: apptsSet };
+    if (contacted !== null) bag.contacted = contacted;
+    return bag;
   }
 
   var REP_FIELDS = ['goodLeads', 'sold', 'apptsScheduled', 'apptsShown', 'calls', 'emails', 'texts', 'videos'];
@@ -527,10 +529,10 @@
     var goodLeads = cnt(bag.goodLeads);
     var sold = cnt(bag.sold);
     var apptsShown = cnt(bag.apptsShown);
-    var contacted = cnt(bag.contacted);
+    var contacted = numOrNull(bag.contacted);          // null = contact rate not reported
     var apptsSet = cnt(bag.apptsSet);
-    var contactPct = rate(contacted, goodLeads);
-    var apptSetOfContactedPct = rate(apptsSet, contacted);
+    var contactPct = contacted === null ? null : rate(contacted, goodLeads);
+    var apptSetOfContactedPct = contacted === null ? null : rate(apptsSet, contacted);
     var apptSetPct = rate(apptsSet, goodLeads);
     var apptShownPct = rate(apptsShown, apptsSet);
     var closingRate = rate(sold, goodLeads);
@@ -1878,7 +1880,7 @@
         mb.sold = (mb.sold || 0) + (mt.sold || 0);
         mb.internetLeads = (mb.internetLeads || 0) + (mn.goodLeads || 0);
         mb.internetSold = (mb.internetSold || 0) + (mn.sold || 0);
-        mb.contacted = (mb.contacted || 0) + (mn.contacted || 0);
+        if (numOrNull(mn.contacted) !== null) mb.contacted = (mb.contacted || 0) + mn.contacted;
         mb.apptsSet = (mb.apptsSet || 0) + (mn.apptsSet || 0);
         continue;
       }
@@ -1898,7 +1900,7 @@
         bag.sold = (bag.sold || 0) + (tot.sold || 0);
         bag.internetLeads = (bag.internetLeads || 0) + (net.goodLeads || 0);
         bag.internetSold = (bag.internetSold || 0) + (net.sold || 0);
-        bag.contacted = (bag.contacted || 0) + (net.contacted || 0);
+        if (numOrNull(net.contacted) !== null) bag.contacted = (bag.contacted || 0) + net.contacted;
         bag.apptsSet = (bag.apptsSet || 0) + (net.apptsSet || 0);
       }
     }
@@ -1911,10 +1913,10 @@
         internetLeads: b.internetLeads || 0,
         sold: b.sold || 0,
         internetSold: b.internetSold || 0,
-        contacted: b.contacted || 0,
+        contacted: numOrNull(b.contacted) !== null ? b.contacted : null,
         apptsSet: b.apptsSet || 0,
-        engagementPct: rate(b.contacted, b.internetLeads),
-        apptSetPct: rate(b.apptsSet, b.contacted),
+        engagementPct: numOrNull(b.contacted) !== null ? rate(b.contacted, b.internetLeads) : null,
+        apptSetPct: numOrNull(b.contacted) !== null ? rate(b.apptsSet, b.contacted) : null,
         closingPct: rate(b.internetSold, b.internetLeads)
       });
     }

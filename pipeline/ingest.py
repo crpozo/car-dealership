@@ -1197,8 +1197,10 @@ def focus_kpi_metrics(rec):
         "goodLeads": max(good, 0),
         "sold": focus_num(rec.get("Prospects Sold")),
         "apptsShown": focus_num(rec.get("Appt Kept")),
-        "contactPct": 0, "apptSetOfContactedPct": 0, "apptSetPct": None,
-        "contacted": 0,
+        # None, not 0: the dashboard shows "not reported" for a missing contact
+        # rate and 0% for a reported zero
+        "contactPct": None, "apptSetOfContactedPct": None, "apptSetPct": None,
+        "contacted": None,
         "apptsSet": focus_num(rec.get("Appts Scheduled")),
     }
 
