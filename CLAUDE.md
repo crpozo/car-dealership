@@ -15,7 +15,7 @@ Dealership KPI dashboard for Scott McDonald (The Internet Coaches). Owner: Carlo
 | Matador bot | separate repo `matador-bot` (Playwright), on the runner at `/opt/matador-bot` |
 | Focus bot (Herson's) | private repo `crm-bots` (Playwright; René's laptop `D:\RENE\Mindfultech\crm-bots`), on the runner at `/opt/crm-bots`, CSVs in `/opt/scott-data/focus`; see its README for session quirks |
 | Report data (private) | S3 `scott-dashboard-data-160184161302`: `data/meta.json`, `data/store/<id>.json`, `sources/<store>/<file>` |
-| Secrets | Secrets Manager `scott-dash/gcloud-adc` (Gmail), `scott-dash/matador-session`, `scott-dash/focus-session` |
+| Secrets | Secrets Manager `scott-dash/gcloud-adc` (Gmail), `scott-dash/matador-session`, `scott-dash/focus-session`, `scott-dash/focus-credentials` (the Focus bot signs in by itself when its session dies) |
 | Alerts | SNS topic `scott-dashboard-alerts` (email) |
 
 Customer data never goes in the repo: `assets/data.js`, `pipeline/data.js` and `pipeline/data.json`
