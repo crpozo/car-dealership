@@ -50,7 +50,8 @@ STORE_GROUPS = [
     ("vinart", "Vinart Group", "lehigh valley"),   # Lehigh Valley Honda/Hyundai/Acura + MB Porsche of Lehigh Valley (Momentum)
     ("hersons", "Herson's", "herson"),
     ("garavel", "Garavel", "garavel"),
-    ("el-cajon", "El Cajon", "el cajon"),       # Honda of El Cajon + Toyota of El Cajon (DriveCentric)
+    ("el-cajon", "El Cajon", "el cajon"),
+    ("truck-ranch", "Truck Ranch", "truck ranch"),   # five Tekion sites on one login       # Honda of El Cajon + Toyota of El Cajon (DriveCentric)
 ]
 
 
@@ -202,7 +203,7 @@ def extract_mbox(path, log):
 def discover(src_dirs, log):
     """Walk the sources and return (xlsx_paths, matador_csv_paths, other_csv_paths, pdf_paths)."""
     xlsx, csvs, other_csvs, pdfs, goals, mboxes, zips = [], [], [], [], [], [], []
-    momentum, focus = [], []
+    momentum, focus, tekion = [], [], []
 
     def walk(roots):
         for root in roots:
@@ -233,6 +234,8 @@ def discover(src_dirs, log):
             momentum.append(path)     # Momentum (Vinart Group) daily MTD salesperson CSVs
         elif low.endswith(".csv") and FOCUS_NAME.match(base):
             focus.append(path)        # Reynolds Focus: written by the crm-bots Focus bot
+        elif low.endswith(".csv") and TEKION_NAME.match(base):
+            tekion.append(path)       # Tekion: exported by the crm-bots Tekion bot
         elif low.endswith(".csv"):
             other_csvs.append(path)   # sniffed later — Covideo names everything report.csv
         elif low.endswith(".pdf"):
@@ -243,7 +246,7 @@ def discover(src_dirs, log):
         walk(unpack_zips(zips, log))
     for mb in mboxes:
         xlsx.extend(extract_mbox(mb, log))
-    return xlsx, csvs, other_csvs, pdfs, goals, momentum, focus
+    return xlsx, csvs, other_csvs, pdfs, goals, momentum, focus, tekion
 
 
 # --------------------------------------------------------------------------- #
@@ -1320,6 +1323,159 @@ def parse_focus_files(paths):
     return out
 
 
+# --------------------------------------------------------------------------- #
+# Tekion (Truck Ranch x5 today; Scott Robinson Honda, Precision Honda next). The
+# crm-bots Tekion bot exports the "Internet Coaches - Key KPIs MTD" aggregate report
+# (one row per site x source type) for month to date (day 1 .. yesterday) and the
+# previous month, with and without Local Shift (Facebook leads that do not all reach
+# the CRM), into  "Tekion <account> <all|no-localshift> <begin> <end>.csv"  with a
+# '"# key","value"' metadata block on top.
+# --------------------------------------------------------------------------- #
+
+TEKION_NAME = re.compile(
+    r"^Tekion (?P<account>[a-z0-9-]+) (?P<filter>all|no-localshift)"
+    r" (?P<begin>\d{4}-\d{2}-\d{2}) (?P<end>\d{4}-\d{2}-\d{2})\.csv$", re.IGNORECASE)
+TEKION_COLS = {"Site", "Source Type (Consolidated)", "Total Good Leads", "Sold In Time Period",
+               "Internet/OEM Leads Engaged %", "Appointments Scheduled %", "Appointments Scheduled Shown"}
+TEKION_LEAD_TYPES = {"internet/oem": "Internet", "phone up": "Phone", "walk-in": "Walk-in",
+                     "other sources": "Other"}
+TEKION_SKIP_SITES = {"main site"}            # Truck Ranch's boat business: not reported
+TEKION_NO_LS_LABEL = "Excl. Local Shift"
+
+
+def read_tekion_csv(path):
+    """-> (meta, [dict per data row]). Metadata rows start with '# '."""
+    meta, header, rows = {}, None, []
+    with open(path, newline="", encoding="utf-8-sig") as fh:
+        for row in csv.reader(fh):
+            if not row:
+                continue
+            if row[0].startswith("# "):
+                meta[row[0][2:]] = row[1] if len(row) > 1 else ""
+            elif header is None:
+                header = row
+            else:
+                rows.append(dict(zip(header, row)))
+    missing = TEKION_COLS - set(header or [])
+    if missing:
+        raise ValueError("Tekion %s: missing columns %s" % (os.path.basename(path), sorted(missing)))
+    return meta, rows
+
+
+def tekion_num(value):
+    v = (value or "").strip().replace(",", "").replace("%", "").strip()
+    if not v or v == "-":
+        return None
+    try:
+        return float(v)
+    except ValueError:
+        return None
+
+
+def tekion_metrics(rec, internet):
+    """One site x source-type row -> the dashboard metrics bag. Engagement exists for
+    internet leads only ("Internet/OEM Leads Engaged %"); elsewhere it is not reported."""
+    good = int(tekion_num(rec.get("Total Good Leads")) or 0)
+    sched_pct = tekion_num(rec.get("Appointments Scheduled %"))
+    engaged = tekion_num(rec.get("Internet/OEM Leads Engaged %")) if internet else None
+    contact_pct = engaged / 100.0 if engaged is not None else None
+    return {
+        "goodLeads": good,
+        "sold": int(tekion_num(rec.get("Sold In Time Period")) or 0),
+        "apptsShown": int(tekion_num(rec.get("Appointments Scheduled Shown")) or 0),
+        "contactPct": contact_pct,
+        "contacted": int(round(contact_pct * good)) if contact_pct is not None else None,
+        "apptSetOfContactedPct": None, "apptSetPct": None,
+        "apptsSet": int(round(sched_pct / 100.0 * good)) if sched_pct is not None else 0,
+    }
+
+
+def tekion_by_site(rows):
+    """-> {site: {lead type: row}} without the Grand Total and skipped sites."""
+    out = defaultdict(dict)
+    for rec in rows:
+        site = (rec.get("Site") or "").strip()
+        if not site or site.lower() in TEKION_SKIP_SITES:
+            continue
+        src = (rec.get("Source Type (Consolidated)") or "").strip()
+        lt = TEKION_LEAD_TYPES.get(src.lower(), src or "Other")
+        out[site][lt] = rec
+    return out
+
+
+def parse_tekion_group(account, begin, end, run, files):
+    """files: {"all": path, "no-localshift": path?} for one account x range x run date
+    -> [kpi snapshot per site]."""
+    if "all" not in files:
+        raise ValueError("Tekion %s %s..%s: the all-leads export is missing" % (account, begin, end))
+    _, rows = read_tekion_csv(files["all"])
+    sites = tekion_by_site(rows)
+    no_ls = tekion_by_site(read_tekion_csv(files["no-localshift"])[1]) if "no-localshift" in files else {}
+    period = "current" if begin[:7] == run[:7] else "prior"
+    out = []
+    for site, by_lt in sorted(sites.items()):
+        nodes = []
+        for lt, rec in sorted(by_lt.items()):
+            internet = lt == "Internet"
+            node = {"leadType": lt, "metrics": tekion_metrics(rec, internet), "byInventory": []}
+            excl = no_ls.get(site, {}).get(lt)
+            if excl is not None:
+                node["byInventory"].append({"inventoryType": TEKION_NO_LS_LABEL,
+                                            "metrics": tekion_metrics(excl, internet), "byMake": []})
+            nodes.append(node)
+        total = {"goodLeads": 0, "sold": 0, "apptsShown": 0, "apptsSet": 0,
+                 "contactPct": None, "apptSetOfContactedPct": None, "apptSetPct": None, "contacted": None}
+        for n in nodes:
+            for k in ("goodLeads", "sold", "apptsShown", "apptsSet"):
+                total[k] += n["metrics"][k]
+        net = next((n["metrics"] for n in nodes if n["leadType"] == "Internet"), None)
+        if net and net["contacted"] is not None:
+            total["contacted"] = net["contacted"]          # engagement is internet-scoped
+            total["contactScope"] = "internet"
+        else:
+            total["contactScope"] = "none"
+        out.append({
+            "storeId": slug(site), "storeName": site, "dealers": [site],
+            "period": period, "dateRange": "Month to Date" if period == "current" else "Previous Month",
+            "begin": begin, "end": end, "runDate": run, "crm": "Tekion",
+            "kind": "kpi", "rowCount": len(nodes), "byLeadType": nodes, "total": total,
+            "source": os.path.basename(files["all"]),
+        })
+    if not out:
+        raise ValueError("Tekion export had no site rows")
+    return out
+
+
+def parse_tekion_files(paths):
+    """-> [(path, snapshots | reason)], one entry per account x range x run date."""
+    groups = defaultdict(dict)
+    for path in sorted(paths):
+        m = TEKION_NAME.match(os.path.basename(path))
+        if not m:
+            continue
+        try:
+            meta, _ = read_tekion_csv(path)
+        except Exception as exc:  # noqa: BLE001
+            groups[("?", "?", "?", path)]["error"] = str(exc)
+            continue
+        stamp = meta.get("extractedAt") or ""
+        run = stamp[:10] if re.match(r"^\d{4}-\d{2}-\d{2}", stamp) else \
+            datetime.fromtimestamp(os.path.getmtime(path)).strftime("%Y-%m-%d")
+        key = (m.group("account").lower(), m.group("begin"), m.group("end"), run)
+        groups[key][m.group("filter").lower()] = path
+    out = []
+    for (account, begin, end, run), files in sorted(groups.items()):
+        if "error" in files:
+            out.append((run, files["error"]))
+            continue
+        lead = files.get("all") or sorted(files.values())[0]
+        try:
+            out.append((lead, parse_tekion_group(account, begin, end, run, files)))
+        except Exception as exc:  # noqa: BLE001
+            out.append((lead, str(exc)))
+    return out
+
+
 def gmail_order(path):
     # gmail-pull files are named <gmailMsgIdHex>-<name>; the id's high bits are
     # the message's internal timestamp, so the hex value orders by arrival.
@@ -1394,8 +1550,8 @@ def parse_covideo(paths, log):
 INTEGRATIONS = [
     {"name": "VinSolutions", "type": "CRM", "api": "requested", "scheduledEmail": True,
      "note": "Enterprise Performance exports arrive daily by email from reportscheduler@motosnap.com. API access requested."},
-    {"name": "Tekion", "type": "CRM", "api": "requested", "scheduledEmail": True,
-     "note": "Has an API — access inquiry in progress. Reports can be scheduled by email."},
+    {"name": "Tekion", "type": "CRM", "api": "requested", "scheduledEmail": False,
+     "note": "The crm-bots Tekion bot exports the Internet Coaches KPI report nightly (Truck Ranch x5), with and without Local Shift."},
     {"name": "DriveCentric", "type": "CRM", "api": "unknown", "scheduledEmail": True,
      "note": "Daily KPI Comparison PDF arrives by scheduled email since Aug 2026 (Bay Ridge, El Cajon, Garavel x2)."},
     {"name": "Momentum", "type": "CRM", "api": "requested", "scheduledEmail": True,
@@ -1414,7 +1570,7 @@ def main(argv):
     log = []
     os.makedirs(CACHE, exist_ok=True)
 
-    xlsx_paths, csv_paths, other_csv_paths, pdf_paths, goal_paths, momentum_paths, focus_paths = discover(src_dirs, log)
+    xlsx_paths, csv_paths, other_csv_paths, pdf_paths, goal_paths, momentum_paths, focus_paths, tekion_paths = discover(src_dirs, log)
     print("sources: %s" % ", ".join(src_dirs))
     for line in log:
         print("  %s" % line)
@@ -1455,7 +1611,7 @@ def main(argv):
                 continue
             snapshots.append(snap)
 
-    for path, snaps_or_err in parse_focus_files(focus_paths):
+    for path, snaps_or_err in parse_focus_files(focus_paths) + parse_tekion_files(tekion_paths):
         if isinstance(snaps_or_err, str):
             skipped.append((os.path.basename(path), snaps_or_err))
             continue
@@ -1529,7 +1685,7 @@ def main(argv):
             groups.setdefault(gid, {"id": gid, "name": gname, "storeIds": []})
             groups[gid]["storeIds"].append(sid)
 
-    sources = build_sources(kept, xlsx_paths + pdf_paths + momentum_paths + focus_paths, matador_src, COVIDEO_SOURCE)
+    sources = build_sources(kept, xlsx_paths + pdf_paths + momentum_paths + focus_paths + tekion_paths, matador_src, COVIDEO_SOURCE)
 
     data = {
         "generatedAt": datetime.now().strftime("%Y-%m-%d"),
