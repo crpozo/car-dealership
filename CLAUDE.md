@@ -123,8 +123,10 @@ for RP `crpozo.github.io`.
 
 Waiting on Scott: fix the VinSolutions schedules for Lindsay Acura/Honda/Buick GMC and Lunde's
 (Date Range = Month to Date) and send one Oct 1–31 export each; daily "Previous Month" exports;
-Tekion credentials with MFA routed to Carlos (bots to build for Scott Robinson Honda, Precision Honda;
-Truck Ranch gave notice Nov 2026 and is dropped; Herson's x2 live on the Focus bot since 2026-11-05);
+Tekion bot (Truck Ranch x5 on one login, "Main Site"; Scott Robinson Honda and Precision Honda on their
+own logins; Truck Ranch is still a client, confirmed 2026-11-06). Tekion's 2FA code goes to Carlos's
+email: a Gmail filter forwarding the Tekion sender to René is pending; Herson's x2 live on the Focus bot
+since 2026-11-05;
 the EC2 role still needs `secretsmanager:PutSecretValue` on `scott-dash/focus-session*` (inline policy
 `scott-dash-session-persist`) so the runner can persist the rotated Focus session; Momentum:
 all four Lehigh Valley schedules send the identical report, each store must schedule its own
