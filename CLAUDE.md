@@ -13,9 +13,9 @@ Dealership KPI dashboard for Scott McDonald (The Internet Coaches). Owner: Carlo
 | Auth + API | `pipeline/infra/` (AWS SAM stack `scott-dashboard-auth`: Cognito pool, HTTP API, Lambda `api/app.py`, S3 data bucket) |
 | Runner | EC2 `i-0166edea4fada485e`, us-east-1, repo at `/opt/car-dealership`, data at `/opt/scott-data`, script `/opt/run-refresh.sh` |
 | Matador bot | separate repo `matador-bot` (Playwright), on the runner at `/opt/matador-bot` |
-| Focus bot (Herson's) | private repo `crm-bots` (Playwright; René's laptop `D:\RENE\Mindfultech\crm-bots`), on the runner at `/opt/crm-bots`, CSVs in `/opt/scott-data/focus`; see its README for session quirks |
+| Focus + Tekion bots | private repo `crm-bots` (Playwright; René's laptop `D:\RENE\Mindfultech\crm-bots`), on the runner at `/opt/crm-bots`, CSVs in `/opt/scott-data/focus` and `/opt/scott-data/tekion`; see its README and `tekion/NOTES.md` |
 | Report data (private) | S3 `scott-dashboard-data-160184161302`: `data/meta.json`, `data/store/<id>.json`, `sources/<store>/<file>` |
-| Secrets | Secrets Manager `scott-dash/gcloud-adc` (Gmail), `scott-dash/matador-session`, `scott-dash/focus-session`, `scott-dash/focus-credentials` (the Focus bot signs in by itself when its session dies) |
+| Secrets | Secrets Manager `scott-dash/gcloud-adc` (Gmail), `scott-dash/matador-session`, `scott-dash/focus-session`, `scott-dash/focus-credentials` (the Focus bot signs in by itself when its session dies), `scott-dash/tekion-truck-ranch-session` |
 | Alerts | SNS topic `scott-dashboard-alerts` (email) |
 
 Customer data never goes in the repo: `assets/data.js`, `pipeline/data.js` and `pipeline/data.json`
@@ -25,7 +25,7 @@ are gitignored (data.json was tracked until 2026-11-05; it is still in the publi
 ## Schedule on the runner (systemd timers, America/Guayaquil)
 
 - `scott-refresh.timer` 11:00 and 14:00: Gmail pull → ingest → publish. No Matador.
-- `scott-matador.timer` 02:00: same plus the Matador bot and the Focus bot (`--matador`). Never run
+- `scott-matador.timer` 02:00: same plus the Matador, Focus and Tekion bots (`--matador`). Never run
   the bots in business hours: they sign in with the client's own accounts and log people out.
 
 Operate the box only through SSM (no SSH keys, no open ports):
@@ -84,6 +84,15 @@ Python deps: openpyxl, PyMuPDF (fitz). JS has no dependencies and no bundler; a 
   `Focus <store> <report>[ <stock>] <begin> <end>.csv` with a `# key,value` header; `parse_focus_files`
   turns them into KPI (lead types Internet/Phone/Walk-In with New/Used under each; leads = Prospects
   Entered minus duplicates; no contact rate) and salesperson snapshots (calls = confirmed by telephony).
+- Tekion (Truck Ranch x5 on one login, read from "Main Site"; the Main Site row itself is their boat
+  business and is skipped): the crm-bots bot sets the date range on the "Internet Coaches - Key KPIs
+  MTD - Updated" aggregate report and uses its own CSV export (one row per site x source type), for
+  month to date (day 1 .. yesterday) and the previous month, with and without Local Shift (Facebook
+  leads, Source Name "Local Shift"/"LocalShift"). `parse_tekion_files` emits one KPI snapshot per site:
+  leads = Total Good Leads, sold = Sold In Time Period, engagement = Internet/OEM Leads Engaged %
+  (internet only), appts set = Appointments Scheduled % x good leads, shown = Appointments Scheduled
+  Shown; the no-Local-Shift numbers hang under each lead type as "Excl. Local Shift". The login needs
+  an emailed code: `crm-bots/tekion_code.py` fetches it over SSM for the person signing in.
 - Momentum (Vinart Group, 4 Lehigh Valley stores) emails a "Salesperson Stats MTD" CSV daily from
   a per-store sender domain. The file never names the store, so `pull.py` saves attachments from
   those domains as `<msgid>-[<domain>] <name>` and `parse_momentum` maps the domain
@@ -123,8 +132,8 @@ for RP `crpozo.github.io`.
 
 Waiting on Scott: fix the VinSolutions schedules for Lindsay Acura/Honda/Buick GMC and Lunde's
 (Date Range = Month to Date) and send one Oct 1–31 export each; daily "Previous Month" exports;
-Tekion bot (Truck Ranch x5 on one login, "Main Site"; Scott Robinson Honda and Precision Honda on their
-own logins; Truck Ranch is still a client, confirmed 2026-11-06). Tekion's 2FA code lands in the reports
+Tekion: Truck Ranch x5 live on the bot since 2026-11-06 (still a client, confirmed that day); Scott
+Robinson Honda and Precision Honda need their own logins and report. Tekion's 2FA code lands in the reports
 Gmail the runner reads: `crm-bots/tekion_code.py` fetches it over SSM for whoever is signing in by hand
 (Carlos to confirm this use of the read-only access); Herson's x2 live on the Focus bot
 since 2026-11-05;
