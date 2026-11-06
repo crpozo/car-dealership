@@ -202,7 +202,7 @@ def extract_mbox(path, log):
 def discover(src_dirs, log):
     """Walk the sources and return (xlsx_paths, matador_csv_paths, other_csv_paths, pdf_paths)."""
     xlsx, csvs, other_csvs, pdfs, goals, mboxes, zips = [], [], [], [], [], [], []
-    momentum = []
+    momentum, focus = [], []
 
     def walk(roots):
         for root in roots:
@@ -231,6 +231,8 @@ def discover(src_dirs, log):
             csvs.append(path)
         elif low.endswith(".csv") and "salesperson stats" in base.lower():
             momentum.append(path)     # Momentum (Vinart Group) daily MTD salesperson CSVs
+        elif low.endswith(".csv") and FOCUS_NAME.match(base):
+            focus.append(path)        # Reynolds Focus: written by the crm-bots Focus bot
         elif low.endswith(".csv"):
             other_csvs.append(path)   # sniffed later — Covideo names everything report.csv
         elif low.endswith(".pdf"):
@@ -241,7 +243,7 @@ def discover(src_dirs, log):
         walk(unpack_zips(zips, log))
     for mb in mboxes:
         xlsx.extend(extract_mbox(mb, log))
-    return xlsx, csvs, other_csvs, pdfs, goals, momentum
+    return xlsx, csvs, other_csvs, pdfs, goals, momentum, focus
 
 
 # --------------------------------------------------------------------------- #
@@ -1114,6 +1116,208 @@ def parse_momentum_files(paths):
     return out
 
 
+# --------------------------------------------------------------------------- #
+# Reynolds Focus (Herson's Honda / Kia): no export, no scheduled email. The Focus
+# bot in the private crm-bots repo opens each shared report, sets the date range
+# (and the Stock Type for the KPI report), and reads the grid off the screen into
+#   "Focus <store> <report>[ <stock>] <begin> <end>.csv"
+# with a '#'-prefixed metadata block on top (store, report, stockType, begin, end,
+# range, dateRangeOnScreen, extractedAt). Four reports per store and range:
+#   kpi (x3 stock passes new/used/all), activity, sold, calls.
+# --------------------------------------------------------------------------- #
+
+FOCUS_NAME = re.compile(
+    r"^Focus (?P<store>.+?) (?P<report>kpi|activity|sold|calls)(?: (?P<stock>new|used|all))?"
+    r" (?P<begin>\d{4}-\d{2}-\d{2}) (?P<end>\d{4}-\d{2}-\d{2})\.csv$", re.IGNORECASE)
+FOCUS_KPI_COLS = {"Prospect Type", "Prospects Entered", "Duplicate Leads", "Prospects Sold",
+                  "Appts Scheduled", "Appt Kept"}
+FOCUS_ACTIVITY_COLS = {"Completed By", "Phone Calls / Complete", "Emails / Complete",
+                       "Text Messages / Complete", "Text Messages / Videos Sent",
+                       "Appointments / Scheduled", "Appointments / Complete"}
+FOCUS_SOLD_COLS = {"Salesperson", "Prospects", "Total # Units Sold"}
+FOCUS_CALLS_COLS = {"User", "Completed", "Confirmed by Telephony"}
+FOCUS_STOCK_LABEL = {"new": "New", "used": "Used"}      # "used" pass = Certified + Used
+
+
+def read_focus_csv(path):
+    """-> (meta, headers, rows). Mirrors crm-bots/focus/grid.py:read_csv."""
+    meta, headers, rows = {}, None, []
+    with open(path, newline="", encoding="utf-8-sig") as fh:
+        for row in csv.reader(fh):
+            if not row:
+                continue
+            if row[0].startswith("# "):
+                meta[row[0][2:]] = row[1] if len(row) > 1 else ""
+            elif headers is None:
+                headers = row
+            else:
+                rows.append(row)
+    return meta, headers or [], rows
+
+
+def focus_num(value):
+    v = (value or "").strip().replace(",", "").replace("%", "")
+    if not v or ":" in v:            # blank cells are zeros; durations are not counts
+        return 0
+    try:
+        return int(float(v))
+    except ValueError:
+        return 0
+
+
+def focus_person(name):
+    """Focus writes "Last, First"; the dashboard joins reps across tools by
+    "First Last"."""
+    name = (name or "").strip()
+    if "," in name:
+        last, first = name.split(",", 1)
+        return ("%s %s" % (first.strip(), last.strip())).strip()
+    return name
+
+
+def focus_table(path, required):
+    """-> (meta, [dict per row], total dict or None). The last row is Focus's
+    Total footer when its first cell says so."""
+    meta, headers, rows = read_focus_csv(path)
+    missing = required - set(headers)
+    if missing:
+        raise ValueError("Focus %s: missing columns %s" % (os.path.basename(path), sorted(missing)))
+    recs = [dict(zip(headers, r)) for r in rows]
+    total = None
+    if recs and (recs[-1].get(headers[0]) or "").strip().lower() == "total":
+        total = recs.pop()
+    return meta, recs, total
+
+
+def focus_kpi_metrics(rec):
+    """Scott: leads are Prospects Entered minus the duplicates. Focus has no
+    contact rate, so engagement stays empty (contactScope none)."""
+    good = focus_num(rec.get("Prospects Entered")) - focus_num(rec.get("Duplicate Leads"))
+    return {
+        "goodLeads": max(good, 0),
+        "sold": focus_num(rec.get("Prospects Sold")),
+        "apptsShown": focus_num(rec.get("Appt Kept")),
+        "contactPct": 0, "apptSetOfContactedPct": 0, "apptSetPct": None,
+        "contacted": 0,
+        "apptsSet": focus_num(rec.get("Appts Scheduled")),
+    }
+
+
+def parse_focus_group(store, begin, end, run, files):
+    """files: {(report, stock): path} for one store x range x run date
+    -> [kpi snapshot?, sales snapshot?]. Raises when nothing usable is there."""
+    period = "current" if begin[:7] == run[:7] else "prior"
+    rng = "Month to Date" if period == "current" else "Previous Month"
+    common = {
+        "storeId": slug(store), "storeName": store, "dealers": [store],
+        "period": period, "dateRange": rng,
+        "begin": begin, "end": end, "runDate": run, "crm": "Reynolds Focus",
+    }
+    out = []
+
+    # ---- KPI: the "all" pass is the store; new/used passes hang under each lead type
+    if ("kpi", "all") in files:
+        _, recs, total = focus_table(files[("kpi", "all")], FOCUS_KPI_COLS)
+        passes = {}
+        for stock, label in FOCUS_STOCK_LABEL.items():
+            if ("kpi", stock) in files:
+                _, prow, _ptot = focus_table(files[("kpi", stock)], FOCUS_KPI_COLS)
+                passes[label] = {(r.get("Prospect Type") or "").strip(): r for r in prow}
+        by_lead_type = []
+        for rec in recs:
+            lt = (rec.get("Prospect Type") or "").strip()
+            if not lt:
+                continue
+            node = {"leadType": lt, "metrics": focus_kpi_metrics(rec), "byInventory": []}
+            for label, rows_by_lt in passes.items():
+                if lt in rows_by_lt:
+                    node["byInventory"].append({"inventoryType": label,
+                                                "metrics": focus_kpi_metrics(rows_by_lt[lt]), "byMake": []})
+            by_lead_type.append(node)
+        if not by_lead_type:
+            raise ValueError("Focus KPI report had no lead-type rows")
+        tot = focus_kpi_metrics(total) if total else None
+        if tot is None:
+            tot = focus_kpi_metrics({})
+            for k in ("goodLeads", "sold", "apptsShown", "apptsSet"):
+                tot[k] = sum(n["metrics"][k] for n in by_lead_type)
+        tot["contactScope"] = "none"
+        out.append(dict(common, kind="kpi", rowCount=len(by_lead_type), byLeadType=by_lead_type, total=tot,
+                        source=os.path.basename(files[("kpi", "all")])))
+
+    # ---- salesperson: activity (calls/emails/texts/videos/appts) + sold + telephony calls
+    if ("activity", None) in files:
+        _, arows, _atot = focus_table(files[("activity", None)], FOCUS_ACTIVITY_COLS)
+        sold_by, calls_by = {}, {}
+        if ("sold", None) in files:
+            _, srows, _ = focus_table(files[("sold", None)], FOCUS_SOLD_COLS)
+            sold_by = {focus_person(r.get("Salesperson")): r for r in srows}
+        if ("calls", None) in files:
+            _, crows, _ = focus_table(files[("calls", None)], FOCUS_CALLS_COLS)
+            calls_by = {focus_person(r.get("User")): r for r in crows}
+
+        def rep_from(a, name):
+            s, c = sold_by.get(name, {}), calls_by.get(name, {})
+            return {
+                "name": name, "group": None,
+                "goodLeads": focus_num(s.get("Prospects")),        # all lead types: Focus has no per-rep internet split
+                "sold": focus_num(s.get("Total # Units Sold")),
+                "apptsScheduled": focus_num(a.get("Appointments / Scheduled")),
+                "apptsShown": focus_num(a.get("Appointments / Complete")),
+                "shownPct": None,
+                # Scott: the phone number is what the telephony system confirmed
+                "calls": focus_num(c.get("Confirmed by Telephony")) if c else focus_num(a.get("Phone Calls / Complete")),
+                "callsLogged": focus_num(a.get("Phone Calls / Complete")),
+                "emails": focus_num(a.get("Emails / Complete")),
+                "texts": focus_num(a.get("Text Messages / Complete")),
+                "videos": focus_num(a.get("Text Messages / Videos Sent")),
+            }
+
+        reps = []
+        for a in arows:
+            name = focus_person(a.get("Completed By"))
+            if name and not HOUSE_ACCOUNT.search(name):
+                reps.append(rep_from(a, name))
+        if not reps:
+            raise ValueError("Focus activity report had no usable rows")
+        totals = {"name": "TOTAL", "group": None, "shownPct": None}
+        for k in ("goodLeads", "sold", "apptsScheduled", "apptsShown", "calls", "callsLogged", "emails", "texts", "videos"):
+            totals[k] = sum(r[k] or 0 for r in reps)
+        out.append(dict(common, kind="sales", window=False, rowCount=len(reps) + 1,
+                        reps=reps, repTotals=totals, total=None, byLeadType=[],
+                        source=os.path.basename(files[("activity", None)])))
+
+    if not out:
+        raise ValueError("Focus: neither the KPI (all stock types) nor the activity report is present")
+    return out
+
+
+def parse_focus_files(paths):
+    """-> [(path, snapshots | reason)], one entry per store x range x run date
+    (keyed on the KPI-all file, else the activity file). The run date is the
+    extraction time stamped by the bot, falling back to the file's mtime."""
+    groups = defaultdict(dict)
+    for path in sorted(paths):
+        m = FOCUS_NAME.match(os.path.basename(path))
+        if not m:
+            continue
+        meta, _, _ = read_focus_csv(path)
+        stamp = meta.get("extractedAt") or ""
+        run = stamp[:10] if re.match(r"^\d{4}-\d{2}-\d{2}", stamp) else \
+            datetime.fromtimestamp(os.path.getmtime(path)).strftime("%Y-%m-%d")
+        store = meta.get("store") or m.group("store")
+        key = (store, m.group("begin"), m.group("end"), run)
+        groups[key][(m.group("report").lower(), (m.group("stock") or "").lower() or None)] = path
+    out = []
+    for (store, begin, end, run), files in sorted(groups.items()):
+        lead = files.get(("kpi", "all")) or files.get(("activity", None)) or sorted(files.values())[0]
+        try:
+            out.append((lead, parse_focus_group(store, begin, end, run, files)))
+        except Exception as exc:  # noqa: BLE001
+            out.append((lead, str(exc)))
+    return out
+
+
 def gmail_order(path):
     # gmail-pull files are named <gmailMsgIdHex>-<name>; the id's high bits are
     # the message's internal timestamp, so the hex value orders by arrival.
@@ -1194,6 +1398,8 @@ INTEGRATIONS = [
      "note": "Daily KPI Comparison PDF arrives by scheduled email since Aug 2026 (Bay Ridge, El Cajon, Garavel x2)."},
     {"name": "Momentum", "type": "CRM", "api": "requested", "scheduledEmail": True,
      "note": "Has an API — asking about access. Reports can be scheduled."},
+    {"name": "Reynolds Focus", "type": "CRM", "api": "none", "scheduledEmail": False,
+     "note": "No export or scheduled email. The crm-bots Focus bot reads the shared reports off the screen nightly (Herson's Honda + Kia)."},
     {"name": "Matador", "type": "AI messaging", "api": "unknown", "scheduledEmail": False,
      "note": "Texts and videos sent. Activity is exported by hand from the Users tab; no scheduled email today."},
     {"name": "Covideo", "type": "Video outreach", "api": "unknown", "scheduledEmail": True,
@@ -1206,7 +1412,7 @@ def main(argv):
     log = []
     os.makedirs(CACHE, exist_ok=True)
 
-    xlsx_paths, csv_paths, other_csv_paths, pdf_paths, goal_paths, momentum_paths = discover(src_dirs, log)
+    xlsx_paths, csv_paths, other_csv_paths, pdf_paths, goal_paths, momentum_paths, focus_paths = discover(src_dirs, log)
     print("sources: %s" % ", ".join(src_dirs))
     for line in log:
         print("  %s" % line)
@@ -1238,6 +1444,16 @@ def main(argv):
             snapshots.append(snap)
 
     for path, snaps_or_err in parse_momentum_files(momentum_paths):
+        if isinstance(snaps_or_err, str):
+            skipped.append((os.path.basename(path), snaps_or_err))
+            continue
+        for snap in snaps_or_err:
+            if snap["storeId"] in EXCLUDE_STORES:
+                excluded[snap["storeName"]] += 1
+                continue
+            snapshots.append(snap)
+
+    for path, snaps_or_err in parse_focus_files(focus_paths):
         if isinstance(snaps_or_err, str):
             skipped.append((os.path.basename(path), snaps_or_err))
             continue
@@ -1311,7 +1527,7 @@ def main(argv):
             groups.setdefault(gid, {"id": gid, "name": gname, "storeIds": []})
             groups[gid]["storeIds"].append(sid)
 
-    sources = build_sources(kept, xlsx_paths + pdf_paths + momentum_paths, matador_src, COVIDEO_SOURCE)
+    sources = build_sources(kept, xlsx_paths + pdf_paths + momentum_paths + focus_paths, matador_src, COVIDEO_SOURCE)
 
     data = {
         "generatedAt": datetime.now().strftime("%Y-%m-%d"),
