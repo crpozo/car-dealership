@@ -93,6 +93,11 @@ Python deps: openpyxl, PyMuPDF (fitz). JS has no dependencies and no bundler; a 
   (internet only), appts set = Appointments Scheduled % x good leads, shown = Appointments Scheduled
   Shown; the no-Local-Shift numbers hang under each lead type as "Excl. Local Shift". The login needs
   an emailed code: `crm-bots/tekion_code.py` fetches it over SSM for the person signing in.
+- Tekion, Scott Robinson Honda (own login, secret `scott-dash/tekion-scott-robinson-session`): report
+  "Internet Coaches - MTD KPIs" has no Site column and one row per source type x stock type, no Local
+  Shift pass. `tekion_rollup` adds counts up to the source type and re-weights Engaged % by good leads;
+  New/Used hang under each lead type. Tekion sessions die about 34 hours after sign-in, so every
+  Tekion login still needs a person to sign in again until the session problem is solved.
 - Momentum (Vinart Group, 4 Lehigh Valley stores) emails a "Salesperson Stats MTD" CSV daily from
   a per-store sender domain. The file never names the store, so `pull.py` saves attachments from
   those domains as `<msgid>-[<domain>] <name>` and `parse_momentum` maps the domain
@@ -133,7 +138,7 @@ for RP `crpozo.github.io`.
 Waiting on Scott: fix the VinSolutions schedules for Lindsay Acura/Honda/Buick GMC and Lunde's
 (Date Range = Month to Date) and send one Oct 1–31 export each; daily "Previous Month" exports;
 Tekion: Truck Ranch x5 live on the bot since 2026-11-06 (still a client, confirmed that day); Scott
-Robinson Honda and Precision Honda need their own logins and report. Tekion's 2FA code lands in the reports
+Robinson Honda added to the bot 2026-11-09; Precision Honda's second factor is still SMS only. Tekion's 2FA code lands in the reports
 Gmail the runner reads: `crm-bots/tekion_code.py` fetches it over SSM for whoever is signing in by hand
 (Carlos to confirm this use of the read-only access); Herson's x2 live on the Focus bot
 since 2026-11-05;

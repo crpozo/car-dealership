@@ -1324,9 +1324,10 @@ def parse_focus_files(paths):
 
 
 # --------------------------------------------------------------------------- #
-# Tekion (Truck Ranch x5 today; Scott Robinson Honda, Precision Honda next). The
-# crm-bots Tekion bot exports the "Internet Coaches - Key KPIs MTD" aggregate report
-# (one row per site x source type) for month to date (day 1 .. yesterday) and the
+# Tekion (Truck Ranch x5, Scott Robinson Honda; Precision Honda next). The crm-bots
+# Tekion bot exports each login's Internet Coaches KPI aggregate report (Truck Ranch:
+# one row per site x source type; Scott Robinson: one row per source type x stock type,
+# no Site column, no Local Shift pass) for month to date (day 1 .. yesterday) and the
 # previous month, with and without Local Shift (Facebook leads that do not all reach
 # the CRM), into  "Tekion <account> <all|no-localshift> <begin> <end>.csv"  with a
 # '"# key","value"' metadata block on top.
@@ -1335,8 +1336,11 @@ def parse_focus_files(paths):
 TEKION_NAME = re.compile(
     r"^Tekion (?P<account>[a-z0-9-]+) (?P<filter>all|no-localshift)"
     r" (?P<begin>\d{4}-\d{2}-\d{2}) (?P<end>\d{4}-\d{2}-\d{2})\.csv$", re.IGNORECASE)
-TEKION_COLS = {"Site", "Source Type (Consolidated)", "Total Good Leads", "Sold In Time Period",
+TEKION_COLS = {"Source Type (Consolidated)", "Total Good Leads", "Sold In Time Period",
                "Internet/OEM Leads Engaged %", "Appointments Scheduled %", "Appointments Scheduled Shown"}
+# One-rooftop logins: the report has no Site column and splits each source type by stock type.
+TEKION_SINGLE_STORE = {"scott-robinson": "Scott Robinson Honda"}
+TEKION_STOCK_LABELS = {"new": "New", "used": "Used", "special": "Special", "<ungrouped>": "Unspecified"}
 TEKION_LEAD_TYPES = {"internet/oem": "Internet", "phone up": "Phone", "walk-in": "Walk-in",
                      "other sources": "Other"}
 TEKION_SKIP_SITES = {"main site"}            # Truck Ranch's boat business: not reported
@@ -1403,13 +1407,47 @@ def tekion_by_site(rows):
     return out
 
 
+def tekion_rollup(recs):
+    """Stock-type rows of one source type -> one row in the same columns: counts add up,
+    the percentages are re-weighted by good leads."""
+    good = sum(tekion_num(r.get("Total Good Leads")) or 0 for r in recs)
+    total = lambda col: sum(tekion_num(r.get(col)) or 0 for r in recs)
+    engaged = [(tekion_num(r.get("Internet/OEM Leads Engaged %")), tekion_num(r.get("Total Good Leads")) or 0)
+               for r in recs]
+    has_engaged = good > 0 and any(p is not None for p, _ in engaged)
+    return {
+        "Total Good Leads": str(good),
+        "Sold In Time Period": str(total("Sold In Time Period")),
+        "Appointments Scheduled Shown": str(total("Appointments Scheduled Shown")),
+        "Internet/OEM Leads Engaged %": str(sum((p or 0) * g for p, g in engaged) / good) if has_engaged else "",
+        "Appointments Scheduled %": str(100.0 * total("Appointments Scheduled") / good) if good else "",
+    }
+
+
+def tekion_single_store(rows, store):
+    """One-rooftop export (source type x stock type rows) -> {store: {lead type: row}};
+    each row keeps its stock-type rows under "_stock" for the drill-down."""
+    grouped = defaultdict(list)
+    for rec in rows:
+        src = (rec.get("Source Type (Consolidated)") or "").strip()
+        if src:                                      # the empty row is the Grand Total
+            grouped[TEKION_LEAD_TYPES.get(src.lower(), src)].append(rec)
+    out = {}
+    for lt, recs in grouped.items():
+        merged = tekion_rollup(recs)
+        merged["_stock"] = recs
+        out[lt] = merged
+    return {store: out} if out else {}
+
+
 def parse_tekion_group(account, begin, end, run, files):
     """files: {"all": path, "no-localshift": path?} for one account x range x run date
     -> [kpi snapshot per site]."""
     if "all" not in files:
         raise ValueError("Tekion %s %s..%s: the all-leads export is missing" % (account, begin, end))
     _, rows = read_tekion_csv(files["all"])
-    sites = tekion_by_site(rows)
+    single = TEKION_SINGLE_STORE.get(account)
+    sites = tekion_single_store(rows, single) if single else tekion_by_site(rows)
     no_ls = tekion_by_site(read_tekion_csv(files["no-localshift"])[1]) if "no-localshift" in files else {}
     period = "current" if begin[:7] == run[:7] else "prior"
     out = []
@@ -1422,6 +1460,10 @@ def parse_tekion_group(account, begin, end, run, files):
             if excl is not None:
                 node["byInventory"].append({"inventoryType": TEKION_NO_LS_LABEL,
                                             "metrics": tekion_metrics(excl, internet), "byMake": []})
+            for stock in rec.get("_stock", []):
+                label = (stock.get("Primary Vehicle Stock Type") or "").strip()
+                node["byInventory"].append({"inventoryType": TEKION_STOCK_LABELS.get(label.lower(), label or "Unspecified"),
+                                            "metrics": tekion_metrics(stock, internet), "byMake": []})
             nodes.append(node)
         total = {"goodLeads": 0, "sold": 0, "apptsShown": 0, "apptsSet": 0,
                  "contactPct": None, "apptSetOfContactedPct": None, "apptSetPct": None, "contacted": None}
