@@ -25,7 +25,9 @@ are gitignored (data.json was tracked until 2026-11-05; it is still in the publi
 ## Schedule on the runner (systemd timers, America/Guayaquil)
 
 - `scott-refresh.timer` 11:00 and 14:00: Gmail pull → ingest → publish. No Matador.
-- `scott-matador.timer` 02:00: same plus the Matador, Focus and Tekion bots (`--matador`). Never run
+- `scott-tekion.timer` 01:30: same plus the Tekion bot (`--tekion`), before Tekion sessions die at
+  midnight dealer time (01:59 Truck Ranch, 02:59 Scott Robinson, Ecuador time).
+- `scott-matador.timer` 02:00: same plus the Matador and Focus bots (`--matador`). Never run
   the bots in business hours: they sign in with the client's own accounts and log people out.
 
 Operate the box only through SSM (no SSH keys, no open ports):
