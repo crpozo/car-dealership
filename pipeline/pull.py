@@ -93,12 +93,26 @@ def run(req):
 
 EXTRA_QUERIES = [
     "from:(vinartcars.com OR vinartautos.com OR mbporschelehighvalley.com) has:attachment",
+    "from:notify.crmom.com has:attachment",
 ]
 
 # Momentum names every store's CSV the same way, so the sender domain is the only
 # thing that says which store a file belongs to. Attachments from these domains are
 # saved as "<msgid>-[<domain>] <name>" and ingest.py maps the domain to a store.
 TAG_DOMAINS = ("vinartcars.com", "vinartautos.com", "mbporschelehighvalley.com")
+
+
+# Since 2026-11-10 Momentum sends every store's schedule from one address
+# (notify.crmom.com) and names the store in the subject: "[Store Name] report".
+SUBJECT_TAG_DOMAINS = ("crmom.com",)
+
+
+def subject_store(msg):
+    for h in (msg.get("payload") or {}).get("headers", []) or []:
+        if h.get("name", "").lower() == "subject":
+            m = re.match(r"\s*\[([^\]/]{2,60})\]", h.get("value", ""))
+            return m.group(1).strip().lower() if m else ""
+    return ""
 
 
 def sender_domain(msg):
@@ -156,6 +170,8 @@ def main():
         got_any = False
         dom = sender_domain(msg)
         tag = "[%s] " % dom if dom.endswith(TAG_DOMAINS) else ""
+        if dom.endswith(SUBJECT_TAG_DOMAINS) and subject_store(msg):
+            tag = "[%s] " % subject_store(msg)
         for part in walk(msg["payload"]):
             fname = part.get("filename") or ""
             att_id = (part.get("body") or {}).get("attachmentId")

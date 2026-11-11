@@ -1554,3 +1554,7 @@ tr.edit-row .user-form { border: 1px solid var(--line); border-radius: 16px; pad
 .sources-tbl .mono { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px; }
 .btn-sm { flex: none; padding: 5px 10px; font-size: 12px; border-radius: 8px; }
 .btn-sm[disabled] { opacity: .5; cursor: not-allowed; }
+
+/* summary band carries six cells since Internet Solds sits next to Total Solds */
+@media (min-width: 1201px) { .statsband { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1560px) { .statsband { grid-template-columns: repeat(6, minmax(0, 1fr)); } }

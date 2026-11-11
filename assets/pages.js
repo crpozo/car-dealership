@@ -733,7 +733,8 @@
       { l: "Engaged", v: net ? pct(eng, noNet) : na(noNet), cls: colorFor(eng, engagementTarget()), t: "Engagement %" },
       { l: "Appts", v: net ? pct(ap, noNet) : na(noNet), cls: colorFor(ap, apptTarget()), t: "Appts set of contacted %" },
       { l: "Closing", v: net ? pct(closing, noNet) : na(noNet), cls: colorFor(closing, closingTarget()), t: "Internet closing %" },
-      { l: "Sold", v: num(sm.total ? sm.total.sold : null, "No store total row for " + rangeLabel(range)) + soldDelta, cls: "none", t: "Total sold, all lead types" }
+      { l: "Inet Sold", v: net ? num(net.sold, noNet) : na(noNet), cls: "none", t: "Sold from internet leads" },
+      { l: "Total Sold", v: num(sm.total ? sm.total.sold : null, "No store total row for " + rangeLabel(range)) + soldDelta, cls: "none", t: "Total sold, all lead sources" }
     ];
 
     return '<article class="store-card" data-store-name="' + esc(s.name.toLowerCase()) + '" data-status="' + esc(st.band) + '">' +
@@ -862,6 +863,8 @@
       { v: net ? pct(eng, noNet) : na(noNet), l: "Engagement", goal: engagementTarget(), cls: colorFor(eng, engagementTarget()) },
       { v: net ? pct(ap, noNet) : na(noNet), l: "Appts Set of Contacted", goal: apptTarget(), cls: colorFor(ap, apptTarget()) },
       { v: net ? pct(closing, noNet) : na(noNet), l: "Internet Closing Rate", goal: closingTarget(), cls: colorFor(closing, closingTarget()), sub: closeDelta },
+      { v: net ? num(net.sold, noNet) : na(noNet), l: "Internet Solds", cls: "none",
+        sub: '<span class="sb-sub">Internet leads only</span>' },
       { v: (total ? num(total.sold, "No totals") : na("No totals")), l: "Total Solds", cls: "none",
         sub: (soldDelta ? soldDelta + " " : "") + '<span class="sb-sub">All lead types</span>' }
     ];

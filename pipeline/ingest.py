@@ -997,8 +997,13 @@ MOMENTUM_STORES = {
     "lvhyundai.vinartautos.com": "Lehigh Valley Hyundai",
     "acura.vinartautos.com": "Lehigh Valley Acura",
     "drive.mbporschelehighvalley.com": "MB Porsche of Lehigh Valley",
+    # from 2026-11-10 the tag is the store named in the email subject (pull.py)
+    "lehigh valley honda": "Lehigh Valley Honda",
+    "lehigh valley hyundai": "Lehigh Valley Hyundai",
+    "lehigh valley acura": "Lehigh Valley Acura",
+    "mb porsche of lehigh valley": "MB Porsche of Lehigh Valley",
 }
-MOMENTUM_NAME = re.compile(r"^[0-9a-f]{15,16}-\[(?P<dom>[a-z0-9.-]+)\] (?P<name>.*)_(?P<ms>\d{13})\.csv$", re.IGNORECASE)
+MOMENTUM_NAME = re.compile(r"^[0-9a-f]{15,16}-\[(?P<dom>[a-z0-9. -]+)\] (?P<name>.*)_(?P<ms>\d{13})\.csv$", re.IGNORECASE)
 MOMENTUM_COLS = {"Name", "Prospects", "Internet Prospects", "Internet Sales", "Total Sales",
                  "Outbound Calls", "Outbound Emails", "Outbound Texts", "Outbound Videos",
                  "Appts Created", "Show Appts"}
@@ -1008,10 +1013,10 @@ def momentum_identity(path):
     """-> (store_name, is_combined, run_date) from the tagged file name, or raises."""
     m = MOMENTUM_NAME.match(os.path.basename(path))
     if not m:
-        raise ValueError("Momentum: file is not tagged with its sender domain (re-pull with the current pull.py)")
+        raise ValueError("Momentum: file is not tagged with its store (re-pull with the current pull.py)")
     store = MOMENTUM_STORES.get(m.group("dom").lower())
     if not store:
-        raise ValueError("Momentum: unknown sender domain %s" % m.group("dom"))
+        raise ValueError("Momentum: unknown sender or store %s" % m.group("dom"))
     # the epoch is the local run time; UTC-4/5 keeps the calendar day for US East
     run = datetime.fromtimestamp(int(m.group("ms")) / 1000, timezone(timedelta(hours=-5))).date()
     return store, "combined" in m.group("name").lower(), run
