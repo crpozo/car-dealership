@@ -140,7 +140,7 @@ for RP `crpozo.github.io`.
 Waiting on Scott: fix the VinSolutions schedules for Lindsay Acura/Honda/Buick GMC and Lunde's
 (Date Range = Month to Date) and send one Oct 1–31 export each; daily "Previous Month" exports;
 Tekion: Truck Ranch x5 live on the bot since 2026-11-06 (still a client, confirmed that day); Scott
-Robinson Honda added to the bot 2026-11-09; Precision Honda's second factor is still SMS only. Tekion's 2FA code lands in the reports
+Robinson Honda added to the bot 2026-11-09; Precision Honda added 2026-11-12 (code now by email, same report shape as Scott Robinson, secret `scott-dash/tekion-precision-session`). Tekion's 2FA code lands in the reports
 Gmail the runner reads: `crm-bots/tekion_code.py` fetches it over SSM for whoever is signing in by hand
 (Carlos to confirm this use of the read-only access); Herson's x2 live on the Focus bot
 since 2026-11-05;
