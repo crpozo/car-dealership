@@ -1344,8 +1344,9 @@ TEKION_NAME = re.compile(
 TEKION_COLS = {"Source Type (Consolidated)", "Total Good Leads", "Sold In Time Period",
                "Internet/OEM Leads Engaged %", "Appointments Scheduled %", "Appointments Scheduled Shown"}
 # One-rooftop logins: the report has no Site column and splits each source type by stock type.
-TEKION_SINGLE_STORE = {"scott-robinson": "Scott Robinson Honda"}
-TEKION_STOCK_LABELS = {"new": "New", "used": "Used", "special": "Special", "<ungrouped>": "Unspecified"}
+TEKION_SINGLE_STORE = {"scott-robinson": "Scott Robinson Honda", "precision": "Precision Honda"}
+TEKION_STOCK_LABELS = {"new": "New", "used": "Used", "special": "Special", "<ungrouped>": "Unspecified",
+                       "unknown": "Unknown"}
 TEKION_LEAD_TYPES = {"internet/oem": "Internet", "phone up": "Phone", "walk-in": "Walk-in",
                      "other sources": "Other"}
 TEKION_SKIP_SITES = {"main site"}            # Truck Ranch's boat business: not reported
@@ -1466,7 +1467,8 @@ def parse_tekion_group(account, begin, end, run, files):
                 node["byInventory"].append({"inventoryType": TEKION_NO_LS_LABEL,
                                             "metrics": tekion_metrics(excl, internet), "byMake": []})
             for stock in rec.get("_stock", []):
-                label = (stock.get("Primary Vehicle Stock Type") or "").strip()
+                col = next((k for k in stock if k and "stock type" in k.lower()), None)
+                label = (stock.get(col) or "").strip() if col else ""
                 node["byInventory"].append({"inventoryType": TEKION_STOCK_LABELS.get(label.lower(), label or "Unspecified"),
                                             "metrics": tekion_metrics(stock, internet), "byMake": []})
             nodes.append(node)
