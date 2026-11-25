@@ -147,5 +147,7 @@ since 2026-11-05;
 the EC2 role still needs `secretsmanager:PutSecretValue` on `scott-dash/focus-session*` (inline policy
 `scott-dash-session-persist`) so the runner can persist the rotated Focus session; Momentum:
 all four Lehigh Valley schedules send the identical report, each store must schedule its own
-all-salespeople report (and a lead-source KPI report); a dedicated Matador user for the bot; store
+all-salespeople report (and a lead-source KPI report); a dedicated Matador user for the bot (TEMP since 2026-11-24: the Matador password stopped working;
+its failure alert goes only to the `scott-dashboard-renewals` topic, René, via `ALERT_TOPIC` in
+`/opt/run-refresh.sh`; remove that prefix once Matador signs in again); store
 sales goals. Carlos: decide whether to purge `pipeline/data.json` from git history (force push).
